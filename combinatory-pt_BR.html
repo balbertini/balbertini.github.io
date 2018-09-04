@@ -232,7 +232,7 @@ Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code
 
 
 <p>Estas duas descrições são consideradas <strong>inadequadas</strong> do ponto de vista de boas práticas em descrições de hardware e são <strong>fortemente desencorajadas</strong>. O principal motivo é que utilizam primitivas que devem estar dentro de um bloco sequencial do tipo <code>process</code>. Apesar de estarem corretas do ponto de vista sintático, este tipo de descrição é considerada errada do ponto de vista semântico, pois há a utilização de uma primitiva sequencial para descrever um circuito combinatório.</p>
-<p>As das descrições acima serão sintetizadas corretamente para um multiplexador combinatório pois não possuem erros. No entanto, qualquer deslize (e.g. atribuição incompleta, esquecer um sinal na lista de sensibilidade, etc.) induzirá o sintetizador a inserir <em>latches</em> ou <em>flip-flops</em> no caminho de dados. A inserção destes elementos sequenciais em um circuito puramente combinatório pode torná-lo sequencial ou até mesmo inutilizar o circuito. O funcionamento do circuito pode não ser o esperado, diferindo da intenção do projetista.</p>
+<p>As descrições acima serão sintetizadas corretamente para um multiplexador combinatório pois não possuem erros. No entanto, qualquer deslize (e.g. atribuição incompleta, esquecer um sinal na lista de sensibilidade, etc.) induzirá o sintetizador a inserir <em>latches</em> ou <em>flip-flops</em> no caminho de dados. A inserção destes elementos sequenciais em um circuito puramente combinatório pode torná-lo sequencial ou até mesmo inutilizar o circuito. O funcionamento do circuito pode não ser o esperado, diferindo da intenção do projetista.</p>
 <p>Lembre-se que estas duas últimas descrições são <strong>fortemente desencorajadas</strong> e devem ser evitadas. Utilize uma das opções no começo desta página para descrever o seu circuito combinatório. <strong>Atenção:</strong> se você é meu aluno não utilize descrições de circuitos combinatórios usando <code>process</code> em nenhuma hipótese.</p>
   </div>
   <div class="tag-cloud">
@@ -246,6 +246,20 @@ Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code
 
 
 
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'https://balbertini.disqus.com';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Habilite JavaScript para ver os comentários.
+</noscript>
+<!-- End Disqus -->
 </article>
 
     <footer>
