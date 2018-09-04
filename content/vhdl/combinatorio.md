@@ -43,7 +43,7 @@ o <= (a and not(s)) or (b and s);
 
 O `with-select` é a representação da **tabela verdade** de uma função lógica. Não há equivalente em um diagrama esquemático. O mais próximo seria uma LUT (*LookUp Table*), mas a síntese não necessariamente utiliza esta abordagem (e.g. dependendo das otimizações feitas pelo sintetizador, pode ser feita usando um arranjo de portas lógicas que implemente a função equivalente).
 
-Sintaxe do `when-else`:
+Sintaxe do `with-select`:
 ```vhdl
 with sinalSelecao select sinalSaida <=
   valorSaida1 when valorSelecao1,
@@ -91,7 +91,7 @@ with s select o <=
   b when others;
 ```
 
-A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa quando o circuito não tem uma ligação forte com a entrada, caso em que pode ser expressa em função destas como no exemplo com as saídas como sinais.
+A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa, principalmente se não for possível otimizar a quantidade de opções possíveis usando sinais, como na _versão com as saídas como sinais_ acima.
 
 ### When-else
 
