@@ -11,7 +11,25 @@ PATH = 'content'
 
 TIMEZONE = 'America/Sao_Paulo'
 
-DEFAULT_LANG = u'pt'
+PLUGIN_PATHS = ["/Users/balbertini/GIT/sitePessoal/pelican-plugins"]
+# Enable i18n plugin, probably you already have some others here.
+PLUGINS = ['i18n_subsites']
+# Enable Jinja2 i18n extension used to parse translations.
+JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
+
+DEFAULT_LANG = u'pt_BR'
+# DEFAULT_LANG = u'pt_BR'
+LOCALE = ('pt_BR','pt_BR.UTF-8','en_US','en_US.UTF-8')
+DATE_FORMATS = {
+    'en_US': '%a, %d %b %Y',
+    'pt_BR': '%d/%m/%Y (%a)',
+}
+
+# Default theme language.
+I18N_TEMPLATES_LANG = 'pt_BR'
+# Your language.
+OG_LOCALE = 'pt_BR'
+LOCALE = 'pt_BR'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
