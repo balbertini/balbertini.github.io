@@ -146,7 +146,7 @@ Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code
 <p><br/></p>
 <h3>With-select</h3>
 <p>O <code>with-select</code> é a representação da <strong>tabela verdade</strong> de uma função lógica. Não há equivalente em um diagrama esquemático. O mais próximo seria uma LUT (<em>LookUp Table</em>), mas a síntese não necessariamente utiliza esta abordagem (e.g. dependendo das otimizações feitas pelo sintetizador, pode ser feita usando um arranjo de portas lógicas que implemente a função equivalente).</p>
-<p>Sintaxe do <code>when-else</code>:</p>
+<p>Sintaxe do <code>with-select</code>:</p>
 <div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">sinalSelecao</span> <span class="k">select</span> <span class="n">sinalSaida</span> <span class="o">&lt;=</span>
   <span class="n">valorSaida1</span> <span class="k">when</span> <span class="n">valorSelecao1</span><span class="p">,</span>
   <span class="n">valorSaida2</span> <span class="k">when</span> <span class="n">valorSelecao2</span><span class="p">,</span>
@@ -192,7 +192,7 @@ Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code
 </pre></div>
 
 
-<p>A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa quando o circuito não tem uma ligação forte com a entrada, caso em que pode ser expressa em função destas como no exemplo com as saídas como sinais.</p>
+<p>A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa, principalmente se não for possível otimizar a quantidade de opções possíveis usando sinais, como na <em>versão com as saídas como sinais</em> acima.</p>
 <h3>When-else</h3>
 <p>O <code>when-else</code> é uma maneira fácil de descrever funcionalmente um circuito com várias funções lógicas. O equivalente a um diagrama esquemático é um <strong>multiplexador</strong>, cujas entradas são funções lógicas.</p>
 <p><img src='https://balbertini.github.io/images/mux_exp.png' align="left" style="padding-right:5%" />

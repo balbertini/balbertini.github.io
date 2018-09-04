@@ -53,7 +53,7 @@ Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h3&gt;With-select&lt;/h3&gt;
 &lt;p&gt;O &lt;code&gt;with-select&lt;/code&gt; é a representação da &lt;strong&gt;tabela verdade&lt;/strong&gt; de uma função lógica. Não há equivalente em um diagrama esquemático. O mais próximo seria uma LUT (&lt;em&gt;LookUp Table&lt;/em&gt;), mas a síntese não necessariamente utiliza esta abordagem (e.g. dependendo das otimizações feitas pelo sintetizador, pode ser feita usando um arranjo de portas lógicas que implemente a função equivalente).&lt;/p&gt;
-&lt;p&gt;Sintaxe do &lt;code&gt;when-else&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Sintaxe do &lt;code&gt;with-select&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;sinalSelecao&lt;/span&gt; &lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="n"&gt;sinalSaida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;
   &lt;span class="n"&gt;valorSaida1&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;valorSelecao1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
   &lt;span class="n"&gt;valorSaida2&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;valorSelecao2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -99,7 +99,7 @@ Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa quando o circuito não tem uma ligação forte com a entrada, caso em que pode ser expressa em função destas como no exemplo com as saídas como sinais.&lt;/p&gt;
+&lt;p&gt;A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa, principalmente se não for possível otimizar a quantidade de opções possíveis usando sinais, como na &lt;em&gt;versão com as saídas como sinais&lt;/em&gt; acima.&lt;/p&gt;
 &lt;h3&gt;When-else&lt;/h3&gt;
 &lt;p&gt;O &lt;code&gt;when-else&lt;/code&gt; é uma maneira fácil de descrever funcionalmente um circuito com várias funções lógicas. O equivalente a um diagrama esquemático é um &lt;strong&gt;multiplexador&lt;/strong&gt;, cujas entradas são funções lógicas.&lt;/p&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/mux_exp.png' align="left" style="padding-right:5%" /&gt;
