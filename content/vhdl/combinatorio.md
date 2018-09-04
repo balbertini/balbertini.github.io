@@ -91,7 +91,7 @@ with s select o <=
   b when others;
 ```
 
-A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa, principalmente se não for possível otimizar a quantidade de opções possíveis usando sinais, como na _versão com as saídas como sinais_ acima.
+A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa. Note a diferença entre as duas versões acima: a _versão com as saídas como sinais_ é compacta e passível de utilização, mas a _versão com saídas como constantes_ é uma transcrição da tabela verdade e pode se tornar impraticável (ou ilegível) rapidamente, principalmente se o número de entradas for grande pois a tabela cresce exponencialmente (lembre-se que a tabela verdade terá `2^n` linhas, onde `n` é o número de entradas).
 
 ### When-else
 
@@ -147,4 +147,4 @@ Estas duas descrições são consideradas **inadequadas** do ponto de vista de b
 
 As descrições acima serão sintetizadas corretamente para um multiplexador combinatório pois não possuem erros e os sintetizadores conseguirão perceber que se trata de um circuito combinatório mesmo na presença do `process`. No entanto, qualquer deslize (e.g. atribuição incompleta, esquecer um sinal na lista de sensibilidade, etc.) induzirá o sintetizador a inserir *latches* ou *flip-flops* no caminho de dados. A inserção destes elementos sequenciais em um circuito puramente combinatório pode torná-lo sequencial ou até mesmo inutilizar o circuito. O funcionamento do circuito pode não ser o esperado, diferindo da intenção do projetista.
 
-Lembre-se que estas duas últimas descrições são **fortemente desencorajadas para descrever circuitos combinatórios** e devem ser evitadas. Utilize uma das opções no começo desta página para descrever o seu circuito combinatório. **Atenção:** se você é meu aluno não utilize descrições de circuitos combinatórios usando `process` em nenhuma hipótese.
+Lembre-se que estas duas últimas descrições são **fortemente desencorajadas** para descrever circuitos combinatórios e devem ser evitadas para este propósito. Utilize uma das três opções no começo desta página para descrever o seu circuito combinatório. **Atenção:** se você é meu aluno não utilize descrições de circuitos combinatórios usando `process` em nenhuma hipótese.
