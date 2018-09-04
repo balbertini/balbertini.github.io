@@ -10,10 +10,10 @@ Summary: Como descrever circuitos combinatórios em VHDL.
 
 **Circuitos combinatórios** são aqueles que podem ser descritos com uma função booleana. Sua principal característica é a ausência de dependência temporal, ou seja, a saída depende apenas da entrada. Este tipo de circuito pode ser representado por uma série de portas lógicas interligadas entre si **sem realimentação**.
 
-Há três maneiras de descrever circuitos puramente combinatórios em VHDL: estrutural, atribuição condicional com `with-select` e atribuição condicional com `when-else`. Todas as descrições serão sintetizadas para circuitos puramente combinatórios.
+Há três maneiras de descrever circuitos puramente combinatórios em VHDL: estrutural, atribuição condicional com `with-select` e atribuição condicional com `when-else`. As descrições realizadas de uma destas três formas serão sintetizadas para circuitos puramente combinatórios.
 
 ### Estrutural
-A descrição estrutural é a maneira mais simples - e também a mais prolixa -  de se descrever uma função combinatória. Consiste em descrever o circuito a partir da própria função lógica que o representa.
+A descrição estrutural é a maneira mais direta de se descrever uma função combinatória. Consiste em descrever o circuito a partir da própria função lógica que o representa. O equivalente em um diagrama esquemático é exatamente a **função lógica**, como descrita usando as portas lógicas equivalentes. A desvantagem é que a descrição é prolixa e consequentemente torna-se rapidamente difícil de ler, razão pela qual não é recomendada para circuitos grandes. Caso opte por este tipo de descrição utilize uma técnica de projeto baseada em divisão e conquista e mantenha os blocos que usam descrição estrutural pequenos, minimizando o esforço necessário para compreender o seu funcionamento.
 
 VHDL suporta os seguintes operadores lógicos para descrever circuitos estruturais:
 
@@ -29,7 +29,6 @@ VHDL suporta os seguintes operadores lógicos para descrever circuitos estrutura
 
 Os operadores estão em ordem decrescente de prioridade, ou seja, o `not` tem precedência sobre todos os demais operadores. Aconselha-se a utilização de parênteses `()` para deixar claro a intenção do projetista. Todos os operadores podem operar sobre boleanos, bits ou vetores unidimensionais de bits (bits podem ser do tipo `bit` ou derivados como `std_logic`). É necessário que os operandos sejam do mesmo tamanho e o resultado é sempre igual à entrada (i.e. se os operandos são vetores de bits, o resultado é um vetor de bits).
 
-O equivalente ao diagrama esquemático é exatamente a **função lógica**, como descrita em um diagrama esquemático usando as portas lógicas equivalentes. A desvantagem é que a descrição é prolixa e consequentemente torna-se de difícil leitura rapidamente.
 
 #### Exemplo
 <img src='{filename}/images/mux.png' align="left" style="padding-right:5%" />
@@ -42,7 +41,7 @@ o <= (a and not(s)) or (b and s);
 
 ### With-select
 
-O `with-select` é a representação da **tabela verdade** de uma função lógica. Não há equivalente em um diagrama esquemático. O mais próximo seria uma LUT (*LookUp Table*), mas a síntese não necessariamente utiliza esta abordagem (e.g. pode ser feita usando portas lógicas que implementem a função equivalente, dependendo das otimizações feitas pelo sintetizador).
+O `with-select` é a representação da **tabela verdade** de uma função lógica. Não há equivalente em um diagrama esquemático. O mais próximo seria uma LUT (*LookUp Table*), mas a síntese não necessariamente utiliza esta abordagem (e.g. dependendo das otimizações feitas pelo sintetizador, pode ser feita usando um arranjo de portas lógicas que implemente a função equivalente).
 
 Sintaxe do `when-else`:
 ```vhdl
@@ -61,14 +60,6 @@ No `with-select`, a atribuição ao `sinalSaida` é feita através de uma compar
   <tr><td>0</td><td>0</td><td>1</td><td></td><td>0</td></tr>
   <tr><td>0</td><td>1</td><td>0</td><td></td><td>1</td></tr>
   <tr><td>0</td><td>1</td><td>1</td><td></td><td>1</td></tr>
-  <tr><td>0</td><td>0</td><td>0</td><td></td><td>0</td></tr>
-  <tr><td>0</td><td>0</td><td>1</td><td></td><td>0</td></tr>
-  <tr><td>0</td><td>1</td><td>0</td><td></td><td>1</td></tr>
-  <tr><td>0</td><td>1</td><td>1</td><td></td><td>1</td></tr>
-  <tr><td>1</td><td>0</td><td>0</td><td></td><td>0</td></tr>
-  <tr><td>1</td><td>0</td><td>1</td><td></td><td>1</td></tr>
-  <tr><td>1</td><td>1</td><td>0</td><td></td><td>0</td></tr>
-  <tr><td>1</td><td>1</td><td>1</td><td></td><td>1</td></tr>
   <tr><td>1</td><td>0</td><td>0</td><td></td><td>0</td></tr>
   <tr><td>1</td><td>0</td><td>1</td><td></td><td>1</td></tr>
   <tr><td>1</td><td>1</td><td>0</td><td></td><td>0</td></tr>
@@ -79,12 +70,19 @@ Este exemplo é um multiplexador 2x1 com entradas `a` e `b`, saída `o` e seleto
 
 Versão com saídas como constantes:
 ```vhdl
-with s select o <=
-  '0' when (s='0' and a='0'),
-  '1' when (s='0' and a='1'),
-  '0' when (s='1' and b='0'),
+signal sel: bit_vector(2 downto 0); -- Declaração
+sel <= s & a & b; -- Concatenação
+with sel select o <=
+  '0' when "000",
+  '0' when "001",
+  '1' when "010",
+  '1' when "011",
+  '0' when "100",
+  '1' when "101",
+  '0' when "110",
   '1' when others;
 ```
+Note que este é um trecho de código de uma descrição: a declaração do sinal deve estar no local apropriado, assim como a atribuição ao sinal `sel` (concatenação).
 
 Versão com saídas como sinais:
 ```vhdl
@@ -93,9 +91,7 @@ with s select o <=
   b when others;
 ```
 
-A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser muito prolixa quando o circuito não tem uma ligação forte com a entrada, caso em que pode ser expressa em função destas como no exemplo com as saídas como sinais.
-
-<br clear=left />
+A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa quando o circuito não tem uma ligação forte com a entrada, caso em que pode ser expressa em função destas como no exemplo com as saídas como sinais.
 
 ### When-else
 
@@ -147,8 +143,8 @@ begin
 end process;
 ```
 
-Estas duas descrições são consideradas **inadequadas** do ponto de vista de boas práticas em descrições de hardware e são **fortemente desencorajadas**. O principal motivo é que utilizam primitivas que devem estar dentro de um bloco sequencial do tipo `process`. Apesar de estarem corretas do ponto de vista sintático, este tipo de descrição é considerada errada do ponto de vista semântico, pois há a utilização de uma primitiva sequencial para descrever um circuito combinatório.
+Estas duas descrições são consideradas **inadequadas** do ponto de vista de boas práticas em descrições de hardware e são **fortemente desencorajadas**. O principal motivo é que utilizam primitivas que devem estar dentro de um bloco sequencial do tipo `process`. Apesar de estarem corretas do ponto de vista sintático, este tipo de descrição é considerada errada do ponto de vista semântico, pois há a utilização de uma primitiva sequencial para descrever um circuito combinatório. Em outras palavras, você está dizendo ao sintetizador que quer descrever um circuito sequencial, mas na verdade está descrevendo um circuito combinatório.
 
-As descrições acima serão sintetizadas corretamente para um multiplexador combinatório pois não possuem erros. No entanto, qualquer deslize (e.g. atribuição incompleta, esquecer um sinal na lista de sensibilidade, etc.) induzirá o sintetizador a inserir *latches* ou *flip-flops* no caminho de dados. A inserção destes elementos sequenciais em um circuito puramente combinatório pode torná-lo sequencial ou até mesmo inutilizar o circuito. O funcionamento do circuito pode não ser o esperado, diferindo da intenção do projetista.
+As descrições acima serão sintetizadas corretamente para um multiplexador combinatório pois não possuem erros e os sintetizadores conseguirão perceber que se trata de um circuito combinatório mesmo na presença do `process`. No entanto, qualquer deslize (e.g. atribuição incompleta, esquecer um sinal na lista de sensibilidade, etc.) induzirá o sintetizador a inserir *latches* ou *flip-flops* no caminho de dados. A inserção destes elementos sequenciais em um circuito puramente combinatório pode torná-lo sequencial ou até mesmo inutilizar o circuito. O funcionamento do circuito pode não ser o esperado, diferindo da intenção do projetista.
 
 Lembre-se que estas duas últimas descrições são **fortemente desencorajadas** e devem ser evitadas. Utilize uma das opções no começo desta página para descrever o seu circuito combinatório. **Atenção:** se você é meu aluno não utilize descrições de circuitos combinatórios usando `process` em nenhuma hipótese.
