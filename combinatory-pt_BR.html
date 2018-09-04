@@ -82,10 +82,10 @@
 
 
   <div>
-    <p><strong>Circuitos combinatórios</strong> são aqueles que podem ser descritos com uma função booleana, ou seja, não possui dependência temporal e a saída depende apenas da entrada. Este tipo de circuito pode ser representado por uma série de portas lógicas interligadas entre si <strong>sem realimentação</strong>.</p>
+    <p><strong>Circuitos combinatórios</strong> são aqueles que podem ser descritos com uma função booleana, ou seja, não possuem dependência temporal, ou seja, a saída depende apenas da entrada. Este tipo de circuito pode ser representado por uma série de portas lógicas interligadas entre si <strong>sem realimentação</strong>.</p>
 <p>Há três maneiras de descrever circuitos puramente combinatórios em VHDL: estrutural, atribuição condicional com <code>with-select</code> e atribuição condicional com <code>when-else</code>. Todas as descrições serão sintetizadas para circuitos puramente combinatórios.</p>
 <h3>Estrutural</h3>
-<p>A descrição estrutural é a maneira mais simples - e também a mais prolixa -  de se descrever uma função combinatória. Consiste em descrever o circuito a partir da própria função lógica que representa o circuito.</p>
+<p>A descrição estrutural é a maneira mais simples - e também a mais prolixa -  de se descrever uma função combinatória. Consiste em descrever o circuito a partir da própria função lógica que o representa.</p>
 <p>VHDL suporta os seguintes operadores lógicos para descrever circuitos estruturais:</p>
 <table>
 <thead>
@@ -126,7 +126,7 @@
 </tbody>
 </table>
 <p>Os operadores estão em ordem decrescente de prioridade, ou seja, o <code>not</code> tem precedência sobre todos os demais operadores. Aconselha-se a utilização de parênteses <code>()</code> para deixar claro a intenção do projetista. Todos os operadores podem operar sobre boleanos, bits ou vetores unidimensionais de bits (bits podem ser do tipo <code>bit</code> ou derivados como <code>std_logic</code>). É necessário que os operandos sejam do mesmo tamanho e o resultado é sempre igual à entrada (i.e. se os operandos são vetores de bits, o resultado é um vetor de bits).</p>
-<p>O equivalente ao diagrama esquemático é exatamente a <strong>função lógica</strong>, como descrita em um diagrama esquemático usando as portas lógicas equivalentes. A desvantagem é que a descrição e prolixa e consequentemente torna-se de difícil leitura rapidamente.</p>
+<p>O equivalente ao diagrama esquemático é exatamente a <strong>função lógica</strong>, como descrita em um diagrama esquemático usando as portas lógicas equivalentes. A desvantagem é que a descrição é prolixa e consequentemente torna-se de difícil leitura rapidamente.</p>
 <h4>Exemplo</h4>
 <p><img src='https://balbertini.github.io/images/mux.png' align="left" style="padding-right:5%" />
 Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code>, saída <code>o</code> e seletor <code>s</code>. As entradas podem ser vetores (e.g. <code>bit_vector(3 downto 0)</code>), mas nesse caso é necessário que o seletor <code>s</code> também seja um vetor do mesmo tamanho.</p>
@@ -136,7 +136,7 @@ Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code
 
 <p><br/></p>
 <h3>With-select</h3>
-<p>O <code>with-select</code> é a representação da <strong>tabela verdade</strong> de uma função lógica. Não há equivalente em um diagrama esquemático, o mais próximo seria uma LUT (<em>LookUp Table</em>) mas a síntese não necessariamente utiliza esta abordagem (e.g. pode ser feita usando portas lógicas que implementem a função).</p>
+<p>O <code>with-select</code> é a representação da <strong>tabela verdade</strong> de uma função lógica. Não há equivalente em um diagrama esquemático. O mais próximo seria uma LUT (<em>LookUp Table</em>), mas a síntese não necessariamente utiliza esta abordagem (e.g. pode ser feita usando portas lógicas que implementem a função equivalente, dependendo das otimizações feitas pelo sintetizador).</p>
 <p>Sintaxe do <code>when-else</code>:</p>
 <div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">sinalSelecao</span> <span class="k">select</span> <span class="n">sinalSaida</span> <span class="o">&lt;=</span>
   <span class="n">valorSaida1</span> <span class="k">when</span> <span class="n">valorSelecao1</span><span class="p">,</span>
@@ -145,7 +145,7 @@ Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code
 </pre></div>
 
 
-<p>No <code>with-select</code>, a atribuição ao <code>sinalSaida</code> é feita através de uma comparação de igualdade com o sinal de seleção <code>sinalSelecao</code>. O valores a serem comparados são os expressos como <code>valorSelecao</code> (e.g. se a o valor do sinal <code>sinalSelecao</code> for igual a <code>valorSelecao1</code>, o sinal <code>sinalSaida</code> será <code>valorSaida1</code>). <strong>Atenção:</strong> é fortemente recomendada a descrição da opção padrão (comparação com <code>others</code>), que será a atribuição caso nenhuma condição for atendida. Se a opção padrão não for especificada, a atribuição é considerada uma <em>atribuição incompleta</em> e a síntese poderá inferir um <em>latch</em>, tornando o circuito sequencial. Não é necessário que o número de entradas seja múltiplo de uma potência de dois e os valores de saída <code>valorSaida</code> podem ser outros sinais ou expressões. Os valores para comparação devem ser constantes ou serem passíveis de resolução (i.e. não variáveis ou transitivos). Tanto a entrada de seleção quando a saída podem ser vetores.</p>
+<p>No <code>with-select</code>, a atribuição ao <code>sinalSaida</code> é feita através de uma comparação de igualdade com o sinal de seleção <code>sinalSelecao</code>. O valores a serem comparados são os expressos como <code>valorSelecao</code> (e.g. se a o valor do sinal <code>sinalSelecao</code> for igual a <code>valorSelecao1</code>, o sinal <code>sinalSaida</code> será <code>valorSaida1</code>). <strong>Atenção:</strong> é fortemente recomendada a descrição da opção padrão (comparação com <code>others</code>), que será a atribuição a ser realizada caso nenhuma condição for atendida. Se a opção padrão não for especificada, a atribuição é considerada uma <em>atribuição incompleta</em> e a síntese poderá inferir um <em>latch</em>, tornando o circuito sequencial. Não é necessário que o número de entradas seja múltiplo de uma potência de dois e os valores de saída <code>valorSaida</code> podem ser outros sinais ou expressões. Os valores para comparação devem ser constantes ou serem passíveis de resolução (i.e. não devem ser variáveis ou valores transitivos). Tanto a entrada de seleção quando a saída podem ser vetores.</p>
 <h4>Exemplo</h4>
 <table align="left" style="border-right: 30px solid #fff;">
   <tr><th>s</th><th>a</th><th>b</th><th></th><th>o</th></tr>
@@ -168,7 +168,7 @@ Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code
 </table>
 
 <p>Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code>, saída <code>o</code> e seletor <code>s</code>. Lembre-se que um seletor de um multiplexador deve ter tamanho <code>ceil(log2(n))</code>, onde <code>n</code> é o número de entradas, portanto é possível que ele seja um vetor. Neste exemplo, como há duas entradas, o seletor <code>s</code> tem somente um bit.</p>
-<p>Versão com saídas constantes:</p>
+<p>Versão com saídas como constantes:</p>
 <div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">s</span> <span class="k">select</span> <span class="n">o</span> <span class="o">&lt;=</span>
   <span class="sc">&#39;0&#39;</span> <span class="k">when</span> <span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="sc">&#39;0&#39;</span> <span class="k">and</span> <span class="n">a</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="p">),</span>
   <span class="sc">&#39;1&#39;</span> <span class="k">when</span> <span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="sc">&#39;0&#39;</span> <span class="k">and</span> <span class="n">a</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="p">),</span>
@@ -177,13 +177,14 @@ Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code
 </pre></div>
 
 
-<p>Versão com saídas com sinais:</p>
+<p>Versão com saídas como sinais:</p>
 <div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">s</span> <span class="k">select</span> <span class="n">o</span> <span class="o">&lt;=</span>
   <span class="n">a</span> <span class="k">when</span> <span class="sc">&#39;0&#39;</span><span class="p">,</span>
   <span class="n">b</span> <span class="k">when</span> <span class="k">others</span><span class="p">;</span>
 </pre></div>
 
 
+<p>A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser muito prolixa quando o circuito não tem uma ligação forte com a entrada, caso em que pode ser expressa em função destas como no exemplo com as saídas como sinais.</p>
 <p><br clear=left /></p>
 <h3>When-else</h3>
 <p>O <code>when-else</code> é uma maneira fácil de descrever funcionalmente um circuito com várias funções lógicas. O equivalente a um diagrama esquemático é um <strong>multiplexador</strong>, cujas entradas são funções lógicas.</p>
