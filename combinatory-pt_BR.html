@@ -202,6 +202,38 @@ Sintaxe do <code>when-else</code>:</p>
 Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code>, saída <code>o</code> e seletor <code>s</code>. As entradas podem ser vetores (e.g. <code>bit_vector(3 downto 0)</code>). Lembre-se que um seletor de um multiplexador deve ter tamanho <code>ceil(log2(n))</code>, onde <code>n</code> é o número de entradas, portanto é possível que ele seja um vetor. Neste exemplo, como há duas entradas, o seletor <code>s</code> tem somente um bit.</p>
 <div class="highlight"><pre><span></span><span class="n">o</span> <span class="o">&lt;=</span> <span class="n">b</span> <span class="k">when</span> <span class="n">s</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">else</span> <span class="n">a</span><span class="p">;</span>
 </pre></div>
+
+
+<h3>Outras maneiras</h3>
+<p>Há outras maneiras de se descrever circuitos combinatórios em VHDL. Dois exemplos comuns utilizam o <code>case</code> e o <code>if-else</code>, fáceis serem encontradas pois utilizam primitivas similares às encontradas em linguagens de programação estruturadas (e.g. C/C++, Java, etc).</p>
+<p>Os dois exemplos abaixo são de um multiplexador 2x1 com entradas <code>a</code> e <code>b</code>, saída <code>o</code> e seletor <code>s</code>.</p>
+<p>Com <code>case</code>:</p>
+<div class="highlight"><pre><span></span><span class="k">process</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="k">begin</span>
+  <span class="k">case</span> <span class="n">s</span> <span class="k">is</span>
+    <span class="k">when</span> <span class="sc">&#39;0&#39;</span> <span class="o">=&gt;</span> <span class="n">o</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">;</span>
+    <span class="k">when</span> <span class="sc">&#39;1&#39;</span> <span class="o">=&gt;</span> <span class="n">o</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">;</span>
+    <span class="k">when</span> <span class="k">others</span> <span class="o">=&gt;</span> <span class="n">o</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">;</span>
+  <span class="k">end</span> <span class="k">case</span><span class="p">;</span>
+<span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Com <code>if-else</code>:</p>
+<div class="highlight"><pre><span></span><span class="k">process</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="k">begin</span>
+  <span class="k">if</span> <span class="n">s</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="k">then</span>
+    <span class="n">o</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">;</span>
+  <span class="k">else</span>
+    <span class="n">o</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">;</span>
+  <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+<span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Estas duas descrições são consideradas <strong>inadequadas</strong> do ponto de vista de boas práticas em descrições de hardware e são <strong>fortemente desencorajadas</strong>. O principal motivo é que utilizam primitivas que devem estar dentro de um bloco sequencial do tipo <code>process</code>. Apesar de estarem corretas do ponto de vista sintático, este tipo de descrição é considerada errada do ponto de vista semântico, pois há a utilização de uma primitiva sequencial para descrever um circuito combinatório.</p>
+<p>As das descrições acima serão sintetizadas corretamente para um multiplexador combinatório pois não possuem erros. No entanto, qualquer deslize (e.g. atribuição incompleta, esquecer um sinal na lista de sensibilidade, etc.) induzirá o sintetizador a inserir <em>latches</em> ou <em>flip-flops</em> no caminho de dados. A inserção destes elementos sequenciais em um circuito puramente combinatório pode torná-lo sequencial ou até mesmo inutilizar o circuito. O funcionamento do circuito pode não ser o esperado, diferindo da intenção do projetista.</p>
+<p>Lembre-se que estas duas últimas descrições são <strong>fortemente desencorajadas</strong> e devem ser evitadas. Utilize uma das opções no começo desta página para descrever o seu circuito combinatório.</p>
   </div>
   <div class="tag-cloud">
     <p>

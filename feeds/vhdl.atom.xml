@@ -118,4 +118,36 @@ Sintaxe do &lt;code&gt;when-else&lt;/code&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/mux2x1.png' align="left" style="padding-right:5%" /&gt;
 Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &lt;code&gt;b&lt;/code&gt;, saída &lt;code&gt;o&lt;/code&gt; e seletor &lt;code&gt;s&lt;/code&gt;. As entradas podem ser vetores (e.g. &lt;code&gt;bit_vector(3 downto 0)&lt;/code&gt;). Lembre-se que um seletor de um multiplexador deve ter tamanho &lt;code&gt;ceil(log2(n))&lt;/code&gt;, onde &lt;code&gt;n&lt;/code&gt; é o número de entradas, portanto é possível que ele seja um vetor. Neste exemplo, como há duas entradas, o seletor &lt;code&gt;s&lt;/code&gt; tem somente um bit.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="vhdl"></category><category term="combinatorios"></category></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Outras maneiras&lt;/h3&gt;
+&lt;p&gt;Há outras maneiras de se descrever circuitos combinatórios em VHDL. Dois exemplos comuns utilizam o &lt;code&gt;case&lt;/code&gt; e o &lt;code&gt;if-else&lt;/code&gt;, fáceis serem encontradas pois utilizam primitivas similares às encontradas em linguagens de programação estruturadas (e.g. C/C++, Java, etc).&lt;/p&gt;
+&lt;p&gt;Os dois exemplos abaixo são de um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &lt;code&gt;b&lt;/code&gt;, saída &lt;code&gt;o&lt;/code&gt; e seletor &lt;code&gt;s&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Com &lt;code&gt;case&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+  &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+    &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="k"&gt;others&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;case&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Com &lt;code&gt;if-else&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Estas duas descrições são consideradas &lt;strong&gt;inadequadas&lt;/strong&gt; do ponto de vista de boas práticas em descrições de hardware e são &lt;strong&gt;fortemente desencorajadas&lt;/strong&gt;. O principal motivo é que utilizam primitivas que devem estar dentro de um bloco sequencial do tipo &lt;code&gt;process&lt;/code&gt;. Apesar de estarem corretas do ponto de vista sintático, este tipo de descrição é considerada errada do ponto de vista semântico, pois há a utilização de uma primitiva sequencial para descrever um circuito combinatório.&lt;/p&gt;
+&lt;p&gt;As das descrições acima serão sintetizadas corretamente para um multiplexador combinatório pois não possuem erros. No entanto, qualquer deslize (e.g. atribuição incompleta, esquecer um sinal na lista de sensibilidade, etc.) induzirá o sintetizador a inserir &lt;em&gt;latches&lt;/em&gt; ou &lt;em&gt;flip-flops&lt;/em&gt; no caminho de dados. A inserção destes elementos sequenciais em um circuito puramente combinatório pode torná-lo sequencial ou até mesmo inutilizar o circuito. O funcionamento do circuito pode não ser o esperado, diferindo da intenção do projetista.&lt;/p&gt;
+&lt;p&gt;Lembre-se que estas duas últimas descrições são &lt;strong&gt;fortemente desencorajadas&lt;/strong&gt; e devem ser evitadas. Utilize uma das opções no começo desta página para descrever o seu circuito combinatório.&lt;/p&gt;</content><category term="vhdl"></category><category term="combinatorios"></category></entry></feed>
