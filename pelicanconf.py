@@ -63,5 +63,12 @@ EXTRA_PATH_METADATA = {
     'extra/favicon.ico': {'path': 'favicon.ico'}
 }
 
+CC_LICENSE = {
+    'name': 'Creative Commons Attribution-ShareAlike',
+    'version': '4.0',
+    'slug': 'by-sa'
+}
+COPYRIGHT_NAME = "Bruno Albertini"
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
