@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2018-09-04T15:28:00-03:00</updated><entry><title>Circuitos Combinatórios em VHDL</title><link href="https://balbertini.github.io/combinatory-pt_BR.html" rel="alternate"></link><published>2018-09-04T00:23:00-03:00</published><updated>2018-09-04T15:28:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-09-04:/combinatory-pt_BR.html</id><summary type="html">&lt;p&gt;Como descrever circuitos combinatórios em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Circuitos combinatórios&lt;/strong&gt; são aqueles que podem ser descritos com uma função booleana. Sua principal característica é a ausência de dependência temporal, ou seja, a saída depende apenas da entrada. Este tipo de circuito pode ser representado por uma série de portas lógicas interligadas entre si &lt;strong&gt;sem realimentação&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Há três maneiras de descrever circuitos puramente combinatórios em VHDL: estrutural, atribuição condicional com &lt;code&gt;with-select&lt;/code&gt; e atribuição condicional com &lt;code&gt;when-else&lt;/code&gt;. As descrições realizadas de uma destas três formas serão sintetizadas para circuitos puramente combinatórios.&lt;/p&gt;
-&lt;h3&gt;Estrutural&lt;/h3&gt;
+&lt;h2&gt;Estrutural&lt;/h2&gt;
 &lt;p&gt;A descrição estrutural é a maneira mais direta de se descrever uma função combinatória. Consiste em descrever o circuito a partir da própria função lógica que o representa. O equivalente em um diagrama esquemático é exatamente a &lt;strong&gt;função lógica&lt;/strong&gt;, como descrita usando as portas lógicas equivalentes. A desvantagem é que a descrição é prolixa e consequentemente torna-se rapidamente difícil de ler, razão pela qual não é recomendada para circuitos grandes. Caso opte por este tipo de descrição utilize uma técnica de projeto baseada em divisão e conquista e mantenha os blocos que usam descrição estrutural pequenos, minimizando o esforço necessário para compreender o seu funcionamento.&lt;/p&gt;
 &lt;p&gt;VHDL suporta os seguintes operadores lógicos para descrever circuitos estruturais:&lt;/p&gt;
 &lt;table&gt;
@@ -43,7 +43,7 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Os operadores estão em ordem decrescente de prioridade, ou seja, o &lt;code&gt;not&lt;/code&gt; tem precedência sobre todos os demais operadores. Aconselha-se a utilização de parênteses &lt;code&gt;()&lt;/code&gt; para deixar claro a intenção do projetista. Todos os operadores podem operar sobre boleanos, bits ou vetores unidimensionais de bits (bits podem ser do tipo &lt;code&gt;bit&lt;/code&gt; ou derivados como &lt;code&gt;std_logic&lt;/code&gt;). É necessário que os operandos sejam do mesmo tamanho e o resultado é sempre igual à entrada (i.e. se os operandos são vetores de bits, o resultado é um vetor de bits).&lt;/p&gt;
-&lt;h4&gt;Exemplo&lt;/h4&gt;
+&lt;h3&gt;Exemplo&lt;/h3&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/mux.png' align="left" style="padding-right:5%" /&gt;
 Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &lt;code&gt;b&lt;/code&gt;, saída &lt;code&gt;o&lt;/code&gt; e seletor &lt;code&gt;s&lt;/code&gt;. As entradas podem ser vetores (e.g. &lt;code&gt;bit_vector(3 downto 0)&lt;/code&gt;), mas nesse caso é necessário que o seletor &lt;code&gt;s&lt;/code&gt; também seja um vetor do mesmo tamanho.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
@@ -51,7 +51,7 @@ Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &
 
 
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;h3&gt;With-select&lt;/h3&gt;
+&lt;h2&gt;With-select&lt;/h2&gt;
 &lt;p&gt;O &lt;code&gt;with-select&lt;/code&gt; é a representação da &lt;strong&gt;tabela verdade&lt;/strong&gt; de uma função lógica. Não há equivalente em um diagrama esquemático. O mais próximo seria uma LUT (&lt;em&gt;LookUp Table&lt;/em&gt;), mas a síntese não necessariamente utiliza esta abordagem (e.g. dependendo das otimizações feitas pelo sintetizador, pode ser feita usando um arranjo de portas lógicas que implemente a função equivalente).&lt;/p&gt;
 &lt;p&gt;Sintaxe do &lt;code&gt;with-select&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;sinalSelecao&lt;/span&gt; &lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="n"&gt;sinalSaida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;
@@ -62,7 +62,7 @@ Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &
 
 
 &lt;p&gt;No &lt;code&gt;with-select&lt;/code&gt;, a atribuição ao &lt;code&gt;sinalSaida&lt;/code&gt; é feita através de uma comparação de igualdade com o sinal de seleção &lt;code&gt;sinalSelecao&lt;/code&gt;. O valores a serem comparados são os expressos como &lt;code&gt;valorSelecao&lt;/code&gt; (e.g. se a o valor do sinal &lt;code&gt;sinalSelecao&lt;/code&gt; for igual a &lt;code&gt;valorSelecao1&lt;/code&gt;, o sinal &lt;code&gt;sinalSaida&lt;/code&gt; será &lt;code&gt;valorSaida1&lt;/code&gt;). &lt;strong&gt;Atenção:&lt;/strong&gt; é fortemente recomendada a descrição da opção padrão (comparação com &lt;code&gt;others&lt;/code&gt;), que será a atribuição a ser realizada caso nenhuma condição for atendida. Se a opção padrão não for especificada, a atribuição é considerada uma &lt;em&gt;atribuição incompleta&lt;/em&gt; e a síntese poderá inferir um &lt;em&gt;latch&lt;/em&gt;, tornando o circuito sequencial. Não é necessário que o número de entradas seja múltiplo de uma potência de dois e os valores de saída &lt;code&gt;valorSaida&lt;/code&gt; podem ser outros sinais ou expressões. Os valores para comparação devem ser constantes ou serem passíveis de resolução (i.e. não devem ser variáveis ou valores transitivos). Tanto a entrada de seleção quando a saída podem ser vetores.&lt;/p&gt;
-&lt;h4&gt;Exemplo&lt;/h4&gt;
+&lt;h3&gt;Exemplo&lt;/h3&gt;
 &lt;table align="left" style="border-right: 30px solid #fff;"&gt;
   &lt;tr&gt;&lt;th&gt;s&lt;/th&gt;&lt;th&gt;a&lt;/th&gt;&lt;th&gt;b&lt;/th&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;o&lt;/th&gt;&lt;/tr&gt;
   &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
@@ -100,7 +100,7 @@ Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &
 
 
 &lt;p&gt;A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa. Note a diferença entre as duas versões acima: a &lt;em&gt;versão com as saídas como sinais&lt;/em&gt; é compacta e passível de utilização, mas a &lt;em&gt;versão com saídas como constantes&lt;/em&gt; é uma transcrição da tabela verdade e pode se tornar impraticável (ou ilegível) rapidamente, principalmente se o número de entradas for grande pois a tabela cresce exponencialmente (lembre-se que a tabela verdade terá &lt;code&gt;2^n&lt;/code&gt; linhas, onde &lt;code&gt;n&lt;/code&gt; é o número de entradas).&lt;/p&gt;
-&lt;h3&gt;When-else&lt;/h3&gt;
+&lt;h2&gt;When-else&lt;/h2&gt;
 &lt;p&gt;O &lt;code&gt;when-else&lt;/code&gt; é uma maneira fácil de descrever funcionalmente um circuito com várias funções lógicas. O equivalente a um diagrama esquemático é um &lt;strong&gt;multiplexador&lt;/strong&gt;, cujas entradas são funções lógicas.&lt;/p&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/mux_exp.png' align="left" style="padding-right:5%" /&gt;
 Sintaxe do &lt;code&gt;when-else&lt;/code&gt;:&lt;/p&gt;
@@ -111,14 +111,14 @@ Sintaxe do &lt;code&gt;when-else&lt;/code&gt;:&lt;/p&gt;
 
 
 &lt;p&gt;A atribuição acontece de acordo com a primeira condição atendida, em ordem (e.g. se a &lt;code&gt;condicao1&lt;/code&gt; for atendida, o &lt;code&gt;sinal&lt;/code&gt; será &lt;code&gt;expressao1&lt;/code&gt; e as demais condições não serão avaliadas). &lt;strong&gt;Atenção:&lt;/strong&gt; é fortemente recomendada a descrição da opção padrão (&lt;code&gt;expressao3&lt;/code&gt;), que será a atribuição caso nenhuma condição for atendida. Se a opção padrão não for especificada, a atribuição é considerada uma &lt;em&gt;atribuição incompleta&lt;/em&gt; e a síntese poderá inferir um &lt;em&gt;latch&lt;/em&gt;, tornando o circuito sequencial. Não é necessário que o número de entradas seja múltiplo de uma potência de dois e as expressões podem ser identidade (i.e. o próprio sinal de entrada, sem uma função lógica que transforme o dados).&lt;/p&gt;
-&lt;h4&gt;Exemplo&lt;/h4&gt;
+&lt;h3&gt;Exemplo&lt;/h3&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/mux2x1.png' align="left" style="padding-right:5%" /&gt;
 Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &lt;code&gt;b&lt;/code&gt;, saída &lt;code&gt;o&lt;/code&gt; e seletor &lt;code&gt;s&lt;/code&gt;. As entradas podem ser vetores (e.g. &lt;code&gt;bit_vector(3 downto 0)&lt;/code&gt;). Lembre-se que um seletor de um multiplexador deve ter tamanho &lt;code&gt;ceil(log2(n))&lt;/code&gt;, onde &lt;code&gt;n&lt;/code&gt; é o número de entradas, portanto é possível que ele seja um vetor. Neste exemplo, como há duas entradas, o seletor &lt;code&gt;s&lt;/code&gt; tem somente um bit.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Outras maneiras&lt;/h3&gt;
+&lt;h2&gt;Outras maneiras&lt;/h2&gt;
 &lt;p&gt;Há outras maneiras de se descrever circuitos combinatórios em VHDL. Dois exemplos comuns que &lt;strong&gt;não são  recomendados&lt;/strong&gt; utilizam o &lt;code&gt;case&lt;/code&gt; e o &lt;code&gt;if-else&lt;/code&gt;. Este tipo de descrição é fácil de ser encontrado pois utiliza primitivas similares às encontradas em linguagens de programação estruturadas (e.g. C/C++, Java, etc).&lt;/p&gt;
 &lt;p&gt;Os dois exemplos abaixo são de um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &lt;code&gt;b&lt;/code&gt;, saída &lt;code&gt;o&lt;/code&gt; e seletor &lt;code&gt;s&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Com &lt;code&gt;case&lt;/code&gt;:&lt;/p&gt;

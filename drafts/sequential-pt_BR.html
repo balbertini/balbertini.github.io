@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+
+    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-125173293-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<meta name="author" content="Bruno Albertini" />
+<meta name="description" content="Como descrever circuitos sequenciais em VHDL." />
+<meta name="keywords" content="vhdl, sequenciais">
+
+<meta property="og:site_name" content="B.Albertini's site"/>
+<meta property="og:title" content="Circuitos Combinatórios em VHDL"/>
+<meta property="og:description" content="Como descrever circuitos sequenciais em VHDL."/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:url" content="https://balbertini.github.io/drafts/sequential-pt_BR.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-09-05 03:51:00-03:00"/>
+<meta property="article:modified_time" content="2018-09-05 03:51:00-03:00"/>
+<meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
+<meta property="article:section" content="vhdl"/>
+<meta property="article:tag" content="vhdl"/>
+<meta property="article:tag" content="sequenciais"/>
+<meta property="og:image" content="">
+
+  <title>B.Albertini's site &ndash; Circuitos Combinatórios em VHDL</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://balbertini.github.io">
+        <img src="https://balbertini.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="https://balbertini.github.io"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+          <li><a href="https://balbertini.github.io/pages/sobre-pt_BR.html#sobre">Sobre</a></li>
+          <li><a href="https://balbertini.github.io/pages/vhdl-pt_BR.html#vhdl">VHDL</a></li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="sequential">Circuitos Combinatórios em VHDL</h1>
+    <p>
+      Publicado em 05/09/2018 (Qua) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>A principal característica de um <strong>circuito sequencial</strong> é que as saídas dependem não somente das entradas, como em um circuito combinatório, mas também das entradas passadas. Diz-se que um circuito sequencial possui um <strong>elemento de memória</strong> ou é dependente do tempo (esta última é discutível pois nem sempre o tempo, na sua forma explícita como um sinal de <em>clock</em>, está envolvido).</p>
+<p>A estrutura utilizada para descrever circuitos sequenciais em VHDL é o <code>process</code>.</p>
+<p>Sintaxe de um <code>process</code>:</p>
+<div class="highlight"><pre><span></span><span class="nc">nome_opcional</span><span class="o">:</span> <span class="k">process</span> <span class="p">(</span><span class="n">lista_de_sensibilidade</span><span class="p">)</span>
+    <span class="n">declaracoes</span>
+<span class="k">begin</span>
+    <span class="n">primitivas</span> <span class="n">sequenciais</span>
+<span class="k">end</span> <span class="k">process</span> <span class="nc">nome_opcional</span><span class="p">;</span>
+</pre></div>
+
+
+<p>O nome do <code>process</code> é opcional e serve para identificar o mesmo durante a simulação. Recomenda-se a sua utilização para melhorar a legibilidade e facilitar a depuração, obviamente usando um nome que representa o circuito sendo descrito. Se optar por retirar o nome, retira-se o <code>nome_opcional</code>, incluindo o <code>:</code>.</p>
+<h2>Primitivas sequenciais e concorrentes</h2>
+<p>As primitivas sequenciais dentro de um <code>process</code> podem ser quaisquer primitivas utilizadas para descrever  circuitos combinatórios (e.g. atribuições condicionais) e também as duas que só podem ser utilizadas de maneira sequencial: <code>if-else</code> e <code>case</code>. No entanto, todas as primitivas que estiverem dentro de um <code>process</code> se <strong>comportam de maneira sequencial</strong>. Em contraste, as primitivas que estão dentro da descrição uma arquitetura - que só podem ser combinatórias - são consideradas concorrentes.</p>
+<p>As primitivas concorrentes (dentro da arquitetura), representam circuitos combinatórios, portanto serão sintetizadas para tais circuitos. Quaisquer modificações na entrada tem efeito imediato e todas as funções combinatórias descritas terão suas saídas afetadas (após o devido tempo de propagação caso aplicável). É importante notar que um bloco de um <code>process</code> inteiro é equivalente a uma primitiva combinatória, ou seja, a avaliação das saídas do <code>process</code> ocorre ao mesmo tempo que a avaliação de todas as primitivas concorrentes da mesma arquitetura, incluindo outros possíveis blocos <code>process</code> descritos na mesma arquitetura, portanto não é possível aninhar mais de um <code>process</code>.</p>
+<p><img src='https://balbertini.github.io/images/sequencial.png' align="right" style="padding-left:5%" />
+Já as primitivas sequencias (dentro de um <code>process</code>), representam um circuito sequencial nos moldes da figura. Qualquer circuito sequencial pode ser mapeado para um circuito com um elemento de memória e uma lógica combinatória dependente do estado atual do circuito, fornecido pelo elemento de memória. Dentro de um <code>process</code>, as primitivas sequencias são <strong>avaliadas em ordem</strong> e caso haja divergência (i.e. mais de um valor atribuído para um determinado sinal), prevalece a última primitiva (i.e. o último valor atribuído a um sinal).</p>
+<p>A lógica combinatória dentro de um bloco <code>process</code> pode ser a identidade (i.e. não possuir lógica que altere os dados, ou em outras palavras representar um fio) e o elemento de memória também pode estar ausente. É possível representar circuitos combinatórios usando <code>process</code> se descrevermos um circuito sequencial que possua uma lógica combinatória mas não um elemento de memória. Vale lembrar que descrever circuitos combinatórios com <code>process</code> é uma prática <strong>fortemente desencorajada</strong>, portanto se o seu circuito não possui um elemento de memória, não utilize <code>process</code>.</p>
+<h2>Lista de sensibilidade</h2>
+<p>A lista de sensibilidade define o gatilho para o <code>process</code>. De maneira programática, o <code>process</code> será ativado quando algum evento acontecer em algum sinal presente na lista de sensibilidade. Se algum sinal da lista for alterado fora do <code>process</code>, por exemplo, todas as primitivas sequenciais dentro do <code>process</code> serão avaliadas novamente, em sequencia.</p>
+<p>No entanto, a lista de sensibilidade não representa um elemento sintetizável. Ela é uma indicação para o sintetizador de quais sinais controlam o elemento de memória, ou seja, quando o circuito sequencial que está sendo descrito fará de fato uma amostragem no elemento de memória. É muito importante que a lista seja feita com cuidado para que o sintetizador possa gerar o circuito sequencial que o projetista deseja. Falhar na construção da lista de sensibilidade pode levar o circuito a comportamentos diferentes do esperado pelo projetista ou até mesmo torná-lo inutilizável. Por este motivo, recomenda-se que o elemento de memória seja descrito usando <code>process</code>, mas a lógica combinatória dentro do mesmo <strong>seja a mínima necessária</strong> para o funcionamento sendo descrito.</p>
+<p>Como dica para os iniciantes de prototipação de hardware, coloque na lista de sensibilidade todos e somente todos os sinais que são <strong>lidos</strong> dentro do <code>process</code>. Isto pode atrapalhar a otimização do circuito sintetizado, mas evitará a maioria dos problemas que os iniciantes enfrentam quando lidam com descrições sequenciais em VHDL.</p>
+<h3>Wait</h3>
+<p>A lista de sensibilidade é opcional e pode ser omitida se o projetista optar por ativar ou suspender um <code>process</code> usando a primitiva <code>wait</code>.</p>
+<!-- TODO: explicar wait -->
+
+<h2>Exemplos</h2>
+<!-- TODO: exemplo -->
+
+<div class="highlight"><pre><span></span><span class="nc">registra</span><span class="o">:</span> <span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">reset</span><span class="p">)</span>
+<span class="k">begin</span>
+  <span class="k">if</span> <span class="n">reset</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
+    <span class="n">interno</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="k">others</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">);</span>
+  <span class="k">elsif</span> <span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">)</span> <span class="k">then</span>
+    <span class="k">if</span> <span class="n">carrega</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span> <span class="k">then</span>
+      <span class="n">interno</span> <span class="o">&lt;=</span> <span class="n">entrada</span><span class="p">;</span>
+    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+  <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+<span class="k">end</span> <span class="k">process</span><span class="p">;</span> <span class="c1">-- registra</span>
+</pre></div>
+
+
+<h2>Outras primitivas sequenciais</h2>
+<p>Há outras primitivas exclusivas para utilização sequencial (<code>for</code>, <code>while</code> e <code>loop</code>), que possuem propósitos específicos que não foram cobertos neste artigo pois possuem restrições para a síntese. Isto significa que, para que elas representem um hardware, o projetista deve utilizá-las de uma maneira específica, caso contrário elas não podem ser sintetizadas (i.e. não representam uma descrição de hardware). É muito comum entre os iniciantes considerar que estas primitivas são equivalentes às encontradas em linguagens de programação estruturada, o que na maioria das vezes é uma falácia pois não existe laço interativo em hardware equivalente ao conceito homônimo das linguagens de programação (e.g. o equivalente em hardware a um laço iterativo de um algoritmo é na verdade uma máquina de estados completa). Estas primitivas devem ser evitadas na descrição de circuitos sequenciais, especialmente por iniciantes, e são na maioria das vezes usadas somente na construção de <em>testbenchs</em>, quando as restrições para síntese não se aplicam.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://balbertini.github.io/tag/vhdl.html">vhdl</a>
+      <a href="https://balbertini.github.io/tag/sequenciais.html">sequenciais</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'balbertini';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Habilite JavaScript para ver os comentários.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy; Bruno Albertini  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - O tema <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> foi criado por <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " B.Albertini's site ",
+  "url" : "https://balbertini.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
