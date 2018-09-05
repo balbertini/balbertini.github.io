@@ -12,7 +12,7 @@ Summary: Como descrever circuitos combinatórios em VHDL.
 
 Há três maneiras de descrever circuitos puramente combinatórios em VHDL: estrutural, atribuição condicional com `with-select` e atribuição condicional com `when-else`. As descrições realizadas de uma destas três formas serão sintetizadas para circuitos puramente combinatórios.
 
-### Estrutural
+## Estrutural
 A descrição estrutural é a maneira mais direta de se descrever uma função combinatória. Consiste em descrever o circuito a partir da própria função lógica que o representa. O equivalente em um diagrama esquemático é exatamente a **função lógica**, como descrita usando as portas lógicas equivalentes. A desvantagem é que a descrição é prolixa e consequentemente torna-se rapidamente difícil de ler, razão pela qual não é recomendada para circuitos grandes. Caso opte por este tipo de descrição utilize uma técnica de projeto baseada em divisão e conquista e mantenha os blocos que usam descrição estrutural pequenos, minimizando o esforço necessário para compreender o seu funcionamento.
 
 VHDL suporta os seguintes operadores lógicos para descrever circuitos estruturais:
@@ -30,7 +30,7 @@ VHDL suporta os seguintes operadores lógicos para descrever circuitos estrutura
 Os operadores estão em ordem decrescente de prioridade, ou seja, o `not` tem precedência sobre todos os demais operadores. Aconselha-se a utilização de parênteses `()` para deixar claro a intenção do projetista. Todos os operadores podem operar sobre boleanos, bits ou vetores unidimensionais de bits (bits podem ser do tipo `bit` ou derivados como `std_logic`). É necessário que os operandos sejam do mesmo tamanho e o resultado é sempre igual à entrada (i.e. se os operandos são vetores de bits, o resultado é um vetor de bits).
 
 
-#### Exemplo
+### Exemplo
 <img src='{filename}/images/mux.png' align="left" style="padding-right:5%" />
 Este exemplo é um multiplexador 2x1 com entradas `a` e `b`, saída `o` e seletor `s`. As entradas podem ser vetores (e.g. `bit_vector(3 downto 0)`), mas nesse caso é necessário que o seletor `s` também seja um vetor do mesmo tamanho.
 
@@ -39,7 +39,7 @@ o <= (a and not(s)) or (b and s);
 ```
 <br/>
 
-### With-select
+## With-select
 
 O `with-select` é a representação da **tabela verdade** de uma função lógica. Não há equivalente em um diagrama esquemático. O mais próximo seria uma LUT (*LookUp Table*), mas a síntese não necessariamente utiliza esta abordagem (e.g. dependendo das otimizações feitas pelo sintetizador, pode ser feita usando um arranjo de portas lógicas que implemente a função equivalente).
 
@@ -52,7 +52,7 @@ with sinalSelecao select sinalSaida <=
 ```
 No `with-select`, a atribuição ao `sinalSaida` é feita através de uma comparação de igualdade com o sinal de seleção `sinalSelecao`. O valores a serem comparados são os expressos como `valorSelecao` (e.g. se a o valor do sinal `sinalSelecao` for igual a `valorSelecao1`, o sinal `sinalSaida` será `valorSaida1`). **Atenção:** é fortemente recomendada a descrição da opção padrão (comparação com `others`), que será a atribuição a ser realizada caso nenhuma condição for atendida. Se a opção padrão não for especificada, a atribuição é considerada uma *atribuição incompleta* e a síntese poderá inferir um *latch*, tornando o circuito sequencial. Não é necessário que o número de entradas seja múltiplo de uma potência de dois e os valores de saída `valorSaida` podem ser outros sinais ou expressões. Os valores para comparação devem ser constantes ou serem passíveis de resolução (i.e. não devem ser variáveis ou valores transitivos). Tanto a entrada de seleção quando a saída podem ser vetores.
 
-#### Exemplo
+### Exemplo
 
 <table align="left" style="border-right: 30px solid #fff;">
   <tr><th>s</th><th>a</th><th>b</th><th></th><th>o</th></tr>
@@ -93,7 +93,7 @@ with s select o <=
 
 A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa. Note a diferença entre as duas versões acima: a _versão com as saídas como sinais_ é compacta e passível de utilização, mas a _versão com saídas como constantes_ é uma transcrição da tabela verdade e pode se tornar impraticável (ou ilegível) rapidamente, principalmente se o número de entradas for grande pois a tabela cresce exponencialmente (lembre-se que a tabela verdade terá `2^n` linhas, onde `n` é o número de entradas).
 
-### When-else
+## When-else
 
 O `when-else` é uma maneira fácil de descrever funcionalmente um circuito com várias funções lógicas. O equivalente a um diagrama esquemático é um **multiplexador**, cujas entradas são funções lógicas.
 
@@ -106,7 +106,7 @@ sinal <= expressao1 when condicao1 else
 ```
 A atribuição acontece de acordo com a primeira condição atendida, em ordem (e.g. se a `condicao1` for atendida, o `sinal` será `expressao1` e as demais condições não serão avaliadas). **Atenção:** é fortemente recomendada a descrição da opção padrão (`expressao3`), que será a atribuição caso nenhuma condição for atendida. Se a opção padrão não for especificada, a atribuição é considerada uma *atribuição incompleta* e a síntese poderá inferir um *latch*, tornando o circuito sequencial. Não é necessário que o número de entradas seja múltiplo de uma potência de dois e as expressões podem ser identidade (i.e. o próprio sinal de entrada, sem uma função lógica que transforme o dados).
 
-#### Exemplo
+### Exemplo
 <img src='{filename}/images/mux2x1.png' align="left" style="padding-right:5%" />
 Este exemplo é um multiplexador 2x1 com entradas `a` e `b`, saída `o` e seletor `s`. As entradas podem ser vetores (e.g. `bit_vector(3 downto 0)`). Lembre-se que um seletor de um multiplexador deve ter tamanho `ceil(log2(n))`, onde `n` é o número de entradas, portanto é possível que ele seja um vetor. Neste exemplo, como há duas entradas, o seletor `s` tem somente um bit.
 
@@ -114,7 +114,7 @@ Este exemplo é um multiplexador 2x1 com entradas `a` e `b`, saída `o` e seleto
 o <= b when s='1' else a;
 ```
 
-### Outras maneiras
+## Outras maneiras
 Há outras maneiras de se descrever circuitos combinatórios em VHDL. Dois exemplos comuns que **não são  recomendados** utilizam o `case` e o `if-else`. Este tipo de descrição é fácil de ser encontrado pois utiliza primitivas similares às encontradas em linguagens de programação estruturadas (e.g. C/C++, Java, etc).
 
 Os dois exemplos abaixo são de um multiplexador 2x1 com entradas `a` e `b`, saída `o` e seletor `s`.
