@@ -38,7 +38,7 @@
 <meta name="keywords" content="vhdl, sequenciais">
 
 <meta property="og:site_name" content="B.Albertini's site"/>
-<meta property="og:title" content="Circuitos Combinatórios em VHDL"/>
+<meta property="og:title" content="Circuitos Sequenciais em VHDL"/>
 <meta property="og:description" content="Como descrever circuitos sequenciais em VHDL."/>
 <meta property="og:locale" content="pt_BR"/>
 <meta property="og:url" content="https://balbertini.github.io/drafts/sequential-pt_BR.html"/>
@@ -51,7 +51,7 @@
 <meta property="article:tag" content="sequenciais"/>
 <meta property="og:image" content="">
 
-  <title>B.Albertini's site &ndash; Circuitos Combinatórios em VHDL</title>
+  <title>B.Albertini's site &ndash; Circuitos Sequenciais em VHDL</title>
 
 </head>
 <body>
@@ -83,7 +83,7 @@
 <article class="single">
   <header>
       
-    <h1 id="sequential">Circuitos Combinatórios em VHDL</h1>
+    <h1 id="sequential">Circuitos Sequenciais em VHDL</h1>
     <p>
       Publicado em 05/09/2018 (Qua) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
 
@@ -93,6 +93,7 @@
 
   <div>
     <p>A principal característica de um <strong>circuito sequencial</strong> é que as saídas dependem não somente das entradas, como em um circuito combinatório, mas também das entradas passadas. Diz-se que um circuito sequencial possui um <strong>elemento de memória</strong> ou é dependente do tempo (esta última é discutível pois nem sempre o tempo está envolvido na sua forma explícita, como um sinal de <em>clock</em>).</p>
+<h2>Process</h2>
 <p>A estrutura utilizada para descrever circuitos sequenciais em VHDL é o <code>process</code>.</p>
 <p>Sintaxe de um <code>process</code>:</p>
 <div class="highlight"><pre><span></span><span class="nc">nome_opcional</span><span class="o">:</span> <span class="k">process</span> <span class="p">(</span><span class="n">lista_de_sensibilidade</span><span class="p">)</span>
