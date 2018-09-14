@@ -160,7 +160,7 @@ Se preferir usar a versão gráfica, veja um tutorial <a href="https://www.secne
 <li><code>password</code>: poli</li>
 </ul>
 <h1>Fazendo update do VirtualBox Guest Additions</h1>
-<p>Quando estiver logado na máquina (via SSH ou via tela do software de virtualização), faça o update do módulo de <em>Guest Additions</em>. Este passo é necessário pois o módulo muda com certa frequência, então você precisa mantê-lo alinhado com a sua versão do VirtualBox. Caso sua máquina virtual já esteja com a última versão do <em>Guest Additions</em> instalada, nenhum pacote será atualizado e, dependendo de quando você fizer o download da máquina virtual, você pode pular este passo. Aproveite e faça um update do sistema operacional também.</p>
+<p>Quando estiver logado na máquina (via SSH ou via tela do software de virtualização), faça o update do módulo de <em>Guest Additions</em>. Este passo é necessário pois o módulo muda com frequência, e você precisa mantê-lo alinhado com a sua versão do VirtualBox. Refaça este passo todas as vezes que atualizar o VirtualBox na sua máquina (host). Caso sua máquina virtual já esteja com a última versão do <em>Guest Additions</em> instalada, nenhum pacote será atualizado e, dependendo de quando você fizer o download da máquina virtual, você pode pular este passo. Aproveite e faça um update do sistema operacional também.</p>
 <div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~$</span> sudo apt-get update
 <span class="gp">poli@ghdl:~$</span> sudo apt-get install virtualbox-guest-utils
 <span class="gp">poli@ghdl:~$</span> sudo apt-get upgrade
@@ -175,7 +175,7 @@ Se preferir usar a versão gráfica, veja um tutorial <a href="https://www.secne
 </pre></div>
 
 
-<p>Depois montamos a pasta na sua máquina real (host) na máquina virtual.</p>
+<p>Depois montamos a pasta da sua máquina real (host) na máquina virtual.</p>
 <div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~$</span> sudo mount -t vboxsf -ouid<span class="o">=</span>poli,rw VMShared shared
 </pre></div>
 
