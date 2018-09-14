@@ -1,9 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site - vhdl</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/vhdl.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2018-09-04T15:28:00-03:00</updated><entry><title>Circuitos Combinatórios em VHDL</title><link href="https://balbertini.github.io/combinatory-pt_BR.html" rel="alternate"></link><published>2018-09-04T00:23:00-03:00</published><updated>2018-09-04T15:28:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-09-04:/combinatory-pt_BR.html</id><summary type="html">&lt;p&gt;Como descrever circuitos combinatórios em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Circuitos combinatórios&lt;/strong&gt; são aqueles que podem ser descritos com uma função booleana. Sua principal característica é a ausência de dependência temporal, ou seja, a saída depende apenas da entrada. Este tipo de circuito pode ser representado por uma série de portas lógicas interligadas entre si &lt;strong&gt;sem realimentação&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;Há três maneiras de descrever circuitos puramente combinatórios em VHDL: estrutural, atribuição condicional com &lt;code&gt;with-select&lt;/code&gt; e atribuição condicional com &lt;code&gt;when-else&lt;/code&gt;. As descrições realizadas de uma destas três formas serão sintetizadas para circuitos puramente combinatórios.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site - vhdl</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/vhdl.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2018-09-13T12:16:00-03:00</updated><entry><title>Máquina virtual com GHDL</title><link href="https://balbertini.github.io/virtualmachineghdl-pt_BR.html" rel="alternate"></link><published>2018-09-13T12:16:00-03:00</published><updated>2018-09-13T12:16:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-09-13:/virtualmachineghdl-pt_BR.html</id><summary type="html">&lt;p&gt;Como utilizar a VM com GHDL.&lt;/p&gt;</summary><content type="html">&lt;!-- Status: draft --&gt;
+
+&lt;p&gt;Nas disciplinas que ministramos na Poli, usamos algumas VMs com SW pré-instalado. Neste artigo, mostrarei como usar uma dessas VMs que contém o &lt;a href="http://ghdl.free.fr/"&gt;GHDL&lt;/a&gt; para simular e testar funcionalmente sua descrição VHDL.&lt;/p&gt;
+&lt;p&gt;Há também uma gravação de uma Live disponível no YouTube.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://youtu.be/PEaDYHk8CBc"&gt;Link para o tutorial no YouTube&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;Preparando o ambiente&lt;/h1&gt;
+&lt;p&gt;Comece fazendo download da máquina virtual clicando nos links abaixo:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://drive.google.com/file/d/1_KPXSVHjk3UmFIFHAbIfzLdwWwrXGmHQ/view?usp=sharing"&gt;&lt;code&gt;GHDL.ova&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://drive.google.com/file/d/1wqwmZvWUJHamL2AnWSRm3D2B2eI7pi2f/view?usp=sharing"&gt;&lt;code&gt;GHDL.ova.md5sum&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;O arquivo md5sum possui o hash MD5 do arquivo e não precisa ser baixado. Aconselha-se que baixe-o e verifique se o arquivo &lt;code&gt;GHDL.ova&lt;/code&gt; que você baixou possui o mesmo hash contido no arquivo &lt;code&gt;GHDL.ova.md5sum&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;A máquina está no formato &lt;em&gt;Open Virtual Appliance&lt;/em&gt;, portanto você também precisará de um software de virtualização compatível com sua máquina e com o formato OVF 2.0 (&lt;em&gt;Open Virtualization Format&lt;/em&gt;). Este artigo usará o &lt;a href="https://www.virtualbox.org/"&gt;VirtualBox&lt;/a&gt; como software de virtualização.&lt;/p&gt;
+&lt;h1&gt;Preparando a máquina virtual&lt;/h1&gt;
+&lt;p&gt;Abra o arquivo &lt;code&gt;GHDL.ova&lt;/code&gt; com o seu software de virtualização (e.g. clique duas vezes, vá em &lt;code&gt;Arquivo/Importar Appliance&lt;/code&gt;, etc).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Adicionando a VM" src="https://balbertini.github.io/images/vmghdl1.png"&gt;&lt;/p&gt;
+&lt;p&gt;Não é necessário mudar nenhum parâmetro da VM neste momento. Opcionalmente desligue os itens que não pretende utilizar, como por exemplo o controlador USB ou a placa de som. Não desabilite a placa de rede pois iremos utilizá-la para acessar a máquina. Quando estiver satisfeito, clique no botão &lt;code&gt;Importar&lt;/code&gt; finalize a importação da máquina.&lt;/p&gt;
+&lt;p&gt;Com a importação finalizada, a VM deve aparecer na sua lista de VMs. Com a VM selecionada, vá em &lt;code&gt;Máquina/Configurações&lt;/code&gt; ou clique com o botão direito dobre a máquina e escolha &lt;code&gt;Configurações&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Configurando a VM" src="https://balbertini.github.io/images/vmghdl2.png"&gt;&lt;/p&gt;
+&lt;p&gt;Na caixa que abrirá, selecione &lt;code&gt;Rede&lt;/code&gt;, expanda a aba &lt;code&gt;Avançado&lt;/code&gt; e clique no botão &lt;code&gt;Redirecionamento de Portas&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Redirecionamento de portas" src="https://balbertini.github.io/images/vmghdl3.png"&gt;&lt;/p&gt;
+&lt;p&gt;Na tela que se abrirá, clique no botão de adicionar uma nova regra e adicione o seguinte:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Nome&lt;/code&gt;: qualquer um, no exemplo usarei "SSH"&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Protocolo&lt;/code&gt;: TCP&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Endereço IP do Hospedeiro&lt;/code&gt;: deixar em branco&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Porta do Hospedeiro&lt;/code&gt;: qualquer uma alta, no exemplo usei 2222&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;IP do Convidado&lt;/code&gt;: deixar em branco&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Porta do Convidado&lt;/code&gt;: 22&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vmghdl4.png"&gt;&lt;/p&gt;
+&lt;p&gt;Aqui terminamos com a rede. Clique no OK e volte para a tela de configuração da máquina virtual. Dessa vez vá para aba &lt;code&gt;Pastas Compartilhadas&lt;/code&gt; e use o botão para adicionar uma nova pasta.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vmghdl5.png"&gt;&lt;/p&gt;
+&lt;p&gt;No campo &lt;code&gt;Caminho da Pasta&lt;/code&gt;, escolha uma pasta qualquer da sua máquina. No campo &lt;code&gt;Nome da Pasta&lt;/code&gt;, coloque o nome que desejar (neste exemplo usei &lt;em&gt;VMShared&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vmghdl6.png"&gt;&lt;/p&gt;
+&lt;p&gt;Finalizamos a configuração da VM. Clique no OK até voltar para a tela do software de virtualização.&lt;/p&gt;
+&lt;h1&gt;Iniciando a máquina virtual&lt;/h1&gt;
+&lt;p&gt;Antes de começar, leia esta seção toda, caso contrário você poderá ficar com o mouse e teclado capturados pela máquina virtual. Com a máquina selecionada na tela principal do software de virtualização, clique no botão &lt;code&gt;Iniciar&lt;/code&gt; (botão com seta verde). A máquina irá iniciar e você verá uma tela preta com o prompt de login.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Prompt de login" src="https://balbertini.github.io/images/vmghdl7.png"&gt;&lt;/p&gt;
+&lt;p&gt;Se desejar logar na máquina, o usuário padrão e a senha padrão é &lt;code&gt;poli&lt;/code&gt;. Contudo, não é necessário logar na máquina usando esta tela. Você pode minimizar a máquina sem problemas e deixá-la executando em segundo plano. Caso você esteja com o mouse ou apontador preso, veja a tecla de desabilitar a captura do mouse e teclado no canto direito inferior da máquina (no exemplo é Left &amp;#8984;). Pressione essa tecla por 2s e solte. Seu mouse e teclado agora devem ser devolvidos para a sua máquina.&lt;/p&gt;
+&lt;h1&gt;Acessando a máquina virtual por SSH&lt;/h1&gt;
+&lt;p&gt;Uma forma mais fácil de acessar a máquina é logar via SSH. Há clientes para vários sistemas operacionais, como o &lt;a href="https://www.putty.org"&gt;PuTTY&lt;/a&gt; (Windows, Linux). Os sistemas operacionais baseados em *nix (e.g. MacOS e Linux) já possuem um cliente SSH pré-instalado, portanto basta abrir um terminal.&lt;/p&gt;
+&lt;p&gt;No terminal aberto na sua máquina, abra uma sessão SSH para a VM através do comando &lt;code&gt;ssh -p2222 poli@127.0.0.1&lt;/code&gt;. O usuário é &lt;code&gt;poli&lt;/code&gt; (já especificado na linha de comando) e a senha também é &lt;code&gt;poli&lt;/code&gt;. Se você escolheu outra porta no momento de adicionar a regra de redirecionamento, deverá substituir de acordo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;Brunos-MacBook-Pro:~ balbertini$&lt;/span&gt; ssh -p2222 poli@127.0.0.1
+&lt;span class="go"&gt;The authenticity of host &amp;#39;[127.0.0.1]:2222 ([127.0.0.1]:2222)&amp;#39; can&amp;#39;t be established.&lt;/span&gt;
+&lt;span class="go"&gt;ECDSA key fingerprint is SHA256:fSLO3evzG//rjYMSM0OwLPx1XeqHPg4Sj7NTeQdVfq0.&lt;/span&gt;
+&lt;span class="go"&gt;Are you sure you want to continue connecting (yes/no)? yes&lt;/span&gt;
+&lt;span class="go"&gt;Warning: Permanently added &amp;#39;[127.0.0.1]:2222&amp;#39; (ECDSA) to the list of known hosts.&lt;/span&gt;
+&lt;span class="go"&gt;poli@127.0.0.1&amp;#39;s password:&lt;/span&gt;
+&lt;span class="go"&gt;Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-30-generic x86_64)&lt;/span&gt;
+
+&lt;span class="go"&gt; * Documentation:  https://help.ubuntu.com&lt;/span&gt;
+&lt;span class="go"&gt; * Management:     https://landscape.canonical.com&lt;/span&gt;
+&lt;span class="go"&gt; * Support:        https://ubuntu.com/advantage&lt;/span&gt;
+
+&lt;span class="go"&gt;Last login: Wed Aug  8 14:22:50 2018&lt;/span&gt;
+&lt;span class="gp"&gt;poli@ghdl:~$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Caso esteja usando o PuTTY, abra um terminal e digite o comando equivalente, substituindo &lt;code&gt;ssh -p2222 poli@127.0.0.1&lt;/code&gt; por &lt;code&gt;putty -p2222 poli@127.0.0.1&lt;/code&gt; (Linux) ou &lt;code&gt;putty.exe -p2222 poli@127.0.0.1&lt;/code&gt; (Windows).
+Se preferir usar a versão gráfica, veja um tutorial &lt;a href="https://www.secnet.com.br/blog/ssh-com-putty"&gt;aqui&lt;/a&gt;. As credenciais são:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Host Name (or IP address)&lt;/code&gt;: 127.0.0.1&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Port&lt;/code&gt;: 2222 (ou a porta que você definiu no redirecionamento de portas)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;login as&lt;/code&gt;: poli&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;password&lt;/code&gt;: poli&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Fazendo update do VirtualBox Guest Additions&lt;/h1&gt;
+&lt;p&gt;Quando estiver logado na máquina (via SSH ou via tela do software de virtualização), faça o update do módulo de &lt;em&gt;Guest Additions&lt;/em&gt;. Este passo é necessário pois o módulo muda com frequência, e você precisa mantê-lo alinhado com a sua versão do VirtualBox. Refaça este passo todas as vezes que atualizar o VirtualBox na sua máquina (host). Caso sua máquina virtual já esteja com a última versão do &lt;em&gt;Guest Additions&lt;/em&gt; instalada, nenhum pacote será atualizado e, dependendo de quando você fizer o download da máquina virtual, você pode pular este passo. Aproveite e faça um update do sistema operacional também.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;poli@ghdl:~$&lt;/span&gt; sudo apt-get update
+&lt;span class="gp"&gt;poli@ghdl:~$&lt;/span&gt; sudo apt-get install virtualbox-guest-utils
+&lt;span class="gp"&gt;poli@ghdl:~$&lt;/span&gt; sudo apt-get upgrade
+&lt;span class="gp"&gt;poli@ghdl:~$&lt;/span&gt; sudo reboot
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O comando do meio, &lt;code&gt;sudo apt-get install virtualbox-guest-utils&lt;/code&gt; é o único passo obrigatório, os demais fica a seu critério. O último comando irá reiniciar a máquina para que possíveis atualizações da máquina surtam efeito, o que acarretará na sua desconexão. Aguarde a máquina virtual reiniciar e logue novamente.&lt;/p&gt;
+&lt;h1&gt;Montando a pasta compartilhada&lt;/h1&gt;
+&lt;p&gt;Precisamos primeiro criar um ponto de montagem.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;poli@ghdl:~$&lt;/span&gt; mkdir shared
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Depois montamos a pasta da sua máquina real (host) na máquina virtual.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;poli@ghdl:~$&lt;/span&gt; sudo mount -t vboxsf -ouid&lt;span class="o"&gt;=&lt;/span&gt;poli,rw VMShared shared
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Com isso, a pasta &lt;code&gt;shared&lt;/code&gt; na máquina virtual será a mesma que a pasta que escolheu quando configurou a pasta compartilhada. Note que se você deu outro nome para o compartilhamento, deve substituir &lt;code&gt;VMShared&lt;/code&gt; pelo nome que escolheu.&lt;/p&gt;
+&lt;h1&gt;Usando o GHDL na máquina virtual&lt;/h1&gt;
+&lt;p&gt;Você pode editar os arquivos VHDL na sua máquina real (host) normalmente, usando o editor de sua preferência (eu utilizo o &lt;a href="https://atom.io/"&gt;Atom&lt;/a&gt; com o pacote &lt;code&gt;language-vhdl&lt;/code&gt; para o &lt;em&gt;syntax highlight&lt;/em&gt;). Salve os seus arquivos na pasta compartilhada. Eles automaticamente estarão disponíveis dentro da máquina virtual, na pasta onde montou a pasta compartilhada.&lt;/p&gt;
+&lt;p&gt;Para usar o GHDL, você deve passar por três fases:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Análise: &lt;code&gt;ghdl -a arquivo.vhd&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Elaboração: &lt;code&gt;ghdl -e entidade&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Simulação: &lt;code&gt;ghdl -e entidade&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Você deve fazer a análise de todos os arquivos VHDL que for utilizar.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;poli@ghdl:~/shared$&lt;/span&gt; ghdl -a shiftleft2.vhd
+&lt;span class="gp"&gt;poli@ghdl:~/shared$&lt;/span&gt; ghdl -a utils.vhd
+&lt;span class="gp"&gt;poli@ghdl:~/shared$&lt;/span&gt; ghdl -a shiftleft2_tb.vhd
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Neste exemplo, analisamos os arquivos &lt;code&gt;shiftleft2.vhd&lt;/code&gt;, &lt;code&gt;utils.vhd&lt;/code&gt; e &lt;code&gt;shiftleft2_tb.vhd&lt;/code&gt;. A análise do &lt;code&gt;utils.vhd&lt;/code&gt; precisa vir antes da análise do &lt;code&gt;shiftleft2_tb.vhd&lt;/code&gt; pois este último utiliza o pacote (&lt;code&gt;package&lt;/code&gt;) dentro do &lt;code&gt;utils.vhd&lt;/code&gt;, portanto este deve estar analisado no momento da análise da entidade que o utiliza.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;poli@ghdl:~/shared$&lt;/span&gt; ghdl -e shiftleft2_tb
+&lt;span class="gp"&gt;poli@ghdl:~/shared$&lt;/span&gt; ghdl -r shiftleft2_tb
+&lt;span class="go"&gt;shiftleft2_tb.vhd:44:7:@0ms:(report note): BOT&lt;/span&gt;
+&lt;span class="go"&gt;shiftleft2_tb.vhd:65:7:@4ns:(report note): EOT&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A entidade que será simulada está no &lt;code&gt;shiftleft2_tb.vhd&lt;/code&gt; e chama-se &lt;code&gt;shiftleft2_tb&lt;/code&gt;, portanto no exemplo elaboramos esta entidade, depois executamos a simulação com a mesma. A saída impressa são os &lt;code&gt;report&lt;/code&gt; colocados no &lt;em&gt;testbench&lt;/em&gt; para indicar o início e o final da simulação.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;poli@ghdl:~/shared$&lt;/span&gt; ghdl -r shiftleft2_tb --vcd&lt;span class="o"&gt;=&lt;/span&gt;shiftleft2_tb.vcd
+&lt;span class="go"&gt;shiftleft2_tb.vhd:44:7:@0ms:(report note): BOT&lt;/span&gt;
+&lt;span class="go"&gt;shiftleft2_tb.vhd:65:7:@4ns:(report note): EOT&lt;/span&gt;
+&lt;span class="gp"&gt;poli@ghdl:~/shared$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Há diversos parâmetros que podem ser passados para a simulação. Um muito útil que pode ser visto acima é o &lt;code&gt;--vcd=arquivo.vcd&lt;/code&gt;. Este parâmetro salvará a forma de onda resultante da simulação no arquivo (neste caso o &lt;code&gt;shiftleft2_tb.vcd&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Para visualizar o arquivo VCD você precisará de um programa que visualize formas de onda. Recomendo o &lt;a href="http://gtkwave.sourceforge.net/"&gt;GTKWave&lt;/a&gt;, disponível para várias as plataformas. Na sua máquina real (host), navegue até a pasta compartilhada e veja que os arquivos estão lá, incluindo o resultado da simulação. Você pode abrir o arquivo VCD com o seu visualizador preferido.&lt;/p&gt;</content><category term="vhdl"></category><category term="ghdl"></category><category term="vm"></category></entry><entry><title>Circuitos Sequenciais em VHDL</title><link href="https://balbertini.github.io/sequential-pt_BR.html" rel="alternate"></link><published>2018-09-05T03:51:00-03:00</published><updated>2018-09-05T03:51:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-09-05:/sequential-pt_BR.html</id><summary type="html">&lt;p&gt;Como descrever circuitos sequenciais em VHDL.&lt;/p&gt;</summary><content type="html">&lt;!-- Status: draft --&gt;
+
+&lt;p&gt;A principal característica de um &lt;strong&gt;circuito sequencial&lt;/strong&gt; é que as saídas dependem não somente das entradas, como em um circuito combinatório, mas também das entradas passadas. Diz-se que um circuito sequencial possui um &lt;strong&gt;elemento de memória&lt;/strong&gt; ou é dependente do tempo (esta última é discutível pois nem sempre o tempo está envolvido na sua forma explícita, como um sinal de &lt;em&gt;clock&lt;/em&gt;).&lt;/p&gt;
+&lt;h2&gt;Process&lt;/h2&gt;
+&lt;p&gt;A estrutura utilizada para descrever circuitos sequenciais em VHDL é o &lt;code&gt;process&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Sintaxe de um &lt;code&gt;process&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nc"&gt;nome_opcional&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista_de_sensibilidade&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;declaracoes&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="n"&gt;primitivas&lt;/span&gt; &lt;span class="n"&gt;sequenciais&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt; &lt;span class="nc"&gt;nome_opcional&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O nome do &lt;code&gt;process&lt;/code&gt; é opcional e serve para identificá-lo durante a simulação. Recomenda-se a sua utilização para melhorar a legibilidade e facilitar a depuração, obviamente usando um nome que representa o circuito sendo descrito. Se optar por retirar o nome, retira-se o &lt;code&gt;nome_opcional&lt;/code&gt;, incluindo o &lt;code&gt;:&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Primitivas sequenciais e concorrentes&lt;/h2&gt;
+&lt;p&gt;As primitivas sequenciais dentro de um &lt;code&gt;process&lt;/code&gt; podem ser quaisquer primitivas utilizadas para descrever  circuitos combinatórios (e.g. atribuições condicionais) e também as duas que só podem ser utilizadas de maneira sequencial: &lt;code&gt;if-else&lt;/code&gt; e &lt;code&gt;case&lt;/code&gt;. No entanto, todas as primitivas que estiverem dentro de um &lt;code&gt;process&lt;/code&gt; se &lt;strong&gt;comportam de maneira sequencial&lt;/strong&gt;. Em contraste, as primitivas que estão dentro da descrição uma arquitetura - que só podem ser combinatórias - são consideradas concorrentes.&lt;/p&gt;
+&lt;p&gt;As primitivas concorrentes (dentro da arquitetura), representam circuitos combinatórios, portanto serão sintetizadas para tais circuitos. Quaisquer modificações na entrada têm efeito imediato e todas as funções combinatórias descritas terão suas saídas afetadas (após o devido tempo de propagação caso aplicável). É importante notar que um bloco de um &lt;code&gt;process&lt;/code&gt; inteiro é equivalente a uma primitiva combinatória, ou seja, a avaliação das saídas do &lt;code&gt;process&lt;/code&gt; ocorre ao mesmo tempo que a avaliação de todas as primitivas concorrentes da mesma arquitetura, incluindo outros possíveis blocos &lt;code&gt;process&lt;/code&gt; descritos na mesma arquitetura, portanto não é possível aninhar mais de um &lt;code&gt;process&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sequencial.png' align="right" style="padding-left:5%" /&gt;
+Já as primitivas sequencias (dentro de um &lt;code&gt;process&lt;/code&gt;), representam um circuito sequencial nos moldes da figura acima. Qualquer circuito sequencial pode ser mapeado para um circuito com um elemento de memória e uma lógica combinatória dependente do estado atual do circuito, fornecido pelo elemento de memória. Dentro de um &lt;code&gt;process&lt;/code&gt;, as primitivas sequencias são &lt;strong&gt;avaliadas em ordem&lt;/strong&gt; e caso haja divergência (i.e. mais de um valor atribuído para um determinado sinal), prevalece a última primitiva (i.e. o último valor atribuído a um sinal).&lt;/p&gt;
+&lt;p&gt;A lógica combinatória dentro de um bloco &lt;code&gt;process&lt;/code&gt; pode ser a identidade (i.e. não possuir lógica que altere os dados, ou em outras palavras representar um fio) e o elemento de memória também pode estar ausente. É possível representar circuitos combinatórios usando &lt;code&gt;process&lt;/code&gt; se descrevermos um circuito sequencial que possua uma lógica combinatória mas não um elemento de memória. Vale lembrar que descrever circuitos combinatórios com &lt;code&gt;process&lt;/code&gt; é uma prática &lt;strong&gt;fortemente desencorajada&lt;/strong&gt;, portanto se o seu circuito não possui um elemento de memória, não utilize &lt;code&gt;process&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Lista de sensibilidade&lt;/h2&gt;
+&lt;p&gt;A lista de sensibilidade define o gatilho para o &lt;code&gt;process&lt;/code&gt;. De maneira programática, o &lt;code&gt;process&lt;/code&gt; será ativado quando algum evento acontecer em algum sinal presente na lista de sensibilidade. Se algum sinal da lista for alterado fora do &lt;code&gt;process&lt;/code&gt;, por exemplo, todas as primitivas sequenciais dentro do &lt;code&gt;process&lt;/code&gt; serão avaliadas novamente, em sequencia.&lt;/p&gt;
+&lt;p&gt;No entanto, a lista de sensibilidade não representa um elemento sintetizável. Ela é uma indicação para o sintetizador de quais sinais controlam o elemento de memória, ou seja, quando o circuito sequencial que está sendo descrito fará de fato uma amostragem no elemento de memória. Em outras palavras, o sintetizador olha para a lista de sensibilidade na hora de escolher os &lt;em&gt;enables&lt;/em&gt; e os &lt;em&gt;clocks&lt;/em&gt; dos &lt;em&gt;latches&lt;/em&gt; ou &lt;em&gt;flip-flops&lt;/em&gt; que serão usados para construir o elemento de memória. É muito importante que a lista seja feita com cuidado para que o sintetizador possa gerar o circuito sequencial que o projetista deseja. Falhar na construção da lista de sensibilidade pode levar o circuito a comportamentos diferentes do esperado pelo projetista ou até mesmo torná-lo inutilizável. Por este motivo, recomenda-se que o elemento de memória seja descrito usando &lt;code&gt;process&lt;/code&gt;, mas a lógica combinatória dentro do mesmo &lt;strong&gt;seja a mínima necessária&lt;/strong&gt; para o funcionamento do circuito sequencial descrito.&lt;/p&gt;
+&lt;p&gt;Na lista de sensibilidade, deve-se colocar todos os sinais que possam alterar o comportamento do componente descrito. Como dica para os iniciantes de prototipação de hardware, coloque na lista de sensibilidade todos e somente todos os sinais que são &lt;strong&gt;lidos&lt;/strong&gt; dentro do &lt;code&gt;process&lt;/code&gt;. Isto pode gerar códigos menos legíveis e até mesmo atrapalhar a otimização do circuito sintetizado, mas evitará a maioria dos problemas que os iniciantes enfrentam quando lidam com descrições sequenciais em VHDL.&lt;/p&gt;
+&lt;h2&gt;Wait&lt;/h2&gt;
+&lt;p&gt;Uma alternativa para a lista de sensibilidade é a primitiva &lt;code&gt;wait&lt;/code&gt;. Quando opta-se pela utilização desta primitiva, a lista de sensibilidade deve ser omitida, pois o sintetizador irá inferir os sinais de controle dos elementos de memória a partir dos &lt;code&gt;wait&lt;/code&gt; presentes no &lt;code&gt;process&lt;/code&gt;. As formas desta primitiva usadas para descrever circuitos sequenciais são &lt;code&gt;wait until condicao;&lt;/code&gt;, que aguarda até que a condição seja satisfeita e &lt;code&gt;wait on sinal;&lt;/code&gt;, que aguarda o sinal mudar. Tanto a condição quanto o sinal podem ser uma composição de condições (desde que o resultado final seja verdadeiro ou falso) ou uma lista de sinais separados por vírgula.&lt;/p&gt;
+&lt;h3&gt;Exemplos&lt;/h3&gt;
+&lt;h4&gt;FF-D com enable&lt;/h4&gt;
+&lt;p&gt;&lt;img src='https://balbertini.github.io/images/ffd.png' align="left" style="padding-right:5%" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nc"&gt;ffd&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="k"&gt;wait&lt;/span&gt; &lt;span class="k"&gt;until&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="na"&gt;&amp;#39;event&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;en&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+        &lt;span class="n"&gt;q&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;q_n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt; &lt;span class="nc"&gt;ffd&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Este exemplo é o mais simples possível: um &lt;em&gt;flip-flop&lt;/em&gt; tipo D. Se o &lt;em&gt;en&lt;/em&gt; for alto, o componente amostra a entrada &lt;code&gt;d&lt;/code&gt; nas saídas &lt;code&gt;q&lt;/code&gt; e &lt;code&gt;q_n&lt;/code&gt; na borda de subida do &lt;em&gt;clock&lt;/em&gt;. Note que o &lt;em&gt;process&lt;/em&gt; não tem lista de sensibilidade, mas a primeira coisa que ele faz é aguardar que aconteça uma mudança no sinal de &lt;em&gt;clock&lt;/em&gt; (espera por &lt;code&gt;clock'event&lt;/code&gt;) e que esta mudança seja a borda de subida (verifica se &lt;code&gt;clock=1&lt;/code&gt;). Quando isto acontecer, ele faz uma verificação para saber se o &lt;code&gt;en=1&lt;/code&gt; e, caso seja, amostra a entrada para as saídas. Note que não está especificado o que acontece com as saídas caso &lt;code&gt;en=0&lt;/code&gt;, o que faz com que a saída não mude, exatamente o comportamento desejado para o &lt;em&gt;flip-flop&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;O equivalente usando lista de sensibilidade é:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nc"&gt;ffd&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="na"&gt;&amp;#39;event&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;en&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+            &lt;span class="n"&gt;q&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="n"&gt;q_n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt; &lt;span class="nc"&gt;ffd&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note que neste caso, os sinais &lt;code&gt;en&lt;/code&gt; e &lt;code&gt;d&lt;/code&gt; podem ficar de fora da lista de sensibilidade pois, apesar de serem lidos dentro do &lt;code&gt;process&lt;/code&gt;, não alteram o comportamento do circuito exceto na borda do &lt;em&gt;clock&lt;/em&gt;, portanto não faz diferença se o colocarmos na lista de sensibilidade: &lt;code&gt;process(clock, en, d)&lt;/code&gt;.&lt;/p&gt;
+&lt;h4&gt;FF-D com enable e reset assíncrono&lt;/h4&gt;
+&lt;p&gt;&lt;img src='https://balbertini.github.io/images/ffdr.png' align="left" style="padding-right:5%" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nc"&gt;ffdr&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="k"&gt;wait&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reset&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;reset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+        &lt;span class="n"&gt;q&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;q_n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;elsif&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="na"&gt;&amp;#39;event&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;en&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+            &lt;span class="n"&gt;q&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="n"&gt;q_n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O &lt;code&gt;process&lt;/code&gt; irá aguardar que aconteça alguma mudança nos sinais &lt;em&gt;clock&lt;/em&gt; ou &lt;em&gt;reset&lt;/em&gt; para continuar. Neste exemplo, o &lt;em&gt;flip-flop&lt;/em&gt; possui um sinal de &lt;em&gt;reset&lt;/em&gt; assíncrono ativo alto, portanto ele é verificado fora da condição de borda de subida. Neste caso, se o &lt;code&gt;reset=1&lt;/code&gt;, as saídas vão para &lt;code&gt;q=0&lt;/code&gt; e &lt;code&gt;q_n=1&lt;/code&gt; incondicionalmente, ignorando-se a borda, portanto o &lt;em&gt;reset&lt;/em&gt; tem prioridade sobre o a amostragem da entrada. Note que neste caso utiliza-se o &lt;code&gt;wait on&lt;/code&gt; e não o &lt;code&gt;wait until&lt;/code&gt;. Qualquer mudança nos sinais &lt;em&gt;clock&lt;/em&gt; ou &lt;em&gt;reset&lt;/em&gt; faz com que o &lt;code&gt;process&lt;/code&gt; passe da linha do &lt;code&gt;wait on clock, reset&lt;/code&gt; e reavalie todas as condições.&lt;/p&gt;
+&lt;p&gt;O equivalente usando lista de sensibilidade é:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nc"&gt;ffdr&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reset&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;reset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+        &lt;span class="n"&gt;q&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;q_n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;elsif&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="na"&gt;&amp;#39;event&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;en&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+            &lt;span class="n"&gt;q&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="n"&gt;q_n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Observe que o &lt;code&gt;wait on&lt;/code&gt; substitui a lista de sensibilidade. Normalmente o &lt;code&gt;wait on&lt;/code&gt; é usado como a primeira primitiva do &lt;code&gt;process&lt;/code&gt;, em substituição à lista de sensibilidade. Para circuitos sequenciais síncronos, aconselha-se a utilização da versão com lista de sensibilidade para evitar que a linha do &lt;code&gt;wait on&lt;/code&gt; seja colocada em locais inadequados, o que pode gerar um circuito sequencial assíncrono. A maioria das ferramentas de síntese suporta somente um &lt;code&gt;wait on&lt;/code&gt; no início ou final do &lt;code&gt;process&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Outras primitivas sequenciais&lt;/h2&gt;
+&lt;p&gt;Há outras primitivas exclusivas para utilização sequencial (&lt;code&gt;for&lt;/code&gt;, &lt;code&gt;while&lt;/code&gt; e &lt;code&gt;loop&lt;/code&gt;), que possuem propósitos específicos que não foram cobertos neste artigo pois possuem restrições para a síntese. Isto significa que, para que elas representem um hardware, o projetista deve utilizá-las de uma maneira específica, caso contrário elas não podem ser sintetizadas (i.e. não representam uma descrição de hardware). É muito comum entre os iniciantes considerar que estas primitivas são equivalentes às encontradas em linguagens de programação estruturada, o que na maioria das vezes é uma falácia pois não existe laço interativo em hardware equivalente ao conceito homônimo das linguagens de programação (e.g. o equivalente em hardware a um laço iterativo de um algoritmo é na verdade uma máquina de estados completa). Estas primitivas devem ser evitadas na descrição de circuitos sequenciais, especialmente por iniciantes, e são na maioria das vezes usadas somente na construção de &lt;em&gt;testbenchs&lt;/em&gt;, quando as restrições para síntese não se aplicam. Sobre o &lt;code&gt;wait&lt;/code&gt;, ainda existem o &lt;code&gt;wait for tempo;&lt;/code&gt; e o &lt;code&gt;wait;&lt;/code&gt; (só o &lt;em&gt;wait&lt;/em&gt;), mas ambos não são sintetizáveis e também são usados para descrever &lt;em&gt;testbenchs&lt;/em&gt;.&lt;/p&gt;</content><category term="vhdl"></category><category term="sequenciais"></category></entry><entry><title>Circuitos Combinatórios em VHDL</title><link href="https://balbertini.github.io/combinatory-pt_BR.html" rel="alternate"></link><published>2018-09-04T00:23:00-03:00</published><updated>2018-09-13T08:35:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-09-04:/combinatory-pt_BR.html</id><summary type="html">&lt;p&gt;Como descrever circuitos combinatórios em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Circuitos combinatórios&lt;/strong&gt; são aqueles que implementam uma função booleana. Sua principal característica é a ausência de dependência temporal, ou seja, a saída depende apenas da entrada. Este tipo de circuito pode ser representado por uma série de portas lógicas interligadas entre si &lt;strong&gt;sem realimentação&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Há três maneiras de descrever circuitos puramente combinatórios em VHDL: estrutural, atribuição condicional com &lt;code&gt;with-select&lt;/code&gt; e atribuição condicional com &lt;code&gt;when-else&lt;/code&gt;. As descrições realizadas utilizando uma destas três formas serão sintetizadas para circuitos puramente combinatórios.&lt;/p&gt;
 &lt;h2&gt;Estrutural&lt;/h2&gt;
 &lt;p&gt;A descrição estrutural é a maneira mais direta de se descrever uma função combinatória. Consiste em descrever o circuito a partir da própria função lógica que o representa. O equivalente em um diagrama esquemático é exatamente a &lt;strong&gt;função lógica&lt;/strong&gt;, como descrita usando as portas lógicas equivalentes. A desvantagem é que a descrição é prolixa e consequentemente torna-se rapidamente difícil de ler, razão pela qual não é recomendada para circuitos grandes. Caso opte por este tipo de descrição utilize uma técnica de projeto baseada em divisão e conquista e mantenha os blocos que usam descrição estrutural pequenos, minimizando o esforço necessário para compreender o seu funcionamento.&lt;/p&gt;
-&lt;p&gt;VHDL suporta os seguintes operadores lógicos para descrever circuitos estruturais:&lt;/p&gt;
+&lt;p&gt;VHDL suporta os seguintes &lt;strong&gt;operadores lógicos&lt;/strong&gt; para descrever circuitos estruturais:&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -42,7 +257,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;Os operadores estão em ordem decrescente de prioridade, ou seja, o &lt;code&gt;not&lt;/code&gt; tem precedência sobre todos os demais operadores. Aconselha-se a utilização de parênteses &lt;code&gt;()&lt;/code&gt; para deixar claro a intenção do projetista. Todos os operadores podem operar sobre boleanos, bits ou vetores unidimensionais de bits (bits podem ser do tipo &lt;code&gt;bit&lt;/code&gt; ou derivados como &lt;code&gt;std_logic&lt;/code&gt;). É necessário que os operandos sejam do mesmo tamanho e o resultado é sempre igual à entrada (i.e. se os operandos são vetores de bits, o resultado é um vetor de bits).&lt;/p&gt;
+&lt;p&gt;Os operadores estão em ordem decrescente de prioridade, ou seja, o &lt;code&gt;not&lt;/code&gt; tem precedência sobre todos os demais operadores. Aconselha-se a utilização de parênteses &lt;code&gt;()&lt;/code&gt; para deixar claro a intenção do projetista. Todos os operadores podem operar sobre tipos booleanos, bits ou vetores unidimensionais de bits (bits podem ser do tipo &lt;code&gt;bit&lt;/code&gt; ou derivados como &lt;code&gt;std_logic&lt;/code&gt;). É necessário que os operandos sejam do mesmo tamanho e o resultado é sempre igual à entrada (i.e. se os operandos são vetores de bits, o resultado é um vetor de bits). Quando o tipo é um vetor, o resultado é calculado bit a bit (lógica binária ou &lt;em&gt;bitwise&lt;/em&gt;).&lt;/p&gt;
 &lt;h3&gt;Exemplo&lt;/h3&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/mux.png' align="left" style="padding-right:5%" /&gt;
 Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &lt;code&gt;b&lt;/code&gt;, saída &lt;code&gt;o&lt;/code&gt; e seletor &lt;code&gt;s&lt;/code&gt;. As entradas podem ser vetores (e.g. &lt;code&gt;bit_vector(3 downto 0)&lt;/code&gt;), mas nesse caso é necessário que o seletor &lt;code&gt;s&lt;/code&gt; também seja um vetor do mesmo tamanho.&lt;/p&gt;
@@ -61,7 +276,7 @@ Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;No &lt;code&gt;with-select&lt;/code&gt;, a atribuição ao &lt;code&gt;sinalSaida&lt;/code&gt; é feita através de uma comparação de igualdade com o sinal de seleção &lt;code&gt;sinalSelecao&lt;/code&gt;. O valores a serem comparados são os expressos como &lt;code&gt;valorSelecao&lt;/code&gt; (e.g. se a o valor do sinal &lt;code&gt;sinalSelecao&lt;/code&gt; for igual a &lt;code&gt;valorSelecao1&lt;/code&gt;, o sinal &lt;code&gt;sinalSaida&lt;/code&gt; será &lt;code&gt;valorSaida1&lt;/code&gt;). &lt;strong&gt;Atenção:&lt;/strong&gt; é fortemente recomendada a descrição da opção padrão (comparação com &lt;code&gt;others&lt;/code&gt;), que será a atribuição a ser realizada caso nenhuma condição for atendida. Se a opção padrão não for especificada, a atribuição é considerada uma &lt;em&gt;atribuição incompleta&lt;/em&gt; e a síntese poderá inferir um &lt;em&gt;latch&lt;/em&gt;, tornando o circuito sequencial. Não é necessário que o número de entradas seja múltiplo de uma potência de dois e os valores de saída &lt;code&gt;valorSaida&lt;/code&gt; podem ser outros sinais ou expressões. Os valores para comparação devem ser constantes ou serem passíveis de resolução (i.e. não devem ser variáveis ou valores transitivos). Tanto a entrada de seleção quando a saída podem ser vetores.&lt;/p&gt;
+&lt;p&gt;No &lt;code&gt;with-select&lt;/code&gt;, a atribuição ao &lt;code&gt;sinalSaida&lt;/code&gt; é feita através de uma comparação de igualdade com o sinal de seleção &lt;code&gt;sinalSelecao&lt;/code&gt;. O valores a serem comparados são os expressos como &lt;code&gt;valorSelecao&lt;/code&gt; (e.g. se a o valor do sinal &lt;code&gt;sinalSelecao&lt;/code&gt; for igual a &lt;code&gt;valorSelecao1&lt;/code&gt;, o sinal &lt;code&gt;sinalSaida&lt;/code&gt; será &lt;code&gt;valorSaida1&lt;/code&gt;). Não é necessário que o número de entradas seja múltiplo de uma potência de dois e os valores de saída &lt;code&gt;valorSaida&lt;/code&gt; podem ser outros sinais ou expressões. Os valores para comparação devem ser constantes ou serem passíveis de resolução (i.e. não devem ser variáveis ou valores transitivos). Tanto a entrada de seleção quando a saída podem ser vetores. &lt;strong&gt;Atenção:&lt;/strong&gt; é fortemente recomendada a descrição da &lt;a href="#others"&gt;opção padrão&lt;/a&gt; (comparação com &lt;code&gt;others&lt;/code&gt;).&lt;/p&gt;
 &lt;h3&gt;Exemplo&lt;/h3&gt;
 &lt;table align="left" style="border-right: 30px solid #fff;"&gt;
   &lt;tr&gt;&lt;th&gt;s&lt;/th&gt;&lt;th&gt;a&lt;/th&gt;&lt;th&gt;b&lt;/th&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;o&lt;/th&gt;&lt;/tr&gt;
@@ -75,7 +290,7 @@ Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &
   &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;
 
-&lt;p&gt;Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &lt;code&gt;b&lt;/code&gt;, saída &lt;code&gt;o&lt;/code&gt; e seletor &lt;code&gt;s&lt;/code&gt;. Lembre-se que um seletor de um multiplexador deve ter tamanho &lt;code&gt;ceil(log2(n))&lt;/code&gt;, onde &lt;code&gt;n&lt;/code&gt; é o número de entradas, portanto é possível que ele seja um vetor. Neste exemplo, como há duas entradas, o seletor &lt;code&gt;s&lt;/code&gt; tem somente um bit.&lt;/p&gt;
+&lt;p&gt;Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &lt;code&gt;b&lt;/code&gt;, saída &lt;code&gt;o&lt;/code&gt; e seletor &lt;code&gt;s&lt;/code&gt;. Lembre-se que um seletor de um multiplexador deve ter tamanho &lt;code&gt;ceil(log2(n))&lt;/code&gt;, onde &lt;code&gt;n&lt;/code&gt; é o número de entradas, portanto é possível que ele seja um vetor. Neste exemplo, como há duas entradas, o seletor &lt;code&gt;s&lt;/code&gt; tem somente um bit (&lt;code&gt;ceil(log2(2))=1&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;Versão com saídas como constantes:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;sel&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;-- Declaração&lt;/span&gt;
 &lt;span class="n"&gt;sel&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;-- Concatenação&lt;/span&gt;
@@ -91,7 +306,7 @@ Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Note que este é um trecho de código de uma descrição: a declaração do sinal deve estar no local apropriado, assim como a atribuição ao sinal &lt;code&gt;sel&lt;/code&gt; (concatenação).&lt;/p&gt;
+&lt;p&gt;Note que este é um trecho de código de uma descrição: a declaração do sinal deve estar no local apropriado dentro da arquitetura (antes do &lt;code&gt;begin&lt;/code&gt;), assim como a atribuição ao sinal &lt;code&gt;sel&lt;/code&gt; (concatenação, depois do &lt;code&gt;begin&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;Versão com saídas como sinais:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;
   &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -99,7 +314,7 @@ Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa. Note a diferença entre as duas versões acima: a &lt;em&gt;versão com as saídas como sinais&lt;/em&gt; é compacta e passível de utilização, mas a &lt;em&gt;versão com saídas como constantes&lt;/em&gt; é uma transcrição da tabela verdade e pode se tornar impraticável (ou ilegível) rapidamente, principalmente se o número de entradas for grande pois a tabela cresce exponencialmente (lembre-se que a tabela verdade terá &lt;code&gt;2^n&lt;/code&gt; linhas, onde &lt;code&gt;n&lt;/code&gt; é o número de entradas).&lt;/p&gt;
+&lt;p&gt;A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa. Note a diferença entre as duas versões acima: a &lt;em&gt;versão com as saídas como sinais&lt;/em&gt; é compacta e passível de utilização. Já a &lt;em&gt;versão com saídas como constantes&lt;/em&gt; é uma transcrição da tabela verdade e pode se tornar impraticável (ou ilegível) rapidamente pois a tabela cresce exponencialmente ao número de entradas (lembre-se que a tabela verdade terá &lt;code&gt;2^n&lt;/code&gt; linhas, onde &lt;code&gt;n&lt;/code&gt; é o número de entradas).&lt;/p&gt;
 &lt;h2&gt;When-else&lt;/h2&gt;
 &lt;p&gt;O &lt;code&gt;when-else&lt;/code&gt; é uma maneira fácil de descrever funcionalmente um circuito com várias funções lógicas. O equivalente a um diagrama esquemático é um &lt;strong&gt;multiplexador&lt;/strong&gt;, cujas entradas são funções lógicas.&lt;/p&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/mux_exp.png' align="left" style="padding-right:5%" /&gt;
@@ -110,14 +325,19 @@ Sintaxe do &lt;code&gt;when-else&lt;/code&gt;:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;A atribuição acontece de acordo com a primeira condição atendida, em ordem (e.g. se a &lt;code&gt;condicao1&lt;/code&gt; for atendida, o &lt;code&gt;sinal&lt;/code&gt; será &lt;code&gt;expressao1&lt;/code&gt; e as demais condições não serão avaliadas). &lt;strong&gt;Atenção:&lt;/strong&gt; é fortemente recomendada a descrição da opção padrão (&lt;code&gt;expressao3&lt;/code&gt;), que será a atribuição caso nenhuma condição for atendida. Se a opção padrão não for especificada, a atribuição é considerada uma &lt;em&gt;atribuição incompleta&lt;/em&gt; e a síntese poderá inferir um &lt;em&gt;latch&lt;/em&gt;, tornando o circuito sequencial. Não é necessário que o número de entradas seja múltiplo de uma potência de dois e as expressões podem ser identidade (i.e. o próprio sinal de entrada, sem uma função lógica que transforme o dados).&lt;/p&gt;
+&lt;p&gt;A atribuição acontece de acordo com a primeira condição atendida, em ordem (e.g. se a &lt;code&gt;condicao1&lt;/code&gt; for atendida, o &lt;code&gt;sinal&lt;/code&gt; será &lt;code&gt;expressao1&lt;/code&gt; e as demais condições não serão avaliadas). &lt;strong&gt;Atenção:&lt;/strong&gt; é fortemente recomendada a descrição da &lt;a href="#others"&gt;opção padrão&lt;/a&gt; (atribuição para a &lt;code&gt;expressao3&lt;/code&gt; no &lt;code&gt;else&lt;/code&gt; final sem condição), que será a atribuição caso nenhuma condição for atendida.&lt;/p&gt;
 &lt;h3&gt;Exemplo&lt;/h3&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/mux2x1.png' align="left" style="padding-right:5%" /&gt;
-Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &lt;code&gt;b&lt;/code&gt;, saída &lt;code&gt;o&lt;/code&gt; e seletor &lt;code&gt;s&lt;/code&gt;. As entradas podem ser vetores (e.g. &lt;code&gt;bit_vector(3 downto 0)&lt;/code&gt;). Lembre-se que um seletor de um multiplexador deve ter tamanho &lt;code&gt;ceil(log2(n))&lt;/code&gt;, onde &lt;code&gt;n&lt;/code&gt; é o número de entradas, portanto é possível que ele seja um vetor. Neste exemplo, como há duas entradas, o seletor &lt;code&gt;s&lt;/code&gt; tem somente um bit.&lt;/p&gt;
+Este exemplo é um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &lt;code&gt;b&lt;/code&gt;, saída &lt;code&gt;o&lt;/code&gt; e seletor &lt;code&gt;s&lt;/code&gt;. As entradas podem ser vetores (e.g. &lt;code&gt;bit_vector(3 downto 0)&lt;/code&gt;). Lembre-se que um seletor de um multiplexador deve ter tamanho &lt;code&gt;ceil(log2(n))&lt;/code&gt;, onde &lt;code&gt;n&lt;/code&gt; é o número de entradas, portanto é possível que ele seja um vetor. Neste exemplo, como há duas entradas, o seletor &lt;code&gt;s&lt;/code&gt; tem somente um bit (&lt;code&gt;ceil(log2(2))=1&lt;/code&gt;).&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;a name="others"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Opção padrão&lt;/h2&gt;
+&lt;p&gt;Os operadores em VHDL possuem uma opção padrão indicada pela palavra chave &lt;code&gt;others&lt;/code&gt; ou no último &lt;code&gt;else&lt;/code&gt;, que será a atribuição a ser realizada caso nenhuma condição anterior for atendida. Se a opção padrão não for especificada, a atribuição é considerada uma &lt;em&gt;atribuição incompleta&lt;/em&gt; e a síntese poderá inferir um &lt;em&gt;latch&lt;/em&gt;, tornando o circuito sequencial. Uma maneira fácil de especificar a opção padrão é deixar o último valor possível sem escolha, ou seja, caso nenhuma das opções anteriores atenda a atribuição condicional, a última opção será tomada.&lt;/p&gt;
+&lt;p&gt;Quando se utiliza tipos &lt;code&gt;std_logic&lt;/code&gt; e derivados, também é comum a opção padrão ser a atribuição para &lt;code&gt;X&lt;/code&gt; (valor desconhecido ou &lt;em&gt;unknown&lt;/em&gt;), mas não recomendo esta abordagem pois o valor &lt;code&gt;X&lt;/code&gt; não é sintetizável. Para simulação e depuração, o valor será mostrado como &lt;code&gt;X&lt;/code&gt;, o que pode facilitar a depuração do circuito. Contudo, após a síntese a atribuição &lt;code&gt;X&lt;/code&gt; irá assumir um valor binário, o que torna difícil a identificação de problemas com o circuito funcionando pois pode não ser possível distinguí-lo de um valor legítimo.&lt;/p&gt;
+&lt;p&gt;É &lt;strong&gt;fortemente recomendada&lt;/strong&gt; a utilização da opção padrão quando se utiliza as construções &lt;code&gt;when-else&lt;/code&gt; ou &lt;code&gt;with-select&lt;/code&gt; para descrever circuitos combinatórios pois, se a atribuição for incompleta o circuito pode não operar como desejado.&lt;/p&gt;
 &lt;h2&gt;Outras maneiras&lt;/h2&gt;
 &lt;p&gt;Há outras maneiras de se descrever circuitos combinatórios em VHDL. Dois exemplos comuns que &lt;strong&gt;não são  recomendados&lt;/strong&gt; utilizam o &lt;code&gt;case&lt;/code&gt; e o &lt;code&gt;if-else&lt;/code&gt;. Este tipo de descrição é fácil de ser encontrado pois utiliza primitivas similares às encontradas em linguagens de programação estruturadas (e.g. C/C++, Java, etc).&lt;/p&gt;
 &lt;p&gt;Os dois exemplos abaixo são de um multiplexador 2x1 com entradas &lt;code&gt;a&lt;/code&gt; e &lt;code&gt;b&lt;/code&gt;, saída &lt;code&gt;o&lt;/code&gt; e seletor &lt;code&gt;s&lt;/code&gt;.&lt;/p&gt;

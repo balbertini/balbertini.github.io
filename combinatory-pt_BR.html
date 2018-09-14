@@ -44,7 +44,7 @@
 <meta property="og:url" content="https://balbertini.github.io/combinatory-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2018-09-04 00:23:00-03:00"/>
-<meta property="article:modified_time" content="2018-09-04 15:28:00-03:00"/>
+<meta property="article:modified_time" content="2018-09-13 08:35:00-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="vhdl"/>
 <meta property="article:tag" content="vhdl"/>
@@ -93,11 +93,11 @@
 
 
   <div>
-    <p><strong>Circuitos combinatórios</strong> são aqueles que podem ser descritos com uma função booleana. Sua principal característica é a ausência de dependência temporal, ou seja, a saída depende apenas da entrada. Este tipo de circuito pode ser representado por uma série de portas lógicas interligadas entre si <strong>sem realimentação</strong>.</p>
-<p>Há três maneiras de descrever circuitos puramente combinatórios em VHDL: estrutural, atribuição condicional com <code>with-select</code> e atribuição condicional com <code>when-else</code>. As descrições realizadas de uma destas três formas serão sintetizadas para circuitos puramente combinatórios.</p>
+    <p><strong>Circuitos combinatórios</strong> são aqueles que implementam uma função booleana. Sua principal característica é a ausência de dependência temporal, ou seja, a saída depende apenas da entrada. Este tipo de circuito pode ser representado por uma série de portas lógicas interligadas entre si <strong>sem realimentação</strong>.</p>
+<p>Há três maneiras de descrever circuitos puramente combinatórios em VHDL: estrutural, atribuição condicional com <code>with-select</code> e atribuição condicional com <code>when-else</code>. As descrições realizadas utilizando uma destas três formas serão sintetizadas para circuitos puramente combinatórios.</p>
 <h2>Estrutural</h2>
 <p>A descrição estrutural é a maneira mais direta de se descrever uma função combinatória. Consiste em descrever o circuito a partir da própria função lógica que o representa. O equivalente em um diagrama esquemático é exatamente a <strong>função lógica</strong>, como descrita usando as portas lógicas equivalentes. A desvantagem é que a descrição é prolixa e consequentemente torna-se rapidamente difícil de ler, razão pela qual não é recomendada para circuitos grandes. Caso opte por este tipo de descrição utilize uma técnica de projeto baseada em divisão e conquista e mantenha os blocos que usam descrição estrutural pequenos, minimizando o esforço necessário para compreender o seu funcionamento.</p>
-<p>VHDL suporta os seguintes operadores lógicos para descrever circuitos estruturais:</p>
+<p>VHDL suporta os seguintes <strong>operadores lógicos</strong> para descrever circuitos estruturais:</p>
 <table>
 <thead>
 <tr>
@@ -136,7 +136,7 @@
 </tr>
 </tbody>
 </table>
-<p>Os operadores estão em ordem decrescente de prioridade, ou seja, o <code>not</code> tem precedência sobre todos os demais operadores. Aconselha-se a utilização de parênteses <code>()</code> para deixar claro a intenção do projetista. Todos os operadores podem operar sobre boleanos, bits ou vetores unidimensionais de bits (bits podem ser do tipo <code>bit</code> ou derivados como <code>std_logic</code>). É necessário que os operandos sejam do mesmo tamanho e o resultado é sempre igual à entrada (i.e. se os operandos são vetores de bits, o resultado é um vetor de bits).</p>
+<p>Os operadores estão em ordem decrescente de prioridade, ou seja, o <code>not</code> tem precedência sobre todos os demais operadores. Aconselha-se a utilização de parênteses <code>()</code> para deixar claro a intenção do projetista. Todos os operadores podem operar sobre tipos booleanos, bits ou vetores unidimensionais de bits (bits podem ser do tipo <code>bit</code> ou derivados como <code>std_logic</code>). É necessário que os operandos sejam do mesmo tamanho e o resultado é sempre igual à entrada (i.e. se os operandos são vetores de bits, o resultado é um vetor de bits). Quando o tipo é um vetor, o resultado é calculado bit a bit (lógica binária ou <em>bitwise</em>).</p>
 <h3>Exemplo</h3>
 <p><img src='https://balbertini.github.io/images/mux.png' align="left" style="padding-right:5%" />
 Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code>, saída <code>o</code> e seletor <code>s</code>. As entradas podem ser vetores (e.g. <code>bit_vector(3 downto 0)</code>), mas nesse caso é necessário que o seletor <code>s</code> também seja um vetor do mesmo tamanho.</p>
@@ -155,7 +155,7 @@ Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code
 </pre></div>
 
 
-<p>No <code>with-select</code>, a atribuição ao <code>sinalSaida</code> é feita através de uma comparação de igualdade com o sinal de seleção <code>sinalSelecao</code>. O valores a serem comparados são os expressos como <code>valorSelecao</code> (e.g. se a o valor do sinal <code>sinalSelecao</code> for igual a <code>valorSelecao1</code>, o sinal <code>sinalSaida</code> será <code>valorSaida1</code>). <strong>Atenção:</strong> é fortemente recomendada a descrição da opção padrão (comparação com <code>others</code>), que será a atribuição a ser realizada caso nenhuma condição for atendida. Se a opção padrão não for especificada, a atribuição é considerada uma <em>atribuição incompleta</em> e a síntese poderá inferir um <em>latch</em>, tornando o circuito sequencial. Não é necessário que o número de entradas seja múltiplo de uma potência de dois e os valores de saída <code>valorSaida</code> podem ser outros sinais ou expressões. Os valores para comparação devem ser constantes ou serem passíveis de resolução (i.e. não devem ser variáveis ou valores transitivos). Tanto a entrada de seleção quando a saída podem ser vetores.</p>
+<p>No <code>with-select</code>, a atribuição ao <code>sinalSaida</code> é feita através de uma comparação de igualdade com o sinal de seleção <code>sinalSelecao</code>. O valores a serem comparados são os expressos como <code>valorSelecao</code> (e.g. se a o valor do sinal <code>sinalSelecao</code> for igual a <code>valorSelecao1</code>, o sinal <code>sinalSaida</code> será <code>valorSaida1</code>). Não é necessário que o número de entradas seja múltiplo de uma potência de dois e os valores de saída <code>valorSaida</code> podem ser outros sinais ou expressões. Os valores para comparação devem ser constantes ou serem passíveis de resolução (i.e. não devem ser variáveis ou valores transitivos). Tanto a entrada de seleção quando a saída podem ser vetores. <strong>Atenção:</strong> é fortemente recomendada a descrição da <a href="#others">opção padrão</a> (comparação com <code>others</code>).</p>
 <h3>Exemplo</h3>
 <table align="left" style="border-right: 30px solid #fff;">
   <tr><th>s</th><th>a</th><th>b</th><th></th><th>o</th></tr>
@@ -169,7 +169,7 @@ Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code
   <tr><td>1</td><td>1</td><td>1</td><td></td><td>1</td></tr>
 </table>
 
-<p>Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code>, saída <code>o</code> e seletor <code>s</code>. Lembre-se que um seletor de um multiplexador deve ter tamanho <code>ceil(log2(n))</code>, onde <code>n</code> é o número de entradas, portanto é possível que ele seja um vetor. Neste exemplo, como há duas entradas, o seletor <code>s</code> tem somente um bit.</p>
+<p>Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code>, saída <code>o</code> e seletor <code>s</code>. Lembre-se que um seletor de um multiplexador deve ter tamanho <code>ceil(log2(n))</code>, onde <code>n</code> é o número de entradas, portanto é possível que ele seja um vetor. Neste exemplo, como há duas entradas, o seletor <code>s</code> tem somente um bit (<code>ceil(log2(2))=1</code>).</p>
 <p>Versão com saídas como constantes:</p>
 <div class="highlight"><pre><span></span><span class="k">signal</span> <span class="n">sel</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">2</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">-- Declaração</span>
 <span class="n">sel</span> <span class="o">&lt;=</span> <span class="n">s</span> <span class="o">&amp;</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">;</span> <span class="c1">-- Concatenação</span>
@@ -185,7 +185,7 @@ Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code
 </pre></div>
 
 
-<p>Note que este é um trecho de código de uma descrição: a declaração do sinal deve estar no local apropriado, assim como a atribuição ao sinal <code>sel</code> (concatenação).</p>
+<p>Note que este é um trecho de código de uma descrição: a declaração do sinal deve estar no local apropriado dentro da arquitetura (antes do <code>begin</code>), assim como a atribuição ao sinal <code>sel</code> (concatenação, depois do <code>begin</code>).</p>
 <p>Versão com saídas como sinais:</p>
 <div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">s</span> <span class="k">select</span> <span class="n">o</span> <span class="o">&lt;=</span>
   <span class="n">a</span> <span class="k">when</span> <span class="sc">&#39;0&#39;</span><span class="p">,</span>
@@ -193,7 +193,7 @@ Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code
 </pre></div>
 
 
-<p>A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa. Note a diferença entre as duas versões acima: a <em>versão com as saídas como sinais</em> é compacta e passível de utilização, mas a <em>versão com saídas como constantes</em> é uma transcrição da tabela verdade e pode se tornar impraticável (ou ilegível) rapidamente, principalmente se o número de entradas for grande pois a tabela cresce exponencialmente (lembre-se que a tabela verdade terá <code>2^n</code> linhas, onde <code>n</code> é o número de entradas).</p>
+<p>A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa. Note a diferença entre as duas versões acima: a <em>versão com as saídas como sinais</em> é compacta e passível de utilização. Já a <em>versão com saídas como constantes</em> é uma transcrição da tabela verdade e pode se tornar impraticável (ou ilegível) rapidamente pois a tabela cresce exponencialmente ao número de entradas (lembre-se que a tabela verdade terá <code>2^n</code> linhas, onde <code>n</code> é o número de entradas).</p>
 <h2>When-else</h2>
 <p>O <code>when-else</code> é uma maneira fácil de descrever funcionalmente um circuito com várias funções lógicas. O equivalente a um diagrama esquemático é um <strong>multiplexador</strong>, cujas entradas são funções lógicas.</p>
 <p><img src='https://balbertini.github.io/images/mux_exp.png' align="left" style="padding-right:5%" />
@@ -204,14 +204,19 @@ Sintaxe do <code>when-else</code>:</p>
 </pre></div>
 
 
-<p>A atribuição acontece de acordo com a primeira condição atendida, em ordem (e.g. se a <code>condicao1</code> for atendida, o <code>sinal</code> será <code>expressao1</code> e as demais condições não serão avaliadas). <strong>Atenção:</strong> é fortemente recomendada a descrição da opção padrão (<code>expressao3</code>), que será a atribuição caso nenhuma condição for atendida. Se a opção padrão não for especificada, a atribuição é considerada uma <em>atribuição incompleta</em> e a síntese poderá inferir um <em>latch</em>, tornando o circuito sequencial. Não é necessário que o número de entradas seja múltiplo de uma potência de dois e as expressões podem ser identidade (i.e. o próprio sinal de entrada, sem uma função lógica que transforme o dados).</p>
+<p>A atribuição acontece de acordo com a primeira condição atendida, em ordem (e.g. se a <code>condicao1</code> for atendida, o <code>sinal</code> será <code>expressao1</code> e as demais condições não serão avaliadas). <strong>Atenção:</strong> é fortemente recomendada a descrição da <a href="#others">opção padrão</a> (atribuição para a <code>expressao3</code> no <code>else</code> final sem condição), que será a atribuição caso nenhuma condição for atendida.</p>
 <h3>Exemplo</h3>
 <p><img src='https://balbertini.github.io/images/mux2x1.png' align="left" style="padding-right:5%" />
-Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code>, saída <code>o</code> e seletor <code>s</code>. As entradas podem ser vetores (e.g. <code>bit_vector(3 downto 0)</code>). Lembre-se que um seletor de um multiplexador deve ter tamanho <code>ceil(log2(n))</code>, onde <code>n</code> é o número de entradas, portanto é possível que ele seja um vetor. Neste exemplo, como há duas entradas, o seletor <code>s</code> tem somente um bit.</p>
+Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code>, saída <code>o</code> e seletor <code>s</code>. As entradas podem ser vetores (e.g. <code>bit_vector(3 downto 0)</code>). Lembre-se que um seletor de um multiplexador deve ter tamanho <code>ceil(log2(n))</code>, onde <code>n</code> é o número de entradas, portanto é possível que ele seja um vetor. Neste exemplo, como há duas entradas, o seletor <code>s</code> tem somente um bit (<code>ceil(log2(2))=1</code>).</p>
 <div class="highlight"><pre><span></span><span class="n">o</span> <span class="o">&lt;=</span> <span class="n">b</span> <span class="k">when</span> <span class="n">s</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">else</span> <span class="n">a</span><span class="p">;</span>
 </pre></div>
 
 
+<p><a name="others"></a></p>
+<h2>Opção padrão</h2>
+<p>Os operadores em VHDL possuem uma opção padrão indicada pela palavra chave <code>others</code> ou no último <code>else</code>, que será a atribuição a ser realizada caso nenhuma condição anterior for atendida. Se a opção padrão não for especificada, a atribuição é considerada uma <em>atribuição incompleta</em> e a síntese poderá inferir um <em>latch</em>, tornando o circuito sequencial. Uma maneira fácil de especificar a opção padrão é deixar o último valor possível sem escolha, ou seja, caso nenhuma das opções anteriores atenda a atribuição condicional, a última opção será tomada.</p>
+<p>Quando se utiliza tipos <code>std_logic</code> e derivados, também é comum a opção padrão ser a atribuição para <code>X</code> (valor desconhecido ou <em>unknown</em>), mas não recomendo esta abordagem pois o valor <code>X</code> não é sintetizável. Para simulação e depuração, o valor será mostrado como <code>X</code>, o que pode facilitar a depuração do circuito. Contudo, após a síntese a atribuição <code>X</code> irá assumir um valor binário, o que torna difícil a identificação de problemas com o circuito funcionando pois pode não ser possível distinguí-lo de um valor legítimo.</p>
+<p>É <strong>fortemente recomendada</strong> a utilização da opção padrão quando se utiliza as construções <code>when-else</code> ou <code>with-select</code> para descrever circuitos combinatórios pois, se a atribuição for incompleta o circuito pode não operar como desejado.</p>
 <h2>Outras maneiras</h2>
 <p>Há outras maneiras de se descrever circuitos combinatórios em VHDL. Dois exemplos comuns que <strong>não são  recomendados</strong> utilizam o <code>case</code> e o <code>if-else</code>. Este tipo de descrição é fácil de ser encontrado pois utiliza primitivas similares às encontradas em linguagens de programação estruturadas (e.g. C/C++, Java, etc).</p>
 <p>Os dois exemplos abaixo são de um multiplexador 2x1 com entradas <code>a</code> e <code>b</code>, saída <code>o</code> e seletor <code>s</code>.</p>
