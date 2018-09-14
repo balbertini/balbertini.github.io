@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+
+    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-125173293-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<meta name="author" content="Bruno Albertini" />
+<meta name="description" content="Como utilizar a VM com GHDL." />
+<meta name="keywords" content="vhdl, ghdl, vm">
+
+<meta property="og:site_name" content="B.Albertini's site"/>
+<meta property="og:title" content="Máquina virtual com GHDL"/>
+<meta property="og:description" content="Como utilizar a VM com GHDL."/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:url" content="https://balbertini.github.io/drafts/virtualmachineghdl-pt_BR.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-09-13 12:16:00-03:00"/>
+<meta property="article:modified_time" content="2018-09-13 12:16:00-03:00"/>
+<meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
+<meta property="article:section" content="vhdl"/>
+<meta property="article:tag" content="vhdl"/>
+<meta property="article:tag" content="ghdl"/>
+<meta property="article:tag" content="vm"/>
+<meta property="og:image" content="">
+
+  <title>B.Albertini's site &ndash; Máquina virtual com GHDL</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://balbertini.github.io">
+        <img src="https://balbertini.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="https://balbertini.github.io"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+          <li><a href="https://balbertini.github.io/pages/sobre-pt_BR.html#sobre">Sobre</a></li>
+          <li><a href="https://balbertini.github.io/pages/vhdl-pt_BR.html#vhdl">VHDL</a></li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="virtualmachineghdl">Máquina virtual com GHDL</h1>
+    <p>
+      Publicado em 13/09/2018 (Qui) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>Nas disciplinas que ministramos na Poli, usamos algumas VMs com SW pré-instalado. Neste artigo, mostrarei como usar uma dessas VMs que contém o <a href="http://ghdl.free.fr/">GHDL</a> para simular e testar funcionalmente sua descrição VHDL.</p>
+<p>Há também uma gravação de uma Live disponível no YouTube.</p>
+<p><a href="https://youtu.be/PEaDYHk8CBc">Link para o tutorial no YouTube</a></p>
+<h1>Preparando o ambiente</h1>
+<p>Comece fazendo download da máquina virtual clicando nos links abaixo:</p>
+<ul>
+<li><a href="https://drive.google.com/file/d/1_KPXSVHjk3UmFIFHAbIfzLdwWwrXGmHQ/view?usp=sharing"><code>GHDL.ova</code></a></li>
+<li><a href="https://drive.google.com/file/d/1wqwmZvWUJHamL2AnWSRm3D2B2eI7pi2f/view?usp=sharing"><code>GHDL.ova.md5sum</code></a></li>
+</ul>
+<p>O arquivo md5sum possui o hash MD5 do arquivo e não precisa ser baixado. Aconselha-se que baixe-o e verifique se o arquivo <code>GHDL.ova</code> que você baixou possui o mesmo hash contido no arquivo <code>GHDL.ova.md5sum</code>.</p>
+<p>A máquina está no formato <em>Open Virtual Appliance</em>, portanto você também precisará de um software de virtualização compatível com sua máquina e com o formato OVF 2.0 (<em>Open Virtualization Format</em>). Este artigo usará o <a href="https://www.virtualbox.org/">VirtualBox</a> como software de virtualização.</p>
+<h1>Preparando a máquina virtual</h1>
+<p>Abra o arquivo <code>GHDL.ova</code> com o seu software de virtualização (e.g. clique duas vezes, vá em <code>Arquivo/Importar Appliance</code>, etc).</p>
+<p><img alt="Adicionando a VM" src="https://balbertini.github.io/images/vmghdl1.png"></p>
+<p>Não é necessário mudar nenhum parâmetro da VM neste momento. Opcionalmente desligue os itens que não pretende utilizar, como por exemplo o controlador USB ou a placa de som. Não desabilite a placa de rede pois iremos utilizá-la para acessar a máquina. Quando estiver satisfeito, clique no botão <code>Importar</code> finalize a importação da máquina.</p>
+<p>Com a importação finalizada, a VM deve aparecer na sua lista de VMs. Com a VM selecionada, vá em <code>Máquina/Configurações</code> ou clique com o botão direito dobre a máquina e escolha <code>Configurações</code>.</p>
+<p><img alt="Configurando a VM" src="https://balbertini.github.io/images/vmghdl2.png"></p>
+<p>Na caixa que abrirá, selecione <code>Rede</code>, expanda a aba <code>Avançado</code> e clique no botão <code>Redirecionamento de Portas</code>.</p>
+<p><img alt="Redirecionamento de portas" src="https://balbertini.github.io/images/vmghdl3.png"></p>
+<p>Na tela que se abrirá, clique no botão de adicionar uma nova regra e adicione o seguinte:</p>
+<ul>
+<li><code>Nome</code>: qualquer um, no exemplo usarei "SSH"</li>
+<li><code>Protocolo</code>: TCP</li>
+<li><code>Endereço IP do Hospedeiro</code>: deixar em branco</li>
+<li><code>Porta do Hospedeiro</code>: qualquer uma alta, no exemplo usei 2222</li>
+<li><code>IP do Convidado</code>: deixar em branco</li>
+<li><code>Porta do Convidado</code>: 22</li>
+</ul>
+<p><img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vmghdl4.png"></p>
+<p>Aqui terminamos com a rede. Clique no OK e volte para a tela de configuração da máquina virtual. Dessa vez vá para aba <code>Pastas Compartilhadas</code> e use o botão para adicionar uma nova pasta.</p>
+<p><img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vmghdl5.png"></p>
+<p>No campo <code>Caminho da Pasta</code>, escolha uma pasta qualquer da sua máquina. No campo <code>Nome da Pasta</code>, coloque o nome que desejar (neste exemplo usei <em>VMShared</em>).</p>
+<p><img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vmghdl6.png"></p>
+<p>Finalizamos a configuração da VM. Clique no OK até voltar para a tela do software de virtualização.</p>
+<h1>Iniciando a máquina virtual</h1>
+<p>Antes de começar, leia esta seção toda, caso contrário você poderá ficar com o mouse e teclado capturados pela máquina virtual. Com a máquina selecionada na tela principal do software de virtualização, clique no botão <code>Iniciar</code> (botão com seta verde). A máquina irá iniciar e você verá uma tela preta com o prompt de login.</p>
+<p><img alt="Prompt de login" src="https://balbertini.github.io/images/vmghdl7.png"></p>
+<p>Se desejar logar na máquina, o usuário padrão e a senha padrão é <code>poli</code>. Contudo, não é necessário logar na máquina usando esta tela. Você pode minimizar a máquina sem problemas e deixá-la executando em segundo plano. Caso você esteja com o mouse ou apontador preso, veja a tecla de desabilitar a captura do mouse e teclado no canto direito inferior da máquina (no exemplo é Left &#8984;). Pressione essa tecla por 2s e solte. Seu mouse e teclado agora devem ser devolvidos para a sua máquina.</p>
+<h1>Acessando a máquina virtual por SSH</h1>
+<p>Uma forma mais fácil de acessar a máquina é logar via SSH. Há clientes para vários sistemas operacionais, como o <a href="https://www.putty.org">PuTTY</a> (Windows, Linux). Os sistemas operacionais baseados em *nix (e.g. MacOS e Linux) já possuem um cliente SSH pré-instalado, portanto basta abrir um terminal.</p>
+<p>No terminal aberto na sua máquina, abra uma sessão SSH para a VM através do comando <code>ssh -p2222 poli@127.0.0.1</code>. O usuário é <code>poli</code> (já especificado na linha de comando) e a senha também é <code>poli</code>. Se você escolheu outra porta no momento de adicionar a regra de redirecionamento, deverá substituir de acordo.</p>
+<div class="highlight"><pre><span></span><span class="gp">Brunos-MacBook-Pro:~ balbertini$</span> ssh -p2222 poli@127.0.0.1
+<span class="go">The authenticity of host &#39;[127.0.0.1]:2222 ([127.0.0.1]:2222)&#39; can&#39;t be established.</span>
+<span class="go">ECDSA key fingerprint is SHA256:fSLO3evzG//rjYMSM0OwLPx1XeqHPg4Sj7NTeQdVfq0.</span>
+<span class="go">Are you sure you want to continue connecting (yes/no)? yes</span>
+<span class="go">Warning: Permanently added &#39;[127.0.0.1]:2222&#39; (ECDSA) to the list of known hosts.</span>
+<span class="go">poli@127.0.0.1&#39;s password:</span>
+<span class="go">Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-30-generic x86_64)</span>
+
+<span class="go"> * Documentation:  https://help.ubuntu.com</span>
+<span class="go"> * Management:     https://landscape.canonical.com</span>
+<span class="go"> * Support:        https://ubuntu.com/advantage</span>
+
+<span class="go">Last login: Wed Aug  8 14:22:50 2018</span>
+<span class="gp">poli@ghdl:~$</span>
+</pre></div>
+
+
+<p>Caso esteja usando o PuTTY, abra um terminal e digite o comando equivalente, substituindo <code>ssh -p2222 poli@127.0.0.1</code> por <code>putty -p2222 poli@127.0.0.1</code> (Linux) ou <code>putty.exe -p2222 poli@127.0.0.1</code> (Windows).
+Se preferir usar a versão gráfica, veja um tutorial <a href="https://www.secnet.com.br/blog/ssh-com-putty">aqui</a>. As credenciais são:</p>
+<ul>
+<li><code>Host Name (or IP address)</code>: 127.0.0.1</li>
+<li><code>Port</code>: 2222 (ou a porta que você definiu no redirecionamento de portas)</li>
+<li><code>login as</code>: poli</li>
+<li><code>password</code>: poli</li>
+</ul>
+<h1>Fazendo update do VirtualBox Guest Additions</h1>
+<p>Quando estiver logado na máquina (via SSH ou via tela do software de virtualização), faça o update do módulo de <em>Guest Additions</em>. Este passo é necessário pois o módulo muda com certa frequência, então você precisa mantê-lo alinhado com a sua versão do VirtualBox. Caso sua máquina virtual já esteja com a última versão do <em>Guest Additions</em> instalada, nenhum pacote será atualizado e, dependendo de quando você fizer o download da máquina virtual, você pode pular este passo. Aproveite e faça um update do sistema operacional também.</p>
+<div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~$</span> sudo apt-get update
+<span class="gp">poli@ghdl:~$</span> sudo apt-get install virtualbox-guest-utils
+<span class="gp">poli@ghdl:~$</span> sudo apt-get upgrade
+<span class="gp">poli@ghdl:~$</span> sudo reboot
+</pre></div>
+
+
+<p>O comando do meio, <code>sudo apt-get install virtualbox-guest-utils</code> é o único passo obrigatório, os demais fica a seu critério. O último comando irá reiniciar a máquina para que possíveis atualizações da máquina surtam efeito, o que acarretará na sua desconexão. Aguarde a máquina virtual reiniciar e logue novamente.</p>
+<h1>Montando a pasta compartilhada</h1>
+<p>Precisamos primeiro criar um ponto de montagem.</p>
+<div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~$</span> mkdir shared
+</pre></div>
+
+
+<p>Depois montamos a pasta na sua máquina real (host) na máquina virtual.</p>
+<div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~$</span> sudo mount -t vboxsf -ouid<span class="o">=</span>poli,rw VMShared shared
+</pre></div>
+
+
+<p>Com isso, a pasta <code>shared</code> na máquina virtual será a mesma que a pasta que escolheu quando configurou a pasta compartilhada. Note que se você deu outro nome para o compartilhamento, deve substituir <code>VMShared</code> pelo nome que escolheu.</p>
+<h1>Usando o GHDL na máquina virtual</h1>
+<p>Você pode editar os arquivos VHDL na sua máquina real (host) normalmente, usando o editor de sua preferência (eu utilizo o <a href="https://atom.io/">Atom</a> com o pacote <code>language-vhdl</code> para o <em>syntax highlight</em>). Salve os seus arquivos na pasta compartilhada. Eles automaticamente estarão disponíveis dentro da máquina virtual, na pasta onde montou a pasta compartilhada.</p>
+<p>Para usar o GHDL, você deve passar por três fases:</p>
+<ul>
+<li>Análise: <code>ghdl -a arquivo.vhd</code></li>
+<li>Elaboração: <code>ghdl -e entidade</code></li>
+<li>Simulação: <code>ghdl -e entidade</code></li>
+</ul>
+<p>Você deve fazer a análise de todos os arquivos VHDL que for utilizar.</p>
+<div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~/shared$</span> ghdl -a shiftleft2.vhd
+<span class="gp">poli@ghdl:~/shared$</span> ghdl -a utils.vhd
+<span class="gp">poli@ghdl:~/shared$</span> ghdl -a shiftleft2_tb.vhd
+</pre></div>
+
+
+<p>Neste exemplo, analisamos os arquivos <code>shiftleft2.vhd</code>, <code>utils.vhd</code> e <code>shiftleft2_tb.vhd</code>. A análise do <code>utils.vhd</code> precisa vir antes da análise do <code>shiftleft2_tb.vhd</code> pois este último utiliza o pacote (<code>package</code>) dentro do <code>utils.vhd</code>, portanto este deve estar analisado no momento da análise da entidade que o utiliza.</p>
+<div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~/shared$</span> ghdl -e shiftleft2_tb
+<span class="gp">poli@ghdl:~/shared$</span> ghdl -r shiftleft2_tb
+<span class="go">shiftleft2_tb.vhd:44:7:@0ms:(report note): BOT</span>
+<span class="go">shiftleft2_tb.vhd:65:7:@4ns:(report note): EOT</span>
+</pre></div>
+
+
+<p>A entidade que será simulada está no <code>shiftleft2_tb.vhd</code> e chama-se <code>shiftleft2_tb</code>, portanto no exemplo elaboramos esta entidade, depois executamos a simulação com a mesma. A saída impressa são os <code>report</code> colocados no <em>testbench</em> para indicar o início e o final da simulação.</p>
+<div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~/shared$</span> ghdl -r shiftleft2_tb --vcd<span class="o">=</span>shiftleft2_tb.vcd
+<span class="go">shiftleft2_tb.vhd:44:7:@0ms:(report note): BOT</span>
+<span class="go">shiftleft2_tb.vhd:65:7:@4ns:(report note): EOT</span>
+<span class="gp">poli@ghdl:~/shared$</span>
+</pre></div>
+
+
+<p>Há diversos parâmetros que podem ser passados para a simulação. Um muito útil que pode ser visto acima é o <code>--vcd=arquivo.vcd</code>. Este parâmetro salvará a forma de onda resultante da simulação no arquivo (neste caso o <code>shiftleft2_tb.vcd</code>).</p>
+<p>Para visualizar o arquivo VCD você precisará de um programa que visualize formas de onda. Recomendo o <a href="http://gtkwave.sourceforge.net/">GTKWave</a>, disponível para várias as plataformas. Na sua máquina real (host), navegue até a pasta compartilhada e veja que os arquivos estão lá, incluindo o resultado da simulação. Você pode abrir o arquivo VCD com o seu visualizador preferido.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://balbertini.github.io/tag/vhdl.html">vhdl</a>
+      <a href="https://balbertini.github.io/tag/ghdl.html">ghdl</a>
+      <a href="https://balbertini.github.io/tag/vm.html">vm</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'balbertini';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Habilite JavaScript para ver os comentários.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy; Bruno Albertini  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - O tema <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> foi criado por <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " B.Albertini's site ",
+  "url" : "https://balbertini.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
