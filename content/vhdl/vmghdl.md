@@ -100,7 +100,7 @@ Se preferir usar a versão gráfica, veja um tutorial [aqui](https://www.secnet.
 - `password`: poli
 
 # Fazendo update do VirtualBox Guest Additions
-Quando estiver logado na máquina (via SSH ou via tela do software de virtualização), faça o update do módulo de _Guest Additions_. Este passo é necessário pois o módulo muda com certa frequência, então você precisa mantê-lo alinhado com a sua versão do VirtualBox. Caso sua máquina virtual já esteja com a última versão do _Guest Additions_ instalada, nenhum pacote será atualizado e, dependendo de quando você fizer o download da máquina virtual, você pode pular este passo. Aproveite e faça um update do sistema operacional também.
+Quando estiver logado na máquina (via SSH ou via tela do software de virtualização), faça o update do módulo de _Guest Additions_. Este passo é necessário pois o módulo muda com frequência, e você precisa mantê-lo alinhado com a sua versão do VirtualBox. Refaça este passo todas as vezes que atualizar o VirtualBox na sua máquina (host). Caso sua máquina virtual já esteja com a última versão do _Guest Additions_ instalada, nenhum pacote será atualizado e, dependendo de quando você fizer o download da máquina virtual, você pode pular este passo. Aproveite e faça um update do sistema operacional também.
 
 ```console
 poli@ghdl:~$ sudo apt-get update
@@ -118,7 +118,7 @@ Precisamos primeiro criar um ponto de montagem.
 ```console
 poli@ghdl:~$ mkdir shared
 ```
-Depois montamos a pasta na sua máquina real (host) na máquina virtual.
+Depois montamos a pasta da sua máquina real (host) na máquina virtual.
 
 ```console
 poli@ghdl:~$ sudo mount -t vboxsf -ouid=poli,rw VMShared shared
