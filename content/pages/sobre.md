@@ -9,7 +9,7 @@ Authors: Bruno Albertini
 Summary: Sobre o autor
 <!-- save_as: index.html -->
 
-### Bruno de Carvalho Albertini
+## Bruno de Carvalho Albertini
 
 Graduado em Engenharia de Computação pela [Universidade Federal do Rio Grande](https://www.furg.br/) (2005), defendeu o mestrado (2007) e o doutorado (2012) em [Ciência da Computação](http://www.ic.unicamp.br/) na [Universidade Estadual de Campinas](http://www.unicamp.br/unicamp/) na área de Arquitetura de Computadores. Atualmente exerce o cargo de Professor Doutor no [Departamento de Engenharia de Computação e Sistemas Digitais](https://pcs.usp.br) (PCS) da [Escola Politécnica](http://www.poli.usp.br/) da [Universidade de São Paulo](http://www.usp.br/) (EPUSP). Tem experiência na área de Engenharia da Computação, com ênfase em hardware, atuando principalmente com arquitetura de computadores, sistemas embarcados e redes de sensores sem fio. Filiou-se ao [Laboratório de Automação Agrícola (LAA)](http://www.laa.pcs.usp.br/) e ao [BioComp](http://www.biocomp.org.br/) em 2014, e desde então tem aplicado a sua pesquisa ao meio ambiente, biodiversidade e agricultura.
 
@@ -21,3 +21,6 @@ Representante do [TDWG](https://www.tdwg.org/) na América Latina e tesoureiro d
  | [<i class="ai ai-researcherid ai-1x"></i> ResearcherID](http://www.researcherid.com/rid/J-5779-2013 "Profile ResearcherID")
  | [<i style="font-size: 1em;" class="fab fa-stripe-s"></i> Scopus](https://www.scopus.com/authid/detail.uri?authorId=23007485000 "Profile Scopus")
  | [<i class="ai ai-orcid ai-1x"></i> ORCID](http://orcid.org/0000-0003-3738-6448 "Profile ORCID")
+
+###Contato  
+[<i style="font-size: 1em;" class="fas fa-at"></i> balbertini@usp.br](mailto:balbertini@usp.br) | <i style="font-size: 1em;color:#d9411e;" class="fas fa-phone"></i><i style="font-size: 1em;color:#d9411e;"> +55 11 3091-5394</i>

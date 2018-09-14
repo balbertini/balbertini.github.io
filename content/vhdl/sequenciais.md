@@ -7,7 +7,7 @@ Slug: sequential
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Como descrever circuitos sequenciais em VHDL.
-Status: draft
+<!-- Status: draft -->
 
 A principal característica de um **circuito sequencial** é que as saídas dependem não somente das entradas, como em um circuito combinatório, mas também das entradas passadas. Diz-se que um circuito sequencial possui um **elemento de memória** ou é dependente do tempo (esta última é discutível pois nem sempre o tempo está envolvido na sua forma explícita, como um sinal de _clock_).
 

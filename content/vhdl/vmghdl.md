@@ -7,7 +7,7 @@ Slug: virtualmachineghdl
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Como utilizar a VM com GHDL.
-Status: draft
+<!-- Status: draft -->
 
 Nas disciplinas que ministramos na Poli, usamos algumas VMs com SW pré-instalado. Neste artigo, mostrarei como usar uma dessas VMs que contém o [GHDL](http://ghdl.free.fr/) para simular e testar funcionalmente sua descrição VHDL.
 
