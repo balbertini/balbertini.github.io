@@ -87,7 +87,6 @@
     <h1 id="combinatory">Circuitos Combinatórios em VHDL</h1>
     <p>
       Publicado em 04/09/2018 (Ter) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-
     </p>
   </header>
 
@@ -248,6 +247,12 @@ Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code
 <p>As descrições acima serão sintetizadas corretamente para um multiplexador combinatório pois não possuem erros e os sintetizadores conseguirão perceber que se trata de um circuito combinatório mesmo na presença do <code>process</code>. No entanto, qualquer deslize (e.g. atribuição incompleta, esquecer um sinal na lista de sensibilidade, etc.) induzirá o sintetizador a inserir <em>latches</em> ou <em>flip-flops</em> no caminho de dados. A inserção destes elementos sequenciais em um circuito puramente combinatório pode torná-lo sequencial ou até mesmo inutilizar o circuito. O funcionamento do circuito pode não ser o esperado, diferindo da intenção do projetista.</p>
 <p>Lembre-se que estas duas últimas descrições são <strong>fortemente desencorajadas</strong> para descrever circuitos combinatórios e devem ser evitadas para este propósito. Utilize uma das três opções no começo desta página para descrever o seu circuito combinatório. <strong>Atenção:</strong> se você é meu aluno não utilize descrições de circuitos combinatórios usando <code>process</code> em nenhuma hipótese.</p>
   </div>
+
+   <div>
+     Última atualização: 2018-09-13 08:35:00-03:00
+   </div>
+
+
   <div class="tag-cloud">
     <p>
       <a href="https://balbertini.github.io/tag/vhdl.html">vhdl</a>

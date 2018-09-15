@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site - vhdl</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/vhdl.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2018-09-13T12:16:00-03:00</updated><entry><title>Máquina virtual com GHDL</title><link href="https://balbertini.github.io/virtualmachineghdl-pt_BR.html" rel="alternate"></link><published>2018-09-13T12:16:00-03:00</published><updated>2018-09-13T12:16:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-09-13:/virtualmachineghdl-pt_BR.html</id><summary type="html">&lt;p&gt;Como utilizar a VM com GHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nas disciplinas que ministramos na Poli, usamos algumas VMs com SW pré-instalado. Neste artigo, mostrarei como usar uma dessas VMs que contém o &lt;a href="http://ghdl.free.fr/"&gt;GHDL&lt;/a&gt; para simular e testar funcionalmente sua descrição VHDL.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site - vhdl</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/vhdl.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2018-09-15T10:39:00-03:00</updated><entry><title>Máquina virtual com GHDL</title><link href="https://balbertini.github.io/virtualmachineghdl-pt_BR.html" rel="alternate"></link><published>2018-09-13T12:16:00-03:00</published><updated>2018-09-15T10:39:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-09-13:/virtualmachineghdl-pt_BR.html</id><summary type="html">&lt;p&gt;Como utilizar a VM com GHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nas disciplinas que ministramos na Poli, usamos algumas VMs com SW pré-instalado. Neste artigo, mostrarei como usar uma dessas VMs que contém o &lt;a href="http://ghdl.free.fr/"&gt;GHDL&lt;/a&gt; para simular e testar funcionalmente sua descrição VHDL.&lt;/p&gt;
 &lt;p&gt;Há também uma gravação de uma Live disponível no YouTube.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://youtu.be/PEaDYHk8CBc"&gt;Link para o tutorial no YouTube&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;Preparando o ambiente&lt;/h1&gt;
 &lt;p&gt;Comece fazendo download da máquina virtual clicando nos links abaixo:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://drive.google.com/file/d/1_KPXSVHjk3UmFIFHAbIfzLdwWwrXGmHQ/view?usp=sharing"&gt;&lt;code&gt;GHDL.ova&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://drive.google.com/file/d/1wqwmZvWUJHamL2AnWSRm3D2B2eI7pi2f/view?usp=sharing"&gt;&lt;code&gt;GHDL.ova.md5sum&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://drive.google.com/file/d/1_KPXSVHjk3UmFIFHAbIfzLdwWwrXGmHQ" target="_blank"&gt;&lt;i style="font-size: 1em;" class="fas fa-download"&gt;&lt;/i&gt; GHDL.ova&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://drive.google.com/file/d/1wqwmZvWUJHamL2AnWSRm3D2B2eI7pi2f" target="_blank"&gt;&lt;i style="font-size: 1em;" class="fas fa-download"&gt;&lt;/i&gt; GHDL.ova.md5sum&lt;/a&gt;  &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;O arquivo md5sum possui o hash MD5 do arquivo e não precisa ser baixado. Aconselha-se que baixe-o e verifique se o arquivo &lt;code&gt;GHDL.ova&lt;/code&gt; que você baixou possui o mesmo hash contido no arquivo &lt;code&gt;GHDL.ova.md5sum&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;A máquina está no formato &lt;em&gt;Open Virtual Appliance&lt;/em&gt;, portanto você também precisará de um software de virtualização compatível com sua máquina e com o formato OVF 2.0 (&lt;em&gt;Open Virtualization Format&lt;/em&gt;). Este artigo usará o &lt;a href="https://www.virtualbox.org/"&gt;VirtualBox&lt;/a&gt; como software de virtualização.&lt;/p&gt;
@@ -18,33 +18,33 @@
 &lt;p&gt;&lt;img alt="Configurando a VM" src="https://balbertini.github.io/images/vmghdl2.png"&gt;&lt;/p&gt;
 &lt;p&gt;Na caixa que abrirá, selecione &lt;code&gt;Rede&lt;/code&gt;, expanda a aba &lt;code&gt;Avançado&lt;/code&gt; e clique no botão &lt;code&gt;Redirecionamento de Portas&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Redirecionamento de portas" src="https://balbertini.github.io/images/vmghdl3.png"&gt;&lt;/p&gt;
-&lt;p&gt;Na tela que se abrirá, clique no botão de adicionar uma nova regra e adicione o seguinte:&lt;/p&gt;
+&lt;p&gt;Na tela que se abrirá, você deve ver uma regra pré-carregada. Confira os dados ou caso não veja nenhuma regra, clique no botão de adicionar uma nova regra e adicione o seguinte:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Nome&lt;/code&gt;: qualquer um, no exemplo usarei "SSH"&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Protocolo&lt;/code&gt;: TCP&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Endereço IP do Hospedeiro&lt;/code&gt;: deixar em branco&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Porta do Hospedeiro&lt;/code&gt;: qualquer uma alta, no exemplo usei 2222&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Porta do Hospedeiro&lt;/code&gt;: qualquer uma alta, no exemplo usei 5022&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;IP do Convidado&lt;/code&gt;: deixar em branco&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Porta do Convidado&lt;/code&gt;: 22&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vmghdl4.png"&gt;&lt;/p&gt;
-&lt;p&gt;Aqui terminamos com a rede. Clique no OK e volte para a tela de configuração da máquina virtual. Dessa vez vá para aba &lt;code&gt;Pastas Compartilhadas&lt;/code&gt; e use o botão para adicionar uma nova pasta.&lt;/p&gt;
+&lt;p&gt;Note que a imagem não mostra todos os campos. Configure todos como na lista acima. Aqui terminamos com a rede. Clique no OK e volte para a tela de configuração da máquina virtual. Dessa vez vá para aba &lt;code&gt;Pastas Compartilhadas&lt;/code&gt; e use o botão para adicionar uma nova pasta.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vmghdl5.png"&gt;&lt;/p&gt;
-&lt;p&gt;No campo &lt;code&gt;Caminho da Pasta&lt;/code&gt;, escolha uma pasta qualquer da sua máquina. No campo &lt;code&gt;Nome da Pasta&lt;/code&gt;, coloque o nome que desejar (neste exemplo usei &lt;em&gt;VMShared&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;No campo &lt;code&gt;Caminho da Pasta&lt;/code&gt;, escolha uma pasta qualquer da sua máquina. No campo &lt;code&gt;Nome da Pasta&lt;/code&gt;, coloque o nome que desejar (neste exemplo usei &lt;em&gt;VMShared&lt;/em&gt;). O &lt;code&gt;Caminho da Pasta&lt;/code&gt; é a pasta na sua máquina real (host) e o &lt;code&gt;Nome da Pasta&lt;/code&gt; é o nome do compartilhamento. A pasta que você escolher em &lt;code&gt;Caminho da Pasta&lt;/code&gt; será compartilhada com a máquina virtual na montagem da pasta compartilhada, portanto escolha uma pasta onde vai colocar os arquivos. Resumo: a pasta que você escolher em &lt;code&gt;Caminho da Pasta&lt;/code&gt; será exatamente a mesma dentro da máquina virtual: o que você colocar/editar em uma aparece na outra e vice-versa.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vmghdl6.png"&gt;&lt;/p&gt;
 &lt;p&gt;Finalizamos a configuração da VM. Clique no OK até voltar para a tela do software de virtualização.&lt;/p&gt;
 &lt;h1&gt;Iniciando a máquina virtual&lt;/h1&gt;
 &lt;p&gt;Antes de começar, leia esta seção toda, caso contrário você poderá ficar com o mouse e teclado capturados pela máquina virtual. Com a máquina selecionada na tela principal do software de virtualização, clique no botão &lt;code&gt;Iniciar&lt;/code&gt; (botão com seta verde). A máquina irá iniciar e você verá uma tela preta com o prompt de login.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Prompt de login" src="https://balbertini.github.io/images/vmghdl7.png"&gt;&lt;/p&gt;
-&lt;p&gt;Se desejar logar na máquina, o usuário padrão e a senha padrão é &lt;code&gt;poli&lt;/code&gt;. Contudo, não é necessário logar na máquina usando esta tela. Você pode minimizar a máquina sem problemas e deixá-la executando em segundo plano. Caso você esteja com o mouse ou apontador preso, veja a tecla de desabilitar a captura do mouse e teclado no canto direito inferior da máquina (no exemplo é Left &amp;#8984;). Pressione essa tecla por 2s e solte. Seu mouse e teclado agora devem ser devolvidos para a sua máquina.&lt;/p&gt;
+&lt;p&gt;A tela inicial pode ser que esteja toda preta, nesse caso, pressione qualquer tecla (e.g. enter) para habilitar o prompt de login. Se desejar logar na máquina, o usuário padrão e a senha padrão é &lt;code&gt;poli&lt;/code&gt;. Contudo, não é necessário logar na máquina usando esta tela, a próxima seção mostrará como logar via SSH. Caso você esteja com o mouse ou apontador preso, veja a tecla de desabilitar a captura do mouse e teclado no canto direito inferior da máquina (no exemplo é Left &amp;#8984;). Pressione essa tecla por 2s e solte. Seu mouse e teclado agora devem ser devolvidos para a sua máquina.&lt;/p&gt;
 &lt;h1&gt;Acessando a máquina virtual por SSH&lt;/h1&gt;
 &lt;p&gt;Uma forma mais fácil de acessar a máquina é logar via SSH. Há clientes para vários sistemas operacionais, como o &lt;a href="https://www.putty.org"&gt;PuTTY&lt;/a&gt; (Windows, Linux). Os sistemas operacionais baseados em *nix (e.g. MacOS e Linux) já possuem um cliente SSH pré-instalado, portanto basta abrir um terminal.&lt;/p&gt;
-&lt;p&gt;No terminal aberto na sua máquina, abra uma sessão SSH para a VM através do comando &lt;code&gt;ssh -p2222 poli@127.0.0.1&lt;/code&gt;. O usuário é &lt;code&gt;poli&lt;/code&gt; (já especificado na linha de comando) e a senha também é &lt;code&gt;poli&lt;/code&gt;. Se você escolheu outra porta no momento de adicionar a regra de redirecionamento, deverá substituir de acordo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;Brunos-MacBook-Pro:~ balbertini$&lt;/span&gt; ssh -p2222 poli@127.0.0.1
-&lt;span class="go"&gt;The authenticity of host &amp;#39;[127.0.0.1]:2222 ([127.0.0.1]:2222)&amp;#39; can&amp;#39;t be established.&lt;/span&gt;
+&lt;p&gt;No terminal aberto na sua máquina, abra uma sessão SSH para a VM através do comando &lt;code&gt;ssh -p5022 poli@127.0.0.1&lt;/code&gt;. O usuário é &lt;code&gt;poli&lt;/code&gt; (já especificado na linha de comando) e a senha também é &lt;code&gt;poli&lt;/code&gt;. Se você escolheu outra porta no momento de adicionar a regra de redirecionamento, deverá substituir de acordo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;Brunos-MacBook-Pro:~ balbertini$&lt;/span&gt; ssh -p5022 poli@127.0.0.1
+&lt;span class="go"&gt;The authenticity of host &amp;#39;[127.0.0.1]:5022 ([127.0.0.1]:5022)&amp;#39; can&amp;#39;t be established.&lt;/span&gt;
 &lt;span class="go"&gt;ECDSA key fingerprint is SHA256:fSLO3evzG//rjYMSM0OwLPx1XeqHPg4Sj7NTeQdVfq0.&lt;/span&gt;
 &lt;span class="go"&gt;Are you sure you want to continue connecting (yes/no)? yes&lt;/span&gt;
-&lt;span class="go"&gt;Warning: Permanently added &amp;#39;[127.0.0.1]:2222&amp;#39; (ECDSA) to the list of known hosts.&lt;/span&gt;
+&lt;span class="go"&gt;Warning: Permanently added &amp;#39;[127.0.0.1]:5022&amp;#39; (ECDSA) to the list of known hosts.&lt;/span&gt;
 &lt;span class="go"&gt;poli@127.0.0.1&amp;#39;s password:&lt;/span&gt;
 &lt;span class="go"&gt;Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-30-generic x86_64)&lt;/span&gt;
 
@@ -57,14 +57,21 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Caso esteja usando o PuTTY, abra um terminal e digite o comando equivalente, substituindo &lt;code&gt;ssh -p2222 poli@127.0.0.1&lt;/code&gt; por &lt;code&gt;putty -p2222 poli@127.0.0.1&lt;/code&gt; (Linux) ou &lt;code&gt;putty.exe -p2222 poli@127.0.0.1&lt;/code&gt; (Windows).
+&lt;p&gt;Caso esteja usando o PuTTY, abra um terminal e digite o comando equivalente, substituindo &lt;code&gt;ssh -p5022 poli@127.0.0.1&lt;/code&gt; por &lt;code&gt;putty -p5022 poli@127.0.0.1&lt;/code&gt; (Linux) ou &lt;code&gt;putty.exe -p5022 poli@127.0.0.1&lt;/code&gt; (Windows).
 Se preferir usar a versão gráfica, veja um tutorial &lt;a href="https://www.secnet.com.br/blog/ssh-com-putty"&gt;aqui&lt;/a&gt;. As credenciais são:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Host Name (or IP address)&lt;/code&gt;: 127.0.0.1&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Port&lt;/code&gt;: 2222 (ou a porta que você definiu no redirecionamento de portas)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Port&lt;/code&gt;: 5022 (ou a porta que você definiu no redirecionamento de portas)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;login as&lt;/code&gt;: poli&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;password&lt;/code&gt;: poli&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;password&lt;/code&gt;: poli (esta é a mesma senha usada para o sudo)&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;O acesso via SSH é opcional, mas facilitará bastante. Caso opte por não fazê-lo, logue diretamente na tela do seu software de virtualização. Se acessar via SSH, você pode minimizar a máquina virtual e deixá-la executando em segundo plano.&lt;/p&gt;
+&lt;h1&gt;Reconfigurando o teclado&lt;/h1&gt;
+&lt;p&gt;Caso tenha problemas com o layout do seu teclado, use o comando abaixo para mudá-lo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;poli@ghdl:~$&lt;/span&gt; sudo dpkg-reconfigure keyboard-configuration
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h1&gt;Fazendo update do VirtualBox Guest Additions&lt;/h1&gt;
 &lt;p&gt;Quando estiver logado na máquina (via SSH ou via tela do software de virtualização), faça o update do módulo de &lt;em&gt;Guest Additions&lt;/em&gt;. Este passo é necessário pois o módulo muda com frequência, e você precisa mantê-lo alinhado com a sua versão do VirtualBox. Refaça este passo todas as vezes que atualizar o VirtualBox na sua máquina (host). Caso sua máquina virtual já esteja com a última versão do &lt;em&gt;Guest Additions&lt;/em&gt; instalada, nenhum pacote será atualizado e, dependendo de quando você fizer o download da máquina virtual, você pode pular este passo. Aproveite e faça um update do sistema operacional também.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;poli@ghdl:~$&lt;/span&gt; sudo apt-get update
