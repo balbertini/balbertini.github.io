@@ -1,6 +1,6 @@
 Title: Máquina virtual com GHDL
 Date: 2018-09-13 12:16
-Modified: 2018-09-13 12:16
+Modified: 2018-09-15 10:39
 Category: vhdl
 Tags: vhdl, ghdl, vm
 Slug: virtualmachineghdl
@@ -17,8 +17,8 @@ Há também uma gravação de uma Live disponível no YouTube.
 # Preparando o ambiente
 Comece fazendo download da máquina virtual clicando nos links abaixo:
 
-- [`GHDL.ova`](https://drive.google.com/file/d/1_KPXSVHjk3UmFIFHAbIfzLdwWwrXGmHQ/view?usp=sharing)
-- [`GHDL.ova.md5sum`](https://drive.google.com/file/d/1wqwmZvWUJHamL2AnWSRm3D2B2eI7pi2f/view?usp=sharing)
+- <a href="https://drive.google.com/file/d/1_KPXSVHjk3UmFIFHAbIfzLdwWwrXGmHQ" target="_blank"><i style="font-size: 1em;" class="fas fa-download"></i> GHDL.ova</a>  
+- <a href="https://drive.google.com/file/d/1wqwmZvWUJHamL2AnWSRm3D2B2eI7pi2f" target="_blank"><i style="font-size: 1em;" class="fas fa-download"></i> GHDL.ova.md5sum</a>  
 
 O arquivo md5sum possui o hash MD5 do arquivo e não precisa ser baixado. Aconselha-se que baixe-o e verifique se o arquivo `GHDL.ova` que você baixou possui o mesmo hash contido no arquivo `GHDL.ova.md5sum`.
 
@@ -39,22 +39,22 @@ Na caixa que abrirá, selecione `Rede`, expanda a aba `Avançado` e clique no bo
 
 ![Redirecionamento de portas]({filename}/images/vmghdl3.png)
 
-Na tela que se abrirá, clique no botão de adicionar uma nova regra e adicione o seguinte:
+Na tela que se abrirá, você deve ver uma regra pré-carregada. Confira os dados ou caso não veja nenhuma regra, clique no botão de adicionar uma nova regra e adicione o seguinte:
 
 * `Nome`: qualquer um, no exemplo usarei "SSH"
 * `Protocolo`: TCP
 * `Endereço IP do Hospedeiro`: deixar em branco
-* `Porta do Hospedeiro`: qualquer uma alta, no exemplo usei 2222
+* `Porta do Hospedeiro`: qualquer uma alta, no exemplo usei 5022
 * `IP do Convidado`: deixar em branco
 * `Porta do Convidado`: 22
 
 ![Regra de redirecionamento]({filename}/images/vmghdl4.png)
 
-Aqui terminamos com a rede. Clique no OK e volte para a tela de configuração da máquina virtual. Dessa vez vá para aba `Pastas Compartilhadas` e use o botão para adicionar uma nova pasta.
+Note que a imagem não mostra todos os campos. Configure todos como na lista acima. Aqui terminamos com a rede. Clique no OK e volte para a tela de configuração da máquina virtual. Dessa vez vá para aba `Pastas Compartilhadas` e use o botão para adicionar uma nova pasta.
 
 ![Regra de redirecionamento]({filename}/images/vmghdl5.png)
 
-No campo `Caminho da Pasta`, escolha uma pasta qualquer da sua máquina. No campo `Nome da Pasta`, coloque o nome que desejar (neste exemplo usei _VMShared_).
+No campo `Caminho da Pasta`, escolha uma pasta qualquer da sua máquina. No campo `Nome da Pasta`, coloque o nome que desejar (neste exemplo usei _VMShared_). O `Caminho da Pasta` é a pasta na sua máquina real (host) e o `Nome da Pasta` é o nome do compartilhamento. A pasta que você escolher em `Caminho da Pasta` será compartilhada com a máquina virtual na montagem da pasta compartilhada, portanto escolha uma pasta onde vai colocar os arquivos. Resumo: a pasta que você escolher em `Caminho da Pasta` será exatamente a mesma dentro da máquina virtual: o que você colocar/editar em uma aparece na outra e vice-versa.
 
 ![Regra de redirecionamento]({filename}/images/vmghdl6.png)
 
@@ -65,20 +65,20 @@ Antes de começar, leia esta seção toda, caso contrário você poderá ficar c
 
 ![Prompt de login]({filename}/images/vmghdl7.png)
 
-Se desejar logar na máquina, o usuário padrão e a senha padrão é `poli`. Contudo, não é necessário logar na máquina usando esta tela. Você pode minimizar a máquina sem problemas e deixá-la executando em segundo plano. Caso você esteja com o mouse ou apontador preso, veja a tecla de desabilitar a captura do mouse e teclado no canto direito inferior da máquina (no exemplo é Left &#8984;). Pressione essa tecla por 2s e solte. Seu mouse e teclado agora devem ser devolvidos para a sua máquina.
+A tela inicial pode ser que esteja toda preta, nesse caso, pressione qualquer tecla (e.g. enter) para habilitar o prompt de login. Se desejar logar na máquina, o usuário padrão e a senha padrão é `poli`. Contudo, não é necessário logar na máquina usando esta tela, a próxima seção mostrará como logar via SSH. Caso você esteja com o mouse ou apontador preso, veja a tecla de desabilitar a captura do mouse e teclado no canto direito inferior da máquina (no exemplo é Left &#8984;). Pressione essa tecla por 2s e solte. Seu mouse e teclado agora devem ser devolvidos para a sua máquina.
 
 
 # Acessando a máquina virtual por SSH
 Uma forma mais fácil de acessar a máquina é logar via SSH. Há clientes para vários sistemas operacionais, como o [PuTTY](https://www.putty.org) (Windows, Linux). Os sistemas operacionais baseados em \*nix (e.g. MacOS e Linux) já possuem um cliente SSH pré-instalado, portanto basta abrir um terminal.
 
-No terminal aberto na sua máquina, abra uma sessão SSH para a VM através do comando `ssh -p2222 poli@127.0.0.1`. O usuário é `poli` (já especificado na linha de comando) e a senha também é `poli`. Se você escolheu outra porta no momento de adicionar a regra de redirecionamento, deverá substituir de acordo.
+No terminal aberto na sua máquina, abra uma sessão SSH para a VM através do comando `ssh -p5022 poli@127.0.0.1`. O usuário é `poli` (já especificado na linha de comando) e a senha também é `poli`. Se você escolheu outra porta no momento de adicionar a regra de redirecionamento, deverá substituir de acordo.
 
 ```console
-Brunos-MacBook-Pro:~ balbertini$ ssh -p2222 poli@127.0.0.1
-The authenticity of host '[127.0.0.1]:2222 ([127.0.0.1]:2222)' can't be established.
+Brunos-MacBook-Pro:~ balbertini$ ssh -p5022 poli@127.0.0.1
+The authenticity of host '[127.0.0.1]:5022 ([127.0.0.1]:5022)' can't be established.
 ECDSA key fingerprint is SHA256:fSLO3evzG//rjYMSM0OwLPx1XeqHPg4Sj7NTeQdVfq0.
 Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added '[127.0.0.1]:2222' (ECDSA) to the list of known hosts.
+Warning: Permanently added '[127.0.0.1]:5022' (ECDSA) to the list of known hosts.
 poli@127.0.0.1's password:
 Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-30-generic x86_64)
 
@@ -90,13 +90,21 @@ Last login: Wed Aug  8 14:22:50 2018
 poli@ghdl:~$
 ```
 
-Caso esteja usando o PuTTY, abra um terminal e digite o comando equivalente, substituindo `ssh -p2222 poli@127.0.0.1` por `putty -p2222 poli@127.0.0.1` (Linux) ou `putty.exe -p2222 poli@127.0.0.1` (Windows).
+Caso esteja usando o PuTTY, abra um terminal e digite o comando equivalente, substituindo `ssh -p5022 poli@127.0.0.1` por `putty -p5022 poli@127.0.0.1` (Linux) ou `putty.exe -p5022 poli@127.0.0.1` (Windows).
 Se preferir usar a versão gráfica, veja um tutorial [aqui](https://www.secnet.com.br/blog/ssh-com-putty). As credenciais são:
 
 - `Host Name (or IP address)`: 127.0.0.1
-- `Port`: 2222 (ou a porta que você definiu no redirecionamento de portas)
+- `Port`: 5022 (ou a porta que você definiu no redirecionamento de portas)
 - `login as`: poli
-- `password`: poli
+- `password`: poli (esta é a mesma senha usada para o sudo)
+
+O acesso via SSH é opcional, mas facilitará bastante. Caso opte por não fazê-lo, logue diretamente na tela do seu software de virtualização. Se acessar via SSH, você pode minimizar a máquina virtual e deixá-la executando em segundo plano.
+
+# Reconfigurando o teclado
+Caso tenha problemas com o layout do seu teclado, use o comando abaixo para mudá-lo.
+```console
+poli@ghdl:~$ sudo dpkg-reconfigure keyboard-configuration
+```
 
 # Fazendo update do VirtualBox Guest Additions
 Quando estiver logado na máquina (via SSH ou via tela do software de virtualização), faça o update do módulo de _Guest Additions_. Este passo é necessário pois o módulo muda com frequência, e você precisa mantê-lo alinhado com a sua versão do VirtualBox. Refaça este passo todas as vezes que atualizar o VirtualBox na sua máquina (host). Caso sua máquina virtual já esteja com a última versão do _Guest Additions_ instalada, nenhum pacote será atualizado e, dependendo de quando você fizer o download da máquina virtual, você pode pular este passo. Aproveite e faça um update do sistema operacional também.

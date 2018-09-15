@@ -22,7 +22,6 @@
       {{ _('Posted on %(when)s in %(category)s',
            when=article.locale_date,
            category='<a href="%s/%s">%s</a>'|format(SITEURL, article.category.url, article.category)|safe) }}
-
       {% if 'post_stats' in PLUGINS %}
         &#8226; {{ article.stats['read_mins'] }} min read
       {% endif %}
@@ -42,6 +41,14 @@
   <div>
     {{ article.content }}
   </div>
+
+  {% if article.modified %}
+   <div>
+     Última atualização: {{ article.modified }}
+   </div>
+  {% endif %}
+
+
   <div class="tag-cloud">
     <p>
       {% if article.tags %}
