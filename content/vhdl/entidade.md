@@ -7,7 +7,7 @@ Slug: vhdlentity
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Entidades em VHDL.
-Status: draft
+<!-- Status: draft -->
 
 Toda descrição em VHDL segue um padrão base de uma entidade e uma arquitetura. Neste artigo, explicarei como funciona cada uma das duas estruturas e como elas se relacionam.
 
@@ -28,7 +28,7 @@ end nome_da_entidade;
 <img src='{filename}/images/entidade.png' width="20%" align="right" style="padding-left:5%" />
 No caso do VHDL, a entidade segue o mesmo princípio que você pensou para definir as entradas e saídas da máquina de refrigerantes, mas obviamente estamos descrevendo um circuito digital, então as entradas e saídas são digitais. A palavra reservada `generic` é opcional e não será explicada neste artigo. Na entidade, quem declara os sinais que são usados para modelar as suas entradas e saídas é a palavra reservada `port`. O `port` tem a seguinte sintaxe: `port(porta1; porta2; porta3);`. Pode-se colocar quantas portas desejar na sua descrição, separadas por ponto e vírgula `;`. Note que a última porta declarada não tem `;` pois o parênteses `)` fecha a declaração. O último `;` pertence à declaração do `port` e não à uma porta específica.
 
-Cada porta em VHDL deve ser descrita com o formato `nome: direção tipo`. O nome pode ser o que você desejar, desde que seja um nome válido em VHDL. O tipo da porta define qual tipo de dados será utilizado para aquela porta e pode ser [qualquer tipo suportado]({filename}../vhdl/tiposdedados.md). Quanto a direção, há quatro direções possíveis: `in`, `out`, `buffer` ou `inout`. O `in` é uma entrada e, como tal, só pode ser lida pelo seu componente. Analogamente, o `out` indica uma saída, que só pode ser escrita pelo seu componente (note que **não** pode ser lida). As direções de saída `buffer` e `inout` devem ser evitados (o motivo está [no final do artigo](#bufferEinout)).
+Cada porta em VHDL deve ser descrita com o formato `nome: direção tipo`. O nome pode ser o que você desejar, desde que seja um nome válido em VHDL. O tipo da porta define qual tipo de dados será utilizado para aquela porta e pode ser [qualquer tipo suportado]({filename}../vhdl/tiposdedadosbasicos.md). Quanto a direção, há quatro direções possíveis: `in`, `out`, `buffer` ou `inout`. O `in` é uma entrada e, como tal, só pode ser lida pelo seu componente. Analogamente, o `out` indica uma saída, que só pode ser escrita pelo seu componente (note que **não** pode ser lida). As direções de saída `buffer` e `inout` devem ser evitados (o motivo está [no final do artigo](#bufferEinout)).
 
 ### Exemplo
 <img src='{filename}/images/mux2x1_entidade.png' width="70%"/>

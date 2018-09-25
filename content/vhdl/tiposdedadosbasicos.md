@@ -7,7 +7,7 @@ Slug: vhdlbasicdatatypes
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Tipos de dados básicos existentes em VHDL.
-Status: draft
+<!-- Status: draft -->
 
 Um tipo de dado é uma classificação do conjunto possível de valores que determinado item pode assumir. VHDL é uma linguagem fortemente tipada, o que significa que a escolha do tipo de dado para um sinal, variável ou constante é de suma importância pois, para converter de um tipo ao outro, devemos utilizar funções de conversão. Uma vantagem de se utilizar uma linguagem fortemente tipada é que o sintetizador pode perceber a maioria dos erros cometidos pelos projetistas Exemplos: atribuir um grupo de sinais de 4 bits para um grupo de 8 bits; atribuir um grupo de bits sem representação numérica para um grupo de bits representando um inteiro.
 
