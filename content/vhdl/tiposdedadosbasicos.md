@@ -1,12 +1,12 @@
-Title: Tipos de Dados em VHDL
+Title: Tipos de Dados Básicos em VHDL
 Date: 2018-09-15 10:56
 Modified: 2018-09-15 10:56
 Category: vhdl
 Tags: vhdl, tipos
-Slug: vhdldatatypes
+Slug: vhdlbasicdatatypes
 Lang: pt_BR
 Authors: Bruno Albertini
-Summary: Tipos de dados existentes em VHDL e como declará-los.
+Summary: Tipos de dados básicos existentes em VHDL.
 Status: draft
 
 Um tipo de dado é uma classificação do conjunto possível de valores que determinado item pode assumir. VHDL é uma linguagem fortemente tipada, o que significa que a escolha do tipo de dado para um sinal, variável ou constante é de suma importância pois, para converter de um tipo ao outro, devemos utilizar funções de conversão. Uma vantagem de se utilizar uma linguagem fortemente tipada é que o sintetizador pode perceber a maioria dos erros cometidos pelos projetistas Exemplos: atribuir um grupo de sinais de 4 bits para um grupo de 8 bits; atribuir um grupo de bits sem representação numérica para um grupo de bits representando um inteiro.
@@ -16,19 +16,18 @@ Um tipo de dado é uma classificação do conjunto possível de valores que dete
 O tipo de dado implicitamente influencia na síntese do seu circuito. Neste artigo veremos os tipos de dados mais comuns em VHDL e como utilizá-los.
 
 # Tipos pré-definidos
-Os tipos de VHDL são definidos pelos padrões IEEE 1076 e IEEE 1164. São divididos em escalares, vetores, enumerados e compostos. Todos os tipos pré-definidos estão na biblioteca `std.standard`, que é incluida implicitamente em todos os projetos de VHDL (não é necessário incluí-la).
+Os tipos de VHDL são definidos pelos padrões IEEE 1076 e IEEE 1164. São divididos em escalares, vetores, enumerados e compostos. Todos os tipos pré-definidos estão na biblioteca `std.standard`, que é incluída implicitamente em todos os projetos de VHDL (não é necessário incluí-la).
 
   | Tipo        | Categoria | Sintetizável? | Valores                  |
   | ----------: | :-------: | :-----------: |:------------------------ |
   | `bit`       | enumerado | Sim           | `0` ou `1`               |
   | `boolean`   | enumerado | Sim           | `FALSE` ou `TRUE`        |
-  | `integer`   | escalar   | Sim           | -2147483648 a 2147483648 |
   | `real`      | escalar   | Não           | -1.0E38 a +1.0E38        |
   | `character` | enumerado | Não           | ASCII                    |
 
-O tipo `bit` é o mais utilizado. O `boolean` é útil para tomadas de decisão. O `real` normalmente é tratado como um número de ponto flutuante de precisão dupla. O `character` representa um grupo de 8 bits correspondentes aos 256 caracteres da tabela ASCII. Note que estes dois últimos **não são sintetizáveis**, portanto não devem ser utilizados como entradas ou saídas dos módulos. Apesar de não serem sintetizáveis, estes tipos são úteis para mensagens (e.g. escrever um caractere na saída da simulação indicando algo) ou para especificar grandezas (e.g. especificar atrasos).
+O tipo `bit` é o mais utilizado. O `boolean` é útil para tomadas de decisão, como por exemplo em condições para um `if-else`. É importante notar que há um mapeamento direto entre `FALSE` e `0`, e entre `TRUE` e `1`, portanto `FALSE`<`TRUE`.  O `real` normalmente é tratado como um número de ponto flutuante de precisão dupla. O `character` representa um grupo de 8 bits correspondentes aos 256 caracteres da tabela ASCII. Note que estes dois últimos **não são sintetizáveis**, portanto não devem ser utilizados como entradas ou saídas dos módulos. Apesar de não serem sintetizáveis, estes tipos são úteis durante as simulações.
 
-O tipo `integer` é tratado de forma diferente e possui subtipos.
+O tipo `integer` tamém é bastante utilizado e possui dois subtipos padrões:
 
   | Tipo        | Categoria | Sintetizável? | Valores                  |
   | ----------: | :-------: | :-----------: |:------------------------ |
@@ -36,12 +35,12 @@ O tipo `integer` é tratado de forma diferente e possui subtipos.
   | `natural`   | escalar   | Sim           | 0 a 2147483648           |
   | `positive`  | escalar   | Sim           | 1 a 2147483648           |
 
-A especificação da linguagem não limita o número de bits do inteiro, mas a maioria das ferramentas utiliza inteiros de 32 bits. A forma de interpretação também não é definida, mas a maioria das ferramentas interpreta como uma representação em complemento de dois. Os tipos `natural` e `positive` são apenas limitações nos valores que um objeto deste tipo poderá assumir. É possível declarar inteiros com sua própria limitação. Por exemplo:
+A especificação da linguagem não limita o número de bits do inteiro, mas a maioria das ferramentas utiliza inteiros de 32 bits. A forma de interpretação também não é definida, mas a maioria das ferramentas interpreta como uma representação em complemento de dois. Os tipos `natural` e `positive` são apenas limitações nos valores que um objeto deste tipo poderá assumir. É possível declarar inteiros com uma limitação personalizada:
 
 ```vhdl
 signal meusinal : integer range -8 to 7;
 ```
- Declara o `meusinal` como um inteiro de 4 bits. Contudo, valores maiores que a implementação da ferramenta de síntese não são possíveis, portanto de precisar de um inteiro maior que 32 bits veja se sua ferramenta suporta ou utilize vetores. A utilização da limitação, tanto explícita como acima com quando utilizando os tipos pré-definidos `natural` e `positive` é útil pois, se em algum momento da simulação for feita a tentativa de atribuir um valor fora da faixa permitida, o simulador irá emitir uma mensagem de erro. Além disso, usar a limitação explícita diminui o número de bits utilizados para a representação, o que economizará portas lógicas no seu circuito. Pense assim: por que você precisa de um somador de 32 bits se seus inteiros só vão assumir valores de -8 a 7?
+ O trecho acima declara o `meusinal` como um inteiro de 4 bits. Contudo, valores maiores que a implementação da ferramenta de síntese não são possíveis, portanto de precisar de um inteiro maior que 32 bits veja se sua ferramenta suporta inteiros grandes ou utilize vetores. A utilização da limitação do inteiro (com `range` ou usando os subtipos `natural` e `positive`) ajuda na detecção de erros pois, se em algum momento da simulação for feita a tentativa de atribuir um valor fora da faixa permitida, o simulador irá emitir uma mensagem de erro. Além disso, usar a limitação explícita diminui o número de bits utilizados para a representação, o que economizará portas lógicas no seu circuito. Pense assim: por que você precisa de um somador de 32 bits se seus inteiros só vão assumir valores de -16 a 15?
 
 Os tipos `bit` e `character` tem também suas versões em vetores:
 
@@ -61,11 +60,48 @@ Há ainda dois tipos que não são sintetizáveis mas são importantes em VHDL:
 
 O tipo `severity_level` é usado em _testbenchs_ para informar a gravidade do problema encontrado. O tipo `time` é usado para descrever a temporização do circuito, tanto em descrições temporizadas quanto em _testbenchs_. Os valores de tempo são acompanhados dos multiplicadores que indicam a escala de tempo: `fs`(fentosegundos), `ps`(picosegungos), `ns`(nanosegundos), `us`(microsegundos), `ms`(milisegundos), `sec` (segundos), `min` (minutos) e `hr`(horas).
 
-No exemplo abaixo, a mensagem "Teste" será impressa na tela e o `sinal` assumirá o valor `entrada`, mas somente após 10ns. 
+No exemplo abaixo, a mensagem "Teste" será impressa na tela e o `sinal` assumirá o valor `entrada`, mas somente após 10ns.
 ```vhdl
 report "Teste" severity note;
 sinal <= entrada after 10 ns;
 ```
+
+
+
+# Pacote IEEE 1164
+Um dos pacotes mais utilizados em VHDL é o `std_logic_1164` da biblioteca `ieee`, que define um MVL (lógica multivariada, ou o nome completo _Multivalue Logic System for VHDL Model Interoperability_). Pra usar este pacote, é necessário incluir a declaração de uso no preambulo do seu projeto.
+
+```vhdl
+library ieee;
+use ieee.std_logic_1164.all;
+```
+
+O tipo de dado primário definido nesta biblioteca é o `std_ulogic` (_standard unresolved logic_), que pode assumir outros valores usados em projeto digital além dos valores ideais `0` e `1`. Esta modelagem de valores é mais próxima do mundo real, mas deve ser utilizada com cuidado.
+
+
+  | Valor | Significado                        |
+  | ----: | :--------------------------------: |
+  | `U`	  | Não inicializado (_uninitialized_) |
+  | `X`	  | Desconhecido (forte)               |
+  | `0`	  | Zero (forte)                       |
+  | `1`	  | Um (forte)                         |
+  | `Z`	  | Alta impedância (_tri-state_)      |
+  | `W`	  | Desconhecido (fraco)               |
+  | `L`	  | Zero (fraco)                       |
+  | `H`	  | Um (fraco)                         |
+  | `-`	  | Qualquer um (_don't care_)         |
+
+
+O valor `U` não foi pensado para ser utilizado pelo projetista mas sim pelas ferramentas de simulação. Quando seu circuito é simulado, um sinal em `U` significa que até aquele momento não houve nenhuma atribuição para aquele sinal. Isso é muito útil para depuração pois permite diferenciar um sinal que nunca foi atribuído de um que foi atribuído com zero, por exemplo. É especialmente útil para detectar o esquecimento do acionamento do _reset_ de um circuito, pois normalmente os projetistas acabam negligenciando o _reset_ antes de começar a simular.
+
+Já o `X` e o `W` indicam valores que estão fora do escopo naquele ponto do projeto. Atribuir o valor `X` para um sinal não é uma boa prática, mas ele também é útil em uma simulação. Quando aparecer um sinal com valor `X` ou `W` na sua simulação, muito provavelmente houve mais de uma atribuição para o mesmo sinal e elas são divergentes (e.g. uma atribuição `0` e uma `1` em pontos diferentes da sua descrição). Se sua simulação tem um destes valores, corrija-o antes de sintetizar o seu circuito pois este valor não existe no mundo real: o circuito vai efetivamente assumir `1` ou `0`, fechando um curto-circuito.
+
+
+Note também que o `X` **não representa** o _don't care_ mas sim um valor desconhecido. Como a letra X é utilizada para o _don't care_ nos métodos manuais (e.g. mapa de Karnaugh), é comum a confusão entre os dois valores.
+
+A diferença entre um valor _forte_ e _fraco_ é apenas que os fracos indicam a utilização de resistores de _pull-up_ ou _pull-down_, portanto se uma saída `H` for ligada a uma saída `0`, o sinal será `0` e não há problemas além do consumo extra ocasionado pelo resistor. Contudo, se uma saída forte `1` for ligada a uma saída `0`, o resultado é um curto-circuito e possível dano ao circuito. Você pode livremente atribuir `H`, `1`, `L` ou `0` para um sinal, e ambos serão sintetizados similarmente, mas as versões `H` e `L` provavelmente usarão portas com tecnologia de dreno aberto (_open-drain_) ou similar, permitindo a utilização de resistores de _pull-up_ ou _pull-down_.
+
+Se a plataforma alvo não suportar buffers _tri-state_ o valor `Z` não será sintetizado, mas as ferramentas normalmente conseguem inferir um decisor baseado em multiplexador para substituir a escolha de qual saída será colocada no sinal.  ou portas _open-drain_, os valores `Z`, `H` e `L` não serão sintetizados. Os valores `H` e `L` serão mapeados
 
 
 # Qual tipo utilizar?

@@ -19,7 +19,7 @@ Há diversos programas que suportam descrições em HDL. Para começar no seu mu
 
 O GHDL é um simulador de código aberto para a linguagem VHDL somente, mantido pelo desenvolvedor Tristan Gingold. Permite que você compile e simule sua descrição na sua máquina usando um compilador nativo, o que é bem rápido em comparação aos outros simuladores desta página. Contudo, o GHDL não faz síntese nem simulação temporizada (exceto se você descrever seu circuito usando temporização explícita no VHDL).
 
-Este é o simulador usado para corrigir os exercícios de Sistemas Digitais.
+Este é o simulador usado para corrigir os exercícios de Sistemas Digitais. Os professores mantém uma máquina virtual com GHDL instalado, atualizado e funcionando, e esta máquina está disponível para os alunos. Veja [este artigo]({filename}vmghdl.md) se deseja trabalhar com esta máquina virtual.
 
 ### Active-HDL
 [<i style="font-size: 1em;" class="fas fa-download"></i> Download](https://www.aldec.com/students/student.php?id=9) |
