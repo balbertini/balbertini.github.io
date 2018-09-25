@@ -8,7 +8,13 @@ Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Lista de posts com VHDL
 
+
+## Simuladores
 [Simuladores e sintetizadores de HDL]({filename}../vhdl/simuladores.md)  
 [Como utilizar a VM com GHDL]({filename}../vhdl/vmghdl.md)  
-[Circuitos Combinatórios em VHDL]({filename}../vhdl/combinatorio.md)  
-[Circuitos Sequenciais em VHDL]({filename}../vhdl/sequenciais.md)  
+
+## Básico
+[Tipos de dados básicos em VHDL]({filename}../vhdl/tiposdedadosbasicos.md)  
+[Entidade]({filename}../vhdl/entidade.md)  
+[Circuitos combinatórios em VHDL]({filename}../vhdl/combinatorio.md)  
+[Circuitos sequenciais em VHDL]({filename}../vhdl/sequenciais.md)  
