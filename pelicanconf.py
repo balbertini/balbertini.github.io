@@ -11,11 +11,12 @@ PATH = 'content'
 
 TIMEZONE = 'America/Sao_Paulo'
 
-PLUGIN_PATHS = ["/Users/balbertini/GIT/sitePessoal/pelican-plugins"]
+PLUGIN_PATHS = ["/home/balbertini/GIT/sitePessoal/pelican-plugins"]
 # Enable i18n plugin, probably you already have some others here.
-PLUGINS = ['i18n_subsites']
+PLUGINS = ['i18n_subsites', 'render_math',]
 # Enable Jinja2 i18n extension used to parse translations.
-JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
+JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n'],}
+
 
 DEFAULT_LANG = u'pt_BR'
 # DEFAULT_LANG = u'pt_BR'
