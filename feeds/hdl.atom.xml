@@ -5,7 +5,7 @@
 &lt;a href="http://ghdl.free.fr/"&gt;&lt;i style="font-size: 1em;" class="fas fa-file-alt"&gt;&lt;/i&gt; Página&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;HDLs:&lt;/strong&gt; VHDL | &lt;strong&gt;SOs:&lt;/strong&gt; &lt;i style="font-size: 1em;" class="fab fa-windows"&gt;&lt;/i&gt; &lt;i style="font-size: 1em;" class="fab fa-linux"&gt;&lt;/i&gt; &lt;i style="font-size: 1em;" class="fab fa-apple"&gt;&lt;/i&gt;&lt;/p&gt;
 &lt;p&gt;O GHDL é um simulador de código aberto para a linguagem VHDL somente, mantido pelo desenvolvedor Tristan Gingold. Permite que você compile e simule sua descrição na sua máquina usando um compilador nativo, o que é bem rápido em comparação aos outros simuladores desta página. Contudo, o GHDL não faz síntese nem simulação temporizada (exceto se você descrever seu circuito usando temporização explícita no VHDL).&lt;/p&gt;
-&lt;p&gt;Este é o simulador usado para corrigir os exercícios de Sistemas Digitais.&lt;/p&gt;
+&lt;p&gt;Este é o simulador usado para corrigir os exercícios de Sistemas Digitais. Os professores mantém uma máquina virtual com GHDL instalado, atualizado e funcionando, e esta máquina está disponível para os alunos. Veja &lt;a href="https://balbertini.github.io/virtualmachineghdl-pt_BR.html"&gt;este artigo&lt;/a&gt; se deseja trabalhar com esta máquina virtual.&lt;/p&gt;
 &lt;h3&gt;Active-HDL&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://www.aldec.com/students/student.php?id=9"&gt;&lt;i style="font-size: 1em;" class="fas fa-download"&gt;&lt;/i&gt; Download&lt;/a&gt; |
 &lt;a href="https://www.aldec.com/en/products/fpga_simulation/active_hdl_student"&gt;&lt;i style="font-size: 1em;" class="fas fa-file-alt"&gt;&lt;/i&gt; Página&lt;/a&gt;&lt;/p&gt;

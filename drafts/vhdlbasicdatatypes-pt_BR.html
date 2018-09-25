@@ -34,14 +34,14 @@
 <!-- End Google Analytics -->
 
 <meta name="author" content="Bruno Albertini" />
-<meta name="description" content="Tipos de dados existentes em VHDL e como declará-los." />
+<meta name="description" content="Tipos de dados básicos existentes em VHDL." />
 <meta name="keywords" content="vhdl, tipos">
 
 <meta property="og:site_name" content="B.Albertini's site"/>
-<meta property="og:title" content="Tipos de Dados em VHDL"/>
-<meta property="og:description" content="Tipos de dados existentes em VHDL e como declará-los."/>
+<meta property="og:title" content="Tipos de Dados Básicos em VHDL"/>
+<meta property="og:description" content="Tipos de dados básicos existentes em VHDL."/>
 <meta property="og:locale" content="pt_BR"/>
-<meta property="og:url" content="https://balbertini.github.io/drafts/vhdldatatypes-pt_BR.html"/>
+<meta property="og:url" content="https://balbertini.github.io/drafts/vhdlbasicdatatypes-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2018-09-15 10:56:00-03:00"/>
 <meta property="article:modified_time" content="2018-09-15 10:56:00-03:00"/>
@@ -51,7 +51,7 @@
 <meta property="article:tag" content="tipos"/>
 <meta property="og:image" content="">
 
-  <title>B.Albertini's site &ndash; Tipos de Dados em VHDL</title>
+  <title>B.Albertini's site &ndash; Tipos de Dados Básicos em VHDL</title>
 
 </head>
 <body>
@@ -84,7 +84,7 @@
 <article class="single">
   <header>
       
-    <h1 id="vhdldatatypes">Tipos de Dados em VHDL</h1>
+    <h1 id="vhdlbasicdatatypes">Tipos de Dados Básicos em VHDL</h1>
     <p>
       Publicado em 15/09/2018 (SÃ¡b) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
     </p>
@@ -96,7 +96,7 @@
 <p>É importante salientar que, apesar de usar um estilo programático, a linguagem VHDL é uma linguagem de descrição de hardware, portanto no final da síntese todos os tipos assumem valores altos ou baixos. Os conceitos de tipos das linguagens de programação não existem em nenhuma HDL e esse é um dos erros mais comuns dos projetistas de hardware. Lembre-se: você não está descrevendo um programa e sim um hardware.</p>
 <p>O tipo de dado implicitamente influencia na síntese do seu circuito. Neste artigo veremos os tipos de dados mais comuns em VHDL e como utilizá-los.</p>
 <h1>Tipos pré-definidos</h1>
-<p>Os tipos de VHDL são definidos pelos padrões IEEE 1076 e IEEE 1164. São divididos em escalares, vetores, enumerados e compostos. Todos os tipos pré-definidos estão na biblioteca <code>std.standard</code>, que é incluida implicitamente em todos os projetos de VHDL (não é necessário incluí-la).</p>
+<p>Os tipos de VHDL são definidos pelos padrões IEEE 1076 e IEEE 1164. São divididos em escalares, vetores, enumerados e compostos. Todos os tipos pré-definidos estão na biblioteca <code>std.standard</code>, que é incluída implicitamente em todos os projetos de VHDL (não é necessário incluí-la).</p>
 <table>
 <thead>
 <tr>
@@ -120,12 +120,6 @@
 <td align="left"><code>FALSE</code> ou <code>TRUE</code></td>
 </tr>
 <tr>
-<td align="right"><code>integer</code></td>
-<td align="center">escalar</td>
-<td align="center">Sim</td>
-<td align="left">-2147483648 a 2147483648</td>
-</tr>
-<tr>
 <td align="right"><code>real</code></td>
 <td align="center">escalar</td>
 <td align="center">Não</td>
@@ -139,8 +133,8 @@
 </tr>
 </tbody>
 </table>
-<p>O tipo <code>bit</code> é o mais utilizado. O <code>boolean</code> é útil para tomadas de decisão. O <code>real</code> normalmente é tratado como um número de ponto flutuante de precisão dupla. O <code>character</code> representa um grupo de 8 bits correspondentes aos 256 caracteres da tabela ASCII. Note que estes dois últimos <strong>não são sintetizáveis</strong>, portanto não devem ser utilizados como entradas ou saídas dos módulos. Apesar de não serem sintetizáveis, estes tipos são úteis para mensagens (e.g. escrever um caractere na saída da simulação indicando algo) ou para especificar grandezas (e.g. especificar atrasos).</p>
-<p>O tipo <code>integer</code> é tratado de forma diferente e possui subtipos.</p>
+<p>O tipo <code>bit</code> é o mais utilizado. O <code>boolean</code> é útil para tomadas de decisão, como por exemplo em condições para um <code>if-else</code>. É importante notar que há um mapeamento direto entre <code>FALSE</code> e <code>0</code>, e entre <code>TRUE</code> e <code>1</code>, portanto <code>FALSE</code>&lt;<code>TRUE</code>.  O <code>real</code> normalmente é tratado como um número de ponto flutuante de precisão dupla. O <code>character</code> representa um grupo de 8 bits correspondentes aos 256 caracteres da tabela ASCII. Note que estes dois últimos <strong>não são sintetizáveis</strong>, portanto não devem ser utilizados como entradas ou saídas dos módulos. Apesar de não serem sintetizáveis, estes tipos são úteis durante as simulações.</p>
+<p>O tipo <code>integer</code> tamém é bastante utilizado e possui dois subtipos padrões:</p>
 <table>
 <thead>
 <tr>
@@ -171,12 +165,12 @@
 </tr>
 </tbody>
 </table>
-<p>A especificação da linguagem não limita o número de bits do inteiro, mas a maioria das ferramentas utiliza inteiros de 32 bits. A forma de interpretação também não é definida, mas a maioria das ferramentas interpreta como uma representação em complemento de dois. Os tipos <code>natural</code> e <code>positive</code> são apenas limitações nos valores que um objeto deste tipo poderá assumir. É possível declarar inteiros com sua própria limitação. Por exemplo:</p>
+<p>A especificação da linguagem não limita o número de bits do inteiro, mas a maioria das ferramentas utiliza inteiros de 32 bits. A forma de interpretação também não é definida, mas a maioria das ferramentas interpreta como uma representação em complemento de dois. Os tipos <code>natural</code> e <code>positive</code> são apenas limitações nos valores que um objeto deste tipo poderá assumir. É possível declarar inteiros com uma limitação personalizada:</p>
 <div class="highlight"><pre><span></span><span class="k">signal</span> <span class="n">meusinal</span> <span class="o">:</span> <span class="kt">integer</span> <span class="k">range</span> <span class="o">-</span><span class="mi">8</span> <span class="k">to</span> <span class="mi">7</span><span class="p">;</span>
 </pre></div>
 
 
-<p>Declara o <code>meusinal</code> como um inteiro de 4 bits. Contudo, valores maiores que a implementação da ferramenta de síntese não são possíveis, portanto de precisar de um inteiro maior que 32 bits veja se sua ferramenta suporta ou utilize vetores. A utilização da limitação, tanto explícita como acima com quando utilizando os tipos pré-definidos <code>natural</code> e <code>positive</code> é útil pois, se em algum momento da simulação for feita a tentativa de atribuir um valor fora da faixa permitida, o simulador irá emitir uma mensagem de erro. Além disso, usar a limitação explícita diminui o número de bits utilizados para a representação, o que economizará portas lógicas no seu circuito. Pense assim: por que você precisa de um somador de 32 bits se seus inteiros só vão assumir valores de -8 a 7?</p>
+<p>O trecho acima declara o <code>meusinal</code> como um inteiro de 4 bits. Contudo, valores maiores que a implementação da ferramenta de síntese não são possíveis, portanto de precisar de um inteiro maior que 32 bits veja se sua ferramenta suporta inteiros grandes ou utilize vetores. A utilização da limitação do inteiro (com <code>range</code> ou usando os subtipos <code>natural</code> e <code>positive</code>) ajuda na detecção de erros pois, se em algum momento da simulação for feita a tentativa de atribuir um valor fora da faixa permitida, o simulador irá emitir uma mensagem de erro. Além disso, usar a limitação explícita diminui o número de bits utilizados para a representação, o que economizará portas lógicas no seu circuito. Pense assim: por que você precisa de um somador de 32 bits se seus inteiros só vão assumir valores de -16 a 15?</p>
 <p>Os tipos <code>bit</code> e <code>character</code> tem também suas versões em vetores:</p>
 <table>
 <thead>
@@ -229,12 +223,71 @@
 </tbody>
 </table>
 <p>O tipo <code>severity_level</code> é usado em <em>testbenchs</em> para informar a gravidade do problema encontrado. O tipo <code>time</code> é usado para descrever a temporização do circuito, tanto em descrições temporizadas quanto em <em>testbenchs</em>. Os valores de tempo são acompanhados dos multiplicadores que indicam a escala de tempo: <code>fs</code>(fentosegundos), <code>ps</code>(picosegungos), <code>ns</code>(nanosegundos), <code>us</code>(microsegundos), <code>ms</code>(milisegundos), <code>sec</code> (segundos), <code>min</code> (minutos) e <code>hr</code>(horas).</p>
-<p>No exemplo abaixo, a mensagem "Teste" será impressa na tela e o <code>sinal</code> assumirá o valor <code>entrada</code>, mas somente após 10ns. </p>
+<p>No exemplo abaixo, a mensagem "Teste" será impressa na tela e o <code>sinal</code> assumirá o valor <code>entrada</code>, mas somente após 10ns.</p>
 <div class="highlight"><pre><span></span><span class="n">report</span> <span class="s">&quot;Teste&quot;</span> <span class="k">severity</span> <span class="n">note</span><span class="p">;</span>
 <span class="n">sinal</span> <span class="o">&lt;=</span> <span class="n">entrada</span> <span class="k">after</span> <span class="mi">10</span> <span class="n">ns</span><span class="p">;</span>
 </pre></div>
 
 
+<h1>Pacote IEEE 1164</h1>
+<p>Um dos pacotes mais utilizados em VHDL é o <code>std_logic_1164</code> da biblioteca <code>ieee</code>, que define um MVL (lógica multivariada, ou o nome completo <em>Multivalue Logic System for VHDL Model Interoperability</em>). Pra usar este pacote, é necessário incluir a declaração de uso no preambulo do seu projeto.</p>
+<div class="highlight"><pre><span></span><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">ieee.std_logic_1164.</span><span class="k">all</span><span class="p">;</span>
+</pre></div>
+
+
+<p>O tipo de dado primário definido nesta biblioteca é o <code>std_ulogic</code> (<em>standard unresolved logic</em>), que pode assumir outros valores usados em projeto digital além dos valores ideais <code>0</code> e <code>1</code>. Esta modelagem de valores é mais próxima do mundo real, mas deve ser utilizada com cuidado.</p>
+<table>
+<thead>
+<tr>
+<th align="right">Valor</th>
+<th align="center">Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><code>U</code></td>
+<td align="center">Não inicializado (<em>uninitialized</em>)</td>
+</tr>
+<tr>
+<td align="right"><code>X</code></td>
+<td align="center">Desconhecido (forte)</td>
+</tr>
+<tr>
+<td align="right"><code>0</code></td>
+<td align="center">Zero (forte)</td>
+</tr>
+<tr>
+<td align="right"><code>1</code></td>
+<td align="center">Um (forte)</td>
+</tr>
+<tr>
+<td align="right"><code>Z</code></td>
+<td align="center">Alta impedância (<em>tri-state</em>)</td>
+</tr>
+<tr>
+<td align="right"><code>W</code></td>
+<td align="center">Desconhecido (fraco)</td>
+</tr>
+<tr>
+<td align="right"><code>L</code></td>
+<td align="center">Zero (fraco)</td>
+</tr>
+<tr>
+<td align="right"><code>H</code></td>
+<td align="center">Um (fraco)</td>
+</tr>
+<tr>
+<td align="right"><code>-</code></td>
+<td align="center">Qualquer um (<em>don't care</em>)</td>
+</tr>
+</tbody>
+</table>
+<p>O valor <code>U</code> não foi pensado para ser utilizado pelo projetista mas sim pelas ferramentas de simulação. Quando seu circuito é simulado, um sinal em <code>U</code> significa que até aquele momento não houve nenhuma atribuição para aquele sinal. Isso é muito útil para depuração pois permite diferenciar um sinal que nunca foi atribuído de um que foi atribuído com zero, por exemplo. É especialmente útil para detectar o esquecimento do acionamento do <em>reset</em> de um circuito, pois normalmente os projetistas acabam negligenciando o <em>reset</em> antes de começar a simular.</p>
+<p>Já o <code>X</code> e o <code>W</code> indicam valores que estão fora do escopo naquele ponto do projeto. Atribuir o valor <code>X</code> para um sinal não é uma boa prática, mas ele também é útil em uma simulação. Quando aparecer um sinal com valor <code>X</code> ou <code>W</code> na sua simulação, muito provavelmente houve mais de uma atribuição para o mesmo sinal e elas são divergentes (e.g. uma atribuição <code>0</code> e uma <code>1</code> em pontos diferentes da sua descrição). Se sua simulação tem um destes valores, corrija-o antes de sintetizar o seu circuito pois este valor não existe no mundo real: o circuito vai efetivamente assumir <code>1</code> ou <code>0</code>, fechando um curto-circuito.</p>
+<p>Note também que o <code>X</code> <strong>não representa</strong> o <em>don't care</em> mas sim um valor desconhecido. Como a letra X é utilizada para o <em>don't care</em> nos métodos manuais (e.g. mapa de Karnaugh), é comum a confusão entre os dois valores.</p>
+<p>A diferença entre um valor <em>forte</em> e <em>fraco</em> é apenas que os fracos indicam a utilização de resistores de <em>pull-up</em> ou <em>pull-down</em>, portanto se uma saída <code>H</code> for ligada a uma saída <code>0</code>, o sinal será <code>0</code> e não há problemas além do consumo extra ocasionado pelo resistor. Contudo, se uma saída forte <code>1</code> for ligada a uma saída <code>0</code>, o resultado é um curto-circuito e possível dano ao circuito. Você pode livremente atribuir <code>H</code>, <code>1</code>, <code>L</code> ou <code>0</code> para um sinal, e ambos serão sintetizados similarmente, mas as versões <code>H</code> e <code>L</code> provavelmente usarão portas com tecnologia de dreno aberto (<em>open-drain</em>) ou similar, permitindo a utilização de resistores de <em>pull-up</em> ou <em>pull-down</em>.</p>
+<p>Se a plataforma alvo não suportar buffers <em>tri-state</em> o valor <code>Z</code> não será sintetizado, mas as ferramentas normalmente conseguem inferir um decisor baseado em multiplexador para substituir a escolha de qual saída será colocada no sinal.  ou portas <em>open-drain</em>, os valores <code>Z</code>, <code>H</code> e <code>L</code> não serão sintetizados. Os valores <code>H</code> e <code>L</code> serão mapeados</p>
 <h1>Qual tipo utilizar?</h1>
 <p>Não existe uma regra de que tipo utilizar, mas há várias dicas de como utilizar melhor a infraestrutura de tipos em VHDL.</p>
 <p>A primeira dica é usar o bom senso. Se você está projetando uma unidade aritmética (e.g. multiplicador), faz pleno sentido que as entradas e saídas sejam <code>unsigned</code> ou <code>signed</code> de acordo com a maneira como o multiplicador as interpreta. Contudo, se você está projetando um multiplexador, não faz sentido usar um tipo de dados com interpretação embutida pois o multiplexador não opera sobre os dados. Nesse caso, utilize o tipo <code>bit</code> ou <code>std_logic</code>.</p>

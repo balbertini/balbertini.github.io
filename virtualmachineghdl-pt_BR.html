@@ -93,7 +93,7 @@
 
 
   <div>
-    <p>Nas disciplinas que ministramos na Poli, usamos algumas VMs com SW pré-instalado. Neste artigo, mostrarei como usar uma dessas VMs que contém o <a href="http://ghdl.free.fr/">GHDL</a> para simular e testar funcionalmente sua descrição VHDL.</p>
+    <p>O GHDL é um simulador de VHDL que gera código nativo, o que significa que as simulações são muito rápidas. Contudo, foi escrito em ADA, uma linguagem na iminência de ser considerada exótica. Como vários professores de Sistemas Digitais usam este software para corrigir os exercícios dados nas disciplinas teóricas, mantemos uma máquina virtual com uma versão recente do GHDL instalada, que também compartilhamos com os alunos. Neste artigo, mostrarei como usar uma VM que contém o <a href="http://ghdl.free.fr/">GHDL</a> para simular e testar funcionalmente sua descrição VHDL.</p>
 <p>Há também uma gravação de uma Live disponível no YouTube.</p>
 <p><a href="https://youtu.be/PEaDYHk8CBc">Link para o tutorial no YouTube</a></p>
 <h1>Preparando o ambiente</h1>
@@ -128,11 +128,11 @@
 <p><img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vmghdl6.png"></p>
 <p>Finalizamos a configuração da VM. Clique no OK até voltar para a tela do software de virtualização.</p>
 <h1>Iniciando a máquina virtual</h1>
-<p>Antes de começar, leia esta seção toda, caso contrário você poderá ficar com o mouse e teclado capturados pela máquina virtual. Com a máquina selecionada na tela principal do software de virtualização, clique no botão <code>Iniciar</code> (botão com seta verde). A máquina irá iniciar e você verá uma tela preta com o prompt de login.</p>
+<p>Antes de começar, leia esta seção toda, caso contrário você poderá ficar com o mouse e teclado capturados pela máquina virtual. Com a máquina selecionada na tela principal do software de virtualização, clique no botão <code>Iniciar</code> (botão com seta verde). A máquina irá iniciar e você verá uma tela preta com o <em>prompt</em> de login. Esta tela é como se fosse a tela de outro computador, com a diferença que ele é virtual.</p>
 <p><img alt="Prompt de login" src="https://balbertini.github.io/images/vmghdl7.png"></p>
-<p>A tela inicial pode ser que esteja toda preta, nesse caso, pressione qualquer tecla (e.g. enter) para habilitar o prompt de login. Se desejar logar na máquina, o usuário padrão e a senha padrão é <code>poli</code>. Contudo, não é necessário logar na máquina usando esta tela, a próxima seção mostrará como logar via SSH. Caso você esteja com o mouse ou apontador preso, veja a tecla de desabilitar a captura do mouse e teclado no canto direito inferior da máquina (no exemplo é Left &#8984;). Pressione essa tecla por 2s e solte. Seu mouse e teclado agora devem ser devolvidos para a sua máquina.</p>
+<p>Dependendo da configuração da sua máquina, a tela inicial estará toda preta; nesse caso, pressione qualquer tecla (e.g. enter) para habilitar o <em>prompt</em> de login. Se desejar logar na máquina, clique na tela e utilize o usuário padrão e a senha padrão, que é <code>poli</code> para ambos. Contudo, esta máquina não tem interface gráfica para ficar mais rápida e diminuir o tamanho do download (você pode instalar se desejar, mas o tamanho da máquina aumentará consideravelmente). Se você está confortável com sistemas em modo texto, pule a próxima seção e utilize esta tela para o restante deste artigo, caso contrário a próxima seção mostrará como logar via SSH. Caso você esteja com o mouse ou apontador presona sua máquina virtual, veja a tecla de desabilitar a captura do mouse e teclado no canto direito inferior da máquina (no exemplo é Left &#8984;). Pressione essa tecla por 2s e solte. Seu mouse e teclado agora devem ser devolvidos para a sua máquina.</p>
 <h1>Acessando a máquina virtual por SSH</h1>
-<p>Uma forma mais fácil de acessar a máquina é logar via SSH. Há clientes para vários sistemas operacionais, como o <a href="https://www.putty.org">PuTTY</a> (Windows, Linux). Os sistemas operacionais baseados em *nix (e.g. MacOS e Linux) já possuem um cliente SSH pré-instalado, portanto basta abrir um terminal.</p>
+<p>Uma forma mais fácil de acessar a máquina é logar via SSH, pois assim você pode aproveitar todos os benefícios da sua própria máquina, como interface gráfica e editores modernos, usando o SHH apenas para executar o GHDL. Há clientes SSH para vários sistemas operacionais, como o <a href="https://www.putty.org">PuTTY</a> (Windows, Linux). Os sistemas operacionais baseados em *nix (e.g. MacOS e Linux) e algumas versões do Windows (e.g. Windows 10) já possuem um cliente SSH pré-instalado, portanto basta abrir um terminal (no Windows, o terminal chama-se <code>cmd.exe</code>e pode ser acessado pelo menu principal/executar/cmd.exe).</p>
 <p>No terminal aberto na sua máquina, abra uma sessão SSH para a VM através do comando <code>ssh -p5022 poli@127.0.0.1</code>. O usuário é <code>poli</code> (já especificado na linha de comando) e a senha também é <code>poli</code>. Se você escolheu outra porta no momento de adicionar a regra de redirecionamento, deverá substituir de acordo.</p>
 <div class="highlight"><pre><span></span><span class="gp">Brunos-MacBook-Pro:~ balbertini$</span> ssh -p5022 poli@127.0.0.1
 <span class="go">The authenticity of host &#39;[127.0.0.1]:5022 ([127.0.0.1]:5022)&#39; can&#39;t be established.</span>
@@ -151,6 +151,7 @@
 </pre></div>
 
 
+<p>No primeiro acesso, seu cliente vai mostrar a chave de criptografia do servidor SSH executando na máquina virtual. Aceite com <em>yes</em> e o cliente solicitará a senha do usuário <code>poli</code>, que também é <code>poli</code>.</p>
 <p>Caso esteja usando o PuTTY, abra um terminal e digite o comando equivalente, substituindo <code>ssh -p5022 poli@127.0.0.1</code> por <code>putty -p5022 poli@127.0.0.1</code> (Linux) ou <code>putty.exe -p5022 poli@127.0.0.1</code> (Windows).
 Se preferir usar a versão gráfica, veja um tutorial <a href="https://www.secnet.com.br/blog/ssh-com-putty">aqui</a>. As credenciais são:</p>
 <ul>
@@ -167,7 +168,7 @@ Se preferir usar a versão gráfica, veja um tutorial <a href="https://www.secne
 
 
 <h1>Fazendo update do VirtualBox Guest Additions</h1>
-<p>Quando estiver logado na máquina (via SSH ou via tela do software de virtualização), faça o update do módulo de <em>Guest Additions</em>. Este passo é necessário pois o módulo muda com frequência, e você precisa mantê-lo alinhado com a sua versão do VirtualBox. Refaça este passo todas as vezes que atualizar o VirtualBox na sua máquina (host). Caso sua máquina virtual já esteja com a última versão do <em>Guest Additions</em> instalada, nenhum pacote será atualizado e, dependendo de quando você fizer o download da máquina virtual, você pode pular este passo. Aproveite e faça um update do sistema operacional também.</p>
+<p>Quando estiver logado na máquina virtual (via SSH ou via tela do software de virtualização), faça o update do módulo de <em>Guest Additions</em>. Este passo é necessário pois o módulo muda com frequência, e você precisa mantê-lo alinhado com a sua versão do VirtualBox. Refaça este passo todas as vezes que atualizar o VirtualBox na sua máquina real (<em>host</em>). Caso sua máquina virtual já esteja com a última versão do <em>Guest Additions</em> instalada, nenhum pacote será atualizado e, dependendo de quando você fizer o download da máquina virtual, você pode pular este passo. Aproveite e faça um update do sistema operacional também.</p>
 <div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~$</span> sudo apt-get update
 <span class="gp">poli@ghdl:~$</span> sudo apt-get install virtualbox-guest-utils
 <span class="gp">poli@ghdl:~$</span> sudo apt-get upgrade
@@ -177,7 +178,7 @@ Se preferir usar a versão gráfica, veja um tutorial <a href="https://www.secne
 
 <p>O comando do meio, <code>sudo apt-get install virtualbox-guest-utils</code> é o único passo obrigatório, os demais fica a seu critério. O último comando irá reiniciar a máquina para que possíveis atualizações da máquina surtam efeito, o que acarretará na sua desconexão. Aguarde a máquina virtual reiniciar e logue novamente.</p>
 <h1>Montando a pasta compartilhada</h1>
-<p>Precisamos primeiro criar um ponto de montagem.</p>
+<p>Precisamos primeiro criar um ponto de montagem, que nada mais é que um diretório na máquina virtual.</p>
 <div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~$</span> mkdir shared
 </pre></div>
 
@@ -189,14 +190,14 @@ Se preferir usar a versão gráfica, veja um tutorial <a href="https://www.secne
 
 <p>Com isso, a pasta <code>shared</code> na máquina virtual será a mesma que a pasta que escolheu quando configurou a pasta compartilhada. Note que se você deu outro nome para o compartilhamento, deve substituir <code>VMShared</code> pelo nome que escolheu.</p>
 <h1>Usando o GHDL na máquina virtual</h1>
-<p>Você pode editar os arquivos VHDL na sua máquina real (host) normalmente, usando o editor de sua preferência (eu utilizo o <a href="https://atom.io/">Atom</a> com o pacote <code>language-vhdl</code> para o <em>syntax highlight</em>). Salve os seus arquivos na pasta compartilhada. Eles automaticamente estarão disponíveis dentro da máquina virtual, na pasta onde montou a pasta compartilhada.</p>
+<p>Você pode editar os arquivos VHDL na sua máquina real (<em>host</em>) normalmente, usando o editor de sua preferência (eu utilizo o <a href="https://atom.io/">Atom</a> com o pacote <code>language-vhdl</code> para o <em>syntax highlight</em>). Sempre salve os seus arquivos na pasta compartilhada na sua máquina real e eles automaticamente estarão disponíveis dentro da máquina virtual, na pasta onde montou a pasta compartilhada.</p>
 <p>Para usar o GHDL, você deve passar por três fases:</p>
 <ul>
 <li>Análise: <code>ghdl -a arquivo.vhd</code></li>
 <li>Elaboração: <code>ghdl -e entidade</code></li>
 <li>Simulação: <code>ghdl -e entidade</code></li>
 </ul>
-<p>Você deve fazer a análise de todos os arquivos VHDL que for utilizar.</p>
+<p>Você deve fazer a análise de todos os arquivos VHDL que for utilizar. Na análise, o GHDL irá verificar erros de sintaxe e verificará se os componentes necessários estão todos presentes.</p>
 <div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~/shared$</span> ghdl -a shiftleft2.vhd
 <span class="gp">poli@ghdl:~/shared$</span> ghdl -a utils.vhd
 <span class="gp">poli@ghdl:~/shared$</span> ghdl -a shiftleft2_tb.vhd
@@ -204,14 +205,20 @@ Se preferir usar a versão gráfica, veja um tutorial <a href="https://www.secne
 
 
 <p>Neste exemplo, analisamos os arquivos <code>shiftleft2.vhd</code>, <code>utils.vhd</code> e <code>shiftleft2_tb.vhd</code>. A análise do <code>utils.vhd</code> precisa vir antes da análise do <code>shiftleft2_tb.vhd</code> pois este último utiliza o pacote (<code>package</code>) dentro do <code>utils.vhd</code>, portanto este deve estar analisado no momento da análise da entidade que o utiliza.</p>
+<p>Com todos os arquivos analisados, vamos para a fase de elaboração. Nesta fase, o GHDL irá montar o simulador com a entidade desejada, ligando de fato todos os componentes e verificando erros semânticos.</p>
 <div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~/shared$</span> ghdl -e shiftleft2_tb
-<span class="gp">poli@ghdl:~/shared$</span> ghdl -r shiftleft2_tb
+</pre></div>
+
+
+<p>Agora que a entidade a ser executada está elaborada, podemos executar a simulação em si:</p>
+<div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~/shared$</span> ghdl -r shiftleft2_tb
 <span class="go">shiftleft2_tb.vhd:44:7:@0ms:(report note): BOT</span>
 <span class="go">shiftleft2_tb.vhd:65:7:@4ns:(report note): EOT</span>
 </pre></div>
 
 
-<p>A entidade que será simulada está no <code>shiftleft2_tb.vhd</code> e chama-se <code>shiftleft2_tb</code>, portanto no exemplo elaboramos esta entidade, depois executamos a simulação com a mesma. A saída impressa são os <code>report</code> colocados no <em>testbench</em> para indicar o início e o final da simulação.</p>
+<p>A entidade que será simulada está no <code>shiftleft2_tb.vhd</code> e chama-se <code>shiftleft2_tb</code>, portanto no exemplo elaboramos esta entidade, depois executamos a simulação com a mesma. Esta entidade representa um <em>testbench</em> escrito em VHDL. A saída impressa são provenientes dos comandos <code>report</code> colocados no <em>testbench</em> para indicar o início e o final da simulação.</p>
+<p>Ainda podemos passar alguns parâmetros para o simulador:</p>
 <div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~/shared$</span> ghdl -r shiftleft2_tb --vcd<span class="o">=</span>shiftleft2_tb.vcd
 <span class="go">shiftleft2_tb.vhd:44:7:@0ms:(report note): BOT</span>
 <span class="go">shiftleft2_tb.vhd:65:7:@4ns:(report note): EOT</span>
@@ -219,8 +226,7 @@ Se preferir usar a versão gráfica, veja um tutorial <a href="https://www.secne
 </pre></div>
 
 
-<p>Há diversos parâmetros que podem ser passados para a simulação. Um muito útil que pode ser visto acima é o <code>--vcd=arquivo.vcd</code>. Este parâmetro salvará a forma de onda resultante da simulação no arquivo (neste caso o <code>shiftleft2_tb.vcd</code>).</p>
-<p>Para visualizar o arquivo VCD você precisará de um programa que visualize formas de onda. Recomendo o <a href="http://gtkwave.sourceforge.net/">GTKWave</a>, disponível para várias as plataformas. Na sua máquina real (host), navegue até a pasta compartilhada e veja que os arquivos estão lá, incluindo o resultado da simulação. Você pode abrir o arquivo VCD com o seu visualizador preferido.</p>
+<p>Há diversos parâmetros que podem ser passados para a simulação. Um muito útil que pode ser visto acima é o <code>--vcd=arquivo.vcd</code>. Este parâmetro salvará a forma de onda resultante da simulação no arquivo (neste caso o <code>shiftleft2_tb.vcd</code>). Para visualizar o arquivo VCD você precisará de um programa que visualize formas de onda. Recomendo o <a href="http://gtkwave.sourceforge.net/">GTKWave</a>, disponível para várias as plataformas. Na sua máquina real (<em>host</em>), navegue até a pasta compartilhada e veja que os arquivos gerados pelo GHDL estão lá, incluindo o resultado da simulação. Você pode abrir o arquivo VCD com o seu visualizador preferido.</p>
   </div>
 
    <div>
