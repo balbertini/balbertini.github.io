@@ -9,7 +9,7 @@ Authors: Bruno Albertini
 Summary: Entidades em VHDL.
 <!-- Status: draft -->
 
-Toda descrição em VHDL segue um padrão base de uma entidade e uma arquitetura. Neste artigo, explicarei como funciona cada uma das duas estruturas e como elas se relacionam.
+Toda descrição em VHDL segue um padrão base de uma entidade e uma arquitetura. Neste artigo, explicarei como funciona a entidade.
 
 # Entidade
 
@@ -51,22 +51,19 @@ end mux2to1;
 
 
 ## Boas práticas ao definir a entidade
-Seguem algumas dicas para quando for definir sua entidade:
 
 1. Use um nome de entidade que indique o que ela faz.
 2. O nome do arquivo deve ser `<nome_da_entidade>.vhd` (e.g. `mux2to1.vhd`). Isso não se refere ao VHDL mas sim à algumas ferramentas de síntese que exigem este tipo de padronização para encontrar sua entidade.
 3. Descreva primeiro os sinais de controle, depois as entradas e depois as saídas. Não há nenhuma restrição quando a isso, mas ficará mais fácil de associar sua entidade como um componente depois.
 4. Sua entidade é a "cara" do seu componente. Capriche nos nomes das entradas e saídas e descreva-as como se estivesse desenhando-as em um diagrama esquemático.
 
-
-
 <a name="bufferEinout"></a>
 # Saídas com direção `buffer` e `inout`
 Uma saída que pode ser lida é especificada pelo tipo `buffer`. Este tipo de porta é considerada especial pois implica que o sintetizador vai colocar um elemento sequencial na saída (_latch_ ou _flip-flop_), para fazer o papel de _buffer_, registrando a sua saída para ela que possa ser lida. Se você utilizar o `buffer`, seu circuito nunca será combinatório. Quase todos os dispositivos de prototipação FPGA modernos suportam o `buffer`, mas você pode aumentar um pouco a área utilizada devido ao roteamento.
 
 <img src='{filename}/images/entidade.png' width="30%" align="right" style="padding-left:5%" />
-Note que usando o `buffer` você não pode ler um valor que foi colocado na saída por um elemento externo ao seu, você apenas pode ler os valores que o seu próprio componente colocou na saída. Para ler o valor que um componente externo colocou na sua saída, existe o `inout`, um tipo de porta diferente pois é bidirecional: pode ser usada como entrada, quando você lê um sinal escrito por algo externo para dentro do seu componente, e pode ser usada como saída, quando você escreve o sinal de dentro do seu componente para que algo de fora leia. O `inout` indica para o sintetizador que ele deve colocar um _buffer_ que suporte _tri-state_ na sua saída. Neste caso, você deve garantir que os elementos em VHDL que possam escrever ou ler façam isso de forma mutuamente exclusiva, para que o sintetizador possa inferir corretamente os sinais de controle do _buffer tri-state_. Os dispositivos de prototipação FPGA modernos costumam possuir este tipo de _bufer_ somente nos pinos de saída do FPGA, o que deve aumentar bastante seu roteamento caso não seja sua intenção.
+Note que usando o `buffer` você não pode ler um valor que foi colocado na saída por um elemento externo ao seu, você apenas pode ler os valores que o seu próprio componente colocou na saída. Para ler o valor que um componente externo colocou na sua saída, existe o `inout`, um tipo de porta diferente pois é bidirecional: pode ser usada como entrada, quando você lê um sinal escrito por algo externo para dentro do seu componente, e pode ser usada como saída, quando você escreve o sinal de dentro do seu componente para que algo de fora leia. O `inout` indica para o sintetizador que ele deve colocar um _buffer_ que suporte _tri-state_ na sua saída. Neste caso, você deve garantir que os elementos em VHDL que possam escrever ou ler façam isso de forma mutuamente exclusiva, para que o sintetizador possa inferir corretamente os sinais de controle do _buffer tri-state_. Os dispositivos de prototipação FPGA modernos costumam possuir este tipo de _bufer_ somente nos pinos de saída do FPGA, o que deve aumentar bastante seu roteamento e, consequentemente, a área do seu circuito.
 
-Resumindo, não utilize `buffer` nem `inout` nas suas descrições exceto se você quer mesmo os componente que serão inferidos na sua descrição. Recomendo **fortemente** que aprendizes não os utilizem. A maneira de contornar a restrição de leitura de uma porta `out` é o criar um sinal temporário, fazer o que você tem que fazer sobre este sinal e, no final da arquitetura, atribuir o sinal temporário à saída que ele representa.
+Resumindo, não utilize `buffer` nem `inout` nas suas descrições exceto se você quer mesmo os componente que serão inferidos na sua descrição. Recomendo **fortemente** que aprendizes não os utilizem. A maneira de contornar a restrição de leitura de uma porta `out` é criar um sinal temporário, fazer o que você tem que fazer sobre este sinal e, no final da arquitetura, atribuir o sinal temporário à saída que ele representa.
 
 **Nota:** se você é meu aluno, não utilize `buffer` ou `inout` somente com a intenção de ler o valor na saída em hipótese alguma.
