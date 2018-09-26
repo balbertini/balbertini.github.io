@@ -44,7 +44,7 @@
 <meta property="og:url" content="https://balbertini.github.io/fsmstatereduction-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2018-09-25 14:22:00-03:00"/>
-<meta property="article:modified_time" content="2018-09-26 00:45:00-03:00"/>
+<meta property="article:modified_time" content="2018-09-26 18:02:00-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="sistemas digitais"/>
 <meta property="article:tag" content="sistemas digitais"/>
@@ -94,20 +94,20 @@
 
 
   <div>
-    <p>A máquina de estados finita em sistemas digitais, quando realizada, utiliza recursos computacionais que podem ser caros (e.g. <em>flip-flops</em>) do ponto de vista de área e consumo de energia, principalmente se a máquina for grande. Por este motivo, é importante minimizar o número de estados da máquina para que, na implementação, não utilizemos recursos desnecessários. Além disso, quando estamos projetando uma máquina de estados para resolver um problema, é mais confortável não pensar em otimizações mas sim na funcionalidade da máquina, para só depois pensar na otimização. De fato, a maioria dos projetistas comerciais não pensa na otimização quando estão modelando o problema pois isso nem sempre é possível (i.e. o projetista não tem visão da máquina toda mas sim da parte cabível a ele, a máquina é muito grande tornando impossível pensar em tudo, a máquina é particionada, etc).</p>
-<p>Na prática, com os sintetizadores modernos, você pode especificar sua máquina usando a linguagem de descrição de hardware de sua preferência e deixar o sintetizador otimizá-la para você. Os resultados serão tão bons quanto se usar os métodos manuais [1,2]. Contudo, é necessário conhecer o mínimo do funcionamento dos algoritmos de minimização pois, quando for descrever sua máquina, você conhecerá ao menos o básico do que acontecerá quando sintetizá-la. Neste artigo, explicarei os métodos de minimização por identificação direta na tabela de transição de estados e por tabela de implicação. Em ambos os casos, o objetivo principal é encontrar estados equivalentes, ou seja, que <strong>para a mesma entrada, produzem a mesma saída e transicionam para os mesmos estados.</strong></p>
+    <p>A máquina de estados finita em sistemas digitais, quando realizada na forma de um circuito digital, utiliza recursos computacionais (e.g. <em>flip-flops</em>, memórias, portas lógicas, etc.) que são caros do ponto de vista de área e consumo de energia, principalmente se a máquina possuir muitos estados. Por este motivo, é importante minimizar o número de estados da máquina para que, na implementação, utilizemos somente os recursos mínimos necessários para aquela máquina. Além disso, quando estamos projetando uma máquina de estados para resolver um problema, é mais confortável não pensar em otimizações mas sim na funcionalidade da máquina, para só depois pensar na otimização. De fato, a maioria dos projetistas comerciais não pensa na otimização quando estão modelando o problema pois isso nem sempre é possível (i.e. o projetista não tem visão da máquina toda mas sim da parte cabível a ele, a máquina é muito grande tornando impossível pensar em tudo, a máquina é particionada, etc).</p>
+<p>Na prática, com os sintetizadores modernos, você pode especificar sua máquina usando a linguagem de descrição de hardware de sua preferência e deixar o sintetizador otimizá-la para você. Os resultados da otimização automática são bons quando comparados aos métodos manuais [1,2]. Contudo, é necessário conhecer o mínimo do funcionamento dos algoritmos de minimização pois, quando for descrever sua máquina, você conhecerá ao menos o básico do que acontecerá quando sintetizá-la. Neste artigo, explicarei os métodos de minimização por identificação direta na tabela de transição de estados e por tabela de implicação. Em ambos os casos, o objetivo principal é encontrar estados equivalentes, ou seja, que <strong>para a mesma entrada, produzem a mesma saída e transicionam para os mesmos estados.</strong></p>
 <h2>Minimização através da tabela de transição</h2>
 <p>Em muitos casos, é fácil identificar os estados equivalentes na tabela de transição de estados, por isso este método também é chamado de <strong>observação direta</strong> ou <strong>casamento de linhas</strong>. O algoritmo é simples:</p>
 <ol>
 <li>Elimine todos os estados inalcançáveis (estados onde não chega nenhuma aresta partindo de outro estado alcançável).</li>
-<li>Identifique dois estados <span class="math">\(A\)</span> e <span class="math">\(B\)</span> que, para a mesma entrada, produzam exatamente a mesma saída e realizem a mesma transição (transicionem para o mesmo estado).</li>
-<li>Elimine um dos estados (e.g. <span class="math">\(B\)</span>) apagando a linha correspondente a este estado e substitua todas as ocorrências de <span class="math">\(B\)</span> por <span class="math">\(A\)</span> (i.e. todos as transições para <span class="math">\(B\)</span> agora devem apontar para <span class="math">\(A\)</span>).</li>
+<li>Identifique dois estados A e B que, para a mesma entrada, produzam exatamente a mesma saída e realizem a mesma transição (transicionem para o mesmo estado).</li>
+<li>Elimine um dos estados (e.g. B) apagando a linha correspondente a este estado e substitua todas as ocorrências de B por A (i.e. todos as transições para B agora devem apontar para A).</li>
 <li>Repita até que nenhum par de estados atenda (2).</li>
 </ol>
 <h3>Exemplo</h3>
 <p>Uma forma muito comum de projetar máquinas de estados é modelando-a como árvore, onde cada ramificação é uma tomada de decisão. Tomemos a máquina abstrata a seguir que foi montada partindo de uma árvore binária canônica e modificada para reconhecer as sequencias 0011 e 1001:</p>
 <p><img alt="FSM em forma de árvore" src="https://balbertini.github.io/images/sd/sdfsmopt2.png"></p>
-<p>Em vermelho está destacado o caminho que esta máquina irá seguir para reconhecer as duas sequencias. Note que esta é uma máquina de Mealy e não leva em consideração nenhuma sobreposição entre as sequencias detectadas, sou seja, ela só funciona para entradas de 4 bits agrupados a partir do <em>reset</em> (e.g. detecta duas vezes se a entrada for 0011 1001 mas não detecta a segunda vez se a entrada for 0011 001).</p>
+<p>Em vermelho está destacado o caminho que esta máquina irá seguir para reconhecer as duas sequencias. Note que esta é uma máquina de Mealy e não leva em consideração nenhuma sobreposição entre as sequencias detectadas, ou seja, ela só funciona para entradas de 4 bits agrupados a partir do <em>reset</em> (e.g. detecta duas vezes se a entrada for 0011 1001 mas não detecta a segunda vez se a entrada for 0011 001).</p>
 <p>A tabela de transição de estados fica como na Tabela 1 a seguir.</p>
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0px;margin-right:10px;}
@@ -339,19 +339,22 @@
 </table>
 
 <p>A coluna <strong>E.A.</strong> mostra o estado atual, e a coluna <strong>P.E.</strong> o próximo estado. Esta última é bipartida para as entradas igual a <strong>0</strong> e igual a <strong>1</strong>.</p>
-<p>A Tabela 1 possui todas as transições da árvore como vista na figura. Esta máquina não tem nenhum estado inalcançável, então podemos pular o passo 1, mas é fácil de ver que há estados que produzem exatamente a mesma coisa (transição e saída) para determinada entrada. Tomemos por exemplo os estados S7, S9, S10, S12, S13 e S14: todos transicionam para S0 e produzem saída 0 para qualquer entrada, portanto são equivalentes. Podemos reduzir a tabela substituindo todos estes estados por um estado Sa, o que podemos ver na Tabela 2, destacado em verde.</p>
-<p>Se aplicarmos o algoritmo novamente, os estados S4 e S6 agora são equivalentes pois ambos transicionam para Sa e produzem saída 0, independententemente da entrada (chamaremos de Sb, em vermelho). Similarmente os estados S8 e S11 são equivalentes, mas note que eles tem saídas diferentes para entradas diferentes (chamaremos de Sc, em amarelo). O resultado está na Tabela 3.</p>
-<div style="border: 0px; overflow: auto;width: 100%;"></div>
-
-<p><img src='https://balbertini.github.io/images/sd/sdfsmopt3.png' width="45%" align="right" style="padding-left:5%" />
-O diagrama de transição de estados minimizado pode ser visto na figura ao lado. Os estados S7, S9, S10, S12, S13 e S14 são representados pelo Sa, S4 e S6 a Sb e S8 e S11 a Sc.
-<!-- <img alt="Diagrama de transiçao de estados minimizado" src="https://balbertini.github.io/images/sd/sdfsmopt3.png"> --></p>
+<p>A Tabela 1 possui todas as transições da árvore como vista na figura. Esta máquina não tem nenhum estado inalcançável, então não há o que eliminar no passo 1.</p>
+<p>No passo 2, devemos procurar as equivalências. É fácil perceber que há estados que produzem exatamente o mesmo resultado (transição e saída) para determinada entrada. Tomemos por exemplo os estados S7, S9, S10, S12, S13 e S14: todos transicionam para S0 e produzem saída 0 para qualquer entrada, portanto são equivalentes. Podemos reduzir a tabela substituindo todos estes estados por um estado Sa, o que podemos ver na Tabela 2, destacado em verde.</p>
+<p>Se fizermos a busca novamente, os estados S4 e S6 agora são equivalentes pois ambos transicionam para Sa e produzem saída 0, independententemente da entrada. Criamos o estado Sb, em vermelho, para substituir estes estados. Similarmente os estados S8 e S11 são equivalentes, mas note que eles tem saídas diferentes para entradas diferentes. Para este conjunto de estados, criamos Sc, em amarelo. Não há mais estados equivalentes e o resultado final pode ser visto na Tabela 3.</p>
+<p><img src='https://balbertini.github.io/images/sd/sdfsmopt3.png' width="35%" align="right" style="padding-left:5%" />
+<br/>
+O diagrama de transição de estados minimizado pode ser visto na figura ao lado. Os estados S7, S9, S10, S12, S13 e S14 são representados pelo Sa, S4 e S6 pelo Sb e S8 e S11 pelo Sc.</p>
+<p>O método de análise da tabela de transição de estados se baseia na busca exaustiva por estados equivalentes. É fácil perceber que, conforme a tabela cresce, ficará mais difícil visualizar os estados equivalentes.</p>
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 <h2>O método de minimização por tabela de implicação</h2>
-<p>Nem sempre é tão fácil perceber a equivalência de estados através da tabela de transição de estados, especialmente para máquinas grandes. No entanto, os projetistas desenvolveram um método chamado de tabela de implicação. Este método é equivalente à análise através da tabela de transição de estados, porém é algorítmico e está organizado em forma de uma matriz, o que minimiza erros por parte do projetista.</p>
-<h3>Construção da matriz</h3>
-<p>A matriz pode ser construída como uma matriz <span class="math">\(n\)</span> por <span class="math">\(n\)</span>, onde <span class="math">\(n\)</span> é o número de estados (se você começar no <span class="math">\(S_0\)</span>, o último estado será <span class="math">\(S_{n-1}\)</span>). Cada linha <span class="math">\(i\)</span> da matriz representa um estado e cada coluna <span class="math">\(j\)</span> também. Não faz sentido analisar a equivalência de um estado com ele mesmo, por isso eliminamos a diagonal da matriz. As metades diagonais superiores e inferiores significam a mesma coisa pois se uma célula <span class="math">\(X_{ij}\)</span> mostra equivalência entre o estado <span class="math">\(S_i\)</span> e o estado <span class="math">\(S_j\)</span>, a célula <span class="math">\(X_{ji}\)</span> também deve mostrar a mesma equivalência. Por este motivo, eliminamos também uma das metades diagonais. Por convenção, elimina-se a diagonal superior, mas o resultado é o mesmo. Quando estiver confortável com a matriz, você poderá desenhá-la já sem a diagonal e sem a metade diagonal superior. A esse desenho contendo somente a metade diagonal inferior da tabela, chamamos de <strong>tabela de implicação</strong>. Na figura abaixo mostramos a matriz inteira, a matriz destacando a linha diagonal (vermelha) e a metade diagonal superior (laranja), e finalmente a tabela de implicação.</p>
+<p>Nem sempre é tão fácil perceber a equivalência de estados através da tabela de transição de estados, especialmente para máquinas grandes ou com muitas entradas. No entanto, os projetistas desenvolveram um método chamado de tabela de implicação. Este método é equivalente à análise através da tabela de transição de estados, porém é algorítmico e está organizado em forma de uma matriz, o que minimiza erros por parte do projetista. Além disso, apesar de ambos os métodos serem exaustivos, há uma diferença primordial: enquanto o método de análise da tabela de transição de estados procura exaustivamente estados equivalentes, o método da tabela de implicação procura exaustivamente os estados que <strong>não são equivalentes</strong>. Parte-se da premissa de que todos os estados são equivalentes entre si e, a cada iteração, elimina-se os estados que não podem ser equivalentes. Os estados que sobrarem são equivalentes.</p>
+<p>Há dois momentos no método da tabela de implicação: a construção da tabela e a análise.</p>
+<h3>Construção da matriz (tabela)</h3>
+<p>A matriz pode ser construída como uma matriz <span class="math">\(n\)</span> por <span class="math">\(n\)</span>, onde <span class="math">\(n\)</span> é o número de estados (se você começar no <span class="math">\(S_0\)</span>, o último estado será <span class="math">\(S_{n-1}\)</span>). Cada linha <span class="math">\(i\)</span> da matriz representa um estado e cada coluna <span class="math">\(j\)</span> também.</p>
+<p>Não faz sentido analisar a equivalência de um estado com ele mesmo, pois um estado sempre é equivalente a ele mesmo. Por este motivo, eliminamos a diagonal da matriz, onde <span class="math">\(i=j\)</span>. As metades diagonais superiores e inferiores significam a mesma coisa pois se uma célula <span class="math">\(X_{ij}\)</span> mostra equivalência entre o estado <span class="math">\(S_i\)</span> e o estado <span class="math">\(S_j\)</span>, a célula <span class="math">\(X_{ji}\)</span> também deve mostrar a mesma equivalência. Por este motivo, eliminamos também uma das metades diagonais. Por convenção, elimina-se a diagonal superior, mas o resultado é o mesmo se você eliminar a metade diagonal inferior.</p>
+<p>Quando estiver confortável com a construção da matriz, você poderá desenhá-la já sem a diagonal e sem a metade diagonal superior. A esse desenho contendo somente a metade diagonal inferior da tabela, chamamos de <strong>tabela de implicação</strong>. Na figura abaixo mostramos a matriz inteira, a matriz destacando a linha diagonal (vermelha) e a metade diagonal superior (laranja), e finalmente a tabela de implicação.</p>
 <p><img alt="Construção da tabela de implicação." src="https://balbertini.github.io/images/sd/sdfsmoptconsttab.png"></p>
 <p>Após obter a tabela de implicação, devemos preencher as células. Cada célula terá <span class="math">\(2^b\)</span> linhas, onde <span class="math">\(b\)</span> é o número de bits da entrada. E.g. se a entrada for de 1 bit, cada célula tem 2 linhas; se a entrada for de 2 bits, cada célula tem 4 linhas. Cada linha da entrada corresponde às transições daqueles estados para aquela entrada.</p>
 <p><img src='https://balbertini.github.io/images/sd/sdfsmoptconstcel.png' width="45%" align="right" style="padding-left:5%" />
@@ -364,7 +367,7 @@ Na figura podemos ver o exemplo do preenchimento para duas células, ambas na li
 <li>Risque todas as transições que vão para o mesmo estado e produzem a mesma saída (tipo s-s), pois elas são naturalmente equivalentes. E.g. se você tem uma transição 0-0, risque-a pois não é preciso analisá-la.</li>
 <li>Elimine as células com estados (Moore) ou transições (Mealy) que produzem saídas diferentes. Estes estados nunca poderão ser equivalentes.</li>
 <li>Analise uma célula qualquer que não tenha todas as transições riscadas e que não tenha sido eliminada anteriormente. Esta célula é uma candidata a equivalência.<ul>
-<li>Olhe todas as linhas da célula e analise a célula alvo. E.g. se a transição marca 1-2, você deve analisar a célula correspondente aos estados S1 e S2.</li>
+<li>Olhe todas as linhas da célula que não foram riscadas no passo (1). Para cada uma, analise a célula alvo. E.g. se a transição marca 1-2, você deve analisar a célula correspondente aos estados S1 e S2.</li>
 <li>Se a célula alvo estiver eliminada, você deve eliminar esta célula também.</li>
 <li>Se você analisou todas as linhas e não eliminou a célula, não faça nada.</li>
 </ul>
@@ -373,16 +376,16 @@ Na figura podemos ver o exemplo do preenchimento para duas células, ambas na li
 </ol>
 <p>Note que este processo é exaustivo. Para não correr o risco de analisar a mesma célula várias vezes, aconselho começar pela célula mais a direita inferior e depois passar para a segunda mais a direita inferior, e assim por diante. Não faz diferença a ordem em que você analisa as células, mas você deve se organizar para não repetir células.</p>
 <p>Durante a análise, pode acontecer de você eliminar uma linha inteira ou uma coluna inteira. Isso significa que o estado daquela linha ou coluna não é equivalente a nenhum outro estado, portanto você deve eliminar todas as células que tem alguma linha referenciando aquele estado. E.g. se você eliminou a linha toda do S3, você deve eliminar todas as células que possuam ao menos um 3 em alguma linha (x-3 ou 3-x).</p>
-<p>Note que você não precisa analisar células onde todas as linhas tenham sido riscadas no passo 1. Se você riscar todas as linhas de uma célula, os estados desta célula (linha-coluna) são automaticamente equivalentes. Você não precisa tomar nenhuma ação em relação a isso, apenas pule a análise da célula.</p>
+<p>Você não precisa analisar células onde todas as linhas tenham sido riscadas no passo 1. Se você riscar todas as linhas de uma célula, os estados desta célula (linha-coluna) são automaticamente equivalentes. Você não precisa tomar nenhuma ação em relação a isso, apenas pule a análise da célula.</p>
 <p>Quando você terminar este processo, as células que você não eliminou representam <strong>classes de equivalência</strong>. Uma classe de equivalência é um grupo de estados que são equivalentes e, consequentemente, podem ser representados por um único estado. E.g. se a célula da linha 3 coluna 4 não foi eliminada, os estados S3 e S4 são equivalentes.</p>
 <h2>Exemplo 1/2</h2>
 <p>Suponha a mesma máquina de estados usada como exemplo no método de análise da tabela de transição de estados, mostrada na figura. Trata-se de uma máquina de Mealy que reconhece 0011 ou 1001 sem sobreposição.</p>
 <p><img alt="FSM em forma de árvore" src="https://balbertini.github.io/images/sd/sdfsmopt2.png"></p>
 <p>A máquina tem 15 estados, portanto temos uma matriz 15x15. A tabela de implicação, já com os valores das transições preenchidos e com as transições s-s riscadas, pode ser vista na figura abaixo. Isto corresponde à construção da tabela de implicação e à execução do passo 1 do algoritmo.</p>
 <p><img alt="Tabela exemplo 1 passo 1" src="https://balbertini.github.io/images/sd/sdfsmoptex1a.png"></p>
-<p>No passo dois, eliminamos as transições que produzem saídas diferentes. Note que esta é uma máquina de Mealy, então coloquei a saída na transição (e.g. nos estados S8 e S11, que são os que produzem saída, há transições na forma 0/1, indicando que esta transição produz saída 1). Quando não está especificada, assume-se que a saída é 0. Continuando o passo 2, devemos eliminar todas as células que contém uma transição s-t onde a saída de s é diferente da saída de t. Isto pode ser visto na figura abaixo, onde as células eliminadas foram identificadas com fundo cinza.</p>
+<p>No passo 2, devemos eliminar as transições que produzem saídas diferentes. Note que esta é uma máquina de Mealy, então coloquei a saída na transição (e.g. nos estados S8 e S11, que são os que produzem saída, há transições na forma 0/1, indicando que esta transição produz saída 1). Quando não está especificada, assume-se que a saída é 0. Continuando o passo 2, devemos eliminar todas as células que contém uma transição s-t onde a saída de s é diferente da saída de t. Exemplo: a célula S14-S11 possui a segunda linha como 0/1-0, o que significa que, apesar de irem para o mesmo estado, uma produz saída 1 (0/1) e outra produz saída 0 (0/0, o /0 é implícito), portanto devemos eliminar esta célula toda. Isto pode ser visto na figura abaixo, onde as células eliminadas foram identificadas com fundo cinza.</p>
 <p><img alt="Tabela exemplo 1 passo 2" src="https://balbertini.github.io/images/sd/sdfsmoptex1b.png"></p>
-<p>O passo 2 elimina os estados que obviamente não são equivalentes. Podemos então começar o passo 3 analisando cada célula. Eu comecei pela célula mais a direita inferior e continuei analisando para a esquerda. A célula S14-S13 não precisa ser analisada pois tem todas as transições riscadas. Idem para a célula S14-S12. Já a célula S14-S11 foi eliminada anteriormente e também não precisa ser analisada.</p>
+<p>O passo 2 eliminou os estados que trivialmente não são equivalentes. Podemos então começar o passo 3 analisando cada célula. Eu comecei pela célula mais a direita inferior e continuei analisando para a esquerda. A célula S14-S13 não precisa ser analisada pois tem todas as transições riscadas. Idem para a célula S14-S12. Já a célula S14-S11 foi eliminada anteriormente e também não precisa ser analisada.</p>
 <p>A primeira célula que realmente precisa ser analisada é a S14-S6. Nesta célula, a transição 13-0 aponta para a a célula S13-S0, e a transição 14-0 para a célula S14-S0. Estas células alvo ainda indicam equivalência, então não fiz nada na célula em análise (S14-S6). Idem para S14-S5 e S14-S4.</p>
 <p>Já na célula S14-S3, encontrei uma referência à S8-S0, que já foi eliminado em um passo anterior. Isso significa que eu devo eliminar esta célula. Nesse ponto, percebi que a linha do S8 estava inteira eliminada, então eliminei na tabela todas as células que fazem referência a S8. Na figura abaixo, a célula em análise (S14-S3) está em amarelo, a célula referenciada que foi o motivo da eliminação (S8-S0) está com borda amarela, e as células que eu eliminei estão em amarelo escuro. Apesar de ter usado cores, todas estas células devem ser pintadas de cinza (quando estiver executando o algoritmo no papel, faça um X na célula toda).</p>
 <p><img alt="Tabela exemplo 1 passo 3" src="https://balbertini.github.io/images/sd/sdfsmoptex1c.png"></p>
@@ -396,7 +399,7 @@ Por último, devemos reconstruir o diagrama de transição de estados. Para cada
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 <h2>Exemplo 2/2</h2>
-<p>A Tabela E2 é a tabela de transição de estados de uma máquina de Moore. Sua funcionalidade ou diagrama de transição de estados não importam neste momento, mas o diagrama equivalente pode ser visto na figura.</p>
+<p>A Tabela E2 é a tabela de transição de estados de uma máquina de Moore, com entrada de dois bits. Sua funcionalidade ou diagrama de transição de estados não importam neste momento, mas o diagrama equivalente pode ser visto na figura.</p>
 <table class="tg" align="left">
   <tr>
     <th class="tg-baqh" colspan="5">Tabela E2</th>
@@ -468,7 +471,7 @@ Por último, devemos reconstruir o diagrama de transição de estados. Para cada
 <img src='https://balbertini.github.io/images/sd/sdfsmoptex2d.png' width="50%" align="right"/></p>
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
-<p>Conclui-se que os estados S4 e S0 (Sa) são equivalentes entre si, assim como os estados S5 e S3 (Sb). A tabela de transiçao de estados minimizada e o diagrama de transição de estados minimizado pode ser podem ser vistos abaixo.</p>
+<p>Pela tabela, podemos inferir que os estados S4 e S0 (Sa) são equivalentes entre si, assim como os estados S5 e S3 (Sb). A tabela de transição de estados minimizada e o diagrama de transição de estados minimizado podem ser vistos abaixo. A máquina original possuía 6 estados, o que exige 3 <em>flip-flops</em> para sua implementação, mas a minimizada tem 4 estados, o que exige 2 <em>flip-flops</em>, portanto economizamos um <em>flip-flop</em> apenas minimizando a máquina.</p>
 <table class="tg" align="left">
   <tr>
     <th class="tg-baqh" colspan="5">Tabela E2 min</th>
@@ -484,15 +487,15 @@ Por último, devemos reconstruir o diagrama de transição de estados. Para cada
     <td class="tg-zlqz">11</td>
   </tr>
   <tr>
-    <td class="tg-uuae">Sa/1</td>
-    <td class="tg-4m7p">Sa</td>
+    <td class="tg-vswx">Sa/1</td>
+    <td class="tg-bolj">Sa</td>
     <td class="tg-baqh">S1</td>
     <td class="tg-baqh">S2</td>
     <td class="tg-mfhl">Sb</td>
   </tr>
   <tr>
     <td class="tg-baqh">S1/0</td>
-    <td class="tg-4m7p">Sa</td>
+    <td class="tg-bolj">Sa</td>
     <td class="tg-mfhl">Sb</td>
     <td class="tg-baqh">S1</td>
     <td class="tg-mfhl">Sb</td>
@@ -502,13 +505,13 @@ Por último, devemos reconstruir o diagrama de transição de estados. Para cada
     <td class="tg-baqh">S1</td>
     <td class="tg-mfhl">Sb</td>
     <td class="tg-baqh">S2</td>
-    <td class="tg-4m7p">Sa</td>
+    <td class="tg-bolj">Sa</td>
   </tr>
   <tr>
     <td class="tg-fcno">Sb/0</td>
     <td class="tg-baqh">S1</td>
-    <td class="tg-4m7p">Sa</td>
-    <td class="tg-4m7p">Sa</td>
+    <td class="tg-bolj">Sa</td>
+    <td class="tg-bolj">Sa</td>
     <td class="tg-mfhl">Sb</td>
   </tr>
 </table>
@@ -577,7 +580,7 @@ Por último, devemos reconstruir o diagrama de transição de estados. Para cada
   </div>
 
    <div>
-     Última atualização: 2018-09-26 00:45:00-03:00
+     Última atualização: 2018-09-26 18:02:00-03:00
    </div>
 
 
