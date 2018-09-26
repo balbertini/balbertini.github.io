@@ -1,6 +1,6 @@
 Title: Simplificação de FSM
 Date: 2018-09-25 14:22
-Modified: 2018-09-25 14:22
+Modified: 2018-09-26 00:45
 Category: sistemas digitais
 Tags: sistemas digitais, fsm, simplificação, otimização
 Slug: fsmstatereduction
