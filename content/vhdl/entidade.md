@@ -1,13 +1,12 @@
 Title: Entidade
 Date: 2018-09-21 14:37
-Modified: 2018-09-21 14:37
+Modified: 2018-09-26 18:53
 Category: vhdl
 Tags: vhdl, basic
 Slug: vhdlentity
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Entidades em VHDL.
-<!-- Status: draft -->
 
 Toda descrição em VHDL segue um padrão base de uma entidade e uma arquitetura. Neste artigo, explicarei como funciona a entidade.
 
