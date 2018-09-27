@@ -358,13 +358,11 @@ Vamos construir a tabela de implicação para verificar. Na figura ao lado, pode
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 <img src='{filename}/images/sd/sdfsmoptex1b.png' width="45%" align="left" style="padding-right:5%"/>
-No segundo passo eliminamos os estados que produzem saída diferentes, pois nunca poderão ser equivalentes. Isto pode ser visto à esquerda na figura ao lado (os estados eliminados foram destacados em cinza). Sobra a única célula a ser verificada, correspondente aos estados C/0-A/0. Esta célula tem uma linha riscada (que não precisa ser analisada) e uma linha que referencia A-C. A referência A-C aponta para a mesma célula que estamos analisando, a célula C/0-A/0. Como esta célula ainda não foi eliminada, nada resta a fazer e devemos continuar o algoritmo. Porém, não há mais células a serem analisadas, portanto o algoritmo terminou. Isso significa que a única célula que não foi eliminada será a nossa classe de equivalência, destacada em vermelho na tabela de implicação à direita.
+No segundo passo eliminamos os estados que produzem saída diferentes, pois nunca poderão ser equivalentes. Isto pode ser visto à esquerda na figura ao lado (os estados eliminados foram destacados em cinza). Sobra a única célula a ser verificada, correspondente aos estados C/0-A/0. Esta célula tem uma linha riscada (que não precisa ser analisada) e uma linha que referencia A-C. A referência A-C aponta para a mesma célula que estamos analisando, a célula C/0-A/0. Como esta célula ainda não foi eliminada, nada resta a fazer e devemos continuar o algoritmo. Porém, não há mais células a serem analisadas, portanto o algoritmo terminou. Isso significa que a única célula que não foi eliminada será a nossa classe de equivalência, destacada em vermelho na tabela de implicação da figura.
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 <img src='{filename}/images/sd/sdfsmoptex1diagmin.png' width="13%" align="left" style="padding-right:5%"/>
-A célula indica que a classe de equivalência contém somente dois estados, o C/0 e o A/0. Para finalizar, montamos um novo diagrama de transição de estados com um estado chamado AC/0, em vermelho, representando a classe de equivalência encontrada. As transições são transportadas dos estados da classe de equivalência e, obviamente, são esperadas que sejam
-
-Esta máquina tem a mesma funcionalidade que a anterior, porém tem um estado a menos. Este tipo de minimização não é possível usando a análise da tabela de transição de estados.
+A célula indica que a classe de equivalência contém somente dois estados, o C/0 e o A/0. Para finalizar, montamos um novo diagrama de transição de estados com um estado chamado AC/0, em vermelho, representando a classe de equivalência encontrada. As transições são transportadas dos estados da classe de equivalência e, obviamente, são esperadas que sejam as mesmas pois os estados são equivalentes. Esta máquina tem a mesma funcionalidade que a anterior, porém tem um estado a menos. Este tipo de minimização não é possível usando a análise da tabela de transição de estados.
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
@@ -507,7 +505,7 @@ A máquina tem 15 estados, portanto temos uma matriz 15x15. A tabela de implica�
 
 ![Tabela exemplo 1 passo 1]({filename}/images/sd/sdfsmoptex3a.png)
 
-No passo 2, devemos eliminar as transições que produzem saídas diferentes, ou seja, devemos eliminar todas as células que contém uma transição s-t onde a saída de s é diferente da saída de t. Exemplo: a célula S14-S11 possui a segunda linha como 0/1-0, o que significa que, apesar de irem para o mesmo estado, uma produz saída 1 (0/1) e outra produz saída 0 (0/0), portanto devemos eliminar esta célula toda. Isto pode ser visto na figura abaixo, onde as células eliminadas foram identificadas com fundo cinza e a linha que foi o motivo da eliminação com cinza escuro.
+No passo 2, devemos eliminar as transições que produzem saídas diferentes, ou seja, devemos eliminar todas as células que contém uma transição s-t onde a saída de s é diferente da saída de t. Exemplo: a célula S14-S11 possui a segunda linha como 0/1-0, o que significa que, apesar de irem para o mesmo estado, uma produz saída 1 (0/1) e outra produz saída 0 (0/0), portanto devemos eliminar esta célula toda. Isto pode ser visto na figura abaixo, onde todas as células eliminadas por este motivo foram identificadas com fundo cinza e a linha que foi o motivo da eliminação com cinza escuro.
 
 ![Tabela exemplo 1 passo 2]({filename}/images/sd/sdfsmoptex3b.png)
 
@@ -515,17 +513,17 @@ O passo 2 eliminou os estados que trivialmente não são equivalentes. Podemos e
 
 A primeira célula que realmente precisa ser analisada é a S14-S6. Nesta célula, a transição 13-0 aponta para a a célula S13-S0, e a transição 14-0 para a célula S14-S0. Estas células alvo ainda indicam equivalência, então não fiz nada na célula em análise (S14-S6). Idem para S14-S5 e S14-S4.
 
-Já na célula S14-S3, encontrei uma referência à S8-S0, que já foi eliminado em um passo anterior. Isso significa que eu devo eliminar esta célula. Nesse ponto, percebi que a linha do S8 estava inteira eliminada, então eliminei na tabela todas as células que fazem referência a S8. Na figura abaixo, eliminei todas as células que faziam referência ao estado S8.
+Já na célula S14-S3, encontrei uma referência à S8-S0, que já foi eliminado em um passo anterior. Isso significa que eu devo eliminar esta célula. Nesse ponto, percebi que a linha do S8 estava inteira eliminada, então eliminei  todas as células que fazem referência a S8, ou seja, que tem transições 8/x-x/x ou x/x-8/x. O resultado pode ser visto na figura abaixo.
 
 ![Tabela exemplo 1 passo 3]({filename}/images/sd/sdfsmoptex3c.png)
 
-Se está lendo com cuidado, deve ter percebido que a eliminação feita na figura anterior eliminou o estado S3 inteiro. Isto significa que você pode eliminar todas as células que contém transições que referenciam o S3, pois ele não pode ser equivalente a nenhum outro estado. Se você continuar o algoritmo, terminará com a tabela de implicação abaixo, onde as células eliminadas estão em cinza.
+Se está lendo com cuidado, deve ter percebido que a eliminação que acabei de fazer eliminou o estado S3 inteiro. Isto significa que podemos eliminar todas as células que contém transições que referenciam o S3, pois ele não pode ser equivalente a nenhum outro estado. Se você continuar o algoritmo, terminará com a tabela de implicação abaixo, onde as células eliminadas estão em cinza.
 
 ![Tabela exemplo 1 eliminadas]({filename}/images/sd/sdfsmoptex3d.png)
 
 A única célula que ainda precisa de análise é a célula S6-S4. Esta célula referencia os estados S9-S13 na primeira linha e S10-S14 na segunda linha. Ambas as células S9-S13 e S10-S14 não foram eliminadas pois possuem todas as suas linhas riscadas, então não devemos fazer nada nesta célula. Como não há mais células a serem analisadas, o algoritmo terminou.
 
-Com o algoritmo finalizado, podemos inferir os estados equivalentes observando as células que não foram eliminadas. A célula S6-S4 indica que estes dois estados são equivalentes. Similarmente, a coluna S7 indica que os estados S7, S9, S10, S12, S13 e S14 são todos equivalentes. Isso pode ser corroborado pelas colunas do S9, S10, S11, S12 e S13, que indicam também esta equivalência. Ainda, a célula S11-S8 indica que estes estados são equivalentes (note que eles produzem saída 1).
+Com o algoritmo finalizado, podemos inferir os estados equivalentes observando as células que não foram eliminadas. A célula S6-S4 indica que estes dois estados são equivalentes. Similarmente, a coluna S7 indica que os estados S7, S9, S10, S12, S13 e S14 são todos equivalentes. Isso pode ser corroborado pelas colunas do S9, S10, S11, S12 e S13, que indicam também esta equivalência. Ainda, a célula S11-S8 indica que estes dois estados são equivalentes entre si (note que ambos produzem saída 1).
 
 Para facilitar a visualização, a figura abaixo traz as classes de equivalência coloridas. Para a mesma cor, os estados são equivalentes.
 
