@@ -10,8 +10,6 @@ Summary: Entidades em VHDL.
 
 Toda descrição em VHDL segue um padrão base de uma entidade e uma arquitetura. Neste artigo, explicarei como funciona a entidade.
 
-# Entidade
-
 <img src='{filename}/images/vhdl_maqrefri.png' width="20%" align="left" style="padding-right:5%" />
 A entidade, declarada pela palavra reservada `entity`, é a unidade básica de descrição de VHDL. O equivalente em um diagrama esquemático é o desenho que você faz para representar seu componente. Por exemplo, pense em uma máquina de vender refrigerantes em lata. Suponha que você (abstratamente), tenha que desenhar um símbolo para sua máquina. O meu símbolo seria como o da figura: entra dinheiro e sai latas.
 <br/><br/>
