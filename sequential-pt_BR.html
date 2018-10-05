@@ -94,9 +94,7 @@
 
 
   <div>
-    <!-- Status: draft -->
-
-<p>A principal característica de um <strong>circuito sequencial</strong> é que as saídas dependem não somente das entradas, como em um circuito combinatório, mas também das entradas passadas. Diz-se que um circuito sequencial possui um <strong>elemento de memória</strong> ou é dependente do tempo (esta última é discutível pois nem sempre o tempo está envolvido na sua forma explícita, como um sinal de <em>clock</em>).</p>
+    <p>A principal característica de um <strong>circuito sequencial</strong> é que as saídas dependem não somente das entradas, como em um circuito combinatório, mas também das entradas passadas. Diz-se que um circuito sequencial possui um <strong>elemento de memória</strong> ou é dependente do tempo (esta última é discutível pois nem sempre o tempo está envolvido na sua forma explícita, como um sinal de <em>clock</em>).</p>
 <h2>Process</h2>
 <p>A estrutura utilizada para descrever circuitos sequenciais em VHDL é o <code>process</code>.</p>
 <p>Sintaxe de um <code>process</code>:</p>
@@ -112,7 +110,7 @@
 <h2>Primitivas sequenciais e concorrentes</h2>
 <p>As primitivas sequenciais dentro de um <code>process</code> podem ser quaisquer primitivas utilizadas para descrever  circuitos combinatórios (e.g. atribuições condicionais) e também as duas que só podem ser utilizadas de maneira sequencial: <code>if-else</code> e <code>case</code>. No entanto, todas as primitivas que estiverem dentro de um <code>process</code> se <strong>comportam de maneira sequencial</strong>. Em contraste, as primitivas que estão dentro da descrição uma arquitetura - que só podem ser combinatórias - são consideradas concorrentes.</p>
 <p>As primitivas concorrentes (dentro da arquitetura), representam circuitos combinatórios, portanto serão sintetizadas para tais circuitos. Quaisquer modificações na entrada têm efeito imediato e todas as funções combinatórias descritas terão suas saídas afetadas (após o devido tempo de propagação caso aplicável). É importante notar que um bloco de um <code>process</code> inteiro é equivalente a uma primitiva combinatória, ou seja, a avaliação das saídas do <code>process</code> ocorre ao mesmo tempo que a avaliação de todas as primitivas concorrentes da mesma arquitetura, incluindo outros possíveis blocos <code>process</code> descritos na mesma arquitetura, portanto não é possível aninhar mais de um <code>process</code>.</p>
-<p><img src='https://balbertini.github.io/images/sequencial.png' align="right" style="padding-left:5%" />
+<p><img src='https://balbertini.github.io/images/vhdl/sequencial.png' align="right" style="padding-left:5%" />
 Já as primitivas sequencias (dentro de um <code>process</code>), representam um circuito sequencial nos moldes da figura acima. Qualquer circuito sequencial pode ser mapeado para um circuito com um elemento de memória e uma lógica combinatória dependente do estado atual do circuito, fornecido pelo elemento de memória. Dentro de um <code>process</code>, as primitivas sequencias são <strong>avaliadas em ordem</strong> e caso haja divergência (i.e. mais de um valor atribuído para um determinado sinal), prevalece a última primitiva (i.e. o último valor atribuído a um sinal).</p>
 <p>A lógica combinatória dentro de um bloco <code>process</code> pode ser a identidade (i.e. não possuir lógica que altere os dados, ou em outras palavras representar um fio) e o elemento de memória também pode estar ausente. É possível representar circuitos combinatórios usando <code>process</code> se descrevermos um circuito sequencial que possua uma lógica combinatória mas não um elemento de memória. Vale lembrar que descrever circuitos combinatórios com <code>process</code> é uma prática <strong>fortemente desencorajada</strong>, portanto se o seu circuito não possui um elemento de memória, não utilize <code>process</code>.</p>
 <h2>Lista de sensibilidade</h2>
@@ -123,7 +121,7 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
 <p>Uma alternativa para a lista de sensibilidade é a primitiva <code>wait</code>. Quando opta-se pela utilização desta primitiva, a lista de sensibilidade deve ser omitida, pois o sintetizador irá inferir os sinais de controle dos elementos de memória a partir dos <code>wait</code> presentes no <code>process</code>. As formas desta primitiva usadas para descrever circuitos sequenciais são <code>wait until condicao;</code>, que aguarda até que a condição seja satisfeita e <code>wait on sinal;</code>, que aguarda o sinal mudar. Tanto a condição quanto o sinal podem ser uma composição de condições (desde que o resultado final seja verdadeiro ou falso) ou uma lista de sinais separados por vírgula.</p>
 <h3>Exemplos</h3>
 <h4>FF-D com enable</h4>
-<p><img src='https://balbertini.github.io/images/ffd.png' align="left" style="padding-right:5%" /></p>
+<p><img src='https://balbertini.github.io/images/vhdl/ffd.png' align="left" style="padding-right:5%" /></p>
 <div class="highlight"><pre><span></span><span class="nc">ffd</span><span class="o">:</span> <span class="k">process</span>
 <span class="k">begin</span>
     <span class="k">wait</span> <span class="k">until</span> <span class="n">clock</span><span class="na">&#39;event</span> <span class="k">and</span> <span class="n">clock</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
@@ -151,7 +149,7 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
 
 <p>Note que neste caso, os sinais <code>en</code> e <code>d</code> podem ficar de fora da lista de sensibilidade pois, apesar de serem lidos dentro do <code>process</code>, não alteram o comportamento do circuito exceto na borda do <em>clock</em>, portanto não faz diferença se o colocarmos na lista de sensibilidade: <code>process(clock, en, d)</code>.</p>
 <h4>FF-D com enable e reset assíncrono</h4>
-<p><img src='https://balbertini.github.io/images/ffdr.png' align="left" style="padding-right:5%" /></p>
+<p><img src='https://balbertini.github.io/images/vhdl/ffdr.png' align="left" style="padding-right:5%" /></p>
 <div class="highlight"><pre><span></span><span class="nc">ffdr</span><span class="o">:</span> <span class="k">process</span>
 <span class="k">begin</span>
     <span class="k">wait</span> <span class="k">on</span> <span class="n">clock</span><span class="p">,</span> <span class="n">reset</span><span class="p">;</span>

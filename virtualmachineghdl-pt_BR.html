@@ -108,12 +108,12 @@
 <p>A máquina está no formato <em>Open Virtual Appliance</em>, portanto você também precisará de um software de virtualização compatível com sua máquina e com o formato OVF 2.0 (<em>Open Virtualization Format</em>). Este artigo usará o <a href="https://www.virtualbox.org/">VirtualBox</a> como software de virtualização.</p>
 <h1>Preparando a máquina virtual</h1>
 <p>Abra o arquivo <code>GHDL.ova</code> com o seu software de virtualização (e.g. clique duas vezes, vá em <code>Arquivo/Importar Appliance</code>, etc).</p>
-<p><img alt="Adicionando a VM" src="https://balbertini.github.io/images/vmghdl1.png"></p>
+<p><img alt="Adicionando a VM" src="https://balbertini.github.io/images/vhdl/vmghdl1.png"></p>
 <p>Não é necessário mudar nenhum parâmetro da VM neste momento. Opcionalmente desligue os itens que não pretende utilizar, como por exemplo o controlador USB ou a placa de som. Não desabilite a placa de rede pois iremos utilizá-la para acessar a máquina. Quando estiver satisfeito, clique no botão <code>Importar</code> finalize a importação da máquina.</p>
 <p>Com a importação finalizada, a VM deve aparecer na sua lista de VMs. Com a VM selecionada, vá em <code>Máquina/Configurações</code> ou clique com o botão direito dobre a máquina e escolha <code>Configurações</code>.</p>
-<p><img alt="Configurando a VM" src="https://balbertini.github.io/images/vmghdl2.png"></p>
+<p><img alt="Configurando a VM" src="https://balbertini.github.io/images/vhdl/vmghdl2.png"></p>
 <p>Na caixa que abrirá, selecione <code>Rede</code>, expanda a aba <code>Avançado</code> e clique no botão <code>Redirecionamento de Portas</code>.</p>
-<p><img alt="Redirecionamento de portas" src="https://balbertini.github.io/images/vmghdl3.png"></p>
+<p><img alt="Redirecionamento de portas" src="https://balbertini.github.io/images/vhdl/vmghdl3.png"></p>
 <p>Na tela que se abrirá, você deve ver uma regra pré-carregada. Confira os dados ou caso não veja nenhuma regra, clique no botão de adicionar uma nova regra e adicione o seguinte:</p>
 <ul>
 <li><code>Nome</code>: qualquer um, no exemplo usarei "SSH"</li>
@@ -123,15 +123,15 @@
 <li><code>IP do Convidado</code>: deixar em branco</li>
 <li><code>Porta do Convidado</code>: 22</li>
 </ul>
-<p><img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vmghdl4.png"></p>
+<p><img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vhdl/vmghdl4.png"></p>
 <p>Note que a imagem não mostra todos os campos. Configure todos como na lista acima. Aqui terminamos com a rede. Clique no OK e volte para a tela de configuração da máquina virtual. Dessa vez vá para aba <code>Pastas Compartilhadas</code> e use o botão para adicionar uma nova pasta.</p>
-<p><img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vmghdl5.png"></p>
+<p><img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vhdl/vmghdl5.png"></p>
 <p>No campo <code>Caminho da Pasta</code>, escolha uma pasta qualquer da sua máquina. No campo <code>Nome da Pasta</code>, coloque o nome que desejar (neste exemplo usei <em>VMShared</em>). O <code>Caminho da Pasta</code> é a pasta na sua máquina real (host) e o <code>Nome da Pasta</code> é o nome do compartilhamento. A pasta que você escolher em <code>Caminho da Pasta</code> será compartilhada com a máquina virtual na montagem da pasta compartilhada, portanto escolha uma pasta onde vai colocar os arquivos. Resumo: a pasta que você escolher em <code>Caminho da Pasta</code> será exatamente a mesma dentro da máquina virtual: o que você colocar/editar em uma aparece na outra e vice-versa.</p>
-<p><img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vmghdl6.png"></p>
+<p><img alt="Regra de redirecionamento" src="https://balbertini.github.io/images/vhdl/vmghdl6.png"></p>
 <p>Finalizamos a configuração da VM. Clique no OK até voltar para a tela do software de virtualização.</p>
 <h1>Iniciando a máquina virtual</h1>
 <p>Antes de começar, leia esta seção toda, caso contrário você poderá ficar com o mouse e teclado capturados pela máquina virtual. Com a máquina selecionada na tela principal do software de virtualização, clique no botão <code>Iniciar</code> (botão com seta verde). A máquina irá iniciar e você verá uma tela preta com o <em>prompt</em> de login. Esta tela é como se fosse a tela de outro computador, com a diferença que ele é virtual.</p>
-<p><img alt="Prompt de login" src="https://balbertini.github.io/images/vmghdl7.png"></p>
+<p><img alt="Prompt de login" src="https://balbertini.github.io/images/vhdl/vmghdl7.png"></p>
 <p>Dependendo da configuração da sua máquina, a tela inicial estará toda preta; nesse caso, pressione qualquer tecla (e.g. enter) para habilitar o <em>prompt</em> de login. Se desejar logar na máquina, clique na tela e utilize o usuário padrão e a senha padrão, que é <code>poli</code> para ambos. Contudo, esta máquina não tem interface gráfica para ficar mais rápida e diminuir o tamanho do download (você pode instalar se desejar, mas o tamanho da máquina aumentará consideravelmente). Se você está confortável com sistemas em modo texto, pule a próxima seção e utilize esta tela para o restante deste artigo, caso contrário a próxima seção mostrará como logar via SSH. Caso você esteja com o mouse ou apontador presona sua máquina virtual, veja a tecla de desabilitar a captura do mouse e teclado no canto direito inferior da máquina (no exemplo é Left &#8984;). Pressione essa tecla por 2s e solte. Seu mouse e teclado agora devem ser devolvidos para a sua máquina.</p>
 <h1>Acessando a máquina virtual por SSH</h1>
 <p>Uma forma mais fácil de acessar a máquina é logar via SSH, pois assim você pode aproveitar todos os benefícios da sua própria máquina, como interface gráfica e editores modernos, usando o SHH apenas para executar o GHDL. Há clientes SSH para vários sistemas operacionais, como o <a href="https://www.putty.org">PuTTY</a> (Windows, Linux). Os sistemas operacionais baseados em *nix (e.g. MacOS e Linux) e algumas versões do Windows (e.g. Windows 10) já possuem um cliente SSH pré-instalado, portanto basta abrir um terminal (no Windows, o terminal chama-se <code>cmd.exe</code>e pode ser acessado pelo menu principal/executar/cmd.exe).</p>

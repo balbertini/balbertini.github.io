@@ -139,7 +139,7 @@
 </table>
 <p>Os operadores estão em ordem decrescente de prioridade, ou seja, o <code>not</code> tem precedência sobre todos os demais operadores. Aconselha-se a utilização de parênteses <code>()</code> para deixar claro a intenção do projetista. Todos os operadores podem operar sobre tipos booleanos, bits ou vetores unidimensionais de bits (bits podem ser do tipo <code>bit</code> ou derivados como <code>std_logic</code>). É necessário que os operandos sejam do mesmo tamanho e o resultado é sempre igual à entrada (i.e. se os operandos são vetores de bits, o resultado é um vetor de bits). Quando o tipo é um vetor, o resultado é calculado bit a bit (lógica binária ou <em>bitwise</em>).</p>
 <h3>Exemplo</h3>
-<p><img src='https://balbertini.github.io/images/mux.png' align="left" style="padding-right:5%" />
+<p><img src='https://balbertini.github.io/images/vhdl/mux.png' align="left" style="padding-right:5%" />
 Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code>, saída <code>o</code> e seletor <code>s</code>. As entradas podem ser vetores (e.g. <code>bit_vector(3 downto 0)</code>), mas nesse caso é necessário que o seletor <code>s</code> também seja um vetor do mesmo tamanho.</p>
 <div class="highlight"><pre><span></span><span class="n">o</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">a</span> <span class="k">and</span> <span class="k">not</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="k">or</span> <span class="p">(</span><span class="n">b</span> <span class="k">and</span> <span class="n">s</span><span class="p">);</span>
 </pre></div>
@@ -197,7 +197,7 @@ Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code
 <p>A vantagem é muito clara quando se tem uma função lógica expressa na forma de uma tabela verdade. No entanto, esta opção tem a desvantagem de ser prolixa. Note a diferença entre as duas versões acima: a <em>versão com as saídas como sinais</em> é compacta e passível de utilização. Já a <em>versão com saídas como constantes</em> é uma transcrição da tabela verdade e pode se tornar impraticável (ou ilegível) rapidamente pois a tabela cresce exponencialmente ao número de entradas (lembre-se que a tabela verdade terá <code>2^n</code> linhas, onde <code>n</code> é o número de entradas).</p>
 <h2>When-else</h2>
 <p>O <code>when-else</code> é uma maneira fácil de descrever funcionalmente um circuito com várias funções lógicas. O equivalente a um diagrama esquemático é um <strong>multiplexador</strong>, cujas entradas são funções lógicas.</p>
-<p><img src='https://balbertini.github.io/images/mux_exp.png' align="left" style="padding-right:5%" />
+<p><img src='https://balbertini.github.io/images/vhdl/mux_exp.png' align="left" style="padding-right:5%" />
 Sintaxe do <code>when-else</code>:</p>
 <div class="highlight"><pre><span></span><span class="n">sinal</span> <span class="o">&lt;=</span> <span class="n">expressao1</span> <span class="k">when</span> <span class="n">condicao1</span> <span class="k">else</span>
          <span class="n">expressao2</span> <span class="k">when</span> <span class="n">condicao2</span> <span class="k">else</span>
@@ -207,7 +207,7 @@ Sintaxe do <code>when-else</code>:</p>
 
 <p>A atribuição acontece de acordo com a primeira condição atendida, em ordem (e.g. se a <code>condicao1</code> for atendida, o <code>sinal</code> será <code>expressao1</code> e as demais condições não serão avaliadas). <strong>Atenção:</strong> é fortemente recomendada a descrição da <a href="#others">opção padrão</a> (atribuição para a <code>expressao3</code> no <code>else</code> final sem condição), que será a atribuição caso nenhuma condição for atendida.</p>
 <h3>Exemplo</h3>
-<p><img src='https://balbertini.github.io/images/mux2x1.png' align="left" style="padding-right:5%" />
+<p><img src='https://balbertini.github.io/images/vhdl/mux2x1.png' align="left" style="padding-right:5%" />
 Este exemplo é um multiplexador 2x1 com entradas <code>a</code> e <code>b</code>, saída <code>o</code> e seletor <code>s</code>. As entradas podem ser vetores (e.g. <code>bit_vector(3 downto 0)</code>). Lembre-se que um seletor de um multiplexador deve ter tamanho <code>ceil(log2(n))</code>, onde <code>n</code> é o número de entradas, portanto é possível que ele seja um vetor. Neste exemplo, como há duas entradas, o seletor <code>s</code> tem somente um bit (<code>ceil(log2(2))=1</code>).</p>
 <div class="highlight"><pre><span></span><span class="n">o</span> <span class="o">&lt;=</span> <span class="n">b</span> <span class="k">when</span> <span class="n">s</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">else</span> <span class="n">a</span><span class="p">;</span>
 </pre></div>
