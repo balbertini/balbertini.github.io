@@ -1,6 +1,6 @@
 Title: Arquitetura
 Date: 2018-10-04 10:33
-Modified: 2018-10-04 20:33
+Modified: 2018-10-05 00:47
 Category: vhdl
 Tags: vhdl, basic
 Slug: vhdlarchitecture
@@ -49,7 +49,7 @@ A palavra reservada `work` faz referência ao pacote de trabalho local, onde se 
 
 ### Exemplo
 
-<img src='{filename}/images/vhdl/mux2to1_arquitetura.png' width="40%" align="right" style="padding-left:5%" />
+<img src='{filename}/images/vhdl/mux2to1_arquitetura.png' width="39%" align="right" style="padding-left:5%" />
 ``` vhdl
 entity mux2to1 is
 	port(
@@ -75,7 +75,7 @@ Acima, vemos um componente com duas arquiteturas, representadas tanto na descri�
 
 A arquitetura padrão nesse caso é a última descrita, chamada `struct`, e descreve estruturalmente o multiplexador usando portas lógicas. Note que o nome `struct` não é uma palavra reservada e sim um identificador válido em VHDL, portanto poderia ser qualquer outro. É recomendado que o nome da arquitetura reflita o que foi feito, nesse caso uma descrição estrutural. Podemos escolher a outra arquitetura se desejarmos, que é chamada de `whenelse`. Note que ambas fazem a mesma coisa, mas de maneiras diferentes.
 
-No exemplo abaixo, temos a descrição de uma arquitetura pertencente a uma `entidade_mae` que utiliza o multiplexador descrito três vezes. Na instância `mux1`, a arquitetura é deixada a escolha do sintetizador, portanto será a arquitetura `struct`. Na instância `mux2`, a arquitetura utilizada ainda é a struct, mas dessa vez instruímos explicitamente o sintetizador a utilizá-la. Por último, na instância `mux3` o projetista escolheu explicitamente a arquitetura `whenelse`.
+No exemplo abaixo, temos a descrição de uma arquitetura pertencente a uma `entidade_mae` que utiliza o multiplexador como componente três vezes. Na instância `mux1`, a arquitetura é deixada a escolha do sintetizador, portanto será a arquitetura `struct`. Na instância `mux2`, a arquitetura utilizada ainda é a struct, mas dessa vez instruímos explicitamente o sintetizador a utilizá-la. Por último, na instância `mux3` o projetista escolheu explicitamente a arquitetura `whenelse`.
 
 ```vhdl
 architecture muxes of entidade_mae is
@@ -95,6 +95,6 @@ begin
 end muxes;
 ```
 
-Lembre-se que esta é a descrição de um hardware, portanto as três instâncias são três circuitos **diferentes**, cada um com suas portas lógicas. A diferença é que o `mux1` e o `mux2` são idênticos, ou seja, se você observar o circuito gerado, são duas cópias do mesmo circuito. O `mux3`, apesar de ter mesma funcionalidade, é diferente. Se você sintetizar o circuito acima para um circuito real em silício, poderá ver em um microscópio duas áreas idênticas e uma diferente, todas recebendo as mesmas entradas e cada uma com sua própria saída. **Nota:** este parágrafo é uma simplificação didática, se tiver conhecimento de síntese de ASICs, não souber o que acontece e quiser saber em detalhes, me escreva.
+Lembre-se que esta é a descrição de um hardware, portanto as três instâncias são três circuitos **diferentes**, cada um com seu próprio arranjo de portas lógicas. A diferença é que o `mux1` e o `mux2` são idênticos, ou seja, se você observar o circuito gerado, são duas cópias do mesmo circuito. O `mux3`, apesar de ter mesma funcionalidade, é diferente. Se você sintetizar o circuito acima para um circuito real em silício, poderá ver em um microscópio duas áreas idênticas e uma diferente, todas recebendo as mesmas entradas e cada uma com sua própria saída. **Nota:** este parágrafo é uma simplificação didática, se tiver conhecimento de síntese de ASICs e quiser saber mais detalhes do que acontece durante a síntese, me escreva.
 
-Quando a entidade possui diversas arquiteturas, se uma determinada arquitetura não for escolhida por nenhuma instância, o sintetizador ignora-a. Isso significa que não será gerado nenhum circuito para aquela arquitetura, portanto ter várias arquiteturas não significa que o circuito gerado irá gastar mais energia ou ocupar mais área.
+Quando a entidade possui diversas arquiteturas, se uma determinada arquitetura não for escolhida por nenhuma instância, o sintetizador não a considerará. Isso significa que não será gerado nenhum circuito para aquela arquitetura, portanto ter várias arquiteturas não significa que o circuito gerado irá gastar mais energia ou ocupar mais área, pois só as arquiteturas utilizadas serão de fato sintetizadas.
