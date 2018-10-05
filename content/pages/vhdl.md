@@ -16,5 +16,6 @@ Summary: Lista de posts com VHDL
 ## Básico
 [Tipos de dados básicos em VHDL]({filename}../vhdl/tiposdedadosbasicos.md)  
 [Entidade]({filename}../vhdl/entidade.md)  
+[Arquitetura]({filename}../vhdl/arquitetura.md)  
 [Circuitos combinatórios em VHDL]({filename}../vhdl/combinatorio.md)  
 [Circuitos sequenciais em VHDL]({filename}../vhdl/sequenciais.md)  
