@@ -6,8 +6,7 @@ Tags: main
 Slug: sobre
 Lang: pt_BR
 Authors: Bruno Albertini
-Summary: Sobre o autor
-<!-- save_as: index.html -->
+Summary: Sobre o autor.
 
 ## Bruno de Carvalho Albertini
 

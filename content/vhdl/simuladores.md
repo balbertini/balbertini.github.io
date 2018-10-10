@@ -6,7 +6,7 @@ Tags: vhdl, verilog, simuladores
 Slug: simuladores
 Lang: pt_BR
 Authors: Bruno Albertini
-Summary: Lista de programas para HDL
+Summary: Lista de programas para HDL.
 
 Há diversos programas que suportam descrições em HDL. Para começar no seu mundo de projetista de hardware usando VHDL ou Verilog, escolha um programa nesta lista e prepare seu ambiente. Quase todos são um _Integrated Design Environment_ (IDE), ou seja, possuem um ambiente com suporte a descrição incluindo _syntax highlight_, acesso rápido a simulação, síntese e algum sistema de gerenciamento de projetos.
 
