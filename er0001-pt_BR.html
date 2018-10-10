@@ -44,7 +44,7 @@
 <meta property="og:url" content="https://balbertini.github.io/er0001-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2018-10-09 14:38:00-03:00"/>
-<meta property="article:modified_time" content="2018-10-09 23:39:00-03:00"/>
+<meta property="article:modified_time" content="2018-10-10 09:40:00-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="sistemas digitais"/>
 <meta property="article:tag" content="sistemas digitais"/>
@@ -139,6 +139,7 @@ Y_2^*=\overline{N.P}=\overline{\overline{T.\overline{C}.\overline{Y_1}}.\overlin
 $$</div>
 <p>O próximo passo é preencher a tabela de transição de estados e saída. A tabela preenchida pode ser vista abaixo, para <span class="math">\(Y_1^*Y_2^*\)</span>. Os estados contornados são estados estáveis, ou seja, não há mudança de estado para aquela entrada. Também podemos ver a tabela de fluxo, com as saídas.</p>
 <p><img alt="Tabelas de transição de estados e de fluxo, com saídas" src="https://balbertini.github.io/images/sd/er/er0001_tranTable.png"></p>
+<p>Na tabela de transição de estados, podemos fazer a análise de corridas. Uma corrida acontece quando <strong>uma única mudança na entrada causa uma mudança em mais de uma variável de estado</strong>. No nosso caso, uma única mudança em <span class="math">\(T\)</span> ou <span class="math">\(C\)</span> (tanto de zero para um quanto de um para zero, em qualquer uma das entradas), deve provocar uma mudança das variáveis de estado <span class="math">\(Y_1Y_2\)</span> de mais de um bit, ou seja, de 00 para 11 ou de 10 para 01 (ou vice-versa). Na tabela, podemos verificar que não há corridas. Exemplo: na primeira linha estamos com as variáveis de estado <span class="math">\(Y_1Y_2\)</span> em 00. Nenhuma transição desta linha indica uma transição para 11, as transições possíveis são para 10, 00, 00 e 01, de acordo com as entradas 00, 01, 11 ou 10 respectivamente. Isso significa que, se estivermos no estado 00, uma mudança de um bit não ocasionará uma mudança de mais de um bit nas variáveis de estado. Ainda precisamos analisar as colunas. Se estivermos no mesmo estado (00) e a entrada estiver em 00, as variáveis de estado indicam que o próximo estado é 10, que é estável, portanto esta mudança irá acontecer. Do estado 00 para 10 só há uma mudança nas variáveis de estado, então não há corrida. Se estivermos no estado 00 e a entrada for 01 ou 11, o estado já é estável, então não há mudança alguma nas variáveis de estado. No caso da entrada 10, o novo estado será 01, que é estável e só muda um bit da variável de estado. Prossegue-se com a análise para o restante da tabela e conclui-se que não há corrida alguma. Após a análise de corridas, pode-se montar a tabela de fluxo (com saídas), mostrada do lado direito da figura. Para facilitar, adotou-se a codificação de estados como <span class="math">\(S_i\)</span>, onde <span class="math">\(i\)</span> é o número decimal que representa as variáveis de estado <span class="math">\(Y_1Y_2\)</span>. É preferível fazer a análise de corrida na tabela de transição em binário, pois é mais fácil perceber as mudanças.</p>
 <p><img src='https://balbertini.github.io/images/sd/er/er0001_diagrama.png' align="right" width="35%" style="padding-left:5%" />
 Por último, montamos o diagrama de transição de estados, que fica conforme a figura ao lado.</p>
 <p>A análise de comportamento é opcional, mas é relativamente fácil perceber que se trata de um <em>flip-flop</em> tipo T sensível a borda de descida. A análise pode ser feita da seguinte forma: começa-se no estado <span class="math">\(S_0\)</span> (pode ser qualquer estado) e analisa-se o comportamento das entradas. Percebe-se que, a única maneira de sair desse estado é se a entrada <span class="math">\(C\)</span> for zero, de onde conclui-se que o circuito é algo que espera esta entrada virar zero. Nota-se ainda que, quando isso acontece, a saída muda caso a entrada <span class="math">\(T\)</span> seja um, caso contrário não muda. Todos os estados "seguram" a borda da entrada <span class="math">\(C\)</span>, ou seja, independentemente se formos para <span class="math">\(S_1\)</span> ou <span class="math">\(S_2\)</span> a partir do <span class="math">\(S_0\)</span>, a entrada <span class="math">\(C\)</span> não altera mais o comportamento da máquina exceto se for para um e depois para zero novamente. Poderíamos dizer que os estados tem estas funções:</p>
@@ -149,6 +150,7 @@ Por último, montamos o diagrama de transição de estados, que fica conforme a 
 <li><span class="math">\(S_3\)</span>: saída um, aguarda <span class="math">\(C=0\)</span> e inverte a saída se <span class="math">\(T=1\)</span>.</li>
 </ul>
 <p>Repare que o efeito <em>toggle</em> só acontece nas arestas horizontais, de <span class="math">\(S_0\)</span> para <span class="math">\(S_1\)</span> e de <span class="math">\(S_3\)</span> para <span class="math">\(S_2\)</span>.</p>
+<p><a href="https://balbertini.github.io/extra/sd/er/20181009_projFfT.circ">Download do circuito no LogiSim</a></p>
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
@@ -209,7 +211,7 @@ Por último, montamos o diagrama de transição de estados, que fica conforme a 
   </div>
 
    <div>
-     Última atualização: 2018-10-09 23:39:00-03:00
+     Última atualização: 2018-10-10 09:40:00-03:00
    </div>
 
 
