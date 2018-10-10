@@ -57,7 +57,8 @@ DEFAULT_PAGINATION = 10
 STATIC_PATHS = [
     'images',
     # 'extra/robots.txt',
-    'extra/favicon.ico'
+    'extra/favicon.ico',
+    'extra'
 ]
 
 EXTRA_PATH_METADATA = {

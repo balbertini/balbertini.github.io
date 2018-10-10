@@ -1,6 +1,6 @@
 Title: Simuladores e sintetizadores de HDL
 Date: 2018-09-13 08:45
-Modified: 2018-09-13 08:45
+Modified: 2018-10-10 09:40
 Category: hdl
 Tags: vhdl, verilog, simuladores
 Slug: simuladores
@@ -67,6 +67,13 @@ O GTKWave é um visualizador de formas de onda de código aberto baseado no [GTK
 
 O Atom é um editor de textos com suporte a várias linguagens. Eu o utilizo para a maioria dos meus projetos envolvendo HDLs. Para habilitar o suporte a VHDL, instale o pacote `language-vhdl` depois de instalar o atom.
 
+### LogiSim
+[<i style="font-size: 1em;" class="fas fa-download"></i> Download](https://github.com/reds-heig/logisim-evolution/releases) |
+[<i style="font-size: 1em;" class="fas fa-file-alt"></i> Página](https://github.com/reds-heig/logisim-evolution)
+
+**SOs:** <i style="font-size: 1em;" class="fab fa-windows"></i> <i style="font-size: 1em;" class="fab fa-linux"></i> <i style="font-size: 1em;" class="fab fa-apple"></i>
+
+O LogiSim é uma ferramenta educacional para projetar e simular circuitos digitais. O método de captura é gráfico, ou seja, você desenha o circuito como se estivesse desenhando no papel, na forma de um diagrama, usando portas lógicas. Apesar de suportar HDLs, este não é o foco do projeto. Nota: o projeto original foi descontinuado pelo autor, esta versão é a versão "evolution", que é mantida como software aberto por um grupo de universidades suíças.
 
 # Utilização nas disciplinas
 Nas disciplinas teóricas de Sistemas Digitais o GHDL é utilizado para correção dos exercícios, mas não faz muita diferença qual simulador você usa para desenvolver, desde que **não utilize** nenhuma tecnologia dependente de um determinado fabricante. Nestas disciplinas você raramente será solicitado a sintetizar seu circuito.
