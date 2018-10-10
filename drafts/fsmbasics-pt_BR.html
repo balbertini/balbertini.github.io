@@ -43,8 +43,8 @@
 <meta property="og:locale" content="pt_BR"/>
 <meta property="og:url" content="https://balbertini.github.io/drafts/fsmbasics-pt_BR.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2018-09-25 14:22:00-03:00"/>
-<meta property="article:modified_time" content="2018-09-25 14:22:00-03:00"/>
+<meta property="article:published_time" content="2018-10-05 15:43:00-03:00"/>
+<meta property="article:modified_time" content="2018-10-05 15:43:00-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="sistemas digitais"/>
 <meta property="article:tag" content="sistemas digitais"/>
@@ -66,6 +66,7 @@
 
       <nav>
         <ul class="list">
+          <li><a href="https://balbertini.github.io/pages/sd-pt_BR.html#sd">Digitais</a></li>
           <li><a href="https://balbertini.github.io/pages/research-pt_BR.html#research">Pesquisa</a></li>
           <li><a href="https://balbertini.github.io/pages/sobre-pt_BR.html#sobre">Sobre</a></li>
           <li><a href="https://balbertini.github.io/pages/vhdl-pt_BR.html#vhdl">VHDL</a></li>
@@ -89,20 +90,28 @@
       
     <h1 id="fsmbasics">Máquinas de Estados Finitas</h1>
     <p>
-      Publicado em 25/09/2018 (Ter) na categoria <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
+      Publicado em 05/10/2018 (Sex) na categoria <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
     </p>
   </header>
 
 
   <div>
-    <p>Tecnicamente, a máquina de estados finita que estudamos em sistemas digitais é um <strong>transdutor de estados finitos</strong>. A diferença primária entre ambos é que o transdutor é representado por uma sêxtupla e não tem um esta
-Uma máquina de estados finita pode ser especificada por uma quíntupla do tipo:
+    <p>Tecnicamente, a máquina de estados finita que estudamos em sistemas digitais é um <strong>transdutor de estados finitos</strong>. A diferença primária entre ambos é que o transdutor é representado por uma sêxtupla e não tem um estado de aceitação.</p>
+<p>Uma máquina de estados finita pode ser especificada por uma sêxtupla do tipo:
 </p>
 <div class="math">$$
-M={\Sigma, S, s_0, \delta, F}
+M=(S, S_0, \Sigma, \Lambda, T, G)
 $$</div>
 <p>
-Onde <span class="math">\(\Sigma\)</span> denota o alfabeto da máquina, que em sistemas digitais normalmente é <span class="math">\({0,1}\)</span>. <span class="math">\(S\)</span> é o conjunto de estados possíveis, que em sistemas digitais tem contagem igual ao número de <em>flip-flops</em> se estiver usando <em>one-hot-encoding</em> (e.g. ASM) ou <span class="math">\(2^n\)</span> para <span class="math">\(n\)</span> <em>flip-flops</em> caso usando codificação de estados direta,lembrando que os nomes dos estados podem ser quaisquer, porém a codificação dos estados deve ser feita em binário para implementação; <span class="math">\(s_0\)</span> é o estado inicial, o que no diagrama de transição de estados é representado por uma aresta sem origem chegando, que em sistemas digitais é dado pelo estado de <em>reset</em> da máquina, não necessariamente o estado <span class="math">\(0\)</span>; <span class="math">\(\delta\)</span> é a função de transição de estados</p>
+Onde <span class="math">\(S\)</span> é o conjunto de estados possíveis e <span class="math">\(S_0\)</span> é o estado inicial, <span class="math">\(\Sigma\)</span> e <span class="math">\(\Lambda\)</span> denotam os alfabetos da máquina, respectivamente de entrada e de saída, <span class="math">\(T\)</span> é a função de transição de estados e <span class="math">\(G\)</span> a função de saída.</p>
+<p>As funções de transição de estados e de saída são dadas por <span class="math">\(T:S\times\Sigma\rightarrow S\)</span> e <span class="math">\(G:S\rightarrow\Lambda\)</span> (Moore) ou <span class="math">\(G:S\times\Sigma\rightarrow\Lambda\)</span> (Mealy).</p>
+<p>É importante notar que o alfabeto de entrada e saída em sistemas digitais é sempre <span class="math">\(\{0,1\}\)</span> pois, quando realizada, todos os sinais são binários. Isso significa que <span class="math">\(\Sigma=\Lambda\)</span>, então alguns autores simplificam a máquina de estados para uma quíntupla:
+</p>
+<div class="math">$$
+M=(S, S_0, \Sigma, T, G)
+$$</div>
+<p>Outra diferença notável das máquinas de estado finitas em sistemas digitais em relação ao conceito matemático é o determinismo. Em sistemas digitais, as máquinas podem ter transições aceitando <span class="math">\(\epsilon\)</span>, ou seja, transições que acontecem independentemente da entrada, mas não podem ter mais de uma transição para a mesma entrada. Isso significa que as implementações de máquinas de estados finitas em sistemas digitais são sempre deterministicas.</p>
+<h1>Conceito de máquina de estados finita em sistemas digitais</h1>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -161,7 +170,7 @@ Onde <span class="math">\(\Sigma\)</span> denota o alfabeto da máquina, que em 
   </div>
 
    <div>
-     Última atualização: 2018-09-25 14:22:00-03:00
+     Última atualização: 2018-10-05 15:43:00-03:00
    </div>
 
 
