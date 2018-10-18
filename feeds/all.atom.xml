@@ -16,7 +16,7 @@ Pede-se: (i) o módulo da contagem e (ii) as formas de onda nos pontos A e B.&lt
 &lt;/ul&gt;
 &lt;p&gt;A figura abaixo mostra os dois sinais, e também as saídas dos contadores. Repare que o primeiro ciclo é diferente pois o contador A começa em zero e não com o valor de carga.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Forma de onda do Exercício" src="/images/sd/er/er0002_onda.png"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://balbertini.github.io/extra/sd/er/er0002.zip"&gt;Download da descrição em VHDL&lt;/a&gt;
+&lt;p&gt;&lt;a href="https://balbertini.github.io/extra/sd/er/er0002.zip"&gt;Download da descrição em VHDL&lt;/a&gt;&lt;br&gt;
 &lt;a href="https://balbertini.github.io/extra/sd/er/20181012_associacaoContadores.circ"&gt;Download do circuito no LogiSim&lt;/a&gt;&lt;/p&gt;
 &lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;</content><category term="sistemas digitais"></category><category term="exercícios resolvidos"></category><category term="associação de contadores"></category></entry><entry><title>Exercício: Análise de Circuitos Realimentados</title><link href="https://balbertini.github.io/er0001-pt_BR.html" rel="alternate"></link><published>2018-10-09T14:38:00-03:00</published><updated>2018-10-10T09:40:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-10-09:/er0001-pt_BR.html</id><summary type="html">&lt;p&gt;Exercício resolvido de sistemas digitais: análise de circuitos realimentados.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Assunto: Análise de circuitos realimentados&lt;/p&gt;
 &lt;h2&gt;Enunciado&lt;/h2&gt;
