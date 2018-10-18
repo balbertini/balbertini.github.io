@@ -44,7 +44,7 @@
 <meta property="og:url" content="https://balbertini.github.io/drafts/0002-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2018-10-17 08:46:00-03:00"/>
-<meta property="article:modified_time" content="2018-10-17 08:46:00-03:00"/>
+<meta property="article:modified_time" content="2018-10-18 11:49:00-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="sistemas digitais"/>
 <meta property="article:tag" content="sistemas digitais"/>
@@ -101,10 +101,10 @@
 <p>O planeta terra foi invadido por alienígenas, que se infiltraram entre os humanos. Como eles assumiram a forma humana, é impossível distinguí-los visualmente. No entanto, os projetistas digitais desenvolveram um sensor que indica se o sujeito para o qual está apontado é ou não um alienígena. Este sensor é composto por quatro câmeras digitais, cada um detectando um espectro de luz diferente. Cada câmera tem uma saída <span class="math">\(C\)</span> que indica se, naquele espectro, o sujeito é um alienígena (<span class="math">\(C=1\)</span>) ou um terrestre (<span class="math">\(C=0\)</span>). O sujeito é considerado um alienígena quando pelo menos três câmeras indicam que ele é um alienígena.<br>
 Você faz parte do time que está desenvolvendo o sensor.</p>
 <p><img alt="Esquema do detector de aliens" src="https://balbertini.github.io/images/sd/er/0002_cams.png"></p>
-<p>O engenheiro das câmeras te entregou as quatro câmeras, cujas saídas são: <span class="math">\(C_3\)</span>, <span class="math">\(C_2\)</span>, <span class="math">\(C_1\)</span> e <span class="math">\(C_0\)</span>. Você deve projetar o circuito que recebe as quatro saídas das quatro câmeras, chamado de <strong>Detector</strong> na figura. Sa saída deve ser <span class="math">\(S=1\)</span> se o sujeito é alienígena ou <span class="math">\(S=0\)</span> se é um humano.</p>
-<p><strong>a)</strong> Apresente a tabela verdade do seu circuito.
-<strong>b)</strong> Minimize a tabela verdade usando a técnica do mapa de Karnaugh e apresente a equação minimizada.
-<strong>c)</strong> Monte o diagrama esquemático (portas lógicas) para o circuito que projetou.</p>
+<p>O engenheiro das câmeras te entregou as quatro câmeras, cujas saídas são: <span class="math">\(C_3\)</span>, <span class="math">\(C_2\)</span>, <span class="math">\(C_1\)</span> e <span class="math">\(C_0\)</span>. Você deve projetar o circuito que recebe as quatro saídas das quatro câmeras, chamado de <strong>Detector</strong> na figura. A saída deve ser <span class="math">\(S=1\)</span> se o sujeito é alienígena ou <span class="math">\(S=0\)</span> se é um humano.</p>
+<p><strong>a)</strong> Apresente a tabela verdade do seu circuito.<br>
+<strong>b)</strong> Minimize a tabela verdade usando a técnica do mapa de Karnaugh e apresente a equação minimizada.<br>
+<strong>c)</strong> Monte o diagrama esquemático (portas lógicas) para o circuito que projetou.  </p>
 <h3>Solução</h3>
 <p>O circuito tem quatro entradas (<span class="math">\(C_3\)</span>, <span class="math">\(C_2\)</span>, <span class="math">\(C_1\)</span> e <span class="math">\(C_0\)</span>) e uma saída (<span class="math">\(S\)</span>).</p>
 <p><strong>a)</strong> A tabela verdade tem quatro entradas, portanto devemos construí-la com <span class="math">\(2^4=16\)</span> linhas. As linhas devem conter todos os valores binários possíveis para as entradas e, por convenção e pela facilidade de leitura, colocamos na ordem binária crescente. A saída deve ser <span class="math">\(1\)</span> se há pelo menos três câmeras indicando <span class="math">\(1\)</span>, ou <span class="math">\(0\)</span> caso contrário.</p>
@@ -184,14 +184,14 @@ Você faz parte do time que está desenvolvendo o sensor.</p>
 </table>
 <p><strong>b)</strong> O mapa de Karnaugh para esta função será de quatro variáveis, ou seja, será um mapa 4x4.</p>
 <p><img alt="Mapa de Karnaugh detector de aliens" src="https://balbertini.github.io/images/sd/er/0002_mapa1.png"></p>
-<p>A esquerda, na figura, vemos o mapa preenchido com os valores da tabela verdade. Na direita, o mesmo mapa mas com todos os implicantes primos possíveis circulados, cada um de uma cor. Perceba que o <span class="math">\(1\)</span> central faz parte de todos os quatro implicantes e todos são implicantes primos essenciais pois os <span class="math">\(1\)</span> laterais (que não são o central) fazem parte de um e somente um implicante. A equação final na forma de soma de produtos é:<br>
-<span class="math">\(C_1.C_0.C_2+C_1.C_0.C_3+C_0.C_2.C_3+C_1.C_2.C_3\)</span></p>
-<p><strong>c)</strong> O circuito pode ser montado diretamente das equações e fica como na figura abaixo.
+<p>A esquerda, na figura, vemos o mapa preenchido com os valores da tabela verdade. Na direita, o mesmo mapa mas com todos os implicantes primos possíveis circulados, cada um de uma cor. Perceba que o <span class="math">\(1\)</span> central faz parte de todos os quatro implicantes e todos são implicantes primos essenciais pois os <span class="math">\(1\)</span>s laterais (que não são o central) fazem parte de um e somente um implicante. A equação final na forma de soma de produtos é:<br>
+<span class="math">\(S=C_1.C_0.C_2+C_1.C_0.C_3+C_0.C_2.C_3+C_1.C_2.C_3\)</span></p>
+<p><strong>c)</strong> O circuito pode ser montado diretamente das equações e fica como na figura abaixo.<br>
 <img alt="Mapa de Karnaugh detector de aliens" src="https://balbertini.github.io/images/sd/er/0002_circ.png"></p>
 <h2>Questão 2</h2>
 <p>Uma das tarefas mais comuns em circuitos digitais é comparar se dois conjuntos de bits são iguais. Para isso, usamos comparadores. Nesta questão, você projetará um comparador de <span class="math">\(n\)</span> bits.</p>
-<p><strong>a)</strong> Projete um módulo que receba dois bits <span class="math">\(A\)</span> e <span class="math">\(B\)</span> e retorne <span class="math">\(S=1\)</span> se <span class="math">\(A=B\)</span> ou <span class="math">\(S=0\)</span> se <span class="math">\(A\neq B\)</span>.<br>
-<strong>b)</strong> Modifique o seu módulo do item (a) para ser usado em conjunto com outros módulos iguais, de forma a comparar <span class="math">\(n\)</span> bits. As entradas agora serão <span class="math">\(A_{n-1}A_{n-2}\ldots A_1A_0\)</span> e <span class="math">\(B_{n-1}A_{n-2}\ldots B_1B_0\)</span>, sendo que cada bit será usado como entrada de um módulo deste item. Os <span class="math">\(n\)</span> módulos deverão ser ligados entre si de forma a indicar na saída final se as duas palavras de <span class="math">\(n\)</span> bits <span class="math">\(A\)</span> e <span class="math">\(B\)</span> são iguais. A saída final <span class="math">\(S\)</span> seve ser de um bit apenas.
+<p><strong>a)</strong> Projete um módulo comparador de um bit, que recebe um bit de cada palavra (<span class="math">\(A\)</span> e <span class="math">\(B\)</span> de um bit) e retorne <span class="math">\(S=1\)</span> se <span class="math">\(A=B\)</span> ou <span class="math">\(S=0\)</span> se <span class="math">\(A\neq B\)</span>.<br>
+<strong>b)</strong> Modifique o seu módulo do item (a) para ser usado em conjunto com outros módulos iguais, de forma a comparar <span class="math">\(n\)</span> bits. As entradas agora serão <span class="math">\(A_{n-1}A_{n-2}\ldots A_1A_0\)</span> e <span class="math">\(B_{n-1}A_{n-2}\ldots B_1B_0\)</span>, sendo que cada bit será usado como entrada de um módulo deste item. Os <span class="math">\(n\)</span> módulos deverão ser ligados entre si de forma a indicar na saída final se as duas palavras de <span class="math">\(n\)</span> bits <span class="math">\(A\)</span> e <span class="math">\(B\)</span> são iguais. A saída final <span class="math">\(S\)</span> seve ser de um bit apenas.<br>
 <strong>c)</strong> Usando o módulo do item (b) para 4 bits, mostre o valor de todos os sinais para a comparação <span class="math">\(A=0101\)</span> e <span class="math">\(B=0100\)</span>. Identifique o que muda se <span class="math">\(B=0101\)</span>.</p>
 <h3>Solução</h3>
 <p><strong>a)</strong> O circuito de comparação de igualdade entre dois bits é relativamente simples. Ele deve retornar <span class="math">\(1\)</span> se os dois bits são iguais, o que é verdade quando <span class="math">\(A=B=0\)</span> ou <span class="math">\(A=B=1\)</span>. Visto de outra forma, é verdade quando <span class="math">\(AB=00\)</span> ou <span class="math">\(AB=11\)</span>. A função é então <span class="math">\(S=\overline{A}.\overline{B}+A.B\)</span>, que ainda pode ser escrita como <span class="math">\(S=\overline{A\oplus B}\)</span>. De fato, a definição da porta XNOR de dois bits é exatamente esta: ela retorna verdadeiro se ambos os bits forem iguais.</p>
@@ -264,7 +264,7 @@ Se calcularmos para os demais, encontraremos <span class="math">\(C_1=1\)</span>
   </div>
 
    <div>
-     Última atualização: 2018-10-17 08:46:00-03:00
+     Última atualização: 2018-10-18 11:49:00-03:00
    </div>
 
 
