@@ -34,25 +34,24 @@
 <!-- End Google Analytics -->
 
 <meta name="author" content="Bruno Albertini" />
-<meta name="description" content="Introdução a máquinas de estados finitas em sistemas digitais." />
-<meta name="keywords" content="sistemas digitais, fsm, simplificação">
+<meta name="description" content="Exercício resolvido de sistemas digitais." />
+<meta name="keywords" content="sistemas digitais, exercícios resolvidos">
 
 <meta property="og:site_name" content="B.Albertini's site"/>
-<meta property="og:title" content="Máquinas de Estados Finitas"/>
-<meta property="og:description" content="Introdução a máquinas de estados finitas em sistemas digitais."/>
+<meta property="og:title" content="Exercícios Resolvidos"/>
+<meta property="og:description" content="Exercício resolvido de sistemas digitais."/>
 <meta property="og:locale" content="pt_BR"/>
-<meta property="og:url" content="https://balbertini.github.io/drafts/fsmbasics-pt_BR.html"/>
+<meta property="og:url" content="https://balbertini.github.io/drafts/0004-pt_BR.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2018-10-05 15:43:00-03:00"/>
-<meta property="article:modified_time" content="2018-10-05 15:43:00-03:00"/>
+<meta property="article:published_time" content="2018-10-20 15:56:00-03:00"/>
+<meta property="article:modified_time" content="2018-10-20 15:56:00-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="sistemas digitais"/>
 <meta property="article:tag" content="sistemas digitais"/>
-<meta property="article:tag" content="fsm"/>
-<meta property="article:tag" content="simplificação"/>
+<meta property="article:tag" content="exercícios resolvidos"/>
 <meta property="og:image" content="">
 
-  <title>B.Albertini's site &ndash; Máquinas de Estados Finitas</title>
+  <title>B.Albertini's site &ndash; Exercícios Resolvidos</title>
 
 </head>
 <body>
@@ -88,30 +87,111 @@
 <article class="single">
   <header>
       
-    <h1 id="fsmbasics">Máquinas de Estados Finitas</h1>
+    <h1 id="0004">Exercícios Resolvidos</h1>
     <p>
-      Publicado em 05/10/2018 (Sex) na categoria <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
+      Publicado em 20/10/2018 (SÃ¡b) na categoria <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
     </p>
   </header>
 
 
   <div>
-    <p>Tecnicamente, a máquina de estados finita que estudamos em sistemas digitais é um <strong>transdutor de estados finitos</strong>. A diferença primária entre ambos é que o transdutor é representado por uma sêxtupla e não tem um estado de aceitação.</p>
-<p>Uma máquina de estados finita pode ser especificada por uma sêxtupla do tipo:
-</p>
-<div class="math">$$
-M=(S, S_0, \Sigma, \Lambda, T, G)
-$$</div>
-<p>
-Onde <span class="math">\(S\)</span> é o conjunto de estados possíveis e <span class="math">\(S_0\)</span> é o estado inicial, <span class="math">\(\Sigma\)</span> e <span class="math">\(\Lambda\)</span> denotam os alfabetos da máquina, respectivamente de entrada e de saída, <span class="math">\(T\)</span> é a função de transição de estados e <span class="math">\(G\)</span> a função de saída.</p>
-<p>As funções de transição de estados e de saída são dadas por <span class="math">\(T:S\times\Sigma\rightarrow S\)</span> e <span class="math">\(G:S\rightarrow\Lambda\)</span> (Moore) ou <span class="math">\(G:S\times\Sigma\rightarrow\Lambda\)</span> (Mealy).</p>
-<p>É importante notar que o alfabeto de entrada e saída em sistemas digitais é sempre <span class="math">\(\{0,1\}\)</span> pois, quando realizada, todos os sinais são binários. Isso significa que <span class="math">\(\Sigma=\Lambda\)</span>, então alguns autores simplificam a máquina de estados para uma quíntupla:
-</p>
-<div class="math">$$
-M=(S, S_0, \Sigma, T, G)
-$$</div>
-<p>Outra diferença notável das máquinas de estado finitas em sistemas digitais em relação ao conceito matemático é o determinismo. Em sistemas digitais, as máquinas podem ter transições aceitando <span class="math">\(\epsilon\)</span>, ou seja, transições que acontecem independentemente da entrada, mas não podem ter mais de uma transição para a mesma entrada. Isso significa que as implementações de máquinas de estados finitas em sistemas digitais são sempre deterministicas.</p>
-<h1>Conceito de máquina de estados finita em sistemas digitais</h1>
+    <h1>UNIVESP Exercícios de Portfólio - Semana 6</h1>
+<p>Assunto: Registradores, máquinas de estado finito e síntese de circuitos sequenciais.</p>
+<h2>Questão 1</h2>
+<p>Um <em>barrel shifter</em> é um registrador de deslocamento que pode realizar uma operação de <em>shift</em> em um único ciclo. Isso é realizado através de uma entrada Sa (quantidade de <em>shift</em>, do inglês <em>shift amount</em>). Se o conteúdo do registrador for 1110 e a entrada Sa=01 por exemplo, o valor armazenado no registrador após a próxima borda de subida do <em>clock</em> será 0111, se Sa=10 será 1011 e se S1=11 será 1101. O valor de Sa=00 realiza uma entrada paralela.  </p>
+<p>Usando somente <em>flip-flops</em> tipo D e multiplexadores, construa um <em>barrel shifter</em> de 4 bits.</p>
+<h3>Solução</h3>
+<p>A solução está no circuito abaixo.  <br>
+<img alt="Circuito resposta da questão 1" src="https://balbertini.github.io/images/sd/er/0004_Q1resp.png"><br>
+Repare que cada bit é composto por um módulo com um <em>flip-flop</em> tipo D, cuja entrada é escolhida pelo multiplexador. Esse módulo se repete para os 4 bits e a chave para a solução está em ligar corretamente as entradas dos multiplexadores de modo que os <em>flip-flops</em> recebam a entrada correspondente ao deslocamento desejado.</p>
+<h2>Questão 2</h2>
+<p>Desenvolva uma máquina de estados finita do tipo Moore com entrada de um bit, que reconheça a sequência 0110 com sobreposição. Exemplo: se entrar com 0, depois com 1, depois com 1 depois com 0, a máquina retorna 1 na saída. Duas sequencias encadeadas retornam 1 duas vezes (e.g. 0110110 retorna 1 no segundo e no terceiro 0).</p>
+<h3>Solução</h3>
+<p>Começa-se desenhando o diagrama de transição de estados para esta máquina. O diagrama pode ser visto abaixo.  </p>
+<p><img alt="Diagrama Q2" src="https://balbertini.github.io/images/sd/er/0004_Q2diag.png">  </p>
+<p>O diagrama começa com um estado inicial, que chamamos de A. Sempre que um bit da sequencia for detectado na entrada, transicionamos de estado para "guardar" a sequencia que foi detectada até o momento. Sendo assim, os estados significam A: nenhuma sequencia foi detectada, B: detectou-se o primeiro zero, C: detectou-se 01, D: detectou-se 011, e E: detectou-se 0110 (note que o estado E é o único estado que produz a saída 1). Para detectarmos a sobreposição, a partir do E vamos para estados intermediários dependendo de qual parte da sequencia detectamos.</p>
+<p>O segundo passo é montar a tabela de transição de estados, que pode ser vista abaixo.</p>
+<table>
+<thead>
+<tr>
+<th align="right">EA</th>
+<th align="center">e=0</th>
+<th align="center">e=1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">A/0</td>
+<td align="center">B</td>
+<td align="center">A</td>
+</tr>
+<tr>
+<td align="right">B/0</td>
+<td align="center">B</td>
+<td align="center">C</td>
+</tr>
+<tr>
+<td align="right">C/0</td>
+<td align="center">B</td>
+<td align="center">D</td>
+</tr>
+<tr>
+<td align="right">D/0</td>
+<td align="center">E</td>
+<td align="center">A</td>
+</tr>
+<tr>
+<td align="right">E/1</td>
+<td align="center">B</td>
+<td align="center">C</td>
+</tr>
+</tbody>
+</table>
+<p>Esta tabela mostra, por exemplo, que se estivermos no estado D, a saída é 0 e a máquina transicionará na próxima borda de <em>clock</em> para o estado E se entrada 0 ou para o estado A se a entrada for 1. for Com a tabela de transição de estados montada, podemos fazer a atribuição de estados, montando a tabela novamente mas substituindo os nomes dos estados pelo seu código.</p>
+<table>
+<thead>
+<tr>
+<th align="right"><span class="math">\(Y_2Y_1Y_0\)</span></th>
+<th align="center">e=0</th>
+<th align="center">e=1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">001/0</td>
+<td align="center">000</td>
+<td align="center">001</td>
+</tr>
+<tr>
+<td align="right">000/0</td>
+<td align="center">000</td>
+<td align="center">010</td>
+</tr>
+<tr>
+<td align="right">010/0</td>
+<td align="center">000</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="right">100/0</td>
+<td align="center">111</td>
+<td align="center">001</td>
+</tr>
+<tr>
+<td align="right">111/1</td>
+<td align="center">000</td>
+<td align="center">010</td>
+</tr>
+</tbody>
+</table>
+<p>Esta tabela tem o mesmo significado da anterior. Como temos cinco estados, devemos ter 3 variáveis de estado, que foram representadas por <span class="math">\(Y_2\)</span>, <span class="math">\(Y_1\)</span>, e <span class="math">\(Y_0\)</span>. O estado é dado por <span class="math">\(Y_2Y_1Y_0\)</span>. O próximo passo é escolher o tipo de <em>flip-flop</em> e resolver os mapas de Karnaugh para o próximo estado e para a saída. Escolhemos o <em>flip-flop</em> tipo D, portanto cada mapa terá 4 variáveis, sendo as três de estado e a entrada.</p>
+<p><img alt="Mapas de Karnaugh Q2" src="https://balbertini.github.io/images/sd/er/0004_Q2mapas.png">  </p>
+<p>No preenchimento dos mapas, os estados não utilizados foram preenchidos com <em>don't care</em>, ou "X", para minimizar as equações. O mapa para a saída não foi montado pois a equação é muito simples: <span class="math">\(S=Y_2.Y_1.Y_0\)</span>. As demais equações ficam:<br>
+<span class="math">\(Y_2=Y_2.\overline{Y_0}.\overline{e}+Y_1.\overline{Y_0}.e\)</span><br>
+<span class="math">\(Y_1=Y_2.\overline{Y_0}.\overline{e}+Y_2.Y_0.e+\overline{Y_2}.\overline{Y_1}.\overline{Y_0}.e\)</span><br>
+<span class="math">\(Y_0=Y_2.\overline{Y_0}+\overline{Y_2}.Y_0.e\)</span>  </p>
+<p>Com as três equações de transição de estados e com a equação de saída, podemos finalmente montar o circuito da máquina de estados.</p>
+<p><img alt="Circuito Q2" src="https://balbertini.github.io/images/sd/er/0004_Q2circ.png">  </p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -170,15 +250,14 @@ $$</div>
   </div>
 
    <div>
-     Última atualização: 2018-10-05 15:43:00-03:00
+     Última atualização: 2018-10-20 15:56:00-03:00
    </div>
 
 
   <div class="tag-cloud">
     <p>
       <a href="https://balbertini.github.io/tag/sistemas-digitais.html">sistemas digitais</a>
-      <a href="https://balbertini.github.io/tag/fsm.html">fsm</a>
-      <a href="https://balbertini.github.io/tag/simplificacao.html">simplificação</a>
+      <a href="https://balbertini.github.io/tag/exercicios-resolvidos.html">exercícios resolvidos</a>
     </p>
   </div>
 

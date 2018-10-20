@@ -7,7 +7,7 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="" />
-
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
@@ -110,7 +110,7 @@ O circuito é composto por três <em>flip-flops</em>, um tipo D sensível a bord
 <p>Repare que a forma de onda no Qdl, na sua última subida, não segue a borda do sinal clk pois este é um <em>latch</em>.</p>
 <h2>Questão 2</h2>
 <p>Observe o circuito da figura.<br>
-<img alt="Forma de onda para questão 1" src="https://balbertini.github.io/images/sd/er/0003_q2circ.png"></p>
+<img alt="Circuito da questão 2" src="https://balbertini.github.io/images/sd/er/0003_q2circ.png"></p>
 <p>O circuito possui três entradas de um bit (Ea, Eb e Ec) e oito saídas (de A até H) que estão ligadas em LEDs. Há um arranjo de um multiplexador (MUX), um demultiplexador (DMX) e um decodificador, além das duas portas lógicas. A cada valor de entrada, um dos LEDs acenderá. No entanto, devido ao arranjo utilizado no circuito, alguns LEDs podem não acender. Você consegue descobrir quais?</p>
 <h3>Solução</h3>
 <p>A maneira mais fácil de resolver este problema é montar a tabela verdade. A entrada foi considerada como E=EcEbEa (três bits) e a saída como LEDs=HGFEDCBA (oito bits). Para facilitar a montagem, incluí os sinais MUX (saída do multiplexador, um bit), DMX saída do demultiplexador, dois bits) e DECD (entrada do decodificador, três bits).</p>
