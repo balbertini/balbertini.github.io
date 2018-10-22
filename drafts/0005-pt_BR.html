@@ -43,8 +43,8 @@
 <meta property="og:locale" content="pt_BR"/>
 <meta property="og:url" content="https://balbertini.github.io/drafts/0005-pt_BR.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2018-10-19 11:03:00-03:00"/>
-<meta property="article:modified_time" content="2018-10-19 11:03:00-03:00"/>
+<meta property="article:published_time" content="2018-10-22 19:11:00-03:00"/>
+<meta property="article:modified_time" content="2018-10-22 19:11:00-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="sistemas digitais"/>
 <meta property="article:tag" content="sistemas digitais"/>
@@ -89,7 +89,7 @@
       
     <h1 id="0005">Exercícios Resolvidos</h1>
     <p>
-      Publicado em 19/10/2018 (Sex) na categoria <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
+      Publicado em 22/10/2018 (Seg) na categoria <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
     </p>
   </header>
 
@@ -98,10 +98,86 @@
     <h1>UNIVESP Exercícios de Portfólio - Semana 7</h1>
 <p>Assunto: Contadores e memórias.</p>
 <h2>Questão 1</h2>
+<p>Considere o circuito da figura abaixo:<br>
+<img alt="Circuito da questão 1" src="https://balbertini.github.io/images/sd/er/0005_Q1circ.png">  </p>
+<p>A saída <span class="math">\(S\)</span> é dada por <span class="math">\(S_3S_2S_1S_0\)</span>. Há uma entrada <span class="math">\(A\)</span> e uma entrada de <em>clock</em> chamada clk. Pede-se:<br>
+<strong>a)</strong> Classifique o contador.<br>
+<strong>b)</strong> Para que serve a entrada <span class="math">\(A\)</span>?<br>
+<strong>c)</strong> Modifique o contador para adicionar carga paralela síncrona.<br>
+<strong>d)</strong> Usando a carga paralela do item (c), modifique o contador para um contador de década, com RCO (<em>ripple carry out</em>).  </p>
+<h3>Solução</h3>
+<p><strong>a)</strong> Este é um contador síncrono crescente de módulo 16 e sensível à borda de descida do <em>clock</em>.<br>
+<strong>b)</strong> A entrada <span class="math">\(A\)</span> é um <em>enable</em> ativo alto. Caso desativado, a contagem não acontece.<br>
+<strong>c)</strong> A chave para a solução está em multiplexar a entrada dos <em>flip-flops</em>. Caso esteja contando (<em>load</em>=0), o sinal vem normalmente da porta AND. Caso esteja fazendo uma carga paralela, o sinal é externo. Contudo, o sinal JK deve vir diretamente de uma entrada. O sinal JK deve ser 0 caso a entrada desejada seja igual o valor atual (JK no estado de manter a saída) ou 1 caso seja diferente (JK no estado de inverter a saída). Para isso, usamos uma porta XOR, que retorna 1 se os valores forem diferentes. O resultado pode ser visto na figura.<br>
+<img alt="Circuito respostas da questão 1 (load)" src="https://balbertini.github.io/images/sd/er/0005_Q1resp1.png"><br>
+<strong>d)</strong> Basta fazer com que o valor da entrada de carga seja 0000 e acionar a carga paralela quando o valor for 1001 (9 em decimal), assim o próximo valor na sequencia será 0. O valor da porta que determina o sinal de carga também é o valor máximo de contagem, portanto corresponde ao RCO.<br>
+<img alt="Circuito respostas da questão 1 (decada)" src="https://balbertini.github.io/images/sd/er/0005_Q1resp2.png">  </p>
+<h2>Questão 2</h2>
+<p>Você foi contratado fazer um multiplicador de operandos de 4 bits (inteiros positivos) usando uma memória. Pede-se:<br>
+<strong>a)</strong> Especifique a memória que irá utilizar, justificando sua escolha.<br>
+<strong>b)</strong> Explique o conteúdo da memória e como os operandos serão inseridos no seu circuito multiplicador.</p>
+<h3>Solução</h3>
+<p><strong>a)</strong> A memória será do tipo ROM (<em>Read Only Memory</em>), pois o resultado da multiplicação nuca precisará ser atualizado. Mais ainda, será uma memória do tipo MROM (<em>Masked ROM</em>), dado que o conteúdo pode vir gravado de fábrica. O tamanho será de 256 palavras pois há dois operandos de 4 bits, totalizando 8 bits de endereço (<span class="math">\(2^8=256\)</span>). Cada palavra terá o tamanho de 8 bits pois o valor máximo do resultado da multiplicação de dois números de 4 bits pode ser representado por 8 bits.<br>
+<strong>b)</strong> Basta fazer com que os operandos sejam o endereço da memória e colocar o resultado da multiplicação na posição de memória correspondente. Exemplo: se o endereço é dado por <span class="math">\(A\)</span> que vai de <span class="math">\(A_7\)</span> até <span class="math">\(A_0\)</span>, colocamos o multiplicando de <span class="math">\(A_7\)</span> até <span class="math">\(A_4\)</span> e o multiplicador de <span class="math">\(A_3\)</span> até <span class="math">\(A_0\)</span>. Se os valores forem 1010 (10 em decimal) e 1001 (9 em decimal), o endereço será 10101001. O valor contido neste endereço deve ser o valor da multiplicação, ou seja 01011010 (90 em decimal). Repete-se o mesmo para todos os valores possíveis, preenchendo toda a memória.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </div>
 
    <div>
-     Última atualização: 2018-10-19 11:03:00-03:00
+     Última atualização: 2018-10-22 19:11:00-03:00
    </div>
 
 
