@@ -1,0 +1,821 @@
+
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+
+    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-125173293-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<meta name="author" content="Bruno Albertini" />
+<meta name="description" content="Exercício resolvido de sistemas digitais." />
+<meta name="keywords" content="sistemas digitais, exercícios resolvidos">
+
+<meta property="og:site_name" content="B.Albertini's site"/>
+<meta property="og:title" content="Exercícios Resolvidos"/>
+<meta property="og:description" content="Exercício resolvido de sistemas digitais."/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:url" content="https://balbertini.github.io/drafts/0006-pt_BR.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-10-22 19:11:00-03:00"/>
+<meta property="article:modified_time" content="2018-10-22 19:11:00-03:00"/>
+<meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
+<meta property="article:section" content="sistemas digitais"/>
+<meta property="article:tag" content="sistemas digitais"/>
+<meta property="article:tag" content="exercícios resolvidos"/>
+<meta property="og:image" content="">
+
+  <title>B.Albertini's site &ndash; Exercícios Resolvidos</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://balbertini.github.io">
+        <img src="https://balbertini.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="https://balbertini.github.io"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+          <li><a href="https://balbertini.github.io/pages/sd-pt_BR.html#sd">Digitais</a></li>
+          <li><a href="https://balbertini.github.io/pages/research-pt_BR.html#research">Pesquisa</a></li>
+          <li><a href="https://balbertini.github.io/pages/sobre-pt_BR.html#sobre">Sobre</a></li>
+          <li><a href="https://balbertini.github.io/pages/vhdl-pt_BR.html#vhdl">VHDL</a></li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/balbertini" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="//balbertini.github.io/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="0006">Exercícios Resolvidos</h1>
+    <p>
+      Publicado em 22/10/2018 (Seg) na categoria <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
+    </p>
+  </header>
+
+
+  <div>
+    <h1>UNIVESP Prova 2018</h1>
+<p>Semana 1:   Introdução aos circuitos lógicos. Sistemas de numeração posicional
+Semana 2:   Representações de números com sinal. Aritmética binária
+Semana 3:   Códigos. Álgebra de chaveamento e minimização de funções algébricas
+Semana 4:   Síntese de circuitos lógicos com mapas de Karnaugh. Blocos básicos: circuitos aritméticos
+Semana 5:   Blocos básicos: codificadores e decodificadores, mux e demux. Latches e flip-flops
+Semana 6:   Registradores, máquinas de estado finito e síntese de circuitos sequenciais
+Semana 7:   Contadores e memórias</p>
+<h2>Questão 1</h2>
+<ul>
+<li>Semana(s): 1 e 2  </li>
+<li>Tipo de questão: dissertativa  </li>
+<li>Dificuldade: (a-c):fácil, (d):média, questão toda: fácil</li>
+<li>Instruções para montagem da prova: a questão é genérica e personalizada para cada aluno devido à dependência do identificador UNIVESP. Basta replicar a questão em todas as 10 provas como está no enunciado.</li>
+</ul>
+<h3>Enunciado (todas as provas)</h3>
+<p>Considere seu número identificador da UNIVESP, composto de sete dígitos decimais. Tome como <span class="math">\(A\)</span> os dois dígitos menos significativos do seu identificador e como <span class="math">\(B\)</span> os próximos dígitos menos significativos (quarto e terceiro). Exemplo: se o seu identificador é 1876543, <span class="math">\(A=43\)</span> e <span class="math">\(B=65\)</span>. Se qualquer dígito de <span class="math">\(A\)</span> ou <span class="math">\(B\)</span> for zero, substitua por 1. Antes de começar a resolução, escreva seu identificador completo e mostre o <span class="math">\(A\)</span> e o <span class="math">\(B\)</span> que está considerando para a sua resposta.<br>
+<strong>Q1a)</strong> Quantos bits são necessários para representar <span class="math">\(A\)</span> e <span class="math">\(B\)</span> de um aluno qualquer?<br>
+<strong>Q1b)</strong> Converta <span class="math">\(A\)</span> e <span class="math">\(B\)</span> para binário.<br>
+<strong>Q1c)</strong> Some <span class="math">\(A\)</span> e <span class="math">\(B\)</span> em binário, mostrando a soma. Se o resultado for do mesmo tamanho dos operandos, houve transbordo (<em>overflow</em>)?<br>
+<strong>Q1d)</strong> Considerando que <span class="math">\(A\)</span> e <span class="math">\(B\)</span> estão em complemento de dois, qual o resultado em decimal do item (d), considerando que o resultado é do mesmo tamanho dos operandos?  </p>
+<h3>Solução (todas as provas)</h3>
+<p><strong>Q1a)</strong> Os números <span class="math">\(A\)</span> e <span class="math">\(B\)</span> são sempre de dois dígitos. Sendo assim, o menor número representável é 00 e o maior 99. Para representar 100 números (de 00 a 99), precisamos de <span class="math">\(\lceil log_2{99}\rceil = 7\)</span> dígitos binários, ou seja, 7 bits.<br>
+<strong>Q1b)</strong> Siga a tabela abaixo e encontre a dezena e a unidade do seu número. Exemplo: se o número for 42, a linha é  4 e a coluna é a 2, portanto <span class="math">\(42_{(10)}=0101010_{(2)}\)</span>. As linhas que estão tachadas contém um dígito zero e você deveria ter substituído este dígito por 1, conforme enunciado.<br>
+<img alt="Tabela conversão Q1c" src="https://balbertini.github.io/images/sd/er/0006_Q1b_sol.png"><br>
+<strong>Q1c)</strong> Os dois valores devem ser somados segundo as regras da soma normal. Deve haver dois números de 7 dígitos binários (bits) alinhados. A cada coluna soma-se o número, sendo que 0+0=0, 0+1=1+0=1, e 1+1=0 e vai 1 para o próximo bit. Quando há vai-um, a soma segue o mesmo padrão, mas há a possibilidade de 1+1+1=1 e vai 1 para o próximo bit. Caso o resultado seja de oito bit (o que significa que a última soma produziu um vai-um), o resultado estourou ou produziu transbordo (<em>overflow</em>). Se o resultado for de 7 bits ou o oitavo bit for 0, não há transbordo. Para facilitar a verificação da resposta, está disponível uma tabela com todas as somas possíveis <a href="https://balbertini.github.io/images/sd/er/0006_Q1c_sol.pdf">aqui</a> (procure a coluna do primeiro número e a linha do segundo número; legenda: vermelho não deveria ocorrer pois os números não podem ter um dígito zero, amarelo significa que houve transbordo).<br>
+<strong>d)</strong> Considera-se somente os 7 bits pois os operandos são de 7 bits (mesmo que tenha ocorrido transbordo). Se o bit mais significativo for 1, o número é negativo e devemos inverter todos os bits e somar 1 para encontrar o número binário complementar (positivo), caso contrário o número já é positivo e passa-se ao próximo passo. A resposta pode ser encontrada convertendo-se o número para decimal usando a fórmula de expansão de base genérica, depois adiciona-se o sinal "-" caso tenha-se determinado que o número é negativo no passo anterior. Veja na imagem o resultado esperado (e.g. se o resultado é 11010110, descarta-se o oitavo bit (vai-um), resultado 1010110, coluna 101 e linha 0110, resultado final -42).<br>
+<img alt="Tabela resposta Q1d" src="https://balbertini.github.io/images/sd/er/0006_Q1d_sol.png">  </p>
+<h3>Critérios de correção (todas as provas, somente para avaliador)</h3>
+<p><strong>a) [0.5]</strong> O aluno deve saber o que são dígitos menos e mais significativos para os escolher corretamente. <br>
+<strong>b) [0.5]</strong> A conversão pode ser feita de diversas maneiras, mas o mais provável é que o aluno usou o método da divisão sucessiva. Toma-se o número em decimal, divide-se por dois sucessivamente, até não conseguir mais. O resultado em binário é lido de baixo para cima, sendo o bit mais significativo o resultado da última divisão, o segundo mais significativo o resto da última divisão, o terceiro o resto da penúltima divisão, e assim por diante. Devem ter exatamente 6 divisões para cada um dos números decimais de dois dígitos. Para facilitar, use a tabela da solução para corrigir.<br>
+<strong>c) [0.7]</strong> Soma-se como se soma decimal, mas usando binário (com resultado em binário). Veja a explicação na solução, assim como a tabela para facilitar a correção.<br>
+<strong>d) [0.8]</strong> Descarta-se o oitavo bit, se houver e considera-se somente os sete bits. Caso o bit mais significativo seja 1, o número é negativo e procede-se para a inversão bit a bit e adição de 1 para encontrar o número positivo correspondente. Caso seja 0, a resposta é positiva e o número já é a resposta. Em ambos os casos deve-se converter o número para decimal <strong>após</strong> a determinação do sinal e possível complementação. Há uma tabela para ajudar na correção.</p>
+<hr>
+<h2>Questão 2</h2>
+<ul>
+<li>Semana(s): 4   </li>
+<li>Tipo de questão: teste  </li>
+<li>Dificuldade: média (todas as variações)</li>
+<li>Instruções para montagem da prova: o enunciado é o mesmo para todas as provas, contudo a imagem com os mapas é diferente para cada prova. As opções são diferentes para cada prova, porém o item (a) é sempre o correto. Sugere-se aleatorizar as alternativas. Um arquivo PDF vetorial com as imagens pode ser baixado <a href="https://balbertini.github.io/images/sd/er/0006_Q2_mapas.pdf">aqui</a>.</li>
+</ul>
+<h3>Enunciado (todas as provas)</h3>
+<p>Considere os quatro mapas de <em>Karnaugh</em> da figura, com os implicantes circulados.
+<code>Aqui coloque o enunciado de cada prova como abaixo</code></p>
+<h3>Solução (todas as provas)</h3>
+<p>A alternativa (a) é sempre o correto, sugere-se aleatorizar as alternativas.</p>
+<h3>Critérios de correção (todas as provas, somente para avaliador)</h3>
+<p>A alternativa (a) vale 1 ponto e a alternativa (b) vale 1.5 pontos.</p>
+<h3>Enunciado Prova 1</h3>
+<p><img alt="Mapas Q2 P1" src="https://balbertini.github.io/images/sd/er/0006_Q2_p1.png">  </p>
+<p><strong>Q2a)</strong> Marque somente a opção correta sobre os mapas:  </p>
+<ul>
+<li><strong>a)</strong> Todos os mapas estão corretos.  </li>
+<li><strong>b)</strong> Não é possível extrair a função mínima do mapa (a).  </li>
+<li><strong>c)</strong> O mapa (b) não é válido.  </li>
+<li><strong>d)</strong> O mapa (c) está errado pois pode-se circular a diagonal.  </li>
+<li><strong>e)</strong> O mapa (d) deve ser minimizado por maxtermos.</li>
+</ul>
+<p><strong>Q2b)</strong> Das funções abaixo, marque a única que não pode ser inferida a partir de um dos mapas.</p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(a\oplus c\oplus d\)</span>   </li>
+<li><strong>b)</strong> <span class="math">\(a\oplus b \oplus c \oplus d\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(1\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(\bar{a}.c+a.\bar{c}\)</span>  </li>
+<li><strong>e)</strong> <span class="math">\(\overline{a\oplus b\oplus c}\)</span></li>
+</ul>
+<h3>Enunciado Prova 2</h3>
+<p><img alt="Mapas Q2 P2" src="https://balbertini.github.io/images/sd/er/0006_Q2_p2.png">  </p>
+<p><strong>Q2a)</strong> Marque somente a opção correta sobre os mapas:  </p>
+<ul>
+<li><strong>a)</strong> Todos os mapas estão corretos.  </li>
+<li><strong>b)</strong> O mapa (a) não é válido.  </li>
+<li><strong>c)</strong> Não é possível circular o mapa (b) como na imagem.  </li>
+<li><strong>d)</strong> Não é possível extrair a função mínima do mapa (d).  </li>
+<li><strong>e)</strong> O mapa (c) deve ser minimizado por maxtermos.</li>
+</ul>
+<p><strong>Q2b)</strong> Das funções abaixo, marque a única que não pode ser inferida a partir de um dos mapas.</p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(a\oplus b\)</span>   </li>
+<li><strong>b)</strong> <span class="math">\(1\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(b\oplus d\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(\bar{a}.c+a.\bar{c}\)</span>  </li>
+<li><strong>e)</strong> <span class="math">\(a\oplus b\oplus c\)</span></li>
+</ul>
+<h3>Enunciado Prova 3</h3>
+<p><img alt="Mapas Q2 P2" src="https://balbertini.github.io/images/sd/er/0006_Q2_p3.png">  </p>
+<p><strong>Q2a)</strong> Marque somente a opção correta sobre os mapas:  </p>
+<ul>
+<li><strong>a)</strong> Todos os mapas estão corretos.  </li>
+<li><strong>b)</strong> O mapa (a) não é válido.  </li>
+<li><strong>c)</strong> Não é possível circular o mapa (c) como na imagem.  </li>
+<li><strong>d)</strong> Não é possível extrair a função mínima do mapa (b).  </li>
+<li><strong>e)</strong> O mapa (d) deve ser minimizado por maxtermos.</li>
+</ul>
+<p><strong>Q2b)</strong> Das funções abaixo, marque a única que não pode ser inferida a partir de um dos mapas.</p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(c\oplus d\)</span>   </li>
+<li><strong>b)</strong> <span class="math">\(0\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(\overline{a\oplus b\oplus c}\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(\bar{b}\oplus d\)</span>  </li>
+<li><strong>e)</strong> <span class="math">\(b\)</span></li>
+</ul>
+<h3>Enunciado Prova 4</h3>
+<p><img alt="Mapas Q2 P4" src="https://balbertini.github.io/images/sd/er/0006_Q2_p4.png">  </p>
+<p><strong>Q2a)</strong> Marque somente a opção correta sobre os mapas:  </p>
+<ul>
+<li><strong>a)</strong> Todos os mapas estão corretos.  </li>
+<li><strong>b)</strong> O mapa (d) não é válido.  </li>
+<li><strong>c)</strong> Não é possível circular o mapa (c) como na imagem.  </li>
+<li><strong>d)</strong> Não é possível extrair a função mínima do mapa (b).  </li>
+<li><strong>e)</strong> O mapa (a) deve ser minimizado por maxtermos.</li>
+</ul>
+<p><strong>Q2b)</strong> Das funções abaixo, marque a única que não pode ser inferida a partir de um dos mapas.</p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(\bar{a}.c+a.\bar{c}\)</span>   </li>
+<li><strong>b)</strong> <span class="math">\(\overline{a\oplus b\oplus c}\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(a\oplus b\oplus c\oplus d\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(\bar{b}\oplus d\)</span>  </li>
+<li><strong>e)</strong> <span class="math">\(b\)</span></li>
+</ul>
+<h3>Enunciado Prova 5</h3>
+<p><img alt="Mapas Q2 P5" src="https://balbertini.github.io/images/sd/er/0006_Q2_p5.png">  </p>
+<p><strong>Q2a)</strong> Marque somente a opção correta sobre os mapas:  </p>
+<ul>
+<li><strong>a)</strong> Todos os mapas estão corretos.  </li>
+<li><strong>b)</strong> O mapa (b) não é válido.  </li>
+<li><strong>c)</strong> Não é possível circular o mapa (d) como na imagem.  </li>
+<li><strong>d)</strong> Não é possível extrair a função mínima do mapa (c).  </li>
+<li><strong>e)</strong> O mapa (a) deve ser minimizado por maxtermos.</li>
+</ul>
+<p><strong>Q2b)</strong> Das funções abaixo, marque a única que não pode ser inferida a partir de um dos mapas.</p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(b\oplus c\oplus d\)</span>   </li>
+<li><strong>b)</strong> <span class="math">\(a\oplus b\oplus c\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(1\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(\bar{a}.c+a.\bar{c}\)</span>  </li>
+<li><strong>e)</strong> <span class="math">\(\bar{b}\oplus d\)</span>  </li>
+</ul>
+<h3>Enunciado Prova 6</h3>
+<p><img alt="Mapas Q2 P6" src="https://balbertini.github.io/images/sd/er/0006_Q2_p6.png">  </p>
+<p><strong>Q2a)</strong> Marque somente a opção correta sobre os mapas:  </p>
+<ul>
+<li><strong>a)</strong> Todos os mapas estão corretos.  </li>
+<li><strong>b)</strong> O mapa (b) não é válido.  </li>
+<li><strong>c)</strong> Não é possível circular o mapa (c) como na imagem.  </li>
+<li><strong>d)</strong> Não é possível extrair a função mínima do mapa (d).  </li>
+<li><strong>e)</strong> O mapa (a) deve ser minimizado por maxtermos.</li>
+</ul>
+<p><strong>Q2b)</strong> Das funções abaixo, marque a única que não pode ser inferida a partir de um dos mapas.</p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(a\oplus b\oplus d\)</span>   </li>
+<li><strong>b)</strong> <span class="math">\(a\oplus b\oplus c\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(0\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(\bar{b}\oplus d\)</span>  </li>
+<li><strong>e)</strong> <span class="math">\(a\oplus b\oplus c\oplus d\)</span>  </li>
+</ul>
+<h3>Enunciado Prova 7</h3>
+<p><img alt="Mapas Q2 P7" src="https://balbertini.github.io/images/sd/er/0006_Q2_p7.png">  </p>
+<p><strong>Q2a)</strong> Marque somente a opção correta sobre os mapas:  </p>
+<ul>
+<li><strong>a)</strong> Todos os mapas estão corretos.  </li>
+<li><strong>b)</strong> O mapa (c) não é válido.  </li>
+<li><strong>c)</strong> Não é possível circular o mapa (b) como na imagem.  </li>
+<li><strong>d)</strong> Não é possível extrair a função mínima do mapa (d).  </li>
+<li><strong>e)</strong> O mapa (a) deve ser minimizado por maxtermos.</li>
+</ul>
+<p><strong>Q2b)</strong> Das funções abaixo, marque a única que não pode ser inferida a partir de um dos mapas.</p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(a\oplus d\)</span>   </li>
+<li><strong>b)</strong> <span class="math">\(a\oplus c\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(\bar{b}\oplus d\)</span></li>
+<li><strong>d)</strong> <span class="math">\(\overline{a\oplus b\oplus c}\)</span>  </li>
+<li><strong>e)</strong> <span class="math">\(b\)</span>  </li>
+</ul>
+<h3>Enunciado Prova 8</h3>
+<p><img alt="Mapas Q2 P8" src="https://balbertini.github.io/images/sd/er/0006_Q2_p8.png">  </p>
+<p><strong>Q2a)</strong> Marque somente a opção correta sobre os mapas:  </p>
+<ul>
+<li><strong>a)</strong> Todos os mapas estão corretos.  </li>
+<li><strong>b)</strong> O mapa (c) não é válido.  </li>
+<li><strong>c)</strong> Não é possível circular o mapa (b) como na imagem.  </li>
+<li><strong>d)</strong> Não é possível extrair a função mínima do mapa (d).  </li>
+<li><strong>e)</strong> O mapa (a) deve ser minimizado por maxtermos.</li>
+</ul>
+<p><strong>Q2b)</strong> Das funções abaixo, marque a única que não pode ser inferida a partir de um dos mapas.</p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(a\oplus b \oplus c\)</span>   </li>
+<li><strong>b)</strong> <span class="math">\(\bar{b}\oplus d\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(\overline{a\oplus b\oplus c}\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(b\)</span>  </li>
+<li><strong>e)</strong> <span class="math">\(a\oplus b\oplus c\oplus d\)</span>  </li>
+</ul>
+<h3>Enunciado Prova 9</h3>
+<p><img alt="Mapas Q2 P9" src="https://balbertini.github.io/images/sd/er/0006_Q2_p9.png">  </p>
+<p><strong>Q2a)</strong> Marque somente a opção correta sobre os mapas:  </p>
+<ul>
+<li><strong>a)</strong> Todos os mapas estão corretos.  </li>
+<li><strong>b)</strong> O mapa (d) não é válido.  </li>
+<li><strong>c)</strong> Não é possível circular o mapa (a) como na imagem.  </li>
+<li><strong>d)</strong> Não é possível extrair a função mínima do mapa (c).  </li>
+<li><strong>e)</strong> O mapa (b) deve ser minimizado por maxtermos.</li>
+</ul>
+<p><strong>Q2b)</strong> Das funções abaixo, marque a única que não pode ser inferida a partir de um dos mapas.</p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(a\oplus d\)</span>   </li>
+<li><strong>b)</strong> <span class="math">\(b\oplus d\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(b\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(a\oplus b\oplus c\oplus d\)</span>  </li>
+<li><strong>e)</strong> <span class="math">\(1\)</span>  </li>
+</ul>
+<h3>Enunciado Prova 10</h3>
+<p><img alt="Mapas Q2 P10" src="https://balbertini.github.io/images/sd/er/0006_Q2_p10.png">  </p>
+<p><strong>Q2a)</strong> Marque somente a opção correta sobre os mapas:  </p>
+<ul>
+<li><strong>a)</strong> Todos os mapas estão corretos.  </li>
+<li><strong>b)</strong> O mapa (d) não é válido.  </li>
+<li><strong>c)</strong> Não é possível circular o mapa (c) como na imagem.  </li>
+<li><strong>d)</strong> Não é possível extrair a função mínima do mapa (b).  </li>
+<li><strong>e)</strong> O mapa (a) deve ser minimizado por maxtermos.</li>
+</ul>
+<p><strong>Q2b)</strong> Das funções abaixo, marque a única que não pode ser inferida a partir de um dos mapas.</p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(a.d+\bar{a}.\bar{d}\)</span>   </li>
+<li><strong>b)</strong> <span class="math">\(b\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(a\oplus b\oplus c\oplus d\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(1\)</span>  </li>
+<li><strong>e)</strong> <span class="math">\(0\)</span>  </li>
+</ul>
+<hr>
+<h2>Questão 3</h2>
+<ul>
+<li>Semana(s): 6   </li>
+<li>Tipo de questão: teste  </li>
+<li>Dificuldade: (a) fácil, (b) média (c) média (todas as variações)</li>
+<li>Instruções para montagem da prova: o enunciado é difetente para cada prova. As opções são diferentes para cada prova, porém o item (a) é sempre o correto. Sugere-se aleatorizar as alternativas.</li>
+</ul>
+<h3>Solução (todas as provas)</h3>
+<p>A alternativa (a) é sempre o correto, sugere-se aleatorizar as alternativas.</p>
+<h3>Critérios de correção (todas as provas, somente para avaliador)</h3>
+<p>A alternativa (a) vale 0.5 ponto e as alternativa (b) e (c) valem 1.0 pontos.</p>
+<h3>Enunciado Prova 1</h3>
+<p>Considere o circuito abaixo, de uma máquina de estados finita.<br>
+<img alt="Circuito Q3 P1" src="https://balbertini.github.io/images/sd/er/0006_Q3_p1c.png">  </p>
+<p><strong>Q3a)</strong> Marque a opção correta que classifica esta máquina.  </p>
+<ul>
+<li><strong>a)</strong> Síncrona tipo Moore  </li>
+<li><strong>b)</strong> Síncrona tipo Mealy   </li>
+<li><strong>c)</strong> Assíncrona tipo Moore  </li>
+<li><strong>d)</strong> Assíncrona tipo Mealy  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3b)</strong> Qual dos diagramas de transição de estados abaixo melhor representa a máquina do circuito?</p>
+<ul>
+<li><strong>a)</strong> <img alt="Diagrama Q3 P1" src="https://balbertini.github.io/images/sd/er/0006_Q3_p1d.png">   </li>
+<li><strong>b)</strong> <img alt="Diagrama Q3 P6" src="https://balbertini.github.io/images/sd/er/0006_Q3_p6d.png">  </li>
+<li><strong>c)</strong> <img alt="Diagrama Q3 P7" src="https://balbertini.github.io/images/sd/er/0006_Q3_p7d.png">  </li>
+<li><strong>d)</strong> <img alt="Diagrama Q3 P5" src="https://balbertini.github.io/images/sd/er/0006_Q3_p5d.png">  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3c)</strong> Marque a opção correta que contém as equações de próximo estado e de saída.  </p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(Y_1=\bar{Y_1}.Y_0.\bar{e}+Y_1.\bar{Y_0}.\bar{e}+Y_1.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{Y_1}.Y_0.\bar{e}+Y_1.\bar{Y_0}.\bar{e}+\bar{Y_1}.\bar{Y_0}.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>b)</strong> <span class="math">\(Y_1=\bar{Y_1}.Y_0.\bar{e}+Y_1.\bar{Y_0}.\bar{e}+Y_1.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{Y_1}.Y_0.\bar{e}+Y_1.\bar{Y_0}.\bar{e}+\bar{Y_1}.\bar{Y_0}.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.e\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(Y_1=\bar{Y_1}.Y_0.\bar{e}+Y_1.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{Y_1}.Y_0.\bar{e}+\bar{Y_1}.\bar{Y_0}.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.e\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(Y_1=Y_0.\bar{e}\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<h3>Enunciado Prova 2</h3>
+<p>Considere o circuito abaixo, de uma máquina de estados finita.<br>
+<img alt="Circuito Q3 P2" src="https://balbertini.github.io/images/sd/er/0006_Q3_p2c.png">  </p>
+<p><strong>Q3a)</strong> Marque a opção correta que classifica esta máquina.  </p>
+<ul>
+<li><strong>a)</strong> Síncrona tipo Moore  </li>
+<li><strong>b)</strong> Síncrona tipo Mealy   </li>
+<li><strong>c)</strong> Assíncrona tipo Moore  </li>
+<li><strong>d)</strong> Assíncrona tipo Mealy  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3b)</strong> Qual dos diagramas de transição de estados abaixo melhor representa a máquina do circuito?</p>
+<ul>
+<li><strong>a)</strong> <img alt="Diagrama Q3 P2" src="https://balbertini.github.io/images/sd/er/0006_Q3_p2d.png">  </li>
+<li><strong>b)</strong> <img alt="Diagrama Q3 P3" src="https://balbertini.github.io/images/sd/er/0006_Q3_p3d.png">  </li>
+<li><strong>c)</strong> <img alt="Diagrama Q3 P4" src="https://balbertini.github.io/images/sd/er/0006_Q3_p4d.png">  </li>
+<li><strong>d)</strong> <img alt="Diagrama Q3 P7" src="https://balbertini.github.io/images/sd/er/0006_Q3_p7d.png">  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3c)</strong> Marque a opção correta que contém as equações de próximo estado e de saída.  </p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(Y_1=\bar{Y_1}.Y_0.\bar{e}+Y_1.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{Y_1}.Y_0.\bar{e}+\bar{Y_1}.\bar{Y_0}.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>b)</strong> <span class="math">\(Y_1=Y_1.Y_0.\bar{e}+\bar{Y_1}.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(Y_1=Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{e}+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(Y_1=\bar{Y_1}.Y_0.\bar{e}+Y_1.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{Y_1}.Y_0.\bar{e}+\bar{Y_1}.\bar{Y_0}.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.e\)</span>  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<h3>Enunciado Prova 3</h3>
+<p>Considere o circuito abaixo, de uma máquina de estados finita.<br>
+<img alt="Circuito Q3 P3" src="https://balbertini.github.io/images/sd/er/0006_Q3_p3c.png">  </p>
+<p><strong>Q3a)</strong> Marque a opção correta que classifica esta máquina.  </p>
+<ul>
+<li><strong>a)</strong> Síncrona tipo Moore  </li>
+<li><strong>b)</strong> Síncrona tipo Mealy   </li>
+<li><strong>c)</strong> Assíncrona tipo Moore  </li>
+<li><strong>d)</strong> Assíncrona tipo Mealy  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3b)</strong> Qual dos diagramas de transição de estados abaixo melhor representa a máquina do circuito?</p>
+<ul>
+<li><strong>a)</strong> <img alt="Diagrama Q3 P3" src="https://balbertini.github.io/images/sd/er/0006_Q3_p3d.png">  </li>
+<li><strong>b)</strong> <img alt="Diagrama Q3 P6" src="https://balbertini.github.io/images/sd/er/0006_Q3_p6d.png">  </li>
+<li><strong>c)</strong> <img alt="Diagrama Q3 P8" src="https://balbertini.github.io/images/sd/er/0006_Q3_p8d.png">  </li>
+<li><strong>d)</strong> <img alt="Diagrama Q3 P9" src="https://balbertini.github.io/images/sd/er/0006_Q3_p9d.png">  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3c)</strong> Marque a opção correta que contém as equações de próximo estado e de saída.  </p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(Y_1=Y_1.Y_0.\bar{e}+\bar{Y_1}.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>b)</strong> <span class="math">\(Y_1=\bar{Y_1}.Y_0.\bar{e}+Y_1.\bar{Y_0}.\bar{e}+Y_1.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{Y_1}.Y_0.\bar{e}+Y_1.\bar{Y_0}.\bar{e}+\bar{Y_1}.\bar{Y_0}.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.e\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(Y_1=Y_1.Y_0.\bar{e}+\bar{Y_1}.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.\bar{e}\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(Y_1=Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{e}+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.e\)</span>  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<h3>Enunciado Prova 4</h3>
+<p>Considere o circuito abaixo, de uma máquina de estados finita.<br>
+<img alt="Circuito Q3 P4" src="https://balbertini.github.io/images/sd/er/0006_Q3_p4c.png">  </p>
+<p><strong>Q3a)</strong> Marque a opção correta que classifica esta máquina.  </p>
+<ul>
+<li><strong>a)</strong> Síncrona tipo Moore  </li>
+<li><strong>b)</strong> Síncrona tipo Mealy   </li>
+<li><strong>c)</strong> Assíncrona tipo Moore  </li>
+<li><strong>d)</strong> Assíncrona tipo Mealy  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3b)</strong> Qual dos diagramas de transição de estados abaixo melhor representa a máquina do circuito?</p>
+<ul>
+<li><strong>a)</strong> <img alt="Diagrama Q3 P4" src="https://balbertini.github.io/images/sd/er/0006_Q3_p4d.png">  </li>
+<li><strong>b)</strong> <img alt="Diagrama Q3 P5" src="https://balbertini.github.io/images/sd/er/0006_Q3_p5d.png">  </li>
+<li><strong>c)</strong> <img alt="Diagrama Q3 P6" src="https://balbertini.github.io/images/sd/er/0006_Q3_p6d.png">  </li>
+<li><strong>d)</strong> <img alt="Diagrama Q3 P9" src="https://balbertini.github.io/images/sd/er/0006_Q3_p9d.png">  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3c)</strong> Marque a opção correta que contém as equações de próximo estado e de saída.  </p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(Y_1=Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{e}+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>b)</strong> <span class="math">\(Y_1=Y_0.\bar{e}\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(Y_1=\bar{Y_1}.Y_0.\bar{e}+Y_1.\bar{Y_0}.\bar{e}+Y_1.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{Y_1}.Y_0.\bar{e}+Y_1.\bar{Y_0}.\bar{e}+\bar{Y_1}.\bar{Y_0}.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.e\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(Y_1=Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{e}+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.e\)</span>  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<h3>Enunciado Prova 5</h3>
+<p>Considere o circuito abaixo, de uma máquina de estados finita.<br>
+<img alt="Circuito Q3 P5" src="https://balbertini.github.io/images/sd/er/0006_Q3_p5c.png">  </p>
+<p><strong>Q3a)</strong> Marque a opção correta que classifica esta máquina.  </p>
+<ul>
+<li><strong>a)</strong> Síncrona tipo Moore  </li>
+<li><strong>b)</strong> Síncrona tipo Mealy   </li>
+<li><strong>c)</strong> Assíncrona tipo Moore  </li>
+<li><strong>d)</strong> Assíncrona tipo Mealy  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3b)</strong> Qual dos diagramas de transição de estados abaixo melhor representa a máquina do circuito?</p>
+<ul>
+<li><strong>a)</strong> <img alt="Diagrama Q3 P5" src="https://balbertini.github.io/images/sd/er/0006_Q3_p5d.png">  </li>
+<li><strong>b)</strong> <img alt="Diagrama Q3 P3" src="https://balbertini.github.io/images/sd/er/0006_Q3_p3d.png">  </li>
+<li><strong>c)</strong> <img alt="Diagrama Q3 P8" src="https://balbertini.github.io/images/sd/er/0006_Q3_p8d.png">  </li>
+<li><strong>d)</strong> <img alt="Diagrama Q3 P10" src="https://balbertini.github.io/images/sd/er/0006_Q3_p10d.png">  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3c)</strong> Marque a opção correta que contém as equações de próximo estado e de saída.  </p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(Y_1=Y_0.\bar{e}\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>b)</strong> <span class="math">\(Y_1=Y_1.Y_0.\bar{e}+\bar{Y_1}.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(Y_1=Y_1.Y_0.\bar{e}+\bar{Y_1}.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.\bar{e}\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(Y_1=Y_0.\bar{e}\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.\bar{e}\)</span>  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<h3>Enunciado Prova 6</h3>
+<p>Considere o circuito abaixo, de uma máquina de estados finita.<br>
+<img alt="Circuito Q3 P6" src="https://balbertini.github.io/images/sd/er/0006_Q3_p6c.png">  </p>
+<p><strong>Q3a)</strong> Marque a opção correta que classifica esta máquina.  </p>
+<ul>
+<li><strong>a)</strong> Síncrona tipo Mealy   </li>
+<li><strong>b)</strong> Síncrona tipo Moore  </li>
+<li><strong>c)</strong> Assíncrona tipo Moore  </li>
+<li><strong>d)</strong> Assíncrona tipo Mealy  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3b)</strong> Qual dos diagramas de transição de estados abaixo melhor representa a máquina do circuito?</p>
+<ul>
+<li><strong>a)</strong> <img alt="Diagrama Q3 P6" src="https://balbertini.github.io/images/sd/er/0006_Q3_p6d.png">  </li>
+<li><strong>b)</strong> <img alt="Diagrama Q3 P1" src="https://balbertini.github.io/images/sd/er/0006_Q3_p1d.png">   </li>
+<li><strong>c)</strong> <img alt="Diagrama Q3 P2" src="https://balbertini.github.io/images/sd/er/0006_Q3_p2d.png">  </li>
+<li><strong>d)</strong> <img alt="Diagrama Q3 P7" src="https://balbertini.github.io/images/sd/er/0006_Q3_p7d.png">  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3c)</strong> Marque a opção correta que contém as equações de próximo estado e de saída.  </p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(Y_1=\bar{Y_1}.Y_0.\bar{e}+Y_1.\bar{Y_0}.\bar{e}+Y_1.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{Y_1}.Y_0.\bar{e}+Y_1.\bar{Y_0}.\bar{e}+\bar{Y_1}.\bar{Y_0}.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.e\)</span>  </li>
+<li><strong>b)</strong> <span class="math">\(Y_1=\bar{Y_1}.Y_0.\bar{e}+Y_1.\bar{Y_0}.\bar{e}+Y_1.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{Y_1}.Y_0.\bar{e}+Y_1.\bar{Y_0}.\bar{e}+\bar{Y_1}.\bar{Y_0}.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(Y_1=\bar{Y_1}.Y_0.\bar{e}+Y_1.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{Y_1}.Y_0.\bar{e}+\bar{Y_1}.\bar{Y_0}.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(Y_1=\bar{Y_1}.Y_0.\bar{e}+Y_1.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{Y_1}.Y_0.\bar{e}+\bar{Y_1}.\bar{Y_0}.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.e\)</span>  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<h3>Enunciado Prova 7</h3>
+<p>Considere o circuito abaixo, de uma máquina de estados finita.<br>
+<img alt="Circuito Q3 P7" src="https://balbertini.github.io/images/sd/er/0006_Q3_p7c.png">  </p>
+<p><strong>Q3a)</strong> Marque a opção correta que classifica esta máquina.  </p>
+<ul>
+<li><strong>a)</strong> Síncrona tipo Mealy   </li>
+<li><strong>b)</strong> Síncrona tipo Moore  </li>
+<li><strong>c)</strong> Assíncrona tipo Moore  </li>
+<li><strong>d)</strong> Assíncrona tipo Mealy  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3b)</strong> Qual dos diagramas de transição de estados abaixo melhor representa a máquina do circuito?</p>
+<ul>
+<li><strong>a)</strong> <img alt="Diagrama Q3 P7" src="https://balbertini.github.io/images/sd/er/0006_Q3_p7d.png">  </li>
+<li><strong>b)</strong> <img alt="Diagrama Q3 P8" src="https://balbertini.github.io/images/sd/er/0006_Q3_p8d.png">  </li>
+<li><strong>c)</strong> <img alt="Diagrama Q3 P3" src="https://balbertini.github.io/images/sd/er/0006_Q3_p3d.png">  </li>
+<li><strong>d)</strong> <img alt="Diagrama Q3 P4" src="https://balbertini.github.io/images/sd/er/0006_Q3_p4d.png">  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3c)</strong> Marque a opção correta que contém as equações de próximo estado e de saída.  </p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(Y_1=\bar{Y_1}.Y_0.\bar{e}+Y_1.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{Y_1}.Y_0.\bar{e}+\bar{Y_1}.\bar{Y_0}.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.e\)</span>  </li>
+<li><strong>b)</strong> <span class="math">\(Y_1=Y_1.Y_0.\bar{e}+\bar{Y_1}.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.\bar{e}\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(Y_1=Y_1.Y_0.\bar{e}+\bar{Y_1}.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(Y_1=Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{e}+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span><br>
+<span class="math">\(Y_0=\bar{Y_1}.Y_0.\bar{e}+Y_1.\bar{Y_0}.\bar{e}+\bar{Y_1}.\bar{Y_0}.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.e\)</span>  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<h3>Enunciado Prova 8</h3>
+<p>Considere o circuito abaixo, de uma máquina de estados finita.<br>
+<img alt="Circuito Q3 P8" src="https://balbertini.github.io/images/sd/er/0006_Q3_p8c.png">  </p>
+<p><strong>Q3a)</strong> Marque a opção correta que classifica esta máquina.  </p>
+<ul>
+<li><strong>a)</strong> Síncrona tipo Mealy   </li>
+<li><strong>b)</strong> Síncrona tipo Moore  </li>
+<li><strong>c)</strong> Assíncrona tipo Moore  </li>
+<li><strong>d)</strong> Assíncrona tipo Mealy  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3b)</strong> Qual dos diagramas de transição de estados abaixo melhor representa a máquina do circuito?</p>
+<ul>
+<li><strong>a)</strong> <img alt="Diagrama Q3 P8" src="https://balbertini.github.io/images/sd/er/0006_Q3_p8d.png">  </li>
+<li><strong>b)</strong> <img alt="Diagrama Q3 P3" src="https://balbertini.github.io/images/sd/er/0006_Q3_p3d.png">  </li>
+<li><strong>c)</strong> <img alt="Diagrama Q3 P9" src="https://balbertini.github.io/images/sd/er/0006_Q3_p9d.png">  </li>
+<li><strong>d)</strong> <img alt="Diagrama Q3 P4" src="https://balbertini.github.io/images/sd/er/0006_Q3_p4d.png">  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3c)</strong> Marque a opção correta que contém as equações de próximo estado e de saída.  </p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(Y_1=Y_1.Y_0.\bar{e}+\bar{Y_1}.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.\bar{e}\)</span>  </li>
+<li><strong>b)</strong> <span class="math">\(Y_1=Y_1.Y_0.\bar{e}+\bar{Y_1}.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(Y_1=Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{e}+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.e\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(Y_1=Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{e}+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<h3>Enunciado Prova 9</h3>
+<p>Considere o circuito abaixo, de uma máquina de estados finita.<br>
+<img alt="Circuito Q3 P9" src="https://balbertini.github.io/images/sd/er/0006_Q3_p9c.png">  </p>
+<p><strong>Q3a)</strong> Marque a opção correta que classifica esta máquina.  </p>
+<ul>
+<li><strong>a)</strong> Síncrona tipo Mealy   </li>
+<li><strong>b)</strong> Síncrona tipo Moore  </li>
+<li><strong>c)</strong> Assíncrona tipo Moore  </li>
+<li><strong>d)</strong> Assíncrona tipo Mealy  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3b)</strong> Qual dos diagramas de transição de estados abaixo melhor representa a máquina do circuito?</p>
+<ul>
+<li><strong>a)</strong> <img alt="Diagrama Q3 P9" src="https://balbertini.github.io/images/sd/er/0006_Q3_p9d.png">  </li>
+<li><strong>b)</strong> <img alt="Diagrama Q3 P10" src="https://balbertini.github.io/images/sd/er/0006_Q3_p10d.png">  </li>
+<li><strong>c)</strong> <img alt="Diagrama Q3 P5" src="https://balbertini.github.io/images/sd/er/0006_Q3_p5d.png">  </li>
+<li><strong>d)</strong> <img alt="Diagrama Q3 P4" src="https://balbertini.github.io/images/sd/er/0006_Q3_p4d.png">  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3c)</strong> Marque a opção correta que contém as equações de próximo estado e de saída.  </p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(Y_1=Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{e}+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.e\)</span>  </li>
+<li><strong>b)</strong> <span class="math">\(Y_1=Y_0.\bar{e}\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.\bar{e}\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(Y_1=Y_0.\bar{e}\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(Y_1=Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{e}+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<h3>Enunciado Prova 10</h3>
+<p>Considere o circuito abaixo, de uma máquina de estados finita.<br>
+<img alt="Circuito Q3 P10" src="https://balbertini.github.io/images/sd/er/0006_Q3_p10c.png">  </p>
+<p><strong>Q3a)</strong> Marque a opção correta que classifica esta máquina.  </p>
+<ul>
+<li><strong>a)</strong> Síncrona tipo Mealy   </li>
+<li><strong>b)</strong> Síncrona tipo Moore  </li>
+<li><strong>c)</strong> Assíncrona tipo Moore  </li>
+<li><strong>d)</strong> Assíncrona tipo Mealy  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3b)</strong> Qual dos diagramas de transição de estados abaixo melhor representa a máquina do circuito?</p>
+<ul>
+<li><strong>a)</strong> <img alt="Diagrama Q3 P10" src="https://balbertini.github.io/images/sd/er/0006_Q3_p10d.png">  </li>
+<li><strong>b)</strong> <img alt="Diagrama Q3 P9" src="https://balbertini.github.io/images/sd/er/0006_Q3_p9d.png">  </li>
+<li><strong>c)</strong> <img alt="Diagrama Q3 P4" src="https://balbertini.github.io/images/sd/er/0006_Q3_p4d.png">  </li>
+<li><strong>d)</strong> <img alt="Diagrama Q3 P5" src="https://balbertini.github.io/images/sd/er/0006_Q3_p5d.png">  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<p><strong>Q3c)</strong> Marque a opção correta que contém as equações de próximo estado e de saída.  </p>
+<ul>
+<li><strong>a)</strong> <span class="math">\(Y_1=Y_0.\bar{e}\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.\bar{e}\)</span>  </li>
+<li><strong>b)</strong> <span class="math">\(Y_1=Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{e}+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}.e\)</span>  </li>
+<li><strong>c)</strong> <span class="math">\(Y_1=Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=\bar{e}+\bar{Y_1}.Y_0\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>d)</strong> <span class="math">\(Y_1=Y_1.Y_0.\bar{e}+\bar{Y_1}.Y_0.e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(Y_0=e\)</span> &nbsp; &nbsp; &nbsp; <span class="math">\(e=Y_1.\bar{Y_0}\)</span>  </li>
+<li><strong>e)</strong> Nenhuma das anteriores</li>
+</ul>
+<hr>
+<h2>Questão 4</h2>
+<ul>
+<li>Semana(s): 7   </li>
+<li>Tipo de questão: dissertativa  </li>
+<li>Dificuldade: difícil</li>
+<li>Instruções para montagem da prova: Os enunciados são idênticos exceto pela figura. As soluções são diferentes.</li>
+</ul>
+<h3>Enunciado (todas as provas)</h3>
+<p>Estude o circuito abaixo, composto por dois contadores (<span class="math">\(C_1\)</span> e <span class="math">\(C_0\)</span>) crescentes síncronos de quatro bits. O arranjo forma um contador de dois dígitos hexadecimais (<span class="math">\(D_1\)</span> e <span class="math">\(D_0\)</span>), que estão ligados em <em>displays</em> de sete segmentos. As entradas dos contadores são: <code>rst_n</code>: <em>reset</em> assíncrono ativo baixo, <code>cgp</code>: carga paralela síncrona ativa alta, <code>cnt</code>: habilita contagem ativo alto, <code>clk</code>: <em>clock</em>, e <code>e</code>: entrada paralela de quatro bits. As saídas são <code>max</code>: <em>ripple carry out</em>, alto quando a saída é 1111, e <code>s</code>: a saída de contagem de quatro bits. Os <em>displays</em> hexadecimais mostram qualquer dígito binário de quatro bits, na sua forma hexadecimal (e.g. se a entrada for <code>1010</code>, veremos <code>A</code>).</p>
+<p>Assuma que: (i) o arranjo é um contador de dois dígitos, que aparecem nos <em>displays</em>, sendo <span class="math">\(D1\)</span> o dígito mais significativo; e (ii) os valores nas entradas estão em hexadecimal (e.g. <code>0xA = 1010</code>).</p>
+<p>Pede-se que você determine o módulo e a apresente a sequencia de contagem do contador como um todo (os dois dígitos, como mostrado nos <em>displays</em>), de forma crescente, considerando a contagem em regime. A contagem em regime é a que se repete indefinidamente e, se mesmo assim houver dúvidas, considere que os contadores começam ambos com zero até atingir o regime. Justifique brevemente sua resposta.</p>
+<p><code>Aqui coloque a imagem de cada prova como abaixo</code></p>
+<h3>Critérios de correção (todas as provas, somente para avaliador)</h3>
+<p>Veja a sequencia da solução, <strong>que é circular</strong>. O aluno pode começar por qualquer valor, mas o próximo valor deve ser o mesmo da sequencia da solução. Sugere-se que essa questão seja avaliada ao contrário, ou seja, parte-se da premissa que o aluno acertou tudo e desconta-se pontos por cada erro.</p>
+<p>Erros comuns e descontos sugeridos:</p>
+<ul>
+<li>Errar o padrão da sequencia (e.g. xA-&gt;xB invertido como xB-&gt;xA): -1.0</li>
+<li>Errar o módulo por uma unidade: -0.5</li>
+<li>Errar o módulo por mais de uma unidade (ou ausente): -1.0</li>
+<li>Sequencia ausente: -2.5 (zero na questão)</li>
+<li>Justificativa: usar o bom senso, veja se os valores que interferem no comportamento do contador estão presentes, caso contrário retire pontos para cada informação ausente.</li>
+</ul>
+<h3>Enunciado Prova 1</h3>
+<p><img alt="Circuito Q4 P1" src="https://balbertini.github.io/images/sd/er/0006_Q3_p1c.png"></p>
+<h3>Solução Prova 1</h3>
+<p>Sequencia: <code>02, 03, 04, 05, 06, 07, 08, 09, 12, 13, 14, 15, 16, 17, 18, 19, 22, 23, 24, 25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, E2, E3, E4, E5, E6, E7, E8, E9, F2, F3, F4, F5, F6, F7, F8, F9</code><br>
+Módulo: 40<br>
+Justificativa: O C0 é recarregado com 2 no valor 9, portanto em regime conta 2-9. O C1 é recarregado com E em 3, mas só quando C0=9, portanto conta de E-3 para cada valor de C0.  </p>
+<h3>Enunciado Prova 2</h3>
+<p><img alt="Circuito Q4 P2" src="https://balbertini.github.io/images/sd/er/0006_Q3_p2c.png"></p>
+<h3>Solução Prova 2</h3>
+<p>Sequencia: <code>0E, 0F, 1E, 1F, 2E, 2F, 3E, 3F, 4E, 4F, 5E, 5F, 6E, 6F, 7E, 7F, 8E, 8F, 9E, 9F, AE, AF, BE, BF, CE, CF, DE, DF, EE, EF, FE, FF</code><br>
+Módulo: 32<br>
+Justificativa: O C0 é recarregado com E no valor máximo (F), portanto em regime conta E-F. O C1 conta toda sua capacidade, portanto 0-F.  </p>
+<h3>Enunciado Prova 3</h3>
+<p><img alt="Circuito Q4 P3" src="https://balbertini.github.io/images/sd/er/0006_Q3_p3c.png"></p>
+<h3>Solução Prova 3</h3>
+<p>Sequencia: <code>A7, A8, A9, B7, B8, B9, C7, C8, C9</code><br>
+Módulo: 9<br>
+Justificativa: O C0 é recarregado com 7 no valor 9, portanto em regime conta 7-9. O C1 é recarregado com A em C, mas só quando C0=9, portanto conta de A-C para cada valor de C0.  </p>
+<h3>Enunciado Prova 4</h3>
+<p><img alt="Circuito Q4 P4" src="https://balbertini.github.io/images/sd/er/0006_Q3_p4c.png"></p>
+<h3>Solução Prova 4</h3>
+<p>Sequencia: <code>0D, 0E, 0F, 1D, 1E, 1F, 2D, 2E, 2F, 3D, 3E, 3F</code><br>
+Módulo: 12<br>
+Justificativa: O C0 é recarregado com D no valor F, portanto em regime conta D-F. O C1 é recarregado com 0 em 3, mas só quando C0=F, portanto conta de 0-3 para cada valor de C0.  </p>
+<h3>Enunciado Prova 5</h3>
+<p><img alt="Circuito Q4 P5" src="https://balbertini.github.io/images/sd/er/0006_Q3_p5c.png"></p>
+<h3>Solução Prova 5</h3>
+<p>Sequencia: <code>02, 03, 04, 05, 12, 13, 14, 15, 22, 23, 24, 25, 32, 33, 34, 35, 42, 43, 44, 45, 52, 53, 54, 55, 62, 63, 64, 65, 72, 73, 74, 75, 82, 83, 84, 85, 92, 93, 94, 95, A2, A3, A4, A5, B2, B3, B4, B5, C2, C3, C4, C5, D2, D3, D4, D5, E2, E3, E4, E5, F2, F3, F4, F5</code><br>
+Módulo: 64<br>
+Justificativa: O C0 é recarregado com 2 no valor 5, portanto em regime conta 2-5. O C1 conta o valor integral, mas perceba que a contagem está habilitada somente quando C0=5.  </p>
+<h3>Enunciado Prova 5</h3>
+<p><img alt="Circuito Q4 P5" src="https://balbertini.github.io/images/sd/er/0006_Q3_p5c.png"></p>
+<h3>Solução Prova 5</h3>
+<p>Sequencia: <code>02, 03, 04, 05, 12, 13, 14, 15, 22, 23, 24, 25, 32, 33, 34, 35, 42, 43, 44, 45, 52, 53, 54, 55, 62, 63, 64, 65, 72, 73, 74, 75, 82, 83, 84, 85, 92, 93, 94, 95, A2, A3, A4, A5, B2, B3, B4, B5, C2, C3, C4, C5, D2, D3, D4, D5, E2, E3, E4, E5, F2, F3, F4, F5</code><br>
+Módulo: 64<br>
+Justificativa: O C0 é recarregado com 2 no valor 5, portanto em regime conta 2-5. O C1 conta o valor integral, portanto de 0-F.  </p>
+<h3>Enunciado Prova 6</h3>
+<p><img alt="Circuito Q4 P6" src="https://balbertini.github.io/images/sd/er/0006_Q3_p6c.png"></p>
+<h3>Solução Prova 6</h3>
+<p>Sequencia: <code>02, 03, 12, 13, 22, 23, 32, 33, 42, 43, 52, 53, 62, 63, 72, 73, 82, 83, 92, 93, A2, A3, B2, B3, C2, C3, D2, D3, E2, E3, F2, F3</code><br>
+Módulo: 32<br>
+Justificativa: O C0 é recarregado com 2 no valor 3, portanto em regime conta 2-3. O C1 é recarregado com E em 3, mas só quando C0=3, portanto conta de E-3 para cada valor de C0.  Note que este arranjo não é síncrono, portanto C1 só conta quando C0 transiciona de 2 para 3.  </p>
+<h3>Enunciado Prova 7</h3>
+<p><img alt="Circuito Q4 P7" src="https://balbertini.github.io/images/sd/er/0006_Q3_p7c.png"></p>
+<h3>Solução Prova 7</h3>
+<p>Sequencia: <code>0B, 0A, 1B, 1A, 2B, 2A</code><br>
+Módulo: 6<br>
+Justificativa: O C0 é recarregado com A no valor B, portanto em regime conta A-B. O C1 é resetado em 3, mas só quando C0=B, portanto conta de 0-2 para cada valor de C0.  Note que este arranjo não é síncrono, portanto C1 só conta quando C0 transiciona de A para B. Isso implica que a sequencia de contagem em regime é xB -&gt; xA, depois repete para o próximo número da sequencia de C1.  </p>
+<h3>Enunciado Prova 8</h3>
+<p><img alt="Circuito Q4 P8" src="https://balbertini.github.io/images/sd/er/0006_Q3_p8c.png"></p>
+<h3>Solução Prova 8</h3>
+<p>Sequencia: <code>03, 0A, 0B, 0C, 0D, 0E, 0F, 00, 01, 02, 13, 1A, 1B, 1C, 1D, 1E, 1F, 10, 11, 12, 23, 2A, 2B, 2C, 2D, 2E, 2F, 20, 21, 22</code><br>
+Módulo: 6<br>
+Justificativa: O C0 é recarregado com A no valor 3, portanto em regime conta A-3. O C1 é resetado em 3, portanto conta de 0-2 para cada valor de C0.  Note que este arranjo não é síncrono, portanto C1 só conta quando C0 transiciona de 2 para 3. Isso implica que a sequencia de contagem é x3 -&gt; xA -&gt; ... -&gt; x2, depois repete para o próximo número da sequencia de C1.  </p>
+<h3>Enunciado Prova 9</h3>
+<p><img alt="Circuito Q4 P9" src="https://balbertini.github.io/images/sd/er/0006_Q3_p9c.png"></p>
+<h3>Solução Prova 9</h3>
+<p>Sequencia: <code>00, 11, 22, 30, 01, 12, 20, 31, 02, 10, 21, 32</code><br>
+Módulo: 12<br>
+Justificativa: O C0 é resetado em 3, portanto em regime conta 0-2. O C1 é resetado em 4, portanto conta de 0-3. Note que este arranjo não é síncrono, portanto C1 só conta quando C0 transiciona de 1 para 2. Isso implica que os contadores contam independentes, mas C1 é módulo 4 e C0 módulo 3, gerando a sequencia da resposta caso comecem em zero.  </p>
+<h3>Enunciado Prova 10</h3>
+<p><img alt="Circuito Q4 P10" src="https://balbertini.github.io/images/sd/er/0006_Q3_p10c.png"></p>
+<h3>Solução Prova 10</h3>
+<p>Sequencia: <code>0B, 0A, 1B, 1A, 2B, 2A, 3B, 3A</code><br>
+Módulo: 8<br>
+Justificativa: O C0 é carregado com A em B, portanto em regime conta A-B. O C1 é resetado em 4, mas somente quando C0=B, portanto conta de 0-3. Note que este arranjo não é síncrono, portanto C1 só conta quando C0 transiciona de A para B. Isso implica que s sequencia de contagem em regime é xB -&gt; xA, repetindo para cada valor de C1.  </p>
+<p>Registradores e contadores, memórias, média</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+
+   <div>
+     Última atualização: 2018-10-22 19:11:00-03:00
+   </div>
+
+
+  <div class="tag-cloud">
+    <p>
+      <a href="https://balbertini.github.io/tag/sistemas-digitais.html">sistemas digitais</a>
+      <a href="https://balbertini.github.io/tag/exercicios-resolvidos.html">exercícios resolvidos</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'balbertini';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Habilite JavaScript para ver os comentários.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy; Bruno Albertini  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - O tema <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> foi criado por <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " B.Albertini's site ",
+  "url" : "https://balbertini.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

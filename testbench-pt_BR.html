@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+
+    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-125173293-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<meta name="author" content="Bruno Albertini" />
+<meta name="description" content="Como fazer um testbench em VHDL." />
+<meta name="keywords" content="vhdl, testbench">
+
+<meta property="og:site_name" content="B.Albertini's site"/>
+<meta property="og:title" content="Testbenchs em VHDL"/>
+<meta property="og:description" content="Como fazer um testbench em VHDL."/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:url" content="https://balbertini.github.io/testbench-pt_BR.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-10-30 17:53:00-03:00"/>
+<meta property="article:modified_time" content="2018-10-30 17:53:00-03:00"/>
+<meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
+<meta property="article:section" content="vhdl"/>
+<meta property="article:tag" content="vhdl"/>
+<meta property="article:tag" content="testbench"/>
+<meta property="og:image" content="">
+
+  <title>B.Albertini's site &ndash; Testbenchs em VHDL</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://balbertini.github.io">
+        <img src="https://balbertini.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="https://balbertini.github.io"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+          <li><a href="https://balbertini.github.io/pages/sd-pt_BR.html#sd">Digitais</a></li>
+          <li><a href="https://balbertini.github.io/pages/research-pt_BR.html#research">Pesquisa</a></li>
+          <li><a href="https://balbertini.github.io/pages/sobre-pt_BR.html#sobre">Sobre</a></li>
+          <li><a href="https://balbertini.github.io/pages/vhdl-pt_BR.html#vhdl">VHDL</a></li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/balbertini" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="//balbertini.github.io/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="testbench">Testbenchs em VHDL</h1>
+    <p>
+      Publicado em 30/10/2018 (Ter) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+    </p>
+  </header>
+
+
+  <div>
+    <p>Em HDLs, é muito comum escrever-se um <em>testbench</em> para cada módulo que for desenvolvido. Dessa forma, os módulos podem ser testados antes da integração. Também é aconselhável escrever um <em>testbench</em> para o arquivo <em>toplevel</em>, ou seja, para o arquivo de integração, para garantir que foi realizada corretamente.</p>
+<p>A principal função de um <em>testbench</em> é testar ou validar o módulo. Nesse sentido, um <em>testbench</em> nada mais é que um módulo VHDL que:</p>
+<ol>
+<li>Instancia o(s) módulo(s) a serem testados;</li>
+<li>Injeta sinais de entrada no(s) módulo(s) em teste;</li>
+<li>Verifica se a saída do(s) módulo(s) são as esperadas.</li>
+</ol>
+<p>Normalmente o <em>testbench</em> não é projetado para ser sintetizável, o que libera o projetista para utilizar primitivas funcionais não sintetizáveis na sua escrita e não exige uma interface (entidade vazia). A maneira mais comum de se montar um <em>testbench</em> é usando o modelo <strong>DUT</strong> (do inglês <em>Device Under Test</em>). Este modelo pode ser visto na figura abaixo:</p>
+<p><img alt="Modelo DUT de textbench" src="https://balbertini.github.io/images/vhdl/testbench.png"></p>
+<p>A instância do(s) módulos(s) a serem testados é realizada através de um comando de instância de componente (palavra reservada <code>component</code>) da mesma maneira como é utilizada para construir abstrações de módulos (quando um módulo utiliza vários outros módulos).</p>
+<p>Para verificar os resultados, usa-se a palavra reservada <code>assert</code>, que tem o seguinte formato: <code>assert condição [report mensagem_string] [severity nível_de_gravidade];</code>. A <code>condição</code> pode ser qualquer uma que retorne um valor <code>boolean</code>, a <code>mensagem_string</code> é qualquer uma do tipo <code>string</code> e o <code>nível_de_severidade</code> é uma das opções <code>note</code>, <code>warning</code>, <code>error</code> ou <code>failure</code>. É usual que a condição seja uma comparação. As duas últimas podem ser omitidas, caso em que uma mensagem padrão será mostrada e a gravidade será <code>error</code>.</p>
+<p>A mensagem será impressa caso a condição falhe, portanto deve ser algo que tenha sentido para o projetista. É possível mostrar o valor de sinais ou variáveis usando a propriedade <code>image</code> do tipo de dado que se quer mostrar. Essa propriedade é definida pelo próprio tipo de dado e retorna uma <em>string</em> legível que representa o valor (e.g. <code>integer.image(123)</code> retorna a string "123").</p>
+<p>Quanto à severidade do erro, é uma dica para o simulador do que fazer caso a condição falhe. O nível <code>note</code> não faz nada e só mostra a mensagem. O <code>warning</code> mostra a mensagem com destaque, mas não pára a simulação, portanto deve ser utilizada para mostrar erros não críticos. O <code>error</code> mostra a mensagem com um destaque maior e deve ser utilizado para erros que possam ocasionar mais erros na simulação ou erros críticos recuperáveis (o circuito não se comportou como o esperado mas pode voltar a se comportar). Este nível normalmente não pára a simulação, mas depende da implementação do simulador. Já o nível <code>failure</code> sempre pára a simulação e deve ser usado para erros críticos não recuperáveis.</p>
+<p>A origem dos dados de entrada e saída, que serão usados respectivamente para injetar os sinais de entrada do módulo e para verificar se a saída é a esperada, pode ser de duas formas (há outras, mas essas são as mais comuns e recomendadas):</p>
+<ol>
+<li>Geradas programaticamente no próprio <em>testbench</em> em VHDL;</li>
+<li>Geradas externamente e lidas pelo <em>testbench</em> em VHDL.</li>
+</ol>
+<p>Cobriremos somente o primeiro método neste post.</p>
+<h2>Exemplo: escrevendo o testbench programaticamente</h2>
+<p>Considere o módulo em VHDL de um contador universal, cuja entidade tem a seguinte declaração:</p>
+<div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">contador</span> <span class="k">is</span>
+  <span class="k">generic</span><span class="p">(</span>
+    <span class="n">modulo</span><span class="o">:</span> <span class="kt">integer</span> <span class="k">range</span> <span class="mi">1</span> <span class="k">to</span> <span class="kt">integer</span><span class="na">&#39;right</span><span class="p">);</span>
+  <span class="k">port</span><span class="p">(</span>
+    <span class="n">clk</span><span class="p">,</span> <span class="n">clear_n</span><span class="p">,</span> <span class="n">load</span><span class="p">,</span> <span class="n">up</span><span class="p">,</span> <span class="n">en</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
+    <span class="n">qi</span><span class="o">:</span> <span class="k">in</span>  <span class="kt">bit_vector</span><span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">log2</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">modulo</span><span class="p">))))</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">qo</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">log2</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">modulo</span><span class="p">))))</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">));</span>
+<span class="k">end</span> <span class="nc">contador</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Este contador é genérico, cujo módulo é declarado pelo <code>modulo</code> na instância. Possui <em>clear</em> ativo baixo assíncrono, carga paralela síncrona, determinação do sentido de contagem (<code>up=1</code> contagem crescente), e um <em>enable</em> que desabilita a contagem.</p>
+<p>O <em>testbench</em> para este módulo começa declarando-se as bibliotecas que utilizaremos e a entidade vazia:</p>
+<div class="highlight"><pre><span></span><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">ieee.std_logic_1164.</span><span class="k">all</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">ieee.numeric_bit.</span><span class="k">all</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">ieee.math_real.</span><span class="k">all</span><span class="p">;</span>
+<span class="k">entity</span> <span class="nc">contador_tb</span> <span class="k">is</span> <span class="k">end</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Após a declaração da entidade, declaramos a arquitetura normalmente, como em um módulo VHDL qualquer. A delcaração completa pode ser vista abaixo, e a dissecaremos no decorrer deste post:</p>
+<div class="highlight"><pre><span></span><span class="k">architecture</span> <span class="nc">dut</span> <span class="k">of</span> <span class="nc">contador_tb</span> <span class="k">is</span>
+  <span class="k">constant</span> <span class="n">modulo</span><span class="o">:</span> <span class="kt">integer</span> <span class="o">:=</span> <span class="mi">256</span><span class="p">;</span>
+  <span class="k">component</span> <span class="nc">contador</span> <span class="k">is</span>
+    <span class="k">generic</span><span class="p">(</span>
+      <span class="n">modulo</span><span class="o">:</span> <span class="kt">integer</span> <span class="k">range</span> <span class="mi">1</span> <span class="k">to</span> <span class="kt">integer</span><span class="na">&#39;right</span><span class="p">);</span>
+    <span class="k">port</span><span class="p">(</span>
+      <span class="n">clk</span><span class="p">,</span> <span class="n">clear_n</span><span class="p">,</span> <span class="n">load</span><span class="p">,</span> <span class="n">up</span><span class="p">,</span> <span class="n">en</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
+      <span class="n">qi</span><span class="o">:</span> <span class="k">in</span>  <span class="kt">bit_vector</span><span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">log2</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">modulo</span><span class="p">))))</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="n">qo</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">log2</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">modulo</span><span class="p">))))</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">));</span>
+  <span class="k">end</span> <span class="k">component</span><span class="p">;</span>
+  <span class="k">signal</span> <span class="n">clk</span><span class="p">,</span> <span class="n">clr</span><span class="p">,</span> <span class="n">load</span><span class="p">,</span> <span class="n">up</span><span class="p">,</span> <span class="n">en</span><span class="o">:</span> <span class="kt">bit</span> <span class="o">:=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+  <span class="k">signal</span> <span class="n">entrada</span><span class="p">,</span> <span class="n">saida</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">log2</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">modulo</span><span class="p">))))</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="k">signal</span> <span class="n">saidai</span><span class="o">:</span> <span class="kt">integer</span> <span class="k">range</span> <span class="mi">0</span> <span class="k">to</span> <span class="n">modulo</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="k">constant</span> <span class="n">periodoClock</span> <span class="o">:</span> <span class="kt">time</span> <span class="o">:=</span> <span class="mi">1</span> <span class="n">ns</span><span class="p">;</span>
+<span class="k">begin</span>
+  <span class="n">clk</span> <span class="o">&lt;=</span> <span class="k">not</span> <span class="n">clk</span> <span class="k">after</span> <span class="n">periodoClock</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+  <span class="n">saidai</span> <span class="o">&lt;=</span> <span class="n">to_integer</span><span class="p">(</span><span class="kt">unsigned</span><span class="p">(</span><span class="n">saida</span><span class="p">));</span>
+
+  <span class="n">dut</span><span class="o">:</span> <span class="n">contador</span>
+    <span class="k">generic</span> <span class="k">map</span><span class="p">(</span><span class="n">modulo</span><span class="p">)</span>
+    <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">clk</span><span class="p">,</span><span class="n">clr</span><span class="p">,</span><span class="n">load</span><span class="p">,</span><span class="n">up</span><span class="p">,</span><span class="n">en</span><span class="p">,</span><span class="n">entrada</span><span class="p">,</span><span class="n">saida</span><span class="p">);</span>
+
+  <span class="nc">st</span><span class="o">:</span> <span class="k">process</span> <span class="k">is</span>
+  <span class="k">begin</span>
+    <span class="c1">--! Imprime mensagem de inicio de teste</span>
+    <span class="k">assert</span> <span class="n">false</span> <span class="n">report</span> <span class="s">&quot;BOT&quot;</span> <span class="k">severity</span> <span class="n">note</span><span class="p">;</span>
+
+    <span class="c1">--! Testa se o clear está OK</span>
+    <span class="n">clr</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">load</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">up</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">en</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+    <span class="k">wait</span> <span class="k">until</span> <span class="n">rising_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+    <span class="k">wait</span> <span class="k">until</span> <span class="n">falling_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+    <span class="k">assert</span> <span class="n">saidai</span><span class="o">=</span><span class="mi">0</span> <span class="n">report</span> <span class="s">&quot;Teste de clear falhou.&quot;</span> <span class="o">&amp;</span>
+      <span class="s">&quot; Obtido: &quot;</span> <span class="o">&amp;</span> <span class="kt">integer</span><span class="na">&#39;image</span><span class="p">(</span><span class="n">saidai</span><span class="p">)</span>
+      <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+
+    <span class="c1">--! Testa se a contagem crescente está OK</span>
+    <span class="n">clr</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">load</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">up</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">en</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span> <span class="k">to</span> <span class="n">modulo</span><span class="o">-</span><span class="mi">1</span> <span class="k">loop</span>
+      <span class="c1">--! Verifica a contagem</span>
+      <span class="k">assert</span> <span class="n">saidai</span> <span class="o">=</span> <span class="n">i</span> <span class="n">report</span>
+        <span class="s">&quot;Contagem falhou. Esperado: &quot;</span> <span class="o">&amp;</span> <span class="kt">integer</span><span class="na">&#39;image</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span>
+        <span class="s">&quot; Obtido: &quot;</span> <span class="o">&amp;</span> <span class="kt">integer</span><span class="na">&#39;image</span><span class="p">(</span><span class="n">saidai</span><span class="p">)</span>
+        <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+      <span class="k">wait</span> <span class="k">until</span> <span class="n">falling_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+    <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
+
+    <span class="k">assert</span> <span class="n">saidai</span><span class="o">=</span><span class="mi">0</span> <span class="n">report</span> <span class="s">&quot;Teste de overflow falhou.&quot;</span> <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+    <span class="n">clr</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">load</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">up</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">en</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+    <span class="k">wait</span> <span class="k">until</span> <span class="n">falling_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+    <span class="k">assert</span> <span class="n">saidai</span><span class="o">=</span><span class="p">(</span><span class="n">modulo</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">report</span> <span class="s">&quot;Teste de underflow falhou.&quot;</span> <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+
+    <span class="c1">--! Testa se a contagem decrescente está OK</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">modulo</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span> <span class="k">loop</span>
+      <span class="c1">--! Verifica a contagem</span>
+      <span class="k">assert</span> <span class="n">saidai</span> <span class="o">=</span> <span class="n">i</span> <span class="n">report</span>
+        <span class="s">&quot;Contagem falhou. Esperado: &quot;</span> <span class="o">&amp;</span> <span class="kt">integer</span><span class="na">&#39;image</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span>
+        <span class="s">&quot; Obtido: &quot;</span> <span class="o">&amp;</span> <span class="kt">integer</span><span class="na">&#39;image</span><span class="p">(</span><span class="n">saidai</span><span class="p">)</span>
+        <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+      <span class="k">wait</span> <span class="k">until</span> <span class="n">falling_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+    <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
+
+    <span class="n">clr</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">load</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">up</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">en</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+    <span class="n">entrada</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="k">others</span><span class="o">=&gt;</span><span class="sc">&#39;1&#39;</span><span class="p">);</span>
+    <span class="k">wait</span> <span class="k">until</span> <span class="n">falling_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+    <span class="k">assert</span> <span class="n">saidai</span><span class="o">=</span><span class="p">(</span><span class="n">modulo</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">report</span> <span class="s">&quot;Teste de load max falhou.&quot;</span> <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+    <span class="n">entrada</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="k">others</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">);</span>
+    <span class="k">wait</span> <span class="k">until</span> <span class="n">falling_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+    <span class="k">assert</span> <span class="n">saidai</span><span class="o">=</span><span class="mi">0</span> <span class="n">report</span> <span class="s">&quot;Teste de load min falhou.&quot;</span> <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+
+    <span class="n">clr</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">load</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">up</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">en</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span> <span class="k">to</span> <span class="mi">3</span> <span class="k">loop</span>
+      <span class="k">wait</span> <span class="k">until</span> <span class="n">falling_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+      <span class="c1">--! Verifica a contagem</span>
+      <span class="k">assert</span> <span class="n">saidai</span><span class="o">=</span><span class="mi">0</span> <span class="n">report</span>
+        <span class="s">&quot;Teste de enable falhou no &quot;</span> <span class="o">&amp;</span> <span class="kt">integer</span><span class="na">&#39;image</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span>
+        <span class="s">&quot; ciclo.&quot;</span> <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+    <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
+
+    <span class="k">assert</span> <span class="n">false</span> <span class="n">report</span> <span class="s">&quot;EOT&quot;</span> <span class="k">severity</span> <span class="n">note</span><span class="p">;</span>
+    <span class="k">wait</span><span class="p">;</span>
+  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+<span class="k">end</span> <span class="nc">dut</span><span class="p">;</span>
+</pre></div>
+
+
+<p>No preâmbulo da arquitetura, declarou-se o componente e os sinais necessários para ligá-lo. Ainda declarou-se duas constantes, que serão usadas posteriormente.</p>
+<p>O primeiro bloco do <em>testbench</em> gera o sinal de <em>clock</em> necessário para alimentar o contador (contadores são circuitos sequenciais) e um sinal de ajuda, cujo único propósito é conter o próprio sinal de saída do contador (<code>saida</code>), mas convertido para inteiro (<code>saida</code> é um <code>bit_vector</code> e <code>saidai</code> é um <code>integer</code>). Este sinal de ajuda facilita a montagem do <em>testbench</em> pois podemos usá-lo para as comparações posteriormente sem precisar chamar as funções de conversão <code>to_integer</code> e <code>unsigned</code> toda vez que formos fazer uma comparação. Para geração do <em>clock</em>, usou-se uma atribuição com cláusula <code>after</code>, ou seja, a cada <code>periodoClock/2</code> o sinal será invertido, gerando um clock de <code>periodoClock</code> (uma constante que vale 1ns e foi declarada no preâmbulo da arquitetura) e <em>duty-cycle</em> de 50%.</p>
+<div class="highlight"><pre><span></span>  <span class="n">clk</span> <span class="o">&lt;=</span> <span class="k">not</span> <span class="n">clk</span> <span class="k">after</span> <span class="n">periodoClock</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+  <span class="n">saidai</span> <span class="o">&lt;=</span> <span class="n">to_integer</span><span class="p">(</span><span class="kt">unsigned</span><span class="p">(</span><span class="n">saida</span><span class="p">));</span>
+</pre></div>
+
+
+<p>O segundo bloco do <em>testbench</em> efetivamente instancia o DUT, que nesse caso é o contador. Note que o contador está ligado nos sinais criados no preâmbulo da arquitetura, incluindo o módulo (nesse caso uma constante que vale 256). A função deste bloco é então instanciar e ligar o DUT no <em>testbench</em>.</p>
+<div class="highlight"><pre><span></span>  <span class="n">dut</span><span class="o">:</span> <span class="n">contador</span>
+    <span class="k">generic</span> <span class="k">map</span><span class="p">(</span><span class="n">modulo</span><span class="p">)</span>
+    <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">clk</span><span class="p">,</span><span class="n">clr</span><span class="p">,</span><span class="n">load</span><span class="p">,</span><span class="n">up</span><span class="p">,</span><span class="n">en</span><span class="p">,</span><span class="n">entrada</span><span class="p">,</span><span class="n">saida</span><span class="p">);</span>
+</pre></div>
+
+
+<p>O terceiro e último bloco é o gerador de estímulos para o DUT (por isso o nome <code>st</code>). É composto por apenas um <code>process</code> que injeta e verifica os sinais de entrada e saída, respectivamente. Vamos dissecá-lo em blocos novamente.</p>
+<p>Esta parte declara o <code>process</code> e imprime uma mensagem incondicionalmente (normalmente a mensagem aparecerá na tela do simulador, no terminal ou no arquivo de saída da simulação). Note que o <code>assert</code> está verificando um valor constante <code>false</code>, portanto este <code>assert</code> sempre irá falhar, causando a impressão da mensagem "BOT" com severidade baixa (sem parar a simulação). BOT é um acrônimo para <em>Begin Of Test</em>, para indicar que o teste começou.</p>
+<div class="highlight"><pre><span></span>  <span class="nc">st</span><span class="o">:</span> <span class="k">process</span> <span class="k">is</span>
+  <span class="k">begin</span>
+    <span class="c1">--! Imprime mensagem de inicio de teste</span>
+    <span class="k">assert</span> <span class="n">false</span> <span class="n">report</span> <span class="s">&quot;BOT&quot;</span> <span class="k">severity</span> <span class="n">note</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Agora sim começamos a testar o contador. Nesta parte, colocamos o <em>clear</em> em zero, portanto o contador deve manter as saídas zeradas independentemente das demais entradas. Este teste não é ótimo, pois seria necessário testar todas as combinações de entradas mantendo-se o <em>clear</em> baixo para garantir uma cobertura mínima, porém é suficiente para os propósitos que desejamos testar, que é a saída em zero mesmo com borda do <em>clock</em>. Os <code>wait</code> esperam a borda de subida (<code>rising_edge</code>) e de descida (<code>falling_edge</code>) do <em>clock</em> antes de fazer a verificação, portanto garantimos que o contador recebeu uma de cada uma das bordas com a condição do teste. Se a saída não for zero, o <code>assert</code> irá mostrar a mensagem de falha com o valor da saída, e também irá parar a simulação (severidade <code>failure</code>).</p>
+<div class="highlight"><pre><span></span>    <span class="c1">--! Testa se o clear está OK</span>
+    <span class="n">clr</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">load</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">up</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">en</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+    <span class="k">wait</span> <span class="k">until</span> <span class="n">rising_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+    <span class="k">wait</span> <span class="k">until</span> <span class="n">falling_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+    <span class="k">assert</span> <span class="n">saidai</span><span class="o">=</span><span class="mi">0</span> <span class="n">report</span> <span class="s">&quot;Teste de clear falhou.&quot;</span> <span class="o">&amp;</span>
+      <span class="s">&quot; Obtido: &quot;</span> <span class="o">&amp;</span> <span class="kt">integer</span><span class="na">&#39;image</span><span class="p">(</span><span class="n">saidai</span><span class="p">)</span>
+      <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+</pre></div>
+
+
+<p>O teste anterior é simples pois só testa se a saída se mantém em zero. Neste teste, habilitamos a contagem crescente do contador, simulando uma operação normal, para testar a contagem crescente. Para cada valor do <code>loop</code>, verificamos se a saída condiz com o valor esperado (note que a saída inicial é zero pois passamos no teste anterior) e aguardamos uma borda de descida do <em>clock</em>, garantindo que o contador avançou para o próximo valor esperado, que será verificado na próxima iteração do <code>loop</code>.</p>
+<div class="highlight"><pre><span></span>    <span class="c1">--! Testa se a contagem crescente está OK</span>
+    <span class="n">clr</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">load</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">up</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">en</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span> <span class="k">to</span> <span class="n">modulo</span><span class="o">-</span><span class="mi">1</span> <span class="k">loop</span>
+      <span class="c1">--! Verifica a contagem</span>
+      <span class="k">assert</span> <span class="n">saidai</span> <span class="o">=</span> <span class="n">i</span> <span class="n">report</span>
+        <span class="s">&quot;Contagem falhou. Esperado: &quot;</span> <span class="o">&amp;</span> <span class="kt">integer</span><span class="na">&#39;image</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span>
+        <span class="s">&quot; Obtido: &quot;</span> <span class="o">&amp;</span> <span class="kt">integer</span><span class="na">&#39;image</span><span class="p">(</span><span class="n">saidai</span><span class="p">)</span>
+        <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+      <span class="k">wait</span> <span class="k">until</span> <span class="n">falling_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+    <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Neste bloco, aproveitamos que o valor da contagem é o máximo possível +1 (última iteração do teste anterior) e testamos o <em>overflow</em>, ou seja, a saída deve ser zero novamente. Também aproveitou-se para inverter o sentido de contagem e verificar o <em>underflow</em>, ou seja, a partir do valor máximo +1, se contarmos decrescente o valor deve ser o máximo. Os nomes <em>overflow</em> e <em>underflow</em> foram usados pelo projetista mas tem significados distintos do utilizado neste contexto (e.g. quando lidando com inteiros ou ponto flutuante).</p>
+<div class="highlight"><pre><span></span>    <span class="k">assert</span> <span class="n">saidai</span><span class="o">=</span><span class="mi">0</span> <span class="n">report</span> <span class="s">&quot;Teste de overflow falhou.&quot;</span> <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+    <span class="n">clr</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">load</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">up</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">en</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+    <span class="k">wait</span> <span class="k">until</span> <span class="n">falling_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+    <span class="k">assert</span> <span class="n">saidai</span><span class="o">=</span><span class="p">(</span><span class="n">modulo</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">report</span> <span class="s">&quot;Teste de underflow falhou.&quot;</span> <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Este bloco é idêntico ao bloco que testa a contagem, mas dessa vez crescente. Novamente aproveita-se o último teste sabendo que o contador parte do valor máximo possível.</p>
+<div class="highlight"><pre><span></span>    <span class="c1">--! Testa se a contagem decrescente está OK</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">modulo</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span> <span class="k">loop</span>
+      <span class="c1">--! Verifica a contagem</span>
+      <span class="k">assert</span> <span class="n">saidai</span> <span class="o">=</span> <span class="n">i</span> <span class="n">report</span>
+        <span class="s">&quot;Contagem falhou. Esperado: &quot;</span> <span class="o">&amp;</span> <span class="kt">integer</span><span class="na">&#39;image</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span>
+        <span class="s">&quot; Obtido: &quot;</span> <span class="o">&amp;</span> <span class="kt">integer</span><span class="na">&#39;image</span><span class="p">(</span><span class="n">saidai</span><span class="p">)</span>
+        <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+      <span class="k">wait</span> <span class="k">until</span> <span class="n">falling_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+    <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Ainda falta testar a carga paralela. Neste bloco, o projetista resolveu testar a carga máxima (entrada toda em 1) e mínima (entrada toda em 0) possivel.</p>
+<div class="highlight"><pre><span></span>    <span class="n">clr</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">load</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">up</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">en</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+    <span class="n">entrada</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="k">others</span><span class="o">=&gt;</span><span class="sc">&#39;1&#39;</span><span class="p">);</span>
+    <span class="k">wait</span> <span class="k">until</span> <span class="n">falling_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+    <span class="k">assert</span> <span class="n">saidai</span><span class="o">=</span><span class="p">(</span><span class="n">modulo</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">report</span> <span class="s">&quot;Teste de load max falhou.&quot;</span> <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+    <span class="n">entrada</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="k">others</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">);</span>
+    <span class="k">wait</span> <span class="k">until</span> <span class="n">falling_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+    <span class="k">assert</span> <span class="n">saidai</span><span class="o">=</span><span class="mi">0</span> <span class="n">report</span> <span class="s">&quot;Teste de load min falhou.&quot;</span> <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Por último, testou-se a contagem por três ciclos de <em>clock</em>, com o <em>enable</em> desativado. O contador terminou o último teste com uma carga de zero, portanto a carga deve-se manter durante todos os três ciclos de <em>clock</em>.</p>
+<div class="highlight"><pre><span></span>    <span class="n">clr</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">load</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="n">up</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">en</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span> <span class="k">to</span> <span class="mi">3</span> <span class="k">loop</span>
+      <span class="k">wait</span> <span class="k">until</span> <span class="n">falling_edge</span><span class="p">(</span><span class="n">clk</span><span class="p">);</span>
+      <span class="c1">--! Verifica a contagem</span>
+      <span class="k">assert</span> <span class="n">saidai</span><span class="o">=</span><span class="mi">0</span> <span class="n">report</span>
+        <span class="s">&quot;Teste de enable falhou no &quot;</span> <span class="o">&amp;</span> <span class="kt">integer</span><span class="na">&#39;image</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span>
+        <span class="s">&quot; ciclo.&quot;</span> <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+    <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Este bloco não é um teste em si mas tem duas funções. A primeira é mostrar uma mensagem de fim de teste (<em>End Of Test</em>) e a segunda é terminar o processo de geração e verificação de estímulos. Isso é feito através do <code>wait</code> incondicional, que suspende indefinidamente o <code>process</code> do ponto de vista do simulador, indicando que este <code>process</code> já realizou o trabalho que deveria.</p>
+<div class="highlight"><pre><span></span>    <span class="k">assert</span> <span class="n">false</span> <span class="n">report</span> <span class="s">&quot;EOT&quot;</span> <span class="k">severity</span> <span class="n">note</span><span class="p">;</span>
+    <span class="k">wait</span><span class="p">;</span>
+  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+<span class="k">end</span> <span class="nc">dut</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Contudo, há um problema: ainda estamos gerando o sinal de <em>clock</em>. Em alguns simuladores, o simples fato de existir um sinal periódico sendo gerado faz com que a simulação seja executada indefinidamente. Para resolver o problema, podemos criar um sinal que habilita ou não o <em>clock</em>, substituindo a linha de geração por:</p>
+<div class="highlight"><pre><span></span><span class="n">clk</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">simulando</span> <span class="k">and</span> <span class="p">(</span><span class="k">not</span> <span class="n">clk</span><span class="p">))</span> <span class="k">after</span> <span class="n">periodoClock</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+</pre></div>
+
+
+<p>O sinal <code>simulando</code> deve ser declarado no preâmbulo da arquitetura como um sinal de um bit. No começo do <code>process</code> (em qualquer lugar, i.e. após o <code>begin</code>), adicionamos a seguinte linha:</p>
+<div class="highlight"><pre><span></span><span class="n">simulando</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>E ao final do <code>process</code> (antes do <code>wait</code> incondicional), a seguinte:</p>
+<div class="highlight"><pre><span></span><span class="n">simulando</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Isso irá parar a geração do <em>clock</em>, parando o simulador. Este procedimento não é necessário em todos os simuladores.</p>
+  </div>
+
+   <div>
+     Última atualização: 2018-10-30 17:53:00-03:00
+   </div>
+
+
+  <div class="tag-cloud">
+    <p>
+      <a href="https://balbertini.github.io/tag/vhdl.html">vhdl</a>
+      <a href="https://balbertini.github.io/tag/testbench.html">testbench</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'balbertini';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Habilite JavaScript para ver os comentários.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy; Bruno Albertini  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - O tema <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> foi criado por <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " B.Albertini's site ",
+  "url" : "https://balbertini.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
