@@ -19,3 +19,6 @@ Summary: Lista de posts com VHDL.
 [Arquitetura]({filename}../vhdl/arquitetura.md)  
 [Circuitos combinatórios em VHDL]({filename}../vhdl/combinatorio.md)  
 [Circuitos sequenciais em VHDL]({filename}../vhdl/sequenciais.md)  
+
+#TestBench
+[Como fazer um testbench em VHDL]({filename}../vhdl/testbench.md)  
