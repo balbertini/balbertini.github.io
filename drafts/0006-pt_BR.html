@@ -115,7 +115,7 @@ Semana 7:   Contadores e memórias</p>
 <strong>Q1a)</strong> Quantos bits são necessários para representar <span class="math">\(A\)</span> e <span class="math">\(B\)</span> de um aluno qualquer?<br>
 <strong>Q1b)</strong> Converta <span class="math">\(A\)</span> e <span class="math">\(B\)</span> para binário.<br>
 <strong>Q1c)</strong> Some <span class="math">\(A\)</span> e <span class="math">\(B\)</span> em binário, mostrando a soma. Se o resultado for do mesmo tamanho dos operandos, houve transbordo (<em>overflow</em>)?<br>
-<strong>Q1d)</strong> Considerando que <span class="math">\(A\)</span> e <span class="math">\(B\)</span> estão em complemento de dois, qual o resultado em decimal do item (d), considerando que o resultado é do mesmo tamanho dos operandos?  </p>
+<strong>Q1d)</strong> Considerando que <span class="math">\(A\)</span> e <span class="math">\(B\)</span> estão em complemento de dois, qual o resultado em decimal do item (c), considerando que o resultado é do mesmo tamanho dos operandos?  </p>
 <h3>Solução (todas as provas)</h3>
 <p><strong>Q1a)</strong> Os números <span class="math">\(A\)</span> e <span class="math">\(B\)</span> são sempre de dois dígitos. Sendo assim, o menor número representável é 00 e o maior 99. Para representar 100 números (de 00 a 99), precisamos de <span class="math">\(\lceil log_2{99}\rceil = 7\)</span> dígitos binários, ou seja, 7 bits.<br>
 <strong>Q1b)</strong> Siga a tabela abaixo e encontre a dezena e a unidade do seu número. Exemplo: se o número for 42, a linha é  4 e a coluna é a 2, portanto <span class="math">\(42_{(10)}=0101010_{(2)}\)</span>. As linhas que estão tachadas contém um dígito zero e você deveria ter substituído este dígito por 1, conforme enunciado.<br>
@@ -659,12 +659,6 @@ Justificativa: O C0 é recarregado com D no valor F, portanto em regime conta D-
 <p>Sequencia: <code>02, 03, 04, 05, 12, 13, 14, 15, 22, 23, 24, 25, 32, 33, 34, 35, 42, 43, 44, 45, 52, 53, 54, 55, 62, 63, 64, 65, 72, 73, 74, 75, 82, 83, 84, 85, 92, 93, 94, 95, A2, A3, A4, A5, B2, B3, B4, B5, C2, C3, C4, C5, D2, D3, D4, D5, E2, E3, E4, E5, F2, F3, F4, F5</code><br>
 Módulo: 64<br>
 Justificativa: O C0 é recarregado com 2 no valor 5, portanto em regime conta 2-5. O C1 conta o valor integral, mas perceba que a contagem está habilitada somente quando C0=5.  </p>
-<h3>Enunciado Prova 5</h3>
-<p><img alt="Circuito Q4 P5" src="https://balbertini.github.io/images/sd/er/0006_Q3_p5c.png"></p>
-<h3>Solução Prova 5</h3>
-<p>Sequencia: <code>02, 03, 04, 05, 12, 13, 14, 15, 22, 23, 24, 25, 32, 33, 34, 35, 42, 43, 44, 45, 52, 53, 54, 55, 62, 63, 64, 65, 72, 73, 74, 75, 82, 83, 84, 85, 92, 93, 94, 95, A2, A3, A4, A5, B2, B3, B4, B5, C2, C3, C4, C5, D2, D3, D4, D5, E2, E3, E4, E5, F2, F3, F4, F5</code><br>
-Módulo: 64<br>
-Justificativa: O C0 é recarregado com 2 no valor 5, portanto em regime conta 2-5. O C1 conta o valor integral, portanto de 0-F.  </p>
 <h3>Enunciado Prova 6</h3>
 <p><img alt="Circuito Q4 P6" src="https://balbertini.github.io/images/sd/er/0006_Q3_p6c.png"></p>
 <h3>Solução Prova 6</h3>
