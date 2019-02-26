@@ -13,7 +13,7 @@ A máquina de estados algorítmica, do inglês _Algorithmic State Machine_ (ASM)
 ## Elementos gráficos
 
 ### Estado
-<img src='{filename}/images/sd/asm_estado.png' width="20%" align="right" style="padding-left:5%" />
+<img src='{static}/images/sd/asm_estado.png' width="20%" align="right" style="padding-left:5%" />
 Um estado é representado por uma caixa quadrada com arestas orientadas entrando e saindo do estado. As arestas sempre são as mesmas duas, sem exceção. A aresta superior pode vir de um outro elemento ASM anterior a este estado na sequencia imposta pela máquina, ou não possuir nenhuma origem, o que imlica que este estado é o inicial (estado após o _reset_) da máquina. Lembre-se que somente um estado da máquina toda pode ser o estado inicial. Já a aresta inferior liga este estado ao próximo elemento na sequencia imposta pela máquina e não é opcional: deve existir e ser conectada a algum outro elemento.  
 
 O nome do estado e o seu código (em binário) são considerados obrigatórios por alguns autores. No entanto, dependendo do método de síntese adotado, a codificação não se faz necessária. Também alguns autores circulam o nome do estado, em alguns casos deixando-o também na lateral esquerda da caixa. Em sistemas digitais usamos a notação sobre a caixa (à esquerda), sem circular o nome do estado, e consideramos a codificação opcional exceto quando solicitado explicitamente.  
@@ -22,7 +22,7 @@ A saída representa exatamente os sinais de saída deste estado. Por convenção
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 ### Decisor
-<img src='{filename}/images/sd/asm_decisor.png' width="30%" align="right" style="padding-left:3%" />
+<img src='{static}/images/sd/asm_decisor.png' width="30%" align="right" style="padding-left:3%" />
 O decisor é o componente que faz a transição condicional entre os estados. Sem ele, toda transição seria incondicional e não dependeria de entrada alguma. É representado graficamente por um losango, com uma aresta orientada de entrada e duas de saída. A aresta de entrada é proveniente de um elemento sequencialmente anterior da máquina de estados e deve obrigatoriamente ter uma origem. As arestas de saída são condicionais, ou seja, caso a condição do decisor seja verdadeira, a máquina segue pelo caminho 1, caso contrário pelo caminho 0. É importante notar que há duas e somente duas arestas de saída, uma para o caso da condição ser falsa e outra verdadeira. Não há condição com múltiplos bits ou múltiplas saídas e as duas saídas devem ser conectadas em outro elemento ASM.  
 A condição sempre deve ser uma condição resolvível em lógica booleana, retornando sempre verdadeiro ou falso (1 ou 0). É tolerável inverter as saídas de lado para facilitar o diagrama, assim como desenhar uma seta saindo na ponta inferior do losango, mas prefira sempre usar o desenho padrão como no exemplo ao lado (incluindo os lados de saída para verdadeiro e falso) para garantir que está seguindo as boas práticas.   
 
@@ -32,14 +32,14 @@ Há também um símbolo alternativo que é um hexágono achatado, com o mesmo si
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 ### Saída condicional
-<img src='{filename}/images/sd/asm_saidaCondicional.png' width="15%" align="right" style="padding-left:5%" />
+<img src='{static}/images/sd/asm_saidaCondicional.png' width="15%" align="right" style="padding-left:5%" />
 As saídas listadas dentro de um estado são as que serão ativadas durante o tempo em que a máquina permanecer naquele estado. Contudo, há casos em que a saída não depende somente do estado mais também da saída (i.e. máquina de Mealy). Para este tipo de saída, existe a representação de saída condicional, sujo símbolo é um retângulo oblongo com as laterais arrendondadas ao máximo possível (i.e. um semi-círculo). Há uma aresta direcional de entrada e uma de saída. A aresta de saída deve ser conectada a qualquer outro elemento ASM, porém este também é um componente atemporal e deve estar em um caminho válido entre dois estados. Assim como o decisor, este componente não tem dependência temporal, sendo puramente combinatório. A entrada de uma saída condicional deve necessariamente originar-se da saída de um grupo de decisores (que pode ser unitário). A condição, por consequência, indicará a condição para que esta saída seja ativada.  
 
 Assim como a lista de saídas em um estado, a lista de saídas de uma saída condicional apresenta a lista de sinais que devem ser ativados quando a máquina estiver com este caminho ativo, ou seja, a condição do grupo de decisores que a antecedem for satisfeita. Note que, enquanto a máquina estiver no estado em que os decisores estão ativos, mudar a condição pode levar os decisores a ativar outro caminho, alterando o estado de ativação de uma saída condicional dependente destes decisores.
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 ### Junção
-<img src='{filename}/images/sd/asm_juncao.png' width="15%" align="right" style="padding-left:5%" />
+<img src='{static}/images/sd/asm_juncao.png' width="15%" align="right" style="padding-left:5%" />
 A junção é o componente que permite juntar dois caminhos diferentes em direção a outro estado. É composta por um ponto onde chegam duas arestas direcionais e sai somente uma. Este componente deve ser desenhado na forma como está, tolerando-se que as arestas sejam desenhadas em diferentes posições ao redor do ponto, mantidas duas de entrada e uma de saída. Todas as arestas devem ter como origem ou destino um elemento ASM, incluindo outra junção, mas devem estar em um caminho sequencial (entre dois estados) pois, assim como o decisor e a saída condiciona, a junção não possui dependência temporal.  
 
 Observe que o ponto foi exagerado no exemplo ao lado. Quando desenhar sua máquina, use somente um ponto onde fique clara a convergência de duas arestas de entrada e uma de saída. De fato, em desenhos feito usando auxílio de ferramentas computacionais, é comum omitir a junção, desde que fique clara a convergência. Também é possível uma junção com mais de duas arestas de entrada, mas sempre há somente uma aresta de saída.
@@ -57,7 +57,7 @@ A partir de um estado inicial, segue-se a analogia de circuitos chaveados: o est
 Normalmente os diagramas ASM são desenhados na vertical, com o estado inicial acima na página e o final abaixo. Não há limitações em desenhá-lo em outra orientação, mas evite fugir do usual. Jamais mude a orientação do diagrama no meio do desenho (e.g. inicia-se superior e no meio do diagrama parte-se para a direita) para não dar margem a interpretações ambíguas.
 
 ### Exemplo 1: máquina de detectar 1001 com sobreposição (Moore)
-<img src='{filename}/images/sd/asm_exemplo1.png' width="30%" align="left" style="padding-right:5%" />
+<img src='{static}/images/sd/asm_exemplo1.png' width="30%" align="left" style="padding-right:5%" />
 Esta máquina possui uma entrada `e` e uma saída `z`. A saída `z` é alta quando a sequencia 1001 é detectada na entrada `e`, com sobreposição.
 
 A máquina pode ser vista ao lado, com os estados `ini`,`S1`,`S10`,`S100` e `S1001`. O estado `ini` é o único que possui uma aresta com origem indeterminada, portanto é o estado inicial. Note que entre esta aresta e o estado há somente uma junção, o que é permitido. A única saída da máquina, `z`, é ativada somente no estado `S1001`, portanto todos os outros estados não possuem lista de saída. Esta máquina não possui nenhuma saída condicional, portanto representa uma máquina de Moore.  
@@ -71,7 +71,7 @@ Se continuarmos a análise, invariavelmente chegaremos no `S1001`, que contém a
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 ### Exemplo 2: máquina de detectar 1001 com sobreposição (Mealy)
-<img src='{filename}/images/sd/asm_exemplo2.png' width="30%" align="left" style="padding-right:5%" />
+<img src='{static}/images/sd/asm_exemplo2.png' width="30%" align="left" style="padding-right:5%" />
 Esta máquina é similar a de Exemplo 1. Há uma única diferença, na geração da saída, que é dependente da entrada, caracterizando a máquina como Mealy.
 
 Até o estado `S100` a máquina tem comportamento idêntico à máquina do Exemplo 1. Neste estado, caso a entrada `e=0`, transicionamos para a esquerda (indo para o estado `ini` pois detectou-se a sequencia errada `1000` na entrada). Mas caso `e=1`, o caminho ativado será o da direita. Como neste caminho temos uma saída condicional, a saída `z` estará ativa enquanto este caminho estiver ativo, ou seja, enquanto a máquina estiver no estado `S100` e a entrada for `e=1`. A saída condicional também é um elemento combinatório, portanto a saída `z` será `1` assim que a entrada mudar para `1` (e os atrasos de propagação forem atendidos). Se durante o estado `S100`(entre a borda de subida do _clock_ onde este estado foi ativado e antes da próxima borda de subida) mudarmos o valor da entrada, também mudaremos o valor da saída! Esta é uma característica das máquinas Mealy, onde a saída depende não somente do estado mas também das entradas.

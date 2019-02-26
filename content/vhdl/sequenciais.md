@@ -29,7 +29,7 @@ As primitivas sequenciais dentro de um `process` podem ser quaisquer primitivas 
 
 As primitivas concorrentes (dentro da arquitetura), representam circuitos combinatórios, portanto serão sintetizadas para tais circuitos. Quaisquer modificações na entrada têm efeito imediato e todas as funções combinatórias descritas terão suas saídas afetadas (após o devido tempo de propagação caso aplicável). É importante notar que um bloco de um `process` inteiro é equivalente a uma primitiva combinatória, ou seja, a avaliação das saídas do `process` ocorre ao mesmo tempo que a avaliação de todas as primitivas concorrentes da mesma arquitetura, incluindo outros possíveis blocos `process` descritos na mesma arquitetura, portanto não é possível aninhar mais de um `process`.
 
-<img src='{filename}/images/vhdl/sequencial.png' align="right" style="padding-left:5%" />
+<img src='{static}/images/vhdl/sequencial.png' align="right" style="padding-left:5%" />
 Já as primitivas sequencias (dentro de um `process`), representam um circuito sequencial nos moldes da figura acima. Qualquer circuito sequencial pode ser mapeado para um circuito com um elemento de memória e uma lógica combinatória dependente do estado atual do circuito, fornecido pelo elemento de memória. Dentro de um `process`, as primitivas sequencias são **avaliadas em ordem** e caso haja divergência (i.e. mais de um valor atribuído para um determinado sinal), prevalece a última primitiva (i.e. o último valor atribuído a um sinal).
 
 A lógica combinatória dentro de um bloco `process` pode ser a identidade (i.e. não possuir lógica que altere os dados, ou em outras palavras representar um fio) e o elemento de memória também pode estar ausente. É possível representar circuitos combinatórios usando `process` se descrevermos um circuito sequencial que possua uma lógica combinatória mas não um elemento de memória. Vale lembrar que descrever circuitos combinatórios com `process` é uma prática **fortemente desencorajada**, portanto se o seu circuito não possui um elemento de memória, não utilize `process`.
@@ -46,7 +46,7 @@ Uma alternativa para a lista de sensibilidade é a primitiva `wait`. Quando opta
 
 ### Exemplos
 #### FF-D com enable
-<img src='{filename}/images/vhdl/ffd.png' align="left" style="padding-right:5%" />
+<img src='{static}/images/vhdl/ffd.png' align="left" style="padding-right:5%" />
 ```vhdl
 ffd: process
 begin
@@ -74,7 +74,7 @@ end process ffd;
 Note que neste caso, os sinais `en` e `d` podem ficar de fora da lista de sensibilidade pois, apesar de serem lidos dentro do `process`, não alteram o comportamento do circuito exceto na borda do _clock_, portanto não faz diferença se o colocarmos na lista de sensibilidade: `process(clock, en, d)`.
 
 #### FF-D com enable e reset assíncrono
-<img src='{filename}/images/vhdl/ffdr.png' align="left" style="padding-right:5%" />
+<img src='{static}/images/vhdl/ffdr.png' align="left" style="padding-right:5%" />
 ```vhdl
 ffdr: process
 begin

@@ -49,7 +49,7 @@ A palavra reservada `work` faz referência ao pacote de trabalho local, onde se 
 
 ### Exemplo
 
-<img src='{filename}/images/vhdl/mux2to1_arquitetura.png' width="39%" align="right" style="padding-left:5%" />
+<img src='{static}/images/vhdl/mux2to1_arquitetura.png' width="39%" align="right" style="padding-left:5%" />
 ``` vhdl
 entity mux2to1 is
 	port(

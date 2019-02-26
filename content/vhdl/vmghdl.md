@@ -27,17 +27,17 @@ A máquina está no formato _Open Virtual Appliance_, portanto você também pre
 # Preparando a máquina virtual
 Abra o arquivo `GHDL.ova` com o seu software de virtualização (e.g. clique duas vezes, vá em `Arquivo/Importar Appliance`, etc).
 
-![Adicionando a VM]({filename}/images/vhdl/vmghdl1.png)
+![Adicionando a VM]({static}/images/vhdl/vmghdl1.png)
 
 Não é necessário mudar nenhum parâmetro da VM neste momento. Opcionalmente desligue os itens que não pretende utilizar, como por exemplo o controlador USB ou a placa de som. Não desabilite a placa de rede pois iremos utilizá-la para acessar a máquina. Quando estiver satisfeito, clique no botão `Importar` finalize a importação da máquina.
 
 Com a importação finalizada, a VM deve aparecer na sua lista de VMs. Com a VM selecionada, vá em `Máquina/Configurações` ou clique com o botão direito dobre a máquina e escolha `Configurações`.
 
-![Configurando a VM]({filename}/images/vhdl/vmghdl2.png)
+![Configurando a VM]({static}/images/vhdl/vmghdl2.png)
 
 Na caixa que abrirá, selecione `Rede`, expanda a aba `Avançado` e clique no botão `Redirecionamento de Portas`.
 
-![Redirecionamento de portas]({filename}/images/vhdl/vmghdl3.png)
+![Redirecionamento de portas]({static}/images/vhdl/vmghdl3.png)
 
 Na tela que se abrirá, você deve ver uma regra pré-carregada. Confira os dados ou caso não veja nenhuma regra, clique no botão de adicionar uma nova regra e adicione o seguinte:
 
@@ -48,22 +48,22 @@ Na tela que se abrirá, você deve ver uma regra pré-carregada. Confira os dado
 * `IP do Convidado`: deixar em branco
 * `Porta do Convidado`: 22
 
-![Regra de redirecionamento]({filename}/images/vhdl/vmghdl4.png)
+![Regra de redirecionamento]({static}/images/vhdl/vmghdl4.png)
 
 Note que a imagem não mostra todos os campos. Configure todos como na lista acima. Aqui terminamos com a rede. Clique no OK e volte para a tela de configuração da máquina virtual. Dessa vez vá para aba `Pastas Compartilhadas` e use o botão para adicionar uma nova pasta.
 
-![Regra de redirecionamento]({filename}/images/vhdl/vmghdl5.png)
+![Regra de redirecionamento]({static}/images/vhdl/vmghdl5.png)
 
 No campo `Caminho da Pasta`, escolha uma pasta qualquer da sua máquina. No campo `Nome da Pasta`, coloque o nome que desejar (neste exemplo usei _VMShared_). O `Caminho da Pasta` é a pasta na sua máquina real (host) e o `Nome da Pasta` é o nome do compartilhamento. A pasta que você escolher em `Caminho da Pasta` será compartilhada com a máquina virtual na montagem da pasta compartilhada, portanto escolha uma pasta onde vai colocar os arquivos. Resumo: a pasta que você escolher em `Caminho da Pasta` será exatamente a mesma dentro da máquina virtual: o que você colocar/editar em uma aparece na outra e vice-versa.
 
-![Regra de redirecionamento]({filename}/images/vhdl/vmghdl6.png)
+![Regra de redirecionamento]({static}/images/vhdl/vmghdl6.png)
 
 Finalizamos a configuração da VM. Clique no OK até voltar para a tela do software de virtualização.
 
 # Iniciando a máquina virtual
 Antes de começar, leia esta seção toda, caso contrário você poderá ficar com o mouse e teclado capturados pela máquina virtual. Com a máquina selecionada na tela principal do software de virtualização, clique no botão `Iniciar` (botão com seta verde). A máquina irá iniciar e você verá uma tela preta com o _prompt_ de login. Esta tela é como se fosse a tela de outro computador, com a diferença que ele é virtual.
 
-![Prompt de login]({filename}/images/vhdl/vmghdl7.png)
+![Prompt de login]({static}/images/vhdl/vmghdl7.png)
 
 Dependendo da configuração da sua máquina, a tela inicial estará toda preta; nesse caso, pressione qualquer tecla (e.g. enter) para habilitar o _prompt_ de login. Se desejar logar na máquina, clique na tela e utilize o usuário padrão e a senha padrão, que é `poli` para ambos. Contudo, esta máquina não tem interface gráfica para ficar mais rápida e diminuir o tamanho do download (você pode instalar se desejar, mas o tamanho da máquina aumentará consideravelmente). Se você está confortável com sistemas em modo texto, pule a próxima seção e utilize esta tela para o restante deste artigo, caso contrário a próxima seção mostrará como logar via SSH. Caso você esteja com o mouse ou apontador presona sua máquina virtual, veja a tecla de desabilitar a captura do mouse e teclado no canto direito inferior da máquina (no exemplo é Left &#8984;). Pressione essa tecla por 2s e solte. Seu mouse e teclado agora devem ser devolvidos para a sua máquina.
 
