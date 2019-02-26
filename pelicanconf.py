@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'Bruno Albertini'
-SITENAME = u"B.Albertini's site"
 AUTHOR = 'Bruno Albertini'
 SITENAME = "B.Albertini's site"
 SITEURL = ''
@@ -11,8 +9,6 @@ SITEURL = ''
 PATH = 'content'
 
 TIMEZONE = 'America/Sao_Paulo'
-
-# DEFAULT_LANG = u'pt_BR'
 
 DEFAULT_LANG = 'pt_BR'
 
