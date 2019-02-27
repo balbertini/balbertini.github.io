@@ -28,6 +28,9 @@ msgstr "Arquivos"
 msgid "Posted on %(when)s in %(category)s"
 msgstr "Publicado em %(when)s na categoria %(category)s"
 
+msgid "Last modified on %(when)s"
+msgstr "Modificado em %(when)s"
+
 #: templates/article.html:52
 msgid "Like this article? Share it with your friends!"
 msgstr "Gostou do artigo? Compartilhe com seus amigos!"
@@ -99,4 +102,3 @@ msgstr "Anteriores"
 #: templates/partial/pagination.html:10
 msgid "Newer Posts"
 msgstr "Próximos"
-
