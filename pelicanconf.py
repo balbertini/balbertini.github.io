@@ -7,6 +7,7 @@ SITENAME = "B.Albertini's site"
 SITEURL = ''
 THEME = 'theme'
 
+THEME = 'theme'
 PATH = 'content'
 
 TIMEZONE = 'America/Sao_Paulo'
@@ -72,6 +73,7 @@ CC_LICENSE = {
     'slug': 'by-sa'
 }
 COPYRIGHT_NAME = "Bruno Albertini"
+
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True

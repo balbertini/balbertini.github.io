@@ -18,7 +18,7 @@ A principal função de um _testbench_ é testar ou validar um módulo. Nesse se
 
 Normalmente o _testbench_ não é projetado para ser sintetizável, o que libera o projetista para utilizar primitivas funcionais não sintetizáveis e não requer uma interface (entidade vazia), pois o objetivo não é modelar um hardware. A maneira mais comum de se montar um _testbench_ é usando o modelo **DUT** (do inglês _Device Under Test_). Este modelo pode ser visto na figura abaixo:
 
-![Modelo DUT de textbench]({filename}/images/vhdl/testbench.png)
+![Modelo DUT de textbench]({static}/images/vhdl/testbench.png)
 
 A instância do(s) módulos(s) a serem testados é realizada através de um comando de instância de componente (palavra reservada `component`), da mesma maneira como é utilizada para implementar a modularização em sistemas digitais, quando um módulo utiliza vários outros módulos menores como componentes para formar um módulo maior. Um exemplo clássico é um contador, que utiliza vários _flip-flops_ para formar uma estrutura contadora (nesse caso há um módulo _flip-flop_ instanciado várias vezes e organizado na forma de um contador).
 

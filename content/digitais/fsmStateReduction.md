@@ -24,7 +24,7 @@ Em muitos casos, é fácil identificar os estados equivalentes na tabela de tran
 
 Uma forma muito comum de projetar máquinas de estados é modelando-a como árvore, onde cada ramificação é uma tomada de decisão. Tomemos a máquina abstrata a seguir que foi montada partindo de uma árvore binária canônica e modificada para reconhecer as sequencias 0011 e 1001:
 
-![FSM em forma de árvore]({filename}/images/sd/sdfsmopt2.png)
+![FSM em forma de árvore]({static}/images/sd/sdfsmopt2.png)
 
 Em vermelho está destacado o caminho que esta máquina irá seguir para reconhecer as duas sequencias. Note que esta é uma máquina de Mealy e não leva em consideração nenhuma sobreposição entre as sequencias detectadas, ou seja, ela só funciona para entradas de 4 bits agrupados a partir do _reset_ (e.g. detecta duas vezes se a entrada for 0011 1001 mas não detecta a segunda vez se a entrada for 0011 001).
 
@@ -262,7 +262,7 @@ No passo 2, devemos procurar as equivalências. É fácil perceber que há estad
 
 Se fizermos a busca novamente, os estados S4 e S6 agora são equivalentes pois ambos transicionam para Sa e produzem saída 0, independententemente da entrada. Criamos o estado Sb, em vermelho, para substituir estes estados. Similarmente os estados S8 e S11 são equivalentes, mas note que eles tem saídas diferentes para entradas diferentes. Para este conjunto de estados, criamos Sc, em amarelo. Não há mais estados equivalentes e o resultado final pode ser visto na Tabela 3.
 
-<img src='{filename}/images/sd/sdfsmopt3.png' width="35%" align="right" style="padding-left:5%" />
+<img src='{static}/images/sd/sdfsmopt3.png' width="35%" align="right" style="padding-left:5%" />
 <br/>
 O diagrama de transição de estados minimizado pode ser visto na figura ao lado. Os estados S7, S9, S10, S12, S13 e S14 são representados pelo Sa, S4 e S6 pelo Sb e S8 e S11 pelo Sc.
 
@@ -283,11 +283,11 @@ Não faz sentido analisar a equivalência de um estado com ele mesmo, pois um es
 
 Quando estiver confortável com a construção da matriz, você poderá desenhá-la já sem a diagonal e sem a metade diagonal superior. A esse desenho contendo somente a metade diagonal inferior da tabela, chamamos de **tabela de implicação**. Na figura abaixo mostramos a matriz inteira, a matriz destacando a linha diagonal (vermelha) e a metade diagonal superior (laranja), e finalmente a tabela de implicação.
 
-![Construção da tabela de implicação.]({filename}/images/sd/sdfsmoptconsttab.png)
+![Construção da tabela de implicação.]({static}/images/sd/sdfsmoptconsttab.png)
 
 Após obter a tabela de implicação, devemos preencher as células. Cada célula terá $2^b$ linhas, onde $b$ é o número de bits da entrada. E.g. se a entrada for de 1 bit, cada célula tem 2 linhas; se a entrada for de 2 bits, cada célula tem 4 linhas. Cada linha da entrada corresponde às transições daqueles estados para aquela entrada.
 
-<img src='{filename}/images/sd/sdfsmoptconstcel.png' width="45%" align="right" style="padding-left:5%" />
+<img src='{static}/images/sd/sdfsmoptconstcel.png' width="45%" align="right" style="padding-left:5%" />
 Na figura podemos ver o exemplo do preenchimento para duas células, ambas na linha do S3 e coluna do S4. Para simplificar o preenchimento, usamos somente o número do estado, mas você pode escrever o nome completo do estado (especialmente útil se os nomes dos estados não forem numerados).
 
 Na célula na esquerda na figura, a entrada tem 1 bit, portanto temos duas linhas, uma para a entrada 0 e outra para a entrada 1. Nesta célula, a máquina é de Mealy com saída de 1 bit, que pode ser vista representada nas transições.
@@ -349,19 +349,19 @@ Este exemplo é de uma máquina de Moore que detecta uma paridade ímpar conside
     <td class="tg-baqh">B</td>
   </tr>
 </table>
-<img src='{filename}/images/sd/sdfsmoptex1diag.png' width="13%" align="left" style="padding-left:5%; padding-right:5%"/>
+<img src='{static}/images/sd/sdfsmoptex1diag.png' width="13%" align="left" style="padding-left:5%; padding-right:5%"/>
 Tente minimizar esta máquina usando o método de análise da tabela de transição. É possível encontrar algum estado equivalente? Perceba que os estados A e C são equivalentes, mas não é possível perceber isto apenas com a tabela de transição de estados.
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
-<img src='{filename}/images/sd/sdfsmoptex1a.png' width="55%" align="right" style="padding-left:5%"/>
+<img src='{static}/images/sd/sdfsmoptex1a.png' width="55%" align="right" style="padding-left:5%"/>
 Vamos construir a tabela de implicação para verificar. Na figura ao lado, podemos ver: (esquerda) a tabela de implicação construída e com os estados (note que é uma máquina de Moore, então as saídas são representadas nos estados); (meio) a tabela de implicação com as linhas de acordo com a tabela de transição de estados; e (direita) a versão com a linha B-B já riscada, pois para esta entrada, a máquina transiciona para o mesmo estado independententemente de qual estado esteja. Isto equivale à construção da tabela de implicação e à execução do primeiro passo do algoritmo.
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
-<img src='{filename}/images/sd/sdfsmoptex1b.png' width="45%" align="left" style="padding-right:5%"/>
+<img src='{static}/images/sd/sdfsmoptex1b.png' width="45%" align="left" style="padding-right:5%"/>
 No segundo passo eliminamos os estados que produzem saída diferentes, pois nunca poderão ser equivalentes. Isto pode ser visto à esquerda na figura ao lado (os estados eliminados foram destacados em cinza). Sobra a única célula a ser verificada, correspondente aos estados C/0-A/0. Esta célula tem uma linha riscada (que não precisa ser analisada) e uma linha que referencia A-C. A referência A-C aponta para a mesma célula que estamos analisando, a célula C/0-A/0. Como esta célula ainda não foi eliminada, nada resta a fazer e devemos continuar o algoritmo. Porém, não há mais células a serem analisadas, portanto o algoritmo terminou. Isso significa que a única célula que não foi eliminada será a nossa classe de equivalência, destacada em vermelho na tabela de implicação da figura.
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
-<img src='{filename}/images/sd/sdfsmoptex1diagmin.png' width="13%" align="left" style="padding-right:5%"/>
+<img src='{static}/images/sd/sdfsmoptex1diagmin.png' width="13%" align="left" style="padding-right:5%"/>
 A célula indica que a classe de equivalência contém somente dois estados, o C/0 e o A/0. Para finalizar, montamos um novo diagrama de transição de estados com um estado chamado AC/0, em vermelho, representando a classe de equivalência encontrada. As transições são transportadas dos estados da classe de equivalência e, obviamente, são esperadas que sejam as mesmas pois os estados são equivalentes. Esta máquina tem a mesma funcionalidade que a anterior, porém tem um estado a menos. Este tipo de minimização não é possível usando a análise da tabela de transição de estados.
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
@@ -426,21 +426,21 @@ A Tabela E2 é a tabela de transição de estados de uma máquina de Moore, com 
     <td class="tg-baqh">S5</td>
   </tr>
 </table>
-<img src='{filename}/images/sd/sdfsmoptex2diag.png' width="45%" align="right" style="padding-left:5%" />
+<img src='{static}/images/sd/sdfsmoptex2diag.png' width="45%" align="right" style="padding-left:5%" />
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 Nas tabelas abaixo podemos ver a tabela construída e com o passo 1 executado (esquerda) e após o passo 2 executado (direita). Note que, para minimizar o esforço em preencher a tabela e evitar poluí-la, eu eliminei o "S" e utilizei somente os índices dos estados.
 
-<img src='{filename}/images/sd/sdfsmoptex2a.png' width="50%" align="left" />
-<img src='{filename}/images/sd/sdfsmoptex2b.png' width="50%" align="right"/>
+<img src='{static}/images/sd/sdfsmoptex2a.png' width="50%" align="left" />
+<img src='{static}/images/sd/sdfsmoptex2b.png' width="50%" align="right"/>
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 Nas tabelas abaixo, podemos ver a tabela de implicação após o passo 3 executado a exaustão (esquerda) e com as classes de equivalência construídas (direita). Na tabela da esquerda, as linhas que provocaram a exclusão da tabela foram realçadas com um cinza escuro.
 
-<img src='{filename}/images/sd/sdfsmoptex2c.png' width="50%" align="left" />
-<img src='{filename}/images/sd/sdfsmoptex2d.png' width="50%" align="right"/>
+<img src='{static}/images/sd/sdfsmoptex2c.png' width="50%" align="left" />
+<img src='{static}/images/sd/sdfsmoptex2d.png' width="50%" align="right"/>
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
@@ -489,7 +489,7 @@ Pela tabela, podemos inferir que os estados S4 e S0 (Sa) são equivalentes entre
     <td class="tg-mfhl">Sb</td>
   </tr>
 </table>
-<img src='{filename}/images/sd/sdfsmoptex2diagmin.png' width="45%" align="right" style="padding-left:5%" />
+<img src='{static}/images/sd/sdfsmoptex2diagmin.png' width="45%" align="right" style="padding-left:5%" />
 
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
@@ -499,15 +499,15 @@ Pela tabela, podemos inferir que os estados S4 e S0 (Sa) são equivalentes entre
 
 Suponha a mesma máquina de estados usada como exemplo no método de análise da tabela de transição de estados, mostrada na figura. Trata-se de uma máquina de Mealy que reconhece 0011 ou 1001 sem sobreposição.
 
-![FSM em forma de árvore]({filename}/images/sd/sdfsmopt2.png)
+![FSM em forma de árvore]({static}/images/sd/sdfsmopt2.png)
 
 A máquina tem 15 estados, portanto temos uma matriz 15x15. A tabela de implicação, já com os valores das transições preenchidos e com as transições s-s riscadas, pode ser vista na figura abaixo. Note que esta é uma máquina de Mealy, então coloquei a saída na transição (e.g. nos estados S8 e S11, que são os que produzem saída, há transições na forma 0/1, indicando que esta transição produz saída 1). Isto corresponde à construção da tabela de implicação e à execução do passo 1 do algoritmo.
 
-![Tabela exemplo 1 passo 1]({filename}/images/sd/sdfsmoptex3a.png)
+![Tabela exemplo 1 passo 1]({static}/images/sd/sdfsmoptex3a.png)
 
 No passo 2, devemos eliminar as transições que produzem saídas diferentes, ou seja, devemos eliminar todas as células que contém uma transição s-t onde a saída de s é diferente da saída de t. Exemplo: a célula S14-S11 possui a segunda linha como 0/1-0, o que significa que, apesar de irem para o mesmo estado, uma produz saída 1 (0/1) e outra produz saída 0 (0/0), portanto devemos eliminar esta célula toda. Isto pode ser visto na figura abaixo, onde todas as células eliminadas por este motivo foram identificadas com fundo cinza e a linha que foi o motivo da eliminação com cinza escuro.
 
-![Tabela exemplo 1 passo 2]({filename}/images/sd/sdfsmoptex3b.png)
+![Tabela exemplo 1 passo 2]({static}/images/sd/sdfsmoptex3b.png)
 
 O passo 2 eliminou os estados que trivialmente não são equivalentes. Podemos então começar o passo 3 analisando cada célula. Eu comecei pela célula mais a direita inferior e continuei analisando para a esquerda. A célula S14-S13 não precisa ser analisada pois tem todas as transições riscadas. Idem para a célula S14-S12. Já a célula S14-S11 foi eliminada anteriormente e também não precisa ser analisada.
 
@@ -515,11 +515,11 @@ A primeira célula que realmente precisa ser analisada é a S14-S6. Nesta célul
 
 Já na célula S14-S3, encontrei uma referência à S8-S0, que já foi eliminado em um passo anterior. Isso significa que eu devo eliminar esta célula. Nesse ponto, percebi que a linha do S8 estava inteira eliminada, então eliminei  todas as células que fazem referência a S8, ou seja, que tem transições 8/x-x/x ou x/x-8/x. O resultado pode ser visto na figura abaixo.
 
-![Tabela exemplo 1 passo 3]({filename}/images/sd/sdfsmoptex3c.png)
+![Tabela exemplo 1 passo 3]({static}/images/sd/sdfsmoptex3c.png)
 
 Se está lendo com cuidado, deve ter percebido que a eliminação que acabei de fazer eliminou o estado S3 inteiro. Isto significa que podemos eliminar todas as células que contém transições que referenciam o S3, pois ele não pode ser equivalente a nenhum outro estado. Se você continuar o algoritmo, terminará com a tabela de implicação abaixo, onde as células eliminadas estão em cinza.
 
-![Tabela exemplo 1 eliminadas]({filename}/images/sd/sdfsmoptex3d.png)
+![Tabela exemplo 1 eliminadas]({static}/images/sd/sdfsmoptex3d.png)
 
 A única célula que ainda precisa de análise é a célula S6-S4. Esta célula referencia os estados S9-S13 na primeira linha e S10-S14 na segunda linha. Ambas as células S9-S13 e S10-S14 não foram eliminadas pois possuem todas as suas linhas riscadas, então não devemos fazer nada nesta célula. Como não há mais células a serem analisadas, o algoritmo terminou.
 
@@ -527,10 +527,10 @@ Com o algoritmo finalizado, podemos inferir os estados equivalentes observando a
 
 Para facilitar a visualização, a figura abaixo traz as classes de equivalência coloridas. Para a mesma cor, os estados são equivalentes.
 
-![Tabela exemplo 1 fim]({filename}/images/sd/sdfsmoptex3e.png)
+![Tabela exemplo 1 fim]({static}/images/sd/sdfsmoptex3e.png)
 
 
-<img src='{filename}/images/sd/sdfsmopt3.png' width="45%" align="right" style="padding-left:5%" />
+<img src='{static}/images/sd/sdfsmopt3.png' width="45%" align="right" style="padding-left:5%" />
 Por último, devemos reconstruir o diagrama de transição de estados. Para cada classe de equivalência, criamos um estado novo. As transições e as saídas podem ser copiadas de qualquer um dos estados da classe, pois eles são equivalentes (para as mesmas entradas, produzem a mesma saída e transicionam para o mesmo estado). Note que este método agrupa os estados em classes, então a transição do Sb (que é composto por S4 e S6) que vai para o S9, por exemplo, deve ir para o estado Sa (que é composto por S7, S9, S10, S12, S13 e S14) pois esta é a classe de equivalência que contém o S9. O diagrama desta tabela é idêntico ao obtido usando o método de análise da tabela de transição de estados.
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>

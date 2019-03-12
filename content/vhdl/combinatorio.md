@@ -31,7 +31,7 @@ Os operadores estão em ordem decrescente de prioridade, ou seja, o `not` tem pr
 
 
 ### Exemplo
-<img src='{filename}/images/vhdl/mux.png' align="left" style="padding-right:5%" />
+<img src='{static}/images/vhdl/mux.png' align="left" style="padding-right:5%" />
 Este exemplo é um multiplexador 2x1 com entradas `a` e `b`, saída `o` e seletor `s`. As entradas podem ser vetores (e.g. `bit_vector(3 downto 0)`), mas nesse caso é necessário que o seletor `s` também seja um vetor do mesmo tamanho.
 
 ```vhdl
@@ -97,7 +97,7 @@ A vantagem é muito clara quando se tem uma função lógica expressa na forma d
 
 O `when-else` é uma maneira fácil de descrever funcionalmente um circuito com várias funções lógicas. O equivalente a um diagrama esquemático é um **multiplexador**, cujas entradas são funções lógicas.
 
-<img src='{filename}/images/vhdl/mux_exp.png' align="left" style="padding-right:5%" />
+<img src='{static}/images/vhdl/mux_exp.png' align="left" style="padding-right:5%" />
 Sintaxe do `when-else`:
 ```vhdl
 sinal <= expressao1 when condicao1 else
@@ -107,7 +107,7 @@ sinal <= expressao1 when condicao1 else
 A atribuição acontece de acordo com a primeira condição atendida, em ordem (e.g. se a `condicao1` for atendida, o `sinal` será `expressao1` e as demais condições não serão avaliadas). **Atenção:** é fortemente recomendada a descrição da [opção padrão](#others) (atribuição para a `expressao3` no `else` final sem condição), que será a atribuição caso nenhuma condição for atendida.
 
 ### Exemplo
-<img src='{filename}/images/vhdl/mux2x1.png' align="left" style="padding-right:5%" />
+<img src='{static}/images/vhdl/mux2x1.png' align="left" style="padding-right:5%" />
 Este exemplo é um multiplexador 2x1 com entradas `a` e `b`, saída `o` e seletor `s`. As entradas podem ser vetores (e.g. `bit_vector(3 downto 0)`). Lembre-se que um seletor de um multiplexador deve ter tamanho `ceil(log2(n))`, onde `n` é o número de entradas, portanto é possível que ele seja um vetor. Neste exemplo, como há duas entradas, o seletor `s` tem somente um bit (`ceil(log2(2))=1`).
 
 ```vhdl

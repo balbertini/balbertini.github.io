@@ -20,8 +20,12 @@
     <h1 id="{{ article.slug }}">{{ article.title }}</h1>
     <p>
       {{ _('Posted on %(when)s in %(category)s',
-           when=article.locale_date,
+           when=article.date|strftime('%x'),
            category='<a href="%s/%s">%s</a>'|format(SITEURL, article.category.url, article.category)|safe) }}
+      {% if article.modified %}
+        <br/>
+          {{ _('Last modified on %(when)s', when=article.modified|strftime('%x')) }}
+      {% endif %}
       {% if 'post_stats' in PLUGINS %}
         &#8226; {{ article.stats['read_mins'] }} min read
       {% endif %}
@@ -42,11 +46,6 @@
     {{ article.content }}
   </div>
 
-  {% if article.modified %}
-   <div>
-     Última atualização: {{ article.modified }}
-   </div>
-  {% endif %}
 
 
   <div class="tag-cloud">
