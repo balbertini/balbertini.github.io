@@ -19,9 +19,7 @@ PLUGINS = ['i18n_subsites', 'render_math',]
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n'],}
 
 
-DEFAULT_LANG = u'pt_BR'
 # DEFAULT_LANG = u'pt_BR'
-LOCALE = ('pt_BR','pt_BR.UTF-8','en_US','en_US.UTF-8')
 DATE_FORMATS = {
     'en_US': '%a, %d %b %Y',
     'pt_BR': '%d/%m/%Y (%a)',
@@ -29,9 +27,11 @@ DATE_FORMATS = {
 
 # Default theme language.
 I18N_TEMPLATES_LANG = 'pt_BR'
+DEFAULT_LANG = 'pt_BR'
 # Your language.
 OG_LOCALE = 'pt_BR'
-LOCALE = 'pt_BR'
+# LOCALE = ('pt_BR','pt_BR.UTF-8','en_US','en_US.UTF-8')
+LOCALE = ('pt_BR.utf8', 'en_US.utf8')
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
