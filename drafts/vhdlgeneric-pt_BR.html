@@ -34,25 +34,24 @@
 <!-- End Google Analytics -->
 
 <meta name="author" content="Bruno Albertini" />
-<meta name="description" content="Exercício resolvido de sistemas digitais: associação de contadores." />
-<meta name="keywords" content="sistemas digitais, exercícios resolvidos, associação de contadores">
+<meta name="description" content="Generic em VHDL." />
+<meta name="keywords" content="vhdl, basic">
 
 <meta property="og:site_name" content="B.Albertini's site"/>
-<meta property="og:title" content="Exercício: Associação de Contadores"/>
-<meta property="og:description" content="Exercício resolvido de sistemas digitais: associação de contadores."/>
+<meta property="og:title" content="Generic"/>
+<meta property="og:description" content="Generic em VHDL."/>
 <meta property="og:locale" content="pt_BR"/>
-<meta property="og:url" content="https://balbertini.github.io/er0002-pt_BR.html"/>
+<meta property="og:url" content="https://balbertini.github.io/drafts/vhdlgeneric-pt_BR.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2018-10-12 12:28:00-03:00"/>
-<meta property="article:modified_time" content="2018-10-12 12:28:00-03:00"/>
+<meta property="article:published_time" content="2019-03-12 14:25:00-03:00"/>
+<meta property="article:modified_time" content="2019-03-12 14:25:00-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
-<meta property="article:section" content="sistemas digitais"/>
-<meta property="article:tag" content="sistemas digitais"/>
-<meta property="article:tag" content="exercícios resolvidos"/>
-<meta property="article:tag" content="associação de contadores"/>
+<meta property="article:section" content="vhdl"/>
+<meta property="article:tag" content="vhdl"/>
+<meta property="article:tag" content="basic"/>
 <meta property="og:image" content="">
 
-  <title>B.Albertini's site &ndash; Exercício: Associação de Contadores</title>
+  <title>B.Albertini's site &ndash; Generic</title>
 
 </head>
 <body>
@@ -89,45 +88,36 @@
 <article class="single">
   <header>
       
-    <h1 id="er0002">Exercício: Associação de Contadores</h1>
+    <h1 id="vhdlgeneric">Generic</h1>
     <p>
-      Publicado em 10/12/18 na categoria <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
+      Publicado em 03/12/19 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
         <br/>
-          Modificado em 10/12/18
+          Modificado em 03/12/19
     </p>
   </header>
 
 
   <div>
-    <p>Assunto: Associação de contadores</p>
-<h2>Enunciado</h2>
-<p><img src='https://balbertini.github.io/images/sd/er/20181012_associacaoContadores.png' align="left" width="50%" style="padding-right:5%" /></p>
-<p>Mostra-se no circuito ao lado uma associação de contadores. Sabe-se que o <em>load</em> é síncrono e o <em>reset</em> assíncrono.<br>
-Pede-se: (i) o módulo da contagem e (ii) as formas de onda nos pontos A e B.</p>
-<div style="border: 0px; overflow: auto;width: 100%;"></div>
+    <p>Uma das características mais marcantes de HDLs, o que inclui VHDL, é a capacidade de reutilizaçao de módulos. Se escrito corretamente, é muito fácil incluir um módulo como componente de um módulo maior.</p>
+<p>Em muitos casos, a descriçao pode nao ser reaproveitável por que precisamos de uma largura diferente. Um exemplo: se descrevermos um registrador de 8 bits, poderemos usar este registrador somente em projetos que utilizam exatamente registradores de 8 bits. Contudo, quando o hardware é regular, ou seja, seu funcionamento é idêntico independentemente da característica que pode variar, é possível descrevê-lo de forma a definir a característica variável na instância. Isso significa que nosso registrador de exemplo pode ser descrito de forma que o seu tamanho seja um parâmetro, definido no momento da instanciaçao.</p>
+<p>A palavra reservada que possibilita isso é a <code>generic</code>. Na descriçao da entidade do módulo, podemos incluir esta palavra opcionalmente, como a seguir:</p>
+<div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
+   <span class="k">generic</span> <span class="p">(</span><span class="n">lista_de_elementos_genericos</span><span class="p">);</span>
+   <span class="k">port</span> <span class="p">(</span><span class="n">lista_de_portas</span><span class="p">);</span>
+<span class="k">end</span> <span class="nc">nome_da_entidade</span><span class="p">;</span>
+</pre></div>
 
-<h2>Solução</h2>
-<p>Os contadores são de módulo 16, ou seja, tem capacidade de contar de 0000 (0) a 1111 (15). O contador A está em um arranjo onde ele se auto-carrega de 0101 (5) quando seu valor atingir 1001 (9), formando um contador de 5 a 9, ou seja, módulo 5. O contador B está em um arranjo onde ele se auto-reseta quando sua contagem for 0011 (3). Contudo, como o <em>reset</em> é assíncrono, assim que este valor é atingido o contador reseta-se de imediato, portanto os valores de contagem são de 0000 (0) a 0010 (2), ou seja, módulo 3.</p>
-<p>Os contadores ainda estão em cascata, onde o valor de carga do contador A (1001) é usado como <em>enable</em> para o contador B. Nesse arranjo em cascata, mesmo que o <em>clock</em> seja comum a ambos, podemos dizer que o contador B conta uma vez para cada ciclo completo de contagem do contador A.</p>
-<p>O módulo da contagem total é 15. O ciclo de contagem em regime será: 0101 0000, 0110 0000, 0111 0000, 1000 0000, 1001 0000, 0101 0001, 0110 0001, 0111 0001, 1000 0001, 1001 0001, 0101 0010, 0110 0010, 0111 0010, 1000 0010, 1001 0010. As formas de onda em A e em B podem ser descritas como:</p>
-<ul>
-<li>A: é alto quando o contador A estiver na contagem máxima, ou seja, a cada 4 pulsos de <em>clock</em>, com duração de 1 pulso de <em>clock</em>. Período do sinal: 5 pulsos de <em>clock</em>, <em>Duty-cycle</em>: 20%.</li>
-<li>B: é alto quando o contador B estiver na contagem máxima, ou seja, a cada 10 pulsos de <em>clock</em>, com duração de 5 pulsos de <em>clock</em>. Período do sinal: 15 pulsos de <em>clock</em>. <em>Duty-cycle</em>: 33%</li>
-</ul>
-<p>A figura abaixo mostra os dois sinais, e também as saídas dos contadores. Repare que o primeiro ciclo é diferente pois o contador A começa em zero e não com o valor de carga.</p>
-<p><img alt="Forma de onda do Exercício" src="/images/sd/er/er0002_onda.png"></p>
-<p><a href="https://balbertini.github.io/extra/sd/er/er0002.zip">Download da descrição em VHDL</a><br>
-<a href="https://balbertini.github.io/extra/sd/er/20181012_associacaoContadores.circ">Download do circuito no LogiSim</a></p>
-<div style="border: 0px; overflow: auto;width: 100%;"></div>
+
+<p>A <code>lista_de_elementos_genericos</code> é uma lista de elementos parametrizáveis, no formato: <code>nome: tipo := valor_padrao</code>, separados por <code>;</code>. O nome pode ser o que você desejar, desde que seja um nome válido em VHDL. O tipo da porta define qual tipo de dados será utilizado para aquela porta e pode ser <a href="https://balbertini.github.io/vhdlbasicdatatypes-pt_BR.html">qualquer tipo suportado</a>. O <code>:= valor_padrao</code> é opcional e pode ser omitido. Quando omitido, termina-se a declaraçao após o tipo (exlui-se também o <code>:=</code>). No caso da omissao, a declaração do valor no momento da instanciaçao é obrigatória. Caso esteja presente, sempre que o valor nao for especificado na instanciaçao, o módulo assume o valor padrão. O <code>valor_padrao</code> deve ser obrigatoriamente uma constante do mesmo <code>tipo</code> declarado.</p>
+<p>Depois de especificados, os parâmetros da <code>lista_de_elementos_genericos</code> tornam-se constantes disponíveis em todo o restante do projeto, incluindo a declaração de portas da entidade e toda a arquitetura.</p>
   </div>
 
 
 
   <div class="tag-cloud">
     <p>
-      <a href="https://balbertini.github.io/tag/sistemas-digitais.html">sistemas digitais</a>
-      <a href="https://balbertini.github.io/tag/exercicios-resolvidos.html">exercícios resolvidos</a>
-      <a href="https://balbertini.github.io/tag/associacao-de-contadores.html">associação de contadores</a>
+      <a href="https://balbertini.github.io/tag/vhdl.html">vhdl</a>
+      <a href="https://balbertini.github.io/tag/basic.html">basic</a>
     </p>
   </div>
 

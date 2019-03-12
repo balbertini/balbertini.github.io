@@ -90,7 +90,9 @@
       
     <h1 id="sequential">Circuitos Sequenciais em VHDL</h1>
     <p>
-      Publicado em 05/09/2018 (Qua) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+      Publicado em 09/05/18 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+        <br/>
+          Modificado em 09/05/18
     </p>
   </header>
 
@@ -190,9 +192,6 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
 <p>Há outras primitivas exclusivas para utilização sequencial (<code>for</code>, <code>while</code> e <code>loop</code>), que possuem propósitos específicos que não foram cobertos neste artigo pois possuem restrições para a síntese. Isto significa que, para que elas representem um hardware, o projetista deve utilizá-las de uma maneira específica, caso contrário elas não podem ser sintetizadas (i.e. não representam uma descrição de hardware). É muito comum entre os iniciantes considerar que estas primitivas são equivalentes às encontradas em linguagens de programação estruturada, o que na maioria das vezes é uma falácia pois não existe laço interativo em hardware equivalente ao conceito homônimo das linguagens de programação (e.g. o equivalente em hardware a um laço iterativo de um algoritmo é na verdade uma máquina de estados completa). Estas primitivas devem ser evitadas na descrição de circuitos sequenciais, especialmente por iniciantes, e são na maioria das vezes usadas somente na construção de <em>testbenchs</em>, quando as restrições para síntese não se aplicam. Sobre o <code>wait</code>, ainda existem o <code>wait for tempo;</code> e o <code>wait;</code> (só o <em>wait</em>), mas ambos não são sintetizáveis e também são usados para descrever <em>testbenchs</em>.</p>
   </div>
 
-   <div>
-     Última atualização: 2018-09-05 03:51:00-03:00
-   </div>
 
 
   <div class="tag-cloud">
