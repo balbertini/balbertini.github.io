@@ -1,6 +1,6 @@
 Title: Entidade
 Date: 2018-09-21 14:37
-Modified: 2018-09-26 18:53
+Modified: 2019-03-13 16:55
 Category: vhdl
 Tags: vhdl, basic
 Slug: vhdlentity
@@ -44,15 +44,38 @@ entity mux2to1 is
 end mux2to1;
 ```
 
-
-
-
 ## Boas práticas ao definir a entidade
 
 1. Use um nome de entidade que indique o que ela faz.
 2. O nome do arquivo deve ser `<nome_da_entidade>.vhd` (e.g. `mux2to1.vhd`). Isso não se refere ao VHDL mas sim à algumas ferramentas de síntese que exigem este tipo de padronização para encontrar sua entidade.
 3. Descreva primeiro os sinais de controle, depois as entradas e depois as saídas. Não há nenhuma restrição quando a isso, mas ficará mais fácil de associar sua entidade como um componente depois.
 4. Sua entidade é a "cara" do seu componente. Capriche nos nomes das entradas e saídas e descreva-as como se estivesse desenhando-as em um diagrama esquemático.
+
+# Uso do `begin` e nome da entidade
+É possível que uma entidade tenha um `begin`. Dentro da entidade (após o `begin` e antes do `end`) podemos colocar qualquer declaração passiva, ou seja, que não altera nenhum sinal (i.e. processos passivos, asserções estáticas e chamadas de procedimentos passivas). A mais utilizada é a asserção, assim podemos fazer verificações estáticas sobre a utilização da entidade.
+
+```vhdl
+entity nome_da_entidade is
+   generic (lista_de_elementos_genericos);
+   port (lista_de_portas);
+begin
+  verificacoes_estaticas;
+end nome_da_entidade;
+```
+
+### Exemplo
+No exemplo a seguir colocamos uma asserção na parte estática da entidade para verificar se o registrador foi instanciado corretamente. Caso o registrador tenha um tamanho especificado menor que 2, a asserção irá falhar e qualquer simulação ou síntese será interrompida com a mensagem especificada.
+
+```vhdl
+entity reg_deslocamento is
+  generic( tamanho: natural := 8);
+  port(...);
+begin
+  assert tamanho>1
+  report "Este registrador precisa ter tamanho mínimo 2."
+  severity failure;
+end entity reg_deslocamento;
+```
 
 <a name="bufferEinout"></a>
 # Saídas com direção `buffer` e `inout`
