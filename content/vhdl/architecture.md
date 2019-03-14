@@ -8,7 +8,7 @@ Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Arquiteturas em VHDL.
 
-As descrições em VHDL sempre possuem uma [entidade]({filename}entidade.md), que define as interfaces do módulo descrito. Porém, a entidade não descreve a funcionalidade, que é descrita na arquitetura.
+As descrições em VHDL sempre possuem uma [entidade]({filename}entity.md), que define as interfaces do módulo descrito. Porém, a entidade não descreve a funcionalidade, que é descrita na arquitetura.
 
 Assim como a entidade é a _cara_ do módulo que está descrevendo, a arquitetura, declarada pela palavra reservada `architecture`, é o _corpo_ da sua descrição. Na arquitetura é onde descrevemos a funcionalidade do componente, ou seja, onde as coisas realmente acontecem. No diagrama esquemático, seria o equivalente de mostrar o que tem dentro do símbolo do seu componente.
 

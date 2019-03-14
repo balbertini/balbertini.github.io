@@ -8,3 +8,5 @@ Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Usando componentes em VHDL.
 Status: draft
+
+<!-- Descomentar link no generic qd terminar -->

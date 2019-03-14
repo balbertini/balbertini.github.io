@@ -1,6 +1,6 @@
 Title: Sobre
 Date: 2018-08-30 18:25
-Modified: 2018-08-31 09:17
+Modified: 2019-03-14 09:17
 Category: information
 Tags: main
 Slug: sobre
@@ -12,7 +12,7 @@ Summary: Sobre o autor.
 
 Graduado em Engenharia de Computação pela [Universidade Federal do Rio Grande](https://www.furg.br/) (2005), defendeu o mestrado (2007) e o doutorado (2012) em [Ciência da Computação](http://www.ic.unicamp.br/) na [Universidade Estadual de Campinas](http://www.unicamp.br/unicamp/) na área de Arquitetura de Computadores. Atualmente exerce o cargo de Professor Doutor no [Departamento de Engenharia de Computação e Sistemas Digitais](https://pcs.usp.br) (PCS) da [Escola Politécnica](http://www.poli.usp.br/) da [Universidade de São Paulo](http://www.usp.br/) (EPUSP). Tem experiência na área de Engenharia da Computação, com ênfase em hardware, atuando principalmente com arquitetura de computadores, sistemas embarcados e redes de sensores sem fio. Filiou-se ao [Laboratório de Automação Agrícola (LAA)](http://www.laa.pcs.usp.br/) e ao [BioComp](http://www.biocomp.org.br/) em 2014, e desde então tem aplicado a sua pesquisa ao meio ambiente, biodiversidade e agricultura.
 
-Representante do [TDWG](https://www.tdwg.org/) na América Latina (2014-2018).
+Representante do [TDWG](https://www.tdwg.org/) na América Latina (2014-2019).
 Tesoureiro da [Seção Sul Brasil da IEEE](http://www.ieee.org.br/) (2017-2018).
 
 [<i style="font-size: 1em;" class="fas fa-desktop"></i> Departamento](https://pcs.usp.br/en/pessoa/?numerousp=5307474 "Site do Departamento")
