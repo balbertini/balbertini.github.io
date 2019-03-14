@@ -1,6 +1,6 @@
 Title: Arquitetura
 Date: 2018-10-04 10:33
-Modified: 2018-10-05 00:47
+Modified: 2019-03-14 15:40
 Category: vhdl
 Tags: vhdl, basic
 Slug: vhdlarchitecture
@@ -32,7 +32,7 @@ A entidade, exceto se for uma entidade _toplevel_ (entidade máxima, que represe
 
 Considerando que o componente já foi declarado corretamente, há duas possibilidades de instância. Sem escolher qual arquitetura, a instância segue a seguinte sintaxe:
 ```vhdl
-nome_da_intancia:
+nome_da_instancia:
   nome_da_entidade(nome_da_arquitetura)
   generic map (atribuicao_de_parametros)
   port map (atribuicao_de_portas);
@@ -45,7 +45,7 @@ nome_da_intancia:
   generic map (atribuicao_de_parametros)
   port map (atribuicao_de_portas);
 ```
-A palavra reservada `work` faz referência ao pacote de trabalho local, onde se encontram todas as entidades que foram desenvolvidas por você e não foram colocadas em um pacote. Caso você tenha colocado sua entidade em um pacote ou esteja usando uma entidade que você não fez e que está em um pacote, deve substituir `work` pelo pacote onde a entidade se encontra.
+A palavra reservada `work` faz referência ao pacote de trabalho local, onde se encontram todas as entidades que foram desenvolvidas por você e não foram colocadas em um pacote. Caso você tenha colocado sua entidade em um pacote ou esteja usando uma entidade que você não fez e que está em um pacote, deve substituir `work` pelo pacote onde a entidade se encontra. Algumas ferramentas de síntese exigem que você declare a utilização da bilbioteca `work` explicitamente colocando `use work.nome_da_entidade` ou `use work.all` no preâmbulo do seu arquivo.
 
 ### Exemplo
 
