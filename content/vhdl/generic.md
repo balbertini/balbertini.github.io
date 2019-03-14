@@ -63,7 +63,9 @@ entity reg_deslocamento is
     clock: in bit
   );
 begin
-  assert tamanho>1 report "Este registrador precisa ter tamanho mínimo 2 e foi instanciado com tamanho " & integer'image(tamanho) & "." severity failure;
+  assert tamanho>1
+  report "Este registrador precisa ter tamanho > 1 e foi instanciado com "
+         & integer'image(tamanho) & "." severity failure;
 end entity reg_deslocamento;
 ```
 
@@ -98,7 +100,7 @@ begin
     end if;
   end process;
 end architecture;
-```vhdl
+```
 
 
 
