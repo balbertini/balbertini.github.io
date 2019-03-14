@@ -45,6 +45,6 @@ A linha pontilhada é opcional e, quando presente, indica que a máquina é uma 
 ## Representação Gráfica
 
 <img src='{static}/images/sd/fsmexemplo2.png' width="15%" align="right" style="padding-left:5%" />
-A representação gráfica de uma máquina de estados finita em sistemas digitais é o diagrama de transição de estados. Cada estado é representado por um círculo e as transições são representadas por setas. Na figura ao lado podemos ver uma máquina de estados com dois estados (A e B) e quatro transições. Nas transições
+A representação gráfica de uma máquina de estados finita em sistemas digitais é o diagrama de transição de estados. Cada estado é representado por um círculo e as transições são representadas por setas. Na figura ao lado podemos ver uma máquina de estados com dois estados (A e B) e quatro transições. Nas transições estão especificadas que entradas levam a tomada daquela transição. No caso ao lado, a máquina é de Mealy, então a transição especifica um par _e/s_ onde _e_ é a entrada e _s_ é a saída. Exemplo: se estivermos no estado B e a entrada for
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
