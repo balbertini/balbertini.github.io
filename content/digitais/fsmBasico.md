@@ -45,6 +45,28 @@ A linha pontilhada é opcional e, quando presente, indica que a máquina é uma 
 ## Representação Gráfica
 
 <img src='{static}/images/sd/fsmexemplo2.png' width="15%" align="right" style="padding-left:5%" />
-A representação gráfica de uma máquina de estados finita em sistemas digitais é o diagrama de transição de estados. Cada estado é representado por um círculo e as transições são representadas por setas. Na figura ao lado podemos ver uma máquina de estados com dois estados (A e B) e quatro transições. Nas transições estão especificadas que entradas levam a tomada daquela transição. No caso ao lado, a máquina é de Mealy, então a transição especifica um par _e/s_ onde _e_ é a entrada e _s_ é a saída. Exemplo: se estivermos no estado B e a entrada for
+A representação gráfica de uma máquina de estados finita em sistemas digitais é o diagrama de transição de estados. Cada estado é representado por um círculo e as transições são representadas por setas. Na figura ao lado podemos ver uma máquina de estados com dois estados (_A_ e _B_) e quatro transições. Nas transições estão especificadas que entradas levam a tomada daquela transição.
+
+No caso ao lado, a máquina é de Mealy, então a transição especifica um par _e/s_ onde _e_ é a entrada e _s_ é a saída. Exemplo: se estivermos no estado _B_ e a entrada for _0_, continuaremos no estado _B_ e produziremos saída _1_; já se estivermos no mesmo estado mas a entrada for _1_, iremos para o estado _A_ e produziremos saída _0_. A especificação formal desta máquina é:
+
+$$M=(S, S_0, \Sigma, T, G)\\
+S=\{A,B\}\quad S_0=A\quad \Sigma=\{1,0\}\\
+T=\{(A,0)\rightarrow A,(A,1)\rightarrow B,(B,0)\rightarrow B,(B,1)\rightarrow A\}\\
+G=\{(A,0)\rightarrow 0,(A,1)\rightarrow 1,(B,0)\rightarrow 1,(B,1)\rightarrow 0\}$$  
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
+<img src='{static}/images/sd/fsmexemplo1.png' width="15%" align="right" style="padding-left:5%" />
+Uma máquina de Moore pode é representada da mesma forma, porém o círculo representando o estado é cortado ao meio e a saída é especificada na parte inferior, como na figura ao lado. As transições, representadas pelas arestas, possuem somente a entrada _e_ especificada, pois nesta máquina a saída não depende da entrada e sim somente do estado.
+
+A especificação formal é similar, porém a função de de saída ($G$) não possui a entrada:
+
+$$M=(S, S_0, \Sigma, T, G)\\
+S=\{A,B\}\quad S_0=A\quad \Sigma=\{1,0\}\\
+T=\{(A,0)\rightarrow A,(A,1)\rightarrow B,(B,0)\rightarrow B,(B,1)\rightarrow A\}\\
+G=\{A\rightarrow 0,B\rightarrow 1\}$$  
+
+<div style="border: 0px; overflow: auto;width: 100%;"></div>
+
+## Síntese
+Dado que $S$ é um elemento de memória, podemos usar qualquer um dos elementos de memória disponíveis para implementá-lo. É comum a utilização de _flip-flops_, mas até mesmo memórias capacitivas podem ser utilizadas.
+Já as funções de transição de estados (também chamada de função de próximo estado ou de excitação) e de saída, por serem circuitos combinatórios, são sintetizadas como tal. Pode-se usar qualquer técnica de síntese de circuitos combinatórios para ajudar, desde álgebra booleana até mapas de Karnaugh. O mais comum é montar uma tabela verdade com os estados e depois sintetizar usando-se minimização por Karnaugh e desenho direto das equações em forma de diagrama esquemático.
