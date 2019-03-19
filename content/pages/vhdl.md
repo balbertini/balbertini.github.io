@@ -1,6 +1,6 @@
 Title: VHDL
 Date: 2018-09-04 00:28
-Modified: 2018-10-05 15:43
+Modified: 2019-03-19 10:58
 Category: vhdl
 Tags: vhdl
 Slug: vhdl
@@ -21,6 +21,9 @@ Summary: Lista de posts com VHDL.
 [Módulos genéricos parametrizáveis em VHDL]({filename}../vhdl/generic.md)  
 [Circuitos combinatórios em VHDL]({filename}../vhdl/combinatorio.md)  
 [Circuitos sequenciais em VHDL]({filename}../vhdl/sequenciais.md)  
+
+## Intermediário
+[Máquinas de estado em VHDL]({filename}../vhdl/maquinasdeestado.md)  
 
 #TestBench
 [Como fazer um testbench em VHDL]({filename}../vhdl/testbench.md)  
