@@ -14,16 +14,16 @@ Summary: Lista de posts com VHDL.
 [Como utilizar a VM com GHDL]({filename}../vhdl/vmghdl.md)  
 
 ## Básico
-[Tipos de dados básicos em VHDL]({filename}../vhdl/tiposdedadosbasicos.md)  
+[Tipos de dados básicos]({filename}../vhdl/tiposdedadosbasicos.md)  
 [Entidade]({filename}../vhdl/entity.md)  
 [Arquitetura]({filename}../vhdl/architecture.md)  
-[Componentes em VHDL]({filename}../vhdl/component.md)  
-[Módulos genéricos parametrizáveis em VHDL]({filename}../vhdl/generic.md)  
-[Circuitos combinatórios em VHDL]({filename}../vhdl/combinatorio.md)  
-[Circuitos sequenciais em VHDL]({filename}../vhdl/sequenciais.md)  
+<!-- [Componentes]({filename}../vhdl/component.md)   -->
+[Módulos parametrizáveis]({filename}../vhdl/generic.md)  
+[Circuitos combinatórios]({filename}../vhdl/combinatorio.md)  
+[Circuitos sequenciais]({filename}../vhdl/sequenciais.md)  
 
 ## Intermediário
-[Máquinas de estado em VHDL]({filename}../vhdl/maquinasdeestado.md)  
+[Máquinas de estado]({filename}../vhdl/maquinasdeestado.md)  
 
 #TestBench
-[Como fazer um testbench em VHDL]({filename}../vhdl/testbench.md)  
+[Como fazer um testbench]({filename}../vhdl/testbench.md)  
