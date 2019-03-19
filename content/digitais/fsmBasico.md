@@ -74,10 +74,10 @@ Já as funções de transição de estados (também chamada de função de próx
 Os passos para a síntese de uma máquina de estados finita em sistemas digitais são:
 
 1. Entender o problema (enunciado, texto, variáveis de entrada e saída, temporização, etc.);
-2. Elaborar uma descrição funcional da máquina;
-  * Elaborar um diagrama de transição de estados;
+2. Elaborar uma descrição funcional da máquina;  
+    * Elaborar um diagrama de transição de estados;
 3. Obter a tabela de estados e a tabela de saídas;
-  * Reduzir as tabelas;
+    * Reduzir as tabelas;
 4. Designação de estados;
 5. Tabela de excitação;
 6. Projeto dos circuitos combinatórios (funções $T$ e $G$);
@@ -95,10 +95,24 @@ Caso não tenha escolhido o tipo de _flip-flop_ no passo 4, você deve escolher 
 
 Temos a tabela de excitação (passo 5) e a tabela de saída (passo 3), com a designação de estados e as variáveis de estado (passo 4). No passo 6 devemos encontrar as funções de chaveamento. A técnica usual é montar os mapas de Karnaugh para a função de excitação ($T$) e para a função de saída ($G$), obtendo as equações como produto da aplicação do mapa. No entanto, qualquer técnica de síntese de circuitos combinatórios pode ser utilizada.
 
-Com as equações prontas, basta desenhar os blocos combinatórios ($T$ e $G$), posteriormente ligando-os aos elementos de memória e obtendo-se o circuito final.
+Com as equações prontas, basta desenhar os blocos combinatórios ($T$ e $G$), posteriormente ligando-os aos elementos de memória e obtendo-se o circuito final, o que é feito no passo 7.
 
 
 ## Análise
 A análise de uma máquina de estados finita em sistemas digitais é exatamente o contrário da síntese.
 
-Parte-se de um diagrama lógico, onde deve-se identificar o elemento de memória ($S$). É comum serem _flip-flops_, então não é difícil encontrá-los no circuito.
+Parte-se de um diagrama lógico (passo 7 reverso), onde deve-se identificar o elemento de memória ($S$). É comum o elemento de memória ser composto por um ou mais _flip-flops_, então não é difícil encontrá-los no circuito.
+
+Identificado o elemento de memória, segue-se a identificação das funções de excitação e de saída (passo 6 reverso). Isso pode ser feito usando uma técnica de análise de circuitos combinatórios, partindo da saída do elemento de memória em direção ao que se pretende identificar (e.g. se você está identificando a função de saída, aplique uma técnica de análise da saída do elemento de memória em direção a saída da máquina de estados). É útil ter em mente o modelo clássico de máquinas de estado pois, identificado o elemento de memória, o que sobrou deve ser combinatório e faz parte de uma das funções de excitação ou saída. É muito comum usar cores, circular ou marcar as portas lógicas para separá-las de acordo com a função conforme se faz a análise. Neste ponto da análise já é possível identificar se a máquina segue o modelo de Moore ou de Mealy. Neste passo deve-se também inferir as variáveis de estado (no caso dos _flip-flops_ as variáveis de estado coincidem com a saída dos mesmos).
+
+Obtidas as equações $T$ e $G$, parte-se para as tabelas. A tabela de excitação pode ser obtida exercitando todas as combinações possíveis das variáveis de estado e das entradas (passo 5 reverso). Para cada valor, exercita-se a função de excitação ($T$) e obtém-se o valor que será aplicado às entradas do elemento de memória ($S$).
+
+Com a tabela de excitação e conhecendo-se as características do elemento de memória, pode-se atribuir nomes aos estados e construir a tabela de transição de estados (passo 4 reverso). É difícil atribuir nomes significativos para o estado neste momento, então muitos projetistas optam por atribuir nomes alfanuméricos (e.g. A, B, C1, C2, etc).
+
+Não faz sentido reverter as minimizações, tanto para os métodos de síntese combinatória quanto para as tabelas, portanto das equações montamos diretamente as tabelas, e delas extrairemos diretamente o restante.
+
+Para completar as tabelas (passo 3 reverso), obtemos a tabela de saída a partir da função de saída (encontrada no passo 6 reverso) da mesma maneira que encontramos a função de excitação: exercitando todos os valores possíveis para as variáveis de estado e para a entrada (a entrada só faz parte da função de saída se a máquina seguir o modelo de Mealy).
+
+Com as tabelas, é possível montar um diagrama de transição de estados. O diagrama pode ser inferido diretamente das tabelas (passo 2 reverso).
+
+O passo 1 é o mais críptico na análise de máquinas de estado finitas. A razão disso é que o diagrama pode ser considerado a expressão de uma solução para um problema. Extrair o problema de uma solução é uma tarefa subjetiva. Informações extras sobre a aplicação da máquina, o local onde ela funciona, interfaces e até mesmo observar os sistemas ao redor da máquina de estados podem ajudar, porém não há uma técnica para este passo.
