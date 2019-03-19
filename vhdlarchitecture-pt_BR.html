@@ -44,7 +44,7 @@
 <meta property="og:url" content="https://balbertini.github.io/vhdlarchitecture-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2018-10-04 10:33:00-03:00"/>
-<meta property="article:modified_time" content="2018-10-05 00:47:00-03:00"/>
+<meta property="article:modified_time" content="2019-03-14 15:40:00-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="vhdl"/>
 <meta property="article:tag" content="vhdl"/>
@@ -92,7 +92,7 @@
     <p>
       Publicado em 04/10/2018 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
         <br/>
-          Modificado em 05/10/2018
+          Modificado em 14/03/2019
     </p>
   </header>
 
@@ -115,7 +115,7 @@
 <h2>Escolha explícita da arquitetura</h2>
 <p>A entidade, exceto se for uma entidade <em>toplevel</em> (entidade máxima, que representa o circuito como um todo), sempre será usada como componente por uma arquitetura pertencente a outra entidade. Na prática, isso significa que há uma entidade raiz, que representa o circuito todo e possui ao menos uma arquitetura. Nesta  arquitetura, outras entidades filhas podem usadas como componentes para formar o circuito. Cada entidade filha usada pode usar outras como componente e assim por diante, criando uma árvore.</p>
 <p>Considerando que o componente já foi declarado corretamente, há duas possibilidades de instância. Sem escolher qual arquitetura, a instância segue a seguinte sintaxe:</p>
-<div class="highlight"><pre><span></span><span class="n">nome_da_intancia</span><span class="o">:</span>
+<div class="highlight"><pre><span></span><span class="n">nome_da_instancia</span><span class="o">:</span>
   <span class="n">nome_da_entidade</span><span class="p">(</span><span class="n">nome_da_arquitetura</span><span class="p">)</span>
   <span class="k">generic</span> <span class="k">map</span> <span class="p">(</span><span class="n">atribuicao_de_parametros</span><span class="p">)</span>
   <span class="k">port</span> <span class="k">map</span> <span class="p">(</span><span class="n">atribuicao_de_portas</span><span class="p">);</span>
@@ -130,7 +130,7 @@
 </pre></div>
 
 
-<p>A palavra reservada <code>work</code> faz referência ao pacote de trabalho local, onde se encontram todas as entidades que foram desenvolvidas por você e não foram colocadas em um pacote. Caso você tenha colocado sua entidade em um pacote ou esteja usando uma entidade que você não fez e que está em um pacote, deve substituir <code>work</code> pelo pacote onde a entidade se encontra.</p>
+<p>A palavra reservada <code>work</code> faz referência ao pacote de trabalho local, onde se encontram todas as entidades que foram desenvolvidas por você e não foram colocadas em um pacote. Caso você tenha colocado sua entidade em um pacote ou esteja usando uma entidade que você não fez e que está em um pacote, deve substituir <code>work</code> pelo pacote onde a entidade se encontra. Algumas ferramentas de síntese exigem que você declare a utilização da bilbioteca <code>work</code> explicitamente colocando <code>use work.nome_da_entidade</code> ou <code>use work.all</code> no preâmbulo do seu arquivo.</p>
 <h3>Exemplo</h3>
 <p><img src='https://balbertini.github.io/images/vhdl/mux2to1_arquitetura.png' width="39%" align="right" style="padding-left:5%" /></p>
 <div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">mux2to1</span> <span class="k">is</span>

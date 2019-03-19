@@ -44,7 +44,7 @@
 <meta property="og:url" content="https://balbertini.github.io/vhdlentity-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2018-09-21 14:37:00-03:00"/>
-<meta property="article:modified_time" content="2018-09-26 18:53:00-03:00"/>
+<meta property="article:modified_time" content="2019-03-13 16:55:00-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="vhdl"/>
 <meta property="article:tag" content="vhdl"/>
@@ -92,7 +92,7 @@
     <p>
       Publicado em 21/09/2018 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
         <br/>
-          Modificado em 26/09/2018
+          Modificado em 13/03/2019
     </p>
   </header>
 
@@ -134,6 +134,30 @@ No caso do VHDL, a entidade segue o mesmo princípio que você pensou para defin
 <li>Descreva primeiro os sinais de controle, depois as entradas e depois as saídas. Não há nenhuma restrição quando a isso, mas ficará mais fácil de associar sua entidade como um componente depois.</li>
 <li>Sua entidade é a "cara" do seu componente. Capriche nos nomes das entradas e saídas e descreva-as como se estivesse desenhando-as em um diagrama esquemático.</li>
 </ol>
+<h1>Uso do <code>begin</code> e nome da entidade</h1>
+<p>É possível que uma entidade tenha um <code>begin</code>. Dentro da entidade (após o <code>begin</code> e antes do <code>end</code>) podemos colocar qualquer declaração passiva, ou seja, que não altera nenhum sinal (i.e. processos passivos, asserções estáticas e chamadas de procedimentos passivas). A mais utilizada é a asserção, assim podemos fazer verificações estáticas sobre a utilização da entidade.</p>
+<div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
+   <span class="k">generic</span> <span class="p">(</span><span class="n">lista_de_elementos_genericos</span><span class="p">);</span>
+   <span class="k">port</span> <span class="p">(</span><span class="n">lista_de_portas</span><span class="p">);</span>
+<span class="k">begin</span>
+  <span class="n">verificacoes_estaticas</span><span class="p">;</span>
+<span class="k">end</span> <span class="nc">nome_da_entidade</span><span class="p">;</span>
+</pre></div>
+
+
+<h3>Exemplo</h3>
+<p>No exemplo a seguir colocamos uma asserção na parte estática da entidade para verificar se o registrador foi instanciado corretamente. Caso o registrador tenha um tamanho especificado menor que 2, a asserção irá falhar e qualquer simulação ou síntese será interrompida com a mensagem especificada.</p>
+<div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">reg_deslocamento</span> <span class="k">is</span>
+  <span class="k">generic</span><span class="p">(</span> <span class="n">tamanho</span><span class="o">:</span> <span class="kt">natural</span> <span class="o">:=</span> <span class="mi">8</span><span class="p">);</span>
+  <span class="k">port</span><span class="p">(...);</span>
+<span class="k">begin</span>
+  <span class="k">assert</span> <span class="n">tamanho</span><span class="o">&gt;</span><span class="mi">1</span>
+  <span class="n">report</span> <span class="s">&quot;Este registrador precisa ter tamanho mínimo 2.&quot;</span>
+  <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
+<span class="k">end</span> <span class="k">entity</span> <span class="nc">reg_deslocamento</span><span class="p">;</span>
+</pre></div>
+
+
 <p><a name="bufferEinout"></a></p>
 <h1>Saídas com direção <code>buffer</code> e <code>inout</code></h1>
 <p>Uma saída que pode ser lida é especificada pelo tipo <code>buffer</code>. Este tipo de porta é considerada especial pois implica que o sintetizador vai colocar um elemento sequencial na saída (<em>latch</em> ou <em>flip-flop</em>), para fazer o papel de <em>buffer</em>, registrando a sua saída para ela que possa ser lida. Se você utilizar o <code>buffer</code>, seu circuito nunca será combinatório. Quase todos os dispositivos de prototipação FPGA modernos suportam o <code>buffer</code>, mas você pode aumentar um pouco a área utilizada devido ao roteamento.</p>

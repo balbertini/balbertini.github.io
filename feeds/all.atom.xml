@@ -1,5 +1,430 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2019-02-26T16:50:00-03:00</updated><entry><title>Algorithmic State Machines</title><link href="https://balbertini.github.io/asm-pt_BR.html" rel="alternate"></link><published>2018-12-17T12:03:00-02:00</published><updated>2018-12-17T12:03:00-02:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-12-17:/asm-pt_BR.html</id><summary type="html">&lt;p&gt;ASM (Algorithmic State Machines)&lt;/p&gt;</summary><content type="html">&lt;p&gt;A máquina de estados algorítmica, do inglês &lt;em&gt;Algorithmic State Machine&lt;/em&gt; (ASM), é uma forma gráfica de descrição de um circuito síncrono. Assim como os diagramas de transição de estados, a ASM captura o comportamento do circuito em um nível abstrato, mas sintetizável.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2019-03-19T10:58:00-03:00</updated><entry><title>Máquinas de estado em VHDL</title><link href="https://balbertini.github.io/vhdlsm-pt_BR.html" rel="alternate"></link><published>2019-03-18T11:06:00-03:00</published><updated>2019-03-19T10:58:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-18:/vhdlsm-pt_BR.html</id><summary type="html">&lt;p&gt;Máquinas de estado em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Máquinas de estado são muito comuns pois, em sistemas digitais, todos os circuitos sequenciais podem ser vistos como uma máquina de estados finita. No entanto, especificá-las em VHDL é um desafio para os projetistas novatos devido aos problemas que surgem quando o tempo está envolvido. Circuitos combinatórios não dependem de tempo e não possuem memória, porém máquinas de estado possuem e precisam ser projetadas com o devido cuidado. Neste artigo mostrarei algumas formas seguras de especificar corretamente máquinas de estado finitas síncronas e determinísticas em VHDL.&lt;/p&gt;
+&lt;h3&gt;Revisitando o conceito de máquinas de estado&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="Modelo de FSM" src="https://balbertini.github.io/images/sd/fsmmodel.png"&gt;&lt;/p&gt;
+&lt;p&gt;O modelo base de qualquer máquina de estados em sistemas digitais pode ser visto na figura. É composto por um elemento de memória (S) e duas funções combinatórias, uma de transição de estados (T) e outra de saída (G). Quando a função de saída depende somente do estado (ausência da seta tracejada na figura), dizemos que a máquina segue o modelo de Moore. Ao contrário, quando a saída da máquina depende do estado e da entrada (presença da seta tracejada na figura), dizemos que a máquina segue o modelo de Mealy. Em ambos os casos, somente o elemento de memória é sequencial. As funções são puramente combinatórias e dependem somente da entrada (da função) para produzir a saída. Note que, apesar de dependerem apenas na sua entrada,ambas as funções recebem a saída do elemento combinatório como entrada.&lt;/p&gt;
+&lt;p&gt;Resumindo:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;T é combinatória, recebe o estado e a entrada e produz o próximo estado;&lt;/li&gt;
+&lt;li&gt;G é combinatória, recebe o estado (Moore) ou o estado e a entrada (Mealy), e produz a saída;&lt;/li&gt;
+&lt;li&gt;S é um elemento de memória que armazena o estado atual.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Descrevendo a FSM em VHDL usando Moore ou Mealy&lt;/h2&gt;
+&lt;p&gt;Aqui parte-se do pressuposto que você desenhou o diagrama de transição de estados da sua máquina de estados, ela é finita e determinística. De fato, a grande maioria dos problemas sequenciais em sistemas digitais possuem a sua dificuldade no desenho do diagrama de transição e não na implementação. Em outras palavras, implementar uma máquina de estados em VHDL é relativamente simples, pois a parte difícil da solução do problema está imbuída no diagrama de transição.&lt;/p&gt;
+&lt;p&gt;Comece sua máquina de estados declarando a entidade e, consequentemente, a interface de entrada e saída da sua máquina de estados.&lt;/p&gt;
+&lt;p&gt;Na arquitetura, sempre teremos duas partes: a parte sequencial e a parte combinatória. O elemento de memória representa a parte sequencial da máquina de estado e portanto é sensível ao &lt;em&gt;clock&lt;/em&gt;. Para implementá-lo dessa maneira, utiliza-se o &lt;code&gt;process&lt;/code&gt;. Para detalhes sobre o uso correto do &lt;code&gt;process&lt;/code&gt;, veja &lt;a href="https://balbertini.github.io/sequential-pt_BR.html"&gt;o artigo sobre circuitos síncronos&lt;/a&gt;. De fato, você não precisa usar &lt;code&gt;process&lt;/code&gt; para mais nada em VHDL, exceto para a parte sequencial das máquinas de estado finitas. A parte combinatória é o que diferencia os estilos de codificação em VHDL, e neste artigo veremos duas formas, através de exemplos, portanto não deixe de lê-los e entendê-los.&lt;/p&gt;
+&lt;h3&gt;Exemplo 1 (Moore)&lt;/h3&gt;
+&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmexemplo1.png' width="15%" align="right" style="padding-left:5%" /&gt;
+A máquina que iremos implementar como exemplo é a máquina de Moore da figura ao lado. Contém apenas dois estados e todas as quatro transições possíveis totalmente especificadas. Comecemos pela declaração de uso das bibliotecas e pela entidade:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;library&lt;/span&gt; &lt;span class="nn"&gt;ieee&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nn"&gt;ieee.numeric_bit.rising_edge&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;fsm&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;port&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;saida&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;
+  &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="nc"&gt;fsm&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
+
+&lt;p&gt;Na descrição da arquitetura, o que teremos de novidade é a utilização de um tipo composto definido pelo usuário. O tipo composto é uma enumeração e representa o conjunto S (todos os estados possíveis). Após declarado o tipo composto, é possível declarar sinais e variáveis deste tipo, então usaremos o tipo declarado para declarar a variável de estado, ou seja, o elemento de memória que armazenará o estado.&lt;/p&gt;
+&lt;h4&gt;Exemplo 1 (Moore) - Estilo tradicional&lt;/h4&gt;
+&lt;p&gt;Neste primeiro estilo de descrição, a arquitetura é descrita usando exatamente o modelo tradicional de máquina de estados, ou seja, o elemento de memória é sequencial (dentro do &lt;code&gt;process&lt;/code&gt;) e as funções combinatórias (fora do &lt;code&gt;process&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl01.png' width="50%" align="right" style="padding-left:0%" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;proccomb&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="nc"&gt;fsm&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;type&lt;/span&gt; &lt;span class="n"&gt;estado_t&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;PE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;estado_t&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+  &lt;span class="nc"&gt;sincrono&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;elsif&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rising_edge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;PE&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt; &lt;span class="nc"&gt;sincrono&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="n"&gt;PE&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;
+    &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;
+    &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;proccomb&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note que há somente um processo. O processo faz o &lt;em&gt;reset&lt;/em&gt; assíncrono da máquina de estados, colocando-a no estado A (veja a seta de início chegando no estado A do diagrama de transição de estados). Caso o &lt;em&gt;reset&lt;/em&gt; não esteja ativo, o processo faz uma única tarefa que é copiar o sinal PE (de Próximo Estado) para o sinal EA (de Estado Atual) na borda de subida do &lt;em&gt;clock&lt;/em&gt;. Neste contexto, apenas o sinal EA representa um elemento combinatório pois fora destas duas condições, o sinal EA é mantido inalterado. O comportamento é exatamente o de um &lt;em&gt;flip-flop&lt;/em&gt; tipo D e, de fato, podemos ver que o circuito gerado contém exatamente um &lt;em&gt;flip-flop&lt;/em&gt;, pois temos somente dois estados possíveis. Caso o tipo composto &lt;code&gt;estado_t&lt;/code&gt; possuísse mais de dois estados, o número de &lt;em&gt;flip-flops&lt;/em&gt; seria maior para acomodar o maior número de estados.&lt;/p&gt;
+&lt;p&gt;Fora do processo, temos duas declarações concorrentes ao &lt;code&gt;process&lt;/code&gt;, que representam as duas funções combinatórias. A primeira calcula o próximo estado (&lt;code&gt;PE&amp;lt;=...&lt;/code&gt;) e a segunda calcula a saída (&lt;code&gt;saida&amp;lt;=...&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Este estilo tem a vantagem de ser muito próximo do modelo tradicional de máquinas de estado. O processo síncrono é muito simples (será similar independentemente da máquina) e com pouco espaço para erros. A desvantagem é que este estilo se torna críptico rapidamente, pois a descrição combinatória das funções de transição e de próximo estado crescerão exponencialmente em complexidade e tamanho junto com a complexidade da máquina, tornando-se ilegíveis rapidamente.&lt;/p&gt;
+&lt;p&gt;Use esse estilo nas suas primeiras máquinas de estado, para garantir que você não terá problemas de sincronismo, ou se a máquina for muito simples ou com poucos estados..&lt;/p&gt;
+&lt;h4&gt;Exemplo 1 (Moore) - Estilo com dois &lt;code&gt;process&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;No segundo estilo, levamos a descrição combinatória para dentro de um &lt;code&gt;process&lt;/code&gt; novo, mantendo o &lt;code&gt;process&lt;/code&gt; sequencial que faz o papel de elemento de memória inalterado. Este estilo exige um cuidado muito grande pois estamos descrevendo um elemento combinatório dentro de uma primitiva de VHDL que indica para o sintetizador que estamos descrevendo algo sequencial. Temos que ser claros com a descrição para que o sintetizador entenda que a variável de estados é o sinal EA somente, e os outros sinais (neste caso o PE e a &lt;code&gt;saida&lt;/code&gt;), são combinatórios.&lt;/p&gt;
+&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl02.png' width="50%" align="right" style="padding-left:0%" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;doisproc&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="nc"&gt;fsm&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;type&lt;/span&gt; &lt;span class="n"&gt;estado_t&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;PE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;estado_t&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+
+  &lt;span class="nc"&gt;sincrono&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;elsif&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rising_edge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;PE&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt; &lt;span class="nc"&gt;sincrono&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="nc"&gt;combinatorio&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;case&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+      &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+        &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+          &lt;span class="n"&gt;PE&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;
+          &lt;span class="n"&gt;PE&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+        &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+          &lt;span class="n"&gt;PE&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;
+          &lt;span class="n"&gt;PE&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="k"&gt;others&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+        &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;PE&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;case&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt; &lt;span class="nc"&gt;combinatorio&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;doisproc&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A vantagem desta abordagem é que temos acesso a estruturas sequenciais, como o &lt;code&gt;case&lt;/code&gt; usado como decisor no processo combinatório, que facilitam a descrição comportamental de máquinas de estado. A desvantagem é que um pequeno deslize pode levar o sintetizador a registrar ou inferir &lt;em&gt;latches&lt;/em&gt; para os sinais combinatórios, comprometendo a sequencialidade da máquina.&lt;/p&gt;
+&lt;p&gt;Note que o sinal PE foi incluído na lista de sensibilidade do processo sequencial, o que foi omitido no estilo anterior. A presença na lista de sensibilidade indica que PE pode mudar devido a fatores externos ao processo sequencial, e que o processo deve ser reavaliado se isto acontecer (mesmo que o resultado seja o mesmo pois não há borda nem &lt;em&gt;reset&lt;/em&gt;). Já o processo combinatório depende de EA (obrigatório), fechando a cadeia de dependência entre os sinais dos processos (um ativa o outro). Esta ligação amplia as possibilidades de otimização do sintetizador pois ele entende que os dois processos são partes de um circuito único e os algoritmos de síntese foram preparados para otimizar esta situação (é um pouco mais complexo que isso, mas basta saber que é melhor assim). Note que o circuito gerado contém um multiplexador no lugar das portas lógicas.&lt;/p&gt;
+&lt;p&gt;Este exemplo é simples e há pouca diferença entre em manter o circuito combinatório isolado do sequencial (primeiro estilo), ou descrevê-los em conjunto usando dois processos interligados (segundo estilo). Em circuitos complexos as otimizações podem ser bem diferentes, quase sempre com vantagem para o estilo de descrição com dois processos.&lt;/p&gt;
+&lt;p&gt;Outro ponto importante é a ausência de sinais temporais no processo combinatório &lt;strong&gt;e a completude de todas as atribuições&lt;/strong&gt;. Se esquecermos de uma atribuição para PE em qualquer um dos casos possíveis (incluindo a cláusula &lt;code&gt;when others&lt;/code&gt;), a atribuição estará incompleta e o processo pode se tornar sequencial (e nesse caso assíncrono ainda por cima), fazendo com que a descrição não se comporte como o esperado.&lt;/p&gt;
+&lt;p&gt;Aconselha-se a utilização deste tipo de descrição quando você estiver habituado a descrever máquinas de estados em VHDL e confortável em encontrar problemas de sincronismo.&lt;/p&gt;
+&lt;p&gt;Se você tem uma bagagem como programador de software, é natural optar por este estilo pois é muito parecido com os processos em software, mas evite-o até estar confortável pois você não está programando e sim descrevendo um hardware. A maioria dos problemas dos alunos iniciantes em práticas de sistemas digitais advém da descrição incorreta deste estilo de máquinas de estado, principalmente ligadas a inferência de &lt;em&gt;latches&lt;/em&gt; devido a atribuição incompleta.&lt;/p&gt;
+&lt;h3&gt;Outros estilos&lt;/h3&gt;
+&lt;p&gt;Mas então por que não usamos um processo só para tudo? Vamos ver:
+&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl03.png' width="50%" align="right" style="padding-left:0%" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;umproc&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="nc"&gt;fsm&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;type&lt;/span&gt; &lt;span class="n"&gt;estado_t&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;estado_t&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+  &lt;span class="nc"&gt;sincrono&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;elsif&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rising_edge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="k"&gt;case&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+        &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+          &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+          &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+            &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+          &lt;span class="k"&gt;else&lt;/span&gt;
+            &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+          &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+          &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+          &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+            &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+          &lt;span class="k"&gt;else&lt;/span&gt;
+            &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+          &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="k"&gt;others&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+          &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+          &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;case&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt; &lt;span class="nc"&gt;sincrono&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;umproc&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;De fato isso é possível, mas o processo será considerado sequencial pelo sintetizador pois contém uma sensibilidade à uma borda (no &lt;code&gt;rising_edge&lt;/code&gt;). Como processo sequencial, seus sinais serão registrados, o que é desejável para o sinal EA pois ele representa a própria variável de estado da máquina. Porém, pode não ser desejável tampouco aceitável para os demais sinais. Neste caso, a saída foi o único sinal que sobrou pois o PE pôde ser eliminado, dado que não precisamos mais calcular a função de próximo estado separadamente.&lt;/p&gt;
+&lt;p&gt;Observe que o circuito gerado possui a saída registrada (inferida pelo sintetizador). Isto não é um problema se você puder conviver com a saída sempre defasada de um ciclo de &lt;em&gt;clock&lt;/em&gt;, mas está errado conceitualmente pois a máquina de estados se comportará em fase com o &lt;em&gt;clock&lt;/em&gt; para as transições e defasada de um ciclo para os demais sinais. Esta característica costuma confundir muito os iniciantes e dificulta consideravelmente a depuração. Por estes motivos, se você é meu aluno, &lt;strong&gt;não use este estilo&lt;/strong&gt; em nenhum momento durante a graduação (pós por favor consulte antes).&lt;/p&gt;
+&lt;h3&gt;Exemplo 2 (Mealy)&lt;/h3&gt;
+&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmexemplo2.png' width="15%" align="right" style="padding-left:5%" /&gt;
+Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a saída depende também da entrada.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;library&lt;/span&gt; &lt;span class="nn"&gt;ieee&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nn"&gt;ieee.numeric_bit.rising_edge&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;fsm&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;port&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;saida&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;
+  &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="nc"&gt;fsm&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
+
+&lt;h4&gt;Exemplo 2 (Mealy) - Estilo tradicional&lt;/h4&gt;
+&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl04.png' width="50%" align="right" style="padding-left:0%" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;proccombmealy&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="nc"&gt;fsm&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;type&lt;/span&gt; &lt;span class="n"&gt;estado_t&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;PE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;estado_t&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+
+  &lt;span class="nc"&gt;sincrono&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;elsif&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rising_edge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;PE&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt; &lt;span class="nc"&gt;sincrono&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="n"&gt;PE&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;
+    &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;
+    &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;proccombmealy&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note que o circuito gerado é um pouco maior devido a arquitetura para o qual foi sintetizado (FPGA).&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h4&gt;Exemplo 2 (Mealy) - Estilo com dois &lt;code&gt;process&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl05.png' width="50%" align="right" style="padding-left:0%" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;proccombmealy&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="nc"&gt;fsm&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;type&lt;/span&gt; &lt;span class="n"&gt;estado_t&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;PE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;estado_t&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+
+  &lt;span class="nc"&gt;sincrono&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;elsif&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rising_edge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;PE&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt; &lt;span class="nc"&gt;sincrono&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="n"&gt;PE&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;
+    &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;
+    &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;proccombmealy&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Observe que não há diferença entre o circuito gerado para esta máquina e para a máquina Moore com dois processos.
+&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;&lt;/p&gt;</content><category term="vhdl"></category><category term="state machine"></category></entry><entry><title>Módulos genéricos parametrizáveis em VHDL</title><link href="https://balbertini.github.io/vhdlgeneric-pt_BR.html" rel="alternate"></link><published>2019-03-12T14:25:00-03:00</published><updated>2019-03-14T15:21:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-12:/vhdlgeneric-pt_BR.html</id><summary type="html">&lt;p&gt;Usando o generic em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Uma das características interessantes de HDLs (incluindo VHDL), é a capacidade de reutilização de módulos. Podemos aumentar ainda mais a reutilização descrevendo módulos parametrizáveis. Este artigo trata de como descrever módulos genéricos parametrizáveis em VHDL.&lt;/p&gt;
+&lt;h2&gt;Declarando um parâmetro genericamente&lt;/h2&gt;
+&lt;p&gt;Em muitos casos, a descrição de um módulo em VHDL pode não ser reaproveitável porque precisamos de um módulo ligeiramente diferente. Um exemplo: se descrevermos um registrador de 8 bits, poderemos usar este registrador somente em projetos que utilizam registradores de exatamente 8 bits. Contudo, quando o hardware é regular, ou seja, seu funcionamento é idêntico independentemente da característica variável, é possível descrevê-lo de forma a definir a característica variável no momento da instância e não da descrição. Dessa forma, descreve-se o módulo genericamente e somente no momento de utilizá-lo parametrizamos as características variáveis. No exemplo do registrador, podemos descrevê-lo genericamente de forma que o seu tamanho seja um parâmetro.&lt;/p&gt;
+&lt;p&gt;A palavra reservada que possibilita isso é a &lt;code&gt;generic&lt;/code&gt;. Na descrição da entidade do módulo, podemos incluir esta palavra, como a seguir:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;nome_da_entidade&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+   &lt;span class="k"&gt;generic&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista_de_elementos_genericos&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+   &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista_de_portas&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="nc"&gt;nome_da_entidade&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A &lt;code&gt;lista_de_elementos_genericos&lt;/code&gt; é uma lista de todas as características parametrizáveis, no formato: &lt;code&gt;nome: tipo := valor_padrao&lt;/code&gt;, separadas por &lt;code&gt;;&lt;/code&gt;. O &lt;code&gt;nome&lt;/code&gt; pode ser o que você desejar, desde que seja um nome válido em VHDL. O tipo define qual tipo de dados será utilizado para aquele parâmetro e pode ser &lt;a href="https://balbertini.github.io/vhdlbasicdatatypes-pt_BR.html"&gt;qualquer tipo suportado&lt;/a&gt;. O &lt;code&gt;valor_padrao&lt;/code&gt; é opcional e pode ser omitido. Quando omitido, termina-se a declaração após a declaração do tipo (exclui-se também o &lt;code&gt;:=&lt;/code&gt;). No caso da omissão do valor padrão, a declaração do valor no momento da instanciação é obrigatória. Caso o valor padrão esteja presente, ele será usado somente se a instância não especificar nenhum valor, caso contrário o valor da instância sobrepõe o valor padrão. Como boa prática, sempre defina o valor padrão. O &lt;code&gt;valor_padrao&lt;/code&gt; deve ser obrigatoriamente uma constante do mesmo &lt;code&gt;tipo&lt;/code&gt; que o parâmetro correspondente.&lt;/p&gt;
+&lt;p&gt;Depois de especificados, os parâmetros da &lt;code&gt;lista_de_elementos_genericos&lt;/code&gt; tornam-se constantes disponíveis em todo o restante do projeto, incluindo a declaração de portas da entidade e toda a arquitetura. Como estão disponíveis e podem ser usados no lugar de qualquer constante, é possível declarar portas, sinais e qualquer outra estrutura de VHDL usando o parâmetro no lugar de um valor fixo.&lt;/p&gt;
+&lt;h3&gt;Instância&lt;/h3&gt;
+&lt;p&gt;No momento da instância do componente, podemos definir os parâmetros que desejarmos. Lembre-se que, caso a descrição não estabeleça um valor padrão para um determinado parâmetro, a definição na instanciação é obrigatória. A sintaxe da instância é:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;nome_instancia&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;nome_componente&lt;/span&gt;
+    &lt;span class="k"&gt;generic&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista_de_associacao_de_elementos_genericos&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista_de_associacao_de_portas&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Se o componente não possui nenhum parâmetro (ausência de &lt;code&gt;generic&lt;/code&gt;) ou não deseja-se especificar nenhum (todos os valores padrões serão utilizados), toda a linha do &lt;code&gt;generic map&lt;/code&gt; pode ser omitida. A &lt;code&gt;lista_de_associacao_de_elementos_genericos&lt;/code&gt; segue o mesmo padrão de associação usado para as portas.
+&lt;!-- Veja o artigo sobre &lt;a href="https://balbertini.github.io/drafts/vhdlcomponent-pt_BR.html"&gt;componentes em VHDL&lt;/a&gt;. --&gt;&lt;/p&gt;
+&lt;h3&gt;Síntese&lt;/h3&gt;
+&lt;p&gt;O &lt;code&gt;generic&lt;/code&gt; não é uma estrutura sintetizável. No momento da síntese, todos os valores genéricos parametrizáveis devem ser resolvíveis, ou seja, o valor do parâmetro é fixo na instância. Não é possível mudar este valor dinamicamente durante ou após a síntese, e muito menos mudá-lo no hardware pronto. É possível herdar parâmetros, desde que a árvore de herança seja resolvível para um valor constante no momento da síntese.&lt;/p&gt;
+&lt;p&gt;É possível usar o &lt;code&gt;generic&lt;/code&gt; para parametrizar algo não sintetizável. Exemplos deste uso incluem variáveis condicionais de depuração e temporização.&lt;/p&gt;
+&lt;h2&gt;Exemplo&lt;/h2&gt;
+&lt;p&gt;Neste exemplo, mostrarei um registrador de deslocamento genérico com entrada paralela e saída serial, carga paralela síncrona, &lt;em&gt;reset&lt;/em&gt; assíncrono e deslocamento para a direita ou para a esquerda. A modelagem contempla temporização (atraso e &lt;em&gt;setup time&lt;/em&gt;) e depuração.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;library&lt;/span&gt; &lt;span class="nn"&gt;ieee&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nn"&gt;ieee.numeric_bit.rising_edge&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;reg_deslocamento&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;generic&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;tamanho&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;natural&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;tp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;time&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt; &lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;time&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;15&lt;/span&gt; &lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;boolean&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;false&lt;/span&gt;
+  &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;port&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tamanho&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;saida&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt;  &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tamanho&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;entrada_serial&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;direcao&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;-- 1=direita, 0=esquerda&lt;/span&gt;
+    &lt;span class="n"&gt;carrega&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;
+  &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+  &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;tamanho&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+  &lt;span class="n"&gt;report&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Este registrador precisa ter tamanho &amp;gt; 1 e foi instanciado com &amp;quot;&lt;/span&gt;
+         &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="kt"&gt;integer&lt;/span&gt;&lt;span class="na"&gt;&amp;#39;image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tamanho&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;severity&lt;/span&gt; &lt;span class="n"&gt;failure&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;reg_deslocamento&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;funcional&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="nc"&gt;reg_deslocamento&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;interno&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tamanho&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+
+  &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;interno&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="n"&gt;interno&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;others&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;elsif&lt;/span&gt; &lt;span class="n"&gt;rising_edge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;carrega&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="na"&gt;&amp;#39;stable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+          &lt;span class="n"&gt;interno&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt; &lt;span class="k"&gt;after&lt;/span&gt; &lt;span class="n"&gt;tp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;else&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;direcao&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+          &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;entrada_serial&lt;/span&gt;&lt;span class="na"&gt;&amp;#39;stable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+            &lt;span class="n"&gt;interno&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;entrada_serial&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;interno&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tamanho&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;after&lt;/span&gt; &lt;span class="n"&gt;tp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+          &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;
+          &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;entrada_serial&lt;/span&gt;&lt;span class="na"&gt;&amp;#39;stable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+            &lt;span class="n"&gt;interno&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;interno&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tamanho&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;entrada_serial&lt;/span&gt; &lt;span class="k"&gt;after&lt;/span&gt; &lt;span class="n"&gt;tp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+          &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;rising_edge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;carrega&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+          &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="na"&gt;&amp;#39;stable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+          &lt;span class="n"&gt;report&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Setup time violado na entrada paralela.&amp;quot;&lt;/span&gt;
+          &lt;span class="k"&gt;severity&lt;/span&gt; &lt;span class="n"&gt;warning&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;elsif&lt;/span&gt; &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;carrega&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+          &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;entrada_serial&lt;/span&gt;&lt;span class="na"&gt;&amp;#39;stable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+          &lt;span class="n"&gt;report&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Setup time violado na entrada serial.&amp;quot;&lt;/span&gt;
+          &lt;span class="k"&gt;severity&lt;/span&gt; &lt;span class="n"&gt;warning&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;architecture&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Um possível &lt;em&gt;testbench&lt;/em&gt; para este registrador pode ser visto abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;library&lt;/span&gt; &lt;span class="nn"&gt;ieee&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nn"&gt;ieee.numeric_bit.rising_edge&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;reg_deslocamento_tb&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;reg_deslocamento_tb&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;stim&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="nc"&gt;reg_deslocamento_tb&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;component&lt;/span&gt; &lt;span class="nc"&gt;reg_deslocamento&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+    &lt;span class="k"&gt;generic&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;tamanho&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;natural&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="n"&gt;tp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;time&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt; &lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;time&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;15&lt;/span&gt; &lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;boolean&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;false&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;port&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tamanho&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="n"&gt;saida&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt;  &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tamanho&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="n"&gt;entrada_serial&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="n"&gt;direcao&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;-- 1=direita, 0=esquerda&lt;/span&gt;
+      &lt;span class="n"&gt;carrega&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;component&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;saida&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;entrada_serial&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;direcao&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;carrega&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;simula&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+
+  &lt;span class="n"&gt;reg&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;reg_deslocamento&lt;/span&gt;
+    &lt;span class="k"&gt;generic&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tamanho&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tp&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt; &lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;true&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;saida&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;entrada_serial&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;direcao&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;carrega&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+  &lt;span class="n"&gt;clock&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;simula&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt; &lt;span class="k"&gt;after&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt; &lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="nc"&gt;stim&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;
+  &lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="n"&gt;simula&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;reset_n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;wait&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt; &lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;reset_n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;entrada&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1010&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;carrega&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;wait&lt;/span&gt; &lt;span class="k"&gt;until&lt;/span&gt; &lt;span class="n"&gt;rising_edge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="k"&gt;wait&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="mi"&gt;95&lt;/span&gt; &lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;entrada&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1011&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;wait&lt;/span&gt; &lt;span class="k"&gt;until&lt;/span&gt; &lt;span class="n"&gt;rising_edge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;carrega&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;wait&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="mi"&gt;95&lt;/span&gt; &lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;entrada_serial&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;wait&lt;/span&gt; &lt;span class="k"&gt;until&lt;/span&gt; &lt;span class="n"&gt;rising_edge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="n"&gt;carrega&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;entrada&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1010&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;wait&lt;/span&gt; &lt;span class="k"&gt;until&lt;/span&gt; &lt;span class="n"&gt;rising_edge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;carrega&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;entrada_serial&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;wait&lt;/span&gt; &lt;span class="k"&gt;until&lt;/span&gt; &lt;span class="n"&gt;rising_edge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="n"&gt;simula&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;wait&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;architecture&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A execução deste &lt;em&gt;testbench&lt;/em&gt; irá imprimir:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;reg_deslocamento.vhd:59:11:@350ns:&lt;span class="o"&gt;(&lt;/span&gt;assertion warning&lt;span class="o"&gt;)&lt;/span&gt;: Setup &lt;span class="nb"&gt;time&lt;/span&gt; violado na entrada paralela.
+reg_deslocamento.vhd:63:11:@450ns:&lt;span class="o"&gt;(&lt;/span&gt;assertion warning&lt;span class="o"&gt;)&lt;/span&gt;: Setup &lt;span class="nb"&gt;time&lt;/span&gt; violado na entrada serial.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;No código do &lt;em&gt;testbench&lt;/em&gt; há três usos distintos do &lt;code&gt;generic&lt;/code&gt;. Note a instância do registrador usado no &lt;em&gt;testbench&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;reg&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;reg_deslocamento&lt;/span&gt;
+  &lt;span class="k"&gt;generic&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tamanho&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tp&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt; &lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;true&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;saida&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;entrada_serial&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;direcao&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;carrega&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A primeira coisa que podemos notar é que a atribuição dos parâmetros no &lt;code&gt;generic map&lt;/code&gt; foi feita por nome e não posicionalmente (como feita no &lt;code&gt;port map&lt;/code&gt;). Contudo, podemos usar atribuição posicional se desejado. O tamanho foi parametrizado como 4 bits, o tempo de propagação (&lt;code&gt;tp&lt;/code&gt;) como 40ns e foi habilitada a depuração. A primeira utilização do &lt;code&gt;generic&lt;/code&gt; foram estas atribuições. Já a segunda, foi uma atribuição implícita. O &lt;em&gt;setup time&lt;/em&gt; (&lt;code&gt;st&lt;/code&gt;) não foi definido no &lt;code&gt;genric map&lt;/code&gt;, portanto a instância utilizará o valor padrão, que nesse caso é 15ns. Já a terceira diz respeito ao parâmetro &lt;code&gt;debug&lt;/code&gt;. Note que este parâmetro, se habilitado, permite a ativação de um &lt;code&gt;process&lt;/code&gt; (o último da descrição do registrador) que não é sintetizável e serve exclusivamente para emitir mensagens de violação do &lt;em&gt;setup time&lt;/em&gt; durante uma simulação.&lt;/p&gt;</content><category term="vhdl"></category><category term="basic"></category></entry><entry><title>Algorithmic State Machines</title><link href="https://balbertini.github.io/asm-pt_BR.html" rel="alternate"></link><published>2018-12-17T12:03:00-02:00</published><updated>2018-12-17T12:03:00-02:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-12-17:/asm-pt_BR.html</id><summary type="html">&lt;p&gt;ASM (Algorithmic State Machines)&lt;/p&gt;</summary><content type="html">&lt;p&gt;A máquina de estados algorítmica, do inglês &lt;em&gt;Algorithmic State Machine&lt;/em&gt; (ASM), é uma forma gráfica de descrição de um circuito síncrono. Assim como os diagramas de transição de estados, a ASM captura o comportamento do circuito em um nível abstrato, mas sintetizável.&lt;/p&gt;
 &lt;h2&gt;Elementos gráficos&lt;/h2&gt;
 &lt;h3&gt;Estado&lt;/h3&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/asm_estado.png' width="20%" align="right" style="padding-left:5%" /&gt;
@@ -712,7 +1137,7 @@ Por último, montamos o diagrama de transição de estados, que fica conforme a 
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="sistemas digitais"></category><category term="exercícios resolvidos"></category><category term="análise"></category><category term="circuitos realimentados"></category></entry><entry><title>Arquitetura</title><link href="https://balbertini.github.io/vhdlarchitecture-pt_BR.html" rel="alternate"></link><published>2018-10-04T10:33:00-03:00</published><updated>2018-10-05T00:47:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-10-04:/vhdlarchitecture-pt_BR.html</id><summary type="html">&lt;p&gt;Arquiteturas em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As descrições em VHDL sempre possuem uma &lt;a href="https://balbertini.github.io/vhdlentity-pt_BR.html"&gt;entidade&lt;/a&gt;, que define as interfaces do módulo descrito. Porém, a entidade não descreve a funcionalidade, que é descrita na arquitetura.&lt;/p&gt;
+&lt;/script&gt;</content><category term="sistemas digitais"></category><category term="exercícios resolvidos"></category><category term="análise"></category><category term="circuitos realimentados"></category></entry><entry><title>Arquitetura</title><link href="https://balbertini.github.io/vhdlarchitecture-pt_BR.html" rel="alternate"></link><published>2018-10-04T10:33:00-03:00</published><updated>2019-03-14T15:40:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-10-04:/vhdlarchitecture-pt_BR.html</id><summary type="html">&lt;p&gt;Arquiteturas em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As descrições em VHDL sempre possuem uma &lt;a href="https://balbertini.github.io/vhdlentity-pt_BR.html"&gt;entidade&lt;/a&gt;, que define as interfaces do módulo descrito. Porém, a entidade não descreve a funcionalidade, que é descrita na arquitetura.&lt;/p&gt;
 &lt;p&gt;Assim como a entidade é a &lt;em&gt;cara&lt;/em&gt; do módulo que está descrevendo, a arquitetura, declarada pela palavra reservada &lt;code&gt;architecture&lt;/code&gt;, é o &lt;em&gt;corpo&lt;/em&gt; da sua descrição. Na arquitetura é onde descrevemos a funcionalidade do componente, ou seja, onde as coisas realmente acontecem. No diagrama esquemático, seria o equivalente de mostrar o que tem dentro do símbolo do seu componente.&lt;/p&gt;
 &lt;p&gt;Faz sentido descrever um componente com entradas e saídas mas sem nada dentro? Claro que não, por isso toda entidade deve ter ao menos uma arquitetura pois, sem ela, o componente não tem função. É possível que uma entidade tenha varias arquiteturas, cada uma realizando a tarefa que seu componente se propõe a fazer de uma maneira diferente. Contudo, uma arquitetura só pode pertencer a uma entidade. De fato, todas as arquiteturas pertencentes a uma entidade devem estar no mesmo arquivo que ela, depois da declaração da entidade.&lt;/p&gt;
 &lt;p&gt;A sintaxe de uma arquitetura em VHDL é:&lt;/p&gt;
@@ -729,7 +1154,7 @@ Por último, montamos o diagrama de transição de estados, que fica conforme a 
 &lt;h2&gt;Escolha explícita da arquitetura&lt;/h2&gt;
 &lt;p&gt;A entidade, exceto se for uma entidade &lt;em&gt;toplevel&lt;/em&gt; (entidade máxima, que representa o circuito como um todo), sempre será usada como componente por uma arquitetura pertencente a outra entidade. Na prática, isso significa que há uma entidade raiz, que representa o circuito todo e possui ao menos uma arquitetura. Nesta  arquitetura, outras entidades filhas podem usadas como componentes para formar o circuito. Cada entidade filha usada pode usar outras como componente e assim por diante, criando uma árvore.&lt;/p&gt;
 &lt;p&gt;Considerando que o componente já foi declarado corretamente, há duas possibilidades de instância. Sem escolher qual arquitetura, a instância segue a seguinte sintaxe:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;nome_da_intancia&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;nome_da_instancia&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
   &lt;span class="n"&gt;nome_da_entidade&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nome_da_arquitetura&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="k"&gt;generic&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;atribuicao_de_parametros&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;atribuicao_de_portas&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
@@ -744,7 +1169,7 @@ Por último, montamos o diagrama de transição de estados, que fica conforme a 
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;A palavra reservada &lt;code&gt;work&lt;/code&gt; faz referência ao pacote de trabalho local, onde se encontram todas as entidades que foram desenvolvidas por você e não foram colocadas em um pacote. Caso você tenha colocado sua entidade em um pacote ou esteja usando uma entidade que você não fez e que está em um pacote, deve substituir &lt;code&gt;work&lt;/code&gt; pelo pacote onde a entidade se encontra.&lt;/p&gt;
+&lt;p&gt;A palavra reservada &lt;code&gt;work&lt;/code&gt; faz referência ao pacote de trabalho local, onde se encontram todas as entidades que foram desenvolvidas por você e não foram colocadas em um pacote. Caso você tenha colocado sua entidade em um pacote ou esteja usando uma entidade que você não fez e que está em um pacote, deve substituir &lt;code&gt;work&lt;/code&gt; pelo pacote onde a entidade se encontra. Algumas ferramentas de síntese exigem que você declare a utilização da bilbioteca &lt;code&gt;work&lt;/code&gt; explicitamente colocando &lt;code&gt;use work.nome_da_entidade&lt;/code&gt; ou &lt;code&gt;use work.all&lt;/code&gt; no preâmbulo do seu arquivo.&lt;/p&gt;
 &lt;h3&gt;Exemplo&lt;/h3&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/vhdl/mux2to1_arquitetura.png' width="39%" align="right" style="padding-left:5%" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;mux2to1&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
@@ -1325,7 +1750,7 @@ Business Media, 2013.&lt;/p&gt;
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="sistemas digitais"></category><category term="fsm"></category><category term="simplificação"></category><category term="otimização"></category></entry><entry><title>Entidade</title><link href="https://balbertini.github.io/vhdlentity-pt_BR.html" rel="alternate"></link><published>2018-09-21T14:37:00-03:00</published><updated>2018-09-26T18:53:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-09-21:/vhdlentity-pt_BR.html</id><summary type="html">&lt;p&gt;Entidades em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Toda descrição em VHDL segue um padrão base de uma entidade e uma arquitetura. Neste artigo, explicarei como funciona a entidade.&lt;/p&gt;
+&lt;/script&gt;</content><category term="sistemas digitais"></category><category term="fsm"></category><category term="simplificação"></category><category term="otimização"></category></entry><entry><title>Entidade</title><link href="https://balbertini.github.io/vhdlentity-pt_BR.html" rel="alternate"></link><published>2018-09-21T14:37:00-03:00</published><updated>2019-03-13T16:55:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-09-21:/vhdlentity-pt_BR.html</id><summary type="html">&lt;p&gt;Entidades em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Toda descrição em VHDL segue um padrão base de uma entidade e uma arquitetura. Neste artigo, explicarei como funciona a entidade.&lt;/p&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/vhdl/vhdl_maqrefri.png' width="20%" align="left" style="padding-right:5%" /&gt;
 A entidade, declarada pela palavra reservada &lt;code&gt;entity&lt;/code&gt;, é a unidade básica de descrição de VHDL. O equivalente em um diagrama esquemático é o desenho que você faz para representar seu componente. Por exemplo, pense em uma máquina de vender refrigerantes em lata. Suponha que você (abstratamente), tenha que desenhar um símbolo para sua máquina. O meu símbolo seria como o da figura: entra dinheiro e sai latas.
 &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
@@ -1361,6 +1786,30 @@ No caso do VHDL, a entidade segue o mesmo princípio que você pensou para defin
 &lt;li&gt;Descreva primeiro os sinais de controle, depois as entradas e depois as saídas. Não há nenhuma restrição quando a isso, mas ficará mais fácil de associar sua entidade como um componente depois.&lt;/li&gt;
 &lt;li&gt;Sua entidade é a "cara" do seu componente. Capriche nos nomes das entradas e saídas e descreva-as como se estivesse desenhando-as em um diagrama esquemático.&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h1&gt;Uso do &lt;code&gt;begin&lt;/code&gt; e nome da entidade&lt;/h1&gt;
+&lt;p&gt;É possível que uma entidade tenha um &lt;code&gt;begin&lt;/code&gt;. Dentro da entidade (após o &lt;code&gt;begin&lt;/code&gt; e antes do &lt;code&gt;end&lt;/code&gt;) podemos colocar qualquer declaração passiva, ou seja, que não altera nenhum sinal (i.e. processos passivos, asserções estáticas e chamadas de procedimentos passivas). A mais utilizada é a asserção, assim podemos fazer verificações estáticas sobre a utilização da entidade.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;nome_da_entidade&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+   &lt;span class="k"&gt;generic&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista_de_elementos_genericos&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+   &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista_de_portas&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+  &lt;span class="n"&gt;verificacoes_estaticas&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="nc"&gt;nome_da_entidade&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Exemplo&lt;/h3&gt;
+&lt;p&gt;No exemplo a seguir colocamos uma asserção na parte estática da entidade para verificar se o registrador foi instanciado corretamente. Caso o registrador tenha um tamanho especificado menor que 2, a asserção irá falhar e qualquer simulação ou síntese será interrompida com a mensagem especificada.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;reg_deslocamento&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;generic&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;tamanho&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;natural&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;port&lt;/span&gt;&lt;span class="p"&gt;(...);&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+  &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;tamanho&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+  &lt;span class="n"&gt;report&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Este registrador precisa ter tamanho mínimo 2.&amp;quot;&lt;/span&gt;
+  &lt;span class="k"&gt;severity&lt;/span&gt; &lt;span class="n"&gt;failure&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;reg_deslocamento&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;&lt;a name="bufferEinout"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;Saídas com direção &lt;code&gt;buffer&lt;/code&gt; e &lt;code&gt;inout&lt;/code&gt;&lt;/h1&gt;
 &lt;p&gt;Uma saída que pode ser lida é especificada pelo tipo &lt;code&gt;buffer&lt;/code&gt;. Este tipo de porta é considerada especial pois implica que o sintetizador vai colocar um elemento sequencial na saída (&lt;em&gt;latch&lt;/em&gt; ou &lt;em&gt;flip-flop&lt;/em&gt;), para fazer o papel de &lt;em&gt;buffer&lt;/em&gt;, registrando a sua saída para ela que possa ser lida. Se você utilizar o &lt;code&gt;buffer&lt;/code&gt;, seu circuito nunca será combinatório. Quase todos os dispositivos de prototipação FPGA modernos suportam o &lt;code&gt;buffer&lt;/code&gt;, mas você pode aumentar um pouco a área utilizada devido ao roteamento.&lt;/p&gt;
