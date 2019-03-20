@@ -126,3 +126,99 @@ Este é um exemplo clássico de uma máquina de estados simples, mas que todos r
 <img src='{static}/images/sd/semaforo.png' width="35%" align="right" style="padding-left:5%" />
 **Passo 2:** A descrição funcional foi feita durante a análise do problema no passo 1. O diagrama de transição de estados pode ser visto na figura ao lado. Note que já demos os nomes para os estados de acordo com a cor: VM vermelha, VD verde e AM amarela. A entrada de 1 bit foi especificada nas transições e a saída de 2 bits na parte inferior do estado, de acordo com o identificado no passo 1.
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
+
+**Passo 3:** Já temos o diagrama de transição de estados, então podemos montar as tabelas.
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-88nc{font-weight:bold;border-color:inherit;text-align:center}
+.tg .tg-kiyi{font-weight:bold;border-color:inherit;text-align:left}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-88nc" rowspan="2">Estado Atual</th>
+    <th class="tg-88nc" colspan="2">Próximo Estado</th>
+    <th class="tg-kiyi" rowspan="2">Saída</th>
+  </tr>
+  <tr>
+    <td class="tg-88nc">m=0</td>
+    <td class="tg-88nc">m=1</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">VD</td>
+    <td class="tg-c3ow">VD</td>
+    <td class="tg-c3ow">VM</td>
+    <td class="tg-c3ow">01</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">AM</td>
+    <td class="tg-c3ow">VD</td>
+    <td class="tg-c3ow">VD</td>
+    <td class="tg-c3ow">11</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">VM</td>
+    <td class="tg-c3ow">VM</td>
+    <td class="tg-c3ow">AM</td>
+    <td class="tg-c3ow">10</td>
+  </tr>
+</table>
+
+Note que as tabelas estão juntas. A coluna Estado Atual mostra o estado em que a máquina se encontra, e a coluna Saída mostra a saída para aquele estado. A coluna Próximo Estado contém as transições, ou seja, para qual estado a máquina irá no próximo ciclo de _clock_ caso a entrada $m$ seja 0 ou 1. Esta tabela é pequena, portanto basta uma rápida análise para perceber que não há reduções possíveis.
+
+**Passo 4:** Para nossa implementação, usaremos _flip-flops_ tipo D sensíveis a borda de subida do _clock_. Temos 3 estados, portanto usaremos $\lceil log_23\rceil =2$ _flip-flops_. Com dois _flip-flops_, podemos representar até $2^2=4$ estados possíveis, portanto há um estado sobrando. A aplicação é crítica pois caso a máquina atinja o estado AM ou VD erroneamente, poderá causar um acidente. Neste sentido, optamos por forçar o estado extra para produzir uma saída vermelha (10) e ir para o estado VM no próximo ciclo, independente da entrada. A designação de estados será: 00 para o estado extra, que chamaremos de EX; 01 para o estado VD, 11 para o estado AM, e 10 para o estado VM. Note que esta designação condiz com a saída para os estados válidos, o que foi proposital.
+
+**Passo 5:** A tabela de excitação é exatamente a tabela de próximo estado, porém com os estados substituídos pela sua designação pois usamos _flip-flops_ tipo D, que copiam a entrada para a saída. Caso o elemento de memória fosse diferente, nesta tabela deveríamos colocar as entradas do elemento de memória adequadas para que o próximo estado seja o ta tabela de transição de estados. Também copiamos a tabela de saída para incluir a saída no caso do estado extra.
+
+<table class="tg">
+  <tr>
+    <th class="tg-88nc" rowspan="2">Estado Atual</th>
+    <th class="tg-88nc" colspan="2">Próximo Estado</th>
+    <th class="tg-kiyi" rowspan="2">Saída</th>
+  </tr>
+  <tr>
+    <td class="tg-88nc">m=0</td>
+    <td class="tg-88nc">m=1</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">EX(00)</td>
+    <td class="tg-c3ow">VM(10)</td>
+    <td class="tg-c3ow">VM(10)</td>
+    <td class="tg-c3ow">10</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">VD(01)</td>
+    <td class="tg-c3ow">VD(01)</td>
+    <td class="tg-c3ow">VM(10)</td>
+    <td class="tg-c3ow">01</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">AM(11)</td>
+    <td class="tg-c3ow">VD(01)</td>
+    <td class="tg-c3ow">VD(01)</td>
+    <td class="tg-c3ow">11</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">VM(10)</td>
+    <td class="tg-c3ow">VM(10)</td>
+    <td class="tg-c3ow">AM(11)</td>
+    <td class="tg-c3ow">10</td>
+  </tr>
+</table>
+
+Mantivemos os nomes dos estados e colocamos a designação entre parênteses para facilitar a leitura (esta prática é comum quando utiliza-se _flip-flop_ tipo D). Os números entre parênteses representam as variáveis de estado, que chamaremos de $q_1q_0$.
+
+**Passo 6:** Neste passo, devemos encontrar as funções de excitação e de saída. A construção e solução do mapa de Karnaugh foi omitida pois não é assunto deste artigo, porém ambas as equações foram encontradas usando este método.
+
+$$
+q_1^{t+1}=\overline{q_0}+m.\overline{q_1}\\
+q_0^{t+1}=\overline{m}.q_0+m.q_1\\
+\quad\\
+c_1=\overline{q_0}+q_1\\
+c_0=q_0
+$$
+
+**Passo 7:**
