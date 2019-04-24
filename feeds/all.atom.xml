@@ -209,12 +209,12 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
 &lt;p&gt;Note que o circuito gerado é um pouco maior devido a arquitetura para o qual foi sintetizado (FPGA).&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;&lt;/p&gt;
 &lt;h4&gt;Exemplo 2 (Mealy) - Estilo com dois &lt;code&gt;process&lt;/code&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl05.png' width="50%" align="right" style="padding-left:0%" /&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;proccombmealy&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="nc"&gt;fsm&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;doisprocmealy&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="nc"&gt;fsm&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
   &lt;span class="k"&gt;type&lt;/span&gt; &lt;span class="n"&gt;estado_t&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
   &lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;PE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;estado_t&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="k"&gt;begin&lt;/span&gt;
 
-  &lt;span class="nc"&gt;sincrono&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nc"&gt;sincrono&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="k"&gt;begin&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reset_n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
       &lt;span class="n"&gt;EA&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -223,19 +223,33 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
     &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt; &lt;span class="nc"&gt;sincrono&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-  &lt;span class="n"&gt;PE&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;
-    &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
-    &lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
-    &lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
-    &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
-    &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;
-    &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
-    &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
-    &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
-    &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;
-    &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;proccombmealy&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nc"&gt;combinatorio&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;case&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EA&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+      &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+          &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+          &lt;span class="n"&gt;PE&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;
+          &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+          &lt;span class="n"&gt;PE&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;entrada&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+          &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+          &lt;span class="n"&gt;PE&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;
+          &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+          &lt;span class="n"&gt;PE&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="k"&gt;others&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+        &lt;span class="n"&gt;saida&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;PE&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;case&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;process&lt;/span&gt; &lt;span class="nc"&gt;combinatorio&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;doisprocmealy&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
