@@ -14,7 +14,7 @@ Máquinas de estado são muito comuns pois, em sistemas digitais, todos os circu
 
 ![Modelo de FSM]({static}/images/sd/fsmmodel.png)
 
-O modelo base de qualquer máquina de estados em sistemas digitais pode ser visto na figura. É composto por um elemento de memória (S) e duas funções combinatórias, uma de transição de estados (T) e outra de saída (G). Quando a função de saída depende somente do estado (ausência da seta tracejada na figura), dizemos que a máquina segue o modelo de Moore. Ao contrário, quando a saída da máquina depende do estado e da entrada (presença da seta tracejada na figura), dizemos que a máquina segue o modelo de Mealy. Em ambos os casos, somente o elemento de memória é sequencial. As funções são puramente combinatórias e dependem somente da entrada (da função) para produzir a saída. Note que, apesar de dependerem apenas na sua entrada,ambas as funções recebem a saída do elemento combinatório como entrada.
+O modelo base de qualquer máquina de estados em sistemas digitais pode ser visto na figura. É composto por um elemento de memória (S) e duas funções combinatórias, uma de transição de estados (T) e outra de saída (G). Quando a função de saída depende somente do estado (ausência da seta tracejada na figura), dizemos que a máquina segue o modelo de Moore. Ao contrário, quando a saída da máquina depende do estado e da entrada (presença da seta tracejada na figura), dizemos que a máquina segue o modelo de Mealy. Em ambos os casos, somente o elemento de memória é sequencial. As funções são puramente combinatórias e dependem somente da entrada (da função) para produzir a saída. Note que, apesar de dependerem apenas na sua entrada, ambas as funções recebem a saída do elemento combinatório como entrada.
 
 Resumindo:
 
@@ -86,7 +86,7 @@ Fora do processo, temos duas declarações concorrentes ao `process`, que repres
 
 Este estilo tem a vantagem de ser muito próximo do modelo tradicional de máquinas de estado. O processo síncrono é muito simples (será similar independentemente da máquina) e com pouco espaço para erros. A desvantagem é que este estilo se torna críptico rapidamente, pois a descrição combinatória das funções de transição e de próximo estado crescerão exponencialmente em complexidade e tamanho junto com a complexidade da máquina, tornando-se ilegíveis rapidamente.
 
-Use esse estilo nas suas primeiras máquinas de estado, para garantir que você não terá problemas de sincronismo, ou se a máquina for muito simples ou com poucos estados..
+Use esse estilo nas suas primeiras máquinas de estado, para garantir que você não terá problemas de sincronismo, ou se a máquina for muito simples ou com poucos estados.
 
 
 #### Exemplo 1 (Moore) - Estilo com dois `process`
@@ -242,12 +242,12 @@ Note que o circuito gerado é um pouco maior devido a arquitetura para o qual fo
 #### Exemplo 2 (Mealy) - Estilo com dois `process`
 <img src='{static}/images/sd/fsmvhdl05.png' width="50%" align="right" style="padding-left:0%" />
 ```vhdl
-architecture proccombmealy of fsm is
+architecture doisprocmealy of fsm is
   type estado_t is (A,B);
   signal PE,EA : estado_t;
 begin
 
-  sincrono: process(clock, reset_n)
+  sincrono: process(clock, reset_n, PE)
   begin
     if (reset_n='0') then
       EA <= A;
@@ -256,19 +256,33 @@ begin
     end if;
   end process sincrono;
 
-  PE <=
-    A when entrada='0' and EA=A else
-    B when entrada='1' and EA=A else
-    B when entrada='0' and EA=B else
-    A when entrada='1' and EA=B else
-    A;
-  saida <=
-    '0' when entrada='0' and EA=A else
-    '0' when entrada='1' and EA=A else
-    '1' when entrada='0' and EA=B else
-    '1' when entrada='1' and EA=B else
-    '0';
-end architecture proccombmealy;
+  combinatorio: process(EA, entrada)
+  begin
+    saida <= '0';
+    case(EA) is
+      when A =>
+        if entrada='1' then
+          saida <= '0';
+          PE <= B;
+        else
+          saida <= '0';
+          PE <= A;
+        end if;
+      when B =>
+        if entrada='1' then
+          saida <= '1';
+          PE <= A;
+        else
+          saida <= '1';
+          PE <= B;
+        end if;
+      when others =>
+        saida <= '0';
+        PE <= A;
+    end case;
+  end process combinatorio;
+
+end architecture doisprocmealy;
 ```
 Observe que não há diferença entre o circuito gerado para esta máquina e para a máquina Moore com dois processos.
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
