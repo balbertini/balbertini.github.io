@@ -286,3 +286,7 @@ end architecture doisprocmealy;
 ```
 Observe que não há diferença entre o circuito gerado para esta máquina e para a máquina Moore com dois processos.
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
+
+### Dicas gerais
+
+Use nomes significativos. Para estados, tente
