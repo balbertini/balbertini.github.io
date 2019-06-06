@@ -1,5 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2019-03-19T10:58:00-03:00</updated><entry><title>Máquinas de estado em VHDL</title><link href="https://balbertini.github.io/vhdlsm-pt_BR.html" rel="alternate"></link><published>2019-03-18T11:06:00-03:00</published><updated>2019-03-19T10:58:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-18:/vhdlsm-pt_BR.html</id><summary type="html">&lt;p&gt;Máquinas de estado em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Máquinas de estado são muito comuns pois, em sistemas digitais, todos os circuitos sequenciais podem ser vistos como uma máquina de estados finita. No entanto, especificá-las em VHDL é um desafio para os projetistas novatos devido aos problemas que surgem quando o tempo está envolvido. Circuitos combinatórios não dependem de tempo e não possuem memória, porém máquinas de estado possuem e precisam ser projetadas com o devido cuidado. Neste artigo mostrarei algumas formas seguras de especificar corretamente máquinas de estado finitas síncronas e determinísticas em VHDL.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2019-06-06T16:45:00-03:00</updated><entry><title>Memórias em VHDL</title><link href="https://balbertini.github.io/vhdlmem-pt_BR.html" rel="alternate"></link><published>2019-05-30T13:31:00-03:00</published><updated>2019-06-06T16:45:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-05-30:/vhdlmem-pt_BR.html</id><summary type="html">&lt;p&gt;Memórias em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As memória são parte integrante de qualquer sistema digital sequencial. Enquanto trabalhamos com circuitos simples ou máquinas de estado, costumamos usar &lt;em&gt;flip-flops&lt;/em&gt; como elementos de memória. Contudo, as tarefas mais complexas não escalam devido ao tamanho dos elementos de memória envolvidos. Considerando a tarefa de guardar informações, é útil utilizarmos estruturas de memórias específicas, como RAMs ou ROMs.&lt;/p&gt;
+&lt;p&gt;Neste artigo, veremos como representar memórias do tipo RAM e ROM em VHDL.&lt;/p&gt;
+&lt;h2&gt;Descrição base&lt;/h2&gt;
+&lt;p&gt;Postergaremos a descrição da entidade (veja os exemplos no final do artigo), bastando o conhecimento que a memória possui uma porta de entrada de endereços (&lt;code&gt;addr&lt;/code&gt;), uma entrada de dados (&lt;code&gt;data_i&lt;/code&gt;) e uma saída de dados (&lt;code&gt;data_o&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;A memória em VHDL será então uma &lt;strong&gt;matriz&lt;/strong&gt; (&lt;code&gt;array&lt;/code&gt;) do &lt;strong&gt;tipo de dado&lt;/strong&gt; que se quer representar. O tamanho (profundidade) da matriz define o tamanho da memória e normalmente é representado por &lt;span class="math"&gt;\(n\)&lt;/span&gt;, onde &lt;span class="math"&gt;\(n=2^{a_s}\)&lt;/span&gt; e &lt;span class="math"&gt;\(a_s\)&lt;/span&gt; é o tamanho em bits do endereço &lt;code&gt;addr&lt;/code&gt;. A matriz vai então de &lt;span class="math"&gt;\(0\)&lt;/span&gt; até &lt;span class="math"&gt;\(n-1\)&lt;/span&gt;, contendo efetivamente &lt;span class="math"&gt;\(n\)&lt;/span&gt; posições.&lt;/p&gt;
+&lt;p&gt;Cada posição da matriz é uma palavra de memória, representada pelo tipo de dado que se quer armazenar. O tamanho de cada palavra de memória é igual ao tamanho do tipo de dado usado, expresso por &lt;span class="math"&gt;\(d_s\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Vamos ao exemplo, que deve estar no preâmbulo da arquitetura:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;type&lt;/span&gt; &lt;span class="n"&gt;mem_t&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="mi"&gt;31&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;mem&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;mem_t&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;No trecho, estamos descrevendo duas coisas, uma abstrata (de apoio a representação de hardware) e uma descrição física (que irá de fato gerar um hardware). A descrição abstrata é a declaração do sinal &lt;code&gt;mem_t&lt;/code&gt; na primeira linha. Apesar de não gerar um hardware por si só, estamos declarando um tipo do usuário que é uma matriz (&lt;code&gt;array&lt;/code&gt;) de 32 posições (de 0 a 31). Cada posição armazena um &lt;code&gt;bit_vector&lt;/code&gt; de 4 bits. Podemos dizer que acabamos de declarar uma memória com &lt;span class="math"&gt;\(n=32\)&lt;/span&gt; (ou &lt;span class="math"&gt;\(a_s=5\)&lt;/span&gt;) e &lt;span class="math"&gt;\(d_s=4\)&lt;/span&gt;. Esta memória possui então 32 palavras de 4 bits, ou 128 bits no total.&lt;/p&gt;
+&lt;p&gt;A segunda declaração efetivamente descreve a memória, fazendo com que o sinal &lt;code&gt;mem&lt;/code&gt; seja interpretado como a matriz declarada anteriormente.&lt;/p&gt;
+&lt;p&gt;Mas é só isso? Sim, é só isso. Ao declarar uma matriz da maneira descrita, o sintetizador irá entender automaticamente que o que você quer descrever é uma memória. O tipo de memória será determinado pelo restante da sua descrição, que deverá conter as operações possíveis sobre a matriz recém declarada.&lt;/p&gt;
+&lt;h2&gt;Operando sobre a matriz de memória&lt;/h2&gt;
+&lt;p&gt;Há duas operações possíveis, a escrita e a leitura. Para ler do vetor, basta indexá-lo com a posição do vetor que deseja-se ler. O resultado da indexação será um dado do mesmo tipo que o declarado anteriormente como o tipo de dado da memória.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;data_o&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;mem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;to_integer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;unsigned&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;addr&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para escrever no vetor, basta inverter a escrita, ou seja, atribuir um valor do mesmo tipo que o declarado na memória à uma posição do vetor, indexada da mesma maneira.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;mem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;to_integer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;unsigned&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;addr&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;data_i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note que o &lt;code&gt;addr&lt;/code&gt; deve ser um inteiro pois este é o único tipo de dados permitido para indexação (neste caso usamos uma rotina de conversão para converter o &lt;code&gt;addr&lt;/code&gt; para um inteiro sem sinal). Também observe que ambas as construções devem estar dentro do corpo da arquitetura e são susceptíveis a qualquer estrutura em que estejam inseridas.&lt;/p&gt;
+&lt;p&gt;Um conceito importante que costuma gerar dúvidas é a inserção destas operações dentro de um &lt;code&gt;process&lt;/code&gt;, o que a tornaria sequencial. No caso da leitura, isto é opcional e o comando pode estar dentro ou fora do &lt;code&gt;process&lt;/code&gt;. Quando fora, a memória gerada fará uma leitura de forma combinatória e cabe ao utilizador da memória esperar o tempo adequado para a estabilização dos dados (decodificação do endereço), evitando os possíveis &lt;em&gt;glitches&lt;/em&gt;. Ao contrário, a escrita deve estar dentro de um &lt;code&gt;process&lt;/code&gt; pois uma escrita combinatória pode gerar efeitos indesejados (e.g. escrita de parte da palavra em um endereço e parte em outra). Isto não é uma limitação da linguagem e sim uma descrição errada. Lembro também que isto não tem relação com a sincronicidade da memória a um &lt;em&gt;clock&lt;/em&gt;, pois o sinal de disparo do &lt;code&gt;process&lt;/code&gt; não precisa ser um &lt;em&gt;clock&lt;/em&gt;. É possível descrever memórias com escritas combinatórias em VHDL, mas nesse caso a decodificação de endereço deve ser realizada antes da escrita, que deve ser controlada de fora da memória. No entanto, se você está começando, atenha-se a:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;escrita sequencial (dentro de um &lt;code&gt;process&lt;/code&gt;), e&lt;/li&gt;
+&lt;li&gt;leitura combinatória para ROMs, e&lt;/li&gt;
+&lt;li&gt;leitura sequencial ou combinatória para RAMs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Carregamento Inicial&lt;/h2&gt;
+&lt;p&gt;Em várias situações, é útil a memória já conter algum valor no momento em que é sintetizada, principalmente quando se trata de uma ROM. Isto pode ser feito de duas maneiras: através de um literal constante na própria descrição ou através de um arquivo externo.&lt;/p&gt;
+&lt;h3&gt;Literal&lt;/h3&gt;
+&lt;p&gt;Para carregar os valores com um literal na própria descrição, basta atribuir o valor na declaração do sinal que representa a matriz. Isto pode ser feito da seguinte maneira:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;mem&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;mem_type&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+  &lt;span class="s"&gt;&amp;quot;0000&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0001&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0010&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0011&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0100&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0101&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0110&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0111&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s"&gt;&amp;quot;1000&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1001&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1010&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1011&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1100&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1101&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1110&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1111&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s"&gt;&amp;quot;0000&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0001&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0010&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0011&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0100&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0101&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0110&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0111&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s"&gt;&amp;quot;1000&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1001&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1010&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1011&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1100&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1101&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1110&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1111&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ao declarar a matriz de memória podemos atribuir um valor inicial usando o operador &lt;code&gt;:=&lt;/code&gt;. No exemplo acima, há exatamente 32 palavras de 4 bits, o que preenche completamente a memória. A representação usada para cada palavra é a mesma usada para o tipo de dados declarado no tipo da memória (nesse caso &lt;code&gt;bit_vector&lt;/code&gt;).&lt;/p&gt;
+&lt;h3&gt;Arquivo&lt;/h3&gt;
+&lt;p&gt;A ideia de se carregar a memoria usando um literal parece interessante porém se torna difícil quando a memória é grande, pois o literal está junto com a descrição da memória no arquivo VHDL. Imagine uma memória com o tamanho de uma memória atual, e calcule a quantidade de palavras que você terá que especificar...&lt;/p&gt;
+&lt;p&gt;Para amenizar o problema, há uma biblioteca do pacote IEEE chamada de &lt;code&gt;textio&lt;/code&gt;, que contém primitivas de leitura de arquivos. Podemos facilmente utilizá-la para ler o conteúdo inicial da memória de um arquivo externo ao VHDL e escrevê-lo na matriz de memória. Para fazer uso desta biblioteca, temos que declarar o uso do pacote &lt;code&gt;ieee.textio&lt;/code&gt; (lembre-se do &lt;code&gt;.all&lt;/code&gt; ou das funcionalidades que irá utilizar), o que nos disponibilizará as rotinas de manipulação de arquivos. Para atribuir um valor inicial à matriz de memória, escrevemos uma função auxiliar que lê os dados do arquivo e preenche uma matriz temporária idêntica a matriz de memória, assim podemos atribuir a matriz temporária à matriz de memória durante a sua declaração. Vejamos um exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;impure&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="n"&gt;inicializa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nome_do_arquivo&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;mem_t&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;file&lt;/span&gt;     &lt;span class="n"&gt;arquivo&lt;/span&gt;  &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="k"&gt;open&lt;/span&gt; &lt;span class="n"&gt;read_mode&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;nome_do_arquivo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;variable&lt;/span&gt; &lt;span class="n"&gt;linha&lt;/span&gt;    &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;variable&lt;/span&gt; &lt;span class="n"&gt;temp_bv&lt;/span&gt;  &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;variable&lt;/span&gt; &lt;span class="n"&gt;temp_mem&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;mem_t&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;mem_t&lt;/span&gt;&lt;span class="na"&gt;&amp;#39;range&lt;/span&gt; &lt;span class="k"&gt;loop&lt;/span&gt;
+      &lt;span class="n"&gt;readline&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arquivo&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;linha&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;linha&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;temp_bv&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="n"&gt;temp_mem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;temp_bv&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;loop&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;temp_mem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;mem&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;mem_t&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;inicializa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;rom32x4.dat&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A função, resumidamente, está lendo um arquivo (cujo nome é seu único parâmetro) linha por linha, considerando que há uma palavra de memória por linha, na forma de um &lt;code&gt;bit_vector&lt;/code&gt; de 4 bits. Note que a função só lerá a quantidade de dados necessária para preencher a memória pois o laço é limitado pelo tamanho do tipo da memória. No nosso exemplo, ela lerá as primeiras 32 palavras (uma por linha, então 32 linhas) do arquivo, esperando que cada linha contenha exatamente 4 bits. Na última linha do exemplo declaramos a matriz de memória atribuindo como valor inicial o valor retornado pela função, que é invocada com o nome do arquivo como parâmetro. Um exemplo de arquivo é:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;0000
+0001
+0010
+...
+1111
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Observe que o arquivo terá 32 linhas, que omito por questões de espaço.&lt;/p&gt;
+&lt;h3&gt;Considerações sobre valores iniciais&lt;/h3&gt;
+&lt;p&gt;Normalmente, atribuições na declaração do sinal ou variável não são levadas em consideração pelo sintetizador e tem efeitos somente para simulação. Contudo, em algumas situações a maioria dos sintetizadores leva em consideração o valor declarado na descrição. Uma delas é quando declaramos uma constante e não um sinal. Isto faz sentido pois o valor inicial de uma memória faz sentido se esta for uma ROM, portanto não será escrita. Dessa forma, a declaração da matriz de memória será:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;constant&lt;/span&gt; &lt;span class="n"&gt;mem&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;mem_type&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ambas as técnicas de atribuição de valores iniciais são válidas e podem ser usadas na declaração da matriz de memória (constante agora).&lt;/p&gt;
+&lt;h2&gt;Exemplos&lt;/h2&gt;
+&lt;p&gt;Os exemplos a seguir podem ser baixados e usados livremente, desde que respeitada a autoria &lt;a href="https://creativecommons.org/licenses/by/4.0/"&gt;CC-BY 4.0&lt;/a&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/ram.vhd"&gt;RAM&lt;/a&gt; síncrona genérica parametrizável, com &lt;code&gt;WE&lt;/code&gt; (no exemplo o sinal chama-se &lt;code&gt;wr&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/rom.vhd"&gt;ROM&lt;/a&gt; genérica parametrizável, com carga externa.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/rom32x4.vhd"&gt;ROM&lt;/a&gt; de 32 palavras de 4 bits (como no exemplo deste artigo), com carga por literal e externa.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/rom32x4.dat"&gt;Arquivo de dados&lt;/a&gt; para carga externa nos exemplos.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/memorias_tb.vhd"&gt;&lt;em&gt;Testbench&lt;/em&gt;&lt;/a&gt; para todas as memórias acima (para rodar são necessários todos os arquivos).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/utils.vhd"&gt;Rotinas&lt;/a&gt; auxiliares para impressão dos vetores no &lt;em&gt;testbench&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="vhdl"></category><category term="memory"></category></entry><entry><title>Máquinas de estado em VHDL</title><link href="https://balbertini.github.io/vhdlsm-pt_BR.html" rel="alternate"></link><published>2019-03-18T11:06:00-03:00</published><updated>2019-03-19T10:58:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-18:/vhdlsm-pt_BR.html</id><summary type="html">&lt;p&gt;Máquinas de estado em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Máquinas de estado são muito comuns pois, em sistemas digitais, todos os circuitos sequenciais podem ser vistos como uma máquina de estados finita. No entanto, especificá-las em VHDL é um desafio para os projetistas novatos devido aos problemas que surgem quando o tempo está envolvido. Circuitos combinatórios não dependem de tempo e não possuem memória, porém máquinas de estado possuem e precisam ser projetadas com o devido cuidado. Neste artigo mostrarei algumas formas seguras de especificar corretamente máquinas de estado finitas síncronas e determinísticas em VHDL.&lt;/p&gt;
 &lt;h3&gt;Revisitando o conceito de máquinas de estado&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="Modelo de FSM" src="https://balbertini.github.io/images/sd/fsmmodel.png"&gt;&lt;/p&gt;
 &lt;p&gt;O modelo base de qualquer máquina de estados em sistemas digitais pode ser visto na figura. É composto por um elemento de memória (S) e duas funções combinatórias, uma de transição de estados (T) e outra de saída (G). Quando a função de saída depende somente do estado (ausência da seta tracejada na figura), dizemos que a máquina segue o modelo de Moore. Ao contrário, quando a saída da máquina depende do estado e da entrada (presença da seta tracejada na figura), dizemos que a máquina segue o modelo de Mealy. Em ambos os casos, somente o elemento de memória é sequencial. As funções são puramente combinatórias e dependem somente da entrada (da função) para produzir a saída. Note que, apesar de dependerem apenas na sua entrada, ambas as funções recebem a saída do elemento combinatório como entrada.&lt;/p&gt;
@@ -254,7 +401,9 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
 
 
 &lt;p&gt;Observe que não há diferença entre o circuito gerado para esta máquina e para a máquina Moore com dois processos.
-&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;&lt;/p&gt;</content><category term="vhdl"></category><category term="state machine"></category></entry><entry><title>Módulos genéricos parametrizáveis em VHDL</title><link href="https://balbertini.github.io/vhdlgeneric-pt_BR.html" rel="alternate"></link><published>2019-03-12T14:25:00-03:00</published><updated>2019-03-14T15:21:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-12:/vhdlgeneric-pt_BR.html</id><summary type="html">&lt;p&gt;Usando o generic em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Uma das características interessantes de HDLs (incluindo VHDL), é a capacidade de reutilização de módulos. Podemos aumentar ainda mais a reutilização descrevendo módulos parametrizáveis. Este artigo trata de como descrever módulos genéricos parametrizáveis em VHDL.&lt;/p&gt;
+&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3&gt;Dicas gerais&lt;/h3&gt;
+&lt;p&gt;Use nomes significativos. Para estados, tente&lt;/p&gt;</content><category term="vhdl"></category><category term="state machine"></category></entry><entry><title>Módulos genéricos parametrizáveis em VHDL</title><link href="https://balbertini.github.io/vhdlgeneric-pt_BR.html" rel="alternate"></link><published>2019-03-12T14:25:00-03:00</published><updated>2019-03-14T15:21:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-12:/vhdlgeneric-pt_BR.html</id><summary type="html">&lt;p&gt;Usando o generic em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Uma das características interessantes de HDLs (incluindo VHDL), é a capacidade de reutilização de módulos. Podemos aumentar ainda mais a reutilização descrevendo módulos parametrizáveis. Este artigo trata de como descrever módulos genéricos parametrizáveis em VHDL.&lt;/p&gt;
 &lt;h2&gt;Declarando um parâmetro genericamente&lt;/h2&gt;
 &lt;p&gt;Em muitos casos, a descrição de um módulo em VHDL pode não ser reaproveitável porque precisamos de um módulo ligeiramente diferente. Um exemplo: se descrevermos um registrador de 8 bits, poderemos usar este registrador somente em projetos que utilizam registradores de exatamente 8 bits. Contudo, quando o hardware é regular, ou seja, seu funcionamento é idêntico independentemente da característica variável, é possível descrevê-lo de forma a definir a característica variável no momento da instância e não da descrição. Dessa forma, descreve-se o módulo genericamente e somente no momento de utilizá-lo parametrizamos as características variáveis. No exemplo do registrador, podemos descrevê-lo genericamente de forma que o seu tamanho seja um parâmetro.&lt;/p&gt;
 &lt;p&gt;A palavra reservada que possibilita isso é a &lt;code&gt;generic&lt;/code&gt;. Na descrição da entidade do módulo, podemos incluir esta palavra, como a seguir:&lt;/p&gt;
