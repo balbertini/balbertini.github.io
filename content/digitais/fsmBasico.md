@@ -1,13 +1,12 @@
 Title: Máquinas de Estados Finitas
 Date: 2018-10-05 15:43
-Modified: 2018-10-05 15:43
+Modified: 2019-08-30 16:12
 Category: sistemas digitais
 Tags: sistemas digitais, fsm, simplificação
 Slug: fsmbasics
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Introdução a máquinas de estados finitas em sistemas digitais.
-Status: draft
 
 Uma máquina de estados é uma representação matemática de um sistema dependente de tempo. É composta por estados e transições. Cada estado representa o sistema em um determinado momento no tempo e não é possível uma máquina de estados estar em dois estados ao mesmo tempo. Quando uma máquina está em um estado, ela aguarda que as condições para uma transição sejam atingidas e, assim que forem, muda para o estado indicado por esta transição, repetindo o ciclo o ciclo. Cada máquina possui um estado inicial, onde a máquina começa, e pode ter um ou mais estados finais (ou de aceitação), indicando que a máquina terminou a tarefa computacional. É um modelo de computação bastante utilizado para modelar circuitos sequenciais.
 
@@ -87,7 +86,7 @@ O passo 1 consiste em entender o comportamento do sistema sequencial sendo model
 
 No passo 2 devemos identificar o número de estados necessários e anotar os momentos em que as saídas serão produzidas. A forma mais comum é expressar a saída deste passo com um diagrama de transição de estados. Pode ser útil nomear os estados no final do desenho do diagrama, pois este tende a mudar conforme se exercita a máquina. O teste de mesa (exercitar a máquina com entradas), é crucial para termos certeza que o diagrama atende a solução do problema. Também não precisamos nos preocupar com estados excessivos ou redundantes pois a máquina será minimizada posteriormente.
 
-A tabela de estados e a tabela de saída costumam ser montadas juntas, no passo 3. Esta tabela tem as mesmas informações que o passo 2, porém em forma de tabela. Opcionalmente podemos minimizar as tabelas usando um [método de minimização de máquinas de estado]({filename}../sd/fsmStateReduction.md).
+A tabela de estados e a tabela de saída costumam ser montadas juntas, no passo 3. Esta tabela tem as mesmas informações que o passo 2, porém em forma de tabela. Opcionalmente podemos minimizar as tabelas usando um [método de minimização de máquinas de estado]({filename}fsmStateReduction.md).
 
 Com as tabelas minimizadas, o passo 4 visa qualificar e quantificar o elemento de memória a ser usado ($S$). Normalmente usamos $n$ _flip-flops_ tipo D, sendo $n=\lceil log_2s\rceil$, onde $s$ é o número de estados. Caso o número de estados não seja uma potência de 2, deve-se decidir neste passo o que fazer com os estados que sobrarem. As opções possíveis são: (i) nada, assim aumentamos as possibilidades de minimização das funções combinatórias mas caso a máquina alcance um destes estados, a saída pode não ser neutra; (ii) forçar a saída para um valor neutro, diminuindo as possibilidades de minimização da função de saída; ou (iii) idem ao (ii) mas também forçamos a máquina para o estado inicial no próximo ciclo. A opção (i) é a que oferece a maior possibilidade de minimização e a opção (iii) é a mais segura. Com as escolhas feitas, deve-se determinar as variáveis de estado e designar o código de cada estado. Uma boa designação de estados pode implicar em melhor minimização, mas não há uma regra específica. Um truque comum é designarmos os estados usando código de Gray, assim os mapas de Karnaugh podem ser facilmente montados (assumindo que você utilizará esta técnica).
 
@@ -119,9 +118,9 @@ O passo 1 é o único críptico na análise de máquinas de estado finitas. A ra
 
 # Exemplo
 
-Este é um exemplo clássico de uma máquina de estados simples, mas que todos reconhecem: o semáforo. Projete o circuito para uma máquina de estados que opere um semáforo de três fases: verde, amarela e vermelha. A entrada é $m$, proveniente de um temporizador, que caso alta na fase verde causa uma mudança para a fase a amarela e caso alta na fase vermelha causa uma mudança para a fase verde. A mudança da fase amarela para a vermelha é independente da entrada. A saída da máquina de estados é dada por dois bits, $c_1c_0$, que indicam qual cor está acesa: 00 apagado, 01 verde, 11 amarelo e 10 vermelho.
+Este é um exemplo clássico de uma máquina de estados simples, mas que todos reconhecem: o semáforo. Projete o circuito para uma máquina de estados que opere um semáforo de três fases: verde, amarela e vermelha. A entrada é $m$, proveniente de um temporizador, que caso alta na fase verde causa uma mudança para a fase a amarela e caso alta na fase vermelha causa uma mudança para a fase verde. A mudança da fase amarela para a vermelha é independente da entrada. A saída da máquina de estados é dada por dois bits, $c_1c_0$, que indicam qual cor está acesa: 10 verde, 11 amarelo e 01 vermelho.
 
-**Passo 1:** Variáveis de entrada: somente $m$ de 1 bit. Variáveis de saída: $c_1c_0$ de 2 bits, 00 apagado, 01 verde, 11 amarelo e 10 vermelho. O semáforo trabalha de forma circular acendendo as cores vermelho, amarelo e verde, em sequência repetitiva. O tempo que a máquina permanece na cor amarela é dado pelo período do _clock_, pois não há condição para a transição. Já o tempo que a máquina permanece no vermelho e no verde é indicado pelo sinal do temporizador, que é representado pela entrada. Quando a entrada for alta (1), deve-se trocar de estado na próxima borda do _clock_. Convencionaremos o _reset_ assíncrono ativo baixo e a memória sensível a borda de subida do _clock_. Escolheremos um modelo de Moore, sem nenhuma vantagem ou desvantagem explícita.
+**Passo 1:** Variáveis de entrada: somente $m$ de 1 bit. Variáveis de saída: $c_1c_0$ de 2 bits, 10 verde, 11 amarelo e 01 vermelho (não foi especificado o que acontece em 00). O semáforo trabalha de forma circular acendendo as cores vermelho, amarelo e verde, em sequência repetitiva. O tempo que a máquina permanece na cor amarela é dado pelo período do _clock_, pois não há condição para a transição. Já o tempo que a máquina permanece no vermelho e no verde é indicado pelo sinal do temporizador, representado pela entrada $m$. Quando a entrada for alta ($m=1$), deve-se trocar de estado na próxima borda do _clock_. Convencionaremos o _reset_ assíncrono ativo baixo e o elemento de memória sensível a borda de subida do _clock_. Escolheremos um modelo de Moore, sem nenhuma vantagem ou desvantagem explícita.
 
 <img src='{static}/images/sd/semaforo.png' width="35%" align="right" style="padding-left:5%" />
 **Passo 2:** A descrição funcional foi feita durante a análise do problema no passo 1. O diagrama de transição de estados pode ser visto na figura ao lado. Note que já demos os nomes para os estados de acordo com a cor: VM vermelha, VD verde e AM amarela. A entrada de 1 bit foi especificada nas transições e a saída de 2 bits na parte inferior do estado, de acordo com o identificado no passo 1.
@@ -148,28 +147,30 @@ Este é um exemplo clássico de uma máquina de estados simples, mas que todos r
     <td class="tg-88nc">m=1</td>
   </tr>
   <tr>
-    <td class="tg-c3ow">VD</td>
-    <td class="tg-c3ow">VD</td>
     <td class="tg-c3ow">VM</td>
+    <td class="tg-c3ow">VM</td>
+    <td class="tg-c3ow">VD</td>
     <td class="tg-c3ow">01</td>
   </tr>
   <tr>
     <td class="tg-c3ow">AM</td>
-    <td class="tg-c3ow">VD</td>
-    <td class="tg-c3ow">VD</td>
+    <td class="tg-c3ow">VM</td>
+    <td class="tg-c3ow">VM</td>
     <td class="tg-c3ow">11</td>
   </tr>
   <tr>
-    <td class="tg-c3ow">VM</td>
-    <td class="tg-c3ow">VM</td>
+    <td class="tg-c3ow">VD</td>
+    <td class="tg-c3ow">VD</td>
     <td class="tg-c3ow">AM</td>
     <td class="tg-c3ow">10</td>
   </tr>
 </table>
 
-Note que as tabelas estão juntas. A coluna Estado Atual mostra o estado em que a máquina se encontra, e a coluna Saída mostra a saída para aquele estado. A coluna Próximo Estado contém as transições, ou seja, para qual estado a máquina irá no próximo ciclo de _clock_ caso a entrada $m$ seja 0 ou 1. Esta tabela é pequena, portanto basta uma rápida análise para perceber que não há reduções possíveis.
+Note que as tabelas de próximo estado e de saída estão juntas na mesma tabela. A coluna **Estado Atual** mostra o estado em que a máquina se encontra, e a coluna **Saída** mostra a saída para aquele estado. A coluna **Próximo Estado** contém as transições, ou seja, para qual estado a máquina irá no próximo ciclo de _clock_ caso a entrada $m$ seja 0 ou 1. Esta tabela é pequena, portanto basta uma rápida análise para perceber que não há reduções possíveis.
 
-**Passo 4:** Para nossa implementação, usaremos _flip-flops_ tipo D sensíveis a borda de subida do _clock_. Temos 3 estados, portanto usaremos $\lceil log_23\rceil =2$ _flip-flops_. Com dois _flip-flops_, podemos representar até $2^2=4$ estados possíveis, portanto há um estado sobrando. A aplicação é crítica pois caso a máquina atinja o estado AM ou VD erroneamente, poderá causar um acidente. Neste sentido, optamos por forçar o estado extra para produzir uma saída vermelha (10) e ir para o estado VM no próximo ciclo, independente da entrada. A designação de estados será: 00 para o estado extra, que chamaremos de EX; 01 para o estado VD, 11 para o estado AM, e 10 para o estado VM. Note que esta designação condiz com a saída para os estados válidos, o que foi proposital.
+Dica: é muito comum representar as duas tabelas em uma só para economizar espaço, pois a coluna de estado atual é idêntica nas duas. Note também que a ordem dos estados já foi colocada de forma a facilitar a utilização do método de minimização gráfica por mapa de Karnaugh.
+
+**Passo 4:** Para nossa implementação, usaremos _flip-flops_ tipo D sensíveis a borda de subida do _clock_. Temos 3 estados, portanto usaremos $\lceil log_23\rceil =2$ _flip-flops_. Com dois _flip-flops_, podemos representar até $2^2=4$ estados possíveis, portanto há um estado sobrando. A aplicação é crítica pois caso a máquina atinja o estado AM ou VD erroneamente, poderá causar um acidente. Neste sentido, optamos por forçar o estado extra para produzir uma saída vermelha (10) e ir para o estado VM no próximo ciclo, independente da entrada. A designação de estados será: 00 para o estado extra, que chamaremos de EX; 01 para o estado VM, 11 para o estado AM, e 10 para o estado VD. Note que esta designação condiz com a saída para os estados válidos, o que foi proposital para minimizar as funções de saída.
 
 **Passo 5:** A tabela de excitação é exatamente a tabela de próximo estado, porém com os estados substituídos pela sua designação pois usamos _flip-flops_ tipo D, que copiam a entrada para a saída. Caso o elemento de memória fosse diferente, nesta tabela deveríamos colocar as entradas do elemento de memória adequadas para que o próximo estado seja o ta tabela de transição de estados. Também copiamos a tabela de saída para incluir a saída no caso do estado extra.
 
@@ -185,14 +186,14 @@ Note que as tabelas estão juntas. A coluna Estado Atual mostra o estado em que 
   </tr>
   <tr>
     <td class="tg-c3ow">EX(00)</td>
-    <td class="tg-c3ow">VM(10)</td>
-    <td class="tg-c3ow">VM(10)</td>
-    <td class="tg-c3ow">10</td>
+    <td class="tg-c3ow">VM(01)</td>
+    <td class="tg-c3ow">VM(01)</td>
+    <td class="tg-c3ow">01</td>
   </tr>
   <tr>
-    <td class="tg-c3ow">VD(01)</td>
-    <td class="tg-c3ow">VD(01)</td>
-    <td class="tg-c3ow">VM(10)</td>
+    <td class="tg-c3ow">VM(01)</td>
+    <td class="tg-c3ow">VM(01)</td>
+    <td class="tg-c3ow">VD(10)</td>
     <td class="tg-c3ow">01</td>
   </tr>
   <tr>
@@ -202,8 +203,8 @@ Note que as tabelas estão juntas. A coluna Estado Atual mostra o estado em que 
     <td class="tg-c3ow">11</td>
   </tr>
   <tr>
-    <td class="tg-c3ow">VM(10)</td>
-    <td class="tg-c3ow">VM(10)</td>
+    <td class="tg-c3ow">VD(10)</td>
+    <td class="tg-c3ow">VD(10)</td>
     <td class="tg-c3ow">AM(11)</td>
     <td class="tg-c3ow">10</td>
   </tr>
@@ -211,14 +212,20 @@ Note que as tabelas estão juntas. A coluna Estado Atual mostra o estado em que 
 
 Mantivemos os nomes dos estados e colocamos a designação entre parênteses para facilitar a leitura (esta prática é comum quando utiliza-se _flip-flop_ tipo D). Os números entre parênteses representam as variáveis de estado, que chamaremos de $q_1q_0$.
 
-**Passo 6:** Neste passo, devemos encontrar as funções de excitação e de saída. A construção e solução do mapa de Karnaugh foi omitida pois não é assunto deste artigo, porém ambas as equações foram encontradas usando este método.
+**Passo 6:** Neste passo, devemos encontrar as funções de excitação e de saída. A construção e solução do mapa de Karnaugh foi omitida pois não é assunto deste artigo, porém ambas as equações foram encontradas usando este método. Note que, como usamos _flip-flops_ tipo D, $d_1=q_1^{t+1}$ e $d_0=q_0^{t+1}$.
 
 $$
-q_1^{t+1}=\overline{q_0}+m.\overline{q_1}\\
-q_0^{t+1}=\overline{m}.q_0+m.q_1\\
+q_1^{t+1}=q_1.\overline{q_0}+\overline{q_1}.q_0.m\\
+q_0^{t+1}=\overline{q_1}.\overline{q_0}+q_0.\overline{m}+q_1.m\\
 \quad\\
-c_1=\overline{q_0}+q_1\\
-c_0=q_0
+c_1=q_1\\
+c_0=\overline{q_1}+q_0
 $$
 
-**Passo 7:**
+<img src='{static}/images/sd/fsmSemaforo.png' width="35%" align="right" style="padding-left:5%" />
+**Passo 7:** Com as equações em mãos, basta montar o circuito correspondente. Começamos colocando os elementos de memória na parte central (dois _flip-flops_) tipo D e nomeamos como _q1_ e _q0_. As saídas dos _flip-flops_ correspondem às variáveis de estado homônimas, e as entradas devem ser as saídas das funções de próximo estado. Após colocarmos os elementos de memória, continuamos seguindo as convenções e colocamos a esquerda o circuito combinatório correspondente à função de transição de estados e a direita o correspondente a de saída.
+Ainda no circuito vemos a entrada de _clock_ e de _reset_, um botão que emula o sinal vindo do temporizador e uma saída RGB que corresponde ao semáforo.
+
+Para baixar este circuito no formato do LogiSim [clique aqui]({static}/extra/sd/fsmSemaforo.circ).
+
+<div style="border: 0px; overflow: auto;width: 100%;"></div>

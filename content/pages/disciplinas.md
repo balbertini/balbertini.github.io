@@ -18,7 +18,7 @@ Summary: Disciplinas.
 * [PCS3345](https://uspdigital.usp.br/jupiterweb/obterDisciplina?sgldis=PCS3345) - Laboratório Digital B
 * [PCS3635](https://uspdigital.usp.br/jupiterweb/obterDisciplina?sgldis=PCS3635) - Laboratório Digital I
 * [PCS3645](https://uspdigital.usp.br/jupiterweb/obterDisciplina?sgldis=PCS3645) - Laboratório Digital II
-
+* [PCS3422](https://uspdigital.usp.br/jupiterweb/obterDisciplina?sgldis=PCS3422) - Organização e Arquitetura de Computadores II
 
 ## Disciplinas de pós-graduação
 
