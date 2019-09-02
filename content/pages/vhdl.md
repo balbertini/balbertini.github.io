@@ -15,10 +15,11 @@ Summary: Lista de posts com VHDL.
 
 ## Básico
 [Tipos de dados básicos]({filename}../vhdl/tiposdedadosbasicos.md)  
-[Entidade]({filename}../vhdl/entity.md)  
-[Arquitetura]({filename}../vhdl/architecture.md)  
+[Entidade (entity)]({filename}../vhdl/entity.md)  
+[Arquitetura (architecture)]({filename}../vhdl/architecture.md)  
 <!-- [Componentes]({filename}../vhdl/component.md)   -->
-[Módulos parametrizáveis]({filename}../vhdl/generic.md)  
+[Módulos parametrizáveis (generic)]({filename}../vhdl/generic.md)  
+[Instância parametrizável (generate)]({filename}../vhdl/forgenerate.md)  
 [Circuitos combinatórios]({filename}../vhdl/combinatorio.md)  
 [Circuitos sequenciais]({filename}../vhdl/sequenciais.md)  
 

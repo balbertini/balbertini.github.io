@@ -2,4 +2,6 @@ output/
 .DS_Store
 *.pid
 *.pyc
+*.o
+*.cf
 src/
