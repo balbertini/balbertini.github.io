@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+
+    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-125173293-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<meta name="author" content="Bruno Albertini" />
+<meta name="description" content="Introdução a máquinas de estados finitas em sistemas digitais." />
+<meta name="keywords" content="sistemas digitais, fsm, simplificação">
+
+<meta property="og:site_name" content="B.Albertini's site"/>
+<meta property="og:title" content="Máquinas de Estados Finitas"/>
+<meta property="og:description" content="Introdução a máquinas de estados finitas em sistemas digitais."/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:url" content="https://balbertini.github.io/fsmbasics-pt_BR.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-10-05 15:43:00-03:00"/>
+<meta property="article:modified_time" content="2019-08-30 16:12:00-03:00"/>
+<meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
+<meta property="article:section" content="sistemas digitais"/>
+<meta property="article:tag" content="sistemas digitais"/>
+<meta property="article:tag" content="fsm"/>
+<meta property="article:tag" content="simplificação"/>
+<meta property="og:image" content="">
+
+  <title>B.Albertini's site &ndash; Máquinas de Estados Finitas</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://balbertini.github.io">
+        <img src="https://balbertini.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="https://balbertini.github.io"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+          <li><a href="https://balbertini.github.io/pages/disciplinas-pt_BR.html#disciplinas">Disciplinas</a></li>
+          <li><a href="https://balbertini.github.io/pages/research-pt_BR.html#research">Pesquisa</a></li>
+          <li><a href="https://balbertini.github.io/pages/sd-pt_BR.html#sd">Sistemas Digitais</a></li>
+          <li><a href="https://balbertini.github.io/pages/sobre-pt_BR.html#sobre">Sobre</a></li>
+          <li><a href="https://balbertini.github.io/pages/vhdl-pt_BR.html#vhdl">VHDL</a></li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/balbertini" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="//balbertini.github.io/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="fsmbasics">Máquinas de Estados Finitas</h1>
+    <p>
+      Publicado em 05/10/2018 na categoria <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
+        <br/>
+          Modificado em 30/08/2019
+    </p>
+  </header>
+
+
+  <div>
+    <p>Uma máquina de estados é uma representação matemática de um sistema dependente de tempo. É composta por estados e transições. Cada estado representa o sistema em um determinado momento no tempo e não é possível uma máquina de estados estar em dois estados ao mesmo tempo. Quando uma máquina está em um estado, ela aguarda que as condições para uma transição sejam atingidas e, assim que forem, muda para o estado indicado por esta transição, repetindo o ciclo o ciclo. Cada máquina possui um estado inicial, onde a máquina começa, e pode ter um ou mais estados finais (ou de aceitação), indicando que a máquina terminou a tarefa computacional. É um modelo de computação bastante utilizado para modelar circuitos sequenciais.</p>
+<p>Tecnicamente, a máquina de estados finita que estudamos em sistemas digitais é um <strong>transdutor de estados finitos</strong>. A diferença primária entre uma máquina de estados e o transdutor é que este último não tem um estado de aceitação.</p>
+<p>Uma máquina de estados finita pode ser especificada por uma sêxtupla do tipo:
+</p>
+<div class="math">$$
+M=(S, S_0, \Sigma, \Lambda, T, G)
+$$</div>
+<p>
+Onde <span class="math">\(S\)</span> é o conjunto de estados possíveis e <span class="math">\(S_0\)</span> é o estado inicial, <span class="math">\(\Sigma\)</span> e <span class="math">\(\Lambda\)</span> denotam os alfabetos da máquina, respectivamente de entrada e de saída, <span class="math">\(T\)</span> é a função de transição de estados e <span class="math">\(G\)</span> a função de saída.</p>
+<p>As funções de transição de estados e de saída são dadas por <span class="math">\(T:S\times\Sigma\rightarrow S\)</span> e <span class="math">\(G:S\rightarrow\Lambda\)</span> (Moore) ou <span class="math">\(G:S\times\Sigma\rightarrow\Lambda\)</span> (Mealy).</p>
+<p>É importante notar que o alfabeto de entrada e saída em sistemas digitais é sempre <span class="math">\(\{0,1\}\)</span> pois, quando o circuito for realizado, todos os sinais da máquina serão binários. Isso significa que <span class="math">\(\Sigma=\Lambda\)</span>, então alguns autores simplificam a máquina de estados para uma quíntupla:
+</p>
+<div class="math">$$
+M=(S, S_0, \Sigma, T, G)
+$$</div>
+<p>Outra diferença notável das máquinas de estado finitas em sistemas digitais em relação ao conceito matemático é o determinismo. Em sistemas digitais, as máquinas podem ter transições aceitando <span class="math">\(\epsilon\)</span>, ou seja, transições que acontecem independentemente da entrada, mas não podem ter mais de uma transição para a mesma entrada. Isso significa que as implementações de máquinas de estados finitas em sistemas digitais são sempre determinísticas.</p>
+<h2>Conceito de máquina de estados finita em sistemas digitais</h2>
+<p>Já afirmamos que a máquina de estados em sistemas digitais não tem um estado de aceitação. Isso significa que a máquina é infinita, ou seja, executa para sempre. O modelo de estado de aceitação pode ser facilmente implementado colocando uma transição para o próprio estado (laço) e fazendo com que este estado produza uma saída pertinente à tarefa cuja máquina deveria realizar.</p>
+<p>Em sistemas digitais, a máquina de estados representa um circuito sequencial. Quando síncrono, há uma transição de estados em cada borda de <em>clock</em> (normalmente especifica-se somente uma das bordas, e.g. borda de subida). A transição pode ser para o mesmo estado (laço) ou vazia (incondicional), mas sempre ocorre na borda do <em>clock</em>. Quando assíncrona, a transição ocorre assim que uma das condições para transição é satisfeita, portanto não é aconselhável especificar transições vazias neste tipo de máquina.</p>
+<p>Como a máquina é determinística, em cada estado deve haver transições contemplando cada combinação possível de entrada.</p>
+<p>Revisitando a quíntupla <span class="math">\(M=(S, S_0, \Sigma, T, G)\)</span>, podemos fazer algumas considerações sobre sua aplicação em sistemas digitais. <span class="math">\(S_0\)</span> é o estado que a máquina deve assumir inicialmente, portanto deve ser o estado da máquina após um <em>reset</em>. Normalmente o <em>reset</em> das máquinas de estados é assíncrono e ativo baixo por motivos históricos ligados a implementação, mas não há impedimentos para adotar-se outras abordagens, desde que possa-se colocar a máquina explicitamente no estado inicial de alguma forma. O alfabeto <span class="math">\(\Sigma\)</span> já foi dito que é sempre o binário <span class="math">\({0,1}\)</span>, mas é possível existir entradas e saídas com mais de um bit. O <span class="math">\(S\)</span> representa o conjunto de estados possíveis e na implementação em sistemas digitais, sempre é um elemento de memória. As funções <span class="math">\(T\)</span> (função de excitação ou de próximo estado) e <span class="math">\(S\)</span> (função de saída) são circuitos combinatórios. A figura abaixo ilustra o modelo.</p>
+<p><img alt="Modelo de FSM" src="https://balbertini.github.io/images/sd/fsmmodel.png"></p>
+<p>A linha pontilhada é opcional e, quando presente, indica que a máquina é uma máquia de Mealy.</p>
+<h2>Representação Gráfica</h2>
+<p><img src='https://balbertini.github.io/images/sd/fsmexemplo2.png' width="15%" align="right" style="padding-left:5%" />
+A representação gráfica de uma máquina de estados finita em sistemas digitais é o diagrama de transição de estados. Cada estado é representado por um círculo e as transições são representadas por setas. Na figura ao lado podemos ver uma máquina de estados com dois estados (<em>A</em> e <em>B</em>) e quatro transições. Nas transições estão especificadas que entradas levam a tomada daquela transição.</p>
+<p>No caso ao lado, a máquina é de Mealy, então a transição especifica um par <em>e/s</em> onde <em>e</em> é a entrada e <em>s</em> é a saída. Exemplo: se estivermos no estado <em>B</em> e a entrada for <em>0</em>, continuaremos no estado <em>B</em> e produziremos saída <em>1</em>; já se estivermos no mesmo estado mas a entrada for <em>1</em>, iremos para o estado <em>A</em> e produziremos saída <em>0</em>. A especificação formal desta máquina é:</p>
+<div class="math">$$M=(S, S_0, \Sigma, T, G)\\
+S=\{A,B\}\quad S_0=A\quad \Sigma=\{1,0\}\\
+T=\{(A,0)\rightarrow A,(A,1)\rightarrow B,(B,0)\rightarrow B,(B,1)\rightarrow A\}\\
+G=\{(A,0)\rightarrow 0,(A,1)\rightarrow 1,(B,0)\rightarrow 1,(B,1)\rightarrow 0\}$$</div>
+<div style="border: 0px; overflow: auto;width: 100%;"></div>
+
+<p><img src='https://balbertini.github.io/images/sd/fsmexemplo1.png' width="15%" align="right" style="padding-left:5%" />
+Uma máquina de Moore pode é representada da mesma forma, porém o círculo representando o estado é cortado ao meio e a saída é especificada na parte inferior, como na figura ao lado. As transições, representadas pelas arestas, possuem somente a entrada <em>e</em> especificada, pois nesta máquina a saída não depende da entrada e sim somente do estado.</p>
+<p>A especificação formal é similar, porém a função de de saída (<span class="math">\(G\)</span>) não possui a entrada:</p>
+<div class="math">$$M=(S, S_0, \Sigma, T, G)\\
+S=\{A,B\}\quad S_0=A\quad \Sigma=\{1,0\}\\
+T=\{(A,0)\rightarrow A,(A,1)\rightarrow B,(B,0)\rightarrow B,(B,1)\rightarrow A\}\\
+G=\{A\rightarrow 0,B\rightarrow 1\}$$</div>
+<div style="border: 0px; overflow: auto;width: 100%;"></div>
+
+<h2>Síntese</h2>
+<p>Dado que <span class="math">\(S\)</span> é um elemento de memória, podemos usar qualquer um dos elementos de memória disponíveis para implementá-lo. É comum a utilização de <em>flip-flops</em>, mas até mesmo memórias capacitivas podem ser utilizadas.
+Já as funções de transição de estados (também chamada de função de próximo estado ou de excitação) e de saída, por serem circuitos combinatórios, são sintetizadas como tal. Pode-se usar qualquer técnica de síntese de circuitos combinatórios para ajudar, desde álgebra booleana até mapas de Karnaugh. O mais comum é montar uma tabela verdade com os estados e depois sintetizar usando-se minimização por Karnaugh e desenho direto das equações em forma de diagrama esquemático.</p>
+<p>Os passos para a síntese de uma máquina de estados finita em sistemas digitais são:</p>
+<ol>
+<li>Entender o problema (enunciado, texto, variáveis de entrada e saída, temporização, etc.);</li>
+<li>Elaborar uma descrição funcional da máquina;  <ul>
+<li>Elaborar um diagrama de transição de estados;</li>
+</ul>
+</li>
+<li>Obter a tabela de estados e a tabela de saídas;<ul>
+<li>Reduzir as tabelas;</li>
+</ul>
+</li>
+<li>Designação de estados;</li>
+<li>Tabela de excitação;</li>
+<li>Projeto dos circuitos combinatórios (funções <span class="math">\(T\)</span> e <span class="math">\(G\)</span>);</li>
+<li>Montagem do diagrama lógico (esquemático).</li>
+</ol>
+<p>O passo 1 consiste em entender o comportamento do sistema sequencial sendo modelado. Em muitos casos o diagrama esquemático está disponível, simplificando este passo. Em outras palavras, é possível sintetizar uma máquina de estados sem o conhecimento da aplicação, desde que o passo 1 ou o passo 2 estejam disponíveis. Neste passo, você deve identificar todas as entradas e saídas da máquina de estados, assim como o momento exato onde cada saída deve ser gerada. Se for necessário, faça uma carta de tempos do funcionamento da máquina. Neste passo também devemos escolher se usaremos o modelo de Melay ou de Moore.</p>
+<p>No passo 2 devemos identificar o número de estados necessários e anotar os momentos em que as saídas serão produzidas. A forma mais comum é expressar a saída deste passo com um diagrama de transição de estados. Pode ser útil nomear os estados no final do desenho do diagrama, pois este tende a mudar conforme se exercita a máquina. O teste de mesa (exercitar a máquina com entradas), é crucial para termos certeza que o diagrama atende a solução do problema. Também não precisamos nos preocupar com estados excessivos ou redundantes pois a máquina será minimizada posteriormente.</p>
+<p>A tabela de estados e a tabela de saída costumam ser montadas juntas, no passo 3. Esta tabela tem as mesmas informações que o passo 2, porém em forma de tabela. Opcionalmente podemos minimizar as tabelas usando um <a href="https://balbertini.github.io/fsmstatereduction-pt_BR.html">método de minimização de máquinas de estado</a>.</p>
+<p>Com as tabelas minimizadas, o passo 4 visa qualificar e quantificar o elemento de memória a ser usado (<span class="math">\(S\)</span>). Normalmente usamos <span class="math">\(n\)</span> <em>flip-flops</em> tipo D, sendo <span class="math">\(n=\lceil log_2s\rceil\)</span>, onde <span class="math">\(s\)</span> é o número de estados. Caso o número de estados não seja uma potência de 2, deve-se decidir neste passo o que fazer com os estados que sobrarem. As opções possíveis são: (i) nada, assim aumentamos as possibilidades de minimização das funções combinatórias mas caso a máquina alcance um destes estados, a saída pode não ser neutra; (ii) forçar a saída para um valor neutro, diminuindo as possibilidades de minimização da função de saída; ou (iii) idem ao (ii) mas também forçamos a máquina para o estado inicial no próximo ciclo. A opção (i) é a que oferece a maior possibilidade de minimização e a opção (iii) é a mais segura. Com as escolhas feitas, deve-se determinar as variáveis de estado e designar o código de cada estado. Uma boa designação de estados pode implicar em melhor minimização, mas não há uma regra específica. Um truque comum é designarmos os estados usando código de Gray, assim os mapas de Karnaugh podem ser facilmente montados (assumindo que você utilizará esta técnica).</p>
+<p>Caso não tenha escolhido o tipo de <em>flip-flop</em> no passo 4, você deve escolher antes de começar o passo 5. Neste passo, devemos montar a tabela de excitação levando em consideração as características do elemento de memória escolhido. O nome desta tabela (tabela de excitação) remete às informações da tabela, pois esta não traz o próximo estado e sim o que deve ser colocado nas entradas dos elementos de memória para que suas saídas sejam o próximo estado no momento adequado (i.e. próxima borda do <em>clock</em>).</p>
+<p>Temos a tabela de excitação (passo 5) e a tabela de saída (passo 3), com a designação de estados e as variáveis de estado (passo 4). No passo 6 devemos encontrar as funções de chaveamento. A técnica usual é montar os mapas de Karnaugh para a função de excitação (<span class="math">\(T\)</span>) e para a função de saída (<span class="math">\(G\)</span>), obtendo as equações como produto da aplicação do mapa. No entanto, qualquer técnica de síntese de circuitos combinatórios pode ser utilizada.</p>
+<p>Com as equações prontas, basta desenhar os blocos combinatórios (<span class="math">\(T\)</span> e <span class="math">\(G\)</span>), posteriormente ligando-os aos elementos de memória e obtendo-se o circuito final, o que é feito no passo 7.</p>
+<h2>Análise</h2>
+<p>A análise de uma máquina de estados finita em sistemas digitais é exatamente o contrário da síntese.</p>
+<p>Parte-se de um diagrama lógico (passo 7 reverso), onde deve-se identificar o elemento de memória (<span class="math">\(S\)</span>). É comum o elemento de memória ser composto por um ou mais <em>flip-flops</em>, então não é difícil encontrá-los no circuito.</p>
+<p>Identificado o elemento de memória, segue-se a identificação das funções de excitação e de saída (passo 6 reverso). Isso pode ser feito usando uma técnica de análise de circuitos combinatórios, partindo da saída do elemento de memória em direção ao que se pretende identificar (e.g. se você está identificando a função de saída, aplique uma técnica de análise da saída do elemento de memória em direção a saída da máquina de estados). É útil ter em mente o modelo clássico de máquinas de estado pois, identificado o elemento de memória, o que sobrou deve ser combinatório e faz parte de uma das funções de excitação ou saída. É muito comum usar cores, circular ou marcar as portas lógicas para separá-las de acordo com a função conforme se faz a análise. Neste ponto da análise já é possível identificar se a máquina segue o modelo de Moore ou de Mealy. Neste passo deve-se também inferir as variáveis de estado (no caso dos <em>flip-flops</em> as variáveis de estado coincidem com a saída dos mesmos).</p>
+<p>Obtidas as equações <span class="math">\(T\)</span> e <span class="math">\(G\)</span>, parte-se para as tabelas. A tabela de excitação pode ser obtida exercitando todas as combinações possíveis das variáveis de estado e das entradas (passo 5 reverso). Para cada valor, exercita-se a função de excitação (<span class="math">\(T\)</span>) e obtém-se o valor que será aplicado às entradas do elemento de memória (<span class="math">\(S\)</span>).</p>
+<p>Com a tabela de excitação e conhecendo-se as características do elemento de memória, pode-se atribuir nomes aos estados e construir a tabela de transição de estados (passo 4 reverso). É difícil atribuir nomes significativos para o estado neste momento, então muitos projetistas optam por atribuir nomes alfanuméricos (e.g. A, B, C1, C2, etc).</p>
+<p>Não faz sentido reverter as minimizações, tanto para os métodos de síntese combinatória quanto para as tabelas, portanto das equações montamos diretamente as tabelas, e delas extrairemos diretamente o restante.</p>
+<p>Para completar as tabelas (passo 3 reverso), obtemos a tabela de saída a partir da função de saída (encontrada no passo 6 reverso) da mesma maneira que encontramos a função de excitação: exercitando todos os valores possíveis para as variáveis de estado e para a entrada (a entrada só faz parte da função de saída se a máquina seguir o modelo de Mealy).</p>
+<p>Com as tabelas, é possível montar um diagrama de transição de estados. O diagrama pode ser inferido diretamente das tabelas (passo 2 reverso).</p>
+<p>O passo 1 é o único críptico na análise de máquinas de estado finitas. A razão disso é que o diagrama pode ser considerado a expressão de uma solução para um problema. Extrair o problema de uma solução é uma tarefa subjetiva. Informações extras sobre a aplicação da máquina, o local onde ela funciona, interfaces e até mesmo observar os sistemas ao redor da máquina de estados podem ajudar, porém não há uma técnica para este passo. Em alguns casos pode-se tentar mapear a máquina de estados para uma estrutura formal (e.g. expressões regulares), mas isso pouco ajuda quando não se conhece nem mesmo a natureza do problema que a máquina resolve.</p>
+<h1>Exemplo</h1>
+<p>Este é um exemplo clássico de uma máquina de estados simples, mas que todos reconhecem: o semáforo. Projete o circuito para uma máquina de estados que opere um semáforo de três fases: verde, amarela e vermelha. A entrada é <span class="math">\(m\)</span>, proveniente de um temporizador, que caso alta na fase verde causa uma mudança para a fase a amarela e caso alta na fase vermelha causa uma mudança para a fase verde. A mudança da fase amarela para a vermelha é independente da entrada. A saída da máquina de estados é dada por dois bits, <span class="math">\(c_1c_0\)</span>, que indicam qual cor está acesa: 10 verde, 11 amarelo e 01 vermelho.</p>
+<p><strong>Passo 1:</strong> Variáveis de entrada: somente <span class="math">\(m\)</span> de 1 bit. Variáveis de saída: <span class="math">\(c_1c_0\)</span> de 2 bits, 10 verde, 11 amarelo e 01 vermelho (não foi especificado o que acontece em 00). O semáforo trabalha de forma circular acendendo as cores vermelho, amarelo e verde, em sequência repetitiva. O tempo que a máquina permanece na cor amarela é dado pelo período do <em>clock</em>, pois não há condição para a transição. Já o tempo que a máquina permanece no vermelho e no verde é indicado pelo sinal do temporizador, representado pela entrada <span class="math">\(m\)</span>. Quando a entrada for alta (<span class="math">\(m=1\)</span>), deve-se trocar de estado na próxima borda do <em>clock</em>. Convencionaremos o <em>reset</em> assíncrono ativo baixo e o elemento de memória sensível a borda de subida do <em>clock</em>. Escolheremos um modelo de Moore, sem nenhuma vantagem ou desvantagem explícita.</p>
+<p><img src='https://balbertini.github.io/images/sd/semaforo.png' width="35%" align="right" style="padding-left:5%" />
+<strong>Passo 2:</strong> A descrição funcional foi feita durante a análise do problema no passo 1. O diagrama de transição de estados pode ser visto na figura ao lado. Note que já demos os nomes para os estados de acordo com a cor: VM vermelha, VD verde e AM amarela. A entrada de 1 bit foi especificada nas transições e a saída de 2 bits na parte inferior do estado, de acordo com o identificado no passo 1.
+<div style="border: 0px; overflow: auto;width: 100%;"></div></p>
+<p><strong>Passo 3:</strong> Já temos o diagrama de transição de estados, então podemos montar as tabelas.</p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-88nc{font-weight:bold;border-color:inherit;text-align:center}
+.tg .tg-kiyi{font-weight:bold;border-color:inherit;text-align:left}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+</style>
+
+<table class="tg">
+  <tr>
+    <th class="tg-88nc" rowspan="2">Estado Atual</th>
+    <th class="tg-88nc" colspan="2">Próximo Estado</th>
+    <th class="tg-kiyi" rowspan="2">Saída</th>
+  </tr>
+  <tr>
+    <td class="tg-88nc">m=0</td>
+    <td class="tg-88nc">m=1</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">VM</td>
+    <td class="tg-c3ow">VM</td>
+    <td class="tg-c3ow">VD</td>
+    <td class="tg-c3ow">01</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">AM</td>
+    <td class="tg-c3ow">VM</td>
+    <td class="tg-c3ow">VM</td>
+    <td class="tg-c3ow">11</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">VD</td>
+    <td class="tg-c3ow">VD</td>
+    <td class="tg-c3ow">AM</td>
+    <td class="tg-c3ow">10</td>
+  </tr>
+</table>
+
+<p>Note que as tabelas de próximo estado e de saída estão juntas na mesma tabela. A coluna <strong>Estado Atual</strong> mostra o estado em que a máquina se encontra, e a coluna <strong>Saída</strong> mostra a saída para aquele estado. A coluna <strong>Próximo Estado</strong> contém as transições, ou seja, para qual estado a máquina irá no próximo ciclo de <em>clock</em> caso a entrada <span class="math">\(m\)</span> seja 0 ou 1. Esta tabela é pequena, portanto basta uma rápida análise para perceber que não há reduções possíveis.</p>
+<p>Dica: é muito comum representar as duas tabelas em uma só para economizar espaço, pois a coluna de estado atual é idêntica nas duas. Note também que a ordem dos estados já foi colocada de forma a facilitar a utilização do método de minimização gráfica por mapa de Karnaugh.</p>
+<p><strong>Passo 4:</strong> Para nossa implementação, usaremos <em>flip-flops</em> tipo D sensíveis a borda de subida do <em>clock</em>. Temos 3 estados, portanto usaremos <span class="math">\(\lceil log_23\rceil =2\)</span> <em>flip-flops</em>. Com dois <em>flip-flops</em>, podemos representar até <span class="math">\(2^2=4\)</span> estados possíveis, portanto há um estado sobrando. A aplicação é crítica pois caso a máquina atinja o estado AM ou VD erroneamente, poderá causar um acidente. Neste sentido, optamos por forçar o estado extra para produzir uma saída vermelha (10) e ir para o estado VM no próximo ciclo, independente da entrada. A designação de estados será: 00 para o estado extra, que chamaremos de EX; 01 para o estado VM, 11 para o estado AM, e 10 para o estado VD. Note que esta designação condiz com a saída para os estados válidos, o que foi proposital para minimizar as funções de saída.</p>
+<p><strong>Passo 5:</strong> A tabela de excitação é exatamente a tabela de próximo estado, porém com os estados substituídos pela sua designação pois usamos <em>flip-flops</em> tipo D, que copiam a entrada para a saída. Caso o elemento de memória fosse diferente, nesta tabela deveríamos colocar as entradas do elemento de memória adequadas para que o próximo estado seja o ta tabela de transição de estados. Também copiamos a tabela de saída para incluir a saída no caso do estado extra.</p>
+<table class="tg">
+  <tr>
+    <th class="tg-88nc" rowspan="2">Estado Atual</th>
+    <th class="tg-88nc" colspan="2">Próximo Estado</th>
+    <th class="tg-kiyi" rowspan="2">Saída</th>
+  </tr>
+  <tr>
+    <td class="tg-88nc">m=0</td>
+    <td class="tg-88nc">m=1</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">EX(00)</td>
+    <td class="tg-c3ow">VM(01)</td>
+    <td class="tg-c3ow">VM(01)</td>
+    <td class="tg-c3ow">01</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">VM(01)</td>
+    <td class="tg-c3ow">VM(01)</td>
+    <td class="tg-c3ow">VD(10)</td>
+    <td class="tg-c3ow">01</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">AM(11)</td>
+    <td class="tg-c3ow">VD(01)</td>
+    <td class="tg-c3ow">VD(01)</td>
+    <td class="tg-c3ow">11</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">VD(10)</td>
+    <td class="tg-c3ow">VD(10)</td>
+    <td class="tg-c3ow">AM(11)</td>
+    <td class="tg-c3ow">10</td>
+  </tr>
+</table>
+
+<p>Mantivemos os nomes dos estados e colocamos a designação entre parênteses para facilitar a leitura (esta prática é comum quando utiliza-se <em>flip-flop</em> tipo D). Os números entre parênteses representam as variáveis de estado, que chamaremos de <span class="math">\(q_1q_0\)</span>.</p>
+<p><strong>Passo 6:</strong> Neste passo, devemos encontrar as funções de excitação e de saída. A construção e solução do mapa de Karnaugh foi omitida pois não é assunto deste artigo, porém ambas as equações foram encontradas usando este método. Note que, como usamos <em>flip-flops</em> tipo D, <span class="math">\(d_1=q_1^{t+1}\)</span> e <span class="math">\(d_0=q_0^{t+1}\)</span>.</p>
+<div class="math">$$
+q_1^{t+1}=q_1.\overline{q_0}+\overline{q_1}.q_0.m\\
+q_0^{t+1}=\overline{q_1}.\overline{q_0}+q_0.\overline{m}+q_1.m\\
+\quad\\
+c_1=q_1\\
+c_0=\overline{q_1}+q_0
+$$</div>
+<p><img src='https://balbertini.github.io/images/sd/fsmSemaforo.png' width="35%" align="right" style="padding-left:5%" />
+<strong>Passo 7:</strong> Com as equações em mãos, basta montar o circuito correspondente. Começamos colocando os elementos de memória na parte central (dois <em>flip-flops</em>) tipo D e nomeamos como <em>q1</em> e <em>q0</em>. As saídas dos <em>flip-flops</em> correspondem às variáveis de estado homônimas, e as entradas devem ser as saídas das funções de próximo estado. Após colocarmos os elementos de memória, continuamos seguindo as convenções e colocamos a esquerda o circuito combinatório correspondente à função de transição de estados e a direita o correspondente a de saída.
+Ainda no circuito vemos a entrada de <em>clock</em> e de <em>reset</em>, um botão que emula o sinal vindo do temporizador e uma saída RGB que corresponde ao semáforo.</p>
+<p>Para baixar este circuito no formato do LogiSim <a href="https://balbertini.github.io/extra/sd/fsmSemaforo.circ">clique aqui</a>.</p>
+<div style="border: 0px; overflow: auto;width: 100%;"></div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+
+
+
+  <div class="tag-cloud">
+    <p>
+      <a href="https://balbertini.github.io/tag/sistemas-digitais.html">sistemas digitais</a>
+      <a href="https://balbertini.github.io/tag/fsm.html">fsm</a>
+      <a href="https://balbertini.github.io/tag/simplificacao.html">simplificação</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'balbertini';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Habilite JavaScript para ver os comentários.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy; Bruno Albertini  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - O tema <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> foi criado por <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " B.Albertini's site ",
+  "url" : "https://balbertini.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

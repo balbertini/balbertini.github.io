@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+
+    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-125173293-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<meta name="author" content="Bruno Albertini" />
+<meta name="description" content="Tipos de dados básicos existentes em VHDL." />
+<meta name="keywords" content="vhdl, tipos">
+
+<meta property="og:site_name" content="B.Albertini's site"/>
+<meta property="og:title" content="Tipos de Dados Básicos em VHDL"/>
+<meta property="og:description" content="Tipos de dados básicos existentes em VHDL."/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:url" content="https://balbertini.github.io/vhdlbasicdatatypes-pt_BR.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-09-15 10:56:00-03:00"/>
+<meta property="article:modified_time" content="2018-10-05 00:57:00-03:00"/>
+<meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
+<meta property="article:section" content="vhdl"/>
+<meta property="article:tag" content="vhdl"/>
+<meta property="article:tag" content="tipos"/>
+<meta property="og:image" content="">
+
+  <title>B.Albertini's site &ndash; Tipos de Dados Básicos em VHDL</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://balbertini.github.io">
+        <img src="https://balbertini.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="https://balbertini.github.io"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+          <li><a href="https://balbertini.github.io/pages/disciplinas-pt_BR.html#disciplinas">Disciplinas</a></li>
+          <li><a href="https://balbertini.github.io/pages/research-pt_BR.html#research">Pesquisa</a></li>
+          <li><a href="https://balbertini.github.io/pages/sd-pt_BR.html#sd">Sistemas Digitais</a></li>
+          <li><a href="https://balbertini.github.io/pages/sobre-pt_BR.html#sobre">Sobre</a></li>
+          <li><a href="https://balbertini.github.io/pages/vhdl-pt_BR.html#vhdl">VHDL</a></li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/balbertini" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="//balbertini.github.io/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="vhdlbasicdatatypes">Tipos de Dados Básicos em VHDL</h1>
+    <p>
+      Publicado em 15/09/2018 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+        <br/>
+          Modificado em 05/10/2018
+    </p>
+  </header>
+
+
+  <div>
+    <p>Um tipo de dado é uma classificação do conjunto possível de valores que determinado item pode assumir. VHDL é uma linguagem fortemente tipada, o que significa que a escolha do tipo de dado para um sinal, variável ou constante é de suma importância pois, para converter de um tipo ao outro, devemos utilizar funções de conversão. Uma vantagem de se utilizar uma linguagem fortemente tipada é que o sintetizador pode perceber a maioria dos erros cometidos pelos projetistas. Exemplos (todos erros que podem ser capturados em VHDL, mas difícil de detectar em outras linguagens): atribuir um grupo de sinais de 4 bits para um grupo de 8 bits; atribuir um grupo de bits sem representação numérica para um grupo de bits representando um inteiro.</p>
+<p>É importante salientar que, apesar de usar um estilo programático, a linguagem VHDL é uma linguagem de descrição de hardware, portanto no final da síntese todos os tipos assumem valores altos ou baixos. Os conceitos de tipos das linguagens de programação não existem em nenhuma HDL e esse é um dos erros mais comuns dos projetistas de hardware. Lembre-se: você não está descrevendo um programa e sim um hardware.</p>
+<p>O tipo de dado implicitamente influencia na síntese do seu circuito. Neste artigo veremos os tipos de dados mais comuns em VHDL e como utilizá-los.</p>
+<h1>Tipos pré-definidos</h1>
+<p>Os tipos de VHDL são definidos pelos padrões IEEE 1076 e IEEE 1164. São divididos em escalares, vetores, enumerados e compostos. Todos os tipos pré-definidos estão na biblioteca <code>std.standard</code>, que é incluída implicitamente em todos os projetos de VHDL (não é necessário incluí-la).</p>
+<table>
+<thead>
+<tr>
+<th align="right">Tipo</th>
+<th align="center">Categoria</th>
+<th align="center">Sintetizável?</th>
+<th align="left">Valores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><code>bit</code></td>
+<td align="center">enumerado</td>
+<td align="center">Sim</td>
+<td align="left"><code>0</code> ou <code>1</code></td>
+</tr>
+<tr>
+<td align="right"><code>boolean</code></td>
+<td align="center">enumerado</td>
+<td align="center">Sim</td>
+<td align="left"><code>FALSE</code> ou <code>TRUE</code></td>
+</tr>
+<tr>
+<td align="right"><code>real</code></td>
+<td align="center">escalar</td>
+<td align="center">Não</td>
+<td align="left">-1.0E38 a +1.0E38</td>
+</tr>
+<tr>
+<td align="right"><code>character</code></td>
+<td align="center">enumerado</td>
+<td align="center">Não</td>
+<td align="left">ASCII</td>
+</tr>
+</tbody>
+</table>
+<p>O tipo <code>bit</code> é o mais utilizado. O <code>boolean</code> é útil para tomadas de decisão, como por exemplo em condições para um <code>if-else</code>. É importante notar que há um mapeamento direto entre <code>FALSE</code> e <code>0</code>, e entre <code>TRUE</code> e <code>1</code>, portanto <code>FALSE</code>&lt;<code>TRUE</code>.  O <code>real</code> normalmente é tratado como um número de ponto flutuante de precisão dupla. O <code>character</code> representa um grupo de 8 bits correspondentes aos 256 caracteres da tabela ASCII. Note que estes dois últimos <strong>não são sintetizáveis</strong>, portanto não devem ser utilizados como entradas ou saídas dos módulos. Apesar de não serem sintetizáveis, estes tipos são úteis durante as simulações.</p>
+<p>O tipo <code>integer</code> tamém é bastante utilizado e possui dois subtipos padrões:</p>
+<table>
+<thead>
+<tr>
+<th align="right">Tipo</th>
+<th align="center">Categoria</th>
+<th align="center">Sintetizável?</th>
+<th align="left">Valores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><code>integer</code></td>
+<td align="center">escalar</td>
+<td align="center">Sim</td>
+<td align="left">-2147483648 a 2147483648</td>
+</tr>
+<tr>
+<td align="right"><code>natural</code></td>
+<td align="center">escalar</td>
+<td align="center">Sim</td>
+<td align="left">0 a 2147483648</td>
+</tr>
+<tr>
+<td align="right"><code>positive</code></td>
+<td align="center">escalar</td>
+<td align="center">Sim</td>
+<td align="left">1 a 2147483648</td>
+</tr>
+</tbody>
+</table>
+<p>A especificação da linguagem não limita o número de bits do inteiro, mas a maioria das ferramentas utiliza inteiros de 32 bits. A forma de interpretação também não é definida, mas a maioria das ferramentas interpreta como uma representação em complemento de dois. Os tipos <code>natural</code> e <code>positive</code> são apenas limitações nos valores que um objeto deste tipo poderá assumir. É possível declarar inteiros com uma limitação personalizada:</p>
+<div class="highlight"><pre><span></span><span class="k">signal</span> <span class="n">meusinal</span> <span class="o">:</span> <span class="kt">integer</span> <span class="k">range</span> <span class="o">-</span><span class="mi">8</span> <span class="k">to</span> <span class="mi">7</span><span class="p">;</span>
+</pre></div>
+
+
+<p>O trecho acima declara o <code>meusinal</code> como um inteiro de 4 bits. Contudo, valores maiores que a implementação da ferramenta de síntese não são possíveis, portanto se você precisar de um inteiro maior que 32 bits veja se sua ferramenta suporta inteiros grandes ou utilize vetores. A utilização da limitação do inteiro (com <code>range</code> ou usando os subtipos <code>natural</code> e <code>positive</code>) ajuda na detecção de erros pois, se em algum momento da simulação for feita a tentativa de atribuir um valor fora da faixa permitida, o simulador irá emitir uma mensagem de erro. Além disso, usar a limitação explícita diminui o número de bits utilizados para a representação, o que economizará portas lógicas no seu circuito. Pense assim: por que você precisa de um somador de 32 bits se seus inteiros só vão assumir valores de -16 a 15?</p>
+<p>Os tipos <code>bit</code> e <code>character</code> também possuem suas versões em vetores:</p>
+<table>
+<thead>
+<tr>
+<th align="right">Tipo</th>
+<th align="center">Categoria</th>
+<th align="center">Sintetizável?</th>
+<th align="left">Valores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><code>bit_vector</code></td>
+<td align="center">vetor</td>
+<td align="center">Sim</td>
+<td align="left">bits</td>
+</tr>
+<tr>
+<td align="right"><code>string</code></td>
+<td align="center">vetor</td>
+<td align="center">Não</td>
+<td align="left">caracteres</td>
+</tr>
+</tbody>
+</table>
+<p>O <code>bit_vector</code> é muito utilizado para representar um grupo de bits. Já o tipo <code>string</code> é usado somente para mensagens durante a simulação (note que ele não é sintetizável).</p>
+<p>Há ainda dois tipos que não são sintetizáveis mas são importantes em VHDL:</p>
+<table>
+<thead>
+<tr>
+<th align="right">Tipo</th>
+<th align="center">Categoria</th>
+<th align="center">Sintetizável?</th>
+<th align="left">Valores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><code>severity_level</code></td>
+<td align="center">enumerado</td>
+<td align="center">Não</td>
+<td align="left"><code>note</code>, <code>warning</code>, <code>error</code> ou <code>failure</code></td>
+</tr>
+<tr>
+<td align="right"><code>time</code></td>
+<td align="center">enumerado</td>
+<td align="center">Não</td>
+<td align="left">depende</td>
+</tr>
+</tbody>
+</table>
+<p>O tipo <code>severity_level</code> é usado em <em>testbenchs</em> para informar a gravidade do problema encontrado. O tipo <code>time</code> é usado para descrever a temporização do circuito, tanto em descrições temporizadas quanto em <em>testbenchs</em>. Os valores de tempo são acompanhados dos multiplicadores que indicam a escala de tempo: <code>fs</code> (fentosegundos), <code>ps</code> (picosegungos), <code>ns</code> (nanosegundos), <code>us</code> (microsegundos), <code>ms</code> (milisegundos), <code>sec</code> (segundos), <code>min</code> (minutos) e <code>hr</code> (horas).</p>
+<p>No exemplo abaixo, a mensagem "Teste" será impressa na tela sem parar a simulação e o <code>sinal</code> assumirá o valor <code>entrada</code>, mas somente após 10ns.</p>
+<div class="highlight"><pre><span></span><span class="n">report</span> <span class="s">&quot;Teste&quot;</span> <span class="k">severity</span> <span class="n">note</span><span class="p">;</span>
+<span class="n">sinal</span> <span class="o">&lt;=</span> <span class="n">entrada</span> <span class="k">after</span> <span class="mi">10</span> <span class="n">ns</span><span class="p">;</span>
+</pre></div>
+
+
+<h1>Pacote IEEE 1164</h1>
+<p>Um dos pacotes mais utilizados em VHDL é o <code>std_logic_1164</code> da biblioteca <code>ieee</code>, que define um MVL (lógica multivariada, ou o nome completo <em>Multivalue Logic System for VHDL Model Interoperability</em>). Pra usar este pacote, é necessário incluir a declaração de uso no preambulo do seu projeto:</p>
+<div class="highlight"><pre><span></span><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">ieee.std_logic_1164.</span><span class="k">all</span><span class="p">;</span>
+</pre></div>
+
+
+<p>O tipo de dado primário definido nesta biblioteca é o <code>std_ulogic</code> (<em>standard unresolved logic</em>), que pode assumir outros valores usados em projeto digital além dos valores ideais <code>0</code> e <code>1</code>. Esta modelagem de valores é mais próxima do mundo real, mas deve ser utilizada com cuidado.</p>
+<table>
+<thead>
+<tr>
+<th align="right">Valor</th>
+<th align="center">Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><code>U</code></td>
+<td align="center">Não inicializado (<em>uninitialized</em>)</td>
+</tr>
+<tr>
+<td align="right"><code>X</code></td>
+<td align="center">Desconhecido (forte)</td>
+</tr>
+<tr>
+<td align="right"><code>0</code></td>
+<td align="center">Zero (forte)</td>
+</tr>
+<tr>
+<td align="right"><code>1</code></td>
+<td align="center">Um (forte)</td>
+</tr>
+<tr>
+<td align="right"><code>Z</code></td>
+<td align="center">Alta impedância (<em>tri-state</em>)</td>
+</tr>
+<tr>
+<td align="right"><code>W</code></td>
+<td align="center">Desconhecido (fraco)</td>
+</tr>
+<tr>
+<td align="right"><code>L</code></td>
+<td align="center">Zero (fraco)</td>
+</tr>
+<tr>
+<td align="right"><code>H</code></td>
+<td align="center">Um (fraco)</td>
+</tr>
+<tr>
+<td align="right"><code>-</code></td>
+<td align="center">Qualquer um (<em>don't care</em>)</td>
+</tr>
+</tbody>
+</table>
+<p>O valor <code>U</code> não foi pensado para ser utilizado pelo projetista mas sim pelas ferramentas de simulação. Quando seu circuito é simulado, um sinal em <code>U</code> significa que até aquele momento não houve nenhuma atribuição para aquele sinal. Isso é útil para depuração pois permite diferenciar um sinal que nunca foi atribuído de um que foi atribuído com zero, por exemplo. É especialmente útil para detectar o esquecimento do acionamento do <em>reset</em> de um circuito, pois é comum os projetistas negligenciarem o <em>reset</em> antes de começar a simular.</p>
+<p>Já o <code>X</code> e o <code>W</code> indicam valores que estão fora do escopo naquele ponto do projeto. Atribuir o valor <code>X</code> para um sinal não é uma boa prática, mas ele também é útil em uma simulação. Quando aparecer um sinal com valor <code>X</code> ou <code>W</code> na sua simulação, muito provavelmente houve mais de uma atribuição para o mesmo sinal e elas são divergentes (e.g. uma atribuição <code>0</code> e uma <code>1</code> em pontos diferentes da sua descrição). Se sua simulação tem um destes valores, corrija 0 seu circuito antes de sintetizá-lo  pois este valor não existe no mundo real: o circuito vai efetivamente assumir <code>1</code> ou <code>0</code>, fechando um curto-circuito caso haja uma atribuição divergente.</p>
+<p>Note também que o <code>X</code> <strong>não representa</strong> o <em>don't care</em> mas sim um valor desconhecido. Como a letra X é utilizada para o <em>don't care</em> nos métodos manuais (e.g. mapa de Karnaugh), é comum a confusão entre os dois valores.</p>
+<p>A diferença entre um valor <em>forte</em> e <em>fraco</em> é apenas que os fracos indicam a utilização de resistores de <em>pull-up</em> ou <em>pull-down</em>, portanto se uma saída <code>H</code> for ligada a uma saída <code>0</code>, o sinal será <code>0</code> e não há problemas além do consumo de energia extra ocasionado pelo resistor. Contudo, se uma saída forte <code>1</code> for ligada a uma saída <code>0</code>, o resultado é um curto-circuito e possível dano ao circuito. Você pode livremente atribuir <code>H</code>, <code>1</code>, <code>L</code> ou <code>0</code> para um sinal, e ambos serão sintetizados similarmente, mas as versões <code>H</code> e <code>L</code> instruem o sintetizador a usar portas com tecnologia de dreno aberto (<em>open-drain</em>) ou similar, permitindo a utilização de resistores de <em>pull-up</em> ou <em>pull-down</em>.</p>
+<p>Se a plataforma alvo não suportar buffers <em>tri-state</em> o valor <code>Z</code> não será sintetizado, mas as ferramentas normalmente conseguem inferir um decisor baseado em multiplexador para substituir a escolha de qual saída será colocada no sinal. Note que a plataforma alvo pode não ter <em>tri-state</em>, então tome cuidado ao interligá-la com circuitos externos que esperam que ela tenha.</p>
+<p>Outro tipo desta biblioteca é o <code>std_logic</code>. Ele é idêntico ao <code>std_ulogic</code> e pode assumir qualquer valor dos citados acima, mas tem uma diferença aos olhos do sintetizador: ele pode ser resolvido. O <code>std_ulogic</code> não especifica o que acontece quando você faz duas atribuições para o mesmo sinal (não importa se diferente ou iguais). Se o sinal for <code>std_logic</code>, o sintetizador entende que você sabe o que está fazendo e não te indicará nada ou no máximo mostrará uma mensagem de alerta, enquanto se o sinal for do tipo <code>std_ulogic</code>, o sintetizador irá se recusar a continuar a síntese, alertando-o que há mais de uma atribuição para aquele sinal.</p>
+<p>Ambos os tipos desta biblioteca suportam a versão em vetor:</p>
+<table>
+<thead>
+<tr>
+<th align="right">Tipo</th>
+<th align="center">Categoria</th>
+<th align="center">Sintetizável?</th>
+<th align="left">Valores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><code>std_ulogic</code></td>
+<td align="center">enumerado</td>
+<td align="center">Sim</td>
+<td align="left">multivariado</td>
+</tr>
+<tr>
+<td align="right"><code>std_logic</code></td>
+<td align="center">enumerado</td>
+<td align="center">Sim</td>
+<td align="left">multivariado</td>
+</tr>
+<tr>
+<td align="right"><code>std_ulogic_vector</code></td>
+<td align="center">vetor</td>
+<td align="center">Sim</td>
+<td align="left"><code>std_ulogic</code>s</td>
+</tr>
+<tr>
+<td align="right"><code>std_logic_vector</code></td>
+<td align="center">vetor</td>
+<td align="center">Sim</td>
+<td align="left"><code>std_logic</code>s</td>
+</tr>
+</tbody>
+</table>
+<p>Os valores multivariados são qualquer um da tabela no início desta seção. A síntese é possível para estes tipos, mas esteja atento para as observações nesta seção quando eles forem diferentes de <code>0</code> ou <code>1</code>.</p>
+<h1>Qual tipo utilizar?</h1>
+<p>Não existe uma regra de que tipo utilizar, mas há várias dicas de como utilizar melhor a infraestrutura de tipos em VHDL.</p>
+<p>A primeira dica é usar o bom senso. Se você está projetando uma unidade aritmética (e.g. multiplicador), faz pleno sentido que as entradas e saídas sejam <code>unsigned</code> ou <code>signed</code> de acordo com a maneira como a unidade aritmética as interpreta (e.g. o multiplicador é de inteiros sem ou com sinal). Contudo, se você está projetando um multiplexador, não faz sentido usar um tipo de dados com interpretação embutida pois o multiplexador não opera sobre os dados. Nesse caso, utilize o tipo <code>bit</code> ou <code>std_logic</code>.</p>
+<h2><code>std_logic</code> ou <code>bit</code></h2>
+<p>Este é um tema de debate entre os projetistas há anos. A maioria dos projetistas opta por utilizar o <code>std_logic</code> e evitar aborrecimentos, mas esta não é uma boa prática. Para escolher corretamente, você precisa pensar no circuito que está desenvolvendo e na arquitetura alvo.</p>
+<p>O FPGA, por exemplo, não suporta internamente nenhum dos tipos do <code>std_logic</code>, portanto não faz sentido utilizá-lo pois internamente só haverá bits. Se sua arquitetura alvo é um FPGA, como por exemplo nas disciplinas de laboratório, use sempre o tipo <code>bit</code>. As excessões onde a utilização do <code>std_logic</code> é correta são: (i) quando você estiver projetando um barramento, (ii) quando estiver lidando com a saída, e (iii) em simulações.</p>
+<p>No caso (i) a utilização do <em>tri-state</em> pode ser útil pois você poderá interligar saídas sem problemas, desde que somente uma delas esteja ativa e as demais estejam em <em>tri-state</em>. Contudo, se o seu barramento for interno ao FPGA, ele será sintetizado usando multiplexadores e não <em>tri-state</em> real pois o FPGA não tem esta funcionalidade internamente. Lembre-se que o <em>tri-state</em> do <code>std_logic</code> é representado por <code>Z</code>.</p>
+<p>Já no caso (ii) você pode utilizar o <code>std_logic</code> livremente pois a maioria dos FPGAs implementa <em>open-drain</em> e <em>tri-state</em> nos buffers de saída. Você pode facilmente usar <em>tri-state</em> e valores de <em>weak</em> (que implementam <em>pull-up</em> e <em>pull-down</em>), mas lembre-se que nem todos os valores do <code>std_logic</code> são sintetizáveis.</p>
+<p>No último caso (iii), o valor <code>U</code> (<em>uninitialized</em>) pode ser útil para saber se um determinado valor foi ou não escrito alguma vez durante a simulação pois é o valor padrão do <code>std_logic</code>. Na simulação todos os valores do <code>std_logic</code> são expressos corretamente, mas lembre-se que na síntese os valores sempre vão assumir <code>0</code> ou <code>1</code> mesmo que nunca tenham tido um valor atribuído.</p>
+<p>Uma das falácias do tipo <code>std_logic</code> é o <em>don't care</em>. Ele é representado pelo <code>-</code> e não pelo <code>X</code> (<em>unknown</em>) normalmente usado nos métodos manuais (e.g mapa de Karnaugh). Se usado corretamente, a maioria das ferramentas interpreta o <code>-</code> como o <em>don't care</em> esperado, inclusive na atribuição condicional. Algumas ferramentas tratam ambos os <code>X</code> e o <code>-</code> como <em>don't care</em> para evitar a confusão, mais ela ainda acontece especialmente entre projetistas iniciantes, portanto evite-o.</p>
+<p>De fato, a maioria dos projetos não necessita do <code>std_logic</code> e acabam por utilizá-lo apenas com os valores <code>0</code> ou <code>1</code>, como substituição ao tipo <code>bit</code>. Como regra geral, utilize o tipo de dado certo para o trabalho que está fazendo e, enquanto você estiver aprendendo, utilize somente o tipo <code>bit</code> para evitar problemas. Quando estiver confortável, transicione para o tipo <code>std_ulogic</code> qaundo precisar de sinais multivariados e só quando realmente precisar de um sinal de multivariado com múltiplas atribuições (e.g. barramento) use o <code>std_logic</code>.</p>
+  </div>
+
+
+
+  <div class="tag-cloud">
+    <p>
+      <a href="https://balbertini.github.io/tag/vhdl.html">vhdl</a>
+      <a href="https://balbertini.github.io/tag/tipos.html">tipos</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'balbertini';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Habilite JavaScript para ver os comentários.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy; Bruno Albertini  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - O tema <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> foi criado por <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " B.Albertini's site ",
+  "url" : "https://balbertini.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
