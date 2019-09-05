@@ -36,18 +36,20 @@ As funções de conversão disponíveis na `numeric_bit` podem ser vista na figu
 Em cinza as células que dispensam de conversão (mesmo tipo), amarelo as que requerem uma função de conversão específica, verde as que dispensam a conversão mas precisam de um _cast_ para mudar a semântica de interpretação. Em vermelho as conversões indisponíveis diretamente.
 
 De `integer` para qualquer um dos outros tipos, temos que usar uma função de conversão (em amarelo na tabela), que começam com `to_`. São elas:
- * `I to_integer(S)`: recebe um `signed` e retorna um inteiro;
- * `I to_integer(U)`: recebe um `unsigned` e retorna um inteiro;
- * `S to_signed(I,S'lenght)`: recebe um inteiro e retorna um `signed`, segundo parâmetro é o tamanho do `signed`;
- * `U to_unsigned(I,U'lenght)`: recebe um inteiro e retorna um `unsigned`, segundo parâmetro é o tamanho do `unsigned`;
+
+  * `I to_integer(S)`: recebe um `signed` e retorna um inteiro;
+  * `I to_integer(U)`: recebe um `unsigned` e retorna um inteiro;
+  * `S to_signed(I,S'lenght)`: recebe um inteiro e retorna um `signed`, segundo parâmetro é o tamanho do `signed`;
+  * `U to_unsigned(I,U'lenght)`: recebe um inteiro e retorna um `unsigned`, segundo parâmetro é o tamanho do `unsigned`;
 
 Nas conversões para inteiro, o inteiro resultante terá o tamanho necessário para acomodar o tipo de origem (normalmente um bit a mais), porém cada sintetizador tem sua maneira de implementar o hardware que será utilizado. Nas conversões de inteiros, o tamanho do retorno deve ser especificado pois um inteiro tem tamanho indefinido, mas os vetores tem tamanho definido (veja [o post sobre tipos de dados]({filename}tiposdedadosbasicos.md) para limitações dos simuladores/sintetizadores).
 
 Os demais tipos são todos vetores de bits, portanto não precisamos converter o tipo mas sim fazer um _cast_, ou seja, ordenar o sintetizador a interpretar os dados com uma semântica diferente. O _cast_ pode ser feito usando o tipo de destino e colocando a origem entre parênteses:
- * `V bit_vector(S)`: recebe um `signed` e o interpreta como um `bit_vector`;
- * `V bit_vector(U)`: recebe um `unsigned` e o interpreta como um `bit_vector`;
- * `S signed(V)`: recebe um `bit_vector` e o interpreta como `signed`;
- * `U unsigned(V)`: recebe um `bit_vector` e o interpreta como `unsigned`;
+
+  * `V bit_vector(S)`: recebe um `signed` e o interpreta como um `bit_vector`;
+  * `V bit_vector(U)`: recebe um `unsigned` e o interpreta como um `bit_vector`;
+  * `S signed(V)`: recebe um `bit_vector` e o interpreta como `signed`;
+  * `U unsigned(V)`: recebe um `bit_vector` e o interpreta como `unsigned`;
 
 Note que isto não é uma função de conversão, o sintetizador apenas interpretará aquele conjunto de bits (agregado) com uma semântica diferente do tipo original declarado.
 
