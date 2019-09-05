@@ -147,7 +147,7 @@
 </pre></div>
 
 
-<p>Note que <strong>não</strong> precisamos saber o tamanho do vetor para usar <code>others</code>, então este tipo de atribuição é muito útil quando associada com <a href="{filename}generics.md">generics</a>. De fato, a construção <code>vetor&lt;=(others=&gt;'0');</code> zera qualquer vetor cujo tipo seja compatível com o literal <code>'0'</code>, independentemente do tamanho.</p>
+<p>Note que <strong>não</strong> precisamos saber o tamanho do vetor para usar <code>others</code>, então este tipo de atribuição é muito útil quando associada com <a href="https://balbertini.github.io/vhdlgeneric-pt_BR.html">generics</a>. De fato, a construção <code>vetor&lt;=(others=&gt;'0');</code> zera qualquer vetor cujo tipo seja compatível com o literal <code>'0'</code>, independentemente do tamanho.</p>
 <h2>Registros</h2>
 <p>Quando todos os elementos do vetor são do mesmo tipo, usamos o <code>array</code> para declará-lo, mas e se os tipos não forem os mesmos? A palava chave <code>record</code> serve exatamente para isso. Suponha que eu quero um conjunto de seis fios, sendo um <em>clock</em>, um inteiro sem sinal de quatro bits e um <em>flag</em> que pode ser <em>tri-state</em>.</p>
 <div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">meu_registro</span> <span class="k">is</span> <span class="k">record</span>

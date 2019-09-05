@@ -29,7 +29,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Note que &lt;strong&gt;não&lt;/strong&gt; precisamos saber o tamanho do vetor para usar &lt;code&gt;others&lt;/code&gt;, então este tipo de atribuição é muito útil quando associada com &lt;a href="{filename}generics.md"&gt;generics&lt;/a&gt;. De fato, a construção &lt;code&gt;vetor&amp;lt;=(others=&amp;gt;'0');&lt;/code&gt; zera qualquer vetor cujo tipo seja compatível com o literal &lt;code&gt;'0'&lt;/code&gt;, independentemente do tamanho.&lt;/p&gt;
+&lt;p&gt;Note que &lt;strong&gt;não&lt;/strong&gt; precisamos saber o tamanho do vetor para usar &lt;code&gt;others&lt;/code&gt;, então este tipo de atribuição é muito útil quando associada com &lt;a href="https://balbertini.github.io/vhdlgeneric-pt_BR.html"&gt;generics&lt;/a&gt;. De fato, a construção &lt;code&gt;vetor&amp;lt;=(others=&amp;gt;'0');&lt;/code&gt; zera qualquer vetor cujo tipo seja compatível com o literal &lt;code&gt;'0'&lt;/code&gt;, independentemente do tamanho.&lt;/p&gt;
 &lt;h2&gt;Registros&lt;/h2&gt;
 &lt;p&gt;Quando todos os elementos do vetor são do mesmo tipo, usamos o &lt;code&gt;array&lt;/code&gt; para declará-lo, mas e se os tipos não forem os mesmos? A palava chave &lt;code&gt;record&lt;/code&gt; serve exatamente para isso. Suponha que eu quero um conjunto de seis fios, sendo um &lt;em&gt;clock&lt;/em&gt;, um inteiro sem sinal de quatro bits e um &lt;em&gt;flag&lt;/em&gt; que pode ser &lt;em&gt;tri-state&lt;/em&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;type&lt;/span&gt; &lt;span class="n"&gt;meu_registro&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;record&lt;/span&gt;
