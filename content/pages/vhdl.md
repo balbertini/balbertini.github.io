@@ -15,6 +15,8 @@ Summary: Lista de posts com VHDL.
 
 ## Básico
 [Tipos de dados básicos]({filename}../vhdl/tiposdedadosbasicos.md)  
+[Tipos de dados agregados (vetores)]({filename}../vhdl/array_aggregates_pt.md)  
+[Conversão e Cast entre tipos]({filename}../vhdl/conversion.md)  
 [Entidade (entity)]({filename}../vhdl/entity.md)  
 [Arquitetura (architecture)]({filename}../vhdl/architecture.md)  
 <!-- [Componentes]({filename}../vhdl/component.md)   -->
