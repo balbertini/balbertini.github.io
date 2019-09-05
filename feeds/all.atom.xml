@@ -96,17 +96,21 @@
 &lt;p&gt;As funções de conversão disponíveis na &lt;code&gt;numeric_bit&lt;/code&gt; podem ser vista na figura:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Tabela de conversão de tipos da numeric_bit." src="https://balbertini.github.io/images/vhdl/conversaobitvectortabela.png"&gt;&lt;/p&gt;
 &lt;p&gt;Em cinza as células que dispensam de conversão (mesmo tipo), amarelo as que requerem uma função de conversão específica, verde as que dispensam a conversão mas precisam de um &lt;em&gt;cast&lt;/em&gt; para mudar a semântica de interpretação. Em vermelho as conversões indisponíveis diretamente.&lt;/p&gt;
-&lt;p&gt;De &lt;code&gt;integer&lt;/code&gt; para qualquer um dos outros tipos, temos que usar uma função de conversão (em amarelo na tabela), que começam com &lt;code&gt;to_&lt;/code&gt;. São elas:
- * &lt;code&gt;I to_integer(S)&lt;/code&gt;: recebe um &lt;code&gt;signed&lt;/code&gt; e retorna um inteiro;
- * &lt;code&gt;I to_integer(U)&lt;/code&gt;: recebe um &lt;code&gt;unsigned&lt;/code&gt; e retorna um inteiro;
- * &lt;code&gt;S to_signed(I,S'lenght)&lt;/code&gt;: recebe um inteiro e retorna um &lt;code&gt;signed&lt;/code&gt;, segundo parâmetro é o tamanho do &lt;code&gt;signed&lt;/code&gt;;
- * &lt;code&gt;U to_unsigned(I,U'lenght)&lt;/code&gt;: recebe um inteiro e retorna um &lt;code&gt;unsigned&lt;/code&gt;, segundo parâmetro é o tamanho do &lt;code&gt;unsigned&lt;/code&gt;;&lt;/p&gt;
+&lt;p&gt;De &lt;code&gt;integer&lt;/code&gt; para qualquer um dos outros tipos, temos que usar uma função de conversão (em amarelo na tabela), que começam com &lt;code&gt;to_&lt;/code&gt;. São elas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;I to_integer(S)&lt;/code&gt;: recebe um &lt;code&gt;signed&lt;/code&gt; e retorna um inteiro;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;I to_integer(U)&lt;/code&gt;: recebe um &lt;code&gt;unsigned&lt;/code&gt; e retorna um inteiro;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;S to_signed(I,S'lenght)&lt;/code&gt;: recebe um inteiro e retorna um &lt;code&gt;signed&lt;/code&gt;, segundo parâmetro é o tamanho do &lt;code&gt;signed&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;U to_unsigned(I,U'lenght)&lt;/code&gt;: recebe um inteiro e retorna um &lt;code&gt;unsigned&lt;/code&gt;, segundo parâmetro é o tamanho do &lt;code&gt;unsigned&lt;/code&gt;;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Nas conversões para inteiro, o inteiro resultante terá o tamanho necessário para acomodar o tipo de origem (normalmente um bit a mais), porém cada sintetizador tem sua maneira de implementar o hardware que será utilizado. Nas conversões de inteiros, o tamanho do retorno deve ser especificado pois um inteiro tem tamanho indefinido, mas os vetores tem tamanho definido (veja &lt;a href="https://balbertini.github.io/vhdlbasicdatatypes-pt_BR.html"&gt;o post sobre tipos de dados&lt;/a&gt; para limitações dos simuladores/sintetizadores).&lt;/p&gt;
-&lt;p&gt;Os demais tipos são todos vetores de bits, portanto não precisamos converter o tipo mas sim fazer um &lt;em&gt;cast&lt;/em&gt;, ou seja, ordenar o sintetizador a interpretar os dados com uma semântica diferente. O &lt;em&gt;cast&lt;/em&gt; pode ser feito usando o tipo de destino e colocando a origem entre parênteses:
- * &lt;code&gt;V bit_vector(S)&lt;/code&gt;: recebe um &lt;code&gt;signed&lt;/code&gt; e o interpreta como um &lt;code&gt;bit_vector&lt;/code&gt;;
- * &lt;code&gt;V bit_vector(U)&lt;/code&gt;: recebe um &lt;code&gt;unsigned&lt;/code&gt; e o interpreta como um &lt;code&gt;bit_vector&lt;/code&gt;;
- * &lt;code&gt;S signed(V)&lt;/code&gt;: recebe um &lt;code&gt;bit_vector&lt;/code&gt; e o interpreta como &lt;code&gt;signed&lt;/code&gt;;
- * &lt;code&gt;U unsigned(V)&lt;/code&gt;: recebe um &lt;code&gt;bit_vector&lt;/code&gt; e o interpreta como &lt;code&gt;unsigned&lt;/code&gt;;&lt;/p&gt;
+&lt;p&gt;Os demais tipos são todos vetores de bits, portanto não precisamos converter o tipo mas sim fazer um &lt;em&gt;cast&lt;/em&gt;, ou seja, ordenar o sintetizador a interpretar os dados com uma semântica diferente. O &lt;em&gt;cast&lt;/em&gt; pode ser feito usando o tipo de destino e colocando a origem entre parênteses:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;V bit_vector(S)&lt;/code&gt;: recebe um &lt;code&gt;signed&lt;/code&gt; e o interpreta como um &lt;code&gt;bit_vector&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;V bit_vector(U)&lt;/code&gt;: recebe um &lt;code&gt;unsigned&lt;/code&gt; e o interpreta como um &lt;code&gt;bit_vector&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;S signed(V)&lt;/code&gt;: recebe um &lt;code&gt;bit_vector&lt;/code&gt; e o interpreta como &lt;code&gt;signed&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;U unsigned(V)&lt;/code&gt;: recebe um &lt;code&gt;bit_vector&lt;/code&gt; e o interpreta como &lt;code&gt;unsigned&lt;/code&gt;;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Note que isto não é uma função de conversão, o sintetizador apenas interpretará aquele conjunto de bits (agregado) com uma semântica diferente do tipo original declarado.&lt;/p&gt;
 &lt;p&gt;Para resumir, veja o diagrama abaixo:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Diagrama de conversão de tipos baseados em BIT." src="https://balbertini.github.io/images/vhdl/vhdlconversao.png"&gt;&lt;/p&gt;
@@ -418,11 +422,11 @@
 
 
 &lt;p&gt;A função, resumidamente, está lendo um arquivo (cujo nome é seu único parâmetro) linha por linha, considerando que há uma palavra de memória por linha, na forma de um &lt;code&gt;bit_vector&lt;/code&gt; de 4 bits. Note que a função só lerá a quantidade de dados necessária para preencher a memória pois o laço é limitado pelo tamanho do tipo da memória. No nosso exemplo, ela lerá as primeiras 32 palavras (uma por linha, então 32 linhas) do arquivo, esperando que cada linha contenha exatamente 4 bits. Na última linha do exemplo declaramos a matriz de memória atribuindo como valor inicial o valor retornado pela função, que é invocada com o nome do arquivo como parâmetro. Um exemplo de arquivo é:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;0000
-0001
-0010
-...
-1111
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;0000&lt;/span&gt;
+&lt;span class="mi"&gt;0001&lt;/span&gt;
+&lt;span class="mi"&gt;0010&lt;/span&gt;
+&lt;span class="p"&gt;...&lt;/span&gt;
+&lt;span class="mi"&gt;1111&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1370,7 +1374,7 @@ Diferença entre FSM , psudo-código na asm--&gt;</content><category term="siste
 
 
 &lt;p&gt;Um exemplo de uma linha deste arquivo é (note que é UMA linha):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1001101010001010110011010000011110011001110000111010011111110111 1001001101000100001110011110100110000101010111011110110011100000 1001001000000000000010010000000110000001010000011010010011100000 1001101111001110111111011110111110011101110111111110111111110111 0010110111001111000001101111000100011111001000011001010011010111 0000011101000110100100110001111000010100011001011011101100010111 0000000000000000000000000000000000000000000000000000000000000000 0110010000110001000000100001000001100010001000000001000000001000
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;1001101010001010110011010000011110011001110000111010011111110111&lt;/span&gt; &lt;span class="mi"&gt;1001001101000100001110011110100110000101010111011110110011100000&lt;/span&gt; &lt;span class="mi"&gt;1001001000000000000010010000000110000001010000011010010011100000&lt;/span&gt; &lt;span class="mi"&gt;1001101111001110111111011110111110011101110111111110111111110111&lt;/span&gt; &lt;span class="mi"&gt;0010110111001111000001101111000100011111001000011001010011010111&lt;/span&gt; &lt;span class="mi"&gt;0000011101000110100100110001111000010100011001011011101100010111&lt;/span&gt; &lt;span class="mi"&gt;0000000000000000000000000000000000000000000000000000000000000000&lt;/span&gt; &lt;span class="mi"&gt;0110010000110001000000100001000001100010001000000001000000001000&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

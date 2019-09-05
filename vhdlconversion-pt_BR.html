@@ -16,8 +16,6 @@
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/fontawesome.css">
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/brands.css">
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/solid.css">
-  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
-
 
 
     <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
@@ -112,7 +110,7 @@
       
     <h1 id="vhdlconversion">Conversão e Cast</h1>
     <p>
-      Publicado em 05/09/2019 (qui) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+      Publicado em 05/09/2019 (Thu) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
 
     </p>
   </header>
@@ -160,17 +158,21 @@
 <p>As funções de conversão disponíveis na <code>numeric_bit</code> podem ser vista na figura:</p>
 <p><img alt="Tabela de conversão de tipos da numeric_bit." src="https://balbertini.github.io/images/vhdl/conversaobitvectortabela.png"></p>
 <p>Em cinza as células que dispensam de conversão (mesmo tipo), amarelo as que requerem uma função de conversão específica, verde as que dispensam a conversão mas precisam de um <em>cast</em> para mudar a semântica de interpretação. Em vermelho as conversões indisponíveis diretamente.</p>
-<p>De <code>integer</code> para qualquer um dos outros tipos, temos que usar uma função de conversão (em amarelo na tabela), que começam com <code>to_</code>. São elas:
- * <code>I to_integer(S)</code>: recebe um <code>signed</code> e retorna um inteiro;
- * <code>I to_integer(U)</code>: recebe um <code>unsigned</code> e retorna um inteiro;
- * <code>S to_signed(I,S'lenght)</code>: recebe um inteiro e retorna um <code>signed</code>, segundo parâmetro é o tamanho do <code>signed</code>;
- * <code>U to_unsigned(I,U'lenght)</code>: recebe um inteiro e retorna um <code>unsigned</code>, segundo parâmetro é o tamanho do <code>unsigned</code>;</p>
+<p>De <code>integer</code> para qualquer um dos outros tipos, temos que usar uma função de conversão (em amarelo na tabela), que começam com <code>to_</code>. São elas:</p>
+<ul>
+<li><code>I to_integer(S)</code>: recebe um <code>signed</code> e retorna um inteiro;</li>
+<li><code>I to_integer(U)</code>: recebe um <code>unsigned</code> e retorna um inteiro;</li>
+<li><code>S to_signed(I,S'lenght)</code>: recebe um inteiro e retorna um <code>signed</code>, segundo parâmetro é o tamanho do <code>signed</code>;</li>
+<li><code>U to_unsigned(I,U'lenght)</code>: recebe um inteiro e retorna um <code>unsigned</code>, segundo parâmetro é o tamanho do <code>unsigned</code>;</li>
+</ul>
 <p>Nas conversões para inteiro, o inteiro resultante terá o tamanho necessário para acomodar o tipo de origem (normalmente um bit a mais), porém cada sintetizador tem sua maneira de implementar o hardware que será utilizado. Nas conversões de inteiros, o tamanho do retorno deve ser especificado pois um inteiro tem tamanho indefinido, mas os vetores tem tamanho definido (veja <a href="https://balbertini.github.io/vhdlbasicdatatypes-pt_BR.html">o post sobre tipos de dados</a> para limitações dos simuladores/sintetizadores).</p>
-<p>Os demais tipos são todos vetores de bits, portanto não precisamos converter o tipo mas sim fazer um <em>cast</em>, ou seja, ordenar o sintetizador a interpretar os dados com uma semântica diferente. O <em>cast</em> pode ser feito usando o tipo de destino e colocando a origem entre parênteses:
- * <code>V bit_vector(S)</code>: recebe um <code>signed</code> e o interpreta como um <code>bit_vector</code>;
- * <code>V bit_vector(U)</code>: recebe um <code>unsigned</code> e o interpreta como um <code>bit_vector</code>;
- * <code>S signed(V)</code>: recebe um <code>bit_vector</code> e o interpreta como <code>signed</code>;
- * <code>U unsigned(V)</code>: recebe um <code>bit_vector</code> e o interpreta como <code>unsigned</code>;</p>
+<p>Os demais tipos são todos vetores de bits, portanto não precisamos converter o tipo mas sim fazer um <em>cast</em>, ou seja, ordenar o sintetizador a interpretar os dados com uma semântica diferente. O <em>cast</em> pode ser feito usando o tipo de destino e colocando a origem entre parênteses:</p>
+<ul>
+<li><code>V bit_vector(S)</code>: recebe um <code>signed</code> e o interpreta como um <code>bit_vector</code>;</li>
+<li><code>V bit_vector(U)</code>: recebe um <code>unsigned</code> e o interpreta como um <code>bit_vector</code>;</li>
+<li><code>S signed(V)</code>: recebe um <code>bit_vector</code> e o interpreta como <code>signed</code>;</li>
+<li><code>U unsigned(V)</code>: recebe um <code>bit_vector</code> e o interpreta como <code>unsigned</code>;</li>
+</ul>
 <p>Note que isto não é uma função de conversão, o sintetizador apenas interpretará aquele conjunto de bits (agregado) com uma semântica diferente do tipo original declarado.</p>
 <p>Para resumir, veja o diagrama abaixo:</p>
 <p><img alt="Diagrama de conversão de tipos baseados em BIT." src="https://balbertini.github.io/images/vhdl/vhdlconversao.png"></p>
