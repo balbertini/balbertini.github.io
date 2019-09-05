@@ -72,9 +72,7 @@ Um dos pacotes mais utilizados em VHDL é o `std_logic_1164` da biblioteca `ieee
 library ieee;
 use ieee.std_logic_1164.all;
 ```
-
 O tipo de dado primário definido nesta biblioteca é o `std_ulogic` (_standard unresolved logic_), que pode assumir outros valores usados em projeto digital além dos valores ideais `0` e `1`. Esta modelagem de valores é mais próxima do mundo real, mas deve ser utilizada com cuidado.
-
 
   | Valor | Significado                        |
   | ----: | :--------------------------------: |

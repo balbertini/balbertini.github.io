@@ -2,13 +2,22 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+
 AUTHOR = 'Bruno Albertini'
 SITENAME = "B.Albertini's site"
+SITETITLE = 'B.Albertini'
+SITESUBTITLE = 'Professor'
+# SITELOGO = SITEURL + 'content/images/profile.png'
+# FAVICON = SITEURL + 'content/images/favicon.ico'
 SITEURL = ''
-THEME = 'theme'
-
+SITELOGO = SITEURL + '/images/profile.png'
+FAVICON = SITEURL + '/images/favicon.ico'
 THEME = 'theme'
 PATH = 'content'
+# CUSTOM_CSS = 'static/academicons.min.css'
+
+BROWSER_COLOR = '#333'
+ROBOTS = 'index, follow'
 
 TIMEZONE = 'America/Sao_Paulo'
 
@@ -17,7 +26,6 @@ PLUGIN_PATHS = ["../pelican-plugins"]
 PLUGINS = ['i18n_subsites', 'render_math',]
 # Enable Jinja2 i18n extension used to parse translations.
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n'],}
-
 
 # DEFAULT_LANG = u'pt_BR'
 DATE_FORMATS = {
@@ -59,11 +67,13 @@ STATIC_PATHS = [
     'images',
     # 'extra/robots.txt',
     'extra/favicon.ico',
-    'extra'
+    'extra',
+    # 'static',
 ]
 
 EXTRA_PATH_METADATA = {
     # 'extra/robots.txt': {'path': 'robots.txt'},
+    # 'extra/custom.css': {'path': 'static/custom.css'},
     'extra/favicon.ico': {'path': 'favicon.ico'}
 }
 
@@ -73,7 +83,4 @@ CC_LICENSE = {
     'slug': 'by-sa'
 }
 COPYRIGHT_NAME = "Bruno Albertini"
-
-
-# Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+COPYRIGHT_YEAR = 2014

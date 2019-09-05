@@ -18,13 +18,13 @@ Summary: Lista de posts com VHDL.
 [Entidade (entity)]({filename}../vhdl/entity.md)  
 [Arquitetura (architecture)]({filename}../vhdl/architecture.md)  
 <!-- [Componentes]({filename}../vhdl/component.md)   -->
-[Módulos parametrizáveis (generic)]({filename}../vhdl/generic.md)  
-[Instância parametrizável (generate)]({filename}../vhdl/forgenerate.md)  
 [Circuitos combinatórios]({filename}../vhdl/combinatorio.md)  
 [Circuitos sequenciais]({filename}../vhdl/sequenciais.md)  
 
 ## Intermediário
 [Máquinas de estado]({filename}../vhdl/maquinasdeestado.md)  
+[Módulos parametrizáveis (generic)]({filename}../vhdl/generic.md)  
+[Instância parametrizável (generate)]({filename}../vhdl/forgenerate.md)  
 
 #TestBench
 [Como fazer um testbench]({filename}../vhdl/testbench.md)  
