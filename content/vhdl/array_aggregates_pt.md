@@ -49,7 +49,7 @@ mv <= (1=>c, 0=> '1', others=>'0'); -- 0c1
 mv <= (others=>'0'); -- 000
 ```
 
-Note que **não** precisamos saber o tamanho do vetor para usar `others`, então este tipo de atribuição é muito útil quando associada com [generics]({filename}generics.md). De fato, a construção `vetor<=(others=>'0');` zera qualquer vetor cujo tipo seja compatível com o literal `'0'`, independentemente do tamanho.
+Note que **não** precisamos saber o tamanho do vetor para usar `others`, então este tipo de atribuição é muito útil quando associada com [generics]({filename}generic.md). De fato, a construção `vetor<=(others=>'0');` zera qualquer vetor cujo tipo seja compatível com o literal `'0'`, independentemente do tamanho.
 
 ## Registros
 Quando todos os elementos do vetor são do mesmo tipo, usamos o `array` para declará-lo, mas e se os tipos não forem os mesmos? A palava chave `record` serve exatamente para isso. Suponha que eu quero um conjunto de seis fios, sendo um _clock_, um inteiro sem sinal de quatro bits e um _flag_ que pode ser _tri-state_.
