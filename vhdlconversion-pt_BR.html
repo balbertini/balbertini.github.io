@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/solid.css">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+
+
+    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
+
+
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-125173293-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
+
+<meta name="author" content="Bruno Albertini" />
+<meta name="description" content="Como converter entre tipos em VHDL" />
+<meta name="keywords" content="vhdl, basic">
+
+<meta property="og:site_name" content="B.Albertini's site"/>
+<meta property="og:title" content="Conversão e Cast"/>
+<meta property="og:description" content="Como converter entre tipos em VHDL"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:url" content="https://balbertini.github.io/vhdlconversion-pt_BR.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-09-05 11:20:00-03:00"/>
+<meta property="article:modified_time" content="2019-09-05 16:22:00-03:00"/>
+<meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
+<meta property="article:section" content="vhdl"/>
+<meta property="article:tag" content="vhdl"/>
+<meta property="article:tag" content="basic"/>
+<meta property="og:image" content="/images/profile.png">
+
+  <title>B.Albertini's site &ndash; Conversão e Cast</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://balbertini.github.io">
+        <img src="/images/profile.png" alt="B.Albertini" title="B.Albertini">
+      </a>
+      <h1><a href="https://balbertini.github.io">B.Albertini</a></h1>
+
+<p>Professor</p>
+      <nav>
+        <ul class="list">
+          <li><a href="https://balbertini.github.io/pages/sd-pt_BR.html#sd">Sistemas Digitais</a></li>
+          <li><a href="https://balbertini.github.io/pages/disciplinas-pt_BR.html#disciplinas">Disciplinas</a></li>
+          <li><a href="https://balbertini.github.io/pages/research-pt_BR.html#research">Pesquisa</a></li>
+          <li><a href="https://balbertini.github.io/pages/sobre-pt_BR.html#sobre">Sobre</a></li>
+          <li><a href="https://balbertini.github.io/pages/vhdl-pt_BR.html#vhdl">VHDL</a></li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/balbertini" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-rss" href="//balbertini.github.io/feeds/all.atom.xml" target="_blank">
+            <i class="fas fa-rss">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="vhdlconversion">Conversão e Cast</h1>
+    <p>
+      Publicado em 05/09/2019 (qui) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>VHDL é uma linguagem fortemente tipada, o que na prática significa que você não pode atribuir um sinal de um tipo a outro diretamente.</p>
+<p>No entanto, conversões entre tipos relacionados são muito comuns, então apresentaremos aqui algumas formas de conversão.</p>
+<h2>Tipos agregados</h2>
+<p>Há uma diferença muito grande entre tipos agregados e nativos.</p>
+<p>Uma das conversões mais comuns que existem em VHDL é de/para inteiros, pois estes são utilizados como indexadores ou comparadores com literais constantes. O inteiro no entanto, é um tipo nativo do VHDL enquanto que outros tipos, como <code>unsigned</code> ou <code>signed</code> são tipos compostos, considerados agregados (são como vetores de bits com um significado especial). Os tipos vetores, em especial o <code>bit_vector</code> e o <code>std_logic_vector</code> também são vetores de bits, porém não tem nenhum significado associado fora os definidos pelo seus respectivos tipos base.</p>
+<p>Para converter entre um tipo numérico e um agregado, é necessário uma função de conversão pois são tipos diferentes dentro da linguagem. Já entre dois tipos numéricos ou entre dois tipos agregados, é necessário somente um <em>cast</em>. Exceto pelo <code>bit_vector</code>, todos os outros tipos e conversões precisam ser descritos, porém há bibliotecas padronizadas para todas as conversões possíveis.</p>
+<table>
+<thead>
+<tr>
+<th align="right">Tipo</th>
+<th align="center">Biblioteca</th>
+<th align="center">Categoria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><code>bit</code></td>
+<td align="center">nativo</td>
+<td align="center">Simples</td>
+</tr>
+<tr>
+<td align="right"><code>bit_vector</code></td>
+<td align="center">nativo</td>
+<td align="center">Agregado</td>
+</tr>
+<tr>
+<td align="right"><code>std_logic</code></td>
+<td align="center"><code>ieee.std_logic_1164</code></td>
+<td align="center">Agregado</td>
+</tr>
+<tr>
+<td align="right"><code>std_logic_vector</code></td>
+<td align="center"><code>ieee.std_logic_1164</code></td>
+<td align="center">Agregado</td>
+</tr>
+</tbody>
+</table>
+<p>Ao incluir a biblioteca <code>ieee.std_logic_1164</code>, passamos a ter acesso aos tipos baseados em <code>std_logic</code>. As bibliotecas padronizadas com as rotinas de conversão são as <code>ieee.numeric_std</code> para os derivados de <code>std_logic</code>, e a <code>ieee.numeric_bit</code> para os tipos derivados do <code>bit</code>.</p>
+<p>As funções de conversão disponíveis na <code>numeric_bit</code> podem ser vista na figura:</p>
+<p><img alt="Tabela de conversão de tipos da numeric_bit." src="https://balbertini.github.io/images/vhdl/conversaobitvectortabela.png"></p>
+<p>Em cinza as células que dispensam de conversão (mesmo tipo), amarelo as que requerem uma função de conversão específica, verde as que dispensam a conversão mas precisam de um <em>cast</em> para mudar a semântica de interpretação. Em vermelho as conversões indisponíveis diretamente.</p>
+<p>De <code>integer</code> para qualquer um dos outros tipos, temos que usar uma função de conversão (em amarelo na tabela), que começam com <code>to_</code>. São elas:
+ * <code>I to_integer(S)</code>: recebe um <code>signed</code> e retorna um inteiro;
+ * <code>I to_integer(U)</code>: recebe um <code>unsigned</code> e retorna um inteiro;
+ * <code>S to_signed(I,S'lenght)</code>: recebe um inteiro e retorna um <code>signed</code>, segundo parâmetro é o tamanho do <code>signed</code>;
+ * <code>U to_unsigned(I,U'lenght)</code>: recebe um inteiro e retorna um <code>unsigned</code>, segundo parâmetro é o tamanho do <code>unsigned</code>;</p>
+<p>Nas conversões para inteiro, o inteiro resultante terá o tamanho necessário para acomodar o tipo de origem (normalmente um bit a mais), porém cada sintetizador tem sua maneira de implementar o hardware que será utilizado. Nas conversões de inteiros, o tamanho do retorno deve ser especificado pois um inteiro tem tamanho indefinido, mas os vetores tem tamanho definido (veja <a href="https://balbertini.github.io/vhdlbasicdatatypes-pt_BR.html">o post sobre tipos de dados</a> para limitações dos simuladores/sintetizadores).</p>
+<p>Os demais tipos são todos vetores de bits, portanto não precisamos converter o tipo mas sim fazer um <em>cast</em>, ou seja, ordenar o sintetizador a interpretar os dados com uma semântica diferente. O <em>cast</em> pode ser feito usando o tipo de destino e colocando a origem entre parênteses:
+ * <code>V bit_vector(S)</code>: recebe um <code>signed</code> e o interpreta como um <code>bit_vector</code>;
+ * <code>V bit_vector(U)</code>: recebe um <code>unsigned</code> e o interpreta como um <code>bit_vector</code>;
+ * <code>S signed(V)</code>: recebe um <code>bit_vector</code> e o interpreta como <code>signed</code>;
+ * <code>U unsigned(V)</code>: recebe um <code>bit_vector</code> e o interpreta como <code>unsigned</code>;</p>
+<p>Note que isto não é uma função de conversão, o sintetizador apenas interpretará aquele conjunto de bits (agregado) com uma semântica diferente do tipo original declarado.</p>
+<p>Para resumir, veja o diagrama abaixo:</p>
+<p><img alt="Diagrama de conversão de tipos baseados em BIT." src="https://balbertini.github.io/images/vhdl/vhdlconversao.png"></p>
+<p>O diagrama acima foi inspirado no diagrama do site <a href="http://www.bitweenie.com/listings/vhdl-type-conversion/">BitWeenie</a> para <code>std_logic</code>. Se o tipo base que você está usando e o <code>std_logic</code>, você deve incluir a biblioteca <code>numeric_std</code> pois as conversões de/para este tipo estão nesta biblioteca.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://balbertini.github.io/tag/vhdl.html">vhdl</a>
+      <a href="https://balbertini.github.io/tag/basic.html">basic</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'balbertini';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Habilite JavaScript para ver os comentários.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy; Bruno Albertini 2014 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - O tema <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> foi criado por <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " B.Albertini's site ",
+  "url" : "https://balbertini.github.io",
+  "image": "/images/profile.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
