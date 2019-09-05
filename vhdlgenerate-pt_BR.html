@@ -6,20 +6,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="" />
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <meta name="robots" content="index, follow" />
+
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
 
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/pygments/github.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/solid.css">
 
+    <link href="https://balbertini.github.io/static/custom.css" rel="stylesheet">
 
     <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
 
 
+    <link rel="shortcut icon" href="https://balbertini.github.ioimages/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://balbertini.github.ioimages/favicon.ico" type="image/x-icon">
 
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -32,6 +36,15 @@
   ga('send', 'pageview');
 </script>
 <!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
 
 <meta name="author" content="Bruno Albertini" />
 <meta name="description" content="Usando o generate em VHDL." />
@@ -49,7 +62,7 @@
 <meta property="article:section" content="vhdl"/>
 <meta property="article:tag" content="vhdl"/>
 <meta property="article:tag" content="basic"/>
-<meta property="og:image" content="">
+<meta property="og:image" content="https://balbertini.github.ioimages/profile.png">
 
   <title>B.Albertini's site &ndash; Instanciando componentes parametricamente</title>
 
@@ -58,16 +71,16 @@
   <aside>
     <div>
       <a href="https://balbertini.github.io">
-        <img src="https://balbertini.github.io/theme/img/profile.png" alt="" title="">
+        <img src="https://balbertini.github.ioimages/profile.png" alt="B.Albertini" title="B.Albertini">
       </a>
-      <h1><a href="https://balbertini.github.io"></a></h1>
+      <h1><a href="https://balbertini.github.io">B.Albertini</a></h1>
 
-
+<p>Professor</p>
       <nav>
         <ul class="list">
+          <li><a href="https://balbertini.github.io/pages/sd-pt_BR.html#sd">Sistemas Digitais</a></li>
           <li><a href="https://balbertini.github.io/pages/disciplinas-pt_BR.html#disciplinas">Disciplinas</a></li>
           <li><a href="https://balbertini.github.io/pages/research-pt_BR.html#research">Pesquisa</a></li>
-          <li><a href="https://balbertini.github.io/pages/sd-pt_BR.html#sd">Sistemas Digitais</a></li>
           <li><a href="https://balbertini.github.io/pages/sobre-pt_BR.html#sobre">Sobre</a></li>
           <li><a href="https://balbertini.github.io/pages/vhdl-pt_BR.html#vhdl">VHDL</a></li>
 
@@ -75,8 +88,16 @@
       </nav>
 
       <ul class="social">
-        <li><a class="sc-github" href="https://github.com/balbertini" target="_blank"><i class="fa fa-github"></i></a></li>
-        <li><a class="sc-rss" href="//balbertini.github.io/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+          <li>
+            <a  class="sc-github" href="https://github.com/balbertini" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-rss" href="//balbertini.github.io/feeds/all.atom.xml" target="_blank">
+            <i class="fas fa-rss">
+            </i>
+          </a></li>
       </ul>
     </div>
 
@@ -90,9 +111,8 @@
       
     <h1 id="vhdlgenerate">Instanciando componentes parametricamente</h1>
     <p>
-      Publicado em 09/02/19 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-        <br/>
-          Modificado em 09/02/19
+      Publicado em 02/09/2019 (seg) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+
     </p>
   </header>
 
@@ -293,10 +313,13 @@
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
     mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -310,6 +333,8 @@
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
         "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
         "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
         "    }, " +
@@ -330,13 +355,12 @@
                 "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
             "});" +
         "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 </script>
   </div>
-
-
-
   <div class="tag-cloud">
     <p>
       <a href="https://balbertini.github.io/tag/vhdl.html">vhdl</a>
@@ -366,7 +390,7 @@
 
     <footer>
 <p>
-  &copy; Bruno Albertini  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; Bruno Albertini 2014 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - O tema <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> foi criado por <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
   <a rel="license"
@@ -391,7 +415,7 @@
   "@type" : "Blog",
   "name": " B.Albertini's site ",
   "url" : "https://balbertini.github.io",
-  "image": "",
+  "image": "https://balbertini.github.ioimages/profile.png",
   "description": ""
 }
 </script>

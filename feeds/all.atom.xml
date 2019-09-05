@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2019-09-02T17:44:00-03:00</updated><entry><title>Instanciando componentes parametricamente</title><link href="https://balbertini.github.io/vhdlgenerate-pt_BR.html" rel="alternate"></link><published>2019-09-02T17:44:00-03:00</published><updated>2019-09-02T17:44:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-09-02:/vhdlgenerate-pt_BR.html</id><summary type="html">&lt;p&gt;Usando o generate em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Em muitas situações, não sabemos de antemão quantas instâncias de determinado componente precisaremos pois este número é parametrizável. Em VHDL, há a construção &lt;code&gt;generate&lt;/code&gt; que permite instanciar componentes e fazer ligações para as instâncias de modo programático, dependendo de um parâmetro. A única restrição para que esta construção seja sintetizável é que todos os parâmetros sejam resolvíveis no momento da síntese.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2019-09-02T17:44:00-03:00</updated><subtitle>Professor</subtitle><entry><title>Instanciando componentes parametricamente</title><link href="https://balbertini.github.io/vhdlgenerate-pt_BR.html" rel="alternate"></link><published>2019-09-02T17:44:00-03:00</published><updated>2019-09-02T17:44:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-09-02:/vhdlgenerate-pt_BR.html</id><summary type="html">&lt;p&gt;Usando o generate em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Em muitas situações, não sabemos de antemão quantas instâncias de determinado componente precisaremos pois este número é parametrizável. Em VHDL, há a construção &lt;code&gt;generate&lt;/code&gt; que permite instanciar componentes e fazer ligações para as instâncias de modo programático, dependendo de um parâmetro. A única restrição para que esta construção seja sintetizável é que todos os parâmetros sejam resolvíveis no momento da síntese.&lt;/p&gt;
 &lt;h2&gt;Sintaxe&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nc"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;parametro&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt; &lt;span class="k"&gt;generate&lt;/span&gt;
     &lt;span class="n"&gt;primitivas&lt;/span&gt; &lt;span class="n"&gt;concorrentes&lt;/span&gt;
@@ -194,10 +194,13 @@
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
     mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -211,6 +214,8 @@
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
         "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
         "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
         "    }, " +
@@ -231,6 +236,8 @@
                 "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
             "});" +
         "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;</content><category term="vhdl"></category><category term="basic"></category></entry><entry><title>Memórias em VHDL</title><link href="https://balbertini.github.io/vhdlmem-pt_BR.html" rel="alternate"></link><published>2019-05-30T13:31:00-03:00</published><updated>2019-06-06T16:45:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-05-30:/vhdlmem-pt_BR.html</id><summary type="html">&lt;p&gt;Memórias em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As memória são parte integrante de qualquer sistema digital sequencial. Enquanto trabalhamos com circuitos simples ou máquinas de estado, costumamos usar &lt;em&gt;flip-flops&lt;/em&gt; como elementos de memória. Contudo, as tarefas mais complexas não escalam devido ao tamanho dos elementos de memória envolvidos. Considerando a tarefa de guardar informações, é útil utilizarmos estruturas de memórias específicas, como RAMs ou ROMs.&lt;/p&gt;
@@ -300,11 +307,11 @@
 
 
 &lt;p&gt;A função, resumidamente, está lendo um arquivo (cujo nome é seu único parâmetro) linha por linha, considerando que há uma palavra de memória por linha, na forma de um &lt;code&gt;bit_vector&lt;/code&gt; de 4 bits. Note que a função só lerá a quantidade de dados necessária para preencher a memória pois o laço é limitado pelo tamanho do tipo da memória. No nosso exemplo, ela lerá as primeiras 32 palavras (uma por linha, então 32 linhas) do arquivo, esperando que cada linha contenha exatamente 4 bits. Na última linha do exemplo declaramos a matriz de memória atribuindo como valor inicial o valor retornado pela função, que é invocada com o nome do arquivo como parâmetro. Um exemplo de arquivo é:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;0000&lt;/span&gt;
-&lt;span class="mi"&gt;0001&lt;/span&gt;
-&lt;span class="mi"&gt;0010&lt;/span&gt;
-&lt;span class="p"&gt;...&lt;/span&gt;
-&lt;span class="mi"&gt;1111&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;0000
+0001
+0010
+...
+1111
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -341,10 +348,13 @@
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
     mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -358,6 +368,8 @@
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
         "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
         "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
         "    }, " +
@@ -378,6 +390,8 @@
                 "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
             "});" +
         "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;</content><category term="vhdl"></category><category term="memory"></category></entry><entry><title>Máquinas de estado em VHDL</title><link href="https://balbertini.github.io/vhdlsm-pt_BR.html" rel="alternate"></link><published>2019-03-18T11:06:00-03:00</published><updated>2019-03-19T10:58:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-18:/vhdlsm-pt_BR.html</id><summary type="html">&lt;p&gt;Máquinas de estado em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Máquinas de estado são muito comuns pois, em sistemas digitais, todos os circuitos sequenciais podem ser vistos como uma máquina de estados finita. No entanto, especificá-las em VHDL é um desafio para os projetistas novatos devido aos problemas que surgem quando o tempo está envolvido. Circuitos combinatórios não dependem de tempo e não possuem memória, porém máquinas de estado possuem e precisam ser projetadas com o devido cuidado. Neste artigo mostrarei algumas formas seguras de especificar corretamente máquinas de estado finitas síncronas e determinísticas em VHDL.&lt;/p&gt;
@@ -1245,7 +1259,7 @@ Diferença entre FSM , psudo-código na asm--&gt;</content><category term="siste
 
 
 &lt;p&gt;Um exemplo de uma linha deste arquivo é (note que é UMA linha):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;1001101010001010110011010000011110011001110000111010011111110111&lt;/span&gt; &lt;span class="mi"&gt;1001001101000100001110011110100110000101010111011110110011100000&lt;/span&gt; &lt;span class="mi"&gt;1001001000000000000010010000000110000001010000011010010011100000&lt;/span&gt; &lt;span class="mi"&gt;1001101111001110111111011110111110011101110111111110111111110111&lt;/span&gt; &lt;span class="mi"&gt;0010110111001111000001101111000100011111001000011001010011010111&lt;/span&gt; &lt;span class="mi"&gt;0000011101000110100100110001111000010100011001011011101100010111&lt;/span&gt; &lt;span class="mi"&gt;0000000000000000000000000000000000000000000000000000000000000000&lt;/span&gt; &lt;span class="mi"&gt;0110010000110001000000100001000001100010001000000001000000001000&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1001101010001010110011010000011110011001110000111010011111110111 1001001101000100001110011110100110000101010111011110110011100000 1001001000000000000010010000000110000001010000011010010011100000 1001101111001110111111011110111110011101110111111110111111110111 0010110111001111000001101111000100011111001000011001010011010111 0000011101000110100100110001111000010100011001011011101100010111 0000000000000000000000000000000000000000000000000000000000000000 0110010000110001000000100001000001100010001000000001000000001000
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1495,10 +1509,13 @@ Por último, montamos o diagrama de transição de estados, que fica conforme a 
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
     mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -1512,6 +1529,8 @@ Por último, montamos o diagrama de transição de estados, que fica conforme a 
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
         "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
         "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
         "    }, " +
@@ -1532,6 +1551,8 @@ Por último, montamos o diagrama de transição de estados, que fica conforme a 
                 "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
             "});" +
         "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;</content><category term="sistemas digitais"></category><category term="exercícios resolvidos"></category><category term="análise"></category><category term="circuitos realimentados"></category></entry><entry><title>Máquinas de Estados Finitas</title><link href="https://balbertini.github.io/fsmbasics-pt_BR.html" rel="alternate"></link><published>2018-10-05T15:43:00-03:00</published><updated>2019-08-30T16:12:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-10-05:/fsmbasics-pt_BR.html</id><summary type="html">&lt;p&gt;Introdução a máquinas de estados finitas em sistemas digitais.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Uma máquina de estados é uma representação matemática de um sistema dependente de tempo. É composta por estados e transições. Cada estado representa o sistema em um determinado momento no tempo e não é possível uma máquina de estados estar em dois estados ao mesmo tempo. Quando uma máquina está em um estado, ela aguarda que as condições para uma transição sejam atingidas e, assim que forem, muda para o estado indicado por esta transição, repetindo o ciclo o ciclo. Cada máquina possui um estado inicial, onde a máquina começa, e pode ter um ou mais estados finais (ou de aceitação), indicando que a máquina terminou a tarefa computacional. É um modelo de computação bastante utilizado para modelar circuitos sequenciais.&lt;/p&gt;
@@ -1728,10 +1749,13 @@ Ainda no circuito vemos a entrada de &lt;em&gt;clock&lt;/em&gt; e de &lt;em&gt;r
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
     mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -1745,6 +1769,8 @@ Ainda no circuito vemos a entrada de &lt;em&gt;clock&lt;/em&gt; e de &lt;em&gt;r
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
         "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
         "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
         "    }, " +
@@ -1765,6 +1791,8 @@ Ainda no circuito vemos a entrada de &lt;em&gt;clock&lt;/em&gt; e de &lt;em&gt;r
                 "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
             "});" +
         "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;</content><category term="sistemas digitais"></category><category term="fsm"></category><category term="simplificação"></category></entry><entry><title>Arquitetura</title><link href="https://balbertini.github.io/vhdlarchitecture-pt_BR.html" rel="alternate"></link><published>2018-10-04T10:33:00-03:00</published><updated>2019-03-14T15:40:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-10-04:/vhdlarchitecture-pt_BR.html</id><summary type="html">&lt;p&gt;Arquiteturas em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As descrições em VHDL sempre possuem uma &lt;a href="https://balbertini.github.io/vhdlentity-pt_BR.html"&gt;entidade&lt;/a&gt;, que define as interfaces do módulo descrito. Porém, a entidade não descreve a funcionalidade, que é descrita na arquitetura.&lt;/p&gt;
@@ -2341,10 +2369,13 @@ Business Media, 2013.&lt;/p&gt;
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
     mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -2358,6 +2389,8 @@ Business Media, 2013.&lt;/p&gt;
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
         "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
         "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
         "    }, " +
@@ -2378,6 +2411,8 @@ Business Media, 2013.&lt;/p&gt;
                 "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
             "});" +
         "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;</content><category term="sistemas digitais"></category><category term="fsm"></category><category term="simplificação"></category><category term="otimização"></category></entry><entry><title>Entidade</title><link href="https://balbertini.github.io/vhdlentity-pt_BR.html" rel="alternate"></link><published>2018-09-21T14:37:00-03:00</published><updated>2019-03-13T16:55:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-09-21:/vhdlentity-pt_BR.html</id><summary type="html">&lt;p&gt;Entidades em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Toda descrição em VHDL segue um padrão base de uma entidade e uma arquitetura. Neste artigo, explicarei como funciona a entidade.&lt;/p&gt;

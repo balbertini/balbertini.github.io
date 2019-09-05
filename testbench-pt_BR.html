@@ -6,20 +6,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="" />
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <meta name="robots" content="index, follow" />
+
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
 
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/pygments/github.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/solid.css">
 
+    <link href="https://balbertini.github.io/static/custom.css" rel="stylesheet">
 
     <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
 
 
+    <link rel="shortcut icon" href="https://balbertini.github.ioimages/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://balbertini.github.ioimages/favicon.ico" type="image/x-icon">
 
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -32,6 +36,15 @@
   ga('send', 'pageview');
 </script>
 <!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
 
 <meta name="author" content="Bruno Albertini" />
 <meta name="description" content="Como fazer um testbench em VHDL." />
@@ -49,7 +62,7 @@
 <meta property="article:section" content="vhdl"/>
 <meta property="article:tag" content="vhdl"/>
 <meta property="article:tag" content="testbench"/>
-<meta property="og:image" content="">
+<meta property="og:image" content="https://balbertini.github.ioimages/profile.png">
 
   <title>B.Albertini's site &ndash; Testbenchs em VHDL</title>
 
@@ -58,16 +71,16 @@
   <aside>
     <div>
       <a href="https://balbertini.github.io">
-        <img src="https://balbertini.github.io/theme/img/profile.png" alt="" title="">
+        <img src="https://balbertini.github.ioimages/profile.png" alt="B.Albertini" title="B.Albertini">
       </a>
-      <h1><a href="https://balbertini.github.io"></a></h1>
+      <h1><a href="https://balbertini.github.io">B.Albertini</a></h1>
 
-
+<p>Professor</p>
       <nav>
         <ul class="list">
+          <li><a href="https://balbertini.github.io/pages/sd-pt_BR.html#sd">Sistemas Digitais</a></li>
           <li><a href="https://balbertini.github.io/pages/disciplinas-pt_BR.html#disciplinas">Disciplinas</a></li>
           <li><a href="https://balbertini.github.io/pages/research-pt_BR.html#research">Pesquisa</a></li>
-          <li><a href="https://balbertini.github.io/pages/sd-pt_BR.html#sd">Sistemas Digitais</a></li>
           <li><a href="https://balbertini.github.io/pages/sobre-pt_BR.html#sobre">Sobre</a></li>
           <li><a href="https://balbertini.github.io/pages/vhdl-pt_BR.html#vhdl">VHDL</a></li>
 
@@ -75,8 +88,16 @@
       </nav>
 
       <ul class="social">
-        <li><a class="sc-github" href="https://github.com/balbertini" target="_blank"><i class="fa fa-github"></i></a></li>
-        <li><a class="sc-rss" href="//balbertini.github.io/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+          <li>
+            <a  class="sc-github" href="https://github.com/balbertini" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-rss" href="//balbertini.github.io/feeds/all.atom.xml" target="_blank">
+            <i class="fas fa-rss">
+            </i>
+          </a></li>
       </ul>
     </div>
 
@@ -90,9 +111,8 @@
       
     <h1 id="testbench">Testbenchs em VHDL</h1>
     <p>
-      Publicado em 10/30/18 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-        <br/>
-          Modificado em 12/04/18
+      Publicado em 30/10/2018 (ter) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+
     </p>
   </header>
 
@@ -458,7 +478,7 @@
 
 
 <p>Um exemplo de uma linha deste arquivo é (note que é UMA linha):</p>
-<div class="highlight"><pre><span></span><span class="mi">1001101010001010110011010000011110011001110000111010011111110111</span> <span class="mi">1001001101000100001110011110100110000101010111011110110011100000</span> <span class="mi">1001001000000000000010010000000110000001010000011010010011100000</span> <span class="mi">1001101111001110111111011110111110011101110111111110111111110111</span> <span class="mi">0010110111001111000001101111000100011111001000011001010011010111</span> <span class="mi">0000011101000110100100110001111000010100011001011011101100010111</span> <span class="mi">0000000000000000000000000000000000000000000000000000000000000000</span> <span class="mi">0110010000110001000000100001000001100010001000000001000000001000</span>
+<div class="highlight"><pre><span></span>1001101010001010110011010000011110011001110000111010011111110111 1001001101000100001110011110100110000101010111011110110011100000 1001001000000000000010010000000110000001010000011010010011100000 1001101111001110111111011110111110011101110111111110111111110111 0010110111001111000001101111000100011111001000011001010011010111 0000011101000110100100110001111000010100011001011011101100010111 0000000000000000000000000000000000000000000000000000000000000000 0110010000110001000000100001000001100010001000000001000000001000
 </pre></div>
 
 
@@ -620,9 +640,6 @@
 
 <p>Isso irá parar a geração do <em>clock</em>, permitindo que o <code>wait</code> incondicional pare o simulador. Este procedimento não é necessário em todos os simuladores, mas é necessário em todos os que utilizamos nas aulas de graduação, portanto utilize-o.</p>
   </div>
-
-
-
   <div class="tag-cloud">
     <p>
       <a href="https://balbertini.github.io/tag/vhdl.html">vhdl</a>
@@ -652,7 +669,7 @@
 
     <footer>
 <p>
-  &copy; Bruno Albertini  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; Bruno Albertini 2014 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - O tema <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> foi criado por <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
   <a rel="license"
@@ -677,7 +694,7 @@
   "@type" : "Blog",
   "name": " B.Albertini's site ",
   "url" : "https://balbertini.github.io",
-  "image": "",
+  "image": "https://balbertini.github.ioimages/profile.png",
   "description": ""
 }
 </script>
