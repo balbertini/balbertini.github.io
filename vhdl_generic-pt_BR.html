@@ -16,6 +16,8 @@
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/fontawesome.css">
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/brands.css">
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/solid.css">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
 
 
     <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
@@ -53,7 +55,7 @@
 <meta property="og:title" content="Módulos genéricos parametrizáveis em VHDL"/>
 <meta property="og:description" content="Usando o generic em VHDL."/>
 <meta property="og:locale" content="pt_BR"/>
-<meta property="og:url" content="https://balbertini.github.io/vhdlgeneric-pt_BR.html"/>
+<meta property="og:url" content="https://balbertini.github.io/vhdl_generic-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2019-03-12 14:25:00-03:00"/>
 <meta property="article:modified_time" content="2019-03-14 15:21:00-03:00"/>
@@ -108,9 +110,9 @@
 <article class="single">
   <header>
       
-    <h1 id="vhdlgeneric">Módulos genéricos parametrizáveis em VHDL</h1>
+    <h1 id="vhdl_generic">Módulos genéricos parametrizáveis em VHDL</h1>
     <p>
-      Publicado em 12/03/2019 (Tue) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+      Publicado em 12/03/2019 (ter) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
 
     </p>
   </header>
@@ -128,7 +130,7 @@
 </pre></div>
 
 
-<p>A <code>lista_de_elementos_genericos</code> é uma lista de todas as características parametrizáveis, no formato: <code>nome: tipo := valor_padrao</code>, separadas por <code>;</code>. O <code>nome</code> pode ser o que você desejar, desde que seja um nome válido em VHDL. O tipo define qual tipo de dados será utilizado para aquele parâmetro e pode ser <a href="https://balbertini.github.io/vhdlbasicdatatypes-pt_BR.html">qualquer tipo suportado</a>. O <code>valor_padrao</code> é opcional e pode ser omitido. Quando omitido, termina-se a declaração após a declaração do tipo (exclui-se também o <code>:=</code>). No caso da omissão do valor padrão, a declaração do valor no momento da instanciação é obrigatória. Caso o valor padrão esteja presente, ele será usado somente se a instância não especificar nenhum valor, caso contrário o valor da instância sobrepõe o valor padrão. Como boa prática, sempre defina o valor padrão. O <code>valor_padrao</code> deve ser obrigatoriamente uma constante do mesmo <code>tipo</code> que o parâmetro correspondente.</p>
+<p>A <code>lista_de_elementos_genericos</code> é uma lista de todas as características parametrizáveis, no formato: <code>nome: tipo := valor_padrao</code>, separadas por <code>;</code>. O <code>nome</code> pode ser o que você desejar, desde que seja um nome válido em VHDL. O tipo define qual tipo de dados será utilizado para aquele parâmetro e pode ser <a href="https://balbertini.github.io/vhdl_datatypes-pt_BR.html">qualquer tipo suportado</a>. O <code>valor_padrao</code> é opcional e pode ser omitido. Quando omitido, termina-se a declaração após a declaração do tipo (exclui-se também o <code>:=</code>). No caso da omissão do valor padrão, a declaração do valor no momento da instanciação é obrigatória. Caso o valor padrão esteja presente, ele será usado somente se a instância não especificar nenhum valor, caso contrário o valor da instância sobrepõe o valor padrão. Como boa prática, sempre defina o valor padrão. O <code>valor_padrao</code> deve ser obrigatoriamente uma constante do mesmo <code>tipo</code> que o parâmetro correspondente.</p>
 <p>Depois de especificados, os parâmetros da <code>lista_de_elementos_genericos</code> tornam-se constantes disponíveis em todo o restante do projeto, incluindo a declaração de portas da entidade e toda a arquitetura. Como estão disponíveis e podem ser usados no lugar de qualquer constante, é possível declarar portas, sinais e qualquer outra estrutura de VHDL usando o parâmetro no lugar de um valor fixo.</p>
 <h3>Instância</h3>
 <p>No momento da instância do componente, podemos definir os parâmetros que desejarmos. Lembre-se que, caso a descrição não estabeleça um valor padrão para um determinado parâmetro, a definição na instanciação é obrigatória. A sintaxe da instância é:</p>
@@ -138,8 +140,7 @@
 </pre></div>
 
 
-<p>Se o componente não possui nenhum parâmetro (ausência de <code>generic</code>) ou não deseja-se especificar nenhum (todos os valores padrões serão utilizados), toda a linha do <code>generic map</code> pode ser omitida. A <code>lista_de_associacao_de_elementos_genericos</code> segue o mesmo padrão de associação usado para as portas.
-<!-- Veja o artigo sobre <a href="https://balbertini.github.io/drafts/vhdlcomponent-pt_BR.html">componentes em VHDL</a>. --></p>
+<p>Se o componente não possui nenhum parâmetro (ausência de <code>generic</code>) ou não deseja-se especificar nenhum (todos os valores padrões serão utilizados), toda a linha do <code>generic map</code> pode ser omitida. A <code>lista_de_associacao_de_elementos_genericos</code> segue o mesmo padrão de associação usado para as portas.</p>
 <h3>Síntese</h3>
 <p>O <code>generic</code> não é uma estrutura sintetizável. No momento da síntese, todos os valores genéricos parametrizáveis devem ser resolvíveis, ou seja, o valor do parâmetro é fixo na instância. Não é possível mudar este valor dinamicamente durante ou após a síntese, e muito menos mudá-lo no hardware pronto. É possível herdar parâmetros, desde que a árvore de herança seja resolvível para um valor constante no momento da síntese.</p>
 <p>É possível usar o <code>generic</code> para parametrizar algo não sintetizável. Exemplos deste uso incluem variáveis condicionais de depuração e temporização.</p>
