@@ -3,7 +3,7 @@ Date: 2019-05-30 13:31
 Modified: 2019-06-06 16:45
 Category: vhdl
 Tags: vhdl, memory
-Slug: vhdlmem
+Slug: vhdl_mem
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Memórias em VHDL.

@@ -3,7 +3,7 @@ Date: 2018-10-30 17:53
 Modified: 2018-12-04 17:14
 Category: vhdl
 Tags: vhdl, testbench
-Slug: testbench
+Slug: vhdl_testbench
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Como fazer um testbench em VHDL.

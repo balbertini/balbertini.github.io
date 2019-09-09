@@ -3,7 +3,7 @@ Date: 2018-09-15 10:56
 Modified: 2018-10-05 00:57
 Category: vhdl
 Tags: vhdl, tipos
-Slug: vhdlbasicdatatypes
+Slug: vhdl_datatypes
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Tipos de dados básicos existentes em VHDL.

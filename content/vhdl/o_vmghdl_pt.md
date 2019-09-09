@@ -3,7 +3,7 @@ Date: 2018-09-13 12:16
 Modified: 2018-09-15 10:39
 Category: vhdl
 Tags: vhdl, ghdl, vm
-Slug: virtualmachineghdl
+Slug: vhdl_vmghdl
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Como utilizar a VM com GHDL.

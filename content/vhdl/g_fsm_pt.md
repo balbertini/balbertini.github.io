@@ -3,7 +3,7 @@ Date: 2019-03-18 11:06
 Modified: 2019-03-19 10:58
 Category: vhdl
 Tags: vhdl, state machine
-Slug: vhdlsm
+Slug: vhdl_fsm
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Máquinas de estado em VHDL.
@@ -28,7 +28,7 @@ Aqui parte-se do pressuposto que você desenhou o diagrama de transição de est
 
 Comece sua máquina de estados declarando a entidade e, consequentemente, a interface de entrada e saída da sua máquina de estados.
 
-Na arquitetura, sempre teremos duas partes: a parte sequencial e a parte combinatória. O elemento de memória representa a parte sequencial da máquina de estado e portanto é sensível ao _clock_. Para implementá-lo dessa maneira, utiliza-se o `process`. Para detalhes sobre o uso correto do `process`, veja [o artigo sobre circuitos síncronos]({filename}../vhdl/sequenciais.md). De fato, você não precisa usar `process` para mais nada em VHDL, exceto para a parte sequencial das máquinas de estado finitas. A parte combinatória é o que diferencia os estilos de codificação em VHDL, e neste artigo veremos duas formas, através de exemplos, portanto não deixe de lê-los e entendê-los.
+Na arquitetura, sempre teremos duas partes: a parte sequencial e a parte combinatória. O elemento de memória representa a parte sequencial da máquina de estado e portanto é sensível ao _clock_. Para implementá-lo dessa maneira, utiliza-se o `process`. Para detalhes sobre o uso correto do `process`, veja [o artigo sobre circuitos síncronos]({filename}g_sequential_pt.md). De fato, você não precisa usar `process` para mais nada em VHDL, exceto para a parte sequencial das máquinas de estado finitas. A parte combinatória é o que diferencia os estilos de codificação em VHDL, e neste artigo veremos duas formas, através de exemplos, portanto não deixe de lê-los e entendê-los.
 
 ### Exemplo 1 (Moore)
 <img src='{static}/images/sd/fsmexemplo1.png' width="15%" align="right" style="padding-left:5%" />

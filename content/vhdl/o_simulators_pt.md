@@ -3,7 +3,7 @@ Date: 2018-09-13 08:45
 Modified: 2019-02-26 16:50
 Category: hdl
 Tags: vhdl, verilog, simuladores
-Slug: simuladores
+Slug: vhdl_simulators
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Lista de programas para HDL.
@@ -19,7 +19,7 @@ Há diversos programas que suportam descrições em HDL. Para começar no seu mu
 
 O GHDL é um simulador de código aberto que suporta somente a linguagem VHDL, mantido pelo desenvolvedor Tristan Gingold. Permite que você compile e simule sua descrição na sua máquina usando um compilador nativo, o que é rápido em comparação aos outros simuladores desta página. Contudo, o GHDL não faz síntese nem simulação temporizada (exceto se você descrever seu circuito usando temporização explícita no VHDL).
 
-Este é o simulador usado para corrigir os exercícios de Sistemas Digitais. Por esse motivo, os professores mantém uma máquina virtual com GHDL instalado, atualizado e funcionando, e esta máquina está disponível para os alunos. Veja [este artigo]({filename}vmghdl.md) se deseja trabalhar com esta máquina virtual.
+Este é o simulador usado para corrigir os exercícios de Sistemas Digitais. Por esse motivo, os professores mantém uma máquina virtual com GHDL instalado, atualizado e funcionando, e esta máquina está disponível para os alunos. Veja [este artigo]({filename}o_vmghdl_pt.md) se deseja trabalhar com esta máquina virtual.
 
 ### EDA Playgroung
 [<i style="font-size: 1em;" class="fas fa-file-alt"></i> Página](https://www.edaplayground.com/)

@@ -3,7 +3,7 @@ Date: 2018-09-04 00:23
 Modified: 2018-09-13 08:35
 Category: vhdl
 Tags: vhdl, combinatorios
-Slug: combinatory
+Slug: vhdl_combinatory
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Como descrever circuitos combinatórios em VHDL.

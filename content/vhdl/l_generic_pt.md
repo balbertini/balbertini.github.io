@@ -3,7 +3,7 @@ Date: 2019-03-12 14:25
 Modified: 2019-03-14 15:21
 Category: vhdl
 Tags: vhdl, basic
-Slug: vhdlgeneric
+Slug: vhdl_generic
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Usando o generic em VHDL.
@@ -22,7 +22,7 @@ entity nome_da_entidade is
 end nome_da_entidade;
 ```
 
-A `lista_de_elementos_genericos` é uma lista de todas as características parametrizáveis, no formato: `nome: tipo := valor_padrao`, separadas por `;`. O `nome` pode ser o que você desejar, desde que seja um nome válido em VHDL. O tipo define qual tipo de dados será utilizado para aquele parâmetro e pode ser [qualquer tipo suportado]({filename}../vhdl/tiposdedadosbasicos.md). O `valor_padrao` é opcional e pode ser omitido. Quando omitido, termina-se a declaração após a declaração do tipo (exclui-se também o `:=`). No caso da omissão do valor padrão, a declaração do valor no momento da instanciação é obrigatória. Caso o valor padrão esteja presente, ele será usado somente se a instância não especificar nenhum valor, caso contrário o valor da instância sobrepõe o valor padrão. Como boa prática, sempre defina o valor padrão. O `valor_padrao` deve ser obrigatoriamente uma constante do mesmo `tipo` que o parâmetro correspondente.
+A `lista_de_elementos_genericos` é uma lista de todas as características parametrizáveis, no formato: `nome: tipo := valor_padrao`, separadas por `;`. O `nome` pode ser o que você desejar, desde que seja um nome válido em VHDL. O tipo define qual tipo de dados será utilizado para aquele parâmetro e pode ser [qualquer tipo suportado]({filename}../vhdl/l_datatypes_pt.md). O `valor_padrao` é opcional e pode ser omitido. Quando omitido, termina-se a declaração após a declaração do tipo (exclui-se também o `:=`). No caso da omissão do valor padrão, a declaração do valor no momento da instanciação é obrigatória. Caso o valor padrão esteja presente, ele será usado somente se a instância não especificar nenhum valor, caso contrário o valor da instância sobrepõe o valor padrão. Como boa prática, sempre defina o valor padrão. O `valor_padrao` deve ser obrigatoriamente uma constante do mesmo `tipo` que o parâmetro correspondente.
 
 Depois de especificados, os parâmetros da `lista_de_elementos_genericos` tornam-se constantes disponíveis em todo o restante do projeto, incluindo a declaração de portas da entidade e toda a arquitetura. Como estão disponíveis e podem ser usados no lugar de qualquer constante, é possível declarar portas, sinais e qualquer outra estrutura de VHDL usando o parâmetro no lugar de um valor fixo.
 
@@ -37,7 +37,6 @@ nome_instancia: nome_componente
 ```
 
 Se o componente não possui nenhum parâmetro (ausência de `generic`) ou não deseja-se especificar nenhum (todos os valores padrões serão utilizados), toda a linha do `generic map` pode ser omitida. A `lista_de_associacao_de_elementos_genericos` segue o mesmo padrão de associação usado para as portas.
-<!-- Veja o artigo sobre [componentes em VHDL]({filename}../vhdl/component.md). -->
 
 
 ### Síntese

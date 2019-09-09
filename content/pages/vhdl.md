@@ -10,23 +10,26 @@ Summary: Lista de posts com VHDL.
 
 
 ## Simuladores
-[Simuladores e sintetizadores de HDL]({filename}../vhdl/simuladores.md)  
-[Como utilizar a VM com GHDL]({filename}../vhdl/vmghdl.md)  
+[Simuladores e sintetizadores de HDL]({filename}../vhdl/o_simulators_pt.md)  
+[Como utilizar a VM com GHDL]({filename}../vhdl/o_vmghdl_pt.md)  
 
-## Básico
-[Tipos de dados básicos]({filename}../vhdl/tiposdedadosbasicos.md)  
-[Tipos de dados agregados (vetores)]({filename}../vhdl/array_aggregates_pt.md)  
-[Conversão e Cast entre tipos]({filename}../vhdl/conversion.md)  
-[Entidade (entity)]({filename}../vhdl/entity.md)  
-[Arquitetura (architecture)]({filename}../vhdl/architecture.md)  
-<!-- [Componentes]({filename}../vhdl/component.md)   -->
-[Circuitos combinatórios]({filename}../vhdl/combinatorio.md)  
-[Circuitos sequenciais]({filename}../vhdl/sequenciais.md)  
+## Linguagem (Básico)
+[Tipos de dados básicos]({filename}../vhdl/l_datatypes_pt.md)  
+[Tipos de dados agregados (vetores)]({filename}../vhdl/l_array_aggregates_pt.md)  
+[Conversão e Cast entre tipos]({filename}../vhdl/l_conversion_pt.md)  
+[Entidade (entity)]({filename}../vhdl/l_entity_pt.md)  
+[Arquitetura (architecture)]({filename}../vhdl/l_architecture_pt.md)  
 
-## Intermediário
-[Máquinas de estado]({filename}../vhdl/maquinasdeestado.md)  
-[Módulos parametrizáveis (generic)]({filename}../vhdl/generic.md)  
-[Instância parametrizável (generate)]({filename}../vhdl/forgenerate.md)  
+# Linguagem (Intermediário)
+[Máquinas de estado]({filename}../vhdl/g_fsm_pt.md)  
+[Módulos parametrizáveis (generic)]({filename}../vhdl/l_generic_pt.md)  
+[Instância parametrizável (generate)]({filename}../vhdl/l_generate_pt.md)  
+
+
+## Construções comuns
+[Circuitos combinatórios]({filename}../vhdl/g_combinatory_pt.md)  
+[Circuitos sequenciais]({filename}../vhdl/g_sequential_pt.md)  
+
 
 #TestBench
-[Como fazer um testbench]({filename}../vhdl/testbench.md)  
+[Como fazer um testbench]({filename}../vhdl/g_testbench_pt.md)  

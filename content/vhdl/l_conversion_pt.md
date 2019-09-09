@@ -3,7 +3,7 @@ Date: 2019-09-05 11:20
 Modified: 2019-09-05 16:22
 Category: vhdl
 Tags: vhdl, basic
-Slug: vhdlconversion
+Slug: vhdl_conversion
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Como converter entre tipos em VHDL
@@ -42,7 +42,7 @@ De `integer` para qualquer um dos outros tipos, temos que usar uma função de c
   * `S to_signed(I,S'lenght)`: recebe um inteiro e retorna um `signed`, segundo parâmetro é o tamanho do `signed`;
   * `U to_unsigned(I,U'lenght)`: recebe um inteiro e retorna um `unsigned`, segundo parâmetro é o tamanho do `unsigned`;
 
-Nas conversões para inteiro, o inteiro resultante terá o tamanho necessário para acomodar o tipo de origem (normalmente um bit a mais), porém cada sintetizador tem sua maneira de implementar o hardware que será utilizado. Nas conversões de inteiros, o tamanho do retorno deve ser especificado pois um inteiro tem tamanho indefinido, mas os vetores tem tamanho definido (veja [o post sobre tipos de dados]({filename}tiposdedadosbasicos.md) para limitações dos simuladores/sintetizadores).
+Nas conversões para inteiro, o inteiro resultante terá o tamanho necessário para acomodar o tipo de origem (normalmente um bit a mais), mas a definição final do tamanho do inteiro depende do sintetizador. Nas conversões de inteiros, o tamanho do retorno deve ser especificado pois um inteiro tem tamanho indefinido, mas os vetores tem tamanho definido (veja [o post sobre tipos de dados]({filename}l_datatypes_pt.md) para limitações dos simuladores/sintetizadores).
 
 Os demais tipos são todos vetores de bits, portanto não precisamos converter o tipo mas sim fazer um _cast_, ou seja, ordenar o sintetizador a interpretar os dados com uma semântica diferente. O _cast_ pode ser feito usando o tipo de destino e colocando a origem entre parênteses:
 

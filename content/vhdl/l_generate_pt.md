@@ -3,7 +3,7 @@ Date: 2019-09-02 17:44
 Modified: 2019-09-02 17:44
 Category: vhdl
 Tags: vhdl, basic
-Slug: vhdlgenerate
+Slug: vhdl_generate
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Usando o generate em VHDL.

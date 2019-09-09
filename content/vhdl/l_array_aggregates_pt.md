@@ -3,7 +3,7 @@ Date: 2019-09-05 11:20
 Modified: 2019-09-05 11:20
 Category: vhdl
 Tags: vhdl, basic
-Slug: vhdlaggregate
+Slug: vhdl_aggregate
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Como usar tipos agregados em VHDL
@@ -14,7 +14,7 @@ VHDL suporta um tipo de dado chamado de **agregado**, que nada mais é que uma c
 
 Os dois tipos de dados mais utilizados em VHDL, `bit` e `std_logic` possuem versões em vetores pré-definidas, o `bit_vector` e o `std_logic_vector`. A versão em `bit` é nativa, portanto você pode utilizá-la imediadamente na sua descrição. No caso do `std_logic`, como o tipo é considerado uma extensão do VHDL, deve-se incluir a biblioteca `ieee.std_logic_1164` antes da sua utilização.
 
-No entanto, pode-se definir um vetor de [qualquer tipo suportado]({filename}tiposdedadosbasicos.md). A palavra chave para definir-se um vetor é `array`. Declara-se um tipo de dados personalizado com a palavra reservada `type` e usa-se o `array` para especificar um vetor. Após a declaração, pode-se usar o tipo agregado como um tipo qualquer.
+No entanto, pode-se definir um vetor de [qualquer tipo suportado]({filename}l_datatypes_pt.md). A palavra chave para definir-se um vetor é `array`. Declara-se um tipo de dados personalizado com a palavra reservada `type` e usa-se o `array` para especificar um vetor. Após a declaração, pode-se usar o tipo agregado como um tipo qualquer.
 
 ```vhdl
 type meu_vetor is array (2 downto 0) of bit;
@@ -22,7 +22,7 @@ signal meu_conjunto_de_fios: meu_vetor;
 signal mv: meu_vetor;
 ```
 
-O trecho acima irá gerar um conjunto de três fios (chamado `meu_conjunto_de_fios`) do tipo que podem ser acessados como um único. Sabemos que para um vetor de `bit` poderíamos usar simplesmente `signal meu_conjunto_de_fios: bit_vector(2 downto 0);`, porém a declaração pode ser usada para qualquer outro tipo e é especialmente útil quando estamos modelando [memórias]({filename}memory.md).
+O trecho acima irá gerar um conjunto de três fios (chamado `meu_conjunto_de_fios`) do tipo que podem ser acessados como um único. Sabemos que para um vetor de `bit` poderíamos usar simplesmente `signal meu_conjunto_de_fios: bit_vector(2 downto 0);`, porém a declaração pode ser usada para qualquer outro tipo e é especialmente útil quando estamos modelando [memórias]({filename}b_memory_pt.md).
 
 É possível declarar vetores de vetores, criando estruturas multidimensionais.
 
@@ -49,7 +49,7 @@ mv <= (1=>c, 0=> '1', others=>'0'); -- 0c1
 mv <= (others=>'0'); -- 000
 ```
 
-Note que **não** precisamos saber o tamanho do vetor para usar `others`, então este tipo de atribuição é muito útil quando associada com [generics]({filename}generic.md). De fato, a construção `vetor<=(others=>'0');` zera qualquer vetor cujo tipo seja compatível com o literal `'0'`, independentemente do tamanho.
+Note que **não** precisamos saber o tamanho do vetor para usar `others`, então este tipo de atribuição é muito útil quando associada com [generics]({filename}l_generic_pt.md). De fato, a construção `vetor<=(others=>'0');` zera qualquer vetor cujo tipo seja compatível com o literal `'0'`, independentemente do tamanho.
 
 ## Registros
 Quando todos os elementos do vetor são do mesmo tipo, usamos o `array` para declará-lo, mas e se os tipos não forem os mesmos? A palava chave `record` serve exatamente para isso. Suponha que eu quero um conjunto de seis fios, sendo um _clock_, um inteiro sem sinal de quatro bits e um _flag_ que pode ser _tri-state_.
@@ -69,7 +69,7 @@ mr <= (clock=>ck, mi=>5, mf=>'0');
 As ferramentas de síntese na sua maioria não suportam a síntese completa de registros, portanto evite-os em descrições sintetizáveis.
 
 ## Conversão
-Muitas pessoas se confundem quando convertem entre agregados. Veja este post sobre [conversão de dados]({filename}conversion.md) para um guia de como fazer a conversão corretamente.
+Muitas pessoas se confundem quando convertem entre agregados. Veja este post sobre [conversão de dados]({filename}l_conversion_pt.md) para um guia de como fazer a conversão corretamente.
 
 
 ## Considerações

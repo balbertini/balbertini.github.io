@@ -3,7 +3,7 @@ Date: 2018-09-05 03:51
 Modified: 2018-09-05 03:51
 Category: vhdl
 Tags: vhdl, sequenciais
-Slug: sequential
+Slug: vhdl_sequential
 Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Como descrever circuitos sequenciais em VHDL.
