@@ -21,6 +21,8 @@ O GHDL é um simulador de código aberto que suporta somente a linguagem VHDL, m
 
 Este é o simulador usado para corrigir os exercícios de Sistemas Digitais. Por esse motivo, os professores mantém uma máquina virtual com GHDL instalado, atualizado e funcionando, e esta máquina está disponível para os alunos. Veja [este artigo]({filename}o_vmghdl_pt.md) se deseja trabalhar com esta máquina virtual.
 
+Alternativamente, se você prefere containers tipo [Docker](https://www.docker.com/), há uma receita para o GHDL [aqui](https://github.com/ghdl/docker).
+
 ### EDA Playgroung
 [<i style="font-size: 1em;" class="fas fa-file-alt"></i> Página](https://www.edaplayground.com/)
 
