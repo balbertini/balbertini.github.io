@@ -17,10 +17,19 @@ Há também uma gravação de uma Live disponível no YouTube.
 # Preparando o ambiente
 Comece fazendo download da máquina virtual clicando nos links abaixo:
 
+Versão atualizada, ligeiramente diferente do tutorial:
+
+- <a href="https://drive.google.com/file/d/1FWxiqSNX6iPKouRYjEhJapvXQrdRMHhL" target="_blank"><i style="font-size: 1em;" class="fas fa-download"></i> GHDL_2020.ova</a>  
+- <a href="https://drive.google.com/file/d/1UhiNQtl6ekwnnUDQc2Ztlrxc90uenr7O" target="_blank"><i style="font-size: 1em;" class="fas fa-download"></i> GHDL_2020.ova.md5sum</a>  
+
+Versão antiga, idêntica a usada no tutorial:
+
 - <a href="https://drive.google.com/file/d/1_KPXSVHjk3UmFIFHAbIfzLdwWwrXGmHQ" target="_blank"><i style="font-size: 1em;" class="fas fa-download"></i> GHDL.ova</a>  
 - <a href="https://drive.google.com/file/d/1wqwmZvWUJHamL2AnWSRm3D2B2eI7pi2f" target="_blank"><i style="font-size: 1em;" class="fas fa-download"></i> GHDL.ova.md5sum</a>  
 
 O arquivo md5sum possui o hash MD5 do arquivo e não precisa ser baixado. Aconselha-se que baixe-o e verifique se o arquivo `GHDL.ova` que você baixou possui o mesmo hash contido no arquivo `GHDL.ova.md5sum`.
+
+A máquina atualizada pode possuir algumas diferenças nas telas em relação a utilizada no tutorial, porém é fácil seguir o tutorial mesmo com a máquina atualizada.
 
 A máquina está no formato _Open Virtual Appliance_, portanto você também precisará de um software de virtualização compatível com sua máquina e com o formato OVF 2.0 (_Open Virtualization Format_). Este artigo usará o [VirtualBox](https://www.virtualbox.org/) como software de virtualização.
 
