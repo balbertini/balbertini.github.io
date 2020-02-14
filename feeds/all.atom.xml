@@ -2846,11 +2846,18 @@ Note que usando o &lt;code&gt;buffer&lt;/code&gt; você não pode ler um valor q
 &lt;p&gt;&lt;a href="https://youtu.be/PEaDYHk8CBc"&gt;Link para o tutorial no YouTube&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;Preparando o ambiente&lt;/h1&gt;
 &lt;p&gt;Comece fazendo download da máquina virtual clicando nos links abaixo:&lt;/p&gt;
+&lt;p&gt;Versão atualizada, ligeiramente diferente do tutorial:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://drive.google.com/file/d/1FWxiqSNX6iPKouRYjEhJapvXQrdRMHhL" target="_blank"&gt;&lt;i style="font-size: 1em;" class="fas fa-download"&gt;&lt;/i&gt; GHDL_2020.ova&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://drive.google.com/file/d/1UhiNQtl6ekwnnUDQc2Ztlrxc90uenr7O" target="_blank"&gt;&lt;i style="font-size: 1em;" class="fas fa-download"&gt;&lt;/i&gt; GHDL_2020.ova.md5sum&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Versão antiga, idêntica a usada no tutorial:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://drive.google.com/file/d/1_KPXSVHjk3UmFIFHAbIfzLdwWwrXGmHQ" target="_blank"&gt;&lt;i style="font-size: 1em;" class="fas fa-download"&gt;&lt;/i&gt; GHDL.ova&lt;/a&gt;  &lt;/li&gt;
 &lt;li&gt;&lt;a href="https://drive.google.com/file/d/1wqwmZvWUJHamL2AnWSRm3D2B2eI7pi2f" target="_blank"&gt;&lt;i style="font-size: 1em;" class="fas fa-download"&gt;&lt;/i&gt; GHDL.ova.md5sum&lt;/a&gt;  &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;O arquivo md5sum possui o hash MD5 do arquivo e não precisa ser baixado. Aconselha-se que baixe-o e verifique se o arquivo &lt;code&gt;GHDL.ova&lt;/code&gt; que você baixou possui o mesmo hash contido no arquivo &lt;code&gt;GHDL.ova.md5sum&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;A máquina atualizada pode possuir algumas diferenças nas telas em relação a utilizada no tutorial, porém é fácil seguir o tutorial mesmo com a máquina atualizada.&lt;/p&gt;
 &lt;p&gt;A máquina está no formato &lt;em&gt;Open Virtual Appliance&lt;/em&gt;, portanto você também precisará de um software de virtualização compatível com sua máquina e com o formato OVF 2.0 (&lt;em&gt;Open Virtualization Format&lt;/em&gt;). Este artigo usará o &lt;a href="https://www.virtualbox.org/"&gt;VirtualBox&lt;/a&gt; como software de virtualização.&lt;/p&gt;
 &lt;h1&gt;Preparando a máquina virtual&lt;/h1&gt;
 &lt;p&gt;Abra o arquivo &lt;code&gt;GHDL.ova&lt;/code&gt; com o seu software de virtualização (e.g. clique duas vezes, vá em &lt;code&gt;Arquivo/Importar Appliance&lt;/code&gt;, etc).&lt;/p&gt;
@@ -2981,6 +2988,7 @@ Se preferir usar a versão gráfica, veja um tutorial &lt;a href="https://www.se
 &lt;p&gt;&lt;strong&gt;HDLs:&lt;/strong&gt; VHDL | &lt;strong&gt;SOs:&lt;/strong&gt; &lt;i style="font-size: 1em;" class="fab fa-windows"&gt;&lt;/i&gt; &lt;i style="font-size: 1em;" class="fab fa-linux"&gt;&lt;/i&gt; &lt;i style="font-size: 1em;" class="fab fa-apple"&gt;&lt;/i&gt;&lt;/p&gt;
 &lt;p&gt;O GHDL é um simulador de código aberto que suporta somente a linguagem VHDL, mantido pelo desenvolvedor Tristan Gingold. Permite que você compile e simule sua descrição na sua máquina usando um compilador nativo, o que é rápido em comparação aos outros simuladores desta página. Contudo, o GHDL não faz síntese nem simulação temporizada (exceto se você descrever seu circuito usando temporização explícita no VHDL).&lt;/p&gt;
 &lt;p&gt;Este é o simulador usado para corrigir os exercícios de Sistemas Digitais. Por esse motivo, os professores mantém uma máquina virtual com GHDL instalado, atualizado e funcionando, e esta máquina está disponível para os alunos. Veja &lt;a href="https://balbertini.github.io/vhdl_vmghdl-pt_BR.html"&gt;este artigo&lt;/a&gt; se deseja trabalhar com esta máquina virtual.&lt;/p&gt;
+&lt;p&gt;Alternativamente, se você prefere containers tipo &lt;a href="https://www.docker.com/"&gt;Docker&lt;/a&gt;, há uma receita para o GHDL &lt;a href="https://github.com/ghdl/docker"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;EDA Playgroung&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://www.edaplayground.com/"&gt;&lt;i style="font-size: 1em;" class="fas fa-file-alt"&gt;&lt;/i&gt; Página&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;HDLs:&lt;/strong&gt; VHDL, Verilog, SystemVerilog, C++/SystemC, Outras | &lt;strong&gt;SOs:&lt;/strong&gt; &lt;i style="font-size: 1em;" class="fas fa-globe"&gt;&lt;/i&gt;&lt;/p&gt;
