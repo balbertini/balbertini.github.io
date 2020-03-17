@@ -1,7 +1,7 @@
 Title: OBS Básico
 Date: 2020-03-16 11:28
-Modified: 2020-03-16 11:28
-Category: sistemas digitais
+Modified: 2020-03-17 11:02
+Category: educacao
 Tags: educacao, video-aula
 Slug: obsbasics
 Lang: pt_BR
@@ -21,9 +21,9 @@ Para terminar o tutorial, você precisa ter:
   + Uma câmera e microfone
 
 # Configuração Básica
-O OBS tem um excelente [quickstart](https://obsproject.com/wiki/OBS-Studio-Quickstart) e uma excelente [documentação](https://obsproject.com/wiki/). Aqui veremos como fazer a configuração básica do SW para transmissão online de vide-aulas simples, no formato apresentação narrada (com ou sem câmera do professor).
+O OBS tem um excelente [quickstart](https://obsproject.com/wiki/OBS-Studio-Quickstart) e uma excelente [documentação](https://obsproject.com/wiki/). Aqui veremos como fazer a configuração básica do SW para gravação de vide-aulas simples, no formato apresentação narrada (com ou sem câmera do professor).
 
-O OBS deve abrir uma tela parecida com a da figura abaixo.
+Com os requisitos (acima) instalados, abra o OBS. Você deve ver uma tela parecida com a da figura abaixo.
 
 ![Painel de cenas]({static}/images/educacao/obs002.png)
 
@@ -39,21 +39,25 @@ Com a fonte "Apresentação" selecionada, adicione uma fonte clicando no + (sím
 
 ![Painel de fontes]({static}/images/educacao/obs003.png)
 
-Quando adicionar a fonte para a nova cena, você será solicitado a escolher a fonte de captura que deseja. Neste caso, escolha "Captura de Tela" ou "Captura de Janela" e "Criar nova". Você pode dar o nome que desejar para esta fonte, cahamaremos de "Slides", como na figura abaixo.
+Quando adicionar a fonte para a nova cena, você será solicitado a escolher a fonte de captura que deseja. Neste caso, escolha "Captura de Tela" ou "Captura de Janela" e "Criar nova". Você pode dar o nome que desejar para esta fonte, chamaremos de "Slides", como na figura abaixo.
 
 ![Menu de criação de fonte]({static}/images/educacao/obs005.png)
 
-Após criar a fonte, você será apresentado com as opções desta fonte. Caso tenha selecionado a tela toda quando criou a fonte, escolha a tela onde a apresentação está acontecendo (se houver mais de uma tela). Caso tenha escolhido capturar por janelas, escolha a "Janela" do seu software de apresentação, como na figura abaixo.
+Após criar a fonte, você será apresentado com as opções desta fonte. Caso tenha selecionado a tela toda quando criou a fonte, escolha a tela onde a apresentação está acontecendo (se houver mais de uma tela). Caso não veja a janela da apresentação, você se esqueceu de começar o modo apresentação do seu software, volte e coloque o software em modo de apresentação, depois tente novamente. Caso tenha escolhido capturar por janelas, escolha a "Janela" do seu software de apresentação, como na figura abaixo.
 
 ![Menu de captura de tela]({static}/images/educacao/obs006.png)
 
-Após isso, você verá uma tela como a abaixo, com uma cena aparecendo a sua apresentação. Verifique os os mostradores de captura de áudio se movimentam quando você fala, isto é um sinal que o microfone está sendo capturado corretamente. Clique no botão "Inicias Gravação", circulado abaixo.
+Após isso, você verá uma tela como a abaixo, com uma cena aparecendo a sua apresentação. Verifique os os mostradores de captura de áudio se movimentam quando você fala, isto é um sinal que o microfone está sendo capturado corretamente. Clique no botão "Iniciar Gravação", circulado abaixo.
 
 ![Botão de Iniciar Gravação]({static}/images/educacao/obs007.png)
 
 Narre sua apresentação normalmente. Quando terminar, clique no mesmo botão (durante a gravação o botão mudará para "Parar Gravação").
 
 Pronto! Seu vídeo está salvo e pronto para a próxima etapa, que é subí-lo para uma plataforma que os alunos tenham acesso.
+
+Para hospedar o seu vídeo no e-Aulas da USP, veja [este tutorial](http://eaulas.usp.br/portal/video.action?idItem=8730).
+
+Uma alternativa ao OBS é o [ActivePresenter](https://atomisystems.com/download/), que tem um [tutorial de gravação de vídeo](http://eaulas.usp.br/portal/video.action?idItem=8728) feito pela PRG.
 
 Veja um vídeo com o passo a passo do que foi feito neste tutorial:
 
