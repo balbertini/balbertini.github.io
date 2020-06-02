@@ -86,6 +86,14 @@ O Atom é um editor de textos com suporte a várias linguagens. Eu o utilizo par
 
 O LogiSim é uma ferramenta educacional para projetar e simular circuitos digitais. O método de captura é gráfico, ou seja, você desenha o circuito como se estivesse desenhando no papel, na forma de um diagrama, usando portas lógicas. Apesar de suportar HDLs, este não é o foco do projeto. Nota: o projeto original foi descontinuado pelo autor, esta versão é a versão "evolution", um _branch_ do software original mantido como software aberto por um grupo de universidades suíças.
 
+### Digital
+[<i style="font-size: 1em;" class="fas fa-download"></i> Download](https://github.com/hneemann/Digital/releases/) |
+[<i style="font-size: 1em;" class="fas fa-file-alt"></i> Página](https://github.com/hneemann/Digital)
+
+**SOs:** <i style="font-size: 1em;" class="fab fa-windows"></i> <i style="font-size: 1em;" class="fab fa-linux"></i> <i style="font-size: 1em;" class="fab fa-apple"></i>
+
+O Digital é um _revamp_ do projeto do LogiSim original. Assim como o LogiSim Evolution (acima), é escrito em Java e roda em praticamente todas as plataformas. É mantido por um desenvolvedor como software aberto e está em desenvolvimento constante. Assim como o predecessor, a captura é gráfica e na forma de diagrama, mas a integração com VHDL (através do GHDL) e Verilog (através do Icarus) é muito boa. Você pode escrever seu componente em VHDL e juntar ao seu diagrama esquemático facilmente. Recomendo para todos que estão começando em Sistemas Digitais.
+
 # Utilização nas disciplinas
 Nas disciplinas teóricas de Sistemas Digitais o GHDL é utilizado para correção dos exercícios, mas não faz muita diferença qual simulador você usa para desenvolver, desde que **não utilize** nenhuma tecnologia dependente de um determinado fabricante. Nestas disciplinas você raramente será solicitado a sintetizar seu circuito.
 
