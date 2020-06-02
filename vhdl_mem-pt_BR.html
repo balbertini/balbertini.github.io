@@ -53,7 +53,7 @@
 <meta property="og:title" content="Memórias em VHDL"/>
 <meta property="og:description" content="Memórias em VHDL."/>
 <meta property="og:locale" content="pt_BR"/>
-<meta property="og:url" content="https://balbertini.github.io/vhdlmem-pt_BR.html"/>
+<meta property="og:url" content="https://balbertini.github.io/vhdl_mem-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2019-05-30 13:31:00-03:00"/>
 <meta property="article:modified_time" content="2019-06-06 16:45:00-03:00"/>
@@ -108,7 +108,7 @@
 <article class="single">
   <header>
       
-    <h1 id="vhdlmem">Memórias em VHDL</h1>
+    <h1 id="vhdl_mem">Memórias em VHDL</h1>
     <p>
       Publicado em 30/05/2019 (Thu) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
 
@@ -184,11 +184,11 @@
 
 
 <p>A função, resumidamente, está lendo um arquivo (cujo nome é seu único parâmetro) linha por linha, considerando que há uma palavra de memória por linha, na forma de um <code>bit_vector</code> de 4 bits. Note que a função só lerá a quantidade de dados necessária para preencher a memória pois o laço é limitado pelo tamanho do tipo da memória. No nosso exemplo, ela lerá as primeiras 32 palavras (uma por linha, então 32 linhas) do arquivo, esperando que cada linha contenha exatamente 4 bits. Na última linha do exemplo declaramos a matriz de memória atribuindo como valor inicial o valor retornado pela função, que é invocada com o nome do arquivo como parâmetro. Um exemplo de arquivo é:</p>
-<div class="highlight"><pre><span></span><span class="mi">0000</span>
-<span class="mi">0001</span>
-<span class="mi">0010</span>
-<span class="p">...</span>
-<span class="mi">1111</span>
+<div class="highlight"><pre><span></span><span class="err">0000</span>
+<span class="err">0001</span>
+<span class="err">0010</span>
+<span class="err">...</span>
+<span class="err">1111</span>
 </pre></div>
 
 

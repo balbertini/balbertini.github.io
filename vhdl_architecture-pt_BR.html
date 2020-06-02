@@ -53,7 +53,7 @@
 <meta property="og:title" content="Arquitetura"/>
 <meta property="og:description" content="Arquiteturas em VHDL."/>
 <meta property="og:locale" content="pt_BR"/>
-<meta property="og:url" content="https://balbertini.github.io/vhdlarchitecture-pt_BR.html"/>
+<meta property="og:url" content="https://balbertini.github.io/vhdl_architecture-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2018-10-04 10:33:00-03:00"/>
 <meta property="article:modified_time" content="2019-03-14 15:40:00-03:00"/>
@@ -108,7 +108,7 @@
 <article class="single">
   <header>
       
-    <h1 id="vhdlarchitecture">Arquitetura</h1>
+    <h1 id="vhdl_architecture">Arquitetura</h1>
     <p>
       Publicado em 04/10/2018 (Thu) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
 
@@ -117,7 +117,7 @@
 
 
   <div>
-    <p>As descrições em VHDL sempre possuem uma <a href="https://balbertini.github.io/vhdlentity-pt_BR.html">entidade</a>, que define as interfaces do módulo descrito. Porém, a entidade não descreve a funcionalidade, que é descrita na arquitetura.</p>
+    <p>As descrições em VHDL sempre possuem uma <a href="https://balbertini.github.io/vhdl_entity-pt_BR.html">entidade</a>, que define as interfaces do módulo descrito. Porém, a entidade não descreve a funcionalidade, que é descrita na arquitetura.</p>
 <p>Assim como a entidade é a <em>cara</em> do módulo que está descrevendo, a arquitetura, declarada pela palavra reservada <code>architecture</code>, é o <em>corpo</em> da sua descrição. Na arquitetura é onde descrevemos a funcionalidade do componente, ou seja, onde as coisas realmente acontecem. No diagrama esquemático, seria o equivalente de mostrar o que tem dentro do símbolo do seu componente.</p>
 <p>Faz sentido descrever um componente com entradas e saídas mas sem nada dentro? Claro que não, por isso toda entidade deve ter ao menos uma arquitetura pois, sem ela, o componente não tem função. É possível que uma entidade tenha varias arquiteturas, cada uma realizando a tarefa que seu componente se propõe a fazer de uma maneira diferente. Contudo, uma arquitetura só pode pertencer a uma entidade. De fato, todas as arquiteturas pertencentes a uma entidade devem estar no mesmo arquivo que ela, depois da declaração da entidade.</p>
 <p>A sintaxe de uma arquitetura em VHDL é:</p>

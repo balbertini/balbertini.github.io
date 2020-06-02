@@ -53,7 +53,7 @@
 <meta property="og:title" content="Conversão e Cast"/>
 <meta property="og:description" content="Como converter entre tipos em VHDL"/>
 <meta property="og:locale" content="pt_BR"/>
-<meta property="og:url" content="https://balbertini.github.io/vhdlconversion-pt_BR.html"/>
+<meta property="og:url" content="https://balbertini.github.io/vhdl_conversion-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2019-09-05 11:20:00-03:00"/>
 <meta property="article:modified_time" content="2019-09-05 16:22:00-03:00"/>
@@ -108,7 +108,7 @@
 <article class="single">
   <header>
       
-    <h1 id="vhdlconversion">Conversão e Cast</h1>
+    <h1 id="vhdl_conversion">Conversão e Cast</h1>
     <p>
       Publicado em 05/09/2019 (Thu) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
 
@@ -165,7 +165,7 @@
 <li><code>S to_signed(I,S'lenght)</code>: recebe um inteiro e retorna um <code>signed</code>, segundo parâmetro é o tamanho do <code>signed</code>;</li>
 <li><code>U to_unsigned(I,U'lenght)</code>: recebe um inteiro e retorna um <code>unsigned</code>, segundo parâmetro é o tamanho do <code>unsigned</code>;</li>
 </ul>
-<p>Nas conversões para inteiro, o inteiro resultante terá o tamanho necessário para acomodar o tipo de origem (normalmente um bit a mais), porém cada sintetizador tem sua maneira de implementar o hardware que será utilizado. Nas conversões de inteiros, o tamanho do retorno deve ser especificado pois um inteiro tem tamanho indefinido, mas os vetores tem tamanho definido (veja <a href="https://balbertini.github.io/vhdlbasicdatatypes-pt_BR.html">o post sobre tipos de dados</a> para limitações dos simuladores/sintetizadores).</p>
+<p>Nas conversões para inteiro, o inteiro resultante terá o tamanho necessário para acomodar o tipo de origem (normalmente um bit a mais), mas a definição final do tamanho do inteiro depende do sintetizador. Nas conversões de inteiros, o tamanho do retorno deve ser especificado pois um inteiro tem tamanho indefinido, mas os vetores tem tamanho definido (veja <a href="https://balbertini.github.io/vhdl_datatypes-pt_BR.html">o post sobre tipos de dados</a> para limitações dos simuladores/sintetizadores).</p>
 <p>Os demais tipos são todos vetores de bits, portanto não precisamos converter o tipo mas sim fazer um <em>cast</em>, ou seja, ordenar o sintetizador a interpretar os dados com uma semântica diferente. O <em>cast</em> pode ser feito usando o tipo de destino e colocando a origem entre parênteses:</p>
 <ul>
 <li><code>V bit_vector(S)</code>: recebe um <code>signed</code> e o interpreta como um <code>bit_vector</code>;</li>

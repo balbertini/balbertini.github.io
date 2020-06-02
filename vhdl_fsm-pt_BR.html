@@ -53,7 +53,7 @@
 <meta property="og:title" content="Máquinas de estado em VHDL"/>
 <meta property="og:description" content="Máquinas de estado em VHDL."/>
 <meta property="og:locale" content="pt_BR"/>
-<meta property="og:url" content="https://balbertini.github.io/vhdlsm-pt_BR.html"/>
+<meta property="og:url" content="https://balbertini.github.io/vhdl_fsm-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2019-03-18 11:06:00-03:00"/>
 <meta property="article:modified_time" content="2019-03-19 10:58:00-03:00"/>
@@ -108,7 +108,7 @@
 <article class="single">
   <header>
       
-    <h1 id="vhdlsm">Máquinas de estado em VHDL</h1>
+    <h1 id="vhdl_fsm">Máquinas de estado em VHDL</h1>
     <p>
       Publicado em 18/03/2019 (Mon) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
 
@@ -130,7 +130,7 @@
 <h2>Descrevendo a FSM em VHDL usando Moore ou Mealy</h2>
 <p>Aqui parte-se do pressuposto que você desenhou o diagrama de transição de estados da sua máquina de estados, ela é finita e determinística. De fato, a grande maioria dos problemas sequenciais em sistemas digitais possuem a sua dificuldade no desenho do diagrama de transição e não na implementação. Em outras palavras, implementar uma máquina de estados em VHDL é relativamente simples, pois a parte difícil da solução do problema está imbuída no diagrama de transição.</p>
 <p>Comece sua máquina de estados declarando a entidade e, consequentemente, a interface de entrada e saída da sua máquina de estados.</p>
-<p>Na arquitetura, sempre teremos duas partes: a parte sequencial e a parte combinatória. O elemento de memória representa a parte sequencial da máquina de estado e portanto é sensível ao <em>clock</em>. Para implementá-lo dessa maneira, utiliza-se o <code>process</code>. Para detalhes sobre o uso correto do <code>process</code>, veja <a href="https://balbertini.github.io/sequential-pt_BR.html">o artigo sobre circuitos síncronos</a>. De fato, você não precisa usar <code>process</code> para mais nada em VHDL, exceto para a parte sequencial das máquinas de estado finitas. A parte combinatória é o que diferencia os estilos de codificação em VHDL, e neste artigo veremos duas formas, através de exemplos, portanto não deixe de lê-los e entendê-los.</p>
+<p>Na arquitetura, sempre teremos duas partes: a parte sequencial e a parte combinatória. O elemento de memória representa a parte sequencial da máquina de estado e portanto é sensível ao <em>clock</em>. Para implementá-lo dessa maneira, utiliza-se o <code>process</code>. Para detalhes sobre o uso correto do <code>process</code>, veja <a href="https://balbertini.github.io/vhdl_sequential-pt_BR.html">o artigo sobre circuitos síncronos</a>. De fato, você não precisa usar <code>process</code> para mais nada em VHDL, exceto para a parte sequencial das máquinas de estado finitas. A parte combinatória é o que diferencia os estilos de codificação em VHDL, e neste artigo veremos duas formas, através de exemplos, portanto não deixe de lê-los e entendê-los.</p>
 <h3>Exemplo 1 (Moore)</h3>
 <p><img src='https://balbertini.github.io/images/sd/fsmexemplo1.png' width="15%" align="right" style="padding-left:5%" />
 A máquina que iremos implementar como exemplo é a máquina de Moore da figura ao lado. Contém apenas dois estados e todas as quatro transições possíveis totalmente especificadas. Comecemos pela declaração de uso das bibliotecas e pela entidade:</p>
@@ -373,8 +373,9 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
 
 <p>Observe que não há diferença entre o circuito gerado para esta máquina e para a máquina Moore com dois processos.
 <div style="border: 0px; overflow: auto;width: 100%;"></div></p>
-<h3>Dicas gerais</h3>
-<p>Use nomes significativos. Para estados, tente</p>
+<!-- ### Dicas gerais
+
+Use nomes significativos. Para estados, tente -->
   </div>
   <div class="tag-cloud">
     <p>
