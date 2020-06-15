@@ -1,6 +1,6 @@
 Title: Simuladores e sintetizadores de HDL
 Date: 2018-09-13 08:45
-Modified: 2019-02-26 16:50
+Modified: 2020-06-15 12:47
 Category: hdl
 Tags: vhdl, verilog, simuladores
 Slug: vhdl_simulators
@@ -23,7 +23,7 @@ Este é o simulador usado para corrigir os exercícios de Sistemas Digitais. Por
 
 Alternativamente, se você prefere containers tipo [Docker](https://www.docker.com/), há uma receita para o GHDL [aqui](https://github.com/ghdl/docker).
 
-### EDA Playgroung
+### EDA Playground
 [<i style="font-size: 1em;" class="fas fa-file-alt"></i> Página](https://www.edaplayground.com/)
 
 **HDLs:** VHDL, Verilog, SystemVerilog, C++/SystemC, Outras | **SOs:** <i style="font-size: 1em;" class="fas fa-globe"></i>
@@ -31,6 +31,9 @@ Alternativamente, se você prefere containers tipo [Docker](https://www.docker.c
 O EDA Playground é um simulador online que suporta várias linguagens de descrição de hardware. É mantido pela [Doulos](https://www.doulos.com/), uma empresa privada que fornece treinamentos (inclusive em HDLs). Sua maior vantagem está em funcionar com qualquer navegador de internet moderno, sem necessidade de nenhuma instalação adicional. Há limitações para utilizar o ambiente sem uma conta, mas é possível se cadastrar com o email @usp e conseguir uma conta com suporte a salvar o trabalho e acesso a algumas ferramentas indisponíveis na versão aberta (o processo de cadastro demora, não deixe para se cadastrar na última hora).
 
 Para usá-lo, basta acessar o link acima (Página) e começar o seu projeto. A ferramenta só aceita projetos no formato padrão de DUT (_Design Under Test_), onde o seu _testbench_ é responsável por instanciar e gerar os estímulos para sua entidade _toplevel_. Lembre-se de escolher a linguagem no menu a esquerda (_Testbench + Design_), assim como o simulador (_Tools & Simulators_). Dica: Se você marcar a opção _Open EPWave after run_, a forma de onda da simulação será mostrada assim que a mesma terminar.
+
+Há um tutorial básico do EDA Playground [aqui]({filename}/o_edaplayground_pt.md).
+
 
 ### Active-HDL
 [<i style="font-size: 1em;" class="fas fa-download"></i> Download](https://www.aldec.com/students/student.php?id=9) |
