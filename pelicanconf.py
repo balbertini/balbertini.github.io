@@ -23,7 +23,7 @@ TIMEZONE = 'America/Sao_Paulo'
 
 PLUGIN_PATHS = ["../pelican-plugins"]
 # Enable i18n plugin, probably you already have some others here.
-PLUGINS = ['i18n_subsites', 'render_math',]
+PLUGINS = ['i18n_subsites', 'render_math', 'post_stats']
 # Enable Jinja2 i18n extension used to parse translations.
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n'],}
 
@@ -38,8 +38,11 @@ I18N_TEMPLATES_LANG = 'pt_BR'
 DEFAULT_LANG = 'pt_BR'
 # Your language.
 OG_LOCALE = 'pt_BR'
-# LOCALE = ('pt_BR','pt_BR.UTF-8','en_US','en_US.UTF-8')
-LOCALE = ('pt_BR.utf8', 'en_US.utf8')
+LOCALE = ('pt_BR','pt_BR.UTF-8','en_US','en_US.UTF-8')
+# LOCALE = ('pt_BR.utf8', 'en_US.utf8')
+
+# Default theme language.
+I18N_TEMPLATES_LANG = "pt_BR"
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
