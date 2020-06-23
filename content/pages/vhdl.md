@@ -16,9 +16,10 @@ Summary: Lista de posts com VHDL.
 ## Linguagem (Básico)
 [Tipos de dados básicos]({filename}../vhdl/l_datatypes_pt.md)  
 [Tipos de dados agregados (vetores)]({filename}../vhdl/l_array_aggregates_pt.md)  
-[Conversão e Cast entre tipos]({filename}../vhdl/l_conversion_pt.md)  
-[Entidade (entity)]({filename}../vhdl/l_entity_pt.md)  
-[Arquitetura (architecture)]({filename}../vhdl/l_architecture_pt.md)  
+[Conversão e _cast_ entre tipos]({filename}../vhdl/l_conversion_pt.md)  
+[Entidade (`entity`)]({filename}../vhdl/l_entity_pt.md)  
+[Arquitetura (`architecture`)]({filename}../vhdl/l_architecture_pt.md)  
+[Componentes (`component`)]({filename}../vhdl/l_component_pt.md)  
 
 ## Construções comuns
 [Circuitos combinatórios]({filename}../vhdl/g_combinatory_pt.md)  
@@ -27,11 +28,8 @@ Summary: Lista de posts com VHDL.
 
 # Linguagem (Intermediário)
 [Máquinas de estado]({filename}../vhdl/g_fsm_pt.md)  
-[Módulos parametrizáveis (generic)]({filename}../vhdl/l_generic_pt.md)  
-[Instância parametrizável (generate)]({filename}../vhdl/l_generate_pt.md)  
-
-
-
+[Módulos parametrizáveis (`generic`)]({filename}../vhdl/l_generic_pt.md)  
+[Instância parametrizável (`generate`)]({filename}../vhdl/l_generate_pt.md)  
 
 #TestBench
-[Como fazer um testbench]({filename}../vhdl/g_testbench_pt.md)  
+[Como fazer um _testbench_]({filename}../vhdl/g_testbench_pt.md)  
