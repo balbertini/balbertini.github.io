@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2020-06-15T12:47:00-03:00</updated><subtitle>Professor</subtitle><entry><title>Como usar o EDA Playground</title><link href="https://balbertini.github.io/vhdl_edaplayground-pt_BR.html" rel="alternate"></link><published>2020-06-15T12:47:00-03:00</published><updated>2020-06-15T12:47:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-06-15:/vhdl_edaplayground-pt_BR.html</id><summary type="html">&lt;p&gt;Como usar o EDA Playground.&lt;/p&gt;</summary><content type="html">&lt;p&gt;O &lt;strong&gt;EDA Playground&lt;/strong&gt; é uma ferramenta muito útil para estudantes pois não precisa de nenhuma instalação, sendo totalmente online. O ambiente possui suporte ao GHDL, portanto você conseguirá testar os seus projetos facilmente, como o juiz usado nas matérias de hardware do PCS testa.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2020-06-23T07:41:00-03:00</updated><subtitle>Professor</subtitle><entry><title>Como usar o EDA Playground</title><link href="https://balbertini.github.io/vhdl_edaplayground-pt_BR.html" rel="alternate"></link><published>2020-06-15T12:47:00-03:00</published><updated>2020-06-15T12:47:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-06-15:/vhdl_edaplayground-pt_BR.html</id><summary type="html">&lt;p&gt;Como usar o EDA Playground.&lt;/p&gt;</summary><content type="html">&lt;p&gt;O &lt;strong&gt;EDA Playground&lt;/strong&gt; é uma ferramenta muito útil para estudantes pois não precisa de nenhuma instalação, sendo totalmente online. O ambiente possui suporte ao GHDL, portanto você conseguirá testar os seus projetos facilmente, como o juiz usado nas matérias de hardware do PCS testa.&lt;/p&gt;
 &lt;h1&gt;EDA Playground&lt;/h1&gt;
 &lt;p&gt;&lt;a href="https://www.edaplayground.com/"&gt;&lt;i style="font-size: 1em;" class="fas fa-file-alt"&gt;&lt;/i&gt; Página&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;HDLs:&lt;/strong&gt; VHDL, Verilog, SystemVerilog, C++/SystemC, Outras | &lt;strong&gt;SOs:&lt;/strong&gt; &lt;i style="font-size: 1em;" class="fas fa-globe"&gt;&lt;/i&gt;&lt;/p&gt;
@@ -892,7 +892,190 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
 &lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;&lt;/p&gt;
 &lt;!-- ### Dicas gerais
 
-Use nomes significativos. Para estados, tente --&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="state machine"></category></entry><entry><title>Módulos genéricos parametrizáveis em VHDL</title><link href="https://balbertini.github.io/vhdl_generic-pt_BR.html" rel="alternate"></link><published>2019-03-12T14:25:00-03:00</published><updated>2019-03-14T15:21:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-12:/vhdl_generic-pt_BR.html</id><summary type="html">&lt;p&gt;Usando o generic em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Uma das características interessantes de HDLs (incluindo VHDL), é a capacidade de reutilização de módulos. Podemos aumentar ainda mais a reutilização descrevendo módulos parametrizáveis. Este artigo trata de como descrever módulos genéricos parametrizáveis em VHDL.&lt;/p&gt;
+Use nomes significativos. Para estados, tente --&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="state machine"></category></entry><entry><title>Componentes em VHDL</title><link href="https://balbertini.github.io/vhdl_component-pt_BR.html" rel="alternate"></link><published>2019-03-14T15:23:00-03:00</published><updated>2020-06-23T07:41:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-14:/vhdl_component-pt_BR.html</id><summary type="html">&lt;p&gt;Usando componentes em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;A linguagem VHDL é inerentemente hierárquica, sendo muito fácil usar um componente de um projeto em outro. Esta característica permite algumas vantagens como: reutilização de descrições, divisão do projeto e partes menores (permite que projetistas trabalhem em paralelo e aumenta a legibilidade) e o teste separado (de um módulo e da integração).&lt;/p&gt;
+&lt;p&gt;&lt;img src='https://balbertini.github.io/images/vhdl/74181simbolo.png' width="30%" align="right" style="padding-left:5%" /&gt;
+Usar componentes é muito simples em VHDL pois toda a entidade (&lt;code&gt;entity&lt;/code&gt;) define um componente. No entanto, precisamos declarar e instanciar o componente, o que veremos neste post.&lt;/p&gt;
+&lt;p&gt;Considere a figura ao lado, que representa uma ULA (Unidade Lógica e Aritmética) modelo 74181 (fonte: &lt;em&gt;datasheet&lt;/em&gt; da Texas). Os números nos pinos representam o número do pino físico (e.g. a entrada &lt;code&gt;M&lt;/code&gt; está no pino 8). Como convencionado, entradas de dados estão acima, saídas abaixo, entradas de controle a esquerda e saída de controle a direita. As entradas de dados são &lt;code&gt;A&lt;/code&gt; e &lt;code&gt;B&lt;/code&gt; de 4 bits e a saída de dados &lt;code&gt;F&lt;/code&gt; também é de 4 bits. O &lt;em&gt;carry_in&lt;/em&gt; (&lt;span class="math"&gt;\(\overline{C_n}\)&lt;/span&gt;) e o &lt;em&gt;carry_out&lt;/em&gt; (&lt;span class="math"&gt;\(\overline{C_{n+4}}\)&lt;/span&gt;) são ambos ambos ativos baixo. A entrada &lt;code&gt;M&lt;/code&gt; define se a operação é lógica ou aritmética e a entrada &lt;code&gt;S&lt;/code&gt; (4 bits) define qual operação a ULA realizará. Há ainda a saída &lt;span class="math"&gt;\(A=B\)&lt;/span&gt; e as saídas para cascateamento &lt;em&gt;generate&lt;/em&gt; (&lt;span class="math"&gt;\(\overline{G}\)&lt;/span&gt;) e &lt;em&gt;propagate&lt;/em&gt; (&lt;span class="math"&gt;\(\overline{P}\)&lt;/span&gt;), ambas ativas baixo.&lt;/p&gt;
+&lt;p&gt;A entidade para este componente é algo assim:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;alu181&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;cn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;cn4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aeqb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pn&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;
+  &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;entity&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para usar essa ULA como componente, há duas fases distintas: a declaração e a instância.&lt;/p&gt;
+&lt;h2&gt;Declarando um componente&lt;/h2&gt;
+&lt;p&gt;A declaração tem o seguinte formato:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;component&lt;/span&gt; &lt;span class="nc"&gt;nome_da_entidade&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="k"&gt;generic&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;elementos_genericos&lt;/span&gt; &lt;span class="p"&gt;)]&lt;/span&gt;
+  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;portas&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;component&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="nc"&gt;nome_da_entidade&lt;/span&gt;&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A cláusula &lt;code&gt;is&lt;/code&gt; é opcional, assim como o &lt;code&gt;nome_da_entidade&lt;/code&gt; no final da declaração. O &lt;code&gt;generic map&lt;/code&gt; serve para declarar componentes parametrizáveis, que &lt;a href="https://balbertini.github.io/vhdl_generic-pt_BR.html"&gt;está coberto em outro post&lt;/a&gt;. Já o &lt;code&gt;port map&lt;/code&gt;, apesar de opcional, é o que declara as portas do componente disponíveis para a entidade que o utilizará como módulo. De modo geral, é esperado que as cláusulas &lt;code&gt;generic&lt;/code&gt; e &lt;code&gt;port&lt;/code&gt; &lt;strong&gt;sejam idênticas&lt;/strong&gt; à declaração da entidade, então a ULA 181 do nosso exemplo deve ser declarada como componente assim:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;component&lt;/span&gt; &lt;span class="nc"&gt;alu181&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;cn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;cn4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aeqb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pn&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;
+  &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;component&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Instanciando um componente&lt;/h2&gt;
+&lt;p&gt;Depois de declarado, ainda precisamos instanciar o componente.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;nome_da_instancia&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="k"&gt;component&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;nome_do_componente&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;nome_da_entidade&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="n"&gt;nome_da_arquitetura&lt;/span&gt;&lt;span class="p"&gt;)]]&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;
+&lt;span class="k"&gt;configuration&lt;/span&gt; &lt;span class="n"&gt;nome_da_configuração&lt;/span&gt;
+    &lt;span class="k"&gt;generic&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista_de_associacao_de_elementos_genericos&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista_de_associacao_de_portas&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note que há três modos distintos de instanciar um componente, que são mutuamente exclusivos. O primeiro usamos o nome do componente (opcionalmente antecedido por &lt;code&gt;component&lt;/code&gt;), no segundo usamos o nome da entidade e no terceiro usamos o nome da configuração (a configuração é um elemento primário do VHDL).&lt;/p&gt;
+&lt;p&gt;Na prática, acabamos quase sempre por usar o primeiro método por ser mais simples e compatível com todas as versões de VHDL:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;nome_da_instancia&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;nome_do_componente&lt;/span&gt;
+    &lt;span class="k"&gt;generic&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista_de_associacao_de_elementos_genericos&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista_de_associacao_de_portas&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora observe as cláusulas &lt;code&gt;map&lt;/code&gt;. Elas mapeiam os sinais do seu componente para a instância e ambos seguem o mesmo padrão usado para declaração de portas. O &lt;code&gt;generic map&lt;/code&gt; &lt;a href="https://balbertini.github.io/vhdl_generic-pt_BR.html"&gt;está coberto em outro post&lt;/a&gt;, então vamos focar na instância simples da nossa ULA.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;minha_alu&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;alu181&lt;/span&gt; &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Op&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;F&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;co4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aeqb0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;open&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;open&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;No trecho acima, declaramos uma instância do componente &lt;code&gt;alu181&lt;/code&gt; chamada &lt;code&gt;minha_alu&lt;/code&gt;. Note que a ordem dos sinais é a mesma usada na declaração do componente. Isto significa que o sinal &lt;code&gt;A&lt;/code&gt;, que deve existir na arquitetura que está usando este componente, será ligado ao sinal &lt;code&gt;a&lt;/code&gt; desta instância de ULA. Chamamos este tipo de associação de &lt;strong&gt;associação posicional&lt;/strong&gt; pois a ordem do sinal importa. Repare também que não vamos usar o _carry_in__ (&lt;code&gt;cn&lt;/code&gt;), portanto fixamos esta entrada em &lt;code&gt;0&lt;/code&gt;. Também não usaremos as saídas &lt;code&gt;gn&lt;/code&gt; e &lt;code&gt;pn&lt;/code&gt;, então não conectaremos a lugar algum, o que pode ser feito em VHDL usando a palavra reservada &lt;code&gt;open&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Uma outra forma de fazer a associação é usando &lt;strong&gt;associação nomeada&lt;/strong&gt;. Neste tipo de associação, dizemos explicitamente qual sinal é ligado em qual porta da instância do componente, então a ordem em que fazemos o &lt;code&gt;port map&lt;/code&gt; não importa:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;minha_alu&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;alu181&lt;/span&gt;
+  &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;F&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+             &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;Op&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+             &lt;span class="n"&gt;gn&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="k"&gt;open&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pn&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="k"&gt;open&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cn&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cn4&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;co4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+             &lt;span class="n"&gt;aeqb&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;aeqb0&lt;/span&gt;
+           &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A sintaxe é sempre &lt;code&gt;sinal_do_componente =&amp;gt; sinal_da_arquitetura_pai&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Exemplo&lt;/h3&gt;
+&lt;p&gt;Neste exemplo, usamos duas ULAs 181 para formar uma ULA de 8 bits, sem &lt;em&gt;carry_in&lt;/em&gt;, &lt;em&gt;carry_out&lt;/em&gt; e sem saídas de cascateamento, mas mantendo a saída de igualdade. Usamos os dois tipos de associação para exemplificar. Lembre-se que as portas de uma entidade são sinais válidos dentro da sua arquitetura.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;ula2x&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;Op&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;aeqb&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;
+  &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;entity&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;arch&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="nc"&gt;ula2x&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+  &lt;span class="k"&gt;component&lt;/span&gt; &lt;span class="nc"&gt;alu181&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
+    &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="n"&gt;cn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="n"&gt;cn4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aeqb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pn&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;component&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;co4&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;aeqb_it&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;begin&lt;/span&gt;
+
+  &lt;span class="n"&gt;alu1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;alu181&lt;/span&gt; &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;Op&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;co4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aeqb_it&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="k"&gt;open&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;open&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+  &lt;span class="n"&gt;alu0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;alu181&lt;/span&gt; &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="k"&gt;map&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+  &lt;span class="n"&gt;minha_alu&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;alu181&lt;/span&gt;
+    &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;Op&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gn&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="k"&gt;open&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pn&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="k"&gt;open&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cn&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cn4&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;co4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;aeqb&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;aeqb_it&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="p"&gt;);&lt;/span&gt;
+
+  &lt;span class="n"&gt;aeqb&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;aeqb_it&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;aeqb_it&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;architecture&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Qual associação utilizar?&lt;/h2&gt;
+&lt;p&gt;A associação nomeada torna o código mais robusto pois se algo mudar de lugar na entidade, os sinais continuam a mapear a instância corretamente. Também facilita a compreensão da ligação pois, se usar nomes significativos para seus sinais, o projetista não precisará consultar a declaração do componente a todo momento para entender a ligação na instância.  &lt;/p&gt;
+&lt;p&gt;Já a associação posicional é mais enxuta e aumenta a legibilidade do código. No entanto para entender a ligação do seu componente você precisa consultar a declaração.&lt;/p&gt;
+&lt;p&gt;Na prática, sugiro usar declaração posicional sempre que possível, sempre acompanhada de comentários explicando sua intenção. No entanto, se o seu componente tem portas suficientes para que o &lt;code&gt;port map&lt;/code&gt; ultrapasse uma ou duas linhas, considere fortemente usar a associação nomeada para melhorar o entendimento.&lt;/p&gt;
+&lt;h2&gt;Uso nas disciplinas de graduação&lt;/h2&gt;
+&lt;p&gt;Você está livre para usar qualquer um dos dois formatos que desejar. No entanto, o juiz usado nas disciplinas de graduação usa a associação posicional, o que significa que se você montar uma entidade diferente do enunciado, sua descrição não será avaliada. Siga estritamente o enunciado, especialmente em relação à entidade.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="basic"></category></entry><entry><title>Módulos genéricos parametrizáveis em VHDL</title><link href="https://balbertini.github.io/vhdl_generic-pt_BR.html" rel="alternate"></link><published>2019-03-12T14:25:00-03:00</published><updated>2019-03-14T15:21:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-12:/vhdl_generic-pt_BR.html</id><summary type="html">&lt;p&gt;Usando o generic em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Uma das características interessantes de HDLs (incluindo VHDL), é a capacidade de reutilização de módulos. Podemos aumentar ainda mais a reutilização descrevendo módulos parametrizáveis. Este artigo trata de como descrever módulos genéricos parametrizáveis em VHDL.&lt;/p&gt;
 &lt;h2&gt;Declarando um parâmetro genericamente&lt;/h2&gt;
 &lt;p&gt;Em muitos casos, a descrição de um módulo em VHDL pode não ser reaproveitável porque precisamos de um módulo ligeiramente diferente. Um exemplo: se descrevermos um registrador de 8 bits, poderemos usar este registrador somente em projetos que utilizam registradores de exatamente 8 bits. Contudo, quando o hardware é regular, ou seja, seu funcionamento é idêntico independentemente da característica variável, é possível descrevê-lo de forma a definir a característica variável no momento da instância e não da descrição. Dessa forma, descreve-se o módulo genericamente e somente no momento de utilizá-lo parametrizamos as características variáveis. No exemplo do registrador, podemos descrevê-lo genericamente de forma que o seu tamanho seja um parâmetro.&lt;/p&gt;
 &lt;p&gt;A palavra reservada que possibilita isso é a &lt;code&gt;generic&lt;/code&gt;. Na descrição da entidade do módulo, podemos incluir esta palavra, como a seguir:&lt;/p&gt;
