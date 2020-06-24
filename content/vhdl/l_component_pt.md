@@ -66,6 +66,12 @@ configuration nome_da_configuração
 
 Note que há três modos distintos de instanciar um componente, que são mutuamente exclusivos. O primeiro usamos o nome do componente (opcionalmente antecedido por `component`), no segundo usamos o nome da entidade e no terceiro usamos o nome da configuração (a configuração é um elemento primário do VHDL).
 
+Quando usamos a instanciação pelo `component`, instanciaremos exatamente o componente que declaramos. A escolha de qual arquitetura depende do sintetizador (normalmente é a última arquitetura descrita no arquivo).
+
+Na instanciação pela entidade, podemos escolher qual arquitetura usamos. A sintaxe comum é `work.nome_da_entidade(nome_da_arquitetura)`, mas pode-se omitir o `nome_da_arquitetura` (deixando a cargo do sintetizador escolher). A palavra reservada `work` refere-se à biblioteca padrão, o local onde ficam todos os componentes do seu projeto que não pertencem a uma biblioteca (não estão em um `package`). Neste caso de instanciação podemos omitir a declaração do componente se o nome da entidade for único. Caso seja necessário, você pode incluir a biblioteca `work` no preâmbulo o arquivo VHDL usando `use work.all;` ou selecionando explicitamente o componente que quer usar: `use work.nome_da_entidade;`
+
+A terceira maneira declarar explicitamente uma configuração (`configuration`), mas não cobrirei neste post.
+
 Na prática, acabamos quase sempre por usar o primeiro método por ser mais simples e compatível com todas as versões de VHDL:
 ```vhdl
 nome_da_instancia: nome_do_componente
