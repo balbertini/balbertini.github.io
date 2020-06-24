@@ -147,7 +147,7 @@
     <p>
       Publicado em 14/03/2019 (Qui) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
 
-        &#8226; 8 min de leitura 
+        &#8226; 9 min de leitura 
     </p>
   </header>
 
@@ -203,6 +203,9 @@ Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</co
 
 
 <p>Note que há três modos distintos de instanciar um componente, que são mutuamente exclusivos. O primeiro usamos o nome do componente (opcionalmente antecedido por <code>component</code>), no segundo usamos o nome da entidade e no terceiro usamos o nome da configuração (a configuração é um elemento primário do VHDL).</p>
+<p>Quando usamos a instanciação pelo <code>component</code>, instanciaremos exatamente o componente que declaramos. A escolha de qual arquitetura depende do sintetizador (normalmente é a última arquitetura descrita no arquivo).</p>
+<p>Na instanciação pela entidade, podemos escolher qual arquitetura usamos. A sintaxe comum é <code>work.nome_da_entidade(nome_da_arquitetura)</code>, mas pode-se omitir o <code>nome_da_arquitetura</code> (deixando a cargo do sintetizador escolher). A palavra reservada <code>work</code> refere-se à biblioteca padrão, o local onde ficam todos os componentes do seu projeto que não pertencem a uma biblioteca (não estão em um <code>package</code>). Neste caso de instanciação podemos omitir a declaração do componente se o nome da entidade for único. Caso seja necessário, você pode incluir a biblioteca <code>work</code> no preâmbulo o arquivo VHDL usando <code>use work.all;</code> ou selecionando explicitamente o componente que quer usar: <code>use work.nome_da_entidade;</code></p>
+<p>A terceira maneira declarar explicitamente uma configuração (<code>configuration</code>), mas não cobrirei neste post.</p>
 <p>Na prática, acabamos quase sempre por usar o primeiro método por ser mais simples e compatível com todas as versões de VHDL:</p>
 <div class="highlight"><pre><span></span><span class="n">nome_da_instancia</span><span class="o">:</span> <span class="n">nome_do_componente</span>
     <span class="k">generic</span> <span class="k">map</span> <span class="p">(</span><span class="n">lista_de_associacao_de_elementos_genericos</span><span class="p">)</span>
