@@ -1,6 +1,6 @@
 Title: Algorithmic State Machines
 Date: 2018-12-17 12:03
-Modified: 2018-12-17 12:03
+Modified: 2020-09-02 15:45
 Category: sistemas digitais
 Tags: sistemas digitais, asm
 Slug: asm
@@ -33,9 +33,9 @@ Há também um símbolo alternativo que é um hexágono achatado, com o mesmo si
 
 ### Saída condicional
 <img src='{static}/images/sd/asm_saidaCondicional.png' width="15%" align="right" style="padding-left:5%" />
-As saídas listadas dentro de um estado são as que serão ativadas durante o tempo em que a máquina permanecer naquele estado. Contudo, há casos em que a saída não depende somente do estado mais também da saída (i.e. máquina de Mealy). Para este tipo de saída, existe a representação de saída condicional, sujo símbolo é um retângulo oblongo com as laterais arrendondadas ao máximo possível (i.e. um semi-círculo). Há uma aresta direcional de entrada e uma de saída. A aresta de saída deve ser conectada a qualquer outro elemento ASM, porém este também é um componente atemporal e deve estar em um caminho válido entre dois estados. Assim como o decisor, este componente não tem dependência temporal, sendo puramente combinatório. A entrada de uma saída condicional deve necessariamente originar-se da saída de um grupo de decisores (que pode ser unitário). A condição, por consequência, indicará a condição para que esta saída seja ativada.  
+As saídas listadas dentro de um estado são as que serão ativadas durante o tempo em que a máquina permanecer naquele estado. Contudo, há casos em que a saída não depende somente do estado mais também da(s) entrada(s) (i.e. máquina de Mealy). Para este tipo de saída, existe a representação de saída condicional, sujo símbolo é um retângulo oblongo com as laterais arrendondadas ao máximo possível (i.e. um semi-círculo). Há uma aresta direcional de entrada e uma de saída. A aresta de saída deve ser conectada a qualquer outro elemento ASM, porém este é um componente atemporal (combinatório, sem dependência temporal, como o decisor) e portanto deve estar em um caminho válido entre dois estados. A entrada de uma saída condicional deve necessariamente originar-se da saída de um ou mais decisores, quando a condição, por consequência, indicará a condição para que esta saída seja ativada. Note que não faz sentido usar uma saída condicional sem nenhum decisor no caminho que a antecede pois nesse caso a saída só depende do estado atual (i.e. máquina de Moore) e portanto deve estar dentro do estado.
 
-Assim como a lista de saídas em um estado, a lista de saídas de uma saída condicional apresenta a lista de sinais que devem ser ativados quando a máquina estiver com este caminho ativo, ou seja, a condição do grupo de decisores que a antecedem for satisfeita. Note que, enquanto a máquina estiver no estado em que os decisores estão ativos, mudar a condição pode levar os decisores a ativar outro caminho, alterando o estado de ativação de uma saída condicional dependente destes decisores.
+Assim como a lista de saídas em um estado, a lista de saídas de uma saída condicional apresenta a lista de sinais que devem ser ativados quando a máquina estiver com este caminho ativo, ou seja, a condição do grupo de decisores que a antecede for satisfeita. Note que, enquanto a máquina estiver no estado em que os decisores estão ativos, mudar a condição pode levar os decisores a ativar outro caminho, alterando o estado de ativação de uma saída condicional dependente destes decisores.
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 ### Junção
@@ -94,7 +94,13 @@ O diagrama ASM foi criado na década de 70 e esquecido desde então pois na maio
 
 A vantagem de se utilizar ASM é que o diagrama é muito próximo de um pseudo-algoritmo. É muito comum começar um projeto digital com uma prova de conceito em software que resolva o problema. Neste sentido, partir para uma ASM, especialmente quando utiliza-se metodologias de divisão e conquista (e.g. fluxo de dados e unidade de controle), facilita o trabalho do projetista evitando erros e aumentando a legibilidade, sem prejudicar a qualidade do hardware gerado. Por estas razões, a utilização de ASM vem crescendo e é comum vê-las em projetos digitais. VHDL e Verilog, as duas linguagens de descrição de hardware mais comuns, contam com padrões onde é possível expressar uma ASM facilmente. Há diversas ferramentas que suportam ASM (inclusive graficamente) e há até mesmo uma linguagem totalmente dedicada à expressão de diagramas ASM ([ASM++](http://www.epyme.uva.es/asm++)).
 
-Se você tem um pseudo-código ou um algoritmo que resolve o seu problema, parta para uma ASM sem titubear.
+Se você tem um pseudo-código ou um algoritmo que resolve o seu problema e precisa transformá-lo em um _hardware_, parta para uma ASM.
+
+
+### Contribuições
+  * 2/set/2020: Lucas Lopes de Paula Junior detectou um erro (já corrigido no texto) sobre a saída condicional.
+
+
 
 <!-- Analogia com redes de petri
 
