@@ -195,7 +195,7 @@
 </code></pre></div>
 
 
-<p>Para fazer um registrador simples com $n$ bits baseado neste <em>flip-flop</em>, devemos montar a seguinte estrutura:</p>
+<p>Para fazer um registrador simples com <span class="math">\(n\)</span> bits baseado neste <em>flip-flop</em>, devemos montar a seguinte estrutura:</p>
 <p><img alt="Registrador Simples com FFD" src="https://balbertini.github.io/images/vhdl/regffd.png"></p>
 <p>Em VHDL, a estrutura base deste registrador (parametrizável), fica como abaixo:</p>
 <div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">registrador</span> <span class="k">is</span>
@@ -224,7 +224,7 @@
 </code></pre></div>
 
 
-<p>Observe o <code>generate</code> na arquitetura. A linha <code>ffs: ffd port map(clock, d(i), reset, q(i));</code> instanciará $n$ <em>flip-flops</em>, cada um ligado em um fio dos vetores (conjunto de fios) <code>d</code> e <code>q</code>, mas compartilhando o mesmo <em>clock</em> e <em>reset</em>. O fio do vetor que cada instância usará depende do parâmetro <code>i</code>, que irá variar de <code>n-1</code> até <code>0</code>.</p>
+<p>Observe o <code>generate</code> na arquitetura. A linha <code>ffs: ffd port map(clock, d(i), reset, q(i));</code> instanciará <span class="math">\(n\)</span> <em>flip-flops</em>, cada um ligado em um fio dos vetores (conjunto de fios) <code>d</code> e <code>q</code>, mas compartilhando o mesmo <em>clock</em> e <em>reset</em>. O fio do vetor que cada instância usará depende do parâmetro <code>i</code>, que irá variar de <code>n-1</code> até <code>0</code>.</p>
 <p>Note que o nome da instância não leva índice e fica só como <code>ffs</code>. Cada sintetizador tem uma maneira de diferenciar as instâncias, mas a maioria deles colocará algum tipo de índice na instância. Quando formos usar este registrador, se setarmos o parâmetro <code>n</code> como 4 durante a instanciação, o sintetizador instanciará quatro <em>flip-flops</em>, chamados por exemplo de <code>ffs_3</code>, <code>ffs_2</code>, <code>ffs_1</code> e <code>ffs_0</code>. De fato, o código acima será transformado em algo similar a:</p>
 <div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">registrador</span> <span class="k">is</span>
   <span class="k">component</span> <span class="nc">ffd</span> <span class="k">is</span>
@@ -284,7 +284,7 @@
 </code></pre></div>
 
 
-<p>Um somador simples de $n$ bits tem a seguinte estrutura:</p>
+<p>Um somador simples de <span class="math">\(n\)</span> bits tem a seguinte estrutura:</p>
 <p><img alt="Somador Simples com FFD" src="https://balbertini.github.io/images/vhdl/somador.png"></p>
 <p>Note que o primeiro componente é um <em>half-adder</em> e não possui entrada de <em>carry</em>, enquanto todos os demais possuem. Usando somente um <em>for-generate</em> este tipo de construção se torna complicada, inviabilizando sua utilização. Porém, com o uso do <em>if-generate</em>, podemos quebrar a regularidade do <em>for-generate</em> somente para alguns elementos selecionados, como na descrição do somador abaixo:</p>
 <div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">somador</span> <span class="k">is</span>
@@ -342,6 +342,68 @@
 
 <h1>Resumo</h1>
 <p>O <em>for-generate</em>, aliado ao <em>if-generate</em> é uma poderosa ferramenta para descrever hardware parametrizável em VHDL, pois não sabemos no momento da descrição qual o valor do parâmetro. É muito usado para estruturas regulares ou com pouca variação. É possível usar outros tipos de primitivas concorrentes dentro do <em>for-generate</em> que não sejam a instanciação de componentes, e é possível até mesmo aninhar <em>for-generates</em> para instanciar matrizes de componentes, por exemplo.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </div>
   <div class="tag-cloud">
     <p>

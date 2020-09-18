@@ -612,39 +612,44 @@
 &lt;h1&gt;Representação binária&lt;/h1&gt;
 &lt;p&gt;Um número em binário é composto por qualquer quantidade de dígitos 0 e 1. Um único dígito é chamado de &lt;em&gt;bit&lt;/em&gt;, o conjunto de 8 bits é chamado de &lt;em&gt;byte&lt;/em&gt; e o conjunto de 4 bits é chamado de &lt;em&gt;nible&lt;/em&gt;. Os processadores modernos usam números de 64 bits, mas ainda temos muitos processadores usando 32 bits. A quantidade de bits usada para representar um número em um processador está ligada ao tamanho das estruturas de armazenamento usadas internamente para guardar os números (conhecidas como registradores) e a capacidade das unidades de cálculo (i.e. um processador de 64 bits possui registradores e unidades lógicas e aritméticas capazes de armazenar e operar números  de 64 bits).&lt;/p&gt;
 &lt;p&gt;A representação binária segue a fórmula geral de representação de bases, cuja conversão para decimal é:&lt;/p&gt;
-&lt;p&gt;$$
+&lt;div class="math"&gt;$$
 \sum_{m}^{n}{a_i.b^{i}}
-$$&lt;/p&gt;
-&lt;p&gt;Onde o índice $i$ começa em $n$, passa pelo $0$ e termina em $m$ ($m$ é um número negativo). Um número em binário pode ser representado por:
-$$
+$$&lt;/div&gt;
+&lt;p&gt;Onde o índice &lt;span class="math"&gt;\(i\)&lt;/span&gt; começa em &lt;span class="math"&gt;\(n\)&lt;/span&gt;, passa pelo &lt;span class="math"&gt;\(0\)&lt;/span&gt; e termina em &lt;span class="math"&gt;\(m\)&lt;/span&gt; (&lt;span class="math"&gt;\(m\)&lt;/span&gt; é um número negativo). Um número em binário pode ser representado por:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 a_{n}a_{n-1}a_{n-2}\ldots a_{0}.a_{-1}a_{-2}\ldots a_{-m+2}a_{-m+1}a_{-m}
-$$&lt;/p&gt;
-&lt;p&gt;O dígito $a$ com o maior índice é chamado de &lt;strong&gt;mais significativo&lt;/strong&gt; pois é o multiplicador de maior peso (está ligado a base elevada a maior potência) e o dígito com o menor índice é chamado de &lt;strong&gt;menos significativo&lt;/strong&gt; pelo motivo oposto. Como costumamos escrever os números da esquerda para a direita, o mais significativo fica mais a esquerda e o menos significativo fica mais a direita. É comum usarmos os acrônimos MSB para o mais significativo (do inglês &lt;em&gt;Most Significant Bit&lt;/em&gt;) e LSB para o menos significativo (do inglês &lt;em&gt;Least Significant Bit&lt;/em&gt;).&lt;/p&gt;
-&lt;p&gt;Para converter entre bases, basta usar a fórmula geral aplicando-se a base que deseja. O $a$ corresponde a um dígito na base de origem e para converter substituímos pelo valor deste dígito no sistema alvo. Como os valores binários são 0 e 1 e os valores na base 10 são os mesmos (0 e 1, respectivamente), não há substituição a fazer, bastando usar o próprio dígito na posição $i$. O $b$ da fórmula é o valor da base de origem na base de destino. No caso de binário para decimal, a base é 2 e o valor em decimal também é 2, então basta fazer $b=2$.&lt;/p&gt;
+$$&lt;/div&gt;
+&lt;p&gt;O dígito &lt;span class="math"&gt;\(a\)&lt;/span&gt; com o maior índice é chamado de &lt;strong&gt;mais significativo&lt;/strong&gt; pois é o multiplicador de maior peso (está ligado a base elevada a maior potência) e o dígito com o menor índice é chamado de &lt;strong&gt;menos significativo&lt;/strong&gt; pelo motivo oposto. Como costumamos escrever os números da esquerda para a direita, o mais significativo fica mais a esquerda e o menos significativo fica mais a direita. É comum usarmos os acrônimos MSB para o mais significativo (do inglês &lt;em&gt;Most Significant Bit&lt;/em&gt;) e LSB para o menos significativo (do inglês &lt;em&gt;Least Significant Bit&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;Para converter entre bases, basta usar a fórmula geral aplicando-se a base que deseja. O &lt;span class="math"&gt;\(a\)&lt;/span&gt; corresponde a um dígito na base de origem e para converter substituímos pelo valor deste dígito no sistema alvo. Como os valores binários são 0 e 1 e os valores na base 10 são os mesmos (0 e 1, respectivamente), não há substituição a fazer, bastando usar o próprio dígito na posição &lt;span class="math"&gt;\(i\)&lt;/span&gt;. O &lt;span class="math"&gt;\(b\)&lt;/span&gt; da fórmula é o valor da base de origem na base de destino. No caso de binário para decimal, a base é 2 e o valor em decimal também é 2, então basta fazer &lt;span class="math"&gt;\(b=2\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h3&gt;Exemplo&lt;/h3&gt;
-&lt;p&gt;O número $101010.10101_{2}$ representa qual número em decimal?&lt;/p&gt;
+&lt;p&gt;O número &lt;span class="math"&gt;\(101010.10101_{2}\)&lt;/span&gt; representa qual número em decimal?&lt;/p&gt;
 &lt;p&gt;Vamos expandir o número usando a fórmula geral:
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \sum_{m}^{n}{a_i.b^{i}}
-$$&lt;/p&gt;
-&lt;p&gt;Como temos seis dígitos antes do . e cinco depois, $n=5$ e $m=-5$ (note que há o índice 0 antes do ponto, então o $n=5$). Vamos expandir o número usando a fórmula geral:
-$$
+$$&lt;/div&gt;
+&lt;p&gt;Como temos seis dígitos antes do . e cinco depois, &lt;span class="math"&gt;\(n=5\)&lt;/span&gt; e &lt;span class="math"&gt;\(m=-5\)&lt;/span&gt; (note que há o índice 0 antes do ponto, então o &lt;span class="math"&gt;\(n=5\)&lt;/span&gt;). Vamos expandir o número usando a fórmula geral:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \sum_{5}^{-5}{a_i.b^{i}}
-$$&lt;/p&gt;
+$$&lt;/div&gt;
 &lt;p&gt;Ou na versão expandida:
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 a_{5}.b^{5}+a_{4}.b^{4}+a_{3}.b^{3}+a_{2}.b^{2}+a_{1}.b^{1}+a_{0}.b^{0}+a_{-1}.b^{-1}+a_{-2}.b^{-2}+a_{-3}.b^{-3}+a_{-4}.b^{-4}+a_{-5}.b^{-5}
-$$&lt;/p&gt;
-&lt;p&gt;Substituindo os números, temos a base 2 ($b=2$) e os dígitos $101010.10101_{2}$, então ficamos com:
-$$
+$$&lt;/div&gt;
+&lt;p&gt;Substituindo os números, temos a base 2 (&lt;span class="math"&gt;\(b=2\)&lt;/span&gt;) e os dígitos &lt;span class="math"&gt;\(101010.10101_{2}\)&lt;/span&gt;, então ficamos com:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 1.2^{5}+0.2^{4}+1.2^{3}+0.2^{2}+1.2^{1}+0.2^{0}+1.2^{-1}+0.2^{-2}+1.2^{-3}+0.2^{-4}+1.2^{-5}
-$$
-$$
+$$&lt;/div&gt;
+&lt;div class="math"&gt;$$
 = 1.32+0.16+1.8+0.4+1.2+0.1+1.\frac{1}{2}+0.\frac{1}{4}+1.\frac{1}{8}+0.\frac{1}{16}+1.\frac{1}{32}
-$$
-$$
+$$&lt;/div&gt;
+&lt;div class="math"&gt;$$
 = 32+8+2+\frac{1}{2}+\frac{1}{8}+\frac{1}{32} = 42 + 0.5 + 0.125 + 0.03125 = 42.65625
-$$&lt;/p&gt;
+$$&lt;/div&gt;
 &lt;h2&gt;Conversão direta (tabela)&lt;/h2&gt;
 &lt;p&gt;A fórmula geral pode ser usada para conversões entre bases facilmente, mas para conversão entre binário (base 2), octal (base 8) e hexadecimal (base 16), pelas bases serem múltiplas umas das outras, há uma maneira mais simples, usando uma tabela de conversão, que pode ser vista abaixo.&lt;/p&gt;
 &lt;table&gt;
@@ -755,7 +760,7 @@ $$&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;Usar a tabela é bem simples: cada grupo de 3 bits (lembre-se que um bit é um dígito binário) corresponde a um dígito octal e cada grupo de 4 bits é um dígito hexadecimal, e vice-versa. Note também a representação: é comum usarmos o prefixo 0x (ou o sufixo 'h') para hexadecimal e o prefixo 0 (ou 'o') para octal, mas para evitar ambiguidades, aconselho usar a versão formal (com subscrito, e.g. $F_{16}=17_{8}=1111_{2}$).&lt;/p&gt;
+&lt;p&gt;Usar a tabela é bem simples: cada grupo de 3 bits (lembre-se que um bit é um dígito binário) corresponde a um dígito octal e cada grupo de 4 bits é um dígito hexadecimal, e vice-versa. Note também a representação: é comum usarmos o prefixo 0x (ou o sufixo 'h') para hexadecimal e o prefixo 0 (ou 'o') para octal, mas para evitar ambiguidades, aconselho usar a versão formal (com subscrito, e.g. &lt;span class="math"&gt;\(F_{16}=17_{8}=1111_{2}\)&lt;/span&gt;).&lt;/p&gt;
 &lt;h3&gt;Exemplos&lt;/h3&gt;
 &lt;p&gt;Converter &lt;code&gt;0xBEBAD0&lt;/code&gt; para binário e octal. Cada dígito hexadecimal corresponde a 4 dígitos binário, então usando a tabela temos que &lt;code&gt;0xBEBAD0 = 1011 1110 1011 1010 1101 0000&lt;/code&gt;. Com o binário, basta agruparmos de 3 em 3 e teremos o octal: &lt;code&gt;0xBEBAD0 = 101 111 101 011 101 011 010 000 = 057535320&lt;/code&gt; (o &lt;code&gt;0&lt;/code&gt; no início é só para indicar que é octal).&lt;/p&gt;
 &lt;p&gt;Converter &lt;code&gt;1100101011111110&lt;/code&gt; para octal e hexadecimal. Para octal, agrupamos de 3 em 3: &lt;code&gt;1 100 101 011 111 110 = 0145376&lt;/code&gt;, e para hexadecimal de 4 em 4: &lt;code&gt;1100 1010 1111 1110 = 0xCAFE&lt;/code&gt;.&lt;/p&gt;
@@ -763,7 +768,7 @@ $$&lt;/p&gt;
 &lt;p&gt;Muito bem, até aqui vimos números (inclusive fracionários), mas como representamos números negativos? As três maneiras mais utilizadas são: sinal-magnitude, complemento de base diminuída e complemento de base.&lt;/p&gt;
 &lt;h2&gt;Sinal-Magnitude&lt;/h2&gt;
 &lt;p&gt;Esta é a representação que usamos no dia a dia com o sistema decimal. Nela, o dígito mais significativo é especial e contém &lt;code&gt;+&lt;/code&gt; ou &lt;code&gt;-&lt;/code&gt; para indicar se o número é negativo ou não (a ausência implica em um número positivo). Esta representação é muito simples, e é usada em computação para representar números de ponto flutuante, chamados normalmente de &lt;em&gt;float&lt;/em&gt; ou &lt;em&gt;double&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Em binário, usamos um bit extra para isso, onde 1 significa que o número é negativo e 0 que é positivo. Um número binário de $n$ bits pode representar $2^{n}$ números. Porém, na representação sinal-magnitude, há dois fatores importantes. O primeiro é que um dos bits é usado para representar o sinal, então com $n$ bits podemos representar efetivamente $2^{n-1}$ números positivos e a mesma quantidade de números negativos. O segundo é que há duas representações para o zero! Isso significa que dos $2^{n-1}$ números representáveis para os positivos, um é o zero e o mesmo ocorre para os negativos. No final, podemos representar $2^{n}-1$ números, pois o zero é representado duas vezes (o zero positivo e o zero negativo). Os números representáveis estão na faixa $-(2^{n-1}-1)\leq x \leq +(2^{n-1}-1)$. Exemplo: com 4 bits podemos representar $2^{4}=16$ números, mas usando sinal-magnitude podemos representar de &lt;code&gt;-7 (1111)&lt;/code&gt; até &lt;code&gt;+7 (0111)&lt;/code&gt;, o que nos dá efetivamente 15 números (7 negativos, 7 positivos e o zero).&lt;/p&gt;
+&lt;p&gt;Em binário, usamos um bit extra para isso, onde 1 significa que o número é negativo e 0 que é positivo. Um número binário de &lt;span class="math"&gt;\(n\)&lt;/span&gt; bits pode representar &lt;span class="math"&gt;\(2^{n}\)&lt;/span&gt; números. Porém, na representação sinal-magnitude, há dois fatores importantes. O primeiro é que um dos bits é usado para representar o sinal, então com &lt;span class="math"&gt;\(n\)&lt;/span&gt; bits podemos representar efetivamente &lt;span class="math"&gt;\(2^{n-1}\)&lt;/span&gt; números positivos e a mesma quantidade de números negativos. O segundo é que há duas representações para o zero! Isso significa que dos &lt;span class="math"&gt;\(2^{n-1}\)&lt;/span&gt; números representáveis para os positivos, um é o zero e o mesmo ocorre para os negativos. No final, podemos representar &lt;span class="math"&gt;\(2^{n}-1\)&lt;/span&gt; números, pois o zero é representado duas vezes (o zero positivo e o zero negativo). Os números representáveis estão na faixa &lt;span class="math"&gt;\(-(2^{n-1}-1)\leq x \leq +(2^{n-1}-1)\)&lt;/span&gt;. Exemplo: com 4 bits podemos representar &lt;span class="math"&gt;\(2^{4}=16\)&lt;/span&gt; números, mas usando sinal-magnitude podemos representar de &lt;code&gt;-7 (1111)&lt;/code&gt; até &lt;code&gt;+7 (0111)&lt;/code&gt;, o que nos dá efetivamente 15 números (7 negativos, 7 positivos e o zero).&lt;/p&gt;
 &lt;p&gt;A grande vantagem desta representação é que é muito fácil converter um número de positivo para negativo e vice-versa: basta mudar o bit do sinal. As desvantagens são três: (1) há dois zeros, o que complica os circuitos aritméticos pois é uma excessão a tratar; (2) ainda por existirem dois zeros, desperdiçamos um número da capacidade de representação; e (3) os circuitos aritméticos são diferentes para cada operação e portanto o circuito aritmético é um pouco mais complexo que outras representações (ocupam maior área e consomem mais energia). A complexidade desta última desvantagem está ligada ao fato de sermos obrigado a verificar o sinal de ambos os operandos antes de realizar a operação.&lt;/p&gt;
 &lt;h3&gt;Operações com sinal-magnitude em binário&lt;/h3&gt;
 &lt;p&gt;As operações são diferentes para soma e subtração e seguem as mesmas regras que usamos na aritmética em base decimal. O cálculo do sinal deve ser realizado a parte.&lt;/p&gt;
@@ -771,7 +776,7 @@ $$&lt;/p&gt;
 &lt;p&gt;Calcular &lt;code&gt;(+2)+(+3)&lt;/code&gt;, &lt;code&gt;(+2)-(-3)&lt;/code&gt; e &lt;code&gt;(+3)-(+4)&lt;/code&gt; em binário de 4 bits usando sinal-magnitude.&lt;/p&gt;
 &lt;p&gt;Começamos obtendo a representação binária dos números:
 &lt;code&gt;(+2)=0010&lt;/code&gt;, &lt;code&gt;(+3)=0011&lt;/code&gt;, &lt;code&gt;(-3)=1011&lt;/code&gt; e &lt;code&gt;(+4)=0100&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Depois observamos o sinais e montamos as operações. Como as duas primeiras operações são idênticas, montamos uma soma. Para a última operação devemos montar uma subtração. Na operação de fato, não usamos o sinal, então operaremos com $n-1$ bits, ou três bits neste exemplo.
+&lt;p&gt;Depois observamos o sinais e montamos as operações. Como as duas primeiras operações são idênticas, montamos uma soma. Para a última operação devemos montar uma subtração. Na operação de fato, não usamos o sinal, então operaremos com &lt;span class="math"&gt;\(n-1\)&lt;/span&gt; bits, ou três bits neste exemplo.
 &lt;pre&gt;
 010 (vai um)  011 (empresta um)
  010 +         100 -
@@ -801,7 +806,7 @@ $$&lt;/p&gt;
 &lt;h2&gt;Complemento de base&lt;/h2&gt;
 &lt;p&gt;O complemento de base é a representação mais utilizada em binário (base 2), onde é conhecido como &lt;strong&gt;complemento de dois&lt;/strong&gt;. Praticamente todos os processadores modernos o utilizam nas unidades lógicas e aritméticas internas para contas com inteiros e com ponto fixo, o que corresponde a maior parte dos cálculos realizados por um computador.&lt;/p&gt;
 &lt;p&gt;Para converter um número binário de positivo para negativo, invertemos os bits e somamos 1. Exemplo 1: &lt;code&gt;-7=inv(7)+1&lt;/code&gt;, ou em binário de 4 bits &lt;code&gt;inv(0111)+1=1000+1=1001&lt;/code&gt;. Exemplo 2: &lt;code&gt;-1=inv(1)+1&lt;/code&gt;, em binário de 4 bits &lt;code&gt;inv(0001)+1= 1110+1=1111&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;A capacidade de representação agora muda um pouco pois não temos mais dois zeros! A função de somar 1 é justamente deslocar a parte negativa para que o -0 (&lt;code&gt;1000&lt;/code&gt; em sinal magnitude e &lt;code&gt;1111&lt;/code&gt; em complemento de um) represente um número negativo (&lt;code&gt;-1=1111&lt;/code&gt; em complemento de 2). Isso faz que que um número binário $x$ de $n$ bits possa estar na faixa de $-(2^{n-1})\leq x \leq +(2^{n-1}-1)$, ou seja, há um número negativo a mais! Exemplo: com 4 bits podemos representar $2^{4}=16$ números, e usando complemento de dois podemos representar de &lt;code&gt;-8 (1000)&lt;/code&gt; até &lt;code&gt;+7 (0111)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;A capacidade de representação agora muda um pouco pois não temos mais dois zeros! A função de somar 1 é justamente deslocar a parte negativa para que o -0 (&lt;code&gt;1000&lt;/code&gt; em sinal magnitude e &lt;code&gt;1111&lt;/code&gt; em complemento de um) represente um número negativo (&lt;code&gt;-1=1111&lt;/code&gt; em complemento de 2). Isso faz que que um número binário &lt;span class="math"&gt;\(x\)&lt;/span&gt; de &lt;span class="math"&gt;\(n\)&lt;/span&gt; bits possa estar na faixa de &lt;span class="math"&gt;\(-(2^{n-1})\leq x \leq +(2^{n-1}-1)\)&lt;/span&gt;, ou seja, há um número negativo a mais! Exemplo: com 4 bits podemos representar &lt;span class="math"&gt;\(2^{4}=16\)&lt;/span&gt; números, e usando complemento de dois podemos representar de &lt;code&gt;-8 (1000)&lt;/code&gt; até &lt;code&gt;+7 (0111)&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Apesar de ligeiramente mais complexos que os circuitos para operações em complemento de um devido à conversão exigir uma soma de 1, a representação em complemento de dois é a mais usada pois normalmente os circuitos somadores já possuem uma entrada de vai um para o bit menos significativo. Em condições normais, uma subtração em complemento de dois seria tão complexa quanto no sinal-magnitude (usando circuitos diferentes para soma e subtração) ou seriam três somas se convertermos para negativo e fizermos a soma, pois a conversão exige uma soma de +1. Se considerarmos que na maioria das operações somamos dois números somente, a entrada de vai um para o bit menos significativo não é usada (está sempre em zero), portanto podemos usá-la para implementar o complemento de dois com a mesma complexidade dos circuitos de complemento de um, mantendo a vantagem de usarmos toda a capacidade de representação (não há dois zeros). Sendo assim, o mais comum é usarmos um somador para realizar a subtração, usando a entrada do vai um (e invertendo os bits de um dos números corretamente) para realizar a soma, tornando o complemento de 2 a representação mais eficiente, desde que não usemos o vai=um de entrada.&lt;/p&gt;
 &lt;h3&gt;Operações com complemento de base diminuída em binário&lt;/h3&gt;
 &lt;p&gt;Realizar &lt;code&gt;3-4&lt;/code&gt; em binário usando complemento de dois.&lt;/p&gt;
@@ -845,19 +850,83 @@ $$&lt;/p&gt;
 &lt;/pre&gt;
 
 &lt;p&gt;Repare que agora estamos fazendo uma subtração pois, apesar de realizarmos uma soma, estamos usando o vai-um de entrada no LSB em ambos os casos. Na esquerda fizemos &lt;code&gt;-3-5=-3+(-6)+1&lt;/code&gt;. O resultado é &lt;code&gt;1000=-8&lt;/code&gt;, sem &lt;em&gt;overflow&lt;/em&gt;. Na direita temos &lt;code&gt;-3-6=-3+(-7)+1&lt;/code&gt;, mas dessa vez note que o resultado é positivo (&lt;code&gt;0110=+6&lt;/code&gt;) portanto houve &lt;em&gt;overflow&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Agora observe os vai-uns das operações. Sempre que realizamos a soma em complemento de dois com números binários, se o vai-um final for diferente do vai-um do estágio anterior, houve um &lt;em&gt;overflow&lt;/em&gt; e o resultado não está correto. Em circuitos digitais, pode-se fazer simplesmente $c_{n}\oplus c_{n-1}$ e teremos um &lt;em&gt;flag&lt;/em&gt; que indica a presença de um &lt;em&gt;overflow&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Agora observe os vai-uns das operações. Sempre que realizamos a soma em complemento de dois com números binários, se o vai-um final for diferente do vai-um do estágio anterior, houve um &lt;em&gt;overflow&lt;/em&gt; e o resultado não está correto. Em circuitos digitais, pode-se fazer simplesmente &lt;span class="math"&gt;\(c_{n}\oplus c_{n-1}\)&lt;/span&gt; e teremos um &lt;em&gt;flag&lt;/em&gt; que indica a presença de um &lt;em&gt;overflow&lt;/em&gt;.&lt;/p&gt;
 &lt;h3&gt;Explição do da detecção do &lt;em&gt;overflow&lt;/em&gt;&lt;/h3&gt;
-&lt;p&gt;Vamos entender o motivo pelo qual $ov=c_{n}\oplus c_{n-1}$ funciona para binários em complemento de 2.&lt;/p&gt;
+&lt;p&gt;Vamos entender o motivo pelo qual &lt;span class="math"&gt;\(ov=c_{n}\oplus c_{n-1}\)&lt;/span&gt; funciona para binários em complemento de 2.&lt;/p&gt;
 &lt;p&gt;Como realizamos somente somas (a subtração é uma soma com a representação do negativo), há somente dois casos possíveis que geram &lt;em&gt;overflow&lt;/em&gt;: (a) dois operandos positivos e resultado negativo ou (b) dois operandos negativos e resultado positivo. A soma de números de sinais opostos nunca gera &lt;em&gt;overflow&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Poderíamos facilmente fazer um comparador de 3 bits e detectar o &lt;em&gt;overflow&lt;/em&gt; usando as regras que acabamos de descrever, mas vamos entender o XOR. Sabemos que o bit de sinal na representação de complemento de dois é o MSB, então chamaremos de $a_n$ e $b_n$ o MSB, que é o bit de sinal dos operandos $a$ e $b$, respectivamente.&lt;/p&gt;
-&lt;p&gt;A última operação que realizamos é somar esta coluna, ou seja $a_n+b_n+c_{n-1}$. O resultado é o vai-um de saída $c_n$ e o sinal do resultado, que chamaremos de $r_n$. A última operação que realizamos é então:
-$$
+&lt;p&gt;Poderíamos facilmente fazer um comparador de 3 bits e detectar o &lt;em&gt;overflow&lt;/em&gt; usando as regras que acabamos de descrever, mas vamos entender o XOR. Sabemos que o bit de sinal na representação de complemento de dois é o MSB, então chamaremos de &lt;span class="math"&gt;\(a_n\)&lt;/span&gt; e &lt;span class="math"&gt;\(b_n\)&lt;/span&gt; o MSB, que é o bit de sinal dos operandos &lt;span class="math"&gt;\(a\)&lt;/span&gt; e &lt;span class="math"&gt;\(b\)&lt;/span&gt;, respectivamente.&lt;/p&gt;
+&lt;p&gt;A última operação que realizamos é somar esta coluna, ou seja &lt;span class="math"&gt;\(a_n+b_n+c_{n-1}\)&lt;/span&gt;. O resultado é o vai-um de saída &lt;span class="math"&gt;\(c_n\)&lt;/span&gt; e o sinal do resultado, que chamaremos de &lt;span class="math"&gt;\(r_n\)&lt;/span&gt;. A última operação que realizamos é então:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 c_nr_n=a_n+b_n+c_{n-1}
-$$
-Onde $c_nr_n$ representam os dois bits resultantes da soma (e.g. 10=1+1+0).&lt;/p&gt;
-&lt;p&gt;No caso (a), sabemos que $a_n=b_n=0$ e $r_n=1$. A única possibilidade de fecharmos a equação com &lt;em&gt;overflow&lt;/em&gt; é se $c_{n-1}=1$, quando $c_n=0$.&lt;/p&gt;
-&lt;p&gt;No caso (b), sabemos que $a_n=b_n=1$ e $r_n=0$. A única possibilidade de fecharmos a equação é se $c_{n-1}=0$, quando $c_n=1$.&lt;/p&gt;
-&lt;p&gt;Note que ambos os casos, $c_n\neq c_{n-1}$ ou não há nenhuma maneira de cairmos em uma condição de &lt;em&gt;overflow&lt;/em&gt;. A operação $c_{n}\oplus c_{n-1}$ é verdadeira exatamente se $c_n\neq c_{n-1}$.&lt;/p&gt;</content><category term="sistemas digitais"></category><category term="sistemas digitais"></category><category term="sistemas de numeração"></category></entry><entry><title>Como usar o EDA Playground</title><link href="https://balbertini.github.io/vhdl_edaplayground-pt_BR.html" rel="alternate"></link><published>2020-06-15T12:47:00-03:00</published><updated>2020-06-15T12:47:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-06-15:/vhdl_edaplayground-pt_BR.html</id><summary type="html">&lt;p&gt;Como usar o EDA Playground.&lt;/p&gt;</summary><content type="html">&lt;p&gt;O &lt;strong&gt;EDA Playground&lt;/strong&gt; é uma ferramenta muito útil para estudantes pois não precisa de nenhuma instalação, sendo totalmente online. O ambiente possui suporte ao GHDL, portanto você conseguirá testar os seus projetos facilmente, como o juiz usado nas matérias de hardware do PCS testa.&lt;/p&gt;
+$$&lt;/div&gt;
+&lt;p&gt;
+Onde &lt;span class="math"&gt;\(c_nr_n\)&lt;/span&gt; representam os dois bits resultantes da soma (e.g. 10=1+1+0).&lt;/p&gt;
+&lt;p&gt;No caso (a), sabemos que &lt;span class="math"&gt;\(a_n=b_n=0\)&lt;/span&gt; e &lt;span class="math"&gt;\(r_n=1\)&lt;/span&gt;. A única possibilidade de fecharmos a equação com &lt;em&gt;overflow&lt;/em&gt; é se &lt;span class="math"&gt;\(c_{n-1}=1\)&lt;/span&gt;, quando &lt;span class="math"&gt;\(c_n=0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;No caso (b), sabemos que &lt;span class="math"&gt;\(a_n=b_n=1\)&lt;/span&gt; e &lt;span class="math"&gt;\(r_n=0\)&lt;/span&gt;. A única possibilidade de fecharmos a equação é se &lt;span class="math"&gt;\(c_{n-1}=0\)&lt;/span&gt;, quando &lt;span class="math"&gt;\(c_n=1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Note que ambos os casos, &lt;span class="math"&gt;\(c_n\neq c_{n-1}\)&lt;/span&gt; ou não há nenhuma maneira de cairmos em uma condição de &lt;em&gt;overflow&lt;/em&gt;. A operação &lt;span class="math"&gt;\(c_{n}\oplus c_{n-1}\)&lt;/span&gt; é verdadeira exatamente se &lt;span class="math"&gt;\(c_n\neq c_{n-1}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="sistemas digitais"></category><category term="sistemas digitais"></category><category term="sistemas de numeração"></category></entry><entry><title>Como usar o EDA Playground</title><link href="https://balbertini.github.io/vhdl_edaplayground-pt_BR.html" rel="alternate"></link><published>2020-06-15T12:47:00-03:00</published><updated>2020-06-15T12:47:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-06-15:/vhdl_edaplayground-pt_BR.html</id><summary type="html">&lt;p&gt;Como usar o EDA Playground.&lt;/p&gt;</summary><content type="html">&lt;p&gt;O &lt;strong&gt;EDA Playground&lt;/strong&gt; é uma ferramenta muito útil para estudantes pois não precisa de nenhuma instalação, sendo totalmente online. O ambiente possui suporte ao GHDL, portanto você conseguirá testar os seus projetos facilmente, como o juiz usado nas matérias de hardware do PCS testa.&lt;/p&gt;
 &lt;h1&gt;EDA Playground&lt;/h1&gt;
 &lt;p&gt;&lt;a href="https://www.edaplayground.com/"&gt;&lt;i style="font-size: 1em;" class="fas fa-file-alt"&gt;&lt;/i&gt; Página&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;HDLs:&lt;/strong&gt; VHDL, Verilog, SystemVerilog, C++/SystemC, Outras | &lt;strong&gt;SOs:&lt;/strong&gt; &lt;i style="font-size: 1em;" class="fas fa-globe"&gt;&lt;/i&gt;&lt;/p&gt;
@@ -1130,7 +1199,7 @@ Na área superior do EDA Playground há três botões, sendo que o primeiro é o
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Para fazer um registrador simples com $n$ bits baseado neste &lt;em&gt;flip-flop&lt;/em&gt;, devemos montar a seguinte estrutura:&lt;/p&gt;
+&lt;p&gt;Para fazer um registrador simples com &lt;span class="math"&gt;\(n\)&lt;/span&gt; bits baseado neste &lt;em&gt;flip-flop&lt;/em&gt;, devemos montar a seguinte estrutura:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Registrador Simples com FFD" src="https://balbertini.github.io/images/vhdl/regffd.png"&gt;&lt;/p&gt;
 &lt;p&gt;Em VHDL, a estrutura base deste registrador (parametrizável), fica como abaixo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;registrador&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
@@ -1159,7 +1228,7 @@ Na área superior do EDA Playground há três botões, sendo que o primeiro é o
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Observe o &lt;code&gt;generate&lt;/code&gt; na arquitetura. A linha &lt;code&gt;ffs: ffd port map(clock, d(i), reset, q(i));&lt;/code&gt; instanciará $n$ &lt;em&gt;flip-flops&lt;/em&gt;, cada um ligado em um fio dos vetores (conjunto de fios) &lt;code&gt;d&lt;/code&gt; e &lt;code&gt;q&lt;/code&gt;, mas compartilhando o mesmo &lt;em&gt;clock&lt;/em&gt; e &lt;em&gt;reset&lt;/em&gt;. O fio do vetor que cada instância usará depende do parâmetro &lt;code&gt;i&lt;/code&gt;, que irá variar de &lt;code&gt;n-1&lt;/code&gt; até &lt;code&gt;0&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Observe o &lt;code&gt;generate&lt;/code&gt; na arquitetura. A linha &lt;code&gt;ffs: ffd port map(clock, d(i), reset, q(i));&lt;/code&gt; instanciará &lt;span class="math"&gt;\(n\)&lt;/span&gt; &lt;em&gt;flip-flops&lt;/em&gt;, cada um ligado em um fio dos vetores (conjunto de fios) &lt;code&gt;d&lt;/code&gt; e &lt;code&gt;q&lt;/code&gt;, mas compartilhando o mesmo &lt;em&gt;clock&lt;/em&gt; e &lt;em&gt;reset&lt;/em&gt;. O fio do vetor que cada instância usará depende do parâmetro &lt;code&gt;i&lt;/code&gt;, que irá variar de &lt;code&gt;n-1&lt;/code&gt; até &lt;code&gt;0&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Note que o nome da instância não leva índice e fica só como &lt;code&gt;ffs&lt;/code&gt;. Cada sintetizador tem uma maneira de diferenciar as instâncias, mas a maioria deles colocará algum tipo de índice na instância. Quando formos usar este registrador, se setarmos o parâmetro &lt;code&gt;n&lt;/code&gt; como 4 durante a instanciação, o sintetizador instanciará quatro &lt;em&gt;flip-flops&lt;/em&gt;, chamados por exemplo de &lt;code&gt;ffs_3&lt;/code&gt;, &lt;code&gt;ffs_2&lt;/code&gt;, &lt;code&gt;ffs_1&lt;/code&gt; e &lt;code&gt;ffs_0&lt;/code&gt;. De fato, o código acima será transformado em algo similar a:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;architecture&lt;/span&gt; &lt;span class="nc"&gt;arch&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="nc"&gt;registrador&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
   &lt;span class="k"&gt;component&lt;/span&gt; &lt;span class="nc"&gt;ffd&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
@@ -1219,7 +1288,7 @@ Na área superior do EDA Playground há três botões, sendo que o primeiro é o
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Um somador simples de $n$ bits tem a seguinte estrutura:&lt;/p&gt;
+&lt;p&gt;Um somador simples de &lt;span class="math"&gt;\(n\)&lt;/span&gt; bits tem a seguinte estrutura:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Somador Simples com FFD" src="https://balbertini.github.io/images/vhdl/somador.png"&gt;&lt;/p&gt;
 &lt;p&gt;Note que o primeiro componente é um &lt;em&gt;half-adder&lt;/em&gt; e não possui entrada de &lt;em&gt;carry&lt;/em&gt;, enquanto todos os demais possuem. Usando somente um &lt;em&gt;for-generate&lt;/em&gt; este tipo de construção se torna complicada, inviabilizando sua utilização. Porém, com o uso do &lt;em&gt;if-generate&lt;/em&gt;, podemos quebrar a regularidade do &lt;em&gt;for-generate&lt;/em&gt; somente para alguns elementos selecionados, como na descrição do somador abaixo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;somador&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
@@ -1276,19 +1345,81 @@ Na área superior do EDA Playground há três botões, sendo que o primeiro é o
 
 
 &lt;h1&gt;Resumo&lt;/h1&gt;
-&lt;p&gt;O &lt;em&gt;for-generate&lt;/em&gt;, aliado ao &lt;em&gt;if-generate&lt;/em&gt; é uma poderosa ferramenta para descrever hardware parametrizável em VHDL, pois não sabemos no momento da descrição qual o valor do parâmetro. É muito usado para estruturas regulares ou com pouca variação. É possível usar outros tipos de primitivas concorrentes dentro do &lt;em&gt;for-generate&lt;/em&gt; que não sejam a instanciação de componentes, e é possível até mesmo aninhar &lt;em&gt;for-generates&lt;/em&gt; para instanciar matrizes de componentes, por exemplo.&lt;/p&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="basic"></category></entry><entry><title>Memórias em VHDL</title><link href="https://balbertini.github.io/vhdl_mem-pt_BR.html" rel="alternate"></link><published>2019-05-30T13:31:00-03:00</published><updated>2019-06-06T16:45:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-05-30:/vhdl_mem-pt_BR.html</id><summary type="html">&lt;p&gt;Memórias em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As memórias são parte integrante de qualquer sistema digital sequencial. Enquanto trabalhamos com circuitos simples ou máquinas de estado, costumamos usar &lt;em&gt;flip-flops&lt;/em&gt; como elementos de memória. Contudo, as tarefas mais complexas não escalam devido ao tamanho dos elementos de memória envolvidos. Considerando a tarefa de guardar informações, é útil utilizarmos estruturas de memórias específicas, como RAMs ou ROMs.&lt;/p&gt;
+&lt;p&gt;O &lt;em&gt;for-generate&lt;/em&gt;, aliado ao &lt;em&gt;if-generate&lt;/em&gt; é uma poderosa ferramenta para descrever hardware parametrizável em VHDL, pois não sabemos no momento da descrição qual o valor do parâmetro. É muito usado para estruturas regulares ou com pouca variação. É possível usar outros tipos de primitivas concorrentes dentro do &lt;em&gt;for-generate&lt;/em&gt; que não sejam a instanciação de componentes, e é possível até mesmo aninhar &lt;em&gt;for-generates&lt;/em&gt; para instanciar matrizes de componentes, por exemplo.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="basic"></category></entry><entry><title>Memórias em VHDL</title><link href="https://balbertini.github.io/vhdl_mem-pt_BR.html" rel="alternate"></link><published>2019-05-30T13:31:00-03:00</published><updated>2019-06-06T16:45:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-05-30:/vhdl_mem-pt_BR.html</id><summary type="html">&lt;p&gt;Memórias em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As memórias são parte integrante de qualquer sistema digital sequencial. Enquanto trabalhamos com circuitos simples ou máquinas de estado, costumamos usar &lt;em&gt;flip-flops&lt;/em&gt; como elementos de memória. Contudo, as tarefas mais complexas não escalam devido ao tamanho dos elementos de memória envolvidos. Considerando a tarefa de guardar informações, é útil utilizarmos estruturas de memórias específicas, como RAMs ou ROMs.&lt;/p&gt;
 &lt;p&gt;Neste artigo, veremos como representar memórias do tipo RAM e ROM em VHDL.&lt;/p&gt;
 &lt;h2&gt;Descrição base&lt;/h2&gt;
 &lt;p&gt;Postergaremos a descrição da entidade (veja os exemplos no final do artigo), bastando o conhecimento que a memória possui uma porta de entrada de endereços (&lt;code&gt;addr&lt;/code&gt;), uma entrada de dados (&lt;code&gt;data_i&lt;/code&gt;) e uma saída de dados (&lt;code&gt;data_o&lt;/code&gt;).&lt;/p&gt;
-&lt;p&gt;A memória em VHDL será então uma &lt;strong&gt;matriz&lt;/strong&gt; (&lt;code&gt;array&lt;/code&gt;) do &lt;strong&gt;tipo de dado&lt;/strong&gt; que se quer representar. O tamanho (profundidade) da matriz define o tamanho da memória e normalmente é representado por $n$, onde $n=2^{a_s}$ e $a_s$ é o tamanho em bits do endereço &lt;code&gt;addr&lt;/code&gt;. A matriz vai então de $0$ até $n-1$, contendo efetivamente $n$ posições.&lt;/p&gt;
-&lt;p&gt;Cada posição da matriz é uma palavra de memória, representada pelo tipo de dado que se quer armazenar. O tamanho de cada palavra de memória é igual ao tamanho do tipo de dado usado, expresso por $d_s$.&lt;/p&gt;
+&lt;p&gt;A memória em VHDL será então uma &lt;strong&gt;matriz&lt;/strong&gt; (&lt;code&gt;array&lt;/code&gt;) do &lt;strong&gt;tipo de dado&lt;/strong&gt; que se quer representar. O tamanho (profundidade) da matriz define o tamanho da memória e normalmente é representado por &lt;span class="math"&gt;\(n\)&lt;/span&gt;, onde &lt;span class="math"&gt;\(n=2^{a_s}\)&lt;/span&gt; e &lt;span class="math"&gt;\(a_s\)&lt;/span&gt; é o tamanho em bits do endereço &lt;code&gt;addr&lt;/code&gt;. A matriz vai então de &lt;span class="math"&gt;\(0\)&lt;/span&gt; até &lt;span class="math"&gt;\(n-1\)&lt;/span&gt;, contendo efetivamente &lt;span class="math"&gt;\(n\)&lt;/span&gt; posições.&lt;/p&gt;
+&lt;p&gt;Cada posição da matriz é uma palavra de memória, representada pelo tipo de dado que se quer armazenar. O tamanho de cada palavra de memória é igual ao tamanho do tipo de dado usado, expresso por &lt;span class="math"&gt;\(d_s\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Vamos ao exemplo, que deve estar no preâmbulo da arquitetura:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;type&lt;/span&gt; &lt;span class="n"&gt;mem_t&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="mi"&gt;31&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="kt"&gt;bit_vector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;downto&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="k"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;mem&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;mem_t&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;No trecho, estamos descrevendo duas coisas, uma abstrata (de apoio a representação de hardware) e uma descrição física (que irá de fato gerar um hardware). A descrição abstrata é a declaração do sinal &lt;code&gt;mem_t&lt;/code&gt; na primeira linha. Apesar de não gerar um hardware por si só, estamos declarando um tipo do usuário que é uma matriz (&lt;code&gt;array&lt;/code&gt;) de 32 posições (de 0 a 31). Cada posição armazena um &lt;code&gt;bit_vector&lt;/code&gt; de 4 bits. Podemos dizer que acabamos de declarar uma memória com $n=32$ (ou $a_s=5$) e $d_s=4$. Esta memória possui então 32 palavras de 4 bits, ou 128 bits no total.&lt;/p&gt;
+&lt;p&gt;No trecho, estamos descrevendo duas coisas, uma abstrata (de apoio a representação de hardware) e uma descrição física (que irá de fato gerar um hardware). A descrição abstrata é a declaração do sinal &lt;code&gt;mem_t&lt;/code&gt; na primeira linha. Apesar de não gerar um hardware por si só, estamos declarando um tipo do usuário que é uma matriz (&lt;code&gt;array&lt;/code&gt;) de 32 posições (de 0 a 31). Cada posição armazena um &lt;code&gt;bit_vector&lt;/code&gt; de 4 bits. Podemos dizer que acabamos de declarar uma memória com &lt;span class="math"&gt;\(n=32\)&lt;/span&gt; (ou &lt;span class="math"&gt;\(a_s=5\)&lt;/span&gt;) e &lt;span class="math"&gt;\(d_s=4\)&lt;/span&gt;. Esta memória possui então 32 palavras de 4 bits, ou 128 bits no total.&lt;/p&gt;
 &lt;p&gt;A segunda declaração efetivamente descreve a memória, fazendo com que o sinal &lt;code&gt;mem&lt;/code&gt; seja interpretado como a matriz declarada anteriormente.&lt;/p&gt;
 &lt;p&gt;Mas é só isso? Sim, é só isso. Ao declarar uma matriz da maneira descrita, o sintetizador irá entender automaticamente que o que você quer descrever é uma memória. O tipo de memória será determinado pelo restante da sua descrição, que deverá conter as operações possíveis sobre a matriz recém declarada.&lt;/p&gt;
 &lt;h2&gt;Operando sobre a matriz de memória&lt;/h2&gt;
@@ -1368,7 +1499,69 @@ Na área superior do EDA Playground há três botões, sendo que o primeiro é o
 &lt;li&gt;&lt;a href="https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/rom32x4.dat"&gt;Arquivo de dados&lt;/a&gt; para carga externa nos exemplos.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/memorias_tb.vhd"&gt;&lt;em&gt;Testbench&lt;/em&gt;&lt;/a&gt; para todas as memórias acima (para rodar são necessários todos os arquivos).&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/utils.vhd"&gt;Rotinas&lt;/a&gt; auxiliares para impressão dos vetores no &lt;em&gt;testbench&lt;/em&gt;.&lt;/li&gt;
-&lt;/ul&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="memory"></category></entry><entry><title>Máquinas de estado em VHDL</title><link href="https://balbertini.github.io/vhdl_fsm-pt_BR.html" rel="alternate"></link><published>2019-03-18T11:06:00-03:00</published><updated>2019-03-19T10:58:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-18:/vhdl_fsm-pt_BR.html</id><summary type="html">&lt;p&gt;Máquinas de estado em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Máquinas de estado são muito comuns pois, em sistemas digitais, todos os circuitos sequenciais podem ser vistos como uma máquina de estados finita. No entanto, especificá-las em VHDL é um desafio para os projetistas novatos devido aos problemas que surgem quando o tempo está envolvido. Circuitos combinatórios não dependem de tempo e não possuem memória, porém máquinas de estado possuem e precisam ser projetadas com o devido cuidado. Neste artigo mostrarei algumas formas seguras de especificar corretamente máquinas de estado finitas síncronas e determinísticas em VHDL.&lt;/p&gt;
+&lt;/ul&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="memory"></category></entry><entry><title>Máquinas de estado em VHDL</title><link href="https://balbertini.github.io/vhdl_fsm-pt_BR.html" rel="alternate"></link><published>2019-03-18T11:06:00-03:00</published><updated>2019-03-19T10:58:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-18:/vhdl_fsm-pt_BR.html</id><summary type="html">&lt;p&gt;Máquinas de estado em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Máquinas de estado são muito comuns pois, em sistemas digitais, todos os circuitos sequenciais podem ser vistos como uma máquina de estados finita. No entanto, especificá-las em VHDL é um desafio para os projetistas novatos devido aos problemas que surgem quando o tempo está envolvido. Circuitos combinatórios não dependem de tempo e não possuem memória, porém máquinas de estado possuem e precisam ser projetadas com o devido cuidado. Neste artigo mostrarei algumas formas seguras de especificar corretamente máquinas de estado finitas síncronas e determinísticas em VHDL.&lt;/p&gt;
 &lt;h3&gt;Revisitando o conceito de máquinas de estado&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="Modelo de FSM" src="https://balbertini.github.io/images/sd/fsmmodel.png"&gt;&lt;/p&gt;
 &lt;p&gt;O modelo base de qualquer máquina de estados em sistemas digitais pode ser visto na figura. É composto por um elemento de memória (S) e duas funções combinatórias, uma de transição de estados (T) e outra de saída (G). Quando a função de saída depende somente do estado (ausência da seta tracejada na figura), dizemos que a máquina segue o modelo de Moore. Ao contrário, quando a saída da máquina depende do estado e da entrada (presença da seta tracejada na figura), dizemos que a máquina segue o modelo de Mealy. Em ambos os casos, somente o elemento de memória é sequencial. As funções são puramente combinatórias e dependem somente da entrada (da função) para produzir a saída. Note que, apesar de dependerem apenas na sua entrada, ambas as funções recebem a saída do elemento combinatório como entrada.&lt;/p&gt;
@@ -1629,7 +1822,7 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
 Use nomes significativos. Para estados, tente --&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="state machine"></category></entry><entry><title>Componentes em VHDL</title><link href="https://balbertini.github.io/vhdl_component-pt_BR.html" rel="alternate"></link><published>2019-03-14T15:23:00-03:00</published><updated>2020-06-23T07:41:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-14:/vhdl_component-pt_BR.html</id><summary type="html">&lt;p&gt;Usando componentes em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;A linguagem VHDL é inerentemente hierárquica, sendo muito fácil usar um componente de um projeto em outro. Esta característica permite algumas vantagens como: reutilização de descrições, divisão do projeto e partes menores (permite que projetistas trabalhem em paralelo e aumenta a legibilidade) e o teste separado (de um módulo e da integração).&lt;/p&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/vhdl/74181simbolo.png' width="30%" align="right" style="padding-left:5%" /&gt;
 Usar componentes é muito simples em VHDL pois toda a entidade (&lt;code&gt;entity&lt;/code&gt;) define um componente. No entanto, precisamos declarar e instanciar o componente, o que veremos neste post.&lt;/p&gt;
-&lt;p&gt;Considere a figura ao lado, que representa uma ULA (Unidade Lógica e Aritmética) modelo 74181 (fonte: &lt;em&gt;datasheet&lt;/em&gt; da Texas). Os números nos pinos representam o número do pino físico (e.g. a entrada &lt;code&gt;M&lt;/code&gt; está no pino 8). Como convencionado, entradas de dados estão acima, saídas abaixo, entradas de controle a esquerda e saída de controle a direita. As entradas de dados são &lt;code&gt;A&lt;/code&gt; e &lt;code&gt;B&lt;/code&gt; de 4 bits e a saída de dados &lt;code&gt;F&lt;/code&gt; também é de 4 bits. O &lt;em&gt;carry_in&lt;/em&gt; ($\overline{C_n}$) e o &lt;em&gt;carry_out&lt;/em&gt; ($\overline{C_{n+4}}$) são ambos ambos ativos baixo. A entrada &lt;code&gt;M&lt;/code&gt; define se a operação é lógica ou aritmética e a entrada &lt;code&gt;S&lt;/code&gt; (4 bits) define qual operação a ULA realizará. Há ainda a saída $A=B$ e as saídas para cascateamento &lt;em&gt;generate&lt;/em&gt; ($\overline{G}$) e &lt;em&gt;propagate&lt;/em&gt; ($\overline{P}$), ambas ativas baixo.&lt;/p&gt;
+&lt;p&gt;Considere a figura ao lado, que representa uma ULA (Unidade Lógica e Aritmética) modelo 74181 (fonte: &lt;em&gt;datasheet&lt;/em&gt; da Texas). Os números nos pinos representam o número do pino físico (e.g. a entrada &lt;code&gt;M&lt;/code&gt; está no pino 8). Como convencionado, entradas de dados estão acima, saídas abaixo, entradas de controle a esquerda e saída de controle a direita. As entradas de dados são &lt;code&gt;A&lt;/code&gt; e &lt;code&gt;B&lt;/code&gt; de 4 bits e a saída de dados &lt;code&gt;F&lt;/code&gt; também é de 4 bits. O &lt;em&gt;carry_in&lt;/em&gt; (&lt;span class="math"&gt;\(\overline{C_n}\)&lt;/span&gt;) e o &lt;em&gt;carry_out&lt;/em&gt; (&lt;span class="math"&gt;\(\overline{C_{n+4}}\)&lt;/span&gt;) são ambos ambos ativos baixo. A entrada &lt;code&gt;M&lt;/code&gt; define se a operação é lógica ou aritmética e a entrada &lt;code&gt;S&lt;/code&gt; (4 bits) define qual operação a ULA realizará. Há ainda a saída &lt;span class="math"&gt;\(A=B\)&lt;/span&gt; e as saídas para cascateamento &lt;em&gt;generate&lt;/em&gt; (&lt;span class="math"&gt;\(\overline{G}\)&lt;/span&gt;) e &lt;em&gt;propagate&lt;/em&gt; (&lt;span class="math"&gt;\(\overline{P}\)&lt;/span&gt;), ambas ativas baixo.&lt;/p&gt;
 &lt;p&gt;A entidade para este componente é algo assim:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;entity&lt;/span&gt; &lt;span class="nc"&gt;alu181&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt;
   &lt;span class="k"&gt;port&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
@@ -1750,7 +1943,69 @@ Usar componentes é muito simples em VHDL pois toda a entidade (&lt;code&gt;enti
 &lt;p&gt;Já a associação posicional é mais enxuta e aumenta a legibilidade do código. No entanto para entender a ligação do seu componente você precisa consultar a declaração.&lt;/p&gt;
 &lt;p&gt;Na prática, sugiro usar declaração posicional sempre que possível, sempre acompanhada de comentários explicando sua intenção. No entanto, se o seu componente tem portas suficientes para que o &lt;code&gt;port map&lt;/code&gt; ultrapasse uma ou duas linhas, considere fortemente usar a associação nomeada para melhorar o entendimento.&lt;/p&gt;
 &lt;h2&gt;Uso nas disciplinas de graduação&lt;/h2&gt;
-&lt;p&gt;Você está livre para usar qualquer um dos dois formatos que desejar. No entanto, o juiz usado nas disciplinas de graduação usa a associação posicional, o que significa que se você montar uma entidade diferente do enunciado, sua descrição não será avaliada. Siga estritamente o enunciado, especialmente em relação à entidade.&lt;/p&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="basic"></category></entry><entry><title>Módulos genéricos parametrizáveis em VHDL</title><link href="https://balbertini.github.io/vhdl_generic-pt_BR.html" rel="alternate"></link><published>2019-03-12T14:25:00-03:00</published><updated>2019-03-14T15:21:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-12:/vhdl_generic-pt_BR.html</id><summary type="html">&lt;p&gt;Usando o generic em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Uma das características interessantes de HDLs (incluindo VHDL), é a capacidade de reutilização de módulos. Podemos aumentar ainda mais a reutilização descrevendo módulos parametrizáveis. Este artigo trata de como descrever módulos genéricos parametrizáveis em VHDL.&lt;/p&gt;
+&lt;p&gt;Você está livre para usar qualquer um dos dois formatos que desejar. No entanto, o juiz usado nas disciplinas de graduação usa a associação posicional, o que significa que se você montar uma entidade diferente do enunciado, sua descrição não será avaliada. Siga estritamente o enunciado, especialmente em relação à entidade.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="basic"></category></entry><entry><title>Módulos genéricos parametrizáveis em VHDL</title><link href="https://balbertini.github.io/vhdl_generic-pt_BR.html" rel="alternate"></link><published>2019-03-12T14:25:00-03:00</published><updated>2019-03-14T15:21:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-12:/vhdl_generic-pt_BR.html</id><summary type="html">&lt;p&gt;Usando o generic em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Uma das características interessantes de HDLs (incluindo VHDL), é a capacidade de reutilização de módulos. Podemos aumentar ainda mais a reutilização descrevendo módulos parametrizáveis. Este artigo trata de como descrever módulos genéricos parametrizáveis em VHDL.&lt;/p&gt;
 &lt;h2&gt;Declarando um parâmetro genericamente&lt;/h2&gt;
 &lt;p&gt;Em muitos casos, a descrição de um módulo em VHDL pode não ser reaproveitável porque precisamos de um módulo ligeiramente diferente. Um exemplo: se descrevermos um registrador de 8 bits, poderemos usar este registrador somente em projetos que utilizam registradores de exatamente 8 bits. Contudo, quando o hardware é regular, ou seja, seu funcionamento é idêntico independentemente da característica variável, é possível descrevê-lo de forma a definir a característica variável no momento da instância e não da descrição. Dessa forma, descreve-se o módulo genericamente e somente no momento de utilizá-lo parametrizamos as características variáveis. No exemplo do registrador, podemos descrevê-lo genericamente de forma que o seu tamanho seja um parâmetro.&lt;/p&gt;
 &lt;p&gt;A palavra reservada que possibilita isso é a &lt;code&gt;generic&lt;/code&gt;. Na descrição da entidade do módulo, podemos incluir esta palavra, como a seguir:&lt;/p&gt;
@@ -2556,85 +2811,151 @@ Pede-se: (i) o módulo da contagem e (ii) as formas de onda nos pontos A e B.&lt
 &lt;h2&gt;Solução&lt;/h2&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/er/20180810_projFfTvBuffers.png' align="right" width="35%" style="padding-left:5%" /&gt;&lt;/p&gt;
 &lt;p&gt;Vamos começar colocando os buffers virtuais, como na figura ao lado. Já aproveitei e nomeei todas as conexões existentes para facilitar o próximo passo: a extração das equações.&lt;/p&gt;
-&lt;p&gt;$$
-I=\overline{T.C.Y_2}\
-J=\overline{\overline{T}.\overline{C}.\overline{Y_2}}\
-K=\overline{\overline{T}.\overline{C}.Y_2}\
-L=\overline{T.C.\overline{Y_2}}\
-M=\overline{Y_1.K.L}\
-N=\overline{T.\overline{C}.\overline{Y_1}}\
-O=\overline{T.\overline{C}.Y_1}\
+&lt;div class="math"&gt;$$
+I=\overline{T.C.Y_2}\\
+J=\overline{\overline{T}.\overline{C}.\overline{Y_2}}\\
+K=\overline{\overline{T}.\overline{C}.Y_2}\\
+L=\overline{T.C.\overline{Y_2}}\\
+M=\overline{Y_1.K.L}\\
+N=\overline{T.\overline{C}.\overline{Y_1}}\\
+O=\overline{T.\overline{C}.Y_1}\\
 P=\overline{Y_2.O}
-$$  &lt;/p&gt;
-&lt;p&gt;Resolvendo $M$ e $P$:&lt;/p&gt;
-&lt;p&gt;$$
-M=\overline{Y_1.K.L}=\overline{Y_1.\overline{\overline{T}.\overline{C}.Y_2}.\overline{T.C.\overline{Y_2}}}=\overline{Y_1.(T+C+\overline{Y_2}).(\overline{T}+\overline{C}+Y_2)}\
- =\overline{T.\overline{C}.Y_1+T.Y_1.Y_2+\overline{T}.C.Y_1+C.Y_1.Y_2+\overline{T}.Y_1.\overline{Y_2}+\overline{C}.Y_1.\overline{Y_2}}\
+$$&lt;/div&gt;
+&lt;p&gt;Resolvendo &lt;span class="math"&gt;\(M\)&lt;/span&gt; e &lt;span class="math"&gt;\(P\)&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="math"&gt;$$
+M=\overline{Y_1.K.L}=\overline{Y_1.\overline{\overline{T}.\overline{C}.Y_2}.\overline{T.C.\overline{Y_2}}}=\overline{Y_1.(T+C+\overline{Y_2}).(\overline{T}+\overline{C}+Y_2)}\\
+ =\overline{T.\overline{C}.Y_1+T.Y_1.Y_2+\overline{T}.C.Y_1+C.Y_1.Y_2+\overline{T}.Y_1.\overline{Y_2}+\overline{C}.Y_1.\overline{Y_2}}\\
 P=\overline{Y_2.O}=\overline{Y_2.\overline{T.\overline{C}.Y_1}}=\overline{Y_2.(\overline{T}+C+\overline{Y_1})}=\overline{\overline{T}.Y_2+C.Y_2+\overline{Y_1}.Y_2}
-$$&lt;/p&gt;
-&lt;p&gt;E finalmente resolvendo $Y_1^&lt;em&gt;$ e $Y_2^&lt;/em&gt;$:&lt;/p&gt;
-&lt;p&gt;$$
-Y_1^&lt;em&gt;=\overline{I.J.M}\
-=\overline{\overline{T.C.Y_2}.\overline{\overline{T}.\overline{C}.\overline{Y_2}}.\overline{T.\overline{C}.Y_1+T.Y_1.Y_2+\overline{T}.C.Y_1+C.Y_1.Y_2+\overline{T}.Y_1.\overline{Y_2}+\overline{C}.Y_1.\overline{Y_2}}}\
-=T.C.Y_2+\overline{T}.\overline{C}.\overline{Y_2}+T.\overline{C}.Y_1+T.Y_1.Y_2+\overline{T}.C.Y_1+C.Y_1.Y_2+\overline{T}.Y_1.\overline{Y_2}+\overline{C}.Y_1.\overline{Y_2}\
-Y_2^&lt;/em&gt;=\overline{N.P}=\overline{\overline{T.\overline{C}.\overline{Y_1}}.\overline{\overline{T}.Y_2+C.Y_2+\overline{Y_1}.Y_2}}\
-=T.\overline{C}.\overline{Y_1}+\overline{T}.Y_2+C.Y_2+\overline{Y_1}.Y_2\
-$$&lt;/p&gt;
-&lt;p&gt;O próximo passo é preencher a tabela de transição de estados e saída. A tabela preenchida pode ser vista abaixo, para $Y_1^&lt;em&gt;Y_2^&lt;/em&gt;$. Os estados contornados são estados estáveis, ou seja, não há mudança de estado para aquela entrada. Também podemos ver a tabela de fluxo, com as saídas.&lt;/p&gt;
+$$&lt;/div&gt;
+&lt;p&gt;E finalmente resolvendo &lt;span class="math"&gt;\(Y_1^*\)&lt;/span&gt; e &lt;span class="math"&gt;\(Y_2^*\)&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="math"&gt;$$
+Y_1^*=\overline{I.J.M}\\
+=\overline{\overline{T.C.Y_2}.\overline{\overline{T}.\overline{C}.\overline{Y_2}}.\overline{T.\overline{C}.Y_1+T.Y_1.Y_2+\overline{T}.C.Y_1+C.Y_1.Y_2+\overline{T}.Y_1.\overline{Y_2}+\overline{C}.Y_1.\overline{Y_2}}}\\
+=T.C.Y_2+\overline{T}.\overline{C}.\overline{Y_2}+T.\overline{C}.Y_1+T.Y_1.Y_2+\overline{T}.C.Y_1+C.Y_1.Y_2+\overline{T}.Y_1.\overline{Y_2}+\overline{C}.Y_1.\overline{Y_2}\\
+Y_2^*=\overline{N.P}=\overline{\overline{T.\overline{C}.\overline{Y_1}}.\overline{\overline{T}.Y_2+C.Y_2+\overline{Y_1}.Y_2}}\\
+=T.\overline{C}.\overline{Y_1}+\overline{T}.Y_2+C.Y_2+\overline{Y_1}.Y_2\\
+$$&lt;/div&gt;
+&lt;p&gt;O próximo passo é preencher a tabela de transição de estados e saída. A tabela preenchida pode ser vista abaixo, para &lt;span class="math"&gt;\(Y_1^*Y_2^*\)&lt;/span&gt;. Os estados contornados são estados estáveis, ou seja, não há mudança de estado para aquela entrada. Também podemos ver a tabela de fluxo, com as saídas.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Tabelas de transição de estados e de fluxo, com saídas" src="https://balbertini.github.io/images/sd/er/er0001_tranTable.png"&gt;&lt;/p&gt;
-&lt;p&gt;Na tabela de transição de estados, podemos fazer a análise de corridas. Uma corrida acontece quando &lt;strong&gt;uma única mudança na entrada causa uma mudança em mais de uma variável de estado&lt;/strong&gt;. No nosso caso, uma única mudança em $T$ ou $C$ (tanto de zero para um quanto de um para zero, em qualquer uma das entradas), deve provocar uma mudança das variáveis de estado $Y_1Y_2$ de mais de um bit, ou seja, de 00 para 11 ou de 10 para 01 (ou vice-versa). Na tabela, podemos verificar que não há corridas. Exemplo: na primeira linha estamos com as variáveis de estado $Y_1Y_2$ em 00. Nenhuma transição desta linha indica uma transição para 11, as transições possíveis são para 10, 00, 00 e 01, de acordo com as entradas 00, 01, 11 ou 10 respectivamente. Isso significa que, se estivermos no estado 00, uma mudança de um bit não ocasionará uma mudança de mais de um bit nas variáveis de estado. Ainda precisamos analisar as colunas. Se estivermos no mesmo estado (00) e a entrada estiver em 00, as variáveis de estado indicam que o próximo estado é 10, que é estável, portanto esta mudança irá acontecer. Do estado 00 para 10 só há uma mudança nas variáveis de estado, então não há corrida. Se estivermos no estado 00 e a entrada for 01 ou 11, o estado já é estável, então não há mudança alguma nas variáveis de estado. No caso da entrada 10, o novo estado será 01, que é estável e só muda um bit da variável de estado. Prossegue-se com a análise para o restante da tabela e conclui-se que não há corrida alguma. Após a análise de corridas, pode-se montar a tabela de fluxo (com saídas), mostrada do lado direito da figura. Para facilitar, adotou-se a codificação de estados como $S_i$, onde $i$ é o número decimal que representa as variáveis de estado $Y_1Y_2$. É preferível fazer a análise de corrida na tabela de transição em binário, pois é mais fácil perceber as mudanças.&lt;/p&gt;
+&lt;p&gt;Na tabela de transição de estados, podemos fazer a análise de corridas. Uma corrida acontece quando &lt;strong&gt;uma única mudança na entrada causa uma mudança em mais de uma variável de estado&lt;/strong&gt;. No nosso caso, uma única mudança em &lt;span class="math"&gt;\(T\)&lt;/span&gt; ou &lt;span class="math"&gt;\(C\)&lt;/span&gt; (tanto de zero para um quanto de um para zero, em qualquer uma das entradas), deve provocar uma mudança das variáveis de estado &lt;span class="math"&gt;\(Y_1Y_2\)&lt;/span&gt; de mais de um bit, ou seja, de 00 para 11 ou de 10 para 01 (ou vice-versa). Na tabela, podemos verificar que não há corridas. Exemplo: na primeira linha estamos com as variáveis de estado &lt;span class="math"&gt;\(Y_1Y_2\)&lt;/span&gt; em 00. Nenhuma transição desta linha indica uma transição para 11, as transições possíveis são para 10, 00, 00 e 01, de acordo com as entradas 00, 01, 11 ou 10 respectivamente. Isso significa que, se estivermos no estado 00, uma mudança de um bit não ocasionará uma mudança de mais de um bit nas variáveis de estado. Ainda precisamos analisar as colunas. Se estivermos no mesmo estado (00) e a entrada estiver em 00, as variáveis de estado indicam que o próximo estado é 10, que é estável, portanto esta mudança irá acontecer. Do estado 00 para 10 só há uma mudança nas variáveis de estado, então não há corrida. Se estivermos no estado 00 e a entrada for 01 ou 11, o estado já é estável, então não há mudança alguma nas variáveis de estado. No caso da entrada 10, o novo estado será 01, que é estável e só muda um bit da variável de estado. Prossegue-se com a análise para o restante da tabela e conclui-se que não há corrida alguma. Após a análise de corridas, pode-se montar a tabela de fluxo (com saídas), mostrada do lado direito da figura. Para facilitar, adotou-se a codificação de estados como &lt;span class="math"&gt;\(S_i\)&lt;/span&gt;, onde &lt;span class="math"&gt;\(i\)&lt;/span&gt; é o número decimal que representa as variáveis de estado &lt;span class="math"&gt;\(Y_1Y_2\)&lt;/span&gt;. É preferível fazer a análise de corrida na tabela de transição em binário, pois é mais fácil perceber as mudanças.&lt;/p&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/er/er0001_diagrama.png' align="right" width="35%" style="padding-left:5%" /&gt;
 Por último, montamos o diagrama de transição de estados, que fica conforme a figura ao lado.&lt;/p&gt;
-&lt;p&gt;A análise de comportamento é opcional, mas é relativamente fácil perceber que se trata de um &lt;em&gt;flip-flop&lt;/em&gt; tipo T sensível a borda de descida. A análise pode ser feita da seguinte forma: começa-se no estado $S_0$ (pode ser qualquer estado) e analisa-se o comportamento das entradas. Percebe-se que, a única maneira de sair desse estado é se a entrada $C$ for zero, de onde conclui-se que o circuito é algo que espera esta entrada virar zero. Nota-se ainda que, quando isso acontece, a saída muda caso a entrada $T$ seja um, caso contrário não muda. Todos os estados "seguram" a borda da entrada $C$, ou seja, independentemente se formos para $S_1$ ou $S_2$ a partir do $S_0$, a entrada $C$ não altera mais o comportamento da máquina exceto se for para um e depois para zero novamente. Poderíamos dizer que os estados tem estas funções:&lt;/p&gt;
+&lt;p&gt;A análise de comportamento é opcional, mas é relativamente fácil perceber que se trata de um &lt;em&gt;flip-flop&lt;/em&gt; tipo T sensível a borda de descida. A análise pode ser feita da seguinte forma: começa-se no estado &lt;span class="math"&gt;\(S_0\)&lt;/span&gt; (pode ser qualquer estado) e analisa-se o comportamento das entradas. Percebe-se que, a única maneira de sair desse estado é se a entrada &lt;span class="math"&gt;\(C\)&lt;/span&gt; for zero, de onde conclui-se que o circuito é algo que espera esta entrada virar zero. Nota-se ainda que, quando isso acontece, a saída muda caso a entrada &lt;span class="math"&gt;\(T\)&lt;/span&gt; seja um, caso contrário não muda. Todos os estados "seguram" a borda da entrada &lt;span class="math"&gt;\(C\)&lt;/span&gt;, ou seja, independentemente se formos para &lt;span class="math"&gt;\(S_1\)&lt;/span&gt; ou &lt;span class="math"&gt;\(S_2\)&lt;/span&gt; a partir do &lt;span class="math"&gt;\(S_0\)&lt;/span&gt;, a entrada &lt;span class="math"&gt;\(C\)&lt;/span&gt; não altera mais o comportamento da máquina exceto se for para um e depois para zero novamente. Poderíamos dizer que os estados tem estas funções:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;$S_0$: saída zero, aguarda $C=0$ e inverte a saída se $T=1$;&lt;/li&gt;
-&lt;li&gt;$S_1$: saída um, não deve-se inverter a saída, aguarda que $C=1$;&lt;/li&gt;
-&lt;li&gt;$S_2$: saída zero, não deve-se inverter a saída, aguarda que $C=1$;&lt;/li&gt;
-&lt;li&gt;$S_3$: saída um, aguarda $C=0$ e inverte a saída se $T=1$.&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(S_0\)&lt;/span&gt;: saída zero, aguarda &lt;span class="math"&gt;\(C=0\)&lt;/span&gt; e inverte a saída se &lt;span class="math"&gt;\(T=1\)&lt;/span&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(S_1\)&lt;/span&gt;: saída um, não deve-se inverter a saída, aguarda que &lt;span class="math"&gt;\(C=1\)&lt;/span&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(S_2\)&lt;/span&gt;: saída zero, não deve-se inverter a saída, aguarda que &lt;span class="math"&gt;\(C=1\)&lt;/span&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(S_3\)&lt;/span&gt;: saída um, aguarda &lt;span class="math"&gt;\(C=0\)&lt;/span&gt; e inverte a saída se &lt;span class="math"&gt;\(T=1\)&lt;/span&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Repare que o efeito &lt;em&gt;toggle&lt;/em&gt; só acontece nas arestas horizontais, de $S_0$ para $S_1$ e de $S_3$ para $S_2$.&lt;/p&gt;
+&lt;p&gt;Repare que o efeito &lt;em&gt;toggle&lt;/em&gt; só acontece nas arestas horizontais, de &lt;span class="math"&gt;\(S_0\)&lt;/span&gt; para &lt;span class="math"&gt;\(S_1\)&lt;/span&gt; e de &lt;span class="math"&gt;\(S_3\)&lt;/span&gt; para &lt;span class="math"&gt;\(S_2\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://balbertini.github.io/extra/sd/er/20181009_projFfT.circ"&gt;Download do circuito no LogiSim&lt;/a&gt;&lt;/p&gt;
-&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;</content><category term="sistemas digitais"></category><category term="sistemas digitais"></category><category term="exercícios resolvidos"></category><category term="análise"></category><category term="circuitos realimentados"></category></entry><entry><title>Máquinas de Estados Finitas</title><link href="https://balbertini.github.io/fsmbasics-pt_BR.html" rel="alternate"></link><published>2018-10-05T15:43:00-03:00</published><updated>2019-08-30T16:12:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-10-05:/fsmbasics-pt_BR.html</id><summary type="html">&lt;p&gt;Introdução a máquinas de estados finitas em sistemas digitais.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Uma máquina de estados é uma representação matemática de um sistema dependente de tempo. É composta por estados e transições. Cada estado representa o sistema em um determinado momento no tempo e não é possível uma máquina de estados estar em dois estados ao mesmo tempo. Quando uma máquina está em um estado, ela aguarda que as condições para uma transição sejam atingidas e, assim que forem, muda para o estado indicado por esta transição, repetindo o ciclo o ciclo. Cada máquina possui um estado inicial, onde a máquina começa, e pode ter um ou mais estados finais (ou de aceitação), indicando que a máquina terminou a tarefa computacional. É um modelo de computação bastante utilizado para modelar circuitos sequenciais.&lt;/p&gt;
+&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="sistemas digitais"></category><category term="sistemas digitais"></category><category term="exercícios resolvidos"></category><category term="análise"></category><category term="circuitos realimentados"></category></entry><entry><title>Máquinas de Estados Finitas</title><link href="https://balbertini.github.io/fsmbasics-pt_BR.html" rel="alternate"></link><published>2018-10-05T15:43:00-03:00</published><updated>2019-08-30T16:12:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-10-05:/fsmbasics-pt_BR.html</id><summary type="html">&lt;p&gt;Introdução a máquinas de estados finitas em sistemas digitais.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Uma máquina de estados é uma representação matemática de um sistema dependente de tempo. É composta por estados e transições. Cada estado representa o sistema em um determinado momento no tempo e não é possível uma máquina de estados estar em dois estados ao mesmo tempo. Quando uma máquina está em um estado, ela aguarda que as condições para uma transição sejam atingidas e, assim que forem, muda para o estado indicado por esta transição, repetindo o ciclo o ciclo. Cada máquina possui um estado inicial, onde a máquina começa, e pode ter um ou mais estados finais (ou de aceitação), indicando que a máquina terminou a tarefa computacional. É um modelo de computação bastante utilizado para modelar circuitos sequenciais.&lt;/p&gt;
 &lt;p&gt;Tecnicamente, a máquina de estados finita que estudamos em sistemas digitais é um &lt;strong&gt;transdutor de estados finitos&lt;/strong&gt;. A diferença primária entre uma máquina de estados e o transdutor é que este último não tem um estado de aceitação.&lt;/p&gt;
 &lt;p&gt;Uma máquina de estados finita pode ser especificada por uma sêxtupla do tipo:
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 M=(S, S_0, \Sigma, \Lambda, T, G)
-$$
-Onde $S$ é o conjunto de estados possíveis e $S_0$ é o estado inicial, $\Sigma$ e $\Lambda$ denotam os alfabetos da máquina, respectivamente de entrada e de saída, $T$ é a função de transição de estados e $G$ a função de saída.&lt;/p&gt;
-&lt;p&gt;As funções de transição de estados e de saída são dadas por $T:S\times\Sigma\rightarrow S$ e $G:S\rightarrow\Lambda$ (Moore) ou $G:S\times\Sigma\rightarrow\Lambda$ (Mealy).&lt;/p&gt;
-&lt;p&gt;É importante notar que o alfabeto de entrada e saída em sistemas digitais é sempre ${0,1}$ pois, quando o circuito for realizado, todos os sinais da máquina serão binários. Isso significa que $\Sigma=\Lambda$, então alguns autores simplificam a máquina de estados para uma quíntupla:
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
+Onde &lt;span class="math"&gt;\(S\)&lt;/span&gt; é o conjunto de estados possíveis e &lt;span class="math"&gt;\(S_0\)&lt;/span&gt; é o estado inicial, &lt;span class="math"&gt;\(\Sigma\)&lt;/span&gt; e &lt;span class="math"&gt;\(\Lambda\)&lt;/span&gt; denotam os alfabetos da máquina, respectivamente de entrada e de saída, &lt;span class="math"&gt;\(T\)&lt;/span&gt; é a função de transição de estados e &lt;span class="math"&gt;\(G\)&lt;/span&gt; a função de saída.&lt;/p&gt;
+&lt;p&gt;As funções de transição de estados e de saída são dadas por &lt;span class="math"&gt;\(T:S\times\Sigma\rightarrow S\)&lt;/span&gt; e &lt;span class="math"&gt;\(G:S\rightarrow\Lambda\)&lt;/span&gt; (Moore) ou &lt;span class="math"&gt;\(G:S\times\Sigma\rightarrow\Lambda\)&lt;/span&gt; (Mealy).&lt;/p&gt;
+&lt;p&gt;É importante notar que o alfabeto de entrada e saída em sistemas digitais é sempre &lt;span class="math"&gt;\(\{0,1\}\)&lt;/span&gt; pois, quando o circuito for realizado, todos os sinais da máquina serão binários. Isso significa que &lt;span class="math"&gt;\(\Sigma=\Lambda\)&lt;/span&gt;, então alguns autores simplificam a máquina de estados para uma quíntupla:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 M=(S, S_0, \Sigma, T, G)
-$$&lt;/p&gt;
-&lt;p&gt;Outra diferença notável das máquinas de estado finitas em sistemas digitais em relação ao conceito matemático é o determinismo. Em sistemas digitais, as máquinas podem ter transições aceitando $\epsilon$, ou seja, transições que acontecem independentemente da entrada, mas não podem ter mais de uma transição para a mesma entrada. Isso significa que as implementações de máquinas de estados finitas em sistemas digitais são sempre determinísticas.&lt;/p&gt;
+$$&lt;/div&gt;
+&lt;p&gt;Outra diferença notável das máquinas de estado finitas em sistemas digitais em relação ao conceito matemático é o determinismo. Em sistemas digitais, as máquinas podem ter transições aceitando &lt;span class="math"&gt;\(\epsilon\)&lt;/span&gt;, ou seja, transições que acontecem independentemente da entrada, mas não podem ter mais de uma transição para a mesma entrada. Isso significa que as implementações de máquinas de estados finitas em sistemas digitais são sempre determinísticas.&lt;/p&gt;
 &lt;h2&gt;Conceito de máquina de estados finita em sistemas digitais&lt;/h2&gt;
 &lt;p&gt;Já afirmamos que a máquina de estados em sistemas digitais não tem um estado de aceitação. Isso significa que a máquina é infinita, ou seja, executa para sempre. O modelo de estado de aceitação pode ser facilmente implementado colocando uma transição para o próprio estado (laço) e fazendo com que este estado produza uma saída pertinente à tarefa cuja máquina deveria realizar.&lt;/p&gt;
 &lt;p&gt;Em sistemas digitais, a máquina de estados representa um circuito sequencial. Quando síncrono, há uma transição de estados em cada borda de &lt;em&gt;clock&lt;/em&gt; (normalmente especifica-se somente uma das bordas, e.g. borda de subida). A transição pode ser para o mesmo estado (laço) ou vazia (incondicional), mas sempre ocorre na borda do &lt;em&gt;clock&lt;/em&gt;. Quando assíncrona, a transição ocorre assim que uma das condições para transição é satisfeita, portanto não é aconselhável especificar transições vazias neste tipo de máquina.&lt;/p&gt;
 &lt;p&gt;Como a máquina é determinística, em cada estado deve haver transições contemplando cada combinação possível de entrada.&lt;/p&gt;
-&lt;p&gt;Revisitando a quíntupla $M=(S, S_0, \Sigma, T, G)$, podemos fazer algumas considerações sobre sua aplicação em sistemas digitais. $S_0$ é o estado que a máquina deve assumir inicialmente, portanto deve ser o estado da máquina após um &lt;em&gt;reset&lt;/em&gt;. Normalmente o &lt;em&gt;reset&lt;/em&gt; das máquinas de estados é assíncrono e ativo baixo por motivos históricos ligados a implementação, mas não há impedimentos para adotar-se outras abordagens, desde que possa-se colocar a máquina explicitamente no estado inicial de alguma forma. O alfabeto $\Sigma$ já foi dito que é sempre o binário ${0,1}$, mas é possível existir entradas e saídas com mais de um bit. O $S$ representa o conjunto de estados possíveis e na implementação em sistemas digitais, sempre é um elemento de memória. As funções $T$ (função de excitação ou de próximo estado) e $S$ (função de saída) são circuitos combinatórios. A figura abaixo ilustra o modelo.&lt;/p&gt;
+&lt;p&gt;Revisitando a quíntupla &lt;span class="math"&gt;\(M=(S, S_0, \Sigma, T, G)\)&lt;/span&gt;, podemos fazer algumas considerações sobre sua aplicação em sistemas digitais. &lt;span class="math"&gt;\(S_0\)&lt;/span&gt; é o estado que a máquina deve assumir inicialmente, portanto deve ser o estado da máquina após um &lt;em&gt;reset&lt;/em&gt;. Normalmente o &lt;em&gt;reset&lt;/em&gt; das máquinas de estados é assíncrono e ativo baixo por motivos históricos ligados a implementação, mas não há impedimentos para adotar-se outras abordagens, desde que possa-se colocar a máquina explicitamente no estado inicial de alguma forma. O alfabeto &lt;span class="math"&gt;\(\Sigma\)&lt;/span&gt; já foi dito que é sempre o binário &lt;span class="math"&gt;\({0,1}\)&lt;/span&gt;, mas é possível existir entradas e saídas com mais de um bit. O &lt;span class="math"&gt;\(S\)&lt;/span&gt; representa o conjunto de estados possíveis e na implementação em sistemas digitais, sempre é um elemento de memória. As funções &lt;span class="math"&gt;\(T\)&lt;/span&gt; (função de excitação ou de próximo estado) e &lt;span class="math"&gt;\(S\)&lt;/span&gt; (função de saída) são circuitos combinatórios. A figura abaixo ilustra o modelo.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Modelo de FSM" src="https://balbertini.github.io/images/sd/fsmmodel.png"&gt;&lt;/p&gt;
 &lt;p&gt;A linha pontilhada é opcional e, quando presente, indica que a máquina é uma máquia de Mealy.&lt;/p&gt;
 &lt;h2&gt;Representação Gráfica&lt;/h2&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmexemplo2.png' width="15%" align="right" style="padding-left:5%" /&gt;
 A representação gráfica de uma máquina de estados finita em sistemas digitais é o diagrama de transição de estados. Cada estado é representado por um círculo e as transições são representadas por setas. Na figura ao lado podemos ver uma máquina de estados com dois estados (&lt;em&gt;A&lt;/em&gt; e &lt;em&gt;B&lt;/em&gt;) e quatro transições. Nas transições estão especificadas que entradas levam a tomada daquela transição.&lt;/p&gt;
 &lt;p&gt;No caso ao lado, a máquina é de Mealy, então a transição especifica um par &lt;em&gt;e/s&lt;/em&gt; onde &lt;em&gt;e&lt;/em&gt; é a entrada e &lt;em&gt;s&lt;/em&gt; é a saída. Exemplo: se estivermos no estado &lt;em&gt;B&lt;/em&gt; e a entrada for &lt;em&gt;0&lt;/em&gt;, continuaremos no estado &lt;em&gt;B&lt;/em&gt; e produziremos saída &lt;em&gt;1&lt;/em&gt;; já se estivermos no mesmo estado mas a entrada for &lt;em&gt;1&lt;/em&gt;, iremos para o estado &lt;em&gt;A&lt;/em&gt; e produziremos saída &lt;em&gt;0&lt;/em&gt;. A especificação formal desta máquina é:&lt;/p&gt;
-&lt;p&gt;$$M=(S, S_0, \Sigma, T, G)\
-S={A,B}\quad S_0=A\quad \Sigma={1,0}\
-T={(A,0)\rightarrow A,(A,1)\rightarrow B,(B,0)\rightarrow B,(B,1)\rightarrow A}\
-G={(A,0)\rightarrow 0,(A,1)\rightarrow 1,(B,0)\rightarrow 1,(B,1)\rightarrow 0}$$  &lt;/p&gt;
+&lt;div class="math"&gt;$$M=(S, S_0, \Sigma, T, G)\\
+S=\{A,B\}\quad S_0=A\quad \Sigma=\{1,0\}\\
+T=\{(A,0)\rightarrow A,(A,1)\rightarrow B,(B,0)\rightarrow B,(B,1)\rightarrow A\}\\
+G=\{(A,0)\rightarrow 0,(A,1)\rightarrow 1,(B,0)\rightarrow 1,(B,1)\rightarrow 0\}$$&lt;/div&gt;
 &lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmexemplo1.png' width="15%" align="right" style="padding-left:5%" /&gt;
 Uma máquina de Moore pode é representada da mesma forma, porém o círculo representando o estado é cortado ao meio e a saída é especificada na parte inferior, como na figura ao lado. As transições, representadas pelas arestas, possuem somente a entrada &lt;em&gt;e&lt;/em&gt; especificada, pois nesta máquina a saída não depende da entrada e sim somente do estado.&lt;/p&gt;
-&lt;p&gt;A especificação formal é similar, porém a função de de saída ($G$) não possui a entrada:&lt;/p&gt;
-&lt;p&gt;$$M=(S, S_0, \Sigma, T, G)\
-S={A,B}\quad S_0=A\quad \Sigma={1,0}\
-T={(A,0)\rightarrow A,(A,1)\rightarrow B,(B,0)\rightarrow B,(B,1)\rightarrow A}\
-G={A\rightarrow 0,B\rightarrow 1}$$  &lt;/p&gt;
+&lt;p&gt;A especificação formal é similar, porém a função de de saída (&lt;span class="math"&gt;\(G\)&lt;/span&gt;) não possui a entrada:&lt;/p&gt;
+&lt;div class="math"&gt;$$M=(S, S_0, \Sigma, T, G)\\
+S=\{A,B\}\quad S_0=A\quad \Sigma=\{1,0\}\\
+T=\{(A,0)\rightarrow A,(A,1)\rightarrow B,(B,0)\rightarrow B,(B,1)\rightarrow A\}\\
+G=\{A\rightarrow 0,B\rightarrow 1\}$$&lt;/div&gt;
 &lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
 
 &lt;h2&gt;Síntese&lt;/h2&gt;
-&lt;p&gt;Dado que $S$ é um elemento de memória, podemos usar qualquer um dos elementos de memória disponíveis para implementá-lo. É comum a utilização de &lt;em&gt;flip-flops&lt;/em&gt;, mas até mesmo memórias capacitivas podem ser utilizadas.
+&lt;p&gt;Dado que &lt;span class="math"&gt;\(S\)&lt;/span&gt; é um elemento de memória, podemos usar qualquer um dos elementos de memória disponíveis para implementá-lo. É comum a utilização de &lt;em&gt;flip-flops&lt;/em&gt;, mas até mesmo memórias capacitivas podem ser utilizadas.
 Já as funções de transição de estados (também chamada de função de próximo estado ou de excitação) e de saída, por serem circuitos combinatórios, são sintetizadas como tal. Pode-se usar qualquer técnica de síntese de circuitos combinatórios para ajudar, desde álgebra booleana até mapas de Karnaugh. O mais comum é montar uma tabela verdade com os estados e depois sintetizar usando-se minimização por Karnaugh e desenho direto das equações em forma de diagrama esquemático.&lt;/p&gt;
 &lt;p&gt;Os passos para a síntese de uma máquina de estados finita em sistemas digitais são:&lt;/p&gt;
 &lt;ol&gt;
@@ -2649,29 +2970,29 @@ Já as funções de transição de estados (também chamada de função de próx
 &lt;/li&gt;
 &lt;li&gt;Designação de estados;&lt;/li&gt;
 &lt;li&gt;Tabela de excitação;&lt;/li&gt;
-&lt;li&gt;Projeto dos circuitos combinatórios (funções $T$ e $G$);&lt;/li&gt;
+&lt;li&gt;Projeto dos circuitos combinatórios (funções &lt;span class="math"&gt;\(T\)&lt;/span&gt; e &lt;span class="math"&gt;\(G\)&lt;/span&gt;);&lt;/li&gt;
 &lt;li&gt;Montagem do diagrama lógico (esquemático).&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;O passo 1 consiste em entender o comportamento do sistema sequencial sendo modelado. Em muitos casos o diagrama esquemático está disponível, simplificando este passo. Em outras palavras, é possível sintetizar uma máquina de estados sem o conhecimento da aplicação, desde que o passo 1 ou o passo 2 estejam disponíveis. Neste passo, você deve identificar todas as entradas e saídas da máquina de estados, assim como o momento exato onde cada saída deve ser gerada. Se for necessário, faça uma carta de tempos do funcionamento da máquina. Neste passo também devemos escolher se usaremos o modelo de Melay ou de Moore.&lt;/p&gt;
 &lt;p&gt;No passo 2 devemos identificar o número de estados necessários e anotar os momentos em que as saídas serão produzidas. A forma mais comum é expressar a saída deste passo com um diagrama de transição de estados. Pode ser útil nomear os estados no final do desenho do diagrama, pois este tende a mudar conforme se exercita a máquina. O teste de mesa (exercitar a máquina com entradas), é crucial para termos certeza que o diagrama atende a solução do problema. Também não precisamos nos preocupar com estados excessivos ou redundantes pois a máquina será minimizada posteriormente.&lt;/p&gt;
 &lt;p&gt;A tabela de estados e a tabela de saída costumam ser montadas juntas, no passo 3. Esta tabela tem as mesmas informações que o passo 2, porém em forma de tabela. Opcionalmente podemos minimizar as tabelas usando um &lt;a href="https://balbertini.github.io/fsmstatereduction-pt_BR.html"&gt;método de minimização de máquinas de estado&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Com as tabelas minimizadas, o passo 4 visa qualificar e quantificar o elemento de memória a ser usado ($S$). Normalmente usamos $n$ &lt;em&gt;flip-flops&lt;/em&gt; tipo D, sendo $n=\lceil log_2s\rceil$, onde $s$ é o número de estados. Caso o número de estados não seja uma potência de 2, deve-se decidir neste passo o que fazer com os estados que sobrarem. As opções possíveis são: (i) nada, assim aumentamos as possibilidades de minimização das funções combinatórias mas caso a máquina alcance um destes estados, a saída pode não ser neutra; (ii) forçar a saída para um valor neutro, diminuindo as possibilidades de minimização da função de saída; ou (iii) idem ao (ii) mas também forçamos a máquina para o estado inicial no próximo ciclo. A opção (i) é a que oferece a maior possibilidade de minimização e a opção (iii) é a mais segura. Com as escolhas feitas, deve-se determinar as variáveis de estado e designar o código de cada estado. Uma boa designação de estados pode implicar em melhor minimização, mas não há uma regra específica. Um truque comum é designarmos os estados usando código de Gray, assim os mapas de Karnaugh podem ser facilmente montados (assumindo que você utilizará esta técnica).&lt;/p&gt;
+&lt;p&gt;Com as tabelas minimizadas, o passo 4 visa qualificar e quantificar o elemento de memória a ser usado (&lt;span class="math"&gt;\(S\)&lt;/span&gt;). Normalmente usamos &lt;span class="math"&gt;\(n\)&lt;/span&gt; &lt;em&gt;flip-flops&lt;/em&gt; tipo D, sendo &lt;span class="math"&gt;\(n=\lceil log_2s\rceil\)&lt;/span&gt;, onde &lt;span class="math"&gt;\(s\)&lt;/span&gt; é o número de estados. Caso o número de estados não seja uma potência de 2, deve-se decidir neste passo o que fazer com os estados que sobrarem. As opções possíveis são: (i) nada, assim aumentamos as possibilidades de minimização das funções combinatórias mas caso a máquina alcance um destes estados, a saída pode não ser neutra; (ii) forçar a saída para um valor neutro, diminuindo as possibilidades de minimização da função de saída; ou (iii) idem ao (ii) mas também forçamos a máquina para o estado inicial no próximo ciclo. A opção (i) é a que oferece a maior possibilidade de minimização e a opção (iii) é a mais segura. Com as escolhas feitas, deve-se determinar as variáveis de estado e designar o código de cada estado. Uma boa designação de estados pode implicar em melhor minimização, mas não há uma regra específica. Um truque comum é designarmos os estados usando código de Gray, assim os mapas de Karnaugh podem ser facilmente montados (assumindo que você utilizará esta técnica).&lt;/p&gt;
 &lt;p&gt;Caso não tenha escolhido o tipo de &lt;em&gt;flip-flop&lt;/em&gt; no passo 4, você deve escolher antes de começar o passo 5. Neste passo, devemos montar a tabela de excitação levando em consideração as características do elemento de memória escolhido. O nome desta tabela (tabela de excitação) remete às informações da tabela, pois esta não traz o próximo estado e sim o que deve ser colocado nas entradas dos elementos de memória para que suas saídas sejam o próximo estado no momento adequado (i.e. próxima borda do &lt;em&gt;clock&lt;/em&gt;).&lt;/p&gt;
-&lt;p&gt;Temos a tabela de excitação (passo 5) e a tabela de saída (passo 3), com a designação de estados e as variáveis de estado (passo 4). No passo 6 devemos encontrar as funções de chaveamento. A técnica usual é montar os mapas de Karnaugh para a função de excitação ($T$) e para a função de saída ($G$), obtendo as equações como produto da aplicação do mapa. No entanto, qualquer técnica de síntese de circuitos combinatórios pode ser utilizada.&lt;/p&gt;
-&lt;p&gt;Com as equações prontas, basta desenhar os blocos combinatórios ($T$ e $G$), posteriormente ligando-os aos elementos de memória e obtendo-se o circuito final, o que é feito no passo 7.&lt;/p&gt;
+&lt;p&gt;Temos a tabela de excitação (passo 5) e a tabela de saída (passo 3), com a designação de estados e as variáveis de estado (passo 4). No passo 6 devemos encontrar as funções de chaveamento. A técnica usual é montar os mapas de Karnaugh para a função de excitação (&lt;span class="math"&gt;\(T\)&lt;/span&gt;) e para a função de saída (&lt;span class="math"&gt;\(G\)&lt;/span&gt;), obtendo as equações como produto da aplicação do mapa. No entanto, qualquer técnica de síntese de circuitos combinatórios pode ser utilizada.&lt;/p&gt;
+&lt;p&gt;Com as equações prontas, basta desenhar os blocos combinatórios (&lt;span class="math"&gt;\(T\)&lt;/span&gt; e &lt;span class="math"&gt;\(G\)&lt;/span&gt;), posteriormente ligando-os aos elementos de memória e obtendo-se o circuito final, o que é feito no passo 7.&lt;/p&gt;
 &lt;h2&gt;Análise&lt;/h2&gt;
 &lt;p&gt;A análise de uma máquina de estados finita em sistemas digitais é exatamente o contrário da síntese.&lt;/p&gt;
-&lt;p&gt;Parte-se de um diagrama lógico (passo 7 reverso), onde deve-se identificar o elemento de memória ($S$). É comum o elemento de memória ser composto por um ou mais &lt;em&gt;flip-flops&lt;/em&gt;, então não é difícil encontrá-los no circuito.&lt;/p&gt;
+&lt;p&gt;Parte-se de um diagrama lógico (passo 7 reverso), onde deve-se identificar o elemento de memória (&lt;span class="math"&gt;\(S\)&lt;/span&gt;). É comum o elemento de memória ser composto por um ou mais &lt;em&gt;flip-flops&lt;/em&gt;, então não é difícil encontrá-los no circuito.&lt;/p&gt;
 &lt;p&gt;Identificado o elemento de memória, segue-se a identificação das funções de excitação e de saída (passo 6 reverso). Isso pode ser feito usando uma técnica de análise de circuitos combinatórios, partindo da saída do elemento de memória em direção ao que se pretende identificar (e.g. se você está identificando a função de saída, aplique uma técnica de análise da saída do elemento de memória em direção a saída da máquina de estados). É útil ter em mente o modelo clássico de máquinas de estado pois, identificado o elemento de memória, o que sobrou deve ser combinatório e faz parte de uma das funções de excitação ou saída. É muito comum usar cores, circular ou marcar as portas lógicas para separá-las de acordo com a função conforme se faz a análise. Neste ponto da análise já é possível identificar se a máquina segue o modelo de Moore ou de Mealy. Neste passo deve-se também inferir as variáveis de estado (no caso dos &lt;em&gt;flip-flops&lt;/em&gt; as variáveis de estado coincidem com a saída dos mesmos).&lt;/p&gt;
-&lt;p&gt;Obtidas as equações $T$ e $G$, parte-se para as tabelas. A tabela de excitação pode ser obtida exercitando todas as combinações possíveis das variáveis de estado e das entradas (passo 5 reverso). Para cada valor, exercita-se a função de excitação ($T$) e obtém-se o valor que será aplicado às entradas do elemento de memória ($S$).&lt;/p&gt;
+&lt;p&gt;Obtidas as equações &lt;span class="math"&gt;\(T\)&lt;/span&gt; e &lt;span class="math"&gt;\(G\)&lt;/span&gt;, parte-se para as tabelas. A tabela de excitação pode ser obtida exercitando todas as combinações possíveis das variáveis de estado e das entradas (passo 5 reverso). Para cada valor, exercita-se a função de excitação (&lt;span class="math"&gt;\(T\)&lt;/span&gt;) e obtém-se o valor que será aplicado às entradas do elemento de memória (&lt;span class="math"&gt;\(S\)&lt;/span&gt;).&lt;/p&gt;
 &lt;p&gt;Com a tabela de excitação e conhecendo-se as características do elemento de memória, pode-se atribuir nomes aos estados e construir a tabela de transição de estados (passo 4 reverso). É difícil atribuir nomes significativos para o estado neste momento, então muitos projetistas optam por atribuir nomes alfanuméricos (e.g. A, B, C1, C2, etc).&lt;/p&gt;
 &lt;p&gt;Não faz sentido reverter as minimizações, tanto para os métodos de síntese combinatória quanto para as tabelas, portanto das equações montamos diretamente as tabelas, e delas extrairemos diretamente o restante.&lt;/p&gt;
 &lt;p&gt;Para completar as tabelas (passo 3 reverso), obtemos a tabela de saída a partir da função de saída (encontrada no passo 6 reverso) da mesma maneira que encontramos a função de excitação: exercitando todos os valores possíveis para as variáveis de estado e para a entrada (a entrada só faz parte da função de saída se a máquina seguir o modelo de Mealy).&lt;/p&gt;
 &lt;p&gt;Com as tabelas, é possível montar um diagrama de transição de estados. O diagrama pode ser inferido diretamente das tabelas (passo 2 reverso).&lt;/p&gt;
 &lt;p&gt;O passo 1 é o único críptico na análise de máquinas de estado finitas. A razão disso é que o diagrama pode ser considerado a expressão de uma solução para um problema. Extrair o problema de uma solução é uma tarefa subjetiva. Informações extras sobre a aplicação da máquina, o local onde ela funciona, interfaces e até mesmo observar os sistemas ao redor da máquina de estados podem ajudar, porém não há uma técnica para este passo. Em alguns casos pode-se tentar mapear a máquina de estados para uma estrutura formal (e.g. expressões regulares), mas isso pouco ajuda quando não se conhece nem mesmo a natureza do problema que a máquina resolve.&lt;/p&gt;
 &lt;h1&gt;Exemplo&lt;/h1&gt;
-&lt;p&gt;Este é um exemplo clássico de uma máquina de estados simples, mas que todos reconhecem: o semáforo. Projete o circuito para uma máquina de estados que opere um semáforo de três fases: verde, amarela e vermelha. A entrada é $m$, proveniente de um temporizador, que caso alta na fase verde causa uma mudança para a fase a amarela e caso alta na fase vermelha causa uma mudança para a fase verde. A mudança da fase amarela para a vermelha é independente da entrada. A saída da máquina de estados é dada por dois bits, $c_1c_0$, que indicam qual cor está acesa: 10 verde, 11 amarelo e 01 vermelho.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Passo 1:&lt;/strong&gt; Variáveis de entrada: somente $m$ de 1 bit. Variáveis de saída: $c_1c_0$ de 2 bits, 10 verde, 11 amarelo e 01 vermelho (não foi especificado o que acontece em 00). O semáforo trabalha de forma circular acendendo as cores vermelho, amarelo e verde, em sequência repetitiva. O tempo que a máquina permanece na cor amarela é dado pelo período do &lt;em&gt;clock&lt;/em&gt;, pois não há condição para a transição. Já o tempo que a máquina permanece no vermelho e no verde é indicado pelo sinal do temporizador, representado pela entrada $m$. Quando a entrada for alta ($m=1$), deve-se trocar de estado na próxima borda do &lt;em&gt;clock&lt;/em&gt;. Convencionaremos o &lt;em&gt;reset&lt;/em&gt; assíncrono ativo baixo e o elemento de memória sensível a borda de subida do &lt;em&gt;clock&lt;/em&gt;. Escolheremos um modelo de Moore, sem nenhuma vantagem ou desvantagem explícita.&lt;/p&gt;
+&lt;p&gt;Este é um exemplo clássico de uma máquina de estados simples, mas que todos reconhecem: o semáforo. Projete o circuito para uma máquina de estados que opere um semáforo de três fases: verde, amarela e vermelha. A entrada é &lt;span class="math"&gt;\(m\)&lt;/span&gt;, proveniente de um temporizador, que caso alta na fase verde causa uma mudança para a fase a amarela e caso alta na fase vermelha causa uma mudança para a fase verde. A mudança da fase amarela para a vermelha é independente da entrada. A saída da máquina de estados é dada por dois bits, &lt;span class="math"&gt;\(c_1c_0\)&lt;/span&gt;, que indicam qual cor está acesa: 10 verde, 11 amarelo e 01 vermelho.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Passo 1:&lt;/strong&gt; Variáveis de entrada: somente &lt;span class="math"&gt;\(m\)&lt;/span&gt; de 1 bit. Variáveis de saída: &lt;span class="math"&gt;\(c_1c_0\)&lt;/span&gt; de 2 bits, 10 verde, 11 amarelo e 01 vermelho (não foi especificado o que acontece em 00). O semáforo trabalha de forma circular acendendo as cores vermelho, amarelo e verde, em sequência repetitiva. O tempo que a máquina permanece na cor amarela é dado pelo período do &lt;em&gt;clock&lt;/em&gt;, pois não há condição para a transição. Já o tempo que a máquina permanece no vermelho e no verde é indicado pelo sinal do temporizador, representado pela entrada &lt;span class="math"&gt;\(m\)&lt;/span&gt;. Quando a entrada for alta (&lt;span class="math"&gt;\(m=1\)&lt;/span&gt;), deve-se trocar de estado na próxima borda do &lt;em&gt;clock&lt;/em&gt;. Convencionaremos o &lt;em&gt;reset&lt;/em&gt; assíncrono ativo baixo e o elemento de memória sensível a borda de subida do &lt;em&gt;clock&lt;/em&gt;. Escolheremos um modelo de Moore, sem nenhuma vantagem ou desvantagem explícita.&lt;/p&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/semaforo.png' width="35%" align="right" style="padding-left:5%" /&gt;
 &lt;strong&gt;Passo 2:&lt;/strong&gt; A descrição funcional foi feita durante a análise do problema no passo 1. O diagrama de transição de estados pode ser visto na figura ao lado. Note que já demos os nomes para os estados de acordo com a cor: VM vermelha, VD verde e AM amarela. A entrada de 1 bit foi especificada nas transições e a saída de 2 bits na parte inferior do estado, de acordo com o identificado no passo 1.
 &lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;&lt;/p&gt;
@@ -2715,9 +3036,9 @@ Já as funções de transição de estados (também chamada de função de próx
   &lt;/tr&gt;
 &lt;/table&gt;
 
-&lt;p&gt;Note que as tabelas de próximo estado e de saída estão juntas na mesma tabela. A coluna &lt;strong&gt;Estado Atual&lt;/strong&gt; mostra o estado em que a máquina se encontra, e a coluna &lt;strong&gt;Saída&lt;/strong&gt; mostra a saída para aquele estado. A coluna &lt;strong&gt;Próximo Estado&lt;/strong&gt; contém as transições, ou seja, para qual estado a máquina irá no próximo ciclo de &lt;em&gt;clock&lt;/em&gt; caso a entrada $m$ seja 0 ou 1. Esta tabela é pequena, portanto basta uma rápida análise para perceber que não há reduções possíveis.&lt;/p&gt;
+&lt;p&gt;Note que as tabelas de próximo estado e de saída estão juntas na mesma tabela. A coluna &lt;strong&gt;Estado Atual&lt;/strong&gt; mostra o estado em que a máquina se encontra, e a coluna &lt;strong&gt;Saída&lt;/strong&gt; mostra a saída para aquele estado. A coluna &lt;strong&gt;Próximo Estado&lt;/strong&gt; contém as transições, ou seja, para qual estado a máquina irá no próximo ciclo de &lt;em&gt;clock&lt;/em&gt; caso a entrada &lt;span class="math"&gt;\(m\)&lt;/span&gt; seja 0 ou 1. Esta tabela é pequena, portanto basta uma rápida análise para perceber que não há reduções possíveis.&lt;/p&gt;
 &lt;p&gt;Dica: é muito comum representar as duas tabelas em uma só para economizar espaço, pois a coluna de estado atual é idêntica nas duas. Note também que a ordem dos estados já foi colocada de forma a facilitar a utilização do método de minimização gráfica por mapa de Karnaugh.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Passo 4:&lt;/strong&gt; Para nossa implementação, usaremos &lt;em&gt;flip-flops&lt;/em&gt; tipo D sensíveis a borda de subida do &lt;em&gt;clock&lt;/em&gt;. Temos 3 estados, portanto usaremos $\lceil log_23\rceil =2$ &lt;em&gt;flip-flops&lt;/em&gt;. Com dois &lt;em&gt;flip-flops&lt;/em&gt;, podemos representar até $2^2=4$ estados possíveis, portanto há um estado sobrando. A aplicação é crítica pois caso a máquina atinja o estado AM ou VD erroneamente, poderá causar um acidente. Neste sentido, optamos por forçar o estado extra para produzir uma saída vermelha (10) e ir para o estado VM no próximo ciclo, independente da entrada. A designação de estados será: 00 para o estado extra, que chamaremos de EX; 01 para o estado VM, 11 para o estado AM, e 10 para o estado VD. Note que esta designação condiz com a saída para os estados válidos, o que foi proposital para minimizar as funções de saída.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Passo 4:&lt;/strong&gt; Para nossa implementação, usaremos &lt;em&gt;flip-flops&lt;/em&gt; tipo D sensíveis a borda de subida do &lt;em&gt;clock&lt;/em&gt;. Temos 3 estados, portanto usaremos &lt;span class="math"&gt;\(\lceil log_23\rceil =2\)&lt;/span&gt; &lt;em&gt;flip-flops&lt;/em&gt;. Com dois &lt;em&gt;flip-flops&lt;/em&gt;, podemos representar até &lt;span class="math"&gt;\(2^2=4\)&lt;/span&gt; estados possíveis, portanto há um estado sobrando. A aplicação é crítica pois caso a máquina atinja o estado AM ou VD erroneamente, poderá causar um acidente. Neste sentido, optamos por forçar o estado extra para produzir uma saída vermelha (10) e ir para o estado VM no próximo ciclo, independente da entrada. A designação de estados será: 00 para o estado extra, que chamaremos de EX; 01 para o estado VM, 11 para o estado AM, e 10 para o estado VD. Note que esta designação condiz com a saída para os estados válidos, o que foi proposital para minimizar as funções de saída.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Passo 5:&lt;/strong&gt; A tabela de excitação é exatamente a tabela de próximo estado, porém com os estados substituídos pela sua designação pois usamos &lt;em&gt;flip-flops&lt;/em&gt; tipo D, que copiam a entrada para a saída. Caso o elemento de memória fosse diferente, nesta tabela deveríamos colocar as entradas do elemento de memória adequadas para que o próximo estado seja o ta tabela de transição de estados. Também copiamos a tabela de saída para incluir a saída no caso do estado extra.&lt;/p&gt;
 &lt;table class="tg"&gt;
   &lt;tr&gt;
@@ -2755,20 +3076,83 @@ Já as funções de transição de estados (também chamada de função de próx
   &lt;/tr&gt;
 &lt;/table&gt;
 
-&lt;p&gt;Mantivemos os nomes dos estados e colocamos a designação entre parênteses para facilitar a leitura (esta prática é comum quando utiliza-se &lt;em&gt;flip-flop&lt;/em&gt; tipo D). Os números entre parênteses representam as variáveis de estado, que chamaremos de $q_1q_0$.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Passo 6:&lt;/strong&gt; Neste passo, devemos encontrar as funções de excitação e de saída. A construção e solução do mapa de Karnaugh foi omitida pois não é assunto deste artigo, porém ambas as equações foram encontradas usando este método. Note que, como usamos &lt;em&gt;flip-flops&lt;/em&gt; tipo D, $d_1=q_1^{t+1}$ e $d_0=q_0^{t+1}$.&lt;/p&gt;
-&lt;p&gt;$$
-q_1^{t+1}=q_1.\overline{q_0}+\overline{q_1}.q_0.m\
-q_0^{t+1}=\overline{q_1}.\overline{q_0}+q_0.\overline{m}+q_1.m\
-\quad\
-c_1=q_1\
+&lt;p&gt;Mantivemos os nomes dos estados e colocamos a designação entre parênteses para facilitar a leitura (esta prática é comum quando utiliza-se &lt;em&gt;flip-flop&lt;/em&gt; tipo D). Os números entre parênteses representam as variáveis de estado, que chamaremos de &lt;span class="math"&gt;\(q_1q_0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Passo 6:&lt;/strong&gt; Neste passo, devemos encontrar as funções de excitação e de saída. A construção e solução do mapa de Karnaugh foi omitida pois não é assunto deste artigo, porém ambas as equações foram encontradas usando este método. Note que, como usamos &lt;em&gt;flip-flops&lt;/em&gt; tipo D, &lt;span class="math"&gt;\(d_1=q_1^{t+1}\)&lt;/span&gt; e &lt;span class="math"&gt;\(d_0=q_0^{t+1}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;div class="math"&gt;$$
+q_1^{t+1}=q_1.\overline{q_0}+\overline{q_1}.q_0.m\\
+q_0^{t+1}=\overline{q_1}.\overline{q_0}+q_0.\overline{m}+q_1.m\\
+\quad\\
+c_1=q_1\\
 c_0=\overline{q_1}+q_0
-$$&lt;/p&gt;
+$$&lt;/div&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmSemaforo.png' width="35%" align="right" style="padding-left:5%" /&gt;
 &lt;strong&gt;Passo 7:&lt;/strong&gt; Com as equações em mãos, basta montar o circuito correspondente. Começamos colocando os elementos de memória na parte central (dois &lt;em&gt;flip-flops&lt;/em&gt;) tipo D e nomeamos como &lt;em&gt;q1&lt;/em&gt; e &lt;em&gt;q0&lt;/em&gt;. As saídas dos &lt;em&gt;flip-flops&lt;/em&gt; correspondem às variáveis de estado homônimas, e as entradas devem ser as saídas das funções de próximo estado. Após colocarmos os elementos de memória, continuamos seguindo as convenções e colocamos a esquerda o circuito combinatório correspondente à função de transição de estados e a direita o correspondente a de saída.
 Ainda no circuito vemos a entrada de &lt;em&gt;clock&lt;/em&gt; e de &lt;em&gt;reset&lt;/em&gt;, um botão que emula o sinal vindo do temporizador e uma saída RGB que corresponde ao semáforo.&lt;/p&gt;
 &lt;p&gt;Para baixar este circuito no formato do LogiSim &lt;a href="https://balbertini.github.io/extra/sd/fsmSemaforo.circ"&gt;clique aqui&lt;/a&gt;.&lt;/p&gt;
-&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;</content><category term="sistemas digitais"></category><category term="sistemas digitais"></category><category term="fsm"></category><category term="simplificação"></category></entry><entry><title>Arquitetura</title><link href="https://balbertini.github.io/vhdl_architecture-pt_BR.html" rel="alternate"></link><published>2018-10-04T10:33:00-03:00</published><updated>2019-03-14T15:40:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-10-04:/vhdl_architecture-pt_BR.html</id><summary type="html">&lt;p&gt;Arquiteturas em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As descrições em VHDL sempre possuem uma &lt;a href="https://balbertini.github.io/vhdl_entity-pt_BR.html"&gt;entidade&lt;/a&gt;, que define as interfaces do módulo descrito. Porém, a entidade não descreve a funcionalidade, que é descrita na arquitetura.&lt;/p&gt;
+&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="sistemas digitais"></category><category term="sistemas digitais"></category><category term="fsm"></category><category term="simplificação"></category></entry><entry><title>Arquitetura</title><link href="https://balbertini.github.io/vhdl_architecture-pt_BR.html" rel="alternate"></link><published>2018-10-04T10:33:00-03:00</published><updated>2019-03-14T15:40:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-10-04:/vhdl_architecture-pt_BR.html</id><summary type="html">&lt;p&gt;Arquiteturas em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As descrições em VHDL sempre possuem uma &lt;a href="https://balbertini.github.io/vhdl_entity-pt_BR.html"&gt;entidade&lt;/a&gt;, que define as interfaces do módulo descrito. Porém, a entidade não descreve a funcionalidade, que é descrita na arquitetura.&lt;/p&gt;
 &lt;p&gt;Assim como a entidade é a &lt;em&gt;cara&lt;/em&gt; do módulo que está descrevendo, a arquitetura, declarada pela palavra reservada &lt;code&gt;architecture&lt;/code&gt;, é o &lt;em&gt;corpo&lt;/em&gt; da sua descrição. Na arquitetura é onde descrevemos a funcionalidade do componente, ou seja, onde as coisas realmente acontecem. No diagrama esquemático, seria o equivalente de mostrar o que tem dentro do símbolo do seu componente.&lt;/p&gt;
 &lt;p&gt;Faz sentido descrever um componente com entradas e saídas mas sem nada dentro? Claro que não, por isso toda entidade deve ter ao menos uma arquitetura pois, sem ela, o componente não tem função. É possível que uma entidade tenha varias arquiteturas, cada uma realizando a tarefa que seu componente se propõe a fazer de uma maneira diferente. Contudo, uma arquitetura só pode pertencer a uma entidade. De fato, todas as arquiteturas pertencentes a uma entidade devem estar no mesmo arquivo que ela, depois da declaração da entidade.&lt;/p&gt;
 &lt;p&gt;A sintaxe de uma arquitetura em VHDL é:&lt;/p&gt;
@@ -3104,11 +3488,11 @@ O diagrama de transição de estados minimizado pode ser visto na figura ao lado
 &lt;p&gt;Nem sempre é tão fácil perceber a equivalência de estados através da tabela de transição de estados, especialmente para máquinas grandes ou com muitas entradas. No entanto, os projetistas desenvolveram um método chamado de tabela de implicação. Este método é equivalente à análise através da tabela de transição de estados, porém é algorítmico e está organizado em forma de uma matriz, o que minimiza erros por parte do projetista. Além disso, apesar de ambos os métodos serem exaustivos, há uma diferença primordial: enquanto o método de análise da tabela de transição de estados procura exaustivamente estados equivalentes, o método da tabela de implicação procura exaustivamente os estados que &lt;strong&gt;não são equivalentes&lt;/strong&gt;. Parte-se da premissa de que todos os estados são equivalentes entre si e, a cada iteração, elimina-se os estados que não podem ser equivalentes. Os estados que sobrarem são equivalentes.&lt;/p&gt;
 &lt;p&gt;Há dois momentos no método da tabela de implicação: a construção da tabela e a análise.&lt;/p&gt;
 &lt;h3&gt;Construção da matriz (tabela)&lt;/h3&gt;
-&lt;p&gt;A matriz pode ser construída como uma matriz $n$ por $n$, onde $n$ é o número de estados (se você começar no $S_0$, o último estado será $S_{n-1}$). Cada linha $i$ da matriz representa um estado e cada coluna $j$ também.&lt;/p&gt;
-&lt;p&gt;Não faz sentido analisar a equivalência de um estado com ele mesmo, pois um estado sempre é equivalente a ele mesmo. Por este motivo, eliminamos a diagonal da matriz, onde $i=j$. As metades diagonais superiores e inferiores significam a mesma coisa pois se uma célula $X_{ij}$ mostra equivalência entre o estado $S_i$ e o estado $S_j$, a célula $X_{ji}$ também deve mostrar a mesma equivalência. Por este motivo, eliminamos também uma das metades diagonais. Por convenção, elimina-se a diagonal superior, mas o resultado é o mesmo se você eliminar a metade diagonal inferior.&lt;/p&gt;
+&lt;p&gt;A matriz pode ser construída como uma matriz &lt;span class="math"&gt;\(n\)&lt;/span&gt; por &lt;span class="math"&gt;\(n\)&lt;/span&gt;, onde &lt;span class="math"&gt;\(n\)&lt;/span&gt; é o número de estados (se você começar no &lt;span class="math"&gt;\(S_0\)&lt;/span&gt;, o último estado será &lt;span class="math"&gt;\(S_{n-1}\)&lt;/span&gt;). Cada linha &lt;span class="math"&gt;\(i\)&lt;/span&gt; da matriz representa um estado e cada coluna &lt;span class="math"&gt;\(j\)&lt;/span&gt; também.&lt;/p&gt;
+&lt;p&gt;Não faz sentido analisar a equivalência de um estado com ele mesmo, pois um estado sempre é equivalente a ele mesmo. Por este motivo, eliminamos a diagonal da matriz, onde &lt;span class="math"&gt;\(i=j\)&lt;/span&gt;. As metades diagonais superiores e inferiores significam a mesma coisa pois se uma célula &lt;span class="math"&gt;\(X_{ij}\)&lt;/span&gt; mostra equivalência entre o estado &lt;span class="math"&gt;\(S_i\)&lt;/span&gt; e o estado &lt;span class="math"&gt;\(S_j\)&lt;/span&gt;, a célula &lt;span class="math"&gt;\(X_{ji}\)&lt;/span&gt; também deve mostrar a mesma equivalência. Por este motivo, eliminamos também uma das metades diagonais. Por convenção, elimina-se a diagonal superior, mas o resultado é o mesmo se você eliminar a metade diagonal inferior.&lt;/p&gt;
 &lt;p&gt;Quando estiver confortável com a construção da matriz, você poderá desenhá-la já sem a diagonal e sem a metade diagonal superior. A esse desenho contendo somente a metade diagonal inferior da tabela, chamamos de &lt;strong&gt;tabela de implicação&lt;/strong&gt;. Na figura abaixo mostramos a matriz inteira, a matriz destacando a linha diagonal (vermelha) e a metade diagonal superior (laranja), e finalmente a tabela de implicação.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Construção da tabela de implicação." src="https://balbertini.github.io/images/sd/sdfsmoptconsttab.png"&gt;&lt;/p&gt;
-&lt;p&gt;Após obter a tabela de implicação, devemos preencher as células. Cada célula terá $2^b$ linhas, onde $b$ é o número de bits da entrada. E.g. se a entrada for de 1 bit, cada célula tem 2 linhas; se a entrada for de 2 bits, cada célula tem 4 linhas. Cada linha da entrada corresponde às transições daqueles estados para aquela entrada.&lt;/p&gt;
+&lt;p&gt;Após obter a tabela de implicação, devemos preencher as células. Cada célula terá &lt;span class="math"&gt;\(2^b\)&lt;/span&gt; linhas, onde &lt;span class="math"&gt;\(b\)&lt;/span&gt; é o número de bits da entrada. E.g. se a entrada for de 1 bit, cada célula tem 2 linhas; se a entrada for de 2 bits, cada célula tem 4 linhas. Cada linha da entrada corresponde às transições daqueles estados para aquela entrada.&lt;/p&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/sdfsmoptconstcel.png' width="45%" align="right" style="padding-left:5%" /&gt;
 Na figura podemos ver o exemplo do preenchimento para duas células, ambas na linha do S3 e coluna do S4. Para simplificar o preenchimento, usamos somente o número do estado, mas você pode escrever o nome completo do estado (especialmente útil se os nomes dos estados não forem numerados).&lt;/p&gt;
 &lt;p&gt;Na célula na esquerda na figura, a entrada tem 1 bit, portanto temos duas linhas, uma para a entrada 0 e outra para a entrada 1. Nesta célula, a máquina é de Mealy com saída de 1 bit, que pode ser vista representada nas transições.&lt;/p&gt;
@@ -3326,7 +3710,69 @@ Por último, devemos reconstruir o diagrama de transição de estados. Para cada
 [1] DE VRIES, A. Finite automata: Behavior and synthesis. Elsevier, 2014.&lt;br&gt;
 [2] KAM, Timothy et al. Synthesis of finite state machines: functional optimization. Springer Science &amp;amp;
 Business Media, 2013.&lt;/p&gt;
-&lt;p&gt;Algumas partes dos exemplos foram adaptados de apresentações do &lt;a href="http://www-inst.eecs.berkeley.edu/~cs150/sp00/classnotes/katz-ch9-mod.pdf"&gt;Prof. Randy H. Katz&lt;/a&gt; e da disciplina &lt;a href="https://courses.cs.washington.edu/courses/cse370/09wi/LectureSlides/22-Minimization.pdf"&gt;CSE370, Lecture 22&lt;/a&gt;.&lt;/p&gt;</content><category term="sistemas digitais"></category><category term="sistemas digitais"></category><category term="fsm"></category><category term="simplificação"></category><category term="otimização"></category></entry><entry><title>Entidade</title><link href="https://balbertini.github.io/vhdl_entity-pt_BR.html" rel="alternate"></link><published>2018-09-21T14:37:00-03:00</published><updated>2019-03-13T16:55:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-09-21:/vhdl_entity-pt_BR.html</id><summary type="html">&lt;p&gt;Entidades em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Toda descrição em VHDL segue um padrão base de uma entidade e uma arquitetura. Neste artigo, explicarei como funciona a entidade.&lt;/p&gt;
+&lt;p&gt;Algumas partes dos exemplos foram adaptados de apresentações do &lt;a href="http://www-inst.eecs.berkeley.edu/~cs150/sp00/classnotes/katz-ch9-mod.pdf"&gt;Prof. Randy H. Katz&lt;/a&gt; e da disciplina &lt;a href="https://courses.cs.washington.edu/courses/cse370/09wi/LectureSlides/22-Minimization.pdf"&gt;CSE370, Lecture 22&lt;/a&gt;.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="sistemas digitais"></category><category term="sistemas digitais"></category><category term="fsm"></category><category term="simplificação"></category><category term="otimização"></category></entry><entry><title>Entidade</title><link href="https://balbertini.github.io/vhdl_entity-pt_BR.html" rel="alternate"></link><published>2018-09-21T14:37:00-03:00</published><updated>2019-03-13T16:55:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-09-21:/vhdl_entity-pt_BR.html</id><summary type="html">&lt;p&gt;Entidades em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Toda descrição em VHDL segue um padrão base de uma entidade e uma arquitetura. Neste artigo, explicarei como funciona a entidade.&lt;/p&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/vhdl/vhdl_maqrefri.png' width="20%" align="left" style="padding-right:5%" /&gt;
 A entidade, declarada pela palavra reservada &lt;code&gt;entity&lt;/code&gt;, é a unidade básica de descrição de VHDL. O equivalente em um diagrama esquemático é o desenho que você faz para representar seu componente. Por exemplo, pense em uma máquina de vender refrigerantes em lata. Suponha que você (abstratamente), tenha que desenhar um símbolo para sua máquina. O meu símbolo seria como o da figura: entra dinheiro e sai latas.
 &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;

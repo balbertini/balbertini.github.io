@@ -165,7 +165,7 @@
     <p>A linguagem VHDL é inerentemente hierárquica, sendo muito fácil usar um componente de um projeto em outro. Esta característica permite algumas vantagens como: reutilização de descrições, divisão do projeto e partes menores (permite que projetistas trabalhem em paralelo e aumenta a legibilidade) e o teste separado (de um módulo e da integração).</p>
 <p><img src='https://balbertini.github.io/images/vhdl/74181simbolo.png' width="30%" align="right" style="padding-left:5%" />
 Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</code>) define um componente. No entanto, precisamos declarar e instanciar o componente, o que veremos neste post.</p>
-<p>Considere a figura ao lado, que representa uma ULA (Unidade Lógica e Aritmética) modelo 74181 (fonte: <em>datasheet</em> da Texas). Os números nos pinos representam o número do pino físico (e.g. a entrada <code>M</code> está no pino 8). Como convencionado, entradas de dados estão acima, saídas abaixo, entradas de controle a esquerda e saída de controle a direita. As entradas de dados são <code>A</code> e <code>B</code> de 4 bits e a saída de dados <code>F</code> também é de 4 bits. O <em>carry_in</em> ($\overline{C_n}$) e o <em>carry_out</em> ($\overline{C_{n+4}}$) são ambos ambos ativos baixo. A entrada <code>M</code> define se a operação é lógica ou aritmética e a entrada <code>S</code> (4 bits) define qual operação a ULA realizará. Há ainda a saída $A=B$ e as saídas para cascateamento <em>generate</em> ($\overline{G}$) e <em>propagate</em> ($\overline{P}$), ambas ativas baixo.</p>
+<p>Considere a figura ao lado, que representa uma ULA (Unidade Lógica e Aritmética) modelo 74181 (fonte: <em>datasheet</em> da Texas). Os números nos pinos representam o número do pino físico (e.g. a entrada <code>M</code> está no pino 8). Como convencionado, entradas de dados estão acima, saídas abaixo, entradas de controle a esquerda e saída de controle a direita. As entradas de dados são <code>A</code> e <code>B</code> de 4 bits e a saída de dados <code>F</code> também é de 4 bits. O <em>carry_in</em> (<span class="math">\(\overline{C_n}\)</span>) e o <em>carry_out</em> (<span class="math">\(\overline{C_{n+4}}\)</span>) são ambos ambos ativos baixo. A entrada <code>M</code> define se a operação é lógica ou aritmética e a entrada <code>S</code> (4 bits) define qual operação a ULA realizará. Há ainda a saída <span class="math">\(A=B\)</span> e as saídas para cascateamento <em>generate</em> (<span class="math">\(\overline{G}\)</span>) e <em>propagate</em> (<span class="math">\(\overline{P}\)</span>), ambas ativas baixo.</p>
 <p>A entidade para este componente é algo assim:</p>
 <div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">alu181</span> <span class="k">is</span>
   <span class="k">port</span> <span class="p">(</span>
@@ -287,6 +287,68 @@ Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</co
 <p>Na prática, sugiro usar declaração posicional sempre que possível, sempre acompanhada de comentários explicando sua intenção. No entanto, se o seu componente tem portas suficientes para que o <code>port map</code> ultrapasse uma ou duas linhas, considere fortemente usar a associação nomeada para melhorar o entendimento.</p>
 <h2>Uso nas disciplinas de graduação</h2>
 <p>Você está livre para usar qualquer um dos dois formatos que desejar. No entanto, o juiz usado nas disciplinas de graduação usa a associação posicional, o que significa que se você montar uma entidade diferente do enunciado, sua descrição não será avaliada. Siga estritamente o enunciado, especialmente em relação à entidade.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </div>
   <div class="tag-cloud">
     <p>

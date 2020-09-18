@@ -165,21 +165,21 @@
     <h1>UNIVESP Exercícios de Portfólio - Semana 4</h1>
 <p>Assunto: Síntese de circuitos lógicos com mapas de Karnaugh. Blocos básicos: circuitos aritméticos</p>
 <h2>Questão 1</h2>
-<p>O planeta terra foi invadido por alienígenas, que se infiltraram entre os humanos. Como eles assumiram a forma humana, é impossível distinguí-los visualmente. No entanto, os projetistas digitais desenvolveram um sensor que indica se o sujeito para o qual está apontado é ou não um alienígena. Este sensor é composto por quatro câmeras digitais, cada um detectando um espectro de luz diferente. Cada câmera tem uma saída $C$ que indica se, naquele espectro, o sujeito é um alienígena ($C=1$) ou um terrestre ($C=0$). O sujeito é considerado um alienígena quando pelo menos três câmeras indicam que ele é um alienígena.<br>
+<p>O planeta terra foi invadido por alienígenas, que se infiltraram entre os humanos. Como eles assumiram a forma humana, é impossível distinguí-los visualmente. No entanto, os projetistas digitais desenvolveram um sensor que indica se o sujeito para o qual está apontado é ou não um alienígena. Este sensor é composto por quatro câmeras digitais, cada um detectando um espectro de luz diferente. Cada câmera tem uma saída <span class="math">\(C\)</span> que indica se, naquele espectro, o sujeito é um alienígena (<span class="math">\(C=1\)</span>) ou um terrestre (<span class="math">\(C=0\)</span>). O sujeito é considerado um alienígena quando pelo menos três câmeras indicam que ele é um alienígena.<br>
 Você faz parte do time que está desenvolvendo o sensor.</p>
 <p><img alt="Esquema do detector de aliens" src="https://balbertini.github.io/images/sd/er/0002_cams.png"></p>
-<p>O engenheiro das câmeras te entregou as quatro câmeras, cujas saídas são: $C_3$, $C_2$, $C_1$ e $C_0$. Você deve projetar o circuito que recebe as quatro saídas das quatro câmeras, chamado de <strong>Detector</strong> na figura. A saída deve ser $S=1$ se o sujeito é alienígena ou $S=0$ se é um humano.</p>
+<p>O engenheiro das câmeras te entregou as quatro câmeras, cujas saídas são: <span class="math">\(C_3\)</span>, <span class="math">\(C_2\)</span>, <span class="math">\(C_1\)</span> e <span class="math">\(C_0\)</span>. Você deve projetar o circuito que recebe as quatro saídas das quatro câmeras, chamado de <strong>Detector</strong> na figura. A saída deve ser <span class="math">\(S=1\)</span> se o sujeito é alienígena ou <span class="math">\(S=0\)</span> se é um humano.</p>
 <p><strong>a)</strong> Apresente a tabela verdade do seu circuito.<br>
 <strong>b)</strong> Minimize a tabela verdade usando a técnica do mapa de Karnaugh e apresente a equação minimizada.<br>
 <strong>c)</strong> Monte o diagrama esquemático (portas lógicas) para o circuito que projetou.  </p>
 <h3>Solução</h3>
-<p>O circuito tem quatro entradas ($C_3$, $C_2$, $C_1$ e $C_0$) e uma saída ($S$).</p>
-<p><strong>a)</strong> A tabela verdade tem quatro entradas, portanto devemos construí-la com $2^4=16$ linhas. As linhas devem conter todos os valores binários possíveis para as entradas e, por convenção e pela facilidade de leitura, colocamos na ordem binária crescente. A saída deve ser $1$ se há pelo menos três câmeras indicando $1$, ou $0$ caso contrário.</p>
+<p>O circuito tem quatro entradas (<span class="math">\(C_3\)</span>, <span class="math">\(C_2\)</span>, <span class="math">\(C_1\)</span> e <span class="math">\(C_0\)</span>) e uma saída (<span class="math">\(S\)</span>).</p>
+<p><strong>a)</strong> A tabela verdade tem quatro entradas, portanto devemos construí-la com <span class="math">\(2^4=16\)</span> linhas. As linhas devem conter todos os valores binários possíveis para as entradas e, por convenção e pela facilidade de leitura, colocamos na ordem binária crescente. A saída deve ser <span class="math">\(1\)</span> se há pelo menos três câmeras indicando <span class="math">\(1\)</span>, ou <span class="math">\(0\)</span> caso contrário.</p>
 <table>
 <thead>
 <tr>
-<th align="right">$C_3C_2C_1C_0$</th>
-<th align="center">$S$</th>
+<th align="right"><span class="math">\(C_3C_2C_1C_0\)</span></th>
+<th align="center"><span class="math">\(S\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -251,28 +251,90 @@ Você faz parte do time que está desenvolvendo o sensor.</p>
 </table>
 <p><strong>b)</strong> O mapa de Karnaugh para esta função será de quatro variáveis, ou seja, será um mapa 4x4.</p>
 <p><img alt="Mapa de Karnaugh detector de aliens" src="https://balbertini.github.io/images/sd/er/0002_mapa1.png"></p>
-<p>A esquerda, na figura, vemos o mapa preenchido com os valores da tabela verdade. Na direita, o mesmo mapa mas com todos os implicantes primos possíveis circulados, cada um de uma cor. Perceba que o $1$ central faz parte de todos os quatro implicantes e todos são implicantes primos essenciais pois os $1$s laterais (que não são o central) fazem parte de um e somente um implicante. A equação final na forma de soma de produtos é:<br>
-$S=C_1.C_0.C_2+C_1.C_0.C_3+C_0.C_2.C_3+C_1.C_2.C_3$</p>
+<p>A esquerda, na figura, vemos o mapa preenchido com os valores da tabela verdade. Na direita, o mesmo mapa mas com todos os implicantes primos possíveis circulados, cada um de uma cor. Perceba que o <span class="math">\(1\)</span> central faz parte de todos os quatro implicantes e todos são implicantes primos essenciais pois os <span class="math">\(1\)</span>s laterais (que não são o central) fazem parte de um e somente um implicante. A equação final na forma de soma de produtos é:<br>
+<span class="math">\(S=C_1.C_0.C_2+C_1.C_0.C_3+C_0.C_2.C_3+C_1.C_2.C_3\)</span></p>
 <p><strong>c)</strong> O circuito pode ser montado diretamente das equações e fica como na figura abaixo.<br>
 <img alt="Mapa de Karnaugh detector de aliens" src="https://balbertini.github.io/images/sd/er/0002_circ.png"></p>
 <h2>Questão 2</h2>
-<p>Uma das tarefas mais comuns em circuitos digitais é comparar se dois conjuntos de bits são iguais. Para isso, usamos comparadores. Nesta questão, você projetará um comparador de $n$ bits.</p>
-<p><strong>a)</strong> Projete um módulo comparador de um bit, que recebe um bit de cada palavra ($A$ e $B$ de um bit) e retorne $S=1$ se $A=B$ ou $S=0$ se $A\neq B$.<br>
-<strong>b)</strong> Modifique o seu módulo do item (a) para ser usado em conjunto com outros módulos iguais, de forma a comparar $n$ bits. As entradas agora serão $A_{n-1}A_{n-2}\ldots A_1A_0$ e $B_{n-1}A_{n-2}\ldots B_1B_0$, sendo que cada bit será usado como entrada de um módulo deste item. Os $n$ módulos deverão ser ligados entre si de forma a indicar na saída final se as duas palavras de $n$ bits $A$ e $B$ são iguais. A saída final $S$ seve ser de um bit apenas.<br>
-<strong>c)</strong> Usando o módulo do item (b) para 4 bits, mostre o valor de todos os sinais para a comparação $A=0101$ e $B=0100$. Identifique o que muda se $B=0101$.</p>
+<p>Uma das tarefas mais comuns em circuitos digitais é comparar se dois conjuntos de bits são iguais. Para isso, usamos comparadores. Nesta questão, você projetará um comparador de <span class="math">\(n\)</span> bits.</p>
+<p><strong>a)</strong> Projete um módulo comparador de um bit, que recebe um bit de cada palavra (<span class="math">\(A\)</span> e <span class="math">\(B\)</span> de um bit) e retorne <span class="math">\(S=1\)</span> se <span class="math">\(A=B\)</span> ou <span class="math">\(S=0\)</span> se <span class="math">\(A\neq B\)</span>.<br>
+<strong>b)</strong> Modifique o seu módulo do item (a) para ser usado em conjunto com outros módulos iguais, de forma a comparar <span class="math">\(n\)</span> bits. As entradas agora serão <span class="math">\(A_{n-1}A_{n-2}\ldots A_1A_0\)</span> e <span class="math">\(B_{n-1}A_{n-2}\ldots B_1B_0\)</span>, sendo que cada bit será usado como entrada de um módulo deste item. Os <span class="math">\(n\)</span> módulos deverão ser ligados entre si de forma a indicar na saída final se as duas palavras de <span class="math">\(n\)</span> bits <span class="math">\(A\)</span> e <span class="math">\(B\)</span> são iguais. A saída final <span class="math">\(S\)</span> seve ser de um bit apenas.<br>
+<strong>c)</strong> Usando o módulo do item (b) para 4 bits, mostre o valor de todos os sinais para a comparação <span class="math">\(A=0101\)</span> e <span class="math">\(B=0100\)</span>. Identifique o que muda se <span class="math">\(B=0101\)</span>.</p>
 <h3>Solução</h3>
-<p><strong>a)</strong> O circuito de comparação de igualdade entre dois bits é relativamente simples. Ele deve retornar $1$ se os dois bits são iguais, o que é verdade quando $A=B=0$ ou $A=B=1$. Visto de outra forma, é verdade quando $AB=00$ ou $AB=11$. A função é então $S=\overline{A}.\overline{B}+A.B$, que ainda pode ser escrita como $S=\overline{A\oplus B}$. De fato, a definição da porta XNOR de dois bits é exatamente esta: ela retorna verdadeiro se ambos os bits forem iguais.</p>
+<p><strong>a)</strong> O circuito de comparação de igualdade entre dois bits é relativamente simples. Ele deve retornar <span class="math">\(1\)</span> se os dois bits são iguais, o que é verdade quando <span class="math">\(A=B=0\)</span> ou <span class="math">\(A=B=1\)</span>. Visto de outra forma, é verdade quando <span class="math">\(AB=00\)</span> ou <span class="math">\(AB=11\)</span>. A função é então <span class="math">\(S=\overline{A}.\overline{B}+A.B\)</span>, que ainda pode ser escrita como <span class="math">\(S=\overline{A\oplus B}\)</span>. De fato, a definição da porta XNOR de dois bits é exatamente esta: ela retorna verdadeiro se ambos os bits forem iguais.</p>
 <p><img alt="Comparador de igualdade de 1 bit" src="https://balbertini.github.io/images/sd/er/0002_comp1.png"></p>
-<p><strong>b)</strong> Em cada módulo, você deve adicionar uma entrada $C_{i}$ que indica se os bits anteriores são iguais, e $C_{o}$ que indica se os bits anteriores <strong>E</strong> o atual são iguais (o "e" está em negrito pois usa-se exatamente uma porta deste tipo).</p>
+<p><strong>b)</strong> Em cada módulo, você deve adicionar uma entrada <span class="math">\(C_{i}\)</span> que indica se os bits anteriores são iguais, e <span class="math">\(C_{o}\)</span> que indica se os bits anteriores <strong>E</strong> o atual são iguais (o "e" está em negrito pois usa-se exatamente uma porta deste tipo).</p>
 <p><img alt="Comparador de igualdade de 1 bit" src="https://balbertini.github.io/images/sd/er/0002_comp2.png"></p>
-<p>Com este módulo pronto, podemos ligar $n$ módulos em cascata, usando o estilo <em>ripple-carry</em>, para fazer um comparador de $n$ bits. Cascateia-se os $n$ módulos, ligando o <em>carry out</em> ($C_o$) do anterior ao <em>carry in</em> ($C_i$) do próximo. O primeiro $C_i$ deve ser ligado a $1$ pois ainda não houve comparação alguma, portanto neste ponto deve-se considerar os número iguais. O último $C_o$ é a saída, portando se ele for $1$ os números são iguais. Na figura podemos ver essa ligação, onde o índice $i$ dos módulos indica que temos $n$ módulos (de $n-1$ até $0$).</p>
+<p>Com este módulo pronto, podemos ligar <span class="math">\(n\)</span> módulos em cascata, usando o estilo <em>ripple-carry</em>, para fazer um comparador de <span class="math">\(n\)</span> bits. Cascateia-se os <span class="math">\(n\)</span> módulos, ligando o <em>carry out</em> (<span class="math">\(C_o\)</span>) do anterior ao <em>carry in</em> (<span class="math">\(C_i\)</span>) do próximo. O primeiro <span class="math">\(C_i\)</span> deve ser ligado a <span class="math">\(1\)</span> pois ainda não houve comparação alguma, portanto neste ponto deve-se considerar os número iguais. O último <span class="math">\(C_o\)</span> é a saída, portando se ele for <span class="math">\(1\)</span> os números são iguais. Na figura podemos ver essa ligação, onde o índice <span class="math">\(i\)</span> dos módulos indica que temos <span class="math">\(n\)</span> módulos (de <span class="math">\(n-1\)</span> até <span class="math">\(0\)</span>).</p>
 <p><img alt="Comparador de igualdade de n bits" src="https://balbertini.github.io/images/sd/er/0002_ripple1.png"></p>
-<p><strong>c)</strong> Este item é uma instância do item (b), com $n=4$. Podemos ver na figura o comparador montado.</p>
+<p><strong>c)</strong> Este item é uma instância do item (b), com <span class="math">\(n=4\)</span>. Podemos ver na figura o comparador montado.</p>
 <p><img alt="Comparador de igualdade de 4 bits" src="https://balbertini.github.io/images/sd/er/0002_ripple2.png"></p>
-<p>Os valores serão $A=A_3A_2A_1A_0=0101$ e $B=B_3B_2B_1B_0=0100$ (isso significa que $A_3=0$ e $B_2=1$, por exemplo). Prossegue-se calculando os valores intermediários, por exemplo: $C_3=\overline{(A_3\oplus B_3)}.C_i$ que fica $C_3=\overline{(0\oplus 0)}.1=\overline{0}.1=1.1=1$. Para $C_2=\overline{(A_2\oplus B_2)}.C_i$, temos que o $C_i$ neste caso é o próprio $C_3$, portanto:<br>
-$C_2=\overline{(A_2\oplus B_2)}.C_3=\overline{(1\oplus 1)}.1=\overline{0}.1=1.1=1$<br>
-Se calcularmos para os demais, encontraremos $C_1=1$ e $C_0=0$. Note que o $C_0$ não é $1$ justamente porque $A_0\neq B_0$. A saída final será o $C_0$, portanto os números não são iguais.</p>
-<p>Repetindo para $B=0101$, o único sinal que mudará é o $C_0$, pois agora $A_0=B_0$, portanto $C_0=1$ indica que os números são iguais.</p>
+<p>Os valores serão <span class="math">\(A=A_3A_2A_1A_0=0101\)</span> e <span class="math">\(B=B_3B_2B_1B_0=0100\)</span> (isso significa que <span class="math">\(A_3=0\)</span> e <span class="math">\(B_2=1\)</span>, por exemplo). Prossegue-se calculando os valores intermediários, por exemplo: <span class="math">\(C_3=\overline{(A_3\oplus B_3)}.C_i\)</span> que fica <span class="math">\(C_3=\overline{(0\oplus 0)}.1=\overline{0}.1=1.1=1\)</span>. Para <span class="math">\(C_2=\overline{(A_2\oplus B_2)}.C_i\)</span>, temos que o <span class="math">\(C_i\)</span> neste caso é o próprio <span class="math">\(C_3\)</span>, portanto:<br>
+<span class="math">\(C_2=\overline{(A_2\oplus B_2)}.C_3=\overline{(1\oplus 1)}.1=\overline{0}.1=1.1=1\)</span><br>
+Se calcularmos para os demais, encontraremos <span class="math">\(C_1=1\)</span> e <span class="math">\(C_0=0\)</span>. Note que o <span class="math">\(C_0\)</span> não é <span class="math">\(1\)</span> justamente porque <span class="math">\(A_0\neq B_0\)</span>. A saída final será o <span class="math">\(C_0\)</span>, portanto os números não são iguais.</p>
+<p>Repetindo para <span class="math">\(B=0101\)</span>, o único sinal que mudará é o <span class="math">\(C_0\)</span>, pois agora <span class="math">\(A_0=B_0\)</span>, portanto <span class="math">\(C_0=1\)</span> indica que os números são iguais.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </div>
   <div class="tag-cloud">
     <p>

@@ -166,15 +166,15 @@
 <p>Neste artigo, veremos como representar memórias do tipo RAM e ROM em VHDL.</p>
 <h2>Descrição base</h2>
 <p>Postergaremos a descrição da entidade (veja os exemplos no final do artigo), bastando o conhecimento que a memória possui uma porta de entrada de endereços (<code>addr</code>), uma entrada de dados (<code>data_i</code>) e uma saída de dados (<code>data_o</code>).</p>
-<p>A memória em VHDL será então uma <strong>matriz</strong> (<code>array</code>) do <strong>tipo de dado</strong> que se quer representar. O tamanho (profundidade) da matriz define o tamanho da memória e normalmente é representado por $n$, onde $n=2^{a_s}$ e $a_s$ é o tamanho em bits do endereço <code>addr</code>. A matriz vai então de $0$ até $n-1$, contendo efetivamente $n$ posições.</p>
-<p>Cada posição da matriz é uma palavra de memória, representada pelo tipo de dado que se quer armazenar. O tamanho de cada palavra de memória é igual ao tamanho do tipo de dado usado, expresso por $d_s$.</p>
+<p>A memória em VHDL será então uma <strong>matriz</strong> (<code>array</code>) do <strong>tipo de dado</strong> que se quer representar. O tamanho (profundidade) da matriz define o tamanho da memória e normalmente é representado por <span class="math">\(n\)</span>, onde <span class="math">\(n=2^{a_s}\)</span> e <span class="math">\(a_s\)</span> é o tamanho em bits do endereço <code>addr</code>. A matriz vai então de <span class="math">\(0\)</span> até <span class="math">\(n-1\)</span>, contendo efetivamente <span class="math">\(n\)</span> posições.</p>
+<p>Cada posição da matriz é uma palavra de memória, representada pelo tipo de dado que se quer armazenar. O tamanho de cada palavra de memória é igual ao tamanho do tipo de dado usado, expresso por <span class="math">\(d_s\)</span>.</p>
 <p>Vamos ao exemplo, que deve estar no preâmbulo da arquitetura:</p>
 <div class="highlight"><pre><span></span><code><span class="k">type</span> <span class="n">mem_t</span> <span class="k">is</span> <span class="k">array</span> <span class="p">(</span><span class="mi">0</span> <span class="k">to</span> <span class="mi">31</span><span class="p">)</span> <span class="k">of</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
 <span class="k">signal</span> <span class="n">mem</span> <span class="o">:</span> <span class="n">mem_t</span><span class="p">;</span>
 </code></pre></div>
 
 
-<p>No trecho, estamos descrevendo duas coisas, uma abstrata (de apoio a representação de hardware) e uma descrição física (que irá de fato gerar um hardware). A descrição abstrata é a declaração do sinal <code>mem_t</code> na primeira linha. Apesar de não gerar um hardware por si só, estamos declarando um tipo do usuário que é uma matriz (<code>array</code>) de 32 posições (de 0 a 31). Cada posição armazena um <code>bit_vector</code> de 4 bits. Podemos dizer que acabamos de declarar uma memória com $n=32$ (ou $a_s=5$) e $d_s=4$. Esta memória possui então 32 palavras de 4 bits, ou 128 bits no total.</p>
+<p>No trecho, estamos descrevendo duas coisas, uma abstrata (de apoio a representação de hardware) e uma descrição física (que irá de fato gerar um hardware). A descrição abstrata é a declaração do sinal <code>mem_t</code> na primeira linha. Apesar de não gerar um hardware por si só, estamos declarando um tipo do usuário que é uma matriz (<code>array</code>) de 32 posições (de 0 a 31). Cada posição armazena um <code>bit_vector</code> de 4 bits. Podemos dizer que acabamos de declarar uma memória com <span class="math">\(n=32\)</span> (ou <span class="math">\(a_s=5\)</span>) e <span class="math">\(d_s=4\)</span>. Esta memória possui então 32 palavras de 4 bits, ou 128 bits no total.</p>
 <p>A segunda declaração efetivamente descreve a memória, fazendo com que o sinal <code>mem</code> seja interpretado como a matriz declarada anteriormente.</p>
 <p>Mas é só isso? Sim, é só isso. Ao declarar uma matriz da maneira descrita, o sintetizador irá entender automaticamente que o que você quer descrever é uma memória. O tipo de memória será determinado pelo restante da sua descrição, que deverá conter as operações possíveis sobre a matriz recém declarada.</p>
 <h2>Operando sobre a matriz de memória</h2>
@@ -255,6 +255,68 @@
 <li><a href="https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/memorias_tb.vhd"><em>Testbench</em></a> para todas as memórias acima (para rodar são necessários todos os arquivos).</li>
 <li><a href="https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/utils.vhd">Rotinas</a> auxiliares para impressão dos vetores no <em>testbench</em>.</li>
 </ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </div>
   <div class="tag-cloud">
     <p>

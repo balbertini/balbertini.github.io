@@ -175,64 +175,126 @@
 <p>O código é composto por 64 caracteres:<br>
 <code>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_</code><br>
 A ordem de significância implica que o <code>A</code> vale 0, <code>B</code> vale 1, <code>C</code> vale 2 e assim por diante, até o <code>_</code> que vale 63. Conhecendo a codificação, pode-se calcular o valor de qualquer dígito.</p>
-<p><strong>a)</strong> Existem 64 caracteres no código. Isso significa que cada caractere do código representa 64 coisas diferentes. Para uma palavra binária representar 64 coisas diferentes, deve ter $\log_2 64$ bits, portanto deve ter 6 bits.<br>
+<p><strong>a)</strong> Existem 64 caracteres no código. Isso significa que cada caractere do código representa 64 coisas diferentes. Para uma palavra binária representar 64 coisas diferentes, deve ter <span class="math">\(\log_2 64\)</span> bits, portanto deve ter 6 bits.<br>
 <strong>b)</strong> Cada dígito tem o seu valor de acordo com a posição no código, portanto <code>A=0</code> e <code>a=26</code>.<br>
-<strong>c)</strong> Neste caso, temos que aplicar a fórmula de expansão de base para calcular o número. A fórmula é $\sum_{i}{d_i<em 64>b^i}$ onde $d_i$ é o valor decimal do dígito na posição $i$, $n&lt; i\leq 0$ é a posição do dígito ($n$ é o número de dígitos), e $b$ é a base. Para a base 64 do enunciado e considerando 11 dígitos, a fórmula fica $\sum_{i=0}^{10}{d_i</em>^i}$, que expandida fica:<br>
-$d_{10}<em>64^{10}+d_9</em>64^9+d_8<em>64^8+\dots +d_1</em>64^1+d_0<em>64^0$<br>
+<strong>c)</strong> Neste caso, temos que aplicar a fórmula de expansão de base para calcular o número. A fórmula é <span class="math">\(\sum_{i}{d_i*b^i}\)</span> onde <span class="math">\(d_i\)</span> é o valor decimal do dígito na posição <span class="math">\(i\)</span>, <span class="math">\(n&lt; i\leq 0\)</span> é a posição do dígito (<span class="math">\(n\)</span> é o número de dígitos), e <span class="math">\(b\)</span> é a base. Para a base 64 do enunciado e considerando 11 dígitos, a fórmula fica <span class="math">\(\sum_{i=0}^{10}{d_i*{64}^i}\)</span>, que expandida fica:<br>
+<span class="math">\(d_{10}*64^{10}+d_9*64^9+d_8*64^8+\dots +d_1*64^1+d_0*64^0\)</span><br>
 Para o identificador PEaDYHk8CBc:<br>
-$P</em>64^{10}+E<em>64^9+a</em>64^8+D<em>64^7+Y</em>64^6+H<em>64^5+k</em>64^4+8<em>64^3+C</em>64^2+B<em>64^1+c</em>64^0$<br>
+<span class="math">\(P*64^{10}+E*64^9+a*64^8+D*64^7+Y*64^6+H*64^5+k*64^4+8*64^3+C*64^2+B*64^1+c*64^0\)</span><br>
 Substituindo as letras do código pelo seu valor decimal:<br>
-$15<em>64^{10}+4</em>64^9+26<em>64^8+3</em>64^7+24<em>64^6+7</em>64^5+36<em>64^4+60</em>64^3+2<em>64^2+1</em>64^1+28<em>64^0$<br>
+<span class="math">\(15*64^{10}+4*64^9+26*64^8+3*64^7+24*64^6+7*64^5+36*64^4+60*64^3+2*64^2+1*64^1+28*64^0\)</span><br>
 Fazendo as contas (aqui entra a dica de usar uma calculadora):<br>
-$15</em>1152921504606846976+4<em>18014398509481984+26</em>281474976710656+3<em>4398046511104+24</em>68719476736+7<em>1073741824+36</em>16777216+60<em>262144+2</em>4096+1<em>64+28$<br>
-$270215977642229760+72057594037927936+7318349394477056+13194139533312+1649267441664+7516192768+603979776+15728640+8192+64+28$<br>
-$349606772617519196$<br>
+<span class="math">\(15*1152921504606846976+4*18014398509481984+26*281474976710656+3*4398046511104+24*68719476736+7*1073741824+36*16777216+60*262144+2*4096+1*64+28\)</span><br>
+<span class="math">\(270215977642229760+72057594037927936+7318349394477056+13194139533312+1649267441664+7516192768+603979776+15728640+8192+64+28\)</span><br>
+<span class="math">\(349606772617519196\)</span><br>
 Ou seja, esse vídeo tem um identificador maior que 349 quatrilhões!<br>
-</em><em>d)</em><em> Basta refazer o item </em><em>c</em>*, mas com todos os 11 dígitos sendo o valor máximo <code>_</code>, ou 63. O valor calculado será 1.152.921.504.606.846.975, ou algo em torno de um quintilhão de vídeos.</p>
+<strong>d)</strong> Basta refazer o item <strong>c</strong>, mas com todos os 11 dígitos sendo o valor máximo <code>_</code>, ou 63. O valor calculado será 1.152.921.504.606.846.975, ou algo em torno de um quintilhão de vídeos.</p>
 <h2>Questão 2</h2>
 <p>Simplifique as expressões usando álgebra de chaveamento:<br>
-<strong>a)</strong> $C+\overline{BC}$<br>
-<strong>b)</strong> $\overline{AB}(\overline{A}+\overline{B})(\overline{B}+B)$<br>
-<strong>c)</strong> $(A+C)(AD+A\bar{D})+AC+C$<br>
-<strong>d)</strong> $\overline{A}(A+B)+(B+AA)(A+\overline{B})$  </p>
+<strong>a)</strong> <span class="math">\(C+\overline{BC}\)</span><br>
+<strong>b)</strong> <span class="math">\(\overline{AB}(\overline{A}+\overline{B})(\overline{B}+B)\)</span><br>
+<strong>c)</strong> <span class="math">\((A+C)(AD+A\bar{D})+AC+C\)</span><br>
+<strong>d)</strong> <span class="math">\(\overline{A}(A+B)+(B+AA)(A+\overline{B})\)</span>  </p>
 <h3>Solução</h3>
 <p>Na solução, nomeei o teorema da álgebra que utilizei em cada passo, e fiz um passo por vez. Na sua solução, não é necessário nomeá-los e você pode aplicar mais de um por vez.  </p>
-<p><strong>a)</strong> $C+\overline{BC}$<br>
-DeMorgan: $C+(\overline{B}+\overline{C})$<br>
-Comutatividade: $C+\overline{C}+\overline{B}$<br>
-Associatividade: $(C+\overline{C})+\overline{B}$<br>
-Complemento: $(1)+\overline{B}$<br>
-Identidade: $1$   </p>
-<p><strong>b)</strong> $\overline{AB}(\overline{A}+B)(\overline{B}+B)$<br>
-Complemento: $\overline{AB}(\overline{A}+B)(1)$<br>
-Identidade: $\overline{AB}(\overline{A}+B)$<br>
-DeMorgan: $(\overline{A}+\overline{B})(\overline{A}+B)$<br>
-Distributividade: $\bar{A}\bar{A}+\bar{A}B+\bar{B}\bar{A}+\bar{B}B$<br>
-Complemento: $\bar{A}\bar{A}+\bar{A}B+\bar{B}\bar{A}+0$<br>
-Identidade: $\bar{A}\bar{A}+\bar{A}B+\bar{B}\bar{A}$<br>
-Idempotência: $\overline{A}+\bar{A}B+\bar{B}\bar{A}$<br>
-Distributividade: $\overline{A}+\bar{A}(B+\overline{B})$<br>
-Complemento: $\overline{A}+\bar{A}(1)$<br>
-Identidade: $\overline{A}+\overline{A}$<br>
-Idempotência: $\overline{A}$  </p>
-<p><strong>c)</strong> $(A+C)(AD+A\bar{D})+AC+C$<br>
-Distributividade: $(A+C)A(D+\overline{D})+AC+C$<br>
-Complemento: $(A+C)A(1)+AC+C$<br>
-Identidade: $(A+C)A+AC+C$<br>
-Distributividade: $AA+AC+AC+C$<br>
-Idempotência (2x): $A+AC+C$<br>
-Distributividade: $A(1+C)+C$<br>
-Identidade: $A(1)+C$<br>
-Idempotência: $A+C$  </p>
-<p><strong>d)</strong> $\overline{A}(A+B)+(B+AA)(A+\overline{B})$<br>
-Idempotência: $\overline{A}(A+B)+(B+A)(A+\overline{B})$<br>
-Distributividade (2x):  $\bar{A}A+\bar{A}B+BA+B\bar{B}+AA+A\bar{B}$<br>
-Idempotência:  $\bar{A}A+\bar{A}B+BA+B\bar{B}+A+A\bar{B}$<br>
-Complemento (2x):  $0+\bar{A}B+BA+0+A+A\bar{B}$<br>
-Identidade:  $\bar{A}B+BA+A+A\bar{B}$<br>
-Distributividade (2x):  $B(\bar{A}+A)+A(1+\bar{B})$<br>
-Idempotência (2x):  $B(1)+A(1)$<br>
-Identidade (2x):  $B+A$  </p>
+<p><strong>a)</strong> <span class="math">\(C+\overline{BC}\)</span><br>
+DeMorgan: <span class="math">\(C+(\overline{B}+\overline{C})\)</span><br>
+Comutatividade: <span class="math">\(C+\overline{C}+\overline{B}\)</span><br>
+Associatividade: <span class="math">\((C+\overline{C})+\overline{B}\)</span><br>
+Complemento: <span class="math">\((1)+\overline{B}\)</span><br>
+Identidade: <span class="math">\(1\)</span>   </p>
+<p><strong>b)</strong> <span class="math">\(\overline{AB}(\overline{A}+B)(\overline{B}+B)\)</span><br>
+Complemento: <span class="math">\(\overline{AB}(\overline{A}+B)(1)\)</span><br>
+Identidade: <span class="math">\(\overline{AB}(\overline{A}+B)\)</span><br>
+DeMorgan: <span class="math">\((\overline{A}+\overline{B})(\overline{A}+B)\)</span><br>
+Distributividade: <span class="math">\(\bar{A}\bar{A}+\bar{A}B+\bar{B}\bar{A}+\bar{B}B\)</span><br>
+Complemento: <span class="math">\(\bar{A}\bar{A}+\bar{A}B+\bar{B}\bar{A}+0\)</span><br>
+Identidade: <span class="math">\(\bar{A}\bar{A}+\bar{A}B+\bar{B}\bar{A}\)</span><br>
+Idempotência: <span class="math">\(\overline{A}+\bar{A}B+\bar{B}\bar{A}\)</span><br>
+Distributividade: <span class="math">\(\overline{A}+\bar{A}(B+\overline{B})\)</span><br>
+Complemento: <span class="math">\(\overline{A}+\bar{A}(1)\)</span><br>
+Identidade: <span class="math">\(\overline{A}+\overline{A}\)</span><br>
+Idempotência: <span class="math">\(\overline{A}\)</span>  </p>
+<p><strong>c)</strong> <span class="math">\((A+C)(AD+A\bar{D})+AC+C\)</span><br>
+Distributividade: <span class="math">\((A+C)A(D+\overline{D})+AC+C\)</span><br>
+Complemento: <span class="math">\((A+C)A(1)+AC+C\)</span><br>
+Identidade: <span class="math">\((A+C)A+AC+C\)</span><br>
+Distributividade: <span class="math">\(AA+AC+AC+C\)</span><br>
+Idempotência (2x): <span class="math">\(A+AC+C\)</span><br>
+Distributividade: <span class="math">\(A(1+C)+C\)</span><br>
+Identidade: <span class="math">\(A(1)+C\)</span><br>
+Idempotência: <span class="math">\(A+C\)</span>  </p>
+<p><strong>d)</strong> <span class="math">\(\overline{A}(A+B)+(B+AA)(A+\overline{B})\)</span><br>
+Idempotência: <span class="math">\(\overline{A}(A+B)+(B+A)(A+\overline{B})\)</span><br>
+Distributividade (2x):  <span class="math">\(\bar{A}A+\bar{A}B+BA+B\bar{B}+AA+A\bar{B}\)</span><br>
+Idempotência:  <span class="math">\(\bar{A}A+\bar{A}B+BA+B\bar{B}+A+A\bar{B}\)</span><br>
+Complemento (2x):  <span class="math">\(0+\bar{A}B+BA+0+A+A\bar{B}\)</span><br>
+Identidade:  <span class="math">\(\bar{A}B+BA+A+A\bar{B}\)</span><br>
+Distributividade (2x):  <span class="math">\(B(\bar{A}+A)+A(1+\bar{B})\)</span><br>
+Idempotência (2x):  <span class="math">\(B(1)+A(1)\)</span><br>
+Identidade (2x):  <span class="math">\(B+A\)</span>  </p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </div>
   <div class="tag-cloud">
     <p>
