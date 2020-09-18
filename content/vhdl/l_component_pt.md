@@ -39,7 +39,7 @@ component nome_da_entidade [is]
 end component [nome_da_entidade];
 ```
 
-A cláusula `is` é opcional, assim como o `nome_da_entidade` no final da declaração. O `generic map` serve para declarar componentes parametrizáveis, que [está coberto em outro post]({filename}./l_generic_pt.md). Já o `port map`, apesar de opcional, é o que declara as portas do componente disponíveis para a entidade que o utilizará como módulo. De modo geral, é esperado que as cláusulas `generic` e `port` **sejam idênticas** à declaração da entidade, então a ULA 181 do nosso exemplo deve ser declarada como componente assim:
+A cláusula `is` é opcional, assim como o `nome_da_entidade` no final da declaração. O `generic` serve para declarar componentes parametrizáveis, que [está coberto em outro post]({filename}./l_generic_pt.md). Já o `port`, apesar de opcional, é o que declara as portas do componente disponíveis para a entidade que o utilizará como módulo. De modo geral, é esperado que as cláusulas `generic` e `port` **sejam idênticas** à declaração da entidade, então a ULA 181 do nosso exemplo deve ser declarada como componente assim:
 ```vhdl
 component alu181 is
   port (

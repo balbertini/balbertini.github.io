@@ -8,7 +8,7 @@ Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Memórias em VHDL.
 
-As memória são parte integrante de qualquer sistema digital sequencial. Enquanto trabalhamos com circuitos simples ou máquinas de estado, costumamos usar _flip-flops_ como elementos de memória. Contudo, as tarefas mais complexas não escalam devido ao tamanho dos elementos de memória envolvidos. Considerando a tarefa de guardar informações, é útil utilizarmos estruturas de memórias específicas, como RAMs ou ROMs.
+As memórias são parte integrante de qualquer sistema digital sequencial. Enquanto trabalhamos com circuitos simples ou máquinas de estado, costumamos usar _flip-flops_ como elementos de memória. Contudo, as tarefas mais complexas não escalam devido ao tamanho dos elementos de memória envolvidos. Considerando a tarefa de guardar informações, é útil utilizarmos estruturas de memórias específicas, como RAMs ou ROMs.
 
 Neste artigo, veremos como representar memórias do tipo RAM e ROM em VHDL.
 

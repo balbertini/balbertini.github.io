@@ -7,8 +7,6 @@ AUTHOR = 'Bruno Albertini'
 SITENAME = "B.Albertini's site"
 SITETITLE = 'B.Albertini'
 SITESUBTITLE = 'Professor'
-# SITELOGO = SITEURL + 'content/images/profile.png'
-# FAVICON = SITEURL + 'content/images/favicon.ico'
 SITEURL = ''
 SITELOGO = SITEURL + '/images/profile.png'
 FAVICON = SITEURL + '/images/favicon.ico'
@@ -18,6 +16,13 @@ PATH = 'content'
 
 BROWSER_COLOR = '#333'
 ROBOTS = 'index, follow'
+
+THEME_COLOR = 'light'
+THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE = True
+THEME_COLOR_ENABLE_USER_OVERRIDE = True
+PYGMENTS_STYLE = 'emacs'
+PYGMENTS_STYLE_DARK = 'monokai'
+MD_EXTENSIONS = ['codehilite(css_class=highlight, linenums=True)','extra']
 
 TIMEZONE = 'America/Sao_Paulo'
 

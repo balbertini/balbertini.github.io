@@ -26,7 +26,7 @@ Os tipos de VHDL são definidos pelos padrões IEEE 1076 e IEEE 1164. São divid
 
 O tipo `bit` é o mais utilizado. O `boolean` é útil para tomadas de decisão, como por exemplo em condições para um `if-else`. É importante notar que há um mapeamento direto entre `FALSE` e `0`, e entre `TRUE` e `1`, portanto `FALSE`<`TRUE`.  O `real` normalmente é tratado como um número de ponto flutuante de precisão dupla. O `character` representa um grupo de 8 bits correspondentes aos 256 caracteres da tabela ASCII. Note que estes dois últimos **não são sintetizáveis**, portanto não devem ser utilizados como entradas ou saídas dos módulos. Apesar de não serem sintetizáveis, estes tipos são úteis durante as simulações.
 
-O tipo `integer` tamém é bastante utilizado e possui dois subtipos padrões:
+O tipo `integer` também é bastante utilizado e possui dois subtipos padrões:
 
   | Tipo        | Categoria | Sintetizável? | Valores                  |
   | ----------: | :-------: | :-----------: |:------------------------ |
@@ -39,7 +39,7 @@ A especificação da linguagem não limita o número de bits do inteiro, mas a m
 ```vhdl
 signal meusinal : integer range -8 to 7;
 ```
- O trecho acima declara o `meusinal` como um inteiro de 4 bits. Contudo, valores maiores que a implementação da ferramenta de síntese não são possíveis, portanto se você precisar de um inteiro maior que 32 bits veja se sua ferramenta suporta inteiros grandes ou utilize vetores. A utilização da limitação do inteiro (com `range` ou usando os subtipos `natural` e `positive`) ajuda na detecção de erros pois, se em algum momento da simulação for feita a tentativa de atribuir um valor fora da faixa permitida, o simulador irá emitir uma mensagem de erro. Além disso, usar a limitação explícita diminui o número de bits utilizados para a representação, o que economizará portas lógicas no seu circuito. Pense assim: por que você precisa de um somador de 32 bits se seus inteiros só vão assumir valores de -16 a 15?
+ O trecho acima declara o `meusinal` como um inteiro de 4 bits. Contudo, valores maiores que a implementação da ferramenta de síntese não são possíveis, portanto se você precisar de um inteiro maior que 32 bits, verifique se sua ferramenta suporta inteiros grandes ou utilize vetores. A utilização da limitação do inteiro (com `range` ou usando os subtipos `natural` e `positive`) ajuda na detecção de erros pois, se em algum momento da simulação for feita a tentativa de atribuir um valor fora da faixa permitida, o simulador irá emitir uma mensagem de erro. Além disso, usar a limitação explícita diminui o número de bits utilizados para a representação, o que economizará portas lógicas no seu circuito. Pense assim: por que você precisa de um somador de 32 bits se seus inteiros só vão assumir valores de -16 a 15?
 
 Os tipos `bit` e `character` também possuem suas versões em vetores:
 
@@ -89,7 +89,7 @@ O tipo de dado primário definido nesta biblioteca é o `std_ulogic` (_standard 
 
 O valor `U` não foi pensado para ser utilizado pelo projetista mas sim pelas ferramentas de simulação. Quando seu circuito é simulado, um sinal em `U` significa que até aquele momento não houve nenhuma atribuição para aquele sinal. Isso é útil para depuração pois permite diferenciar um sinal que nunca foi atribuído de um que foi atribuído com zero, por exemplo. É especialmente útil para detectar o esquecimento do acionamento do _reset_ de um circuito, pois é comum os projetistas negligenciarem o _reset_ antes de começar a simular.
 
-Já o `X` e o `W` indicam valores que estão fora do escopo naquele ponto do projeto. Atribuir o valor `X` para um sinal não é uma boa prática, mas ele também é útil em uma simulação. Quando aparecer um sinal com valor `X` ou `W` na sua simulação, muito provavelmente houve mais de uma atribuição para o mesmo sinal e elas são divergentes (e.g. uma atribuição `0` e uma `1` em pontos diferentes da sua descrição). Se sua simulação tem um destes valores, corrija 0 seu circuito antes de sintetizá-lo  pois este valor não existe no mundo real: o circuito vai efetivamente assumir `1` ou `0`, fechando um curto-circuito caso haja uma atribuição divergente.
+Já o `X` e o `W` indicam valores que estão fora do escopo naquele ponto do projeto. Atribuir o valor `X` para um sinal não é uma boa prática, mas ele também é útil em uma simulação. Quando aparecer um sinal com valor `X` ou `W` na sua simulação, muito provavelmente houve mais de uma atribuição para o mesmo sinal e elas são divergentes (e.g. uma atribuição `0` e uma `1` em pontos diferentes da sua descrição). Se sua simulação tem um destes valores, corrija o seu circuito antes de sintetizá-lo  pois este valor não existe no mundo real: o circuito vai efetivamente assumir `1` ou `0`, fechando um curto-circuito caso haja uma atribuição divergente.
 
 Note também que o `X` **não representa** o _don't care_ mas sim um valor desconhecido. Como a letra X é utilizada para o _don't care_ nos métodos manuais (e.g. mapa de Karnaugh), é comum a confusão entre os dois valores.
 
