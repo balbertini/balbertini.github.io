@@ -8,13 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
 
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://balbertini.github.io/theme/stylesheet/dark-theme.min.css">
 
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://balbertini.github.io/theme/pygments/monokai.min.css">
     <link id="pygments-light-theme" rel="stylesheet" type="text/css"
-          href="https://balbertini.github.io/theme/pygments/github.min.css">
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://balbertini.github.io/theme/pygments/emacs.min.css">
 
 
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/fontawesome.css">
@@ -71,7 +78,7 @@
   <title>B.Albertini's site &ndash; Tipos de Dados Básicos em VHDL</title>
 
 </head>
-<body class="light-theme">
+<body >
   <aside>
     <div>
       <a href="https://balbertini.github.io">
@@ -146,6 +153,8 @@
     <h1 id="vhdl_datatypes">Tipos de Dados Básicos em VHDL</h1>
     <p>
       Publicado em 15/09/2018 (Sáb) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+
+      &#8226; Última modificação em 05/10/2018 (Sex)
 
         &#8226; 15 min de leitura 
     </p>
@@ -227,8 +236,8 @@
 </tbody>
 </table>
 <p>A especificação da linguagem não limita o número de bits do inteiro, mas a maioria das ferramentas utiliza inteiros de 32 bits. A forma de interpretação também não é definida, mas a maioria das ferramentas interpreta como uma representação em complemento de dois. Os tipos <code>natural</code> e <code>positive</code> são apenas limitações nos valores que um objeto deste tipo poderá assumir. É possível declarar inteiros com uma limitação personalizada:</p>
-<div class="highlight"><pre><span></span><span class="k">signal</span> <span class="n">meusinal</span> <span class="o">:</span> <span class="kt">integer</span> <span class="k">range</span> <span class="o">-</span><span class="mi">8</span> <span class="k">to</span> <span class="mi">7</span><span class="p">;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">signal</span> <span class="n">meusinal</span> <span class="o">:</span> <span class="kt">integer</span> <span class="k">range</span> <span class="o">-</span><span class="mi">8</span> <span class="k">to</span> <span class="mi">7</span><span class="p">;</span>
+</code></pre></div>
 
 
 <p>O trecho acima declara o <code>meusinal</code> como um inteiro de 4 bits. Contudo, valores maiores que a implementação da ferramenta de síntese não são possíveis, portanto se você precisar de um inteiro maior que 32 bits, verifique se sua ferramenta suporta inteiros grandes ou utilize vetores. A utilização da limitação do inteiro (com <code>range</code> ou usando os subtipos <code>natural</code> e <code>positive</code>) ajuda na detecção de erros pois, se em algum momento da simulação for feita a tentativa de atribuir um valor fora da faixa permitida, o simulador irá emitir uma mensagem de erro. Além disso, usar a limitação explícita diminui o número de bits utilizados para a representação, o que economizará portas lógicas no seu circuito. Pense assim: por que você precisa de um somador de 32 bits se seus inteiros só vão assumir valores de -16 a 15?</p>
@@ -285,16 +294,16 @@
 </table>
 <p>O tipo <code>severity_level</code> é usado em <em>testbenchs</em> para informar a gravidade do problema encontrado. O tipo <code>time</code> é usado para descrever a temporização do circuito, tanto em descrições temporizadas quanto em <em>testbenchs</em>. Os valores de tempo são acompanhados dos multiplicadores que indicam a escala de tempo: <code>fs</code> (fentosegundos), <code>ps</code> (picosegungos), <code>ns</code> (nanosegundos), <code>us</code> (microsegundos), <code>ms</code> (milisegundos), <code>sec</code> (segundos), <code>min</code> (minutos) e <code>hr</code> (horas).</p>
 <p>No exemplo abaixo, a mensagem "Teste" será impressa na tela sem parar a simulação e o <code>sinal</code> assumirá o valor <code>entrada</code>, mas somente após 10ns.</p>
-<div class="highlight"><pre><span></span><span class="n">report</span> <span class="s">&quot;Teste&quot;</span> <span class="k">severity</span> <span class="n">note</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">report</span> <span class="s">&quot;Teste&quot;</span> <span class="k">severity</span> <span class="n">note</span><span class="p">;</span>
 <span class="n">sinal</span> <span class="o">&lt;=</span> <span class="n">entrada</span> <span class="k">after</span> <span class="mi">10</span> <span class="n">ns</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h1>Pacote IEEE 1164</h1>
 <p>Um dos pacotes mais utilizados em VHDL é o <code>std_logic_1164</code> da biblioteca <code>ieee</code>, que define um MVL (lógica multivariada, ou o nome completo <em>Multivalue Logic System for VHDL Model Interoperability</em>). Pra usar este pacote, é necessário incluir a declaração de uso no preambulo do seu projeto:</p>
-<div class="highlight"><pre><span></span><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
 <span class="k">use</span> <span class="nn">ieee.std_logic_1164.</span><span class="k">all</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>O tipo de dado primário definido nesta biblioteca é o <code>std_ulogic</code> (<em>standard unresolved logic</em>), que pode assumir outros valores usados em projeto digital além dos valores ideais <code>0</code> e <code>1</code>. Esta modelagem de valores é mais próxima do mundo real, mas deve ser utilizada com cuidado.</p>
@@ -429,10 +438,18 @@
 
     <footer>
 <p>
-  &copy; Bruno Albertini 2014 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2014 Bruno Albertini - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Criado com o <a href="http://getpelican.com" target="_blank">Pelican</a> usando o tema <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a>
+  <span class="footer-separator">|</span>
+  Alterar tema para <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> 
+  <script id="dark-theme-script"
+          src="https://balbertini.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
 </p><p>
   <a rel="license"
      href="http://creativecommons.org/licenses/by-sa/4.0/"

@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://balbertini.github.io/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://balbertini.github.io/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://balbertini.github.io/theme/pygments/emacs.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/solid.css">
+
+
+    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
+
+
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-125173293-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
+
+<meta name="author" content="Bruno Albertini" />
+<meta name="description" content="Fundamentos de VHDL" />
+<meta name="keywords" content="vhdl, basic">
+
+
+<meta property="og:site_name" content="B.Albertini's site"/>
+<meta property="og:title" content="Fundamentos"/>
+<meta property="og:description" content="Fundamentos de VHDL"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:url" content="https://balbertini.github.io/vhdl_fundamentals-pt_BR.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-09-17 08:06:00-03:00"/>
+<meta property="article:modified_time" content="2020-09-17 08:29:00-03:00"/>
+<meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
+<meta property="article:section" content="vhdl"/>
+<meta property="article:tag" content="vhdl"/>
+<meta property="article:tag" content="basic"/>
+<meta property="og:image" content="/images/profile.png">
+
+  <title>B.Albertini's site &ndash; Fundamentos</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="https://balbertini.github.io">
+        <img src="/images/profile.png" alt="B.Albertini" title="B.Albertini">
+      </a>
+
+      <h1>
+        <a href="https://balbertini.github.io">B.Albertini</a>
+      </h1>
+
+<p>Professor</p>
+
+      <nav>
+        <ul class="list">
+
+
+              <li>
+                <a target="_self"
+                   href="https://balbertini.github.io/pages/sd-pt_BR.html#sd">
+                  Sistemas Digitais
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="https://balbertini.github.io/pages/disciplinas-pt_BR.html#disciplinas">
+                  Disciplinas
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="https://balbertini.github.io/pages/research-pt_BR.html#research">
+                  Pesquisa
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="https://balbertini.github.io/pages/sobre-pt_BR.html#sobre">
+                  Sobre
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="https://balbertini.github.io/pages/vhdl-pt_BR.html#vhdl">
+                  VHDL
+                </a>
+              </li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/balbertini" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-rss" href="//balbertini.github.io/feeds/all.atom.xml" target="_blank">
+              <i class="fas fa-rss"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="vhdl_fundamentals">Fundamentos</h1>
+    <p>
+      Publicado em 17/09/2020 (Qui) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+
+      &#8226; Última modificação em 17/09/2020 (Qui)
+
+        &#8226; 12 min de leitura 
+    </p>
+  </header>
+
+
+  <div>
+    <p>Nest <em>post</em> falaremos das características fundamentais da linguagem VHDL. Quando aplicável, usaremos <i class="fas fa-cog"></i> para indicar quais versões de VHDL suportam cada característica.</p>
+<h1>Elementos Léxicos</h1>
+<p>VHDL não diferencia maiúsculas de minúsculas. Como as descrições são arquivos de texto, aconselho usarem codificação UTF-8 em todas as suas descrições, mas todo o código em VHDL deve usar caracteres compatíveis com ASCII. A extensão do arquivo não importa muito, mas as mais comuns são <code>.vhd</code> e <code>.vhdl</code> (não use <code>.v</code> pois esta extensão é interpretada como Verilog pelas ferramentas).</p>
+<table style="width:100%">
+ <tr>
+   <td><i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"></i></td>
+   <td>
+    Tome cuidado com acentos pois o código dos caracteres, mesmo em UTF-8, deve ser compatível com ASCII. Evite caracteres acentuados fora dos comentários.
+   </td>
+ </tr>
+</table>
+
+<h2>Comentários</h2>
+<p>Os comentários são parte importantíssima em engenharia de software e não é diferente em engenharia de hardware. São muito úteis para descrever as intenções do projetista, de forma que outro projetista entenda o que foi descrito quando, posteriormente, ler o arquivo.</p>
+<p>O comentário básico em VHDL é <code>--</code>. Após estes dois caracteres, todo o restante da linha se torna um comentário. Há também o comentário delimitado, que começa com <code>/*</code> e termina com <code>*/</code>, útil para comentários multi-linhas. Os comentários não podem ser aninhados (comentário dentro de comentário), mas um comentário com <code>--</code> no início da linha desativa qualquer delimitador de comentário.</p>
+<p>Por motivos óbvios, os comentários não são sintetizáveis.</p>
+<table style="width:100%">
+ <tr>
+   <td><i class="fas fa-cog fa-2x"  style="color: #009933;"></i></td>
+   <td>
+    Os comentários com delimitadores são suportados a partir do VHDL-2008.
+   </td>
+ </tr>
+</table>
+
+<h3>Exemplo (VHDL&lt;=2002)</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Este é um comentário explicando o que a entidade abaixo faz. Não há</span>
+<span class="c1">-- comentários multi-linhas em VHDL&lt;=2002, então usamos vários comentários</span>
+<span class="c1">-- de uma linha.</span>
+<span class="k">entity</span> <span class="nc">meu_circuito</span> <span class="k">is</span>
+  <span class="k">port</span> <span class="p">(</span> <span class="n">clk</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span> <span class="c1">-- e o pulso ainda pulsa</span>
+         <span class="n">reset</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span> <span class="c1">-- zera todo mundo!</span>
+         <span class="c1">-- TODO: adicionar as outras portas</span>
+       <span class="p">);</span>
+<span class="k">end</span> <span class="k">entity</span> <span class="nc">meu_circuito</span><span class="p">;</span>
+</code></pre></div>
+
+
+<h3>Exemplo (VHDL&gt;=2008)</h3>
+<div class="highlight"><pre><span></span><code><span class="cm">/* Este é um comentário explicando o que a entidade abaixo faz. Em</span>
+<span class="cm">   VHDL&gt;=2008 podemos usar comentários multi-linhas.</span>
+<span class="cm"> */</span>
+<span class="k">entity</span> <span class="nc">meu_circuito</span> <span class="k">is</span>
+  <span class="k">port</span> <span class="p">(</span> <span class="n">clk</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span> <span class="c1">-- e o pulso ainda pulsa</span>
+         <span class="n">reset</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span> <span class="c1">-- zera todo mundo!</span>
+         <span class="cm">/* TODO: adicionar as outras portas */</span>
+       <span class="p">);</span>
+<span class="k">end</span> <span class="k">entity</span> <span class="nc">meu_circuito</span><span class="p">;</span>
+</code></pre></div>
+
+
+<h2>Identificadores</h2>
+<p>Os identificadores são cadeias de caracteres usadas para dar nomes a variáveis, sinais e qualquer outro elemento da descrição. Em VHDL, o identificador pode ser uma cadeia de qualquer tamanho, desde que siga as seguintes restrições:</p>
+<ul>
+<li>Deve conter somente letras (<code>A-Z</code> e <code>a-z</code>), dígitos (<code>0-9</code>) ou o caractere <code>_</code></li>
+<li>Deve começar com uma letra</li>
+<li>Não deve terminar com um <code>_</code> e não pode conter dois <code>_</code> seguidos</li>
+</ul>
+<p>Essas limitações existem para que seu identificador não entre em conflito com identificadores usados internamente pelas ferramentas.</p>
+<table style="width:100%">
+ <tr>
+   <td><i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"></i></th>
+   <td>
+    Lembre-se que VHDL não diferencia maiúsculas de minúsculas, então `meu_sinal` é o mesmo que `MEU_SINAL` ou `MeUsInAl`.
+   </td>
+ </tr>
+</table>
+
+<h3>Exemplo</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Identificadores válidos</span>
+<span class="n">meu_sinal</span>
+<span class="n">entidadeSomadora</span>
+<span class="c1">-- Identificadores inválidos</span>
+<span class="mi">5</span><span class="n">bola</span> <span class="c1">-- não começa com uma letra</span>
+<span class="n">_meusinal</span> <span class="c1">-- não começa com uma letra</span>
+<span class="n">meusinal_</span> <span class="c1">-- termina com _</span>
+<span class="n">meu__sinal</span> <span class="c1">-- possui dois _ seguidos</span>
+<span class="n">balbertini</span><span class="err">@</span><span class="n">usp</span> <span class="c1">-- possui um caractere inválido (@)</span>
+<span class="n">xo</span><span class="o">:</span><span class="n">xo</span> <span class="c1">-- possui um caractere inválido (:)</span>
+<span class="err">😊</span><span class="c1">-- possui um caractere inválido (U+1F60A em UTF-8)</span>
+<span class="c1">-- alguns sintetizadores modernos aceitam o acento abaixo</span>
+<span class="c1">-- mas melhor evitar</span>
+<span class="n">saída</span> <span class="c1">-- possui um caractere inválido (í)</span>
+</code></pre></div>
+
+
+<h2>Identificadores estendidos</h2>
+<p>VHDL também suporta o que chamamos de identificador estendido. Os identificadores estendidos não tem as limitações dos identificadores e pode-se usar qualquer coisa dentro deles. Para usar, basta colocar seu identificador entre dois <code>\</code>.</p>
+<h3>Exemplo</h3>
+<p><div class="highlight"><pre>
+<span class="c1">-- Identificadores estendidos válidos</span>
+<span class="nc">\5bola\</span>
+<span class="nc">&#92;&#95;meusinal\</span>
+<span class="nc">\meusinal_\</span>
+<span class="nc">\meu__sinal\</span>
+<span class="nc">\balbertini@usp\</span>
+<span class="nc">\xo:xo\</span>
+<span class="nc">\😊\</span>
+<span class="nc">\saída\</span>
+</pre></div></p>
+<p>Quando usamos identificadores estendidos, a linguagem interpreta o identificador exatamente como ele é, então neste caso a linguagem irá diferenciar maiúsculas de minúsculas.</p>
+<table style="width:100%">
+ <tr>
+   <td><i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"></i></td>
+   <td>
+    Os identificadores estendidos foram criados para serem usados pelas ferramentas de síntese, facilitando a troca de informações. Não recomendamos que utilize em suas descrições pois nem todas as ferramentas suportam.
+   </td>
+ </tr>
+ <tr>
+   <td><i class="fas fa-cog fa-2x"  style="color: #009933;"></i></td>
+   <td>
+    Os identificadores estendidos são suportados a partir do VHDL-1993.
+   </td>
+ </tr>
+</table>
+
+<h2>Palavras reservadas</h2>
+<p>Os comandos em VHDL são chamados de palavras reservadas. Todas tem um significado especial e devem ser evitadas como identificadores. A tabela abaixo tem uma lista de todas as palavras reservadas da linguagem, em ordem alfabética.</p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+</style>
+
+<table class="tg">
+<tbody>
+  <tr>
+    <th class="tg-baqh">abs</th>
+    <th class="tg-baqh">else</th>
+    <th class="tg-baqh">map</th>
+    <th class="tg-baqh">range</th>
+    <th class="tg-baqh">unaffected</th>
+  </tr>
+  <tr>
+    <td class="tg-baqh">access</td>
+    <td class="tg-baqh">elsif</td>
+    <td class="tg-baqh">mod</td>
+    <td class="tg-baqh">record</td>
+    <td class="tg-baqh">units</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">after</td>
+    <td class="tg-baqh">end</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">register</td>
+    <td class="tg-baqh">until</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">alias</td>
+    <td class="tg-baqh">entity</td>
+    <td class="tg-baqh">nand</td>
+    <td class="tg-baqh">reject</td>
+    <td class="tg-baqh">use</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">all</td>
+    <td class="tg-baqh">exit</td>
+    <td class="tg-baqh">new</td>
+    <td class="tg-baqh">release</td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">and</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">next</td>
+    <td class="tg-baqh">rem</td>
+    <td class="tg-baqh">variable</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">architecture</td>
+    <td class="tg-baqh">fairness</td>
+    <td class="tg-baqh">nor</td>
+    <td class="tg-baqh">report</td>
+    <td class="tg-baqh">vmode</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">array</td>
+    <td class="tg-baqh">file</td>
+    <td class="tg-baqh">not</td>
+    <td class="tg-baqh">restrict</td>
+    <td class="tg-baqh">vprop</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">assert</td>
+    <td class="tg-baqh">for</td>
+    <td class="tg-baqh">null</td>
+    <td class="tg-baqh">restrict_guarantee</td>
+    <td class="tg-baqh">vunit</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">assume</td>
+    <td class="tg-baqh">force</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">return</td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">assume_guarantee</td>
+    <td class="tg-baqh">function</td>
+    <td class="tg-baqh">of</td>
+    <td class="tg-baqh">rol ror</td>
+    <td class="tg-baqh">wait</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">attribute</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">on</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">when</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">generate</td>
+    <td class="tg-baqh">open</td>
+    <td class="tg-baqh">select</td>
+    <td class="tg-baqh">while</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">begin</td>
+    <td class="tg-baqh">generic</td>
+    <td class="tg-baqh">or</td>
+    <td class="tg-baqh">sequence</td>
+    <td class="tg-baqh">with</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">block</td>
+    <td class="tg-baqh">group</td>
+    <td class="tg-baqh">others</td>
+    <td class="tg-baqh">severity</td>
+    <td class="tg-baqh">xnor</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">body</td>
+    <td class="tg-baqh">guarded</td>
+    <td class="tg-baqh">out</td>
+    <td class="tg-baqh">shared</td>
+    <td class="tg-baqh">xor</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">buffer</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">signal</td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">bus</td>
+    <td class="tg-baqh">if</td>
+    <td class="tg-baqh">package</td>
+    <td class="tg-baqh">sla</td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">impure</td>
+    <td class="tg-baqh">parameter</td>
+    <td class="tg-baqh">sll</td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">case</td>
+    <td class="tg-baqh">in</td>
+    <td class="tg-baqh">port</td>
+    <td class="tg-baqh">sra</td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">component</td>
+    <td class="tg-baqh">inertial</td>
+    <td class="tg-baqh">postponed</td>
+    <td class="tg-baqh">srl</td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">configuration</td>
+    <td class="tg-baqh">inout</td>
+    <td class="tg-baqh">procedure</td>
+    <td class="tg-baqh">strong</td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">constant</td>
+    <td class="tg-baqh">is</td>
+    <td class="tg-baqh">process</td>
+    <td class="tg-baqh">subtype</td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">context</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">property</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">cover</td>
+    <td class="tg-baqh">label</td>
+    <td class="tg-baqh">protected</td>
+    <td class="tg-baqh">then</td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">library</td>
+    <td class="tg-baqh">pure</td>
+    <td class="tg-baqh">to</td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">default</td>
+    <td class="tg-baqh">linkage</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">transport</td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">disconnect</td>
+    <td class="tg-baqh">literal</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">type</td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">downto</td>
+    <td class="tg-baqh">loop</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh"></td>
+  </tr>
+</tbody>
+</table>
+
+<p>Algumas dessas palavras não são consideradas palavras reservadas em algumas versões de VHDL, mas para manter a compatibilidade entre as versões, considere esta lista como uma <em>lista de palavras que você não deve usar</em> como identificadores.</p>
+<h2>Símbolos Especiais</h2>
+<p>A linguagem VHDL usa a seguinte lista de símbolos, cada um com um significado específico na linguagem:</p>
+<pre>" # & ' ( ) * + - , . / : ; < = > ? @ [ ] \` |</pre>
+
+<p>Além desses, há símbolos com um único significado em VHDL, mas composto de dois caracteres:</p>
+<div class="highlight"><pre><span></span><code><span class="o">=&gt;</span> <span class="o">**</span> <span class="o">:=</span> <span class="o">/=</span> <span class="o">&gt;=</span> <span class="o">&lt;=</span> <span class="o">&lt;&gt;</span> <span class="o">??</span> <span class="o">?=</span> <span class="o">?/=</span> <span class="o">?&gt;</span> <span class="o">?&lt;</span> <span class="o">?&gt;=</span> <span class="o">?&lt;=</span> <span class="o">&lt;&lt;</span> <span class="o">&gt;&gt;</span>
+</code></pre></div>
+
+
+<p>Para funcionarem, você precisa escrevê-los sem nenhum espaço entre eles (e.g. <code>&lt;=</code> é um operador de atribuição, mas <code>&lt; =</code> são duas comparações, de menor e igual respectivamente).</p>
+<h2>Literais</h2>
+<h3>Números</h3>
+<p>Há dois tipos de literais numéricos em VHDL: os inteiros e os reais. Ambos podem ser expressos usando notação científica.</p>
+<div class="highlight"><pre><span></span><code><span class="mi">1</span> <span class="c1">-- exemplo de número inteiro</span>
+<span class="mi">0</span> <span class="c1">-- exemplo de número inteiro</span>
+<span class="mi">123</span> <span class="c1">-- exemplo de número inteiro</span>
+<span class="mi">12</span><span class="n">E12</span> <span class="c1">-- exemplo de número inteiro em notação científica</span>
+<span class="mi">123</span><span class="n">e45</span> <span class="c1">-- exemplo de número inteiro em notação científica</span>
+<span class="mi">123</span><span class="n">E</span><span class="o">+</span><span class="mi">7</span> <span class="c1">-- exemplo de número inteiro em notação científica</span>
+<span class="mi">3</span><span class="p">.</span><span class="mi">1415</span> <span class="c1">-- exemplo de número real</span>
+<span class="mi">6</span><span class="p">.</span><span class="mi">67430</span><span class="n">E</span><span class="err">−</span><span class="mi">11</span> <span class="c1">-- exemplo de número real em notação científica</span>
+<span class="mi">6</span><span class="p">.</span><span class="mi">02214076</span><span class="n">E</span><span class="o">+</span><span class="mi">23</span>  <span class="c1">-- exemplo de número real em notação científica</span>
+</code></pre></div>
+
+
+<p>Note que <code>-123</code> não é um número inteiro mas sim uma negação de um inteiro. Os número reais precisam de ao menos um dígito antes e outro depois do <code>.</code> para serem considerados válidos.</p>
+<p>Os literais numéricos também podem ser especificados em outras bases usando o operador <code>#</code> com a base expressa em decimal:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Todos os números abaixo representam 253 em decimal</span>
+<span class="mi">2#11111101#</span> <span class="c1">-- em binário (base 2)</span>
+<span class="mi">16#FD#</span> <span class="c1">-- em hexadecimal (base 16)</span>
+<span class="mi">16#0fd#</span> <span class="c1">-- em hexadecimal (base 16)</span>
+<span class="mi">8#0375#</span> <span class="c1">-- em octal (base 8)</span>
+<span class="c1">-- Todos os números abaixo representam 0.5 em decimal</span>
+<span class="mi">2#0</span><span class="p">.</span><span class="mi">100</span><span class="err">#</span> <span class="c1">-- em binário (base 2)</span>
+<span class="mi">8#0</span><span class="p">.</span><span class="mi">4</span><span class="err">#</span> <span class="c1">-- em octal (base 8)</span>
+<span class="mi">12#0</span><span class="p">.</span><span class="mi">6</span><span class="err">#</span> <span class="c1">-- em duodecimal (base 12)</span>
+<span class="c1">-- Todos os números abaixo representam 1024 em decimal</span>
+<span class="mi">2#1#</span><span class="n">E10</span> <span class="c1">-- em binário (base 2)</span>
+<span class="mi">16#4#</span><span class="n">E2</span> <span class="c1">-- em hexadecimal (base 16)</span>
+<span class="mi">10#1024#</span><span class="n">E</span><span class="o">+</span><span class="mi">00</span> <span class="c1">-- em decimal (base 10)</span>
+</code></pre></div>
+
+
+<table style="width:100%">
+ <tr>
+   <td><i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"></i></td>
+   <td>
+    VHDL suporta as bases de 2 a 16 nativamente, mas sugerimos ater-se às bases 2, 8 e 16 pois nem todas as ferramentas suportam bases arbitrárias.
+   </td>
+ </tr>
+</table>
+
+<p>Não há ponto (ou vírgula) de separação de milhares, mas é possível usar o caractere <code>_</code> para melhorar e legibilidade dos literais numéricos, respeitando-se as regras de composição de identificadores (não se pode aparecer no início ou final de um número, e também não pode aparecer duas vezes seguidas):</p>
+<div class="highlight"><pre><span></span><code><span class="mi">123</span><span class="n">_456</span>
+<span class="mi">3</span><span class="p">.</span><span class="mi">141</span><span class="n">_592_6</span>
+<span class="mi">2#1111_1100_0000_0000#</span>
+</code></pre></div>
+
+
+<p>O caractere <code>_</code> em um literal é inerte e não tem significado algum, servindo apenas para melhorar a visualização.</p>
+<h3>Caracteres</h3>
+<p>Os caracteres em VHDL são expressos entre aspas simples <code>'</code> e podem ser qualquer caractere ASCII imprimível.</p>
+<div class="highlight"><pre><span></span><code><span class="na">&#39;A</span><span class="p">&#39;</span>
+<span class="na">&#39;a</span><span class="p">&#39;</span>
+<span class="p">&#39;.&#39;</span>
+<span class="sc">&#39;1&#39;</span>
+<span class="p">&#39;</span> <span class="p">&#39;</span> <span class="c1">-- espaço</span>
+</code></pre></div>
+
+
+<h3><em>Strings</em></h3>
+<p>As <em>strings</em> são vetores de caracteres e são representadas em VHDL entre aspas duplas <code>"</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="s">&quot;Bruno Albertini&quot;</span>
+<span class="s">&quot;caracteres ASCII quaisquer como @%*&quot;</span>
+<span class="s">&quot;10010011&quot;</span>
+<span class="c1">-- abaixo uma string contendo o caractere &quot;, que é representado por dois &quot;</span>
+<span class="c1">-- seguidos mas conta como um caractere só na string</span>
+<span class="s">&quot;&quot;&quot;&quot;</span>
+</code></pre></div>
+
+
+<h3><em>Bit Strings</em></h3>
+<p>Como todo hardware no final das contas trabalha com zeros e uns, VHDL possui uma forma específica para representar cadeias de bits. As cadeias são tratadas de forma diferenciada pois sempre podem ser transformadas em bits sem ambiguidade. É possível especificar a base da cadeia usando os prefixos <code>B</code> para binário, <code>O</code> para octal, <code>X</code> para hexadecimal e <code>D</code> para decimal (este último a partir de VHDL-2008).</p>
+<div class="highlight"><pre><span></span><code><span class="mb">B&quot;0100011&quot;</span> <span class="c1">-- uma bitstring em binário</span>
+<span class="mb">B&quot;10&quot;</span> <span class="c1">-- outra  bitstring em binário</span>
+<span class="mb">b&quot;111100100001&quot;</span> <span class="c1">-- é possível usar minúsculas na especificação</span>
+<span class="mb">B&quot;1111_0010_0001&quot;</span> <span class="c1">-- e também _ para melhorar a legibilidade</span>
+<span class="n">B</span><span class="s">&quot;&quot;</span> <span class="c1">-- uma bitstring vazia</span>
+<span class="mo">O&quot;372&quot;</span> <span class="c1">-- equivalente a B&quot;011_111_010&quot;</span>
+<span class="mo">o&quot;00&quot;</span> <span class="c1">-- equivalente a B&quot;000_000&quot;</span>
+<span class="mh">X&quot;FA&quot;</span> <span class="c1">-- equivalente a B&quot;1111_1010&quot;</span>
+<span class="mh">x&quot;0_d&quot;</span> <span class="c1">-- equivalente a B&quot;0000_1101&quot;</span>
+<span class="c1">-- O prefixo D é válido somente em VHDL&gt;=2008</span>
+<span class="mi">D&quot;23&quot;</span> <span class="c1">-- equivalente a B&quot;10111&quot;</span>
+<span class="mi">D&quot;64&quot;</span> <span class="c1">-- equivalente a B&quot;1000000&quot;</span>
+<span class="mi">D&quot;0003&quot;</span> <span class="c1">-- equivalente a B&quot;11&quot;</span>
+</code></pre></div>
+
+
+<p>O número de bits da cadeia equivalente é sempre o número de bits mínimo necessário para representar o literal. Quando usamos octal, a cadeia resultante será um múltiplo de 3 bits pois cada dígito octal corresponde a 3 bits binários. Similarmente, as cadeias em hexadecimal correspondem a múltiplos de 4 bits binários. Os dígitos especificados devem ser válidos na base desejada (e.g. em octal só existem os dígitos de 0-7, em hexadecimal, de 0-9 e A-F (ou a-f)). Algumas letras tem significado especial dependendo do tipo binário por trás da conversão, como o <code>Z</code> que significa alta impedância quando se usa lógica multi-variada.</p>
+<table style="width:100%">
+ <tr>
+  <td><i class="fas fa-info fa-2x"  style="color: #0066ff;"></i></td>
+   <td>
+    A lógica multi-variada em VHDL é baseada no tipo <code>std_logic</code>, que aceita <code>U</code>, <code>X</code>, <code>Z</code>, <code>W</code>, <code>L</code>, <code>H</code> e <code>-</code> como dígitos, além dos tradicionais <code>0</code> e <code>1</code>.
+   </td>
+ </tr>
+</table>
+
+<p>Há ainda uma forma de controlar quantos bits queremos que a cadeia possua, que funciona com VHDL&gt;=2008, colocando o número de bits antes do prefixo:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Só em VHDL&gt;=2008</span>
+<span class="mi">7</span><span class="mh">X&quot;3C&quot;</span> <span class="c1">-- equivalente a B&quot;0111100&quot;</span>
+<span class="mi">8</span><span class="mo">O&quot;5&quot;</span> <span class="c1">-- equivalente a B&quot;00000101&quot;</span>
+<span class="mi">10</span><span class="n">B</span><span class="s">&quot;X&quot;</span> <span class="c1">-- equivalente a B&quot;000000000X&quot;</span>
+</code></pre></div>
+
+
+<p>A cadeia será preenchida com <code>0</code> suficientes para completar o número de bits. Caso o número desejado seja menor, os zeros à esquerda serão cortados da cadeia, mas é um erro especificar um número de bits menor que o necessário para representar o número.</p>
+<p>Também podemos especificar se o número representa um inteiro com sinal ou sem sinal, adicionando os prefixos <code>S</code> e <code>U</code> respectivamente. Esta especificação só é possível em VHDL&gt;=2008 e não pode ser usada para números decimais (especificador <code>D</code>), que são sempre considerados inteiros sem sinal.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Só em VHDL&gt;=2008</span>
+<span class="mi">7</span><span class="n">UX</span><span class="s">&quot;3C&quot;</span> <span class="c1">-- equivalente a B&quot;0111100&quot;</span>
+<span class="mi">8</span><span class="n">UO</span><span class="s">&quot;5&quot;</span> <span class="c1">-- equivalente a B&quot;00000101&quot;</span>
+<span class="mi">10</span><span class="n">UB</span><span class="s">&quot;1&quot;</span> <span class="c1">-- equivalente a B&quot;0000000001&quot;</span>
+<span class="mi">10</span><span class="n">SX</span><span class="s">&quot;71&quot;</span> <span class="c1">-- equivalente a B&quot;0001110001&quot;</span>
+<span class="mi">10</span><span class="n">SX</span><span class="s">&quot;88&quot;</span> <span class="c1">-- equivalente a B&quot;1110001000&quot;</span>
+<span class="mi">10</span><span class="n">SX</span><span class="s">&quot;W0&quot;</span> <span class="c1">-- equivalente a B&quot;WWWWWW0000&quot;</span>
+<span class="c1">-- Se reduzirmos o tamanho usando o especificador S</span>
+<span class="c1">-- os bits descartados devem ser iguais ao último que ficou</span>
+<span class="mi">6</span><span class="n">SX</span><span class="s">&quot;16&quot;</span> <span class="c1">-- equivalente a B&quot;010110&quot;</span>
+<span class="mi">6</span><span class="n">SX</span><span class="s">&quot;E8&quot;</span> <span class="c1">-- equivalente a B&quot;101000&quot;</span>
+<span class="mi">6</span><span class="n">SX</span><span class="s">&quot;13&quot;</span> <span class="c1">-- equivalente a B&quot;110011&quot;</span>
+<span class="mi">6</span><span class="n">SX</span><span class="s">&quot;H3&quot;</span> <span class="c1">-- equivalente a B&quot;HH0011&quot;</span>
+</code></pre></div>
+
+
+<table style="width:100%">
+ <tr>
+   <td><i class="fas fa-cog fa-2x"  style="color: #009933;"></i></td>
+   <td>
+    As versões de VHDL<2008 não suportam o especificador decimal <code>D</code>, nenhum especificador de tamanho (os números no prefixo), e nenhum especificador de sinal (<code>U</code> ou <code>S</code>). Aconselho a não usá-los se deseja manter a compatibilidade da sua descrição com todas as ferramentas.
+   </td>
+ </tr>
+</table>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://balbertini.github.io/tag/vhdl.html">vhdl</a>
+      <a href="https://balbertini.github.io/tag/basic.html">basic</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'balbertini';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Habilite JavaScript para ver os comentários.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy; 2014 Bruno Albertini - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Criado com o <a href="http://getpelican.com" target="_blank">Pelican</a> usando o tema <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a>
+  <span class="footer-separator">|</span>
+  Alterar tema para <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> 
+  <script id="dark-theme-script"
+          src="https://balbertini.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " B.Albertini's site ",
+  "url" : "https://balbertini.github.io",
+  "image": "/images/profile.png",
+  "description": ""
+}
+</script>
+
+
+</body>
+</html>

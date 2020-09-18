@@ -8,13 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
 
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://balbertini.github.io/theme/stylesheet/dark-theme.min.css">
 
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://balbertini.github.io/theme/pygments/monokai.min.css">
     <link id="pygments-light-theme" rel="stylesheet" type="text/css"
-          href="https://balbertini.github.io/theme/pygments/github.min.css">
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://balbertini.github.io/theme/pygments/emacs.min.css">
 
 
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/fontawesome.css">
@@ -71,7 +78,7 @@
   <title>B.Albertini's site &ndash; Operações Aritméticas em Binário</title>
 
 </head>
-<body class="light-theme">
+<body >
   <aside>
     <div>
       <a href="https://balbertini.github.io">
@@ -147,6 +154,8 @@
     <p>
       Publicado em 29/07/2020 (Qua) na categoria <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
 
+      &#8226; Última modificação em 29/07/2020 (Qua)
+
         &#8226; 20 min de leitura 
     </p>
   </header>
@@ -157,44 +166,39 @@
 <h1>Representação binária</h1>
 <p>Um número em binário é composto por qualquer quantidade de dígitos 0 e 1. Um único dígito é chamado de <em>bit</em>, o conjunto de 8 bits é chamado de <em>byte</em> e o conjunto de 4 bits é chamado de <em>nible</em>. Os processadores modernos usam números de 64 bits, mas ainda temos muitos processadores usando 32 bits. A quantidade de bits usada para representar um número em um processador está ligada ao tamanho das estruturas de armazenamento usadas internamente para guardar os números (conhecidas como registradores) e a capacidade das unidades de cálculo (i.e. um processador de 64 bits possui registradores e unidades lógicas e aritméticas capazes de armazenar e operar números  de 64 bits).</p>
 <p>A representação binária segue a fórmula geral de representação de bases, cuja conversão para decimal é:</p>
-<div class="math">$$
+<p>$$
 \sum_{m}^{n}{a_i.b^{i}}
-$$</div>
-<p>Onde o índice <span class="math">\(i\)</span> começa em <span class="math">\(n\)</span>, passa pelo <span class="math">\(0\)</span> e termina em <span class="math">\(m\)</span> (<span class="math">\(m\)</span> é um número negativo). Um número em binário pode ser representado por:
-</p>
-<div class="math">$$
+$$</p>
+<p>Onde o índice $i$ começa em $n$, passa pelo $0$ e termina em $m$ ($m$ é um número negativo). Um número em binário pode ser representado por:
+$$
 a_{n}a_{n-1}a_{n-2}\ldots a_{0}.a_{-1}a_{-2}\ldots a_{-m+2}a_{-m+1}a_{-m}
-$$</div>
-<p>O dígito <span class="math">\(a\)</span> com o maior índice é chamado de <strong>mais significativo</strong> pois é o multiplicador de maior peso (está ligado a base elevada a maior potência) e o dígito com o menor índice é chamado de <strong>menos significativo</strong> pelo motivo oposto. Como costumamos escrever os números da esquerda para a direita, o mais significativo fica mais a esquerda e o menos significativo fica mais a direita. É comum usarmos os acrônimos MSB para o mais significativo (do inglês <em>Most Significant Bit</em>) e LSB para o menos significativo (do inglês <em>Least Significant Bit</em>).</p>
-<p>Para converter entre bases, basta usar a fórmula geral aplicando-se a base que deseja. O <span class="math">\(a\)</span> corresponde a um dígito na base de origem e para converter substituímos pelo valor deste dígito no sistema alvo. Como os valores binários são 0 e 1 e os valores na base 10 são os mesmos (0 e 1, respectivamente), não há substituição a fazer, bastando usar o próprio dígito na posição <span class="math">\(i\)</span>. O <span class="math">\(b\)</span> da fórmula é o valor da base de origem na base de destino. No caso de binário para decimal, a base é 2 e o valor em decimal também é 2, então basta fazer <span class="math">\(b=2\)</span>.</p>
+$$</p>
+<p>O dígito $a$ com o maior índice é chamado de <strong>mais significativo</strong> pois é o multiplicador de maior peso (está ligado a base elevada a maior potência) e o dígito com o menor índice é chamado de <strong>menos significativo</strong> pelo motivo oposto. Como costumamos escrever os números da esquerda para a direita, o mais significativo fica mais a esquerda e o menos significativo fica mais a direita. É comum usarmos os acrônimos MSB para o mais significativo (do inglês <em>Most Significant Bit</em>) e LSB para o menos significativo (do inglês <em>Least Significant Bit</em>).</p>
+<p>Para converter entre bases, basta usar a fórmula geral aplicando-se a base que deseja. O $a$ corresponde a um dígito na base de origem e para converter substituímos pelo valor deste dígito no sistema alvo. Como os valores binários são 0 e 1 e os valores na base 10 são os mesmos (0 e 1, respectivamente), não há substituição a fazer, bastando usar o próprio dígito na posição $i$. O $b$ da fórmula é o valor da base de origem na base de destino. No caso de binário para decimal, a base é 2 e o valor em decimal também é 2, então basta fazer $b=2$.</p>
 <h3>Exemplo</h3>
-<p>O número <span class="math">\(101010.10101_{2}\)</span> representa qual número em decimal?</p>
+<p>O número $101010.10101_{2}$ representa qual número em decimal?</p>
 <p>Vamos expandir o número usando a fórmula geral:
-</p>
-<div class="math">$$
+$$
 \sum_{m}^{n}{a_i.b^{i}}
-$$</div>
-<p>Como temos seis dígitos antes do . e cinco depois, <span class="math">\(n=5\)</span> e <span class="math">\(m=-5\)</span> (note que há o índice 0 antes do ponto, então o <span class="math">\(n=5\)</span>). Vamos expandir o número usando a fórmula geral:
-</p>
-<div class="math">$$
+$$</p>
+<p>Como temos seis dígitos antes do . e cinco depois, $n=5$ e $m=-5$ (note que há o índice 0 antes do ponto, então o $n=5$). Vamos expandir o número usando a fórmula geral:
+$$
 \sum_{5}^{-5}{a_i.b^{i}}
-$$</div>
+$$</p>
 <p>Ou na versão expandida:
-</p>
-<div class="math">$$
+$$
 a_{5}.b^{5}+a_{4}.b^{4}+a_{3}.b^{3}+a_{2}.b^{2}+a_{1}.b^{1}+a_{0}.b^{0}+a_{-1}.b^{-1}+a_{-2}.b^{-2}+a_{-3}.b^{-3}+a_{-4}.b^{-4}+a_{-5}.b^{-5}
-$$</div>
-<p>Substituindo os números, temos a base 2 (<span class="math">\(b=2\)</span>) e os dígitos <span class="math">\(101010.10101_{2}\)</span>, então ficamos com:
-</p>
-<div class="math">$$
+$$</p>
+<p>Substituindo os números, temos a base 2 ($b=2$) e os dígitos $101010.10101_{2}$, então ficamos com:
+$$
 1.2^{5}+0.2^{4}+1.2^{3}+0.2^{2}+1.2^{1}+0.2^{0}+1.2^{-1}+0.2^{-2}+1.2^{-3}+0.2^{-4}+1.2^{-5}
-$$</div>
-<div class="math">$$
+$$
+$$
 = 1.32+0.16+1.8+0.4+1.2+0.1+1.\frac{1}{2}+0.\frac{1}{4}+1.\frac{1}{8}+0.\frac{1}{16}+1.\frac{1}{32}
-$$</div>
-<div class="math">$$
+$$
+$$
 = 32+8+2+\frac{1}{2}+\frac{1}{8}+\frac{1}{32} = 42 + 0.5 + 0.125 + 0.03125 = 42.65625
-$$</div>
+$$</p>
 <h2>Conversão direta (tabela)</h2>
 <p>A fórmula geral pode ser usada para conversões entre bases facilmente, mas para conversão entre binário (base 2), octal (base 8) e hexadecimal (base 16), pelas bases serem múltiplas umas das outras, há uma maneira mais simples, usando uma tabela de conversão, que pode ser vista abaixo.</p>
 <table>
@@ -305,7 +309,7 @@ $$</div>
 </tr>
 </tbody>
 </table>
-<p>Usar a tabela é bem simples: cada grupo de 3 bits (lembre-se que um bit é um dígito binário) corresponde a um dígito octal e cada grupo de 4 bits é um dígito hexadecimal, e vice-versa. Note também a representação: é comum usarmos o prefixo 0x (ou o sufixo 'h') para hexadecimal e o prefixo 0 (ou 'o') para octal, mas para evitar ambiguidades, aconselho usar a versão formal (com subscrito, e.g. <span class="math">\(F_{16}=17_{8}=1111_{2}\)</span>).</p>
+<p>Usar a tabela é bem simples: cada grupo de 3 bits (lembre-se que um bit é um dígito binário) corresponde a um dígito octal e cada grupo de 4 bits é um dígito hexadecimal, e vice-versa. Note também a representação: é comum usarmos o prefixo 0x (ou o sufixo 'h') para hexadecimal e o prefixo 0 (ou 'o') para octal, mas para evitar ambiguidades, aconselho usar a versão formal (com subscrito, e.g. $F_{16}=17_{8}=1111_{2}$).</p>
 <h3>Exemplos</h3>
 <p>Converter <code>0xBEBAD0</code> para binário e octal. Cada dígito hexadecimal corresponde a 4 dígitos binário, então usando a tabela temos que <code>0xBEBAD0 = 1011 1110 1011 1010 1101 0000</code>. Com o binário, basta agruparmos de 3 em 3 e teremos o octal: <code>0xBEBAD0 = 101 111 101 011 101 011 010 000 = 057535320</code> (o <code>0</code> no início é só para indicar que é octal).</p>
 <p>Converter <code>1100101011111110</code> para octal e hexadecimal. Para octal, agrupamos de 3 em 3: <code>1 100 101 011 111 110 = 0145376</code>, e para hexadecimal de 4 em 4: <code>1100 1010 1111 1110 = 0xCAFE</code>.</p>
@@ -313,7 +317,7 @@ $$</div>
 <p>Muito bem, até aqui vimos números (inclusive fracionários), mas como representamos números negativos? As três maneiras mais utilizadas são: sinal-magnitude, complemento de base diminuída e complemento de base.</p>
 <h2>Sinal-Magnitude</h2>
 <p>Esta é a representação que usamos no dia a dia com o sistema decimal. Nela, o dígito mais significativo é especial e contém <code>+</code> ou <code>-</code> para indicar se o número é negativo ou não (a ausência implica em um número positivo). Esta representação é muito simples, e é usada em computação para representar números de ponto flutuante, chamados normalmente de <em>float</em> ou <em>double</em>.</p>
-<p>Em binário, usamos um bit extra para isso, onde 1 significa que o número é negativo e 0 que é positivo. Um número binário de <span class="math">\(n\)</span> bits pode representar <span class="math">\(2^{n}\)</span> números. Porém, na representação sinal-magnitude, há dois fatores importantes. O primeiro é que um dos bits é usado para representar o sinal, então com <span class="math">\(n\)</span> bits podemos representar efetivamente <span class="math">\(2^{n-1}\)</span> números positivos e a mesma quantidade de números negativos. O segundo é que há duas representações para o zero! Isso significa que dos <span class="math">\(2^{n-1}\)</span> números representáveis para os positivos, um é o zero e o mesmo ocorre para os negativos. No final, podemos representar <span class="math">\(2^{n}-1\)</span> números, pois o zero é representado duas vezes (o zero positivo e o zero negativo). Os números representáveis estão na faixa <span class="math">\(-(2^{n-1}-1)\leq x \leq +(2^{n-1}-1)\)</span>. Exemplo: com 4 bits podemos representar <span class="math">\(2^{4}=16\)</span> números, mas usando sinal-magnitude podemos representar de <code>-7 (1111)</code> até <code>+7 (0111)</code>, o que nos dá efetivamente 15 números (7 negativos, 7 positivos e o zero).</p>
+<p>Em binário, usamos um bit extra para isso, onde 1 significa que o número é negativo e 0 que é positivo. Um número binário de $n$ bits pode representar $2^{n}$ números. Porém, na representação sinal-magnitude, há dois fatores importantes. O primeiro é que um dos bits é usado para representar o sinal, então com $n$ bits podemos representar efetivamente $2^{n-1}$ números positivos e a mesma quantidade de números negativos. O segundo é que há duas representações para o zero! Isso significa que dos $2^{n-1}$ números representáveis para os positivos, um é o zero e o mesmo ocorre para os negativos. No final, podemos representar $2^{n}-1$ números, pois o zero é representado duas vezes (o zero positivo e o zero negativo). Os números representáveis estão na faixa $-(2^{n-1}-1)\leq x \leq +(2^{n-1}-1)$. Exemplo: com 4 bits podemos representar $2^{4}=16$ números, mas usando sinal-magnitude podemos representar de <code>-7 (1111)</code> até <code>+7 (0111)</code>, o que nos dá efetivamente 15 números (7 negativos, 7 positivos e o zero).</p>
 <p>A grande vantagem desta representação é que é muito fácil converter um número de positivo para negativo e vice-versa: basta mudar o bit do sinal. As desvantagens são três: (1) há dois zeros, o que complica os circuitos aritméticos pois é uma excessão a tratar; (2) ainda por existirem dois zeros, desperdiçamos um número da capacidade de representação; e (3) os circuitos aritméticos são diferentes para cada operação e portanto o circuito aritmético é um pouco mais complexo que outras representações (ocupam maior área e consomem mais energia). A complexidade desta última desvantagem está ligada ao fato de sermos obrigado a verificar o sinal de ambos os operandos antes de realizar a operação.</p>
 <h3>Operações com sinal-magnitude em binário</h3>
 <p>As operações são diferentes para soma e subtração e seguem as mesmas regras que usamos na aritmética em base decimal. O cálculo do sinal deve ser realizado a parte.</p>
@@ -321,7 +325,7 @@ $$</div>
 <p>Calcular <code>(+2)+(+3)</code>, <code>(+2)-(-3)</code> e <code>(+3)-(+4)</code> em binário de 4 bits usando sinal-magnitude.</p>
 <p>Começamos obtendo a representação binária dos números:
 <code>(+2)=0010</code>, <code>(+3)=0011</code>, <code>(-3)=1011</code> e <code>(+4)=0100</code>.</p>
-<p>Depois observamos o sinais e montamos as operações. Como as duas primeiras operações são idênticas, montamos uma soma. Para a última operação devemos montar uma subtração. Na operação de fato, não usamos o sinal, então operaremos com <span class="math">\(n-1\)</span> bits, ou três bits neste exemplo.
+<p>Depois observamos o sinais e montamos as operações. Como as duas primeiras operações são idênticas, montamos uma soma. Para a última operação devemos montar uma subtração. Na operação de fato, não usamos o sinal, então operaremos com $n-1$ bits, ou três bits neste exemplo.
 <pre>
 010 (vai um)  011 (empresta um)
  010 +         100 -
@@ -351,7 +355,7 @@ $$</div>
 <h2>Complemento de base</h2>
 <p>O complemento de base é a representação mais utilizada em binário (base 2), onde é conhecido como <strong>complemento de dois</strong>. Praticamente todos os processadores modernos o utilizam nas unidades lógicas e aritméticas internas para contas com inteiros e com ponto fixo, o que corresponde a maior parte dos cálculos realizados por um computador.</p>
 <p>Para converter um número binário de positivo para negativo, invertemos os bits e somamos 1. Exemplo 1: <code>-7=inv(7)+1</code>, ou em binário de 4 bits <code>inv(0111)+1=1000+1=1001</code>. Exemplo 2: <code>-1=inv(1)+1</code>, em binário de 4 bits <code>inv(0001)+1= 1110+1=1111</code>.</p>
-<p>A capacidade de representação agora muda um pouco pois não temos mais dois zeros! A função de somar 1 é justamente deslocar a parte negativa para que o -0 (<code>1000</code> em sinal magnitude e <code>1111</code> em complemento de um) represente um número negativo (<code>-1=1111</code> em complemento de 2). Isso faz que que um número binário <span class="math">\(x\)</span> de <span class="math">\(n\)</span> bits possa estar na faixa de <span class="math">\(-(2^{n-1})\leq x \leq +(2^{n-1}-1)\)</span>, ou seja, há um número negativo a mais! Exemplo: com 4 bits podemos representar <span class="math">\(2^{4}=16\)</span> números, e usando complemento de dois podemos representar de <code>-8 (1000)</code> até <code>+7 (0111)</code>.</p>
+<p>A capacidade de representação agora muda um pouco pois não temos mais dois zeros! A função de somar 1 é justamente deslocar a parte negativa para que o -0 (<code>1000</code> em sinal magnitude e <code>1111</code> em complemento de um) represente um número negativo (<code>-1=1111</code> em complemento de 2). Isso faz que que um número binário $x$ de $n$ bits possa estar na faixa de $-(2^{n-1})\leq x \leq +(2^{n-1}-1)$, ou seja, há um número negativo a mais! Exemplo: com 4 bits podemos representar $2^{4}=16$ números, e usando complemento de dois podemos representar de <code>-8 (1000)</code> até <code>+7 (0111)</code>.</p>
 <p>Apesar de ligeiramente mais complexos que os circuitos para operações em complemento de um devido à conversão exigir uma soma de 1, a representação em complemento de dois é a mais usada pois normalmente os circuitos somadores já possuem uma entrada de vai um para o bit menos significativo. Em condições normais, uma subtração em complemento de dois seria tão complexa quanto no sinal-magnitude (usando circuitos diferentes para soma e subtração) ou seriam três somas se convertermos para negativo e fizermos a soma, pois a conversão exige uma soma de +1. Se considerarmos que na maioria das operações somamos dois números somente, a entrada de vai um para o bit menos significativo não é usada (está sempre em zero), portanto podemos usá-la para implementar o complemento de dois com a mesma complexidade dos circuitos de complemento de um, mantendo a vantagem de usarmos toda a capacidade de representação (não há dois zeros). Sendo assim, o mais comum é usarmos um somador para realizar a subtração, usando a entrada do vai um (e invertendo os bits de um dos números corretamente) para realizar a soma, tornando o complemento de 2 a representação mais eficiente, desde que não usemos o vai=um de entrada.</p>
 <h3>Operações com complemento de base diminuída em binário</h3>
 <p>Realizar <code>3-4</code> em binário usando complemento de dois.</p>
@@ -395,83 +399,19 @@ $$</div>
 </pre>
 
 <p>Repare que agora estamos fazendo uma subtração pois, apesar de realizarmos uma soma, estamos usando o vai-um de entrada no LSB em ambos os casos. Na esquerda fizemos <code>-3-5=-3+(-6)+1</code>. O resultado é <code>1000=-8</code>, sem <em>overflow</em>. Na direita temos <code>-3-6=-3+(-7)+1</code>, mas dessa vez note que o resultado é positivo (<code>0110=+6</code>) portanto houve <em>overflow</em>.</p>
-<p>Agora observe os vai-uns das operações. Sempre que realizamos a soma em complemento de dois com números binários, se o vai-um final for diferente do vai-um do estágio anterior, houve um <em>overflow</em> e o resultado não está correto. Em circuitos digitais, pode-se fazer simplesmente <span class="math">\(c_{n}\oplus c_{n-1}\)</span> e teremos um <em>flag</em> que indica a presença de um <em>overflow</em>.</p>
+<p>Agora observe os vai-uns das operações. Sempre que realizamos a soma em complemento de dois com números binários, se o vai-um final for diferente do vai-um do estágio anterior, houve um <em>overflow</em> e o resultado não está correto. Em circuitos digitais, pode-se fazer simplesmente $c_{n}\oplus c_{n-1}$ e teremos um <em>flag</em> que indica a presença de um <em>overflow</em>.</p>
 <h3>Explição do da detecção do <em>overflow</em></h3>
-<p>Vamos entender o motivo pelo qual <span class="math">\(ov=c_{n}\oplus c_{n-1}\)</span> funciona para binários em complemento de 2.</p>
+<p>Vamos entender o motivo pelo qual $ov=c_{n}\oplus c_{n-1}$ funciona para binários em complemento de 2.</p>
 <p>Como realizamos somente somas (a subtração é uma soma com a representação do negativo), há somente dois casos possíveis que geram <em>overflow</em>: (a) dois operandos positivos e resultado negativo ou (b) dois operandos negativos e resultado positivo. A soma de números de sinais opostos nunca gera <em>overflow</em>.</p>
-<p>Poderíamos facilmente fazer um comparador de 3 bits e detectar o <em>overflow</em> usando as regras que acabamos de descrever, mas vamos entender o XOR. Sabemos que o bit de sinal na representação de complemento de dois é o MSB, então chamaremos de <span class="math">\(a_n\)</span> e <span class="math">\(b_n\)</span> o MSB, que é o bit de sinal dos operandos <span class="math">\(a\)</span> e <span class="math">\(b\)</span>, respectivamente.</p>
-<p>A última operação que realizamos é somar esta coluna, ou seja <span class="math">\(a_n+b_n+c_{n-1}\)</span>. O resultado é o vai-um de saída <span class="math">\(c_n\)</span> e o sinal do resultado, que chamaremos de <span class="math">\(r_n\)</span>. A última operação que realizamos é então:
-</p>
-<div class="math">$$
+<p>Poderíamos facilmente fazer um comparador de 3 bits e detectar o <em>overflow</em> usando as regras que acabamos de descrever, mas vamos entender o XOR. Sabemos que o bit de sinal na representação de complemento de dois é o MSB, então chamaremos de $a_n$ e $b_n$ o MSB, que é o bit de sinal dos operandos $a$ e $b$, respectivamente.</p>
+<p>A última operação que realizamos é somar esta coluna, ou seja $a_n+b_n+c_{n-1}$. O resultado é o vai-um de saída $c_n$ e o sinal do resultado, que chamaremos de $r_n$. A última operação que realizamos é então:
+$$
 c_nr_n=a_n+b_n+c_{n-1}
-$$</div>
-<p>
-Onde <span class="math">\(c_nr_n\)</span> representam os dois bits resultantes da soma (e.g. 10=1+1+0).</p>
-<p>No caso (a), sabemos que <span class="math">\(a_n=b_n=0\)</span> e <span class="math">\(r_n=1\)</span>. A única possibilidade de fecharmos a equação com <em>overflow</em> é se <span class="math">\(c_{n-1}=1\)</span>, quando <span class="math">\(c_n=0\)</span>.</p>
-<p>No caso (b), sabemos que <span class="math">\(a_n=b_n=1\)</span> e <span class="math">\(r_n=0\)</span>. A única possibilidade de fecharmos a equação é se <span class="math">\(c_{n-1}=0\)</span>, quando <span class="math">\(c_n=1\)</span>.</p>
-<p>Note que ambos os casos, <span class="math">\(c_n\neq c_{n-1}\)</span> ou não há nenhuma maneira de cairmos em uma condição de <em>overflow</em>. A operação <span class="math">\(c_{n}\oplus c_{n-1}\)</span> é verdadeira exatamente se <span class="math">\(c_n\neq c_{n-1}\)</span>.</p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-
-    var configscript = document.createElement('script');
-    configscript.type = 'text/x-mathjax-config';
-    configscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        availableFonts: ['STIX', 'TeX']," +
-        "        preferredFont: 'STIX'," +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script>
+$$
+Onde $c_nr_n$ representam os dois bits resultantes da soma (e.g. 10=1+1+0).</p>
+<p>No caso (a), sabemos que $a_n=b_n=0$ e $r_n=1$. A única possibilidade de fecharmos a equação com <em>overflow</em> é se $c_{n-1}=1$, quando $c_n=0$.</p>
+<p>No caso (b), sabemos que $a_n=b_n=1$ e $r_n=0$. A única possibilidade de fecharmos a equação é se $c_{n-1}=0$, quando $c_n=1$.</p>
+<p>Note que ambos os casos, $c_n\neq c_{n-1}$ ou não há nenhuma maneira de cairmos em uma condição de <em>overflow</em>. A operação $c_{n}\oplus c_{n-1}$ é verdadeira exatamente se $c_n\neq c_{n-1}$.</p>
   </div>
   <div class="tag-cloud">
     <p>
@@ -502,10 +442,18 @@ Onde <span class="math">\(c_nr_n\)</span> representam os dois bits resultantes d
 
     <footer>
 <p>
-  &copy; Bruno Albertini 2014 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2014 Bruno Albertini - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Criado com o <a href="http://getpelican.com" target="_blank">Pelican</a> usando o tema <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a>
+  <span class="footer-separator">|</span>
+  Alterar tema para <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> 
+  <script id="dark-theme-script"
+          src="https://balbertini.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
 </p><p>
   <a rel="license"
      href="http://creativecommons.org/licenses/by-sa/4.0/"

@@ -8,13 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
 
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://balbertini.github.io/theme/stylesheet/dark-theme.min.css">
 
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://balbertini.github.io/theme/pygments/monokai.min.css">
     <link id="pygments-light-theme" rel="stylesheet" type="text/css"
-          href="https://balbertini.github.io/theme/pygments/github.min.css">
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://balbertini.github.io/theme/pygments/emacs.min.css">
 
 
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/fontawesome.css">
@@ -71,7 +78,7 @@
   <title>B.Albertini's site &ndash; Memórias em VHDL</title>
 
 </head>
-<body class="light-theme">
+<body >
   <aside>
     <div>
       <a href="https://balbertini.github.io">
@@ -147,6 +154,8 @@
     <p>
       Publicado em 30/05/2019 (Qui) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
 
+      &#8226; Última modificação em 06/06/2019 (Qui)
+
         &#8226; 10 min de leitura 
     </p>
   </header>
@@ -157,26 +166,26 @@
 <p>Neste artigo, veremos como representar memórias do tipo RAM e ROM em VHDL.</p>
 <h2>Descrição base</h2>
 <p>Postergaremos a descrição da entidade (veja os exemplos no final do artigo), bastando o conhecimento que a memória possui uma porta de entrada de endereços (<code>addr</code>), uma entrada de dados (<code>data_i</code>) e uma saída de dados (<code>data_o</code>).</p>
-<p>A memória em VHDL será então uma <strong>matriz</strong> (<code>array</code>) do <strong>tipo de dado</strong> que se quer representar. O tamanho (profundidade) da matriz define o tamanho da memória e normalmente é representado por <span class="math">\(n\)</span>, onde <span class="math">\(n=2^{a_s}\)</span> e <span class="math">\(a_s\)</span> é o tamanho em bits do endereço <code>addr</code>. A matriz vai então de <span class="math">\(0\)</span> até <span class="math">\(n-1\)</span>, contendo efetivamente <span class="math">\(n\)</span> posições.</p>
-<p>Cada posição da matriz é uma palavra de memória, representada pelo tipo de dado que se quer armazenar. O tamanho de cada palavra de memória é igual ao tamanho do tipo de dado usado, expresso por <span class="math">\(d_s\)</span>.</p>
+<p>A memória em VHDL será então uma <strong>matriz</strong> (<code>array</code>) do <strong>tipo de dado</strong> que se quer representar. O tamanho (profundidade) da matriz define o tamanho da memória e normalmente é representado por $n$, onde $n=2^{a_s}$ e $a_s$ é o tamanho em bits do endereço <code>addr</code>. A matriz vai então de $0$ até $n-1$, contendo efetivamente $n$ posições.</p>
+<p>Cada posição da matriz é uma palavra de memória, representada pelo tipo de dado que se quer armazenar. O tamanho de cada palavra de memória é igual ao tamanho do tipo de dado usado, expresso por $d_s$.</p>
 <p>Vamos ao exemplo, que deve estar no preâmbulo da arquitetura:</p>
-<div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">mem_t</span> <span class="k">is</span> <span class="k">array</span> <span class="p">(</span><span class="mi">0</span> <span class="k">to</span> <span class="mi">31</span><span class="p">)</span> <span class="k">of</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">type</span> <span class="n">mem_t</span> <span class="k">is</span> <span class="k">array</span> <span class="p">(</span><span class="mi">0</span> <span class="k">to</span> <span class="mi">31</span><span class="p">)</span> <span class="k">of</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
 <span class="k">signal</span> <span class="n">mem</span> <span class="o">:</span> <span class="n">mem_t</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 
 
-<p>No trecho, estamos descrevendo duas coisas, uma abstrata (de apoio a representação de hardware) e uma descrição física (que irá de fato gerar um hardware). A descrição abstrata é a declaração do sinal <code>mem_t</code> na primeira linha. Apesar de não gerar um hardware por si só, estamos declarando um tipo do usuário que é uma matriz (<code>array</code>) de 32 posições (de 0 a 31). Cada posição armazena um <code>bit_vector</code> de 4 bits. Podemos dizer que acabamos de declarar uma memória com <span class="math">\(n=32\)</span> (ou <span class="math">\(a_s=5\)</span>) e <span class="math">\(d_s=4\)</span>. Esta memória possui então 32 palavras de 4 bits, ou 128 bits no total.</p>
+<p>No trecho, estamos descrevendo duas coisas, uma abstrata (de apoio a representação de hardware) e uma descrição física (que irá de fato gerar um hardware). A descrição abstrata é a declaração do sinal <code>mem_t</code> na primeira linha. Apesar de não gerar um hardware por si só, estamos declarando um tipo do usuário que é uma matriz (<code>array</code>) de 32 posições (de 0 a 31). Cada posição armazena um <code>bit_vector</code> de 4 bits. Podemos dizer que acabamos de declarar uma memória com $n=32$ (ou $a_s=5$) e $d_s=4$. Esta memória possui então 32 palavras de 4 bits, ou 128 bits no total.</p>
 <p>A segunda declaração efetivamente descreve a memória, fazendo com que o sinal <code>mem</code> seja interpretado como a matriz declarada anteriormente.</p>
 <p>Mas é só isso? Sim, é só isso. Ao declarar uma matriz da maneira descrita, o sintetizador irá entender automaticamente que o que você quer descrever é uma memória. O tipo de memória será determinado pelo restante da sua descrição, que deverá conter as operações possíveis sobre a matriz recém declarada.</p>
 <h2>Operando sobre a matriz de memória</h2>
 <p>Há duas operações possíveis, a escrita e a leitura. Para ler do vetor, basta indexá-lo com a posição do vetor que deseja-se ler. O resultado da indexação será um dado do mesmo tipo que o declarado anteriormente como o tipo de dado da memória.</p>
-<div class="highlight"><pre><span></span><span class="n">data_o</span> <span class="o">&lt;=</span> <span class="n">mem</span><span class="p">(</span><span class="n">to_integer</span><span class="p">(</span><span class="kt">unsigned</span><span class="p">(</span><span class="n">addr</span><span class="p">)));</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">data_o</span> <span class="o">&lt;=</span> <span class="n">mem</span><span class="p">(</span><span class="n">to_integer</span><span class="p">(</span><span class="kt">unsigned</span><span class="p">(</span><span class="n">addr</span><span class="p">)));</span>
+</code></pre></div>
 
 
 <p>Para escrever no vetor, basta inverter a escrita, ou seja, atribuir um valor do mesmo tipo que o declarado na memória à uma posição do vetor, indexada da mesma maneira.</p>
-<div class="highlight"><pre><span></span><span class="n">mem</span><span class="p">(</span><span class="n">to_integer</span><span class="p">(</span><span class="kt">unsigned</span><span class="p">(</span><span class="n">addr</span><span class="p">)))</span> <span class="o">&lt;=</span> <span class="n">data_i</span><span class="p">;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">mem</span><span class="p">(</span><span class="n">to_integer</span><span class="p">(</span><span class="kt">unsigned</span><span class="p">(</span><span class="n">addr</span><span class="p">)))</span> <span class="o">&lt;=</span> <span class="n">data_i</span><span class="p">;</span>
+</code></pre></div>
 
 
 <p>Note que o <code>addr</code> deve ser um inteiro pois este é o único tipo de dados permitido para indexação (neste caso usamos uma rotina de conversão para converter o <code>addr</code> para um inteiro sem sinal). Também observe que ambas as construções devem estar dentro do corpo da arquitetura e são susceptíveis a qualquer estrutura em que estejam inseridas.</p>
@@ -190,19 +199,19 @@
 <p>Em várias situações, é útil a memória já conter algum valor no momento em que é sintetizada, principalmente quando se trata de uma ROM. Isto pode ser feito de duas maneiras: através de um literal constante na própria descrição ou através de um arquivo externo.</p>
 <h3>Literal</h3>
 <p>Para carregar os valores com um literal na própria descrição, basta atribuir o valor na declaração do sinal que representa a matriz. Isto pode ser feito da seguinte maneira:</p>
-<div class="highlight"><pre><span></span><span class="k">signal</span> <span class="n">mem</span> <span class="o">:</span> <span class="n">mem_type</span> <span class="o">:=</span> <span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="k">signal</span> <span class="n">mem</span> <span class="o">:</span> <span class="n">mem_type</span> <span class="o">:=</span> <span class="p">(</span>
   <span class="s">&quot;0000&quot;</span><span class="p">,</span> <span class="s">&quot;0001&quot;</span><span class="p">,</span> <span class="s">&quot;0010&quot;</span><span class="p">,</span> <span class="s">&quot;0011&quot;</span><span class="p">,</span> <span class="s">&quot;0100&quot;</span><span class="p">,</span> <span class="s">&quot;0101&quot;</span><span class="p">,</span> <span class="s">&quot;0110&quot;</span><span class="p">,</span> <span class="s">&quot;0111&quot;</span><span class="p">,</span>
   <span class="s">&quot;1000&quot;</span><span class="p">,</span> <span class="s">&quot;1001&quot;</span><span class="p">,</span> <span class="s">&quot;1010&quot;</span><span class="p">,</span> <span class="s">&quot;1011&quot;</span><span class="p">,</span> <span class="s">&quot;1100&quot;</span><span class="p">,</span> <span class="s">&quot;1101&quot;</span><span class="p">,</span> <span class="s">&quot;1110&quot;</span><span class="p">,</span> <span class="s">&quot;1111&quot;</span><span class="p">,</span>
   <span class="s">&quot;0000&quot;</span><span class="p">,</span> <span class="s">&quot;0001&quot;</span><span class="p">,</span> <span class="s">&quot;0010&quot;</span><span class="p">,</span> <span class="s">&quot;0011&quot;</span><span class="p">,</span> <span class="s">&quot;0100&quot;</span><span class="p">,</span> <span class="s">&quot;0101&quot;</span><span class="p">,</span> <span class="s">&quot;0110&quot;</span><span class="p">,</span> <span class="s">&quot;0111&quot;</span><span class="p">,</span>
   <span class="s">&quot;1000&quot;</span><span class="p">,</span> <span class="s">&quot;1001&quot;</span><span class="p">,</span> <span class="s">&quot;1010&quot;</span><span class="p">,</span> <span class="s">&quot;1011&quot;</span><span class="p">,</span> <span class="s">&quot;1100&quot;</span><span class="p">,</span> <span class="s">&quot;1101&quot;</span><span class="p">,</span> <span class="s">&quot;1110&quot;</span><span class="p">,</span> <span class="s">&quot;1111&quot;</span><span class="p">);</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Ao declarar a matriz de memória podemos atribuir um valor inicial usando o operador <code>:=</code>. No exemplo acima, há exatamente 32 palavras de 4 bits, o que preenche completamente a memória. A representação usada para cada palavra é a mesma usada para o tipo de dados declarado no tipo da memória (nesse caso <code>bit_vector</code>).</p>
 <h3>Arquivo</h3>
 <p>A ideia de se carregar a memoria usando um literal parece interessante porém se torna difícil quando a memória é grande, pois o literal está junto com a descrição da memória no arquivo VHDL. Imagine uma memória com o tamanho de uma memória atual, e calcule a quantidade de palavras que você terá que especificar...</p>
 <p>Para amenizar o problema, há uma biblioteca do pacote IEEE chamada de <code>textio</code>, que contém primitivas de leitura de arquivos. Podemos facilmente utilizá-la para ler o conteúdo inicial da memória de um arquivo externo ao VHDL e escrevê-lo na matriz de memória. Para fazer uso desta biblioteca, temos que declarar o uso do pacote <code>ieee.textio</code> (lembre-se do <code>.all</code> ou das funcionalidades que irá utilizar), o que nos disponibilizará as rotinas de manipulação de arquivos. Para atribuir um valor inicial à matriz de memória, escrevemos uma função auxiliar que lê os dados do arquivo e preenche uma matriz temporária idêntica a matriz de memória, assim podemos atribuir a matriz temporária à matriz de memória durante a sua declaração. Vejamos um exemplo:</p>
-<div class="highlight"><pre><span></span><span class="k">impure</span> <span class="k">function</span> <span class="n">inicializa</span><span class="p">(</span><span class="n">nome_do_arquivo</span> <span class="o">:</span> <span class="k">in</span> <span class="kt">string</span><span class="p">)</span> <span class="k">return</span> <span class="n">mem_t</span> <span class="k">is</span>
+<div class="highlight"><pre><span></span><code><span class="k">impure</span> <span class="k">function</span> <span class="n">inicializa</span><span class="p">(</span><span class="n">nome_do_arquivo</span> <span class="o">:</span> <span class="k">in</span> <span class="kt">string</span><span class="p">)</span> <span class="k">return</span> <span class="n">mem_t</span> <span class="k">is</span>
   <span class="k">file</span>     <span class="n">arquivo</span>  <span class="o">:</span> <span class="n">text</span> <span class="k">open</span> <span class="n">read_mode</span> <span class="k">is</span> <span class="n">nome_do_arquivo</span><span class="p">;</span>
   <span class="k">variable</span> <span class="n">linha</span>    <span class="o">:</span> <span class="n">line</span><span class="p">;</span>
   <span class="k">variable</span> <span class="n">temp_bv</span>  <span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
@@ -216,23 +225,23 @@
     <span class="k">return</span> <span class="n">temp_mem</span><span class="p">;</span>
   <span class="k">end</span><span class="p">;</span>
 <span class="k">signal</span> <span class="n">mem</span> <span class="o">:</span> <span class="n">mem_t</span> <span class="o">:=</span> <span class="n">inicializa</span><span class="p">(</span><span class="s">&quot;rom32x4.dat&quot;</span><span class="p">);</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>A função, resumidamente, está lendo um arquivo (cujo nome é seu único parâmetro) linha por linha, considerando que há uma palavra de memória por linha, na forma de um <code>bit_vector</code> de 4 bits. Note que a função só lerá a quantidade de dados necessária para preencher a memória pois o laço é limitado pelo tamanho do tipo da memória. No nosso exemplo, ela lerá as primeiras 32 palavras (uma por linha, então 32 linhas) do arquivo, esperando que cada linha contenha exatamente 4 bits. Na última linha do exemplo declaramos a matriz de memória atribuindo como valor inicial o valor retornado pela função, que é invocada com o nome do arquivo como parâmetro. Um exemplo de arquivo é:</p>
-<div class="highlight"><pre><span></span><span class="err">0000</span>
+<div class="highlight"><pre><span></span><code><span class="err">0000</span>
 <span class="err">0001</span>
 <span class="err">0010</span>
 <span class="err">...</span>
 <span class="err">1111</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Observe que o arquivo terá 32 linhas, que omito por questões de espaço.</p>
 <h3>Considerações sobre valores iniciais</h3>
 <p>Normalmente, atribuições na declaração do sinal ou variável não são levadas em consideração pelo sintetizador e tem efeitos somente para simulação. Contudo, em algumas situações a maioria dos sintetizadores leva em consideração o valor declarado na descrição. Uma delas é quando declaramos uma constante e não um sinal. Isto faz sentido pois o valor inicial de uma memória faz sentido se esta for uma ROM, portanto não será escrita. Dessa forma, a declaração da matriz de memória será:</p>
-<div class="highlight"><pre><span></span><span class="k">constant</span> <span class="n">mem</span> <span class="o">:</span> <span class="n">mem_type</span><span class="p">;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">constant</span> <span class="n">mem</span> <span class="o">:</span> <span class="n">mem_type</span><span class="p">;</span>
+</code></pre></div>
 
 
 <p>Ambas as técnicas de atribuição de valores iniciais são válidas e podem ser usadas na declaração da matriz de memória (constante agora).</p>
@@ -246,68 +255,6 @@
 <li><a href="https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/memorias_tb.vhd"><em>Testbench</em></a> para todas as memórias acima (para rodar são necessários todos os arquivos).</li>
 <li><a href="https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/utils.vhd">Rotinas</a> auxiliares para impressão dos vetores no <em>testbench</em>.</li>
 </ul>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-
-    var configscript = document.createElement('script');
-    configscript.type = 'text/x-mathjax-config';
-    configscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        availableFonts: ['STIX', 'TeX']," +
-        "        preferredFont: 'STIX'," +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script>
   </div>
   <div class="tag-cloud">
     <p>
@@ -338,10 +285,18 @@
 
     <footer>
 <p>
-  &copy; Bruno Albertini 2014 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2014 Bruno Albertini - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Criado com o <a href="http://getpelican.com" target="_blank">Pelican</a> usando o tema <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a>
+  <span class="footer-separator">|</span>
+  Alterar tema para <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> 
+  <script id="dark-theme-script"
+          src="https://balbertini.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
 </p><p>
   <a rel="license"
      href="http://creativecommons.org/licenses/by-sa/4.0/"

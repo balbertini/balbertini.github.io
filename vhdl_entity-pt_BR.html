@@ -8,13 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
 
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://balbertini.github.io/theme/stylesheet/dark-theme.min.css">
 
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://balbertini.github.io/theme/pygments/monokai.min.css">
     <link id="pygments-light-theme" rel="stylesheet" type="text/css"
-          href="https://balbertini.github.io/theme/pygments/github.min.css">
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://balbertini.github.io/theme/pygments/emacs.min.css">
 
 
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/fontawesome.css">
@@ -71,7 +78,7 @@
   <title>B.Albertini's site &ndash; Entidade</title>
 
 </head>
-<body class="light-theme">
+<body >
   <aside>
     <div>
       <a href="https://balbertini.github.io">
@@ -147,6 +154,8 @@
     <p>
       Publicado em 21/09/2018 (Sex) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
 
+      &#8226; Última modificação em 13/03/2019 (Qua)
+
         &#8226; 8 min de leitura 
     </p>
   </header>
@@ -158,11 +167,11 @@
 A entidade, declarada pela palavra reservada <code>entity</code>, é a unidade básica de descrição de VHDL. O equivalente em um diagrama esquemático é o desenho que você faz para representar seu componente. Por exemplo, pense em uma máquina de vender refrigerantes em lata. Suponha que você (abstratamente), tenha que desenhar um símbolo para sua máquina. O meu símbolo seria como o da figura: entra dinheiro e sai latas.
 <br/><br/></p>
 <p>A sintaxe de uma entidade em VHDL é:</p>
-<div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
+<div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
    <span class="k">generic</span> <span class="p">(</span><span class="n">lista_de_elementos_genericos</span><span class="p">);</span>
    <span class="k">port</span> <span class="p">(</span><span class="n">lista_de_portas</span><span class="p">);</span>
 <span class="k">end</span> <span class="nc">nome_da_entidade</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><img src='https://balbertini.github.io/images/vhdl/entidade.png' width="20%" align="right" style="padding-left:5%" />
@@ -172,14 +181,14 @@ No caso do VHDL, a entidade segue o mesmo princípio que você pensou para defin
 <p><img src='https://balbertini.github.io/images/vhdl/mux2x1_entidade.png' width="70%"/></p>
 <p>Vamos descrever um multiplexador como o da figura. A entidade chama-se <code>mux2to1</code> e, na figura, está a esquerda. O equivalente em um diagrama esquemático está a direita na figura. Note que não desenhei as setas na figura, nem coloquei o tamanho de alguns sinais. Isto porque é uma convenção desenhar entradas a esquerda do componente, saídas a direita e sinais de controle embaixo ou em cima. O tamanho, quando não especificado, é assumido em 1 bit.</p>
 <p>O código VHDL para esta entidade é:</p>
-<div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">mux2to1</span> <span class="k">is</span>
+<div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">mux2to1</span> <span class="k">is</span>
     <span class="k">port</span><span class="p">(</span>
         <span class="n">s</span><span class="o">:</span>    <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span> <span class="c1">-- selection: 0=a, 1=b</span>
         <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">:</span> <span class="k">in</span>    <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">-- inputs</span>
         <span class="n">o</span><span class="o">:</span>    <span class="k">out</span>   <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1">-- output</span>
     <span class="p">);</span>
 <span class="k">end</span> <span class="nc">mux2to1</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h2>Boas práticas ao definir a entidade</h2>
@@ -191,18 +200,18 @@ No caso do VHDL, a entidade segue o mesmo princípio que você pensou para defin
 </ol>
 <h1>Uso do <code>begin</code> e nome da entidade</h1>
 <p>É possível que uma entidade tenha um <code>begin</code>. Dentro da entidade (após o <code>begin</code> e antes do <code>end</code>) podemos colocar qualquer declaração passiva, ou seja, que não altera nenhum sinal (i.e. processos passivos, asserções estáticas e chamadas de procedimentos passivas). A mais utilizada é a asserção, assim podemos fazer verificações estáticas sobre a utilização da entidade.</p>
-<div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
+<div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
    <span class="k">generic</span> <span class="p">(</span><span class="n">lista_de_elementos_genericos</span><span class="p">);</span>
    <span class="k">port</span> <span class="p">(</span><span class="n">lista_de_portas</span><span class="p">);</span>
 <span class="k">begin</span>
   <span class="n">verificacoes_estaticas</span><span class="p">;</span>
 <span class="k">end</span> <span class="nc">nome_da_entidade</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>Exemplo</h3>
 <p>No exemplo a seguir colocamos uma asserção na parte estática da entidade para verificar se o registrador foi instanciado corretamente. Caso o registrador tenha um tamanho especificado menor que 2, a asserção irá falhar e qualquer simulação ou síntese será interrompida com a mensagem especificada.</p>
-<div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">reg_deslocamento</span> <span class="k">is</span>
+<div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">reg_deslocamento</span> <span class="k">is</span>
   <span class="k">generic</span><span class="p">(</span> <span class="n">tamanho</span><span class="o">:</span> <span class="kt">natural</span> <span class="o">:=</span> <span class="mi">8</span><span class="p">);</span>
   <span class="k">port</span><span class="p">(...);</span>
 <span class="k">begin</span>
@@ -210,7 +219,7 @@ No caso do VHDL, a entidade segue o mesmo princípio que você pensou para defin
   <span class="n">report</span> <span class="s">&quot;Este registrador precisa ter tamanho mínimo 2.&quot;</span>
   <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
 <span class="k">end</span> <span class="k">entity</span> <span class="nc">reg_deslocamento</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><a name="bufferEinout"></a></p>
@@ -250,10 +259,18 @@ Note que usando o <code>buffer</code> você não pode ler um valor que foi coloc
 
     <footer>
 <p>
-  &copy; Bruno Albertini 2014 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2014 Bruno Albertini - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 </p>
 <p>
 Criado com o <a href="http://getpelican.com" target="_blank">Pelican</a> usando o tema <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a>
+  <span class="footer-separator">|</span>
+  Alterar tema para <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> 
+  <script id="dark-theme-script"
+          src="https://balbertini.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
 </p><p>
   <a rel="license"
      href="http://creativecommons.org/licenses/by-sa/4.0/"
