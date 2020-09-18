@@ -22,7 +22,7 @@ THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE = True
 THEME_COLOR_ENABLE_USER_OVERRIDE = True
 PYGMENTS_STYLE = 'emacs'
 PYGMENTS_STYLE_DARK = 'monokai'
-MD_EXTENSIONS = ['codehilite(css_class=highlight, linenums=True)','extra']
+# MD_EXTENSIONS = ['codehilite(css_class=highlight, linenums=True)','extra']
 
 TIMEZONE = 'America/Sao_Paulo'
 
