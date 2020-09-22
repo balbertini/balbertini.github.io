@@ -56,17 +56,26 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333">
 
-    <meta name="author" content="Bruno Albertini" />
-    <meta name="description" content="" />
+<meta name="author" content="Edson Midorikawa" />
+<meta name="description" content="Como instalar e usar o GHDL no Windows 10" />
+<meta name="keywords" content="vhdl, ghdl">
+
+
 <meta property="og:site_name" content="B.Albertini's site"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="B.Albertini's site"/>
-<meta property="og:description" content=""/>
+<meta property="og:title" content="GHDL no Windows 10"/>
+<meta property="og:description" content="Como instalar e usar o GHDL no Windows 10"/>
 <meta property="og:locale" content="pt_BR"/>
-<meta property="og:url" content="https://balbertini.github.io"/>
+<meta property="og:url" content="https://balbertini.github.io/vhdl_windowsghdl-pt_BR.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-09-21 21:50:00-03:00"/>
+<meta property="article:modified_time" content="2020-09-21 22:01:00-03:00"/>
+<meta property="article:author" content="https://balbertini.github.io/author/edson-midorikawa.html">
+<meta property="article:section" content="vhdl"/>
+<meta property="article:tag" content="vhdl"/>
+<meta property="article:tag" content="ghdl"/>
 <meta property="og:image" content="/images/profile.png">
 
-  <title>B.Albertini's site &ndash; Tag ghdl</title>
+  <title>B.Albertini's site &ndash; GHDL no Windows 10</title>
 
 </head>
 <body >
@@ -138,54 +147,76 @@
   <main>
 
 
-
-
-<article>
+<article class="single">
   <header>
-    <h2><a href="https://balbertini.github.io/vhdl_windowsghdl-pt_BR.html#vhdl_windowsghdl">GHDL no Windows 10</a></h2>
+      
+    <h1 id="vhdl_windowsghdl">GHDL no Windows 10</h1>
     <p>
       Publicado em 21/09/2020 (Seg) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
 
-          &#8226; Com as tags
-              <a href="https://balbertini.github.io/tag/vhdl.html">vhdl</a>,              <a href="https://balbertini.github.io/tag/ghdl.html">ghdl</a>
+      &#8226; Última modificação em 21/09/2020 (Seg)
+
         &#8226; 2 min de leitura 
     </p>
   </header>
+
+
   <div>
-      <p>Como instalar e usar o GHDL no Windows 10</p>
-        <br>
-        <a class="btn"
-           href="https://balbertini.github.io/vhdl_windowsghdl-pt_BR.html#vhdl_windowsghdl">
-          Continue lendo
-        </a>
+    <p>O Prof. Edson Midorikawa gentilmente escreveu um <em>quickstart</em> de como instalar e usar o GHDL no Windows. Foi testado no Windows 10, mas deve funcionar com pouca o nenhuma adaptação em outros sistemas operacionais da Microsoft.</p>
+<p>A instalação do GHDL no Windows:</p>
+<ol>
+<li>Baixar arquivo zip <a href="https://github.com/ghdl/ghdl/releases/download/v0.37/ghdl-0.37-mingw32-mcode.zip">desta URL</a></li>
+<li>Descompactar os arquivos em uma pasta do computador (p.ex. <code>C:\Programas</code>)</li>
+<li>Verificar a pasta onde o arquivo <code>ghdl.exe</code> fica localizado (p.ex. <code>C:\Programas\GHDL\0.37-mingw32-mcode\bin</code>)</li>
+<li>No campo de busca na barra de tarefas do Windows (ícone de lupa ao lado do símbolo do Windows), busque a frase ".Editar as variáveis de ambiente do sistema" e abra o aplicativo.</li>
+<li>Clique no botão <strong>Variáveis de Ambiente</strong></li>
+<li>Selecione o campo Path dentro de Variáveis de usuário para <seu usuario>.</li>
+<li>Clique em Editar...</li>
+<li>Clique em Novo</li>
+<li>Colar pasta do item acima (item 3)</li>
+<li>Clique OK por três vezes para finalizar</li>
+</ol>
+<p>Para rodar a simulação com GHDL, é preciso abrir uma janela de <strong>Prompt de Comandos</strong> ou <strong>Windows Powershell</strong>.</p>
+<ol>
+<li>Busque a frase <code>cmd</code> ou <code>powershell</code> no campo de busca da barra de tarefas do Windows.</li>
+<li>Abra o aplicativo.</li>
+<li>Mude o diretório de trabalho rodando o comando cd <caminho da pasta onde estão os arquivos VHDL>. Por exemplo, <code>cd c:\arquivos\vhdl</code></li>
+<li>Rode os seguintes comandos para executar a compilação e rodar o <em>testbench</em>. Por exemplo:<ul>
+<li><code>ghdl -a alarm.vhd</code></li>
+<li><code>ghdl -a alarm_tb.vhd</code></li>
+<li><code>ghdl -e alarm_tb</code></li>
+<li><code>ghdl -r alarm_tb</code></li>
+</ul>
+</li>
+</ol>
+<p><strong>Observação:</strong> a solução para o problema neste exemplo de uso está no <code>alarm.vhd</code> e o <em>testbench</em> está no <code>alarm_tb.vhd</code>, cuja entidade (do <em>testbench</em>) chama-se <code>alarm_tb</code>.</p>
   </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://balbertini.github.io/vhdl_vmghdl-pt_BR.html#vhdl_vmghdl">Máquina virtual com GHDL</a></h2>
+  <div class="tag-cloud">
     <p>
-      Publicado em 13/09/2018 (Qui) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-
-          &#8226; Com as tags
-              <a href="https://balbertini.github.io/tag/vhdl.html">vhdl</a>,              <a href="https://balbertini.github.io/tag/ghdl.html">ghdl</a>,              <a href="https://balbertini.github.io/tag/vm.html">vm</a>
-        &#8226; 13 min de leitura 
+      <a href="https://balbertini.github.io/tag/vhdl.html">vhdl</a>
+      <a href="https://balbertini.github.io/tag/ghdl.html">ghdl</a>
     </p>
-  </header>
-  <div>
-      <p>Como utilizar a VM com GHDL.</p>
-        <br>
-        <a class="btn"
-           href="https://balbertini.github.io/vhdl_vmghdl-pt_BR.html#vhdl_vmghdl">
-          Continue lendo
-        </a>
   </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'balbertini';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Habilite JavaScript para ver os comentários.
+</noscript>
+<!-- End Disqus -->
 </article>
-
-  <div class="pagination">
-  </div>
-
-
 
     <footer>
 <p>
