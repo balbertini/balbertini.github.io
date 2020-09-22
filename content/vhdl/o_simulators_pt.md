@@ -24,6 +24,8 @@ Este é o simulador usado para corrigir os exercícios de Sistemas Digitais. Por
 Alternativamente, se você prefere _containers_ tipo [Docker](https://www.docker.com/), há uma receita para o GHDL [aqui](https://github.com/ghdl/docker).
 
 Contribuição do aluno Fillipe Lima (SD1 2020S2): o aluno encontrou [um vídeo no YouTube](https://www.youtube.com/watch?v=H2GyAIYwZbw) que mostra como instalar e usar o GHDL e o GTKWave no Windows.
+
+Contribuição do Prof. Edson Midorikawa: [um artigo]({filename}o_ghdlwindows_pt.md) com um _quickstart_ do GHDL no Windows 10.
  
 
 ### EDA Playground
