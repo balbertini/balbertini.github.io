@@ -101,8 +101,6 @@ Como as HDLs principais (VHDL e Verilog) são padrões estáveis aceitos mundial
 
 Os circuitos em HDL são facilmente modularizáveis, o que significa que você pode usar técnicas de projeto hierárquicas quase sem esforço. É possível dividir um circuito grande em vários pequenos, e as descrições são facilmente reaproveitáveis por outros circuitos. Existe inclusive um mercado para isso: a venda de IPs (_Intellectual Property_), que nada mais são que módulos prontos pré testados e validados. É possível comprar uma descrição de hardware e incorporá-la ao seu projeto, economizando tempo de desenvolvimento.
 
-
-
 # Desvantagens de HDLs
 
   * Descrever circuitos é diferente de programar.

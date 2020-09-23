@@ -28,7 +28,7 @@ TIMEZONE = 'America/Sao_Paulo'
 
 PLUGIN_PATHS = ["../pelican-plugins"]
 # Enable i18n plugin, probably you already have some others here.
-PLUGINS = ['i18n_subsites', 'render_math', 'post_stats']
+PLUGINS = ['i18n_subsites', 'render_math', 'post_stats', 'filetime_from_git']
 # Enable Jinja2 i18n extension used to parse translations.
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n'],}
 

@@ -50,7 +50,7 @@ A palavra reservada `work` faz referência ao pacote de trabalho local, onde se 
 ### Exemplo
 
 <img src='{static}/images/vhdl/mux2to1_arquitetura.png' width="39%" align="right" style="padding-left:5%" />
-``` vhdl
+```vhdl
 entity mux2to1 is
 	port(
 		s:    in  bit;
@@ -75,9 +75,10 @@ Acima, vemos um componente com duas arquiteturas, representadas tanto na descri�
 
 A arquitetura padrão nesse caso é a última descrita, chamada `struct`, e descreve estruturalmente o multiplexador usando portas lógicas. Note que o nome `struct` não é uma palavra reservada e sim um identificador válido em VHDL, portanto poderia ser qualquer outro. É recomendado que o nome da arquitetura reflita o que foi feito, nesse caso uma descrição estrutural. Podemos escolher a outra arquitetura se desejarmos, que é chamada de `whenelse`. Note que ambas fazem a mesma coisa, mas de maneiras diferentes.
 
-No exemplo abaixo, temos a descrição de uma arquitetura pertencente a uma `entidade_mae` que utiliza o multiplexador como componente três vezes. Na instância `mux1`, a arquitetura é deixada a escolha do sintetizador, portanto será a arquitetura `struct`. Na instância `mux2`, a arquitetura utilizada ainda é a struct, mas dessa vez instruímos explicitamente o sintetizador a utilizá-la. Por último, na instância `mux3` o projetista escolheu explicitamente a arquitetura `whenelse`.
+No exemplo abaixo, temos a descrição de uma arquitetura pertencente a uma `entidade_mae` que utiliza o multiplexador como componente três vezes. Na instância `mux1` (linha 12), a arquitetura é deixada a escolha do sintetizador, portanto será a arquitetura `struct`. Na instância `mux2` (linha 13), a arquitetura utilizada ainda é a struct, mas dessa vez instruímos explicitamente o sintetizador a utilizá-la. Por último, na instância `mux3` (linha 14) o projetista escolheu explicitamente a arquitetura `whenelse`.
 
-```vhdl
+```
+#!vhdl
 architecture muxes of entidade_mae is
   component mux2to1 is
   	port(
