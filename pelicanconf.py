@@ -28,9 +28,15 @@ TIMEZONE = 'America/Sao_Paulo'
 
 PLUGIN_PATHS = ["../pelican-plugins"]
 # Enable i18n plugin, probably you already have some others here.
-PLUGINS = ['i18n_subsites', 'render_math', 'post_stats', 'filetime_from_git']
+PLUGINS = ['i18n_subsites', 'render_math', 'post_stats', 'filetime_from_git', 'jinja2content']
 # Enable Jinja2 i18n extension used to parse translations.
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n'],}
+
+JINJA2CONTENT_TEMPLATES=['../templates']
+# shortcodes
+# SHORTCODES = {
+#     'infobox': """content: {{ content }} <table style="width:100%">{% for boxtype, caption in content %}<tr><td>{% if boxtype=='info' %}<i class="fas fa-info fa-2x"  style="color: #0066ff;"></i>{% endif %}</td><td>{{ caption }}</td></tr>{% endfor %}</table>"""
+# }
 
 # DEFAULT_LANG = u'pt_BR'
 DATE_FORMATS = {

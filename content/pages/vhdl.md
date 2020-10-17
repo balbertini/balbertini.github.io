@@ -32,6 +32,7 @@ Summary: Lista de posts com VHDL.
 [Máquinas de estado]({filename}../vhdl/g_fsm_pt.md)  
 [Módulos parametrizáveis (`generic`)]({filename}../vhdl/l_generic_pt.md)  
 [Instância parametrizável (`generate`)]({filename}../vhdl/l_generate_pt.md)  
+[Funções]({filename}../vhdl/l_functions_pt.md)  
 
 # Linguagem (Avançado)
 [Memórias]({filename}../vhdl/b_memory_pt.md)  

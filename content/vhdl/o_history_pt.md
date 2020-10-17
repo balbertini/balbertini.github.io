@@ -1,6 +1,4 @@
 Title: Histórico
-Date: 2020-09-18 13:01
-Modified: 2020-09-18 13:01
 Category: vhdl
 Tags: vhdl, basic
 Slug: vhdl_history
@@ -12,15 +10,9 @@ Nest _post_ contaremos o histórico das HDLs com foco em VHDL e discutiremos as 
 
 VHDL, ou VHSIC-HDL significa _Very High Speed Integrated Circuit Hardware Description Language_. É uma das duas HDLs mais utilizadas (a outra é Verilog). É muito utilizada em EDA (_Electronic Design Automation_), a técnica atual de projeto de circuitos digitais, cuja principal característica é a descrição programática dos circuitos.
 
-<table style="width:100%">
- <tr>
-   <td><i class="fas fa-info fa-2x"  style="color: #0066ff;"></i></td>
-   <td>
-    HDL significa linguagem de descrição de hardware, do inglês <em>Hardware Description Language</em>.
-   </td>
- </tr>
-</table>
 
+{% from 'infobox.html' import infobox %}
+{{ infobox([('info','HDL significa linguagem de descrição de hardware, do inglês <em>Hardware Description Language</em>.')]) }}
 
 De uma maneira resumida, HDL é uma forma de expressar precisamente um circuito digital em um formato textual estruturado. Expressar significa descrever a estrutura e o comportamento do circuito. O diagrama esquemático tem um poder de expressão similar, porém de modo gráfico. Tudo o que você faz em um diagrama esquemático você pode fazer em uma HDL e, de fato, um bom projetista de hardware consegue usar ambas as formas de expressão. Há outras formas de expressar um circuito (e.g. cálculo proposicional, modelos matemáticos, equações algébricas, _floorplan_, _netlist_, etc.), mas estão fora do escopo deste _post_.
 
@@ -39,26 +31,12 @@ Há uma versão em discussão, chamada de VHDL-202X e que será padronizada como
 
 Uma das influências notáveis no VHDL é a linguagem [Ada](https://www.adaic.org/), uma linguagem desenvolvida para programação paralela e utilizada como linguagem padrão para desenvolvimento de software pelo DoD. Como VHDL foi criada para descrever circuitos digitais, a linguagem reflete a natureza concorrente intrínseca deste tipo de circuito. Ada é uma linguagem com foco em programação paralela, então suporta descrições concorrentes, tornando-a a candidata ideal para a criação do VHDL. Por este motivo, a linguagem VHDL acabou herdando muitas características da linguagem Ada, principalmente relativas à sintaxe. De fato, VHDL pode até mesmo ser utilizada para desenvolver programas de tão parecida com Ada, mas há linguagens melhores para isso. No entanto, há uma situação onde escrever um software usando VHDL é muito comum: a geração de _testbenchs_, que nada mais são que descrições não-sintetizáveis usadas para testar uma descrição de hardware.
 
-<table style="width:100%">
- <tr>
-   <td><i class="fas fa-info fa-2x"  style="color: #0066ff;"></i></td>
-   <td>
-    Em VHDL todos os comandos acontecem ao mesmo tempo exceto pelo <code>process</code>, usado para descrições de circuitos sequenciais.
-   </td>
- </tr>
- <tr>
-   <td><i class="fas fa-info fa-2x"  style="color: #0066ff;"></i></td>
-   <td>
-    O termo <u>não-sintetizável</u> significa que a descrição não pode ser transformada em hardware de verdade pois contém elementos de software.
-   </td>
- </tr>
- <tr>
-   <td><i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"></i></td>
-   <td>
-    Usamos majoritariamente o padrão IEEE 1076-1993 (conhecido como VHDL-93c), que é uma versão do VHDL-93 que também aceita primitivas do VHDL-87. Se o seu projeto não demanda outra versão explicitamente, sempre opte por esta versão pois é a melhor suportada pelas ferramentas.
-   </td>
- </tr>
-</table>
+{{ infobox([
+  ('info','Em VHDL todos os comandos acontecem ao mesmo tempo exceto pelo <code>process</code>, usado para descrições de circuitos sequenciais.'),
+  ('info','O termo <u>não-sintetizável</u> significa que a descrição não pode ser transformada em hardware de verdade pois contém elementos de software.'),
+  ('exclamation','Usamos majoritariamente o padrão IEEE 1076-1993 (conhecido como VHDL-93c), que é uma versão do VHDL-93 que também aceita primitivas do VHDL-87. Se o seu projeto não demanda outra versão explicitamente, sempre opte por esta versão pois é a melhor suportada pelas ferramentas.'),
+]) }}
+
 
 # Vantagens de HDLs
   * Menor taxa de erros e tempo de desenvolvimento.

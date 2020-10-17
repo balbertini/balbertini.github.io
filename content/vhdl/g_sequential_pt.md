@@ -1,6 +1,4 @@
 Title: Circuitos Sequenciais em VHDL
-Date: 2018-09-05 03:51
-Modified: 2018-09-05 03:51
 Category: vhdl
 Tags: vhdl, sequenciais
 Slug: vhdl_sequential
@@ -8,7 +6,11 @@ Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Como descrever circuitos sequenciais em VHDL.
 
-A principal característica de um **circuito sequencial** é que as saídas dependem não somente das entradas, como em um circuito combinatório, mas também das entradas passadas. Diz-se que um circuito sequencial possui um **elemento de memória** ou é dependente do tempo (esta última é discutível pois nem sempre o tempo está envolvido na sua forma explícita, como um sinal de _clock_).
+A principal característica de um **circuito sequencial** é que as saídas dependem não somente das entradas, como em um circuito combinatório, mas também das entradas passadas. Diz-se que um circuito sequencial possui um **elemento de memória** ou é dependente do tempo.
+
+{% from 'infobox.html' import infobox %}
+{{ infobox([('info','Depender do tempo não implica que o circuito possui um sinal de <em>clock</em>, apesar disso ser verdadeiro na maioria das vezes.'),]) }}
+
 
 ## Process
 A estrutura utilizada para descrever circuitos sequenciais em VHDL é o `process`.
@@ -25,7 +27,7 @@ end process nome_opcional;
 O nome do `process` é opcional e serve para identificá-lo durante a simulação. Recomenda-se a sua utilização para melhorar a legibilidade e facilitar a depuração, obviamente usando um nome que representa o circuito sendo descrito. Se optar por retirar o nome, retira-se o `nome_opcional`, incluindo o `:`.
 
 ## Primitivas sequenciais e concorrentes
-As primitivas sequenciais dentro de um `process` podem ser quaisquer primitivas utilizadas para descrever  circuitos combinatórios (e.g. atribuições condicionais) e também as duas que só podem ser utilizadas de maneira sequencial: `if-else` e `case`. No entanto, todas as primitivas que estiverem dentro de um `process` se **comportam de maneira sequencial**. Em contraste, as primitivas que estão dentro da descrição uma arquitetura - que só podem ser combinatórias - são consideradas concorrentes.
+As primitivas sequenciais dentro de um `process` podem ser quaisquer primitivas utilizadas para descrever  circuitos combinatórios (e.g. atribuições condicionais) e também algumas que só podem ser utilizadas de maneira sequencial: `if-else` e `case`. No entanto, todas as primitivas que estiverem dentro de um `process` se **comportam de maneira sequencial**. Em contraste, as primitivas que estão dentro da descrição uma arquitetura - que só podem ser combinatórias - são consideradas concorrentes.
 
 As primitivas concorrentes (dentro da arquitetura), representam circuitos combinatórios, portanto serão sintetizadas para tais circuitos. Quaisquer modificações na entrada têm efeito imediato e todas as funções combinatórias descritas terão suas saídas afetadas (após o devido tempo de propagação caso aplicável). É importante notar que um bloco de um `process` inteiro é equivalente a uma primitiva combinatória, ou seja, a avaliação das saídas do `process` ocorre ao mesmo tempo que a avaliação de todas as primitivas concorrentes da mesma arquitetura, incluindo outros possíveis blocos `process` descritos na mesma arquitetura, portanto não é possível aninhar mais de um `process`.
 
@@ -111,4 +113,6 @@ Observe que o `wait on` substitui a lista de sensibilidade. Normalmente o `wait 
 
 
 ## Outras primitivas sequenciais
-Há outras primitivas exclusivas para utilização sequencial (`for`, `while` e `loop`), que possuem propósitos específicos que não foram cobertos neste artigo pois possuem restrições para a síntese. Isto significa que, para que elas representem um hardware, o projetista deve utilizá-las de uma maneira específica, caso contrário elas não podem ser sintetizadas (i.e. não representam uma descrição de hardware). É muito comum entre os iniciantes considerar que estas primitivas são equivalentes às encontradas em linguagens de programação estruturada, o que na maioria das vezes é uma falácia pois não existe laço interativo em hardware equivalente ao conceito homônimo das linguagens de programação (e.g. o equivalente em hardware a um laço iterativo de um algoritmo é na verdade uma máquina de estados completa). Estas primitivas devem ser evitadas na descrição de circuitos sequenciais, especialmente por iniciantes, e são na maioria das vezes usadas somente na construção de _testbenchs_, quando as restrições para síntese não se aplicam. Sobre o `wait`, ainda existem o `wait for tempo;` e o `wait;` (só o _wait_), mas ambos não são sintetizáveis e também são usados para descrever _testbenchs_.
+Há outras primitivas exclusivas para utilização sequencial (`for`, `while` e `loop`), que possuem propósitos específicos que não foram cobertos neste artigo pois possuem restrições para a síntese. Isto significa que, para que elas representem um hardware, o projetista deve utilizá-las de uma maneira específica, caso contrário elas não podem ser sintetizadas (i.e. não representam uma descrição de hardware). É muito comum entre os iniciantes considerar que estas primitivas são equivalentes às encontradas em linguagens de programação estruturada, o que na maioria das vezes é uma falácia pois não existe laço interativo em hardware equivalente ao conceito homônimo das linguagens de programação (e.g. o equivalente em hardware a um laço iterativo de um algoritmo é na verdade uma máquina de estados completa). Estas primitivas devem ser evitadas na descrição de circuitos sequenciais, especialmente por iniciantes, e são na maioria das vezes usadas somente na construção de _testbenchs_, quando as restrições para síntese não se aplicam.
+
+Sobre o `wait`, ainda existem o `wait for tempo;` e o `wait;` (só o _wait_), ambos  usados para descrever _testbenchs_ ou modelar temporização de circuitos e sem efeito para síntese.

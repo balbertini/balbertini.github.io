@@ -1,6 +1,4 @@
 Title: Entidade
-Date: 2018-09-21 14:37
-Modified: 2019-03-13 16:55
 Category: vhdl
 Tags: vhdl, basic
 Slug: vhdl_entity
@@ -30,7 +28,7 @@ Cada porta em VHDL deve ser descrita com o formato `nome: direção tipo`. O nom
 ### Exemplo
 <img src='{static}/images/vhdl/mux2x1_entidade.png' width="70%"/>
 
-Vamos descrever um multiplexador como o da figura. A entidade chama-se `mux2to1` e, na figura, está a esquerda. O equivalente em um diagrama esquemático está a direita na figura. Note que não desenhei as setas na figura, nem coloquei o tamanho de alguns sinais. Isto porque é uma convenção desenhar entradas a esquerda do componente, saídas a direita e sinais de controle embaixo ou em cima. O tamanho, quando não especificado, é assumido em 1 bit.
+Vamos descrever um multiplexador como o da figura. A entidade chama-se `mux2to1` e, na figura, está a esquerda. O equivalente em um diagrama esquemático está a direita na figura. É uma convenção desenhar entradas a esquerda do componente, saídas a direita e sinais de controle embaixo ou em cima. O tamanho, quando não especificado, é assumido em 1 bit (nesse caso os tamanhos foram especificados).
 
 O código VHDL para esta entidade é:
 
@@ -87,3 +85,6 @@ Note que usando o `buffer` você não pode ler um valor que foi colocado na saí
 Resumindo, não utilize `buffer` nem `inout` nas suas descrições exceto se você quer mesmo os componente que serão inferidos na sua descrição. Recomendo **fortemente** que aprendizes não os utilizem. A maneira de contornar a restrição de leitura de uma porta `out` é criar um sinal temporário, fazer o que você tem que fazer sobre este sinal e, no final da arquitetura, atribuir o sinal temporário à saída que ele representa.
 
 **Nota:** se você é meu aluno, não utilize `buffer` ou `inout` somente com a intenção de ler o valor na saída em hipótese alguma.
+
+### Contribuições
+  * 24/set/2020: Arthur Lopes corrigiu o tamanho da saída do MUX do exemplo.

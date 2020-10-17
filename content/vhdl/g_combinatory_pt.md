@@ -1,6 +1,4 @@
 Title: Circuitos Combinatórios em VHDL
-Date: 2018-09-04 00:23
-Modified: 2018-09-13 08:35
 Category: vhdl
 Tags: vhdl, combinatorios
 Slug: vhdl_combinatory
@@ -8,9 +6,9 @@ Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Como descrever circuitos combinatórios em VHDL.
 
-**Circuitos combinatórios** são aqueles que implementam uma função booleana. Sua principal característica é a ausência de dependência temporal, ou seja, a saída depende apenas da entrada. Este tipo de circuito pode ser representado por uma série de portas lógicas interligadas entre si **sem realimentação**.
+**Circuitos combinatórios** são aqueles que implementam uma função booleana sem realimentação. Sua principal característica é a ausência de dependência temporal, ou seja, a saída depende apenas da entrada. Este tipo de circuito pode ser representado por uma série de portas lógicas interligadas entre si **sem realimentação**.
 
-Há três maneiras de descrever circuitos puramente combinatórios em VHDL: estrutural, atribuição condicional com `with-select` e atribuição condicional com `when-else`. As descrições realizadas utilizando uma destas três formas serão sintetizadas para circuitos puramente combinatórios.
+As três maneiras principais de descrever circuitos puramente combinatórios em VHDL são: estrutural, atribuição condicional com `with-select` e atribuição condicional com `when-else`. As descrições realizadas utilizando uma destas três formas serão sintetizadas para circuitos puramente combinatórios.
 
 ## Estrutural
 A descrição estrutural é a maneira mais direta de se descrever uma função combinatória. Consiste em descrever o circuito a partir da própria função lógica que o representa. O equivalente em um diagrama esquemático é exatamente a **função lógica**, como descrita usando as portas lógicas equivalentes. A desvantagem é que a descrição é prolixa e consequentemente torna-se rapidamente difícil de ler, razão pela qual não é recomendada para circuitos grandes. Caso opte por este tipo de descrição utilize uma técnica de projeto baseada em divisão e conquista e mantenha os blocos que usam descrição estrutural pequenos, minimizando o esforço necessário para compreender o seu funcionamento.

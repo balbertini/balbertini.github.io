@@ -1,0 +1,20 @@
+{% macro infobox(content=[]) -%}
+<table style="width:100%">
+  {% for boxtype, caption in content %}
+  <tr>
+    <td>
+      {% if boxtype=='info' %}
+      <i class="fas fa-info fa-2x"  style="color: #0066ff;"></i>
+      {% elif boxtype=='exclamation' %}
+      <i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"></i>
+      {% elif boxtype=='cog' %}
+      <i class="fas fa-cog fa-2x"  style="color: #009933;"></i>
+      {% endif %}
+    </td>
+    <td>
+      {{ caption }}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{%- endmacro %}

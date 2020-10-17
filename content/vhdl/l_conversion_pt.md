@@ -1,6 +1,4 @@
 Title: Conversão e Cast
-Date: 2019-09-05 11:20
-Modified: 2019-09-05 16:22
 Category: vhdl
 Tags: vhdl, basic
 Slug: vhdl_conversion
@@ -24,7 +22,7 @@ Para converter entre um tipo numérico e um agregado, é necessário uma funçã
 | ------------------: | :-------------------: | :-----------: |
 | `bit`               | nativo                | Simples       |
 | `bit_vector`        | nativo                | Agregado      |
-| `std_logic`         | `ieee.std_logic_1164` | Agregado      |
+| `std_logic`         | `ieee.std_logic_1164` | Enumerado      |
 | `std_logic_vector`  | `ieee.std_logic_1164` | Agregado      |
 
 Ao incluir a biblioteca `ieee.std_logic_1164`, passamos a ter acesso aos tipos baseados em `std_logic`. As bibliotecas padronizadas com as rotinas de conversão são as `ieee.numeric_std` para os derivados de `std_logic`, e a `ieee.numeric_bit` para os tipos derivados do `bit`.
@@ -58,3 +56,6 @@ Para resumir, veja o diagrama abaixo:
 ![Diagrama de conversão de tipos baseados em BIT.]({static}/images/vhdl/vhdlconversao.png)
 
 O diagrama acima foi inspirado no diagrama do site [BitWeenie](http://www.bitweenie.com/listings/vhdl-type-conversion/) para `std_logic`. Se o tipo base que você está usando e o `std_logic`, você deve incluir a biblioteca `numeric_std` pois as conversões de/para este tipo estão nesta biblioteca.
+
+### Contribuições
+  * 25/set/2020: Arthur Lopes corrigiu o tipo do `std_logic` na tabela e o `bit_vector(U)`  no diagrama.
