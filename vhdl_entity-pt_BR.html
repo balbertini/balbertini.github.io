@@ -67,8 +67,8 @@
 <meta property="og:locale" content="pt_BR"/>
 <meta property="og:url" content="https://balbertini.github.io/vhdl_entity-pt_BR.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2018-09-21 14:37:00-03:00"/>
-<meta property="article:modified_time" content="2019-03-13 16:55:00-03:00"/>
+<meta property="article:published_time" content="2018-09-25 13:25:12-03:00"/>
+<meta property="article:modified_time" content="2020-10-17 13:42:51-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="vhdl"/>
 <meta property="article:tag" content="vhdl"/>
@@ -152,9 +152,9 @@
       
     <h1 id="vhdl_entity">Entidade</h1>
     <p>
-      Publicado em 21/09/2018 (Sex) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+      Publicado em 25/09/2018 (Ter) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
 
-      &#8226; Última modificação em 13/03/2019 (Qua)
+      &#8226; Última modificação em 17/10/2020 (Sáb)
 
         &#8226; 8 min de leitura 
     </p>
@@ -179,7 +179,7 @@ No caso do VHDL, a entidade segue o mesmo princípio que você pensou para defin
 <p>Cada porta em VHDL deve ser descrita com o formato <code>nome: direção tipo</code>. O nome pode ser o que você desejar, desde que seja um nome válido em VHDL. O tipo da porta define qual tipo de dados será utilizado para aquela porta e pode ser <a href="https://balbertini.github.io/vhdl_datatypes-pt_BR.html">qualquer tipo suportado</a>. Quanto a direção, há quatro direções possíveis: <code>in</code>, <code>out</code>, <code>buffer</code> ou <code>inout</code>. O <code>in</code> é uma entrada e, como tal, só pode ser lida pelo seu componente. Analogamente, o <code>out</code> indica uma saída, que só pode ser escrita pelo seu componente (note que <strong>não</strong> pode ser lida). As direções de saída <code>buffer</code> e <code>inout</code> devem ser evitados (o motivo está <a href="#bufferEinout">no final do artigo</a>).</p>
 <h3>Exemplo</h3>
 <p><img src='https://balbertini.github.io/images/vhdl/mux2x1_entidade.png' width="70%"/></p>
-<p>Vamos descrever um multiplexador como o da figura. A entidade chama-se <code>mux2to1</code> e, na figura, está a esquerda. O equivalente em um diagrama esquemático está a direita na figura. Note que não desenhei as setas na figura, nem coloquei o tamanho de alguns sinais. Isto porque é uma convenção desenhar entradas a esquerda do componente, saídas a direita e sinais de controle embaixo ou em cima. O tamanho, quando não especificado, é assumido em 1 bit.</p>
+<p>Vamos descrever um multiplexador como o da figura. A entidade chama-se <code>mux2to1</code> e, na figura, está a esquerda. O equivalente em um diagrama esquemático está a direita na figura. É uma convenção desenhar entradas a esquerda do componente, saídas a direita e sinais de controle embaixo ou em cima. O tamanho, quando não especificado, é assumido em 1 bit (nesse caso os tamanhos foram especificados).</p>
 <p>O código VHDL para esta entidade é:</p>
 <div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">mux2to1</span> <span class="k">is</span>
     <span class="k">port</span><span class="p">(</span>
@@ -229,6 +229,10 @@ No caso do VHDL, a entidade segue o mesmo princípio que você pensou para defin
 Note que usando o <code>buffer</code> você não pode ler um valor que foi colocado na saída por um elemento externo ao seu, você apenas pode ler os valores que o seu próprio componente colocou na saída. Para ler o valor que um componente externo colocou na sua saída, existe o <code>inout</code>, um tipo de porta diferente pois é bidirecional: pode ser usada como entrada, quando você lê um sinal escrito por algo externo para dentro do seu componente, e pode ser usada como saída, quando você escreve o sinal de dentro do seu componente para que algo de fora leia. O <code>inout</code> indica para o sintetizador que ele deve colocar um <em>buffer</em> que suporte <em>tri-state</em> na sua saída. Neste caso, você deve garantir que os elementos em VHDL que possam escrever ou ler façam isso de forma mutuamente exclusiva, para que o sintetizador possa inferir corretamente os sinais de controle do <em>buffer tri-state</em>. Os dispositivos de prototipação FPGA modernos costumam possuir este tipo de <em>bufer</em> somente nos pinos de saída do FPGA, o que deve aumentar bastante seu roteamento e, consequentemente, a área do seu circuito.</p>
 <p>Resumindo, não utilize <code>buffer</code> nem <code>inout</code> nas suas descrições exceto se você quer mesmo os componente que serão inferidos na sua descrição. Recomendo <strong>fortemente</strong> que aprendizes não os utilizem. A maneira de contornar a restrição de leitura de uma porta <code>out</code> é criar um sinal temporário, fazer o que você tem que fazer sobre este sinal e, no final da arquitetura, atribuir o sinal temporário à saída que ele representa.</p>
 <p><strong>Nota:</strong> se você é meu aluno, não utilize <code>buffer</code> ou <code>inout</code> somente com a intenção de ler o valor na saída em hipótese alguma.</p>
+<h3>Contribuições</h3>
+<ul>
+<li>24/set/2020: Arthur Lopes corrigiu o tamanho da saída do MUX do exemplo.</li>
+</ul>
   </div>
   <div class="tag-cloud">
     <p>

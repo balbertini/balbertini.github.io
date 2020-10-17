@@ -67,8 +67,8 @@
 <meta property="og:locale" content="pt_BR"/>
 <meta property="og:url" content="https://balbertini.github.io/vhdl_combinatory-pt_BR.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2018-09-04 00:23:00-03:00"/>
-<meta property="article:modified_time" content="2018-09-13 08:35:00-03:00"/>
+<meta property="article:published_time" content="2018-09-04 13:20:23-03:00"/>
+<meta property="article:modified_time" content="2020-10-17 13:42:51-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="vhdl"/>
 <meta property="article:tag" content="vhdl"/>
@@ -154,7 +154,7 @@
     <p>
       Publicado em 04/09/2018 (Ter) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
 
-      &#8226; Última modificação em 13/09/2018 (Qui)
+      &#8226; Última modificação em 17/10/2020 (Sáb)
 
         &#8226; 11 min de leitura 
     </p>
@@ -162,8 +162,8 @@
 
 
   <div>
-    <p><strong>Circuitos combinatórios</strong> são aqueles que implementam uma função booleana. Sua principal característica é a ausência de dependência temporal, ou seja, a saída depende apenas da entrada. Este tipo de circuito pode ser representado por uma série de portas lógicas interligadas entre si <strong>sem realimentação</strong>.</p>
-<p>Há três maneiras de descrever circuitos puramente combinatórios em VHDL: estrutural, atribuição condicional com <code>with-select</code> e atribuição condicional com <code>when-else</code>. As descrições realizadas utilizando uma destas três formas serão sintetizadas para circuitos puramente combinatórios.</p>
+    <p><strong>Circuitos combinatórios</strong> são aqueles que implementam uma função booleana sem realimentação. Sua principal característica é a ausência de dependência temporal, ou seja, a saída depende apenas da entrada. Este tipo de circuito pode ser representado por uma série de portas lógicas interligadas entre si <strong>sem realimentação</strong>.</p>
+<p>As três maneiras principais de descrever circuitos puramente combinatórios em VHDL são: estrutural, atribuição condicional com <code>with-select</code> e atribuição condicional com <code>when-else</code>. As descrições realizadas utilizando uma destas três formas serão sintetizadas para circuitos puramente combinatórios.</p>
 <h2>Estrutural</h2>
 <p>A descrição estrutural é a maneira mais direta de se descrever uma função combinatória. Consiste em descrever o circuito a partir da própria função lógica que o representa. O equivalente em um diagrama esquemático é exatamente a <strong>função lógica</strong>, como descrita usando as portas lógicas equivalentes. A desvantagem é que a descrição é prolixa e consequentemente torna-se rapidamente difícil de ler, razão pela qual não é recomendada para circuitos grandes. Caso opte por este tipo de descrição utilize uma técnica de projeto baseada em divisão e conquista e mantenha os blocos que usam descrição estrutural pequenos, minimizando o esforço necessário para compreender o seu funcionamento.</p>
 <p>VHDL suporta os seguintes <strong>operadores lógicos</strong> para descrever circuitos estruturais:</p>

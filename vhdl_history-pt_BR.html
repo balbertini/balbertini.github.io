@@ -67,8 +67,8 @@
 <meta property="og:locale" content="pt_BR"/>
 <meta property="og:url" content="https://balbertini.github.io/vhdl_history-pt_BR.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-09-18 13:01:00-03:00"/>
-<meta property="article:modified_time" content="2020-09-18 13:01:00-03:00"/>
+<meta property="article:published_time" content="2020-09-18 19:49:39-03:00"/>
+<meta property="article:modified_time" content="2020-10-17 13:42:51-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="vhdl"/>
 <meta property="article:tag" content="vhdl"/>
@@ -154,7 +154,7 @@
     <p>
       Publicado em 18/09/2020 (Sex) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
 
-      &#8226; Última modificação em 18/09/2020 (Sex)
+      &#8226; Última modificação em 17/10/2020 (Sáb)
 
         &#8226; 16 min de leitura 
     </p>
@@ -165,12 +165,14 @@
     <p>Nest <em>post</em> contaremos o histórico das HDLs com foco em VHDL e discutiremos as vantagens e desvantagens da utilização deste tipo de linguagem.</p>
 <p>VHDL, ou VHSIC-HDL significa <em>Very High Speed Integrated Circuit Hardware Description Language</em>. É uma das duas HDLs mais utilizadas (a outra é Verilog). É muito utilizada em EDA (<em>Electronic Design Automation</em>), a técnica atual de projeto de circuitos digitais, cuja principal característica é a descrição programática dos circuitos.</p>
 <table style="width:100%">
- <tr>
-   <td><i class="fas fa-info fa-2x"  style="color: #0066ff;"></i></td>
-   <td>
-    HDL significa linguagem de descrição de hardware, do inglês <em>Hardware Description Language</em>.
-   </td>
- </tr>
+  <tr>
+    <td>
+      <i class="fas fa-info fa-2x"  style="color: #0066ff;"></i>
+    </td>
+    <td>
+      HDL significa linguagem de descrição de hardware, do inglês <em>Hardware Description Language</em>.
+    </td>
+  </tr>
 </table>
 
 <p>De uma maneira resumida, HDL é uma forma de expressar precisamente um circuito digital em um formato textual estruturado. Expressar significa descrever a estrutura e o comportamento do circuito. O diagrama esquemático tem um poder de expressão similar, porém de modo gráfico. Tudo o que você faz em um diagrama esquemático você pode fazer em uma HDL e, de fato, um bom projetista de hardware consegue usar ambas as formas de expressão. Há outras formas de expressar um circuito (e.g. cálculo proposicional, modelos matemáticos, equações algébricas, <em>floorplan</em>, <em>netlist</em>, etc.), mas estão fora do escopo deste <em>post</em>.</p>
@@ -187,24 +189,30 @@
 <p>Há uma versão em discussão, chamada de VHDL-202X e que será padronizada como IEEE 1076 também. Para acompanhar as discussões acesse <a href="http://www.eda-twiki.org/cgi-bin/view.cgi/P1076/WebHome">o site</a> do grupo de trabalho.</p>
 <p>Uma das influências notáveis no VHDL é a linguagem <a href="https://www.adaic.org/">Ada</a>, uma linguagem desenvolvida para programação paralela e utilizada como linguagem padrão para desenvolvimento de software pelo DoD. Como VHDL foi criada para descrever circuitos digitais, a linguagem reflete a natureza concorrente intrínseca deste tipo de circuito. Ada é uma linguagem com foco em programação paralela, então suporta descrições concorrentes, tornando-a a candidata ideal para a criação do VHDL. Por este motivo, a linguagem VHDL acabou herdando muitas características da linguagem Ada, principalmente relativas à sintaxe. De fato, VHDL pode até mesmo ser utilizada para desenvolver programas de tão parecida com Ada, mas há linguagens melhores para isso. No entanto, há uma situação onde escrever um software usando VHDL é muito comum: a geração de <em>testbenchs</em>, que nada mais são que descrições não-sintetizáveis usadas para testar uma descrição de hardware.</p>
 <table style="width:100%">
- <tr>
-   <td><i class="fas fa-info fa-2x"  style="color: #0066ff;"></i></td>
-   <td>
-    Em VHDL todos os comandos acontecem ao mesmo tempo exceto pelo <code>process</code>, usado para descrições de circuitos sequenciais.
-   </td>
- </tr>
- <tr>
-   <td><i class="fas fa-info fa-2x"  style="color: #0066ff;"></i></td>
-   <td>
-    O termo <u>não-sintetizável</u> significa que a descrição não pode ser transformada em hardware de verdade pois contém elementos de software.
-   </td>
- </tr>
- <tr>
-   <td><i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"></i></td>
-   <td>
-    Usamos majoritariamente o padrão IEEE 1076-1993 (conhecido como VHDL-93c), que é uma versão do VHDL-93 que também aceita primitivas do VHDL-87. Se o seu projeto não demanda outra versão explicitamente, sempre opte por esta versão pois é a melhor suportada pelas ferramentas.
-   </td>
- </tr>
+  <tr>
+    <td>
+      <i class="fas fa-info fa-2x"  style="color: #0066ff;"></i>
+    </td>
+    <td>
+      Em VHDL todos os comandos acontecem ao mesmo tempo exceto pelo <code>process</code>, usado para descrições de circuitos sequenciais.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <i class="fas fa-info fa-2x"  style="color: #0066ff;"></i>
+    </td>
+    <td>
+      O termo <u>não-sintetizável</u> significa que a descrição não pode ser transformada em hardware de verdade pois contém elementos de software.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"></i>
+    </td>
+    <td>
+      Usamos majoritariamente o padrão IEEE 1076-1993 (conhecido como VHDL-93c), que é uma versão do VHDL-93 que também aceita primitivas do VHDL-87. Se o seu projeto não demanda outra versão explicitamente, sempre opte por esta versão pois é a melhor suportada pelas ferramentas.
+    </td>
+  </tr>
 </table>
 
 <h1>Vantagens de HDLs</h1>
