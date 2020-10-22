@@ -1,6 +1,4 @@
 Title: Tipos de Dados Básicos em VHDL
-Date: 2018-09-15 10:56
-Modified: 2018-10-05 00:57
 Category: vhdl
 Tags: vhdl, tipos
 Slug: vhdl_datatypes
@@ -30,11 +28,11 @@ O tipo `integer` também é bastante utilizado e possui dois subtipos padrões:
 
   | Tipo        | Categoria | Sintetizável? | Valores                  |
   | ----------: | :-------: | :-----------: |:------------------------ |
-  | `integer`   | escalar   | Sim           | -2147483648 a 2147483648 |
-  | `natural`   | escalar   | Sim           | 0 a 2147483648           |
-  | `positive`  | escalar   | Sim           | 1 a 2147483648           |
+  | `integer`   | escalar   | Sim           | -2147483647 a 2147483647 |
+  | `natural`   | escalar   | Sim           | 0 a 2147483647           |
+  | `positive`  | escalar   | Sim           | 1 a 2147483647           |
 
-A especificação da linguagem não limita o número de bits do inteiro, mas a maioria das ferramentas utiliza inteiros de 32 bits. A forma de interpretação também não é definida, mas a maioria das ferramentas interpreta como uma representação em complemento de dois. Os tipos `natural` e `positive` são apenas limitações nos valores que um objeto deste tipo poderá assumir. É possível declarar inteiros com uma limitação personalizada:
+A especificação da linguagem demanda que no mínimo os números da tabela sejam aceitos, mas não limita o número de bits do inteiro. Grande parte das ferramentas implementam o inteiro como um mapeamento direto para o inteiro de 32 bits, presente na maioria das plataformas. A forma de interpretação também não é definida, mas a maioria das ferramentas interpreta como uma representação em complemento de dois. Os tipos `natural` e `positive` são apenas limitações nos valores que um objeto deste tipo poderá assumir. É possível declarar inteiros com uma limitação personalizada:
 
 ```vhdl
 signal meusinal : integer range -8 to 7;
@@ -134,3 +132,4 @@ De fato, a maioria dos projetos não necessita do `std_logic` e acabam por utili
 
 ### Contribuições
   * 19/set/2020: Gabriel Youssef Campos fez algumas correções sintáticas.
+  * 22/nov/2020: Lucas Ventura Monegatto alterou os limites do inteiro.

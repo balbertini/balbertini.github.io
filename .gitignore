@@ -6,3 +6,4 @@ output/
 *.cf
 src/
 testes/
+__pycache__/
