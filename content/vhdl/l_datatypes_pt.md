@@ -30,7 +30,7 @@ O tipo `integer` também é bastante utilizado e possui dois subtipos padrões:
 
   | Tipo        | Categoria | Sintetizável? | Valores                  |
   | ----------: | :-------: | :-----------: |:------------------------ |
-  | `integer`   | escalar   | Sim           | -2147483648 a 2147483648 |
+  | `integer`   | escalar   | Sim           | -2147483648 a 2147483647 |
   | `natural`   | escalar   | Sim           | 0 a 2147483648           |
   | `positive`  | escalar   | Sim           | 1 a 2147483648           |
 
