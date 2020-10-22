@@ -68,7 +68,7 @@
 <meta property="og:url" content="https://balbertini.github.io/vhdl_datatypes-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2018-09-15 13:01:58-03:00"/>
-<meta property="article:modified_time" content="2020-09-21 19:43:30-03:00"/>
+<meta property="article:modified_time" content="2020-10-22 09:15:10-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="vhdl"/>
 <meta property="article:tag" content="vhdl"/>
@@ -154,7 +154,7 @@
     <p>
       Publicado em 15/09/2018 (Sáb) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
 
-      &#8226; Última modificação em 21/09/2020 (Seg)
+      &#8226; Última modificação em 22/10/2020 (Qui)
 
         &#8226; 15 min de leitura 
     </p>
@@ -219,23 +219,23 @@
 <td align="right"><code>integer</code></td>
 <td align="center">escalar</td>
 <td align="center">Sim</td>
-<td align="left">-2147483648 a 2147483648</td>
+<td align="left">-2147483647 a 2147483647</td>
 </tr>
 <tr>
 <td align="right"><code>natural</code></td>
 <td align="center">escalar</td>
 <td align="center">Sim</td>
-<td align="left">0 a 2147483648</td>
+<td align="left">0 a 2147483647</td>
 </tr>
 <tr>
 <td align="right"><code>positive</code></td>
 <td align="center">escalar</td>
 <td align="center">Sim</td>
-<td align="left">1 a 2147483648</td>
+<td align="left">1 a 2147483647</td>
 </tr>
 </tbody>
 </table>
-<p>A especificação da linguagem não limita o número de bits do inteiro, mas a maioria das ferramentas utiliza inteiros de 32 bits. A forma de interpretação também não é definida, mas a maioria das ferramentas interpreta como uma representação em complemento de dois. Os tipos <code>natural</code> e <code>positive</code> são apenas limitações nos valores que um objeto deste tipo poderá assumir. É possível declarar inteiros com uma limitação personalizada:</p>
+<p>A especificação da linguagem demanda que no mínimo os números da tabela sejam aceitos, mas não limita o número de bits do inteiro. Grande parte das ferramentas implementam o inteiro como um mapeamento direto para o inteiro de 32 bits, presente na maioria das plataformas. A forma de interpretação também não é definida, mas a maioria das ferramentas interpreta como uma representação em complemento de dois. Os tipos <code>natural</code> e <code>positive</code> são apenas limitações nos valores que um objeto deste tipo poderá assumir. É possível declarar inteiros com uma limitação personalizada:</p>
 <div class="highlight"><pre><span></span><code><span class="k">signal</span> <span class="n">meusinal</span> <span class="o">:</span> <span class="kt">integer</span> <span class="k">range</span> <span class="o">-</span><span class="mi">8</span> <span class="k">to</span> <span class="mi">7</span><span class="p">;</span>
 </code></pre></div>
 
@@ -411,6 +411,7 @@
 <h3>Contribuições</h3>
 <ul>
 <li>19/set/2020: Gabriel Youssef Campos fez algumas correções sintáticas.</li>
+<li>22/nov/2020: Lucas Ventura Monegatto alterou os limites do inteiro.</li>
 </ul>
   </div>
   <div class="tag-cloud">
