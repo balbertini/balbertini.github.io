@@ -68,7 +68,7 @@
 <meta property="og:url" content="https://balbertini.github.io/asm-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2018-12-17 15:22:53-02:00"/>
-<meta property="article:modified_time" content="2020-10-17 13:42:51-03:00"/>
+<meta property="article:modified_time" content="2020-10-29 15:32:28-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="sistemas digitais"/>
 <meta property="article:tag" content="sistemas digitais"/>
@@ -154,7 +154,7 @@
     <p>
       Publicado em 17/12/2018 (Seg) na categoria <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
 
-      &#8226; Última modificação em 17/10/2020 (Sáb)
+      &#8226; Última modificação em 29/10/2020 (Qui)
 
         &#8226; 19 min de leitura 
     </p>
@@ -189,11 +189,11 @@ A junção é o componente que permite juntar dois caminhos diferentes em direç
 <div style="border: 0px; overflow: auto;width: 100%;"></div></p>
 <h3>Outros elementos gráficos</h3>
 <p>Alguns autores permitem uma condição em uma aresta, logo após a saída do estado e antes de qualquer outro bloco. Para isto, basta escrever o nome de uma condição booleana ao lado da aresta. Isto implica que o estado irá transicionar para aquela transição caso a condição seja verdadeira, ou não irá transicionar caso seja falsa, permanecendo no mesmo estado. Este tipo de mecanimso está relacionado ao <em>clock enable</em> presente em <em>flip-flops</em>. A condição é exatamente o <em>enable</em>, prevenindo que o <em>flip-flop</em> transicione caso seja falsa. Contudo, deve-se evitar este tipo de transição, especialmente se você é iniciante, pois: (i) nem todo <em>flip-flop</em> conta com um <em>clock enable</em>, e (ii) esta transição não deve permitir que o próximo estado seja acionado, complicando desnecessariamente a síntese. Nem pense em inserir uma porta no caminho do <em>clock</em> para implementar um <em>clock enable</em> pois as implicações podem ser bem desastrosas. Em suma: não use este tipo de construção exceto se souber o que está fazendo.</p>
-<hr>
 <h2>Fluxo de um diagrama ASM</h2>
 <p>Um diagrama ASM tem um fluxo simples: sai de um estado ativo e vai para o próximo. O estado ativo inicialmente é sempre aquele que é o destino da única aresta sem origem do diagrama. É possível que entre esta aresta e o estado existam junções, mas nenhum outro componente é permitido entre a aresta que representa o <em>reset</em> e o estado inicial.</p>
-<p>A partir de um estado inicial, segue-se a analogia de circuitos chaveados: o estado ativo no momento ativa todos os elementos que estão ligados em sua saída. É possível que hava um decisor entre um estado e outro, indicando que esta é uma transição condicional: dependendo da condição ser atendida ou não, a máquina segue para um estado ou para outro. No momento da transição (sinal de <em>clock</em>), o estado que possuir sua entrada ativa é ativado e o anterior desativado. É permitido um estado ativar-se a si mesmo bastando colocar na sua entrada uma junção,  ligando-se uma das entradas da junção a saída do estado (um laço ou <em>loop</em>). No entanto, não é permitido que o fluxo ative dois estados. Cada transição sai de um estado e vai para outro de forma determinística e não ambígua. Caso não seja especificado, assume-se que a transição acontece na borda de subida do <em>clock</em>.</p>
+<p>A partir de um estado inicial, segue-se a analogia de circuitos chaveados: o estado ativo no momento ativa todos os elementos que estão ligados em sua saída. É possível que haja um decisor entre um estado e outro, indicando que esta é uma transição condicional: dependendo da condição ser atendida ou não, a máquina segue para um estado ou para outro. No momento da transição (sinal de <em>clock</em>), o estado que possuir sua entrada ativa é ativado e o anterior desativado. É permitido um estado ativar-se a si mesmo bastando colocar na sua entrada uma junção,  ligando-se uma das entradas da junção a saída do estado (um laço ou <em>loop</em>). No entanto, não é permitido que o fluxo ative dois estados. Cada transição sai de um estado e vai para outro de forma determinística e não ambígua. Caso não seja especificado, assume-se que a transição acontece na borda de subida do <em>clock</em>.</p>
 <p>Normalmente os diagramas ASM são desenhados na vertical, com o estado inicial acima na página e o final abaixo. Não há limitações em desenhá-lo em outra orientação, mas evite fugir do usual. Jamais mude a orientação do diagrama no meio do desenho (e.g. inicia-se superior e no meio do diagrama parte-se para a direita) para não dar margem a interpretações ambíguas.</p>
+<p>Uma outra maneira de visualizar o diagrama ASM é usando Blocos ASM. Cada bloco é composto por exatamente um estado e a quantidade de decisores, saídas condicionais e junções que forem necessárias para implementar a lógica desejada. O diagrama ASM passa a ser então uma ligação entre blocos ASM, de forma que todos os caminhos de saída de um bloco levam a um estado (que pode ser o estado do mesmo bloco).</p>
 <h3>Exemplo 1: máquina de detectar 1001 com sobreposição (Moore)</h3>
 <p><img src='https://balbertini.github.io/images/sd/asm_exemplo1.png' width="30%" align="left" style="padding-right:5%" />
 Esta máquina possui uma entrada <code>e</code> e uma saída <code>z</code>. A saída <code>z</code> é alta quando a sequencia 1001 é detectada na entrada <code>e</code>, com sobreposição.</p>
