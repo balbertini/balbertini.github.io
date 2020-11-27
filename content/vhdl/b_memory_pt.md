@@ -111,3 +111,6 @@ Os exemplos a seguir podem ser baixados e usados livremente, desde que respeitad
   - [Arquivo de dados](https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/rom32x4.dat) para carga externa nos exemplos.
   - [_Testbench_](https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/memorias_tb.vhd) para todas as memórias acima (para rodar são necessários todos os arquivos).
   - [Rotinas](https://github.com/balbertini/hwProjects/blob/master/vhdl_modules/memory/utils.vhd) auxiliares para impressão dos vetores no _testbench_.
+
+  ### Contribuições
+    * 27/nov/2020: Tomaz Maia Suller corrigiu um erro sobre o nome da `std.textio`.
