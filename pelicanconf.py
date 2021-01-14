@@ -54,7 +54,11 @@ LOCALE = ('pt_BR','pt_BR.UTF-8','en_US','en_US.UTF-8')
 
 # Default theme language.
 I18N_TEMPLATES_LANG = "pt_BR"
-
+I18N_SUBSITES = {
+    'pt_BR': {
+        'SITENAME': 'Site do Bruno Albertini',
+        }
+    }
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
