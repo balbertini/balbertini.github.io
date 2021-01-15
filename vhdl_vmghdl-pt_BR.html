@@ -29,7 +29,7 @@
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/solid.css">
 
 
-    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
+    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Site do Bruno Albertini Atom">
 
 
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
@@ -45,7 +45,8 @@
   ga('create', 'UA-125173293-1', 'auto');
   ga('send', 'pageview');
 </script>
-<!-- End Google Analytics -->
+<!-- End Google Analytics -->  
+
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#333">
     <!-- Windows Phone -->
@@ -61,10 +62,10 @@
 <meta name="keywords" content="vhdl, ghdl, vm">
 
 
-<meta property="og:site_name" content="B.Albertini's site"/>
+<meta property="og:site_name" content="Site do Bruno Albertini"/>
 <meta property="og:title" content="Máquina virtual com GHDL"/>
 <meta property="og:description" content="Como utilizar a VM com GHDL."/>
-<meta property="og:locale" content="pt_BR"/>
+<meta property="og:locale" content="pr_BR"/>
 <meta property="og:url" content="https://balbertini.github.io/vhdl_vmghdl-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2018-09-13 22:22:27-03:00"/>
@@ -76,7 +77,7 @@
 <meta property="article:tag" content="vm"/>
 <meta property="og:image" content="/images/profile.png">
 
-  <title>B.Albertini's site &ndash; Máquina virtual com GHDL</title>
+  <title>Site do Bruno Albertini &ndash; Máquina virtual com GHDL</title>
 
 </head>
 <body >
@@ -153,11 +154,9 @@
       
     <h1 id="vhdl_vmghdl">Máquina virtual com GHDL</h1>
     <p>
-      Publicado em 13/09/2018 (Qui) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-
-      &#8226; Última modificação em 14/02/2020 (Sex)
-
-        &#8226; 13 min de leitura 
+      Publicado em Qui 13 Setembro 2018 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+           &#8226; Last Modified Sex 14 Fevereiro 2020
+        &#8226; 8 min de leitura 
     </p>
   </header>
 
@@ -211,7 +210,20 @@
 <h1>Acessando a máquina virtual por SSH</h1>
 <p>Uma forma mais fácil de acessar a máquina é logar via SSH, pois assim você pode aproveitar todos os benefícios da sua própria máquina, como interface gráfica e editores modernos, usando o SHH apenas para executar o GHDL. Há clientes SSH para vários sistemas operacionais, como o <a href="https://www.putty.org">PuTTY</a> (Windows, Linux). Os sistemas operacionais baseados em *nix (e.g. MacOS e Linux) e algumas versões do Windows (e.g. Windows 10) já possuem um cliente SSH pré-instalado, portanto basta abrir um terminal (no Windows, o terminal chama-se <code>cmd.exe</code>e pode ser acessado pelo menu principal/executar/cmd.exe).</p>
 <p>No terminal aberto na sua máquina, abra uma sessão SSH para a VM através do comando <code>ssh -p5022 poli@127.0.0.1</code>. O usuário é <code>poli</code> (já especificado na linha de comando) e a senha também é <code>poli</code>. Se você escolheu outra porta no momento de adicionar a regra de redirecionamento, deverá substituir de acordo.</p>
-<div class="highlight"><pre><span></span><code><span class="gp">Brunos-MacBook-Pro:~ balbertini$</span> ssh -p5022 poli@127.0.0.1
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">Brunos-MacBook-Pro:~ balbertini$ </span>ssh -p5022 poli@127.0.0.1
 <span class="go">The authenticity of host &#39;[127.0.0.1]:5022 ([127.0.0.1]:5022)&#39; can&#39;t be established.</span>
 <span class="go">ECDSA key fingerprint is SHA256:fSLO3evzG//rjYMSM0OwLPx1XeqHPg4Sj7NTeQdVfq0.</span>
 <span class="go">Are you sure you want to continue connecting (yes/no)? yes</span>
@@ -225,8 +237,8 @@
 
 <span class="go">Last login: Wed Aug  8 14:22:50 2018</span>
 <span class="gp">poli@ghdl:~$</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>No primeiro acesso, seu cliente vai mostrar a chave de criptografia do servidor SSH executando na máquina virtual. Aceite com <em>yes</em> e o cliente solicitará a senha do usuário <code>poli</code>, que também é <code>poli</code>.</p>
 <p>Caso esteja usando o PuTTY, abra um terminal e digite o comando equivalente, substituindo <code>ssh -p5022 poli@127.0.0.1</code> por <code>putty -p5022 poli@127.0.0.1</code> (Linux) ou <code>putty.exe -p5022 poli@127.0.0.1</code> (Windows).
@@ -240,30 +252,33 @@ Se preferir usar a versão gráfica, veja um tutorial <a href="https://www.secne
 <p>O acesso via SSH é opcional, mas facilitará bastante. Caso opte por não fazê-lo, logue diretamente na tela do seu software de virtualização. Se acessar via SSH, você pode minimizar a máquina virtual e deixá-la executando em segundo plano.</p>
 <h1>Reconfigurando o teclado</h1>
 <p>Caso tenha problemas com o layout do seu teclado, use o comando abaixo para mudá-lo.</p>
-<div class="highlight"><pre><span></span><code><span class="gp">poli@ghdl:~$</span> sudo dpkg-reconfigure keyboard-configuration
-</code></pre></div>
-
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~$ </span>sudo dpkg-reconfigure keyboard-configuration
+</pre></div>
+</td></tr></table>
 
 <h1>Fazendo update do VirtualBox Guest Additions</h1>
 <p>Quando estiver logado na máquina virtual (via SSH ou via tela do software de virtualização), faça o update do módulo de <em>Guest Additions</em>. Este passo é necessário pois o módulo muda com frequência, e você precisa mantê-lo alinhado com a sua versão do VirtualBox. Refaça este passo todas as vezes que atualizar o VirtualBox na sua máquina real (<em>host</em>). Caso sua máquina virtual já esteja com a última versão do <em>Guest Additions</em> instalada, nenhum pacote será atualizado e, dependendo de quando você fizer o download da máquina virtual, você pode pular este passo. Aproveite e faça um update do sistema operacional também.</p>
-<div class="highlight"><pre><span></span><code><span class="gp">poli@ghdl:~$</span> sudo apt-get update
-<span class="gp">poli@ghdl:~$</span> sudo apt-get install virtualbox-guest-utils
-<span class="gp">poli@ghdl:~$</span> sudo apt-get upgrade
-<span class="gp">poli@ghdl:~$</span> sudo reboot
-</code></pre></div>
-
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~$ </span>sudo apt-get update
+<span class="gp">poli@ghdl:~$ </span>sudo apt-get install virtualbox-guest-utils
+<span class="gp">poli@ghdl:~$ </span>sudo apt-get upgrade
+<span class="gp">poli@ghdl:~$ </span>sudo reboot
+</pre></div>
+</td></tr></table>
 
 <p>O comando do meio, <code>sudo apt-get install virtualbox-guest-utils</code> é o único passo obrigatório, os demais fica a seu critério. O último comando irá reiniciar a máquina para que possíveis atualizações da máquina surtam efeito, o que acarretará na sua desconexão. Aguarde a máquina virtual reiniciar e logue novamente.</p>
 <h1>Montando a pasta compartilhada</h1>
 <p>Precisamos primeiro criar um ponto de montagem, que nada mais é que um diretório na máquina virtual.</p>
-<div class="highlight"><pre><span></span><code><span class="gp">poli@ghdl:~$</span> mkdir shared
-</code></pre></div>
-
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~$ </span>mkdir shared
+</pre></div>
+</td></tr></table>
 
 <p>Depois montamos a pasta da sua máquina real (host) na máquina virtual.</p>
-<div class="highlight"><pre><span></span><code><span class="gp">poli@ghdl:~$</span> sudo mount -t vboxsf -ouid<span class="o">=</span>poli,rw VMShared shared
-</code></pre></div>
-
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~$ </span>sudo mount -t vboxsf -ouid<span class="o">=</span>poli,rw VMShared shared
+</pre></div>
+</td></tr></table>
 
 <p>Com isso, a pasta <code>shared</code> na máquina virtual será a mesma que a pasta que escolheu quando configurou a pasta compartilhada. Note que se você deu outro nome para o compartilhamento, deve substituir <code>VMShared</code> pelo nome que escolheu.</p>
 <h1>Usando o GHDL na máquina virtual</h1>
@@ -275,33 +290,40 @@ Se preferir usar a versão gráfica, veja um tutorial <a href="https://www.secne
 <li>Simulação: <code>ghdl -e entidade</code></li>
 </ul>
 <p>Você deve fazer a análise de todos os arquivos VHDL que for utilizar. Na análise, o GHDL irá verificar erros de sintaxe e verificará se os componentes necessários estão todos presentes.</p>
-<div class="highlight"><pre><span></span><code><span class="gp">poli@ghdl:~/shared$</span> ghdl -a shiftleft2.vhd
-<span class="gp">poli@ghdl:~/shared$</span> ghdl -a utils.vhd
-<span class="gp">poli@ghdl:~/shared$</span> ghdl -a shiftleft2_tb.vhd
-</code></pre></div>
-
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~/shared$ </span>ghdl -a shiftleft2.vhd
+<span class="gp">poli@ghdl:~/shared$ </span>ghdl -a utils.vhd
+<span class="gp">poli@ghdl:~/shared$ </span>ghdl -a shiftleft2_tb.vhd
+</pre></div>
+</td></tr></table>
 
 <p>Neste exemplo, analisamos os arquivos <code>shiftleft2.vhd</code>, <code>utils.vhd</code> e <code>shiftleft2_tb.vhd</code>. A análise do <code>utils.vhd</code> precisa vir antes da análise do <code>shiftleft2_tb.vhd</code> pois este último utiliza o pacote (<code>package</code>) dentro do <code>utils.vhd</code>, portanto este deve estar analisado no momento da análise da entidade que o utiliza.</p>
 <p>Com todos os arquivos analisados, vamos para a fase de elaboração. Nesta fase, o GHDL irá montar o simulador com a entidade desejada, ligando de fato todos os componentes e verificando erros semânticos.</p>
-<div class="highlight"><pre><span></span><code><span class="gp">poli@ghdl:~/shared$</span> ghdl -e shiftleft2_tb
-</code></pre></div>
-
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~/shared$ </span>ghdl -e shiftleft2_tb
+</pre></div>
+</td></tr></table>
 
 <p>Agora que a entidade a ser executada está elaborada, podemos executar a simulação em si:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">poli@ghdl:~/shared$</span> ghdl -r shiftleft2_tb
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~/shared$ </span>ghdl -r shiftleft2_tb
 <span class="go">shiftleft2_tb.vhd:44:7:@0ms:(report note): BOT</span>
 <span class="go">shiftleft2_tb.vhd:65:7:@4ns:(report note): EOT</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>A entidade que será simulada está no <code>shiftleft2_tb.vhd</code> e chama-se <code>shiftleft2_tb</code>, portanto no exemplo elaboramos esta entidade, depois executamos a simulação com a mesma. Esta entidade representa um <em>testbench</em> escrito em VHDL. A saída impressa são provenientes dos comandos <code>report</code> colocados no <em>testbench</em> para indicar o início e o final da simulação.</p>
 <p>Ainda podemos passar alguns parâmetros para o simulador:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">poli@ghdl:~/shared$</span> ghdl -r shiftleft2_tb --vcd<span class="o">=</span>shiftleft2_tb.vcd
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">poli@ghdl:~/shared$ </span>ghdl -r shiftleft2_tb --vcd<span class="o">=</span>shiftleft2_tb.vcd
 <span class="go">shiftleft2_tb.vhd:44:7:@0ms:(report note): BOT</span>
 <span class="go">shiftleft2_tb.vhd:65:7:@4ns:(report note): EOT</span>
 <span class="gp">poli@ghdl:~/shared$</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>Há diversos parâmetros que podem ser passados para a simulação. Um muito útil que pode ser visto acima é o <code>--vcd=arquivo.vcd</code>. Este parâmetro salvará a forma de onda resultante da simulação no arquivo (neste caso o <code>shiftleft2_tb.vcd</code>). Para visualizar o arquivo VCD você precisará de um programa que visualize formas de onda. Recomendo o <a href="http://gtkwave.sourceforge.net/">GTKWave</a>, disponível para várias as plataformas. Na sua máquina real (<em>host</em>), navegue até a pasta compartilhada e veja que os arquivos gerados pelo GHDL estão lá, incluindo o resultado da simulação. Você pode abrir o arquivo VCD com o seu visualizador preferido.</p>
   </div>
@@ -368,7 +390,7 @@ Criado com o <a href="http://getpelican.com" target="_blank">Pelican</a> usando 
 {
   "@context" : "http://schema.org",
   "@type" : "Blog",
-  "name": " B.Albertini's site ",
+  "name": " Site do Bruno Albertini ",
   "url" : "https://balbertini.github.io",
   "image": "/images/profile.png",
   "description": ""
