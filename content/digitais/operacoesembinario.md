@@ -1,6 +1,5 @@
 Title: Operações Aritméticas em Binário
 Date: 2020-07-29 10:18
-Modified: 2020-07-29 10:18
 Category: sistemas digitais
 Tags: sistemas digitais, sistemas de numeração
 Slug: binaryarithmetic
@@ -210,7 +209,7 @@ Repare que agora estamos fazendo uma subtração pois, apesar de realizarmos uma
 
 Agora observe os vai-uns das operações. Sempre que realizamos a soma em complemento de dois com números binários, se o vai-um final for diferente do vai-um do estágio anterior, houve um _overflow_ e o resultado não está correto. Em circuitos digitais, pode-se fazer simplesmente $c_{n}\oplus c_{n-1}$ e teremos um _flag_ que indica a presença de um _overflow_.
 
-### Explição do da detecção do _overflow_
+### Explicação do da detecção do _overflow_
 Vamos entender o motivo pelo qual $ov=c_{n}\oplus c_{n-1}$ funciona para binários em complemento de 2.
 
 Como realizamos somente somas (a subtração é uma soma com a representação do negativo), há somente dois casos possíveis que geram _overflow_: (a) dois operandos positivos e resultado negativo ou (b) dois operandos negativos e resultado positivo. A soma de números de sinais opostos nunca gera _overflow_.
