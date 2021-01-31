@@ -45,7 +45,8 @@
   ga('create', 'UA-125173293-1', 'auto');
   ga('send', 'pageview');
 </script>
-<!-- End Google Analytics -->
+<!-- End Google Analytics -->  
+
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#333">
     <!-- Windows Phone -->
@@ -64,7 +65,7 @@
 <meta property="og:site_name" content="B.Albertini's site"/>
 <meta property="og:title" content="Módulos genéricos parametrizáveis em VHDL"/>
 <meta property="og:description" content="Usando o generic em VHDL."/>
-<meta property="og:locale" content="pt_BR"/>
+<meta property="og:locale" content="pr_BR"/>
 <meta property="og:url" content="https://balbertini.github.io/vhdl_generic-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2019-03-12 14:58:40-03:00"/>
@@ -152,11 +153,9 @@
       
     <h1 id="vhdl_generic">Módulos genéricos parametrizáveis em VHDL</h1>
     <p>
-      Publicado em 12/03/2019 (Ter) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-
-      &#8226; Última modificação em 09/09/2019 (Seg)
-
-        &#8226; 8 min de leitura 
+      Publicado em Ter 12 Março 2019 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+           &#8226; Last Modified Seg 09 Setembro 2019
+        &#8226; 6 min de leitura 
     </p>
   </header>
 
@@ -166,22 +165,27 @@
 <h2>Declarando um parâmetro genericamente</h2>
 <p>Em muitos casos, a descrição de um módulo em VHDL pode não ser reaproveitável porque precisamos de um módulo ligeiramente diferente. Um exemplo: se descrevermos um registrador de 8 bits, poderemos usar este registrador somente em projetos que utilizam registradores de exatamente 8 bits. Contudo, quando o hardware é regular, ou seja, seu funcionamento é idêntico independentemente da característica variável, é possível descrevê-lo de forma a definir a característica variável no momento da instância e não da descrição. Dessa forma, descreve-se o módulo genericamente e somente no momento de utilizá-lo parametrizamos as características variáveis. No exemplo do registrador, podemos descrevê-lo genericamente de forma que o seu tamanho seja um parâmetro.</p>
 <p>A palavra reservada que possibilita isso é a <code>generic</code>. Na descrição da entidade do módulo, podemos incluir esta palavra, como a seguir:</p>
-<div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
    <span class="k">generic</span> <span class="p">(</span><span class="n">lista_de_elementos_genericos</span><span class="p">);</span>
    <span class="k">port</span> <span class="p">(</span><span class="n">lista_de_portas</span><span class="p">);</span>
 <span class="k">end</span> <span class="nc">nome_da_entidade</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>A <code>lista_de_elementos_genericos</code> é uma lista de todas as características parametrizáveis, no formato: <code>nome: tipo := valor_padrao</code>, separadas por <code>;</code>. O <code>nome</code> pode ser o que você desejar, desde que seja um nome válido em VHDL. O tipo define qual tipo de dados será utilizado para aquele parâmetro e pode ser <a href="https://balbertini.github.io/vhdl_datatypes-pt_BR.html">qualquer tipo suportado</a>. O <code>valor_padrao</code> é opcional e pode ser omitido. Quando omitido, termina-se a declaração após a declaração do tipo (exclui-se também o <code>:=</code>). No caso da omissão do valor padrão, a declaração do valor no momento da instanciação é obrigatória. Caso o valor padrão esteja presente, ele será usado somente se a instância não especificar nenhum valor, caso contrário o valor da instância sobrepõe o valor padrão. Como boa prática, sempre defina o valor padrão. O <code>valor_padrao</code> deve ser obrigatoriamente uma constante do mesmo <code>tipo</code> que o parâmetro correspondente.</p>
 <p>Depois de especificados, os parâmetros da <code>lista_de_elementos_genericos</code> tornam-se constantes disponíveis em todo o restante do projeto, incluindo a declaração de portas da entidade e toda a arquitetura. Como estão disponíveis e podem ser usados no lugar de qualquer constante, é possível declarar portas, sinais e qualquer outra estrutura de VHDL usando o parâmetro no lugar de um valor fixo.</p>
 <h3>Instância</h3>
 <p>No momento da instância do componente, podemos definir os parâmetros que desejarmos. Lembre-se que, caso a descrição não estabeleça um valor padrão para um determinado parâmetro, a definição na instanciação é obrigatória. A sintaxe da instância é:</p>
-<div class="highlight"><pre><span></span><code><span class="n">nome_instancia</span><span class="o">:</span> <span class="n">nome_componente</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">nome_instancia</span><span class="o">:</span> <span class="n">nome_componente</span>
     <span class="k">generic</span> <span class="k">map</span> <span class="p">(</span><span class="n">lista_de_associacao_de_elementos_genericos</span><span class="p">)</span>
     <span class="k">port</span> <span class="k">map</span>    <span class="p">(</span><span class="n">lista_de_associacao_de_portas</span><span class="p">);</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>Se o componente não possui nenhum parâmetro (ausência de <code>generic</code>) ou não deseja-se especificar nenhum (todos os valores padrões serão utilizados), toda a linha do <code>generic map</code> pode ser omitida. A <code>lista_de_associacao_de_elementos_genericos</code> segue o mesmo padrão de associação usado para as portas.</p>
 <h3>Síntese</h3>
@@ -189,7 +193,77 @@
 <p>É possível usar o <code>generic</code> para parametrizar algo não sintetizável. Exemplos deste uso incluem variáveis condicionais de depuração e temporização.</p>
 <h2>Exemplo</h2>
 <p>Neste exemplo, mostrarei um registrador de deslocamento genérico com entrada paralela e saída serial, carga paralela síncrona, <em>reset</em> assíncrono e deslocamento para a direita ou para a esquerda. A modelagem contempla temporização (atraso e <em>setup time</em>) e depuração.</p>
-<div class="highlight"><pre><span></span><code><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
 <span class="k">use</span> <span class="nn">ieee.numeric_bit.rising_edge</span><span class="p">;</span>
 <span class="k">entity</span> <span class="nc">reg_deslocamento</span> <span class="k">is</span>
   <span class="k">generic</span><span class="p">(</span>
@@ -260,11 +334,75 @@
   <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
 
 <span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>Um possível <em>testbench</em> para este registrador pode ser visto abaixo:</p>
-<div class="highlight"><pre><span></span><code><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
 <span class="k">use</span> <span class="nn">ieee.numeric_bit.rising_edge</span><span class="p">;</span>
 <span class="k">entity</span> <span class="nc">reg_deslocamento_tb</span> <span class="k">is</span>
 <span class="k">end</span> <span class="k">entity</span> <span class="nc">reg_deslocamento_tb</span><span class="p">;</span>
@@ -329,21 +467,24 @@
   <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
 
 <span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>A execução deste <em>testbench</em> irá imprimir:</p>
-<div class="highlight"><pre><span></span><code>reg_deslocamento.vhd:59:11:@350ns:<span class="o">(</span>assertion warning<span class="o">)</span>: Setup <span class="nb">time</span> violado na entrada paralela.
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>reg_deslocamento.vhd:59:11:@350ns:<span class="o">(</span>assertion warning<span class="o">)</span>: Setup <span class="nb">time</span> violado na entrada paralela.
 reg_deslocamento.vhd:63:11:@450ns:<span class="o">(</span>assertion warning<span class="o">)</span>: Setup <span class="nb">time</span> violado na entrada serial.
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>No código do <em>testbench</em> há três usos distintos do <code>generic</code>. Note a instância do registrador usado no <em>testbench</em>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">reg</span><span class="o">:</span> <span class="n">reg_deslocamento</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">reg</span><span class="o">:</span> <span class="n">reg_deslocamento</span>
   <span class="k">generic</span> <span class="k">map</span><span class="p">(</span><span class="n">tamanho</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">,</span> <span class="n">tp</span><span class="o">=&gt;</span><span class="mi">40</span> <span class="n">ns</span><span class="p">,</span> <span class="n">debug</span><span class="o">=&gt;</span><span class="n">true</span><span class="p">)</span>
   <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">entrada</span><span class="p">,</span> <span class="n">saida</span><span class="p">,</span> <span class="n">entrada_serial</span><span class="p">,</span> <span class="n">direcao</span><span class="p">,</span> <span class="n">carrega</span><span class="p">,</span> <span class="n">reset_n</span><span class="p">,</span> <span class="n">clock</span><span class="p">);</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>A primeira coisa que podemos notar é que a atribuição dos parâmetros no <code>generic map</code> foi feita por nome e não posicionalmente (como feita no <code>port map</code>). Contudo, podemos usar atribuição posicional se desejado. O tamanho foi parametrizado como 4 bits, o tempo de propagação (<code>tp</code>) como 40ns e foi habilitada a depuração. A primeira utilização do <code>generic</code> foram estas atribuições. Já a segunda, foi uma atribuição implícita. O <em>setup time</em> (<code>st</code>) não foi definido no <code>genric map</code>, portanto a instância utilizará o valor padrão, que nesse caso é 15ns. Já a terceira diz respeito ao parâmetro <code>debug</code>. Note que este parâmetro, se habilitado, permite a ativação de um <code>process</code> (o último da descrição do registrador) que não é sintetizável e serve exclusivamente para emitir mensagens de violação do <em>setup time</em> durante uma simulação.</p>
   </div>

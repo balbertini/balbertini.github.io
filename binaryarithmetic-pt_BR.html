@@ -45,7 +45,8 @@
   ga('create', 'UA-125173293-1', 'auto');
   ga('send', 'pageview');
 </script>
-<!-- End Google Analytics -->
+<!-- End Google Analytics -->  
+
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#333">
     <!-- Windows Phone -->
@@ -64,11 +65,11 @@
 <meta property="og:site_name" content="B.Albertini's site"/>
 <meta property="og:title" content="Operações Aritméticas em Binário"/>
 <meta property="og:description" content="Operações Aritméticas em Binário"/>
-<meta property="og:locale" content="pt_BR"/>
+<meta property="og:locale" content="pr_BR"/>
 <meta property="og:url" content="https://balbertini.github.io/binaryarithmetic-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2020-07-31 08:57:26-03:00"/>
-<meta property="article:modified_time" content="2020-07-31 08:57:26-03:00"/>
+<meta property="article:modified_time" content="2021-01-15 10:18:49-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="sistemas digitais"/>
 <meta property="article:tag" content="sistemas digitais"/>
@@ -152,11 +153,9 @@
       
     <h1 id="binaryarithmetic">Operações Aritméticas em Binário</h1>
     <p>
-      Publicado em 31/07/2020 (Sex) na categoria <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
-
-      &#8226; Última modificação em 31/07/2020 (Sex)
-
-        &#8226; 20 min de leitura 
+      Publicado em Sex 31 Julho 2020 na categoria <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
+           &#8226; Last Modified Sex 15 Janeiro 2021
+        &#8226; 12 min de leitura 
     </p>
   </header>
 
@@ -405,7 +404,7 @@ $$</div>
 
 <p>Repare que agora estamos fazendo uma subtração pois, apesar de realizarmos uma soma, estamos usando o vai-um de entrada no LSB em ambos os casos. Na esquerda fizemos <code>-3-5=-3+(-6)+1</code>. O resultado é <code>1000=-8</code>, sem <em>overflow</em>. Na direita temos <code>-3-6=-3+(-7)+1</code>, mas dessa vez note que o resultado é positivo (<code>0110=+6</code>) portanto houve <em>overflow</em>.</p>
 <p>Agora observe os vai-uns das operações. Sempre que realizamos a soma em complemento de dois com números binários, se o vai-um final for diferente do vai-um do estágio anterior, houve um <em>overflow</em> e o resultado não está correto. Em circuitos digitais, pode-se fazer simplesmente <span class="math">\(c_{n}\oplus c_{n-1}\)</span> e teremos um <em>flag</em> que indica a presença de um <em>overflow</em>.</p>
-<h3>Explição do da detecção do <em>overflow</em></h3>
+<h3>Explicação do da detecção do <em>overflow</em></h3>
 <p>Vamos entender o motivo pelo qual <span class="math">\(ov=c_{n}\oplus c_{n-1}\)</span> funciona para binários em complemento de 2.</p>
 <p>Como realizamos somente somas (a subtração é uma soma com a representação do negativo), há somente dois casos possíveis que geram <em>overflow</em>: (a) dois operandos positivos e resultado negativo ou (b) dois operandos negativos e resultado positivo. A soma de números de sinais opostos nunca gera <em>overflow</em>.</p>
 <p>Poderíamos facilmente fazer um comparador de 3 bits e detectar o <em>overflow</em> usando as regras que acabamos de descrever, mas vamos entender o XOR. Sabemos que o bit de sinal na representação de complemento de dois é o MSB, então chamaremos de <span class="math">\(a_n\)</span> e <span class="math">\(b_n\)</span> o MSB, que é o bit de sinal dos operandos <span class="math">\(a\)</span> e <span class="math">\(b\)</span>, respectivamente.</p>

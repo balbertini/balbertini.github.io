@@ -45,7 +45,8 @@
   ga('create', 'UA-125173293-1', 'auto');
   ga('send', 'pageview');
 </script>
-<!-- End Google Analytics -->
+<!-- End Google Analytics -->  
+
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#333">
     <!-- Windows Phone -->
@@ -64,11 +65,11 @@
 <meta property="og:site_name" content="B.Albertini's site"/>
 <meta property="og:title" content="Entidade"/>
 <meta property="og:description" content="Entidades em VHDL."/>
-<meta property="og:locale" content="pt_BR"/>
+<meta property="og:locale" content="pr_BR"/>
 <meta property="og:url" content="https://balbertini.github.io/vhdl_entity-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2018-09-25 13:25:12-03:00"/>
-<meta property="article:modified_time" content="2020-10-17 13:42:51-03:00"/>
+<meta property="article:modified_time" content="2021-01-31 18:30:36-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="vhdl"/>
 <meta property="article:tag" content="vhdl"/>
@@ -152,11 +153,9 @@
       
     <h1 id="vhdl_entity">Entidade</h1>
     <p>
-      Publicado em 25/09/2018 (Ter) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-
-      &#8226; Última modificação em 17/10/2020 (Sáb)
-
-        &#8226; 8 min de leitura 
+      Publicado em Ter 25 Setembro 2018 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+           &#8226; Last Modified Dom 31 Janeiro 2021
+        &#8226; 5 min de leitura 
     </p>
   </header>
 
@@ -167,12 +166,15 @@
 A entidade, declarada pela palavra reservada <code>entity</code>, é a unidade básica de descrição de VHDL. O equivalente em um diagrama esquemático é o desenho que você faz para representar seu componente. Por exemplo, pense em uma máquina de vender refrigerantes em lata. Suponha que você (abstratamente), tenha que desenhar um símbolo para sua máquina. O meu símbolo seria como o da figura: entra dinheiro e sai latas.
 <br/><br/></p>
 <p>A sintaxe de uma entidade em VHDL é:</p>
-<div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
    <span class="k">generic</span> <span class="p">(</span><span class="n">lista_de_elementos_genericos</span><span class="p">);</span>
    <span class="k">port</span> <span class="p">(</span><span class="n">lista_de_portas</span><span class="p">);</span>
 <span class="k">end</span> <span class="nc">nome_da_entidade</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p><img src='https://balbertini.github.io/images/vhdl/entidade.png' width="20%" align="right" style="padding-left:5%" />
 No caso do VHDL, a entidade segue o mesmo princípio que você pensou para definir as entradas e saídas da máquina de refrigerantes, mas obviamente estamos descrevendo um circuito digital, então as entradas e saídas são digitais. A palavra reservada <code>generic</code> é opcional e não será explicada neste artigo. Na entidade, quem declara os sinais que são usados para modelar as suas entradas e saídas é a palavra reservada <code>port</code>. O <code>port</code> tem a seguinte sintaxe: <code>port(lista_de_portas);</code>, onde a <code>lista_de_portas</code> deve ser as portas separadas por <code>;</code>, como em <code>port(porta1; porta2; porta3);</code>. Pode-se colocar quantas portas desejar na sua descrição, separadas por ponto e vírgula <code>;</code>. Note que a última porta declarada não tem <code>;</code> pois o parênteses <code>)</code> fecha a declaração. O último <code>;</code> pertence à declaração do <code>port</code> e não à uma porta específica.</p>
@@ -181,15 +183,21 @@ No caso do VHDL, a entidade segue o mesmo princípio que você pensou para defin
 <p><img src='https://balbertini.github.io/images/vhdl/mux2x1_entidade.png' width="70%"/></p>
 <p>Vamos descrever um multiplexador como o da figura. A entidade chama-se <code>mux2to1</code> e, na figura, está a esquerda. O equivalente em um diagrama esquemático está a direita na figura. É uma convenção desenhar entradas a esquerda do componente, saídas a direita e sinais de controle embaixo ou em cima. O tamanho, quando não especificado, é assumido em 1 bit (nesse caso os tamanhos foram especificados).</p>
 <p>O código VHDL para esta entidade é:</p>
-<div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">mux2to1</span> <span class="k">is</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">mux2to1</span> <span class="k">is</span>
     <span class="k">port</span><span class="p">(</span>
         <span class="n">s</span><span class="o">:</span>    <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span> <span class="c1">-- selection: 0=a, 1=b</span>
         <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">:</span> <span class="k">in</span>    <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">-- inputs</span>
         <span class="n">o</span><span class="o">:</span>    <span class="k">out</span>   <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1">-- output</span>
     <span class="p">);</span>
 <span class="k">end</span> <span class="nc">mux2to1</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <h2>Boas práticas ao definir a entidade</h2>
 <ol>
@@ -200,18 +208,30 @@ No caso do VHDL, a entidade segue o mesmo princípio que você pensou para defin
 </ol>
 <h1>Uso do <code>begin</code> e nome da entidade</h1>
 <p>É possível que uma entidade tenha um <code>begin</code>. Dentro da entidade (após o <code>begin</code> e antes do <code>end</code>) podemos colocar qualquer declaração passiva, ou seja, que não altera nenhum sinal (i.e. processos passivos, asserções estáticas e chamadas de procedimentos passivas). A mais utilizada é a asserção, assim podemos fazer verificações estáticas sobre a utilização da entidade.</p>
-<div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
    <span class="k">generic</span> <span class="p">(</span><span class="n">lista_de_elementos_genericos</span><span class="p">);</span>
    <span class="k">port</span> <span class="p">(</span><span class="n">lista_de_portas</span><span class="p">);</span>
 <span class="k">begin</span>
   <span class="n">verificacoes_estaticas</span><span class="p">;</span>
 <span class="k">end</span> <span class="nc">nome_da_entidade</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <h3>Exemplo</h3>
 <p>No exemplo a seguir colocamos uma asserção na parte estática da entidade para verificar se o registrador foi instanciado corretamente. Caso o registrador tenha um tamanho especificado menor que 2, a asserção irá falhar e qualquer simulação ou síntese será interrompida com a mensagem especificada.</p>
-<div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">reg_deslocamento</span> <span class="k">is</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">reg_deslocamento</span> <span class="k">is</span>
   <span class="k">generic</span><span class="p">(</span> <span class="n">tamanho</span><span class="o">:</span> <span class="kt">natural</span> <span class="o">:=</span> <span class="mi">8</span><span class="p">);</span>
   <span class="k">port</span><span class="p">(...);</span>
 <span class="k">begin</span>
@@ -219,8 +239,8 @@ No caso do VHDL, a entidade segue o mesmo princípio que você pensou para defin
   <span class="n">report</span> <span class="s">&quot;Este registrador precisa ter tamanho mínimo 2.&quot;</span>
   <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
 <span class="k">end</span> <span class="k">entity</span> <span class="nc">reg_deslocamento</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p><a name="bufferEinout"></a></p>
 <h1>Saídas com direção <code>buffer</code> e <code>inout</code></h1>

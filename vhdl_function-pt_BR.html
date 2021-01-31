@@ -45,7 +45,8 @@
   ga('create', 'UA-125173293-1', 'auto');
   ga('send', 'pageview');
 </script>
-<!-- End Google Analytics -->
+<!-- End Google Analytics -->  
+
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#333">
     <!-- Windows Phone -->
@@ -64,11 +65,11 @@
 <meta property="og:site_name" content="B.Albertini's site"/>
 <meta property="og:title" content="Funções"/>
 <meta property="og:description" content="Funções em VHDL."/>
-<meta property="og:locale" content="pt_BR"/>
+<meta property="og:locale" content="pr_BR"/>
 <meta property="og:url" content="https://balbertini.github.io/vhdl_function-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2020-10-17 13:42:51-03:00"/>
-<meta property="article:modified_time" content="2020-10-23 11:57:28-03:00"/>
+<meta property="article:modified_time" content="2021-01-31 18:30:36-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="vhdl"/>
 <meta property="article:tag" content="vhdl"/>
@@ -152,11 +153,9 @@
       
     <h1 id="vhdl_function">Funções</h1>
     <p>
-      Publicado em 17/10/2020 (Sáb) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-
-      &#8226; Última modificação em 23/10/2020 (Sex)
-
-        &#8226; 5 min de leitura 
+      Publicado em Sáb 17 Outubro 2020 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+           &#8226; Last Modified Dom 31 Janeiro 2021
+        &#8226; 3 min de leitura 
     </p>
   </header>
 
@@ -164,7 +163,15 @@
   <div>
     <p>As funções em VHDL são bastante úteis para reaproveitar código. Elas funcionam como uma função em qualquer linguagem estruturada. Neste artigo, vamos ver o básico de como escrever funções em VHDL.</p>
 <p>A sintaxe de uma função em VHDL é:</p>
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="k">pure</span><span class="o">|</span><span class="k">impure</span><span class="p">]</span> <span class="k">function</span> <span class="o">&lt;</span><span class="n">nome_da_funcao</span><span class="o">&gt;</span> <span class="p">(</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">[</span><span class="k">pure</span><span class="o">|</span><span class="k">impure</span><span class="p">]</span> <span class="k">function</span> <span class="o">&lt;</span><span class="n">nome_da_funcao</span><span class="o">&gt;</span> <span class="p">(</span>
   <span class="o">&lt;</span><span class="n">nome_do_parametro1</span><span class="o">&gt;</span> <span class="o">:</span> <span class="o">&lt;</span><span class="n">tipo_parametro1</span><span class="o">&gt;</span> <span class="o">:=</span> <span class="o">&lt;</span><span class="n">valor_padrao</span><span class="o">&gt;</span><span class="p">;</span>
   <span class="o">&lt;</span><span class="n">nome_do_parametro2</span><span class="o">&gt;</span> <span class="o">:</span> <span class="o">&lt;</span><span class="n">tipo_parametro1</span><span class="o">&gt;</span> <span class="o">:=</span> <span class="o">&lt;</span><span class="n">valor_padrao</span><span class="o">&gt;</span><span class="p">;</span>
                                         <span class="p">...</span> <span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="n">tipo_de_retorno</span><span class="o">&gt;</span> <span class="k">is</span>
@@ -173,8 +180,8 @@
     <span class="o">&lt;</span><span class="n">codigo</span><span class="o">&gt;</span><span class="p">;</span>
     <span class="k">return</span> <span class="o">&lt;</span><span class="n">valor</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="k">end</span> <span class="k">function</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>A classificação da função como pura ou impura é opcional e indica se a função pode alterar valores de entrada (<code>impure</code>) ou não (<code>pure</code>). Por padrão, as funções são puras, ou seja qualquer alteração nos parâmetros de entrada é considerada inválida. Os valores retornados por uma função impura podem depender de valores externos (e.g. variáveis compartilhadas).</p>
 <p>O <code>nome_da_funcao</code> pode ser o que o projetista desejar, seguindo a nomenclatura obrigatória de VHDL para <a href="https://balbertini.github.io/vhdl_fundamentals-pt_BR.html">identificadores</a>. O mesmo se aplica para os parâmetros. Os tipos dos parâmetros podem ser <a href="https://balbertini.github.io/vhdl_datatypes-pt_BR.html">qualquer tipo suportado</a> em VHDL, lembrando que se for um tipo não-nativo, deve-se incluir a biblioteca correta no projeto. O valor padrão dos parâmetros é pouco utilizado e serve para preencher os parâmetros não especificados no momento da chamada. O tipo de retorno adere às mesmas regras dos parâmetros.</p>
@@ -182,7 +189,26 @@
 <p>O código de uma função é intrinsecamente sequencial, então pode-se usar qualquer comando de VHDL, incluindo os exclusivos para uso em processos. A única obrigatoriedade é que a função retorne um e somente um valor condizente com o <code>tipo_de_retorno</code>. É possível usar comandos condicionais (e.g. <code>if</code>), mas a todas as condições devem retornar um valor.</p>
 <p>As funções podem ser declaradas em dois lugares distintos: em um pacote contendo funções e no preâmbulo das unidades em VHDL (e.g. arquitetura, processo, entidade, etc).</p>
 <h1>Exemplo (preâmbulo)</h1>
-<div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">meuprojeto</span> <span class="k">is</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">meuprojeto</span> <span class="k">is</span>
   <span class="k">function</span> <span class="n">equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">)</span> <span class="k">return</span> <span class="kt">boolean</span> <span class="k">is</span>
     <span class="k">begin</span>
       <span class="k">if</span> <span class="n">a</span><span class="na">&#39;length</span> <span class="o">=</span> <span class="n">b</span><span class="na">&#39;length</span> <span class="k">then</span>
@@ -202,15 +228,34 @@
 <span class="k">begin</span>
   <span class="n">c</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span> <span class="k">when</span> <span class="n">equal</span><span class="p">(</span><span class="n">bva</span><span class="p">,</span><span class="n">bvb</span><span class="p">)</span> <span class="k">else</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
 <span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>No exemplo acima a função <code>equal</code> compara dois <code>bit_vector</code> bit a bit e retorna verdadeiro somente se ambos os vetores possuírem o mesmo conteúdo. A chave para a comparação é o aninhamento dos dois loops <code>for</code>, que itera sobre os vetores comparando-os bit a bit.</p>
 <p>Note que a função foi declarada no preâmbulo da arquitetura, mas chamada no corpo. A função não é sintetizável diretamente, mas o sintetizador irá produzir um comparador para calcular o valor da comparação e usá-lo para decidir sobre a atribuição condicional. Para efeitos de simulação, a função demora tempo zero.</p>
 <p>A declaração da função usou a vírgula para separar os parâmetros pois eles são do emsmo tipo. A mesma função poderia ser reescrita como <code>equal(a: bit_vector; b: bit_vector)</code> e a chamada continuaria exatamente igual.</p>
 <h1>Exemplo (<code>package</code>)</h1>
 <p>No caso de um <code>package</code>, a função é declarada dentro da biblioteca:</p>
-<div class="highlight"><pre><span></span><code><span class="k">package</span> <span class="n">minhas_funcoes</span> <span class="k">is</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">package</span> <span class="n">minhas_funcoes</span> <span class="k">is</span>
   <span class="k">function</span> <span class="n">equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">)</span> <span class="k">return</span> <span class="kt">boolean</span><span class="p">;</span>
 <span class="k">end</span> <span class="nc">minhas_funcoes</span><span class="p">;</span>
 
@@ -230,11 +275,21 @@
       <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
     <span class="k">end</span> <span class="k">function</span><span class="p">;</span>
 <span class="k">end</span> <span class="nc">minhas_funcoes</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>Temos agora uma biblioteca que pode ser usada em qualquer projeto, bastando para isso incluí-la no projeto como uma biblioteca normal. As bibliotecas do usuário, quando não especificado, ficam em um pacote chamado <code>work</code>, que corresponde ao pacote de trabalho e sempre é importado por padrão. A cláusula <code>use</code> no entanto não é opcional pois o sintetizador precisa saber qual(is) partes do pacote deseja usar.</p>
-<div class="highlight"><pre><span></span><code><span class="k">library</span> <span class="nn">work</span><span class="p">;</span> <span class="c1">-- opcional, importada por padrão</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">library</span> <span class="nn">work</span><span class="p">;</span> <span class="c1">-- opcional, importada por padrão</span>
 <span class="k">use</span> <span class="nn">work.minhas_funcoes.equal</span><span class="p">;</span> <span class="c1">-- poderia ser .all</span>
 
 <span class="k">entity</span> <span class="p">...</span>
@@ -245,7 +300,8 @@
 <span class="k">begin</span>
   <span class="n">c</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span> <span class="k">when</span> <span class="n">equal</span><span class="p">(</span><span class="n">bva</span><span class="p">,</span><span class="n">bvb</span><span class="p">)</span> <span class="k">else</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
 <span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
-</code></pre></div>
+</pre></div>
+</td></tr></table>
   </div>
   <div class="tag-cloud">
     <p>

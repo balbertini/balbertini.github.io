@@ -45,7 +45,8 @@
   ga('create', 'UA-125173293-1', 'auto');
   ga('send', 'pageview');
 </script>
-<!-- End Google Analytics -->
+<!-- End Google Analytics -->  
+
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#333">
     <!-- Windows Phone -->
@@ -64,7 +65,7 @@
 <meta property="og:site_name" content="B.Albertini's site"/>
 <meta property="og:title" content="Máquinas de estado em VHDL"/>
 <meta property="og:description" content="Máquinas de estado em VHDL."/>
-<meta property="og:locale" content="pt_BR"/>
+<meta property="og:locale" content="pr_BR"/>
 <meta property="og:url" content="https://balbertini.github.io/vhdl_fsm-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2019-03-19 10:58:59-03:00"/>
@@ -152,11 +153,9 @@
       
     <h1 id="vhdl_fsm">Máquinas de estado em VHDL</h1>
     <p>
-      Publicado em 19/03/2019 (Ter) na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-
-      &#8226; Última modificação em 09/09/2019 (Seg)
-
-        &#8226; 15 min de leitura 
+      Publicado em Ter 19 Março 2019 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+           &#8226; Last Modified Seg 09 Setembro 2019
+        &#8226; 10 min de leitura 
     </p>
   </header>
 
@@ -179,7 +178,16 @@
 <h3>Exemplo 1 (Moore)</h3>
 <p><img src='https://balbertini.github.io/images/sd/fsmexemplo1.png' width="15%" align="right" style="padding-left:5%" />
 A máquina que iremos implementar como exemplo é a máquina de Moore da figura ao lado. Contém apenas dois estados e todas as quatro transições possíveis totalmente especificadas. Comecemos pela declaração de uso das bibliotecas e pela entidade:</p>
-<div class="highlight"><pre><span></span><code><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
 <span class="k">use</span> <span class="nn">ieee.numeric_bit.rising_edge</span><span class="p">;</span>
 
 <span class="k">entity</span> <span class="nc">fsm</span> <span class="k">is</span>
@@ -189,8 +197,8 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
     <span class="n">clock</span><span class="p">,</span> <span class="n">reset_n</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span>
   <span class="p">);</span>
 <span class="k">end</span> <span class="nc">fsm</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
@@ -198,7 +206,29 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
 <h4>Exemplo 1 (Moore) - Estilo tradicional</h4>
 <p>Neste primeiro estilo de descrição, a arquitetura é descrita usando exatamente o modelo tradicional de máquina de estados, ou seja, o elemento de memória é sequencial (dentro do <code>process</code>) e as funções combinatórias (fora do <code>process</code>).</p>
 <p><img src='https://balbertini.github.io/images/sd/fsmvhdl01.png' width="50%" align="right" style="padding-left:0%" /></p>
-<div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">proccomb</span> <span class="k">of</span> <span class="nc">fsm</span> <span class="k">is</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">architecture</span> <span class="nc">proccomb</span> <span class="k">of</span> <span class="nc">fsm</span> <span class="k">is</span>
   <span class="k">type</span> <span class="n">estado_t</span> <span class="k">is</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span>
   <span class="k">signal</span> <span class="n">PE</span><span class="p">,</span><span class="n">EA</span> <span class="o">:</span> <span class="n">estado_t</span><span class="p">;</span>
 <span class="k">begin</span>
@@ -221,8 +251,8 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
     <span class="sc">&#39;1&#39;</span> <span class="k">when</span> <span class="n">EA</span><span class="o">=</span><span class="n">B</span> <span class="k">else</span>
     <span class="sc">&#39;0&#39;</span><span class="p">;</span>
 <span class="k">end</span> <span class="k">architecture</span> <span class="nc">proccomb</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>Note que há somente um processo. O processo faz o <em>reset</em> assíncrono da máquina de estados, colocando-a no estado A (veja a seta de início chegando no estado A do diagrama de transição de estados). Caso o <em>reset</em> não esteja ativo, o processo faz uma única tarefa que é copiar o sinal PE (de Próximo Estado) para o sinal EA (de Estado Atual) na borda de subida do <em>clock</em>. Neste contexto, apenas o sinal EA representa um elemento combinatório pois fora destas duas condições, o sinal EA é mantido inalterado. O comportamento é exatamente o de um <em>flip-flop</em> tipo D e, de fato, podemos ver que o circuito gerado contém exatamente um <em>flip-flop</em>, pois temos somente dois estados possíveis. Caso o tipo composto <code>estado_t</code> possuísse mais de dois estados, o número de <em>flip-flops</em> seria maior para acomodar o maior número de estados.</p>
 <p>Fora do processo, temos duas declarações concorrentes ao <code>process</code>, que representam as duas funções combinatórias. A primeira calcula o próximo estado (<code>PE&lt;=...</code>) e a segunda calcula a saída (<code>saida&lt;=...</code>).</p>
@@ -231,7 +261,45 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
 <h4>Exemplo 1 (Moore) - Estilo com dois <code>process</code></h4>
 <p>No segundo estilo, levamos a descrição combinatória para dentro de um <code>process</code> novo, mantendo o <code>process</code> sequencial que faz o papel de elemento de memória inalterado. Este estilo exige um cuidado muito grande pois estamos descrevendo um elemento combinatório dentro de uma primitiva de VHDL que indica para o sintetizador que estamos descrevendo algo sequencial. Temos que ser claros com a descrição para que o sintetizador entenda que a variável de estados é o sinal EA somente, e os outros sinais (neste caso o PE e a <code>saida</code>), são combinatórios.</p>
 <p><img src='https://balbertini.github.io/images/sd/fsmvhdl02.png' width="50%" align="right" style="padding-left:0%" /></p>
-<div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">doisproc</span> <span class="k">of</span> <span class="nc">fsm</span> <span class="k">is</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">architecture</span> <span class="nc">doisproc</span> <span class="k">of</span> <span class="nc">fsm</span> <span class="k">is</span>
   <span class="k">type</span> <span class="n">estado_t</span> <span class="k">is</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span>
   <span class="k">signal</span> <span class="n">PE</span><span class="p">,</span><span class="n">EA</span> <span class="o">:</span> <span class="n">estado_t</span><span class="p">;</span>
 <span class="k">begin</span>
@@ -270,8 +338,8 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
   <span class="k">end</span> <span class="k">process</span> <span class="nc">combinatorio</span><span class="p">;</span>
 
 <span class="k">end</span> <span class="k">architecture</span> <span class="nc">doisproc</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>A vantagem desta abordagem é que temos acesso a estruturas sequenciais, como o <code>case</code> usado como decisor no processo combinatório, que facilitam a descrição comportamental de máquinas de estado. A desvantagem é que um pequeno deslize pode levar o sintetizador a registrar ou inferir <em>latches</em> para os sinais combinatórios, comprometendo a sequencialidade da máquina.</p>
 <p>Note que o sinal PE foi incluído na lista de sensibilidade do processo sequencial, o que foi omitido no estilo anterior. A presença na lista de sensibilidade indica que PE pode mudar devido a fatores externos ao processo sequencial, e que o processo deve ser reavaliado se isto acontecer (mesmo que o resultado seja o mesmo pois não há borda nem <em>reset</em>). Já o processo combinatório depende de EA (obrigatório), fechando a cadeia de dependência entre os sinais dos processos (um ativa o outro). Esta ligação amplia as possibilidades de otimização do sintetizador pois ele entende que os dois processos são partes de um circuito único e os algoritmos de síntese foram preparados para otimizar esta situação (é um pouco mais complexo que isso, mas basta saber que é melhor assim). Note que o circuito gerado contém um multiplexador no lugar das portas lógicas.</p>
@@ -282,7 +350,38 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
 <h3>Outros estilos</h3>
 <p>Mas então por que não usamos um processo só para tudo? Vamos ver:
 <img src='https://balbertini.github.io/images/sd/fsmvhdl03.png' width="50%" align="right" style="padding-left:0%" /></p>
-<div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">umproc</span> <span class="k">of</span> <span class="nc">fsm</span> <span class="k">is</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">architecture</span> <span class="nc">umproc</span> <span class="k">of</span> <span class="nc">fsm</span> <span class="k">is</span>
   <span class="k">type</span> <span class="n">estado_t</span> <span class="k">is</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span>
   <span class="k">signal</span> <span class="n">EA</span> <span class="o">:</span> <span class="n">estado_t</span><span class="p">;</span>
 <span class="k">begin</span>
@@ -314,15 +413,24 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
     <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
   <span class="k">end</span> <span class="k">process</span> <span class="nc">sincrono</span><span class="p">;</span>
 <span class="k">end</span> <span class="k">architecture</span> <span class="nc">umproc</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>De fato isso é possível, mas o processo será considerado sequencial pelo sintetizador pois contém uma sensibilidade à uma borda (no <code>rising_edge</code>). Como processo sequencial, seus sinais serão registrados, o que é desejável para o sinal EA pois ele representa a própria variável de estado da máquina. Porém, pode não ser desejável tampouco aceitável para os demais sinais. Neste caso, a saída foi o único sinal que sobrou pois o PE pôde ser eliminado, dado que não precisamos mais calcular a função de próximo estado separadamente.</p>
 <p>Observe que o circuito gerado possui a saída registrada (inferida pelo sintetizador). Isto não é um problema se você puder conviver com a saída sempre defasada de um ciclo de <em>clock</em>, mas está errado conceitualmente pois a máquina de estados se comportará em fase com o <em>clock</em> para as transições e defasada de um ciclo para os demais sinais. Esta característica costuma confundir muito os iniciantes e dificulta consideravelmente a depuração. Por estes motivos, se você é meu aluno, <strong>não use este estilo</strong> em nenhum momento durante a graduação (pós por favor consulte antes).</p>
 <h3>Exemplo 2 (Mealy)</h3>
 <p><img src='https://balbertini.github.io/images/sd/fsmexemplo2.png' width="15%" align="right" style="padding-left:5%" />
 Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a saída depende também da entrada.</p>
-<div class="highlight"><pre><span></span><code><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
 <span class="k">use</span> <span class="nn">ieee.numeric_bit.rising_edge</span><span class="p">;</span>
 
 <span class="k">entity</span> <span class="nc">fsm</span> <span class="k">is</span>
@@ -332,14 +440,40 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
     <span class="n">clock</span><span class="p">,</span> <span class="n">reset_n</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span>
   <span class="p">);</span>
 <span class="k">end</span> <span class="nc">fsm</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 <h4>Exemplo 2 (Mealy) - Estilo tradicional</h4>
 <p><img src='https://balbertini.github.io/images/sd/fsmvhdl04.png' width="50%" align="right" style="padding-left:0%" /></p>
-<div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">proccombmealy</span> <span class="k">of</span> <span class="nc">fsm</span> <span class="k">is</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">architecture</span> <span class="nc">proccombmealy</span> <span class="k">of</span> <span class="nc">fsm</span> <span class="k">is</span>
   <span class="k">type</span> <span class="n">estado_t</span> <span class="k">is</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span>
   <span class="k">signal</span> <span class="n">PE</span><span class="p">,</span><span class="n">EA</span> <span class="o">:</span> <span class="n">estado_t</span><span class="p">;</span>
 <span class="k">begin</span>
@@ -366,13 +500,53 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
     <span class="sc">&#39;1&#39;</span> <span class="k">when</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">and</span> <span class="n">EA</span><span class="o">=</span><span class="n">B</span> <span class="k">else</span>
     <span class="sc">&#39;0&#39;</span><span class="p">;</span>
 <span class="k">end</span> <span class="k">architecture</span> <span class="nc">proccombmealy</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>Note que o circuito gerado é um pouco maior devido a arquitetura para o qual foi sintetizado (FPGA).<div style="border: 0px; overflow: auto;width: 100%;"></div></p>
 <h4>Exemplo 2 (Mealy) - Estilo com dois <code>process</code></h4>
 <p><img src='https://balbertini.github.io/images/sd/fsmvhdl05.png' width="50%" align="right" style="padding-left:0%" /></p>
-<div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">doisprocmealy</span> <span class="k">of</span> <span class="nc">fsm</span> <span class="k">is</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">architecture</span> <span class="nc">doisprocmealy</span> <span class="k">of</span> <span class="nc">fsm</span> <span class="k">is</span>
   <span class="k">type</span> <span class="n">estado_t</span> <span class="k">is</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span>
   <span class="k">signal</span> <span class="n">PE</span><span class="p">,</span><span class="n">EA</span> <span class="o">:</span> <span class="n">estado_t</span><span class="p">;</span>
 <span class="k">begin</span>
@@ -413,8 +587,8 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
   <span class="k">end</span> <span class="k">process</span> <span class="nc">combinatorio</span><span class="p">;</span>
 
 <span class="k">end</span> <span class="k">architecture</span> <span class="nc">doisprocmealy</span><span class="p">;</span>
-</code></pre></div>
-
+</pre></div>
+</td></tr></table>
 
 <p>Observe que não há diferença entre o circuito gerado para esta máquina e para a máquina Moore com dois processos.
 <div style="border: 0px; overflow: auto;width: 100%;"></div></p>
