@@ -46,17 +46,6 @@ JINJA_ENVIRONMENT = {
 }
 JINJA2CONTENT_TEMPLATES=['../templates']
 
-MARKDOWN = {
-    'extension_configs': {
-        'markdown.extensions.codehilite': {
-            'css_class': 'highlight',
-            'linenums':'True',
-        },
-        'markdown.extensions.extra': {},
-        'markdown.extensions.meta': {},
-    },
-    'output_format': 'html5',
-}
 # Localization
 DEFAULT_LANG = 'pt_br'
 I18N_TEMPLATES_LANG = "pt_BR" # For theme
