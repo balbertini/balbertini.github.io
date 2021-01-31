@@ -1,0 +1,6 @@
+v 4
+file . "teste.vhd" "095f96fb80a3b017cd5db0f0efebb4775497acb8" "20200924133426.219":
+  entity a at 1( 0) + 0 on 11;
+  architecture arch of a at 8( 77) + 0 on 12;
+  entity b at 13( 155) + 0 on 13;
+  architecture arch of b at 20( 270) + 0 on 14;

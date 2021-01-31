@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://balbertini.github.io/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://balbertini.github.io/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://balbertini.github.io/theme/pygments/emacs.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/solid.css">
+
+
+    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
+
+
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-125173293-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->  
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
+
+<meta name="author" content="Bruno Albertini" />
+<meta name="description" content="Como usar tipos agregados em VHDL" />
+<meta name="keywords" content="vhdl, basic">
+
+
+<meta property="og:site_name" content="B.Albertini's site"/>
+<meta property="og:title" content="Tipos agregados em VHDL"/>
+<meta property="og:description" content="Como usar tipos agregados em VHDL"/>
+<meta property="og:locale" content="pr_BR"/>
+<meta property="og:url" content="https://balbertini.github.io/vhdl_aggregate-pt_BR.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-09-05 16:22:44-03:00"/>
+<meta property="article:modified_time" content="2019-09-09 10:16:11-03:00"/>
+<meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
+<meta property="article:section" content="vhdl"/>
+<meta property="article:tag" content="vhdl"/>
+<meta property="article:tag" content="basic"/>
+<meta property="og:image" content="/images/profile.png">
+
+  <title>B.Albertini's site &ndash; Tipos agregados em VHDL</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="https://balbertini.github.io">
+        <img src="/images/profile.png" alt="B.Albertini" title="B.Albertini">
+      </a>
+
+      <h1>
+        <a href="https://balbertini.github.io">B.Albertini</a>
+      </h1>
+
+<p>Professor</p>
+
+      <nav>
+        <ul class="list">
+
+
+              <li>
+                <a target="_self"
+                   href="https://balbertini.github.io/pages/sd-pt_BR.html#sd">
+                  Sistemas Digitais
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="https://balbertini.github.io/pages/disciplinas-pt_BR.html#disciplinas">
+                  Disciplinas
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="https://balbertini.github.io/pages/research-pt_BR.html#research">
+                  Pesquisa
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="https://balbertini.github.io/pages/sobre-pt_BR.html#sobre">
+                  Sobre
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="https://balbertini.github.io/pages/vhdl-pt_BR.html#vhdl">
+                  VHDL
+                </a>
+              </li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/balbertini" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-rss" href="//balbertini.github.io/feeds/all.atom.xml" target="_blank">
+              <i class="fas fa-rss"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="vhdl_aggregate">Tipos agregados em VHDL</h1>
+    <p>
+      Publicado em Qui 05 Setembro 2019 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+           &#8226; Last Modified Seg 09 Setembro 2019
+        &#8226; 4 min de leitura 
+    </p>
+  </header>
+
+
+  <div>
+    <p>VHDL suporta um tipo de dado chamado de <strong>agregado</strong>, que nada mais é que uma coleção de sinais, representada por um vetor ou um registro. O vetor é o mais utilizado pois representa um conjunto de fios no hardware sintetizado.</p>
+<h2>Vetores</h2>
+<p>Os dois tipos de dados mais utilizados em VHDL, <code>bit</code> e <code>std_logic</code> possuem versões em vetores pré-definidas, o <code>bit_vector</code> e o <code>std_logic_vector</code>. A versão em <code>bit</code> é nativa, portanto você pode utilizá-la imediadamente na sua descrição. No caso do <code>std_logic</code>, como o tipo é considerado uma extensão do VHDL, deve-se incluir a biblioteca <code>ieee.std_logic_1164</code> antes da sua utilização.</p>
+<p>No entanto, pode-se definir um vetor de <a href="https://balbertini.github.io/vhdl_datatypes-pt_BR.html">qualquer tipo suportado</a>. A palavra chave para definir-se um vetor é <code>array</code>. Declara-se um tipo de dados personalizado com a palavra reservada <code>type</code> e usa-se o <code>array</code> para especificar um vetor. Após a declaração, pode-se usar o tipo agregado como um tipo qualquer.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">meu_vetor</span> <span class="k">is</span> <span class="k">array</span> <span class="p">(</span><span class="mi">2</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">)</span> <span class="k">of</span> <span class="kt">bit</span><span class="p">;</span>
+<span class="k">signal</span> <span class="n">meu_conjunto_de_fios</span><span class="o">:</span> <span class="n">meu_vetor</span><span class="p">;</span>
+<span class="k">signal</span> <span class="n">mv</span><span class="o">:</span> <span class="n">meu_vetor</span><span class="p">;</span>
+</pre></div>
+</td></tr></table>
+
+<p>O trecho acima irá gerar um conjunto de três fios (chamado <code>meu_conjunto_de_fios</code>) do tipo que podem ser acessados como um único. Sabemos que para um vetor de <code>bit</code> poderíamos usar simplesmente <code>signal meu_conjunto_de_fios: bit_vector(2 downto 0);</code>, porém a declaração pode ser usada para qualquer outro tipo e é especialmente útil quando estamos modelando <a href="https://balbertini.github.io/vhdl_mem-pt_BR.html">memórias</a>.</p>
+<p>É possível declarar vetores de vetores, criando estruturas multidimensionais.</p>
+<h3>Utilizando Vetores</h3>
+<p>Para acessar um elemento de um vetor, basta usar a indexação. E.g. <code>a&lt;=mv(0)</code> irá atribuir o bit menos significativo do vetor <code>mv</code> ao sinal <code>a</code>. É importante notar que <code>a</code> deve ser do mesmo tipo declarado no tipo do vetor, nesse caso <code>bit</code>. A ordem em que os índices são acessados também depende da declaração do vetor. Como declaramos o <code>meu_vetor</code> como <code>(2 downto 0)</code>, o bit menos significativo será o <code>0</code>. Se declarássemos <code>(0 to 2)</code>, o bit menos significativo deveria ser acessado com <code>mv(2)</code>. Lembre-se que a significância de um conjunto de bits é uma convenção, que assumimos sempre como o menos significativo sendo o bit mais a direita.</p>
+<p>Para escrever em um vetor também usamos os parênteses (como na indexação), mas temos duas alternativas: associação posicional ou nomeada.</p>
+<p>Na <strong>associação posicional</strong>, os elementos são associados sempre em ordem, da esquerda para a direita. E.g. <code>mv &lt;= (c,b,a);</code> equivale a <code>mv(0)&lt;=a;</code>, <code>mv(1)&lt;=b;</code> e <code>mv(2)&lt;=c;</code>. É recomendado que todas as posições do vetor estejam preenchidas e o tipo de cada uma deve ser do mesmo tipo declarado no tipo do vetor. Também é possível associarmos posicionalmente usando um operador de concatenação:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="o">&lt;=</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">c</span><span class="p">;</span> <span class="c1">-- todos devem ser bits</span>
+<span class="n">mv</span> <span class="o">&lt;=</span> <span class="n">a2</span> <span class="o">&amp;</span> <span class="n">c</span><span class="p">;</span> <span class="c1">-- a2 é um vetor de duas posições</span>
+<span class="n">mv</span> <span class="o">&lt;=</span> <span class="n">mv</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">mv</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">-- rotacao para esquerda</span>
+</pre></div>
+</td></tr></table>
+
+<p>A parte importante da atribuição posicional é conter todos os elementos do vetor (o que implica que o tipo e o tamanho devem ser idênticos). Constantes literais também são aceitas, bastando retirar os parênteses, como em <code>mv&lt;="101";</code>, obviamente respeitando o tipo e tamanho.</p>
+<p>A segunda maneira é chamada de <strong>associação nomeada</strong>. Neste tipo de associação podemos atribuir os valores sem respeitar a ordem, nomeando-os. E.g. <code>mv&lt;=(0=&gt;a,2=&gt;c,1=&gt;b);</code> equivale a <code>mv &lt;= (c,b,a);</code>. A utilidade principal deste tipo de atribuição é atribuir valores somente para as posições de interesse. mas não é necessário atribuir para todos os elementos do vetor? Sim, mas temos uma palavra chave que diz exatamente o que fazer com todos as posições não especificadas:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="mi">1</span><span class="o">=&gt;</span><span class="n">c</span><span class="p">,</span> <span class="k">others</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">);</span> <span class="c1">-- atribuição 0c0</span>
+<span class="n">mv</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="mi">1</span><span class="o">=&gt;</span><span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="o">=&gt;</span> <span class="sc">&#39;1&#39;</span><span class="p">,</span> <span class="k">others</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">);</span> <span class="c1">-- 0c1</span>
+<span class="n">mv</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="k">others</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">);</span> <span class="c1">-- 000</span>
+</pre></div>
+</td></tr></table>
+
+<p>Note que <strong>não</strong> precisamos saber o tamanho do vetor para usar <code>others</code>, então este tipo de atribuição é muito útil quando associada com <a href="https://balbertini.github.io/vhdl_generic-pt_BR.html">generics</a>. De fato, a construção <code>vetor&lt;=(others=&gt;'0');</code> zera qualquer vetor cujo tipo seja compatível com o literal <code>'0'</code>, independentemente do tamanho.</p>
+<h2>Registros</h2>
+<p>Quando todos os elementos do vetor são do mesmo tipo, usamos o <code>array</code> para declará-lo, mas e se os tipos não forem os mesmos? A palava chave <code>record</code> serve exatamente para isso. Suponha que eu quero um conjunto de seis fios, sendo um <em>clock</em>, um inteiro sem sinal de quatro bits e um <em>flag</em> que pode ser <em>tri-state</em>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">meu_registro</span> <span class="k">is</span> <span class="k">record</span>
+  <span class="n">clock</span><span class="o">:</span> <span class="kt">bit</span><span class="p">;</span>
+  <span class="n">mi</span><span class="o">:</span> <span class="kt">integer</span> <span class="k">range</span> <span class="mi">0</span> <span class="k">to</span> <span class="mi">15</span><span class="p">;</span>
+  <span class="n">mf</span><span class="o">:</span> <span class="kt">std_logic</span><span class="p">;</span>
+<span class="k">end</span> <span class="k">record</span><span class="p">;</span>
+</pre></div>
+</td></tr></table>
+
+<p>Se declararmos um <code>signal mr: meu_registro;</code>, teremos um conjunto de fios que representam exatamente o que está no registro. As atribuições seguem as mesmas regras que para o vetor, inclusive para associação nomeada.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">mr</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="sc">&#39;0&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="sc">&#39;1&#39;</span><span class="p">);</span>
+<span class="n">mr</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">clock</span><span class="o">=&gt;</span><span class="n">ck</span><span class="p">,</span> <span class="n">mi</span><span class="o">=&gt;</span><span class="mi">5</span><span class="p">,</span> <span class="n">mf</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p>As ferramentas de síntese na sua maioria não suportam a síntese completa de registros, portanto evite-os em descrições sintetizáveis.</p>
+<h2>Conversão</h2>
+<p>Muitas pessoas se confundem quando convertem entre agregados. Veja este post sobre <a href="https://balbertini.github.io/vhdl_conversion-pt_BR.html">conversão de dados</a> para um guia de como fazer a conversão corretamente.</p>
+<h2>Considerações</h2>
+<p>Se você está na graduação ou está aprendendo a descrever hardware, seguem algumas dicas:</p>
+<ul>
+<li>Evite matrizes (vetores multidimensionais) pois você tenderá a esgotar seus recursos de projeto rapidamente. A exceção são memórias pois não há outra maneira de descrevê-las.</li>
+<li>A atribuição nomeada pode não ser sintetizável pelo seu software. Para evitar problemas, sempre faça uma atribuição completa (para todos os elementos do vetor) e use <code>others</code> somente para fazer o <em>reset</em> de elementos de memória.</li>
+</ul>
+<p>Se você está na pós-graduação, este guia não é suficiente para você e você deve seriamente considerar construções mais avançadas, mas seguir as dicas acima não prejudicará seu poder de expressão, somente deixará seu código mais prolixo.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://balbertini.github.io/tag/vhdl.html">vhdl</a>
+      <a href="https://balbertini.github.io/tag/basic.html">basic</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'balbertini';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Habilite JavaScript para ver os comentários.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy; 2014 Bruno Albertini - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Criado com o <a href="http://getpelican.com" target="_blank">Pelican</a> usando o tema <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a>
+  <span class="footer-separator">|</span>
+  Alterar tema para <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> 
+  <script id="dark-theme-script"
+          src="https://balbertini.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " B.Albertini's site ",
+  "url" : "https://balbertini.github.io",
+  "image": "/images/profile.png",
+  "description": ""
+}
+</script>
+
+
+</body>
+</html>
