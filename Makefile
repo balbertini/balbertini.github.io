@@ -1,3 +1,4 @@
+
 PY?=python3
 PELICAN?=pelican
 PELICANOPTS=
@@ -9,6 +10,7 @@ CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
 
 GITHUB_PAGES_BRANCH=main
+
 
 
 DEBUG ?= 0
