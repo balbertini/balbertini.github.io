@@ -1,4 +1,5 @@
 Title: Circuitos Sequenciais em VHDL
+Date: 2019-05-30 13:31
 Category: vhdl
 Tags: vhdl, sequenciais
 Slug: vhdl_sequential
