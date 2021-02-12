@@ -29,7 +29,7 @@
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/solid.css">
 
 
-    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Site do Bruno Albertini Atom">
+    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
 
 
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
@@ -62,7 +62,7 @@
 <meta name="keywords" content="vhdl, basic">
 
 
-<meta property="og:site_name" content="Site do Bruno Albertini"/>
+<meta property="og:site_name" content="B.Albertini's site"/>
 <meta property="og:title" content="Arquitetura"/>
 <meta property="og:description" content="Arquiteturas em VHDL."/>
 <meta property="og:locale" content="pr_BR"/>
@@ -76,7 +76,7 @@
 <meta property="article:tag" content="basic"/>
 <meta property="og:image" content="/images/profile.png">
 
-  <title>Site do Bruno Albertini &ndash; Arquitetura</title>
+  <title>B.Albertini's site &ndash; Arquitetura</title>
 
 </head>
 <body >
@@ -153,9 +153,9 @@
       
     <h1 id="vhdl_architecture">Arquitetura</h1>
     <p>
-      Publicado em Qui 04 Outubro 2018 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-           &#8226; Last Modified Qua 23 Setembro 2020
-        &#8226; 5 min de leitura 
+      Posted on Qui 04 Outubro 2018 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+      &#8226; Last Modified Qua 23 Setembro 2020
+        &#8226; 5 min read
     </p>
   </header>
 
@@ -169,12 +169,12 @@
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">architecture</span> <span class="nc">nome_da_arquitetura</span> <span class="k">of</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">nome_da_arquitetura</span> <span class="k">of</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
     <span class="n">declaracoes</span>
 <span class="k">begin</span>
     <span class="n">declaracoes_combinatorias</span>
 <span class="k">end</span> <span class="nc">nome_da_arquitetura</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Onde <code>declaracoes</code> é a lista de elementos que serão utilizados na sua arquitetura, como sinais e componentes. As <code>declaracoes_combinatorias</code> são todas as declarações concorrentes desta descrição, como uma atribuição (condicional ou não), uma instância de componente ou um <code>process</code>. O <code>nome_da_arquitetura</code> pode ser qualquer nome válido em VHDL, e o <code>nome_da_entidade</code> deve ser o nome da entidade que esta arquitetura descreve.</p>
@@ -185,22 +185,22 @@
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">nome_da_instancia</span><span class="o">:</span>
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">nome_da_instancia</span><span class="o">:</span>
   <span class="n">nome_da_entidade</span><span class="p">(</span><span class="n">nome_da_arquitetura</span><span class="p">)</span>
   <span class="k">generic</span> <span class="k">map</span> <span class="p">(</span><span class="n">atribuicao_de_parametros</span><span class="p">)</span>
   <span class="k">port</span> <span class="k">map</span> <span class="p">(</span><span class="n">atribuicao_de_portas</span><span class="p">);</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Isto fará com que o sintetizador escolha a última arquitetura descrita (ou a que for configurada no sintetizador). Contudo, esta sintaxe existe pois, na maioria das vezes, as entidades só possuem uma arquitetura. Você pode fazer uma escolha explícita da arquitetura, prática recomendada caso a entidade possua mais de uma. Para isso, basta modificar a declaração da instância para a sintaxe completa, como abaixo:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">nome_da_intancia</span><span class="o">:</span>
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">nome_da_intancia</span><span class="o">:</span>
   <span class="k">entity</span> <span class="nc">work</span><span class="p">.</span><span class="n">nome_da_entidade</span><span class="p">(</span><span class="n">nome_da_arquitetura</span><span class="p">)</span>
   <span class="k">generic</span> <span class="k">map</span> <span class="p">(</span><span class="n">atribuicao_de_parametros</span><span class="p">)</span>
   <span class="k">port</span> <span class="k">map</span> <span class="p">(</span><span class="n">atribuicao_de_portas</span><span class="p">);</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>A palavra reservada <code>work</code> faz referência ao pacote de trabalho local, onde se encontram todas as entidades que foram desenvolvidas por você e não foram colocadas em um pacote. Caso você tenha colocado sua entidade em um pacote ou esteja usando uma entidade que você não fez e que está em um pacote, deve substituir <code>work</code> pelo pacote onde a entidade se encontra. Algumas ferramentas de síntese exigem que você declare a utilização da bilbioteca <code>work</code> explicitamente colocando <code>use work.nome_da_entidade</code> ou <code>use work.all</code> no preâmbulo do seu arquivo.</p>
@@ -223,7 +223,7 @@
 15
 16
 17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">mux2to1</span> <span class="k">is</span>
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">mux2to1</span> <span class="k">is</span>
     <span class="k">port</span><span class="p">(</span>
         <span class="n">s</span><span class="o">:</span>    <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
         <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">:</span> <span class="k">in</span>    <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
@@ -241,7 +241,7 @@
     <span class="n">o</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">and</span> <span class="k">not</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="k">or</span> <span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">and</span> <span class="n">s</span><span class="p">);</span>
     <span class="n">o</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">and</span> <span class="k">not</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="k">or</span> <span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">and</span> <span class="n">s</span><span class="p">);</span>
 <span class="k">end</span> <span class="nc">struct</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Acima, vemos um componente com duas arquiteturas, representadas tanto na descrição VHDL quanto na representação gráfica. Note que o componente possui uma entidade externa camada <code>mux2to1</code>, que define as interfaces de entrada e saída. Por dentro, tem duas arquiteturas, que definem o comportamento do componente de duas maneiras distintas. Por padrão, se não especificarmos explicitamente, o software de síntese irá considerar a última arquitetura descrita como sendo a que ele deve utilizar, por isso ligamos as interfaces do desenho na arquitetura padrão.</p>
@@ -261,7 +261,7 @@
 12
 13
 14
-15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">architecture</span> <span class="nc">muxes</span> <span class="k">of</span> <span class="nc">entidade_mae</span> <span class="k">is</span>
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">muxes</span> <span class="k">of</span> <span class="nc">entidade_mae</span> <span class="k">is</span>
   <span class="k">component</span> <span class="nc">mux2to1</span> <span class="k">is</span>
     <span class="k">port</span><span class="p">(</span>
         <span class="n">s</span><span class="o">:</span>    <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
@@ -276,7 +276,7 @@
   <span class="n">mux2</span><span class="o">:</span> <span class="k">entity</span> <span class="nc">work</span><span class="p">.</span><span class="n">mux2to1</span><span class="p">(</span><span class="n">struct</span><span class="p">)</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">o2</span><span class="p">);</span>
   <span class="n">mux3</span><span class="o">:</span> <span class="k">entity</span> <span class="nc">work</span><span class="p">.</span><span class="n">mux2to1</span><span class="p">(</span><span class="n">whenelse</span><span class="p">)</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">o3</span><span class="p">);</span>
 <span class="k">end</span> <span class="nc">muxes</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Lembre-se que esta é a descrição de um hardware, portanto as três instâncias são três circuitos <strong>diferentes</strong>, cada um com seu próprio arranjo de portas lógicas. A diferença é que o <code>mux1</code> e o <code>mux2</code> são idênticos, ou seja, se você observar o circuito gerado, são duas cópias do mesmo circuito. O <code>mux3</code>, apesar de ter mesma funcionalidade, é diferente. Se você sintetizar o circuito acima para um circuito real em silício, poderá ver em um microscópio duas áreas idênticas e uma diferente, todas recebendo as mesmas entradas e cada uma com sua própria saída. <strong>Nota:</strong> este parágrafo é uma simplificação didática, se tiver conhecimento de síntese de ASICs e quiser saber mais detalhes do que acontece durante a síntese, me escreva.</p>
@@ -304,19 +304,19 @@
     })();
 </script>
 <noscript>
-    Habilite JavaScript para ver os comentários.
+    Please enable JavaScript to view comments.
 </noscript>
 <!-- End Disqus -->
 </article>
 
     <footer>
 <p>
-  &copy; 2014 Bruno Albertini - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2014 Bruno Albertini - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Creative Commons Attribution-ShareAlike</a>
 </p>
 <p>
-Criado com o <a href="http://getpelican.com" target="_blank">Pelican</a> usando o tema <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
   <span class="footer-separator">|</span>
-  Alterar tema para <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> 
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
   <script id="dark-theme-script"
           src="https://balbertini.github.io/theme/dark-theme/dark-theme.min.js"
           data-enable-auto-detect-theme="True"
@@ -344,7 +344,7 @@ Criado com o <a href="http://getpelican.com" target="_blank">Pelican</a> usando 
 {
   "@context" : "http://schema.org",
   "@type" : "Blog",
-  "name": " Site do Bruno Albertini ",
+  "name": " B.Albertini's site ",
   "url" : "https://balbertini.github.io",
   "image": "/images/profile.png",
   "description": ""

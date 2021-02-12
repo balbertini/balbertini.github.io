@@ -69,7 +69,7 @@
 <meta property="og:url" content="https://balbertini.github.io/vhdl_sequential-pt_BR.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2018-09-05 08:24:31-03:00"/>
-<meta property="article:modified_time" content="2021-01-31 18:30:36-03:00"/>
+<meta property="article:modified_time" content="2021-02-12 10:07:19.856029-03:00"/>
 <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
 <meta property="article:section" content="vhdl"/>
 <meta property="article:tag" content="vhdl"/>
@@ -153,26 +153,17 @@
       
     <h1 id="vhdl_sequential">Circuitos Sequenciais em VHDL</h1>
     <p>
-      Publicado em Qua 05 Setembro 2018 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-           &#8226; Last Modified Dom 31 Janeiro 2021
-        &#8226; 7 min de leitura 
+      Posted on Qua 05 Setembro 2018 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+      &#8226; Last Modified Sex 12 Fevereiro 2021
+        &#8226; 7 min read
     </p>
   </header>
 
 
   <div>
     <p>A principal característica de um <strong>circuito sequencial</strong> é que as saídas dependem não somente das entradas, como em um circuito combinatório, mas também das entradas passadas. Diz-se que um circuito sequencial possui um <strong>elemento de memória</strong> ou é dependente do tempo.</p>
-<table style="width:100%">
-  <tr>
-    <td>
-      <i class="fas fa-info fa-2x"  style="color: #0066ff;"></i>
-    </td>
-    <td>
-      Depender do tempo não implica que o circuito possui um sinal de <em>clock</em>, apesar disso ser verdadeiro na maioria das vezes.
-    </td>
-  </tr>
-</table>
-
+<p>{% from 'infobox.html' import infobox %}
+{{ infobox([('info','Depender do tempo não implica que o circuito possui um sinal de <em>clock</em>, apesar disso ser verdadeiro na maioria das vezes.'),]) }}</p>
 <h2>Process</h2>
 <p>A estrutura utilizada para descrever circuitos sequenciais em VHDL é o <code>process</code>.</p>
 <p>Sintaxe de um <code>process</code>:</p>
@@ -180,12 +171,12 @@
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nc">nome_opcional</span><span class="o">:</span> <span class="k">process</span> <span class="p">(</span><span class="n">lista_de_sensibilidade</span><span class="p">)</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nc">nome_opcional</span><span class="o">:</span> <span class="k">process</span> <span class="p">(</span><span class="n">lista_de_sensibilidade</span><span class="p">)</span>
     <span class="n">declaracoes</span>
 <span class="k">begin</span>
     <span class="n">primitivas</span> <span class="n">sequenciais</span>
 <span class="k">end</span> <span class="k">process</span> <span class="nc">nome_opcional</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>O nome do <code>process</code> é opcional e serve para identificá-lo durante a simulação. Recomenda-se a sua utilização para melhorar a legibilidade e facilitar a depuração, obviamente usando um nome que representa o circuito sendo descrito. Se optar por retirar o nome, retira-se o <code>nome_opcional</code>, incluindo o <code>:</code>.</p>
@@ -211,7 +202,7 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nc">ffd</span><span class="o">:</span> <span class="k">process</span>
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nc">ffd</span><span class="o">:</span> <span class="k">process</span>
 <span class="k">begin</span>
     <span class="k">wait</span> <span class="k">until</span> <span class="n">clock</span><span class="na">&#39;event</span> <span class="k">and</span> <span class="n">clock</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
     <span class="k">if</span> <span class="n">en</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
@@ -219,7 +210,7 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
         <span class="n">q_n</span> <span class="o">&lt;=</span> <span class="k">not</span> <span class="n">d</span><span class="p">;</span>
     <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
 <span class="k">end</span> <span class="k">process</span> <span class="nc">ffd</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Este exemplo é o mais simples possível: um <em>flip-flop</em> tipo D. Se o <em>en</em> for alto, o componente amostra a entrada <code>d</code> nas saídas <code>q</code> e <code>q_n</code> na borda de subida do <em>clock</em>. Note que o <em>process</em> não tem lista de sensibilidade, mas a primeira coisa que ele faz é aguardar que aconteça uma mudança no sinal de <em>clock</em> (espera por <code>clock'event</code>) e que esta mudança seja a borda de subida (verifica se <code>clock=1</code>). Quando isto acontecer, ele faz uma verificação para saber se o <code>en=1</code> e, caso seja, amostra a entrada para as saídas. Note que não está especificado o que acontece com as saídas caso <code>en=0</code>, o que faz com que a saída não mude, exatamente o comportamento desejado para o <em>flip-flop</em>.</p>
@@ -232,7 +223,7 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
 6
 7
 8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nc">ffd</span><span class="o">:</span> <span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">)</span>
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nc">ffd</span><span class="o">:</span> <span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">)</span>
 <span class="k">begin</span>
     <span class="k">if</span> <span class="n">clock</span><span class="na">&#39;event</span> <span class="k">and</span> <span class="n">clock</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
         <span class="k">if</span> <span class="n">en</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
@@ -241,7 +232,7 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
         <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
     <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
 <span class="k">end</span> <span class="k">process</span> <span class="nc">ffd</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Note que neste caso, os sinais <code>en</code> e <code>d</code> podem ficar de fora da lista de sensibilidade pois, apesar de serem lidos dentro do <code>process</code>, não alteram o comportamento do circuito exceto na borda do <em>clock</em>, portanto não faz diferença se o colocarmos na lista de sensibilidade: <code>process(clock, en, d)</code>.</p>
@@ -259,7 +250,7 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nc">ffdr</span><span class="o">:</span> <span class="k">process</span>
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nc">ffdr</span><span class="o">:</span> <span class="k">process</span>
 <span class="k">begin</span>
     <span class="k">wait</span> <span class="k">on</span> <span class="n">clock</span><span class="p">,</span> <span class="n">reset</span><span class="p">;</span>
     <span class="k">if</span> <span class="n">reset</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
@@ -272,7 +263,7 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
         <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
     <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
 <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>O <code>process</code> irá aguardar que aconteça alguma mudança nos sinais <em>clock</em> ou <em>reset</em> para continuar. Neste exemplo, o <em>flip-flop</em> possui um sinal de <em>reset</em> assíncrono ativo alto, portanto ele é verificado fora da condição de borda de subida. Neste caso, se o <code>reset=1</code>, as saídas vão para <code>q=0</code> e <code>q_n=1</code> incondicionalmente, ignorando-se a borda, portanto o <em>reset</em> tem prioridade sobre o a amostragem da entrada. Note que neste caso utiliza-se o <code>wait on</code> e não o <code>wait until</code>. Qualquer mudança nos sinais <em>clock</em> ou <em>reset</em> faz com que o <code>process</code> passe da linha do <code>wait on clock, reset</code> e reavalie todas as condições.</p>
@@ -288,7 +279,7 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nc">ffdr</span><span class="o">:</span> <span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">reset</span><span class="p">)</span>
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nc">ffdr</span><span class="o">:</span> <span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">reset</span><span class="p">)</span>
 <span class="k">begin</span>
     <span class="k">if</span> <span class="n">reset</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
         <span class="n">q</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
@@ -300,7 +291,7 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
         <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
     <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
 <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Observe que o <code>wait on</code> substitui a lista de sensibilidade. Normalmente o <code>wait on</code> é usado como a primeira primitiva do <code>process</code>, em substituição à lista de sensibilidade. Para circuitos sequenciais síncronos, aconselha-se a utilização da versão com lista de sensibilidade para evitar que a linha do <code>wait on</code> seja colocada em locais inadequados, o que pode gerar um circuito sequencial assíncrono. A maioria das ferramentas de síntese suporta somente um <code>wait on</code> no início ou final do <code>process</code>.</p>
@@ -330,19 +321,19 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
     })();
 </script>
 <noscript>
-    Habilite JavaScript para ver os comentários.
+    Please enable JavaScript to view comments.
 </noscript>
 <!-- End Disqus -->
 </article>
 
     <footer>
 <p>
-  &copy; 2014 Bruno Albertini - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2014 Bruno Albertini - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Creative Commons Attribution-ShareAlike</a>
 </p>
 <p>
-Criado com o <a href="http://getpelican.com" target="_blank">Pelican</a> usando o tema <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
   <span class="footer-separator">|</span>
-  Alterar tema para <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> 
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
   <script id="dark-theme-script"
           src="https://balbertini.github.io/theme/dark-theme/dark-theme.min.js"
           data-enable-auto-detect-theme="True"

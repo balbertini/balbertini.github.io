@@ -29,7 +29,7 @@
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/solid.css">
 
 
-    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Site do Bruno Albertini Atom">
+    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
 
 
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
@@ -62,7 +62,7 @@
 <meta name="keywords" content="vhdl, basic">
 
 
-<meta property="og:site_name" content="Site do Bruno Albertini"/>
+<meta property="og:site_name" content="B.Albertini's site"/>
 <meta property="og:title" content="Instanciando componentes parametricamente"/>
 <meta property="og:description" content="Usando o generate em VHDL."/>
 <meta property="og:locale" content="pr_BR"/>
@@ -76,7 +76,7 @@
 <meta property="article:tag" content="basic"/>
 <meta property="og:image" content="/images/profile.png">
 
-  <title>Site do Bruno Albertini &ndash; Instanciando componentes parametricamente</title>
+  <title>B.Albertini's site &ndash; Instanciando componentes parametricamente</title>
 
 </head>
 <body >
@@ -153,9 +153,9 @@
       
     <h1 id="vhdl_generate">Instanciando componentes parametricamente</h1>
     <p>
-      Publicado em Seg 02 Setembro 2019 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-           &#8226; Last Modified Seg 09 Setembro 2019
-        &#8226; 5 min de leitura 
+      Posted on Seg 02 Setembro 2019 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+      &#8226; Last Modified Seg 09 Setembro 2019
+        &#8226; 5 min read
     </p>
   </header>
 
@@ -165,10 +165,10 @@
 <h2>Sintaxe</h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nc">nome</span><span class="o">:</span> <span class="k">for</span> <span class="n">parametro</span> <span class="k">in</span> <span class="n">lista</span> <span class="k">generate</span>
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nc">nome</span><span class="o">:</span> <span class="k">for</span> <span class="n">parametro</span> <span class="k">in</span> <span class="n">lista</span> <span class="k">generate</span>
     <span class="n">primitivas</span> <span class="n">concorrentes</span>
 <span class="k">end</span> <span class="k">generate</span> <span class="nc">nome</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Onde <code>nome</code> é opcional e pode ser um nome qualquer para este <em>for-generate</em>. O <code>parametro</code> é o nome do parâmetro que irá variar dentro do laço, assumindo os valores da <code>lista</code>, e as primitivas concorrentes são as que serão instanciadas parametricamente (usando o parâmetro definido no laço).</p>
@@ -192,7 +192,7 @@
 15
 16
 17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">ffd</span> <span class="k">is</span>
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">ffd</span> <span class="k">is</span>
   <span class="k">port</span> <span class="p">(</span>
     <span class="n">clock</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">reset</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
     <span class="n">q</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
@@ -210,7 +210,7 @@
     <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
   <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
 <span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Para fazer um registrador simples com <span class="math">\(n\)</span> bits baseado neste <em>flip-flop</em>, devemos montar a seguinte estrutura:</p>
@@ -238,7 +238,7 @@
 20
 21
 22
-23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">registrador</span> <span class="k">is</span>
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">registrador</span> <span class="k">is</span>
   <span class="k">generic</span><span class="p">(</span>
     <span class="n">n</span><span class="o">:</span> <span class="kt">natural</span> <span class="o">:=</span> <span class="mi">8</span>
   <span class="p">);</span>
@@ -261,7 +261,7 @@
     <span class="n">ffs</span><span class="o">:</span> <span class="n">ffd</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">reset</span><span class="p">,</span> <span class="n">q</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
   <span class="k">end</span> <span class="k">generate</span><span class="p">;</span>
 <span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Observe o <code>generate</code> na arquitetura. A linha <code>ffs: ffd port map(clock, d(i), reset, q(i));</code> instanciará <span class="math">\(n\)</span> <em>flip-flops</em>, cada um ligado em um fio dos vetores (conjunto de fios) <code>d</code> e <code>q</code>, mas compartilhando o mesmo <em>clock</em> e <em>reset</em>. O fio do vetor que cada instância usará depende do parâmetro <code>i</code>, que irá variar de <code>n-1</code> até <code>0</code>.</p>
@@ -278,7 +278,7 @@
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">registrador</span> <span class="k">is</span>
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">registrador</span> <span class="k">is</span>
   <span class="k">component</span> <span class="nc">ffd</span> <span class="k">is</span>
     <span class="k">port</span> <span class="p">(</span>
       <span class="n">clock</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">reset</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
@@ -291,7 +291,7 @@
   <span class="n">ffs_1</span><span class="o">:</span> <span class="n">ffd</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">d</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reset</span><span class="p">,</span> <span class="n">q</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
   <span class="n">ffs_0</span><span class="o">:</span> <span class="n">ffd</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">d</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">reset</span><span class="p">,</span> <span class="n">q</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
 <span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>A única diferença é que o sintetizador é quem fará o "desenrolamento" do laço <em>for-generate</em>, permitindo que o projetista descreva um hardware genérico cujo tamanho não é conhecido.</p>
@@ -299,10 +299,10 @@
 <p>Quando a estrutura é regular como no caso do registrador, o <em>for-generate</em> é muito útil e simples de usar. Mas e se houver pequenas diferenças? Para isso, há o <em>if-generate</em>, cuja sintaxe é:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">nome</span><span class="o">:</span> <span class="k">if</span> <span class="n">condicao</span> <span class="k">generate</span>
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">nome</span><span class="o">:</span> <span class="k">if</span> <span class="n">condicao</span> <span class="k">generate</span>
   <span class="n">primitivas</span> <span class="n">concorrentes</span>
 <span class="k">end</span> <span class="k">generate</span> <span class="nc">nome</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Este tipo de <em>if</em> só pode ser usado dentro de um <em>for-generate</em> e serve justamente para fazer pequenas mudanças na estrutura do hardware sendo descrito, sem abrir mão da parametrização. Vejamos novamente um exemplo.</p>
@@ -319,7 +319,7 @@
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">ha</span> <span class="k">is</span>
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">ha</span> <span class="k">is</span>
   <span class="k">port</span> <span class="p">(</span>
     <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
     <span class="n">r</span><span class="p">,</span> <span class="n">co</span> <span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
@@ -331,7 +331,7 @@
   <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">a</span> <span class="k">xor</span> <span class="n">b</span><span class="p">;</span>
   <span class="n">co</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">a</span> <span class="k">and</span> <span class="n">b</span><span class="p">);</span>
 <span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -345,7 +345,7 @@
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">fa</span> <span class="k">is</span>
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">fa</span> <span class="k">is</span>
   <span class="k">port</span> <span class="p">(</span>
     <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">ci</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
     <span class="n">r</span><span class="p">,</span> <span class="n">co</span> <span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
@@ -357,7 +357,7 @@
   <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">a</span> <span class="k">xor</span> <span class="n">b</span> <span class="k">xor</span> <span class="n">ci</span><span class="p">;</span>
   <span class="n">co</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">a</span> <span class="k">and</span> <span class="n">b</span><span class="p">)</span> <span class="k">or</span> <span class="p">(</span><span class="n">a</span> <span class="k">and</span> <span class="n">ci</span><span class="p">)</span> <span class="k">or</span> <span class="p">(</span><span class="n">b</span> <span class="k">and</span> <span class="n">ci</span><span class="p">);</span>
 <span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Um somador simples de <span class="math">\(n\)</span> bits tem a seguinte estrutura:</p>
@@ -398,7 +398,7 @@
 33
 34
 35
-36</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">somador</span> <span class="k">is</span>
+36</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">somador</span> <span class="k">is</span>
   <span class="k">generic</span><span class="p">(</span>
     <span class="n">bits</span><span class="o">:</span> <span class="kt">natural</span> <span class="o">:=</span> <span class="mi">8</span>
   <span class="p">);</span>
@@ -434,7 +434,7 @@
   <span class="k">end</span> <span class="k">generate</span> <span class="nc">fas</span><span class="p">;</span>
   <span class="n">co</span> <span class="o">&lt;=</span> <span class="n">cots</span><span class="p">(</span><span class="n">bits</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
 <span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Dentro do <em>for-generate</em> temos dois <em>if-generates</em>: um para o bit menos significativo do somador, que onde deve ser usado um <code>ha</code> (sem entrada de <em>carry</em>) e outro para os demais bits, onde deve ser usado um <code>fa</code> com os <em>carries</em> sendo ligados sequencialmente. Este tipo de construção chama-se <em>carry propagation</em> ou <em>ripple carry</em>.</p>
@@ -447,7 +447,7 @@
 6
 7
 8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">architecture</span> <span class="nc">estrutural</span> <span class="k">of</span> <span class="nc">somador</span> <span class="k">is</span>
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">estrutural</span> <span class="k">of</span> <span class="nc">somador</span> <span class="k">is</span>
   <span class="p">...</span>
   <span class="k">signal</span> <span class="n">cots</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="n">bits</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
 <span class="k">begin</span>
@@ -456,7 +456,7 @@
   <span class="n">fai_1</span><span class="o">:</span> <span class="n">fa</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">s</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
   <span class="n">hai_0</span><span class="o">:</span> <span class="n">ha</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">b</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>        <span class="n">s</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
 <span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h1>Resumo</h1>
@@ -546,19 +546,19 @@
     })();
 </script>
 <noscript>
-    Habilite JavaScript para ver os comentários.
+    Please enable JavaScript to view comments.
 </noscript>
 <!-- End Disqus -->
 </article>
 
     <footer>
 <p>
-  &copy; 2014 Bruno Albertini - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2014 Bruno Albertini - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Creative Commons Attribution-ShareAlike</a>
 </p>
 <p>
-Criado com o <a href="http://getpelican.com" target="_blank">Pelican</a> usando o tema <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
   <span class="footer-separator">|</span>
-  Alterar tema para <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> 
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
   <script id="dark-theme-script"
           src="https://balbertini.github.io/theme/dark-theme/dark-theme.min.js"
           data-enable-auto-detect-theme="True"
@@ -586,7 +586,7 @@ Criado com o <a href="http://getpelican.com" target="_blank">Pelican</a> usando 
 {
   "@context" : "http://schema.org",
   "@type" : "Blog",
-  "name": " Site do Bruno Albertini ",
+  "name": " B.Albertini's site ",
   "url" : "https://balbertini.github.io",
   "image": "/images/profile.png",
   "description": ""

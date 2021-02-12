@@ -29,7 +29,7 @@
   <link rel="stylesheet" type="text/css" href="https://balbertini.github.io/theme/font-awesome/css/solid.css">
 
 
-    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Site do Bruno Albertini Atom">
+    <link href="https://balbertini.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="B.Albertini's site Atom">
 
 
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
@@ -62,7 +62,7 @@
 <meta name="keywords" content="vhdl, basic">
 
 
-<meta property="og:site_name" content="Site do Bruno Albertini"/>
+<meta property="og:site_name" content="B.Albertini's site"/>
 <meta property="og:title" content="Componentes em VHDL"/>
 <meta property="og:description" content="Usando componentes em VHDL."/>
 <meta property="og:locale" content="pr_BR"/>
@@ -76,7 +76,7 @@
 <meta property="article:tag" content="basic"/>
 <meta property="og:image" content="/images/profile.png">
 
-  <title>Site do Bruno Albertini &ndash; Componentes em VHDL</title>
+  <title>B.Albertini's site &ndash; Componentes em VHDL</title>
 
 </head>
 <body >
@@ -153,9 +153,9 @@
       
     <h1 id="vhdl_component">Componentes em VHDL</h1>
     <p>
-      Publicado em Qui 14 Março 2019 na categoria <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-           &#8226; Last Modified Sex 18 Setembro 2020
-        &#8226; 6 min de leitura 
+      Posted on Qui 14 Março 2019 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+      &#8226; Last Modified Sex 18 Setembro 2020
+        &#8226; 6 min read
     </p>
   </header>
 
@@ -173,7 +173,7 @@ Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</co
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">alu181</span> <span class="k">is</span>
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">alu181</span> <span class="k">is</span>
   <span class="k">port</span> <span class="p">(</span>
     <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
     <span class="n">cn</span><span class="p">,</span> <span class="n">m</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
@@ -181,7 +181,7 @@ Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</co
     <span class="n">cn4</span><span class="p">,</span> <span class="n">aeqb</span><span class="p">,</span> <span class="n">gn</span><span class="p">,</span> <span class="n">pn</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
   <span class="p">);</span>
 <span class="k">end</span> <span class="k">entity</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Para usar essa ULA como componente, há duas fases distintas: a declaração e a instância.</p>
@@ -190,11 +190,11 @@ Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</co
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">component</span> <span class="nc">nome_da_entidade</span> <span class="p">[</span><span class="k">is</span><span class="p">]</span>
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">component</span> <span class="nc">nome_da_entidade</span> <span class="p">[</span><span class="k">is</span><span class="p">]</span>
   <span class="p">[</span><span class="k">generic</span> <span class="p">(</span> <span class="n">elementos_genericos</span> <span class="p">)]</span>
   <span class="p">[</span><span class="k">port</span> <span class="p">(</span><span class="n">portas</span><span class="p">)]</span>
 <span class="k">end</span> <span class="k">component</span> <span class="err">[</span><span class="nc">nome_da_entidade</span><span class="err">]</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>A cláusula <code>is</code> é opcional, assim como o <code>nome_da_entidade</code> no final da declaração. O <code>generic</code> serve para declarar componentes parametrizáveis, que <a href="https://balbertini.github.io/vhdl_generic-pt_BR.html">está coberto em outro post</a>. Já o <code>port</code>, apesar de opcional, é o que declara as portas do componente disponíveis para a entidade que o utilizará como módulo. De modo geral, é esperado que as cláusulas <code>generic</code> e <code>port</code> <strong>sejam idênticas</strong> à declaração da entidade, então a ULA 181 do nosso exemplo deve ser declarada como componente assim:</p>
@@ -205,7 +205,7 @@ Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</co
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">component</span> <span class="nc">alu181</span> <span class="k">is</span>
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">component</span> <span class="nc">alu181</span> <span class="k">is</span>
   <span class="k">port</span> <span class="p">(</span>
     <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
     <span class="n">cn</span><span class="p">,</span> <span class="n">m</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
@@ -213,7 +213,7 @@ Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</co
     <span class="n">cn4</span><span class="p">,</span> <span class="n">aeqb</span><span class="p">,</span> <span class="n">gn</span><span class="p">,</span> <span class="n">pn</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
   <span class="p">);</span>
 <span class="k">end</span> <span class="k">component</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h2>Instanciando um componente</h2>
@@ -223,13 +223,13 @@ Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</co
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">nome_da_instancia</span><span class="o">:</span>
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">nome_da_instancia</span><span class="o">:</span>
 <span class="p">[</span><span class="k">component</span><span class="p">]</span> <span class="n">nome_do_componente</span> <span class="o">|</span>
 <span class="p">[</span><span class="k">entity</span> <span class="nc">nome_da_entidade</span> <span class="p">[(</span><span class="n">nome_da_arquitetura</span><span class="p">)]]</span> <span class="o">|</span>
 <span class="k">configuration</span> <span class="n">nome_da_configuração</span>
     <span class="k">generic</span> <span class="k">map</span> <span class="p">(</span><span class="n">lista_de_associacao_de_elementos_genericos</span><span class="p">)</span>
     <span class="k">port</span> <span class="k">map</span> <span class="p">(</span><span class="n">lista_de_associacao_de_portas</span><span class="p">);</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Note que há três modos distintos de instanciar um componente, que são mutuamente exclusivos. O primeiro usamos o nome do componente (opcionalmente antecedido por <code>component</code>), no segundo usamos o nome da entidade e no terceiro usamos o nome da configuração (a configuração é um elemento primário do VHDL).</p>
@@ -239,15 +239,15 @@ Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</co
 <p>Na prática, acabamos quase sempre por usar o primeiro método por ser mais simples e compatível com todas as versões de VHDL:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">nome_da_instancia</span><span class="o">:</span> <span class="n">nome_do_componente</span>
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">nome_da_instancia</span><span class="o">:</span> <span class="n">nome_do_componente</span>
     <span class="k">generic</span> <span class="k">map</span> <span class="p">(</span><span class="n">lista_de_associacao_de_elementos_genericos</span><span class="p">)</span>
     <span class="k">port</span> <span class="k">map</span> <span class="p">(</span><span class="n">lista_de_associacao_de_portas</span><span class="p">);</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Agora observe as cláusulas <code>map</code>. Elas mapeiam os sinais do seu componente para a instância e ambos seguem o mesmo padrão usado para declaração de portas. O <code>generic map</code> <a href="https://balbertini.github.io/vhdl_generic-pt_BR.html">está coberto em outro post</a>, então vamos focar na instância simples da nossa ULA.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">minha_alu</span><span class="o">:</span> <span class="n">alu181</span> <span class="k">port</span> <span class="k">map</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">Op</span><span class="p">,</span> <span class="sc">&#39;0&#39;</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">co4</span><span class="p">,</span> <span class="n">aeqb0</span><span class="p">,</span> <span class="k">open</span><span class="p">,</span> <span class="k">open</span><span class="p">);</span>
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">minha_alu</span><span class="o">:</span> <span class="n">alu181</span> <span class="k">port</span> <span class="k">map</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">Op</span><span class="p">,</span> <span class="sc">&#39;0&#39;</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">co4</span><span class="p">,</span> <span class="n">aeqb0</span><span class="p">,</span> <span class="k">open</span><span class="p">,</span> <span class="k">open</span><span class="p">);</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>No trecho acima, declaramos uma instância do componente <code>alu181</code> chamada <code>minha_alu</code>. Note que a ordem dos sinais é a mesma usada na declaração do componente. Isto significa que o sinal <code>A</code>, que deve existir na arquitetura que está usando este componente, será ligado ao sinal <code>a</code> desta instância de ULA. Chamamos este tipo de associação de <strong>associação posicional</strong> pois a ordem do sinal importa. Repare também que não vamos usar o _carry_in__ (<code>cn</code>), portanto fixamos esta entrada em <code>0</code>. Também não usaremos as saídas <code>gn</code> e <code>pn</code>, então não conectaremos a lugar algum, o que pode ser feito em VHDL usando a palavra reservada <code>open</code>.</p>
@@ -257,13 +257,13 @@ Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</co
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">minha_alu</span><span class="o">:</span> <span class="n">alu181</span>
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">minha_alu</span><span class="o">:</span> <span class="n">alu181</span>
   <span class="k">port</span> <span class="k">map</span> <span class="p">(</span> <span class="n">a</span><span class="o">=&gt;</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="o">=&gt;</span><span class="n">B</span><span class="p">,</span> <span class="n">f</span><span class="o">=&gt;</span><span class="n">F</span><span class="p">,</span>
              <span class="n">m</span><span class="o">=&gt;</span><span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="o">=&gt;</span><span class="n">Op</span><span class="p">,</span>
              <span class="n">gn</span><span class="o">=&gt;</span><span class="k">open</span><span class="p">,</span> <span class="n">pn</span><span class="o">=&gt;</span><span class="k">open</span><span class="p">,</span> <span class="n">cn</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">,</span> <span class="n">cn4</span><span class="o">=&gt;</span><span class="n">co4</span><span class="p">,</span>
              <span class="n">aeqb</span><span class="o">=&gt;</span><span class="n">aeqb0</span>
            <span class="p">);</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>A sintaxe é sempre <code>sinal_do_componente =&gt; sinal_da_arquitetura_pai</code>.</p>
@@ -305,7 +305,7 @@ Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</co
 34
 35
 36
-37</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">entity</span> <span class="nc">ula2x</span> <span class="k">is</span>
+37</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">ula2x</span> <span class="k">is</span>
   <span class="k">port</span> <span class="p">(</span>
     <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">7</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
     <span class="n">Op</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
@@ -342,7 +342,7 @@ Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</co
   <span class="n">aeqb</span> <span class="o">&lt;=</span> <span class="n">aeqb_it</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">and</span> <span class="n">aeqb_it</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 
 <span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h2>Qual associação utilizar?</h2>
@@ -436,19 +436,19 @@ Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</co
     })();
 </script>
 <noscript>
-    Habilite JavaScript para ver os comentários.
+    Please enable JavaScript to view comments.
 </noscript>
 <!-- End Disqus -->
 </article>
 
     <footer>
 <p>
-  &copy; 2014 Bruno Albertini - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+  &copy; 2014 Bruno Albertini - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Creative Commons Attribution-ShareAlike</a>
 </p>
 <p>
-Criado com o <a href="http://getpelican.com" target="_blank">Pelican</a> usando o tema <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
   <span class="footer-separator">|</span>
-  Alterar tema para <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> 
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
   <script id="dark-theme-script"
           src="https://balbertini.github.io/theme/dark-theme/dark-theme.min.js"
           data-enable-auto-detect-theme="True"
@@ -476,7 +476,7 @@ Criado com o <a href="http://getpelican.com" target="_blank">Pelican</a> usando 
 {
   "@context" : "http://schema.org",
   "@type" : "Blog",
-  "name": " Site do Bruno Albertini ",
+  "name": " B.Albertini's site ",
   "url" : "https://balbertini.github.io",
   "image": "/images/profile.png",
   "description": ""
