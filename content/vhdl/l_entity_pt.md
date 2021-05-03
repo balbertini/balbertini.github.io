@@ -1,5 +1,6 @@
 Title: Entidade
 Date: 2019-05-30 13:31
+Modified: 2032-02-12 10:07
 Category: vhdl
 Tags: vhdl, basic
 Slug: vhdl_entity

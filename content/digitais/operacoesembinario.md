@@ -1,5 +1,6 @@
 Title: Operações Aritméticas em Binário
 Date: 2020-07-29 10:18
+Modified: 2032-02-12 10:07
 Category: sistemas digitais
 Tags: sistemas digitais, sistemas de numeração
 Slug: binaryarithmetic

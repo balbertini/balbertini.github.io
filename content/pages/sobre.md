@@ -31,7 +31,7 @@ Tesoureiro da [Seção Sul Brasil da IEEE](http://www.ieee.org.br/) (2017-2018).
 
 Em algumas situações, pode ser necessária a comunicação criptografada.
 
-Para assinaturas, costumo usar certificados CACert. Para validar algo assinado por mim, você precisa adicionar o certificado raiz da CACert na sua máquina. Os certificados raiz da CACert podem ser encontrados [aqui](https://www.cacert.org/index.php?id=3).
+Para assinaturas, costumo usar certificados CACert. Para validar algo que eu assinei usando este certificado, você precisa adicionar o certificado raiz da CACert na sua máquina. Os certificados raiz da CACert podem ser encontrados [aqui](https://www.cacert.org/index.php?id=3).
 
 Em algumas ocasiões, uso o PGP também. Minha chave pública usada tanto para assinaturas quanto para comunicação está abaixo e pode também ser encontrada no servidor do [OpenPGP](hkps://keys.openpgp.org) (acesso direto à chave [aqui](https://keys.openpgp.org/search?q=balbertini%40usp.br)).
 

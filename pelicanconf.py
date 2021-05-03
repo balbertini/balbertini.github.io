@@ -38,12 +38,12 @@ TIMEZONE = 'America/Sao_Paulo'
 
 
 PLUGIN_PATHS = ["../pelican-plugins"]
-# PLUGINS = ['i18n_subsites', 'render_math', 'post_stats', 'jinja2content']
-PLUGINS = ['i18n_subsites', 'render_math', 'post_stats', 'filetime_from_git', 'jinja2content']
+PLUGINS =  ['post_stats','render_math','jinja_filters']
+PLUGINS += ['jinja2content']
 # Processors extensions
-JINJA_ENVIRONMENT = {
-    'extensions': ['jinja2.ext.i18n']
-}
+# JINJA_ENVIRONMENT = {
+#     'extensions': ['jinja2.ext.i18n']
+# }
 JINJA2CONTENT_TEMPLATES=['../templates']
 
 # Localization
@@ -62,7 +62,8 @@ AUTHOR_FEED_RSS = None
 # Blogroll
 LINKS = ()
 
-DEFAULT_PAGINATION = False
+# DEFAULT_PAGINATION = False
+DEFAULT_PAGINATION = 10
 
 STATIC_PATHS = [
     'images',
@@ -82,7 +83,7 @@ STATIC_PATHS = [
 #RELATIVE_URLS = True
 
 # Theme related customization
-THEME = 'pelican_theme_flex'
+THEME = '../pelican_theme_flex'
 FAVICON = SITEURL + '/images/favicon.ico'
 SITETITLE = 'B.Albertini'
 SITESUBTITLE = 'Professor'
@@ -108,3 +109,7 @@ SOCIAL = (
     ('github', 'https://github.com/balbertini'),
     ('rss', '//balbertini.github.io/feeds/all.atom.xml'),
 )
+
+# LOAD_CONTENT_CACHE = True
+LOAD_CONTENT_CACHE = False
+# CACHE_CONTENT = True

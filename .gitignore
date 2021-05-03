@@ -7,3 +7,5 @@ output/
 src/
 testes/
 __pycache__/
+cache/
+testes-NaoVersionado/

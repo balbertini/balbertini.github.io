@@ -1,5 +1,6 @@
 Title: Histórico
 Date: 2019-05-30 13:31
+Modified: 2032-02-12 10:07
 Category: vhdl
 Tags: vhdl, basic
 Slug: vhdl_history
@@ -35,7 +36,7 @@ Uma das influências notáveis no VHDL é a linguagem [Ada](https://www.adaic.or
 {{ infobox([
   ('info','Em VHDL todos os comandos acontecem ao mesmo tempo exceto pelo <code>process</code>, usado para descrições de circuitos sequenciais.'),
   ('info','O termo <u>não-sintetizável</u> significa que a descrição não pode ser transformada em hardware de verdade pois contém elementos de software.'),
-  ('exclamation','Usamos majoritariamente o padrão IEEE 1076-1993 (conhecido como VHDL-93c), que é uma versão do VHDL-93 que também aceita primitivas do VHDL-87. Se o seu projeto não demanda outra versão explicitamente, sempre opte por esta versão pois é a melhor suportada pelas ferramentas.'),
+  ('exclamation','Usamos majoritariamente o padrão IEEE 1076-1993 (conhecido como VHDL-93c), que é uma versão do VHDL-93 que também aceita primitivas do VHDL-87. Se o seu projeto não demanda outra versão explicitamente, sempre opte por esta versão pois é a que possui o melhor suporte pelas ferramentas.'),
 ]) }}
 
 

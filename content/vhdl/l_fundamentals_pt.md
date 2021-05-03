@@ -1,6 +1,6 @@
 Title: Fundamentos
 Date: 2020-09-17 08:06
-Modified: 2020-09-17 08:29
+Modified: 2032-02-12 10:07
 Category: vhdl
 Tags: vhdl, basic
 Slug: vhdl_fundamentals
@@ -12,7 +12,7 @@ Nest _post_ falaremos das características fundamentais da linguagem VHDL. Quand
 
 # Elementos Léxicos
 
-VHDL não diferencia maiúsculas de minúsculas. Como as descrições são arquivos de texto, aconselho usarem codificação UTF-8 em todas as suas descrições, mas todo o código em VHDL deve usar caracteres compatíveis com ASCII. A extensão do arquivo não importa muito, mas as mais comuns são `.vhd` e `.vhdl` (não use `.v` pois esta extensão é interpretada como Verilog pelas ferramentas).
+VHDL não diferencia maiúsculas de minúsculas. Os arquivos são todos arquivos de texto e a especificação da linguagem admite apenas caracteres ASCII. No entanto, sugiro usar codificação UTF-8, limitando-se aos caracteres que também existem no ASCII, pois isso maximiza a compatibilidade com editores e ferramentas de síntese. A extensão do arquivo não importa muito, mas as mais comuns são `.vhd` e `.vhdl` (não use `.v` pois esta extensão é interpretada como Verilog pelas ferramentas).
 
 <table style="width:100%">
  <tr>
@@ -34,7 +34,7 @@ Por motivos óbvios, os comentários não são sintetizáveis.
  <tr>
    <td><i class="fas fa-cog fa-2x"  style="color: #009933;"></i></td>
    <td>
-    Os comentários com delimitadores são suportados a partir do VHDL-2008.
+    Os comentários com delimitadores /* */ são suportados a partir do VHDL-2008.
    </td>
  </tr>
 </table>
@@ -78,7 +78,7 @@ Essas limitações existem para que seu identificador não entre em conflito com
  <tr>
    <td><i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"></i></th>
    <td>
-    Lembre-se que VHDL não diferencia maiúsculas de minúsculas, então `meu_sinal` é o mesmo que `MEU_SINAL` ou `MeUsInAl`.
+    Lembre-se que VHDL não diferencia maiúsculas de minúsculas, então `meu_sinal` é o mesmo que `MEU_SINAL` ou `MeU_sInAl`.
    </td>
  </tr>
 </table>
@@ -96,7 +96,7 @@ meu__sinal -- possui dois _ seguidos
 balbertini@usp -- possui um caractere inválido (@)
 xo:xo -- possui um caractere inválido (:)
 😊-- possui um caractere inválido (U+1F60A em UTF-8)
--- alguns sintetizadores modernos aceitam o acento abaixo
+-- alguns sintetizadores aceitam o acento abaixo
 -- mas melhor evitar
 saída -- possui um caractere inválido (í)
 ```
@@ -111,6 +111,7 @@ VHDL também suporta o que chamamos de identificador estendido. Os identificador
 <span class="nc">\5bola\</span>
 <span class="nc">&#92;&#95;meusinal\</span>
 <span class="nc">\meusinal_\</span>
+<span class="nc">\MeuSinal_\</span>
 <span class="nc">\meu__sinal\</span>
 <span class="nc">\balbertini@usp\</span>
 <span class="nc">\xo:xo\</span>
@@ -118,13 +119,13 @@ VHDL também suporta o que chamamos de identificador estendido. Os identificador
 <span class="nc">\saída\</span>
 </pre></div>
 
-Quando usamos identificadores estendidos, a linguagem interpreta o identificador exatamente como ele é, então neste caso a linguagem irá diferenciar maiúsculas de minúsculas.
+Quando usamos identificadores estendidos, a linguagem interpreta o identificador exatamente como ele é, então neste caso a linguagem diferencia maiúsculas de minúsculas.
 
 <table style="width:100%">
  <tr>
    <td><i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"></i></td>
    <td>
-    Os identificadores estendidos foram criados para serem usados pelas ferramentas de síntese, facilitando a troca de informações. Não recomendamos que utilize em suas descrições pois nem todas as ferramentas suportam.
+    Os identificadores estendidos foram criados para serem usados pelas ferramentas de síntese, facilitando a troca de informações. Não recomendamos que utilize em suas descrições pois nem todas as ferramentas o suportam.
    </td>
  </tr>
  <tr>
@@ -369,7 +370,7 @@ Além desses, há símbolos com um único significado em VHDL, mas composto de d
 ```vhdl
 => ** := /= >= <= <> ?? ?= ?/= ?> ?< ?>= ?<= << >>
 ```
-Para funcionarem, você precisa escrevê-los sem nenhum espaço entre eles (e.g. `<=` é um operador de atribuição, mas `< =` são duas comparações, de menor e igual respectivamente).
+Para funcionarem, você precisa escrevê-los sem nenhum espaço entre eles (e.g. `<=` é um operador de atribuição, mas `< =` são duas comparações, de menor e igual respectivamente). Nos próximos _posts_ falarei sobre o significado de cada um destes operadores.
 
 ## Literais
 
@@ -384,7 +385,7 @@ Há dois tipos de literais numéricos em VHDL: os inteiros e os reais. Ambos pod
 123e45 -- exemplo de número inteiro em notação científica
 123E+7 -- exemplo de número inteiro em notação científica
 3.1415 -- exemplo de número real
-6.67430E−11 -- exemplo de número real em notação científica
+6.67430E-11 -- exemplo de número real em notação científica
 6.02214076E+23  -- exemplo de número real em notação científica
 ```
 
@@ -392,7 +393,7 @@ Note que `-123` não é um número inteiro mas sim uma negação de um inteiro. 
 
 Os literais numéricos também podem ser especificados em outras bases usando o operador `#` com a base expressa em decimal:
 
-```vhdl
+```vhdl08
 -- Todos os números abaixo representam 253 em decimal
 2#11111101# -- em binário (base 2)
 16#FD# -- em hexadecimal (base 16)
@@ -419,7 +420,7 @@ Os literais numéricos também podem ser especificados em outras bases usando o 
 
 Não há ponto (ou vírgula) de separação de milhares, mas é possível usar o caractere `_` para melhorar e legibilidade dos literais numéricos, respeitando-se as regras de composição de identificadores (não se pode aparecer no início ou final de um número, e também não pode aparecer duas vezes seguidas):
 
-```vhdl
+```vhdl08
 123_456
 3.141_592_6
 2#1111_1100_0000_0000#
@@ -439,7 +440,7 @@ Os caracteres em VHDL são expressos entre aspas simples `'` e podem ser qualque
 ' ' -- espaço
 ```
 
-### _Strings_
+### Strings
 
 As _strings_ são vetores de caracteres e são representadas em VHDL entre aspas duplas `"`:
 ```vhdl
@@ -451,9 +452,9 @@ As _strings_ são vetores de caracteres e são representadas em VHDL entre aspas
 """"
 ```
 
-### _Bit Strings_
+### Bit Strings
 
-Como todo hardware no final das contas trabalha com zeros e uns, VHDL possui uma forma específica para representar cadeias de bits. As cadeias são tratadas de forma diferenciada pois sempre podem ser transformadas em bits sem ambiguidade. É possível especificar a base da cadeia usando os prefixos `B` para binário, `O` para octal, `X` para hexadecimal e `D` para decimal (este último a partir de VHDL-2008).
+Como todo hardware no final das contas trabalha com zeros e uns, VHDL possui uma forma específica para representar cadeias de bits. As cadeias são tratadas de forma diferenciada pois sempre podem ser transformadas em bits sem ambiguidade. É possível especificar a base da cadeia usando os prefixos `B` para binário, `O` para octal, `X` para hexadecimal e `D` para decimal (este último só existe a partir de VHDL-2008).
 
 ```vhdl08
 B"0100011" -- uma bitstring em binário
@@ -514,7 +515,7 @@ Também podemos especificar se o número representa um inteiro com sinal ou sem 
  <tr>
    <td><i class="fas fa-cog fa-2x"  style="color: #009933;"></i></td>
    <td>
-    As versões de VHDL<2008 não suportam o especificador decimal <code>D</code>, nenhum especificador de tamanho (os números no prefixo), e nenhum especificador de sinal (<code>U</code> ou <code>S</code>). Aconselho a não usá-los se deseja manter a compatibilidade da sua descrição com todas as ferramentas.
+    As versões de VHDL<2008 não suportam o especificador decimal <code>D</code>, nenhum especificador de tamanho (os números no prefixo), e nenhum especificador de sinal (<code>U</code> ou <code>S</code>). Aconselho a evitá-los se deseja manter a compatibilidade da sua descrição com todas as ferramentas.
    </td>
  </tr>
 </table>
