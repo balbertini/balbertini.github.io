@@ -162,8 +162,17 @@
 
   <div>
     <p>A principal característica de um <strong>circuito sequencial</strong> é que as saídas dependem não somente das entradas, como em um circuito combinatório, mas também das entradas passadas. Diz-se que um circuito sequencial possui um <strong>elemento de memória</strong> ou é dependente do tempo.</p>
-<p>{% from 'infobox.html' import infobox %}
-{{ infobox([('info','Depender do tempo não implica que o circuito possui um sinal de <em>clock</em>, apesar disso ser verdadeiro na maioria das vezes.'),]) }}</p>
+<table style="width:100%">
+  <tr>
+    <td>
+      <i class="fas fa-info fa-2x"  style="color: #0066ff;"></i>
+    </td>
+    <td>
+      Depender do tempo não implica que o circuito possui um sinal de <em>clock</em>, apesar disso ser verdadeiro na maioria das vezes.
+    </td>
+  </tr>
+</table>
+
 <h2>Process</h2>
 <p>A estrutura utilizada para descrever circuitos sequenciais em VHDL é o <code>process</code>.</p>
 <p>Sintaxe de um <code>process</code>:</p>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site - vhdl</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/vhdl.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2021-02-12T10:17:07-03:00</updated><subtitle>Professor</subtitle><entry><title>Funções</title><link href="https://balbertini.github.io/vhdl_function-pt_BR.html" rel="alternate"></link><published>2020-10-17T13:42:51-03:00</published><updated>2021-02-12T10:17:07-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-10-17:/vhdl_function-pt_BR.html</id><summary type="html">&lt;p&gt;Funções em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As funções em VHDL são bastante úteis para reaproveitar código. Elas funcionam como uma função em qualquer linguagem estruturada. Neste artigo, vamos ver o básico de como escrever funções em VHDL.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site - vhdl</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/vhdl.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2021-02-12T12:19:31-03:00</updated><subtitle>Professor</subtitle><entry><title>Funções</title><link href="https://balbertini.github.io/vhdl_function-pt_BR.html" rel="alternate"></link><published>2020-10-17T13:42:51-03:00</published><updated>2021-02-12T10:17:07-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-10-17:/vhdl_function-pt_BR.html</id><summary type="html">&lt;p&gt;Funções em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As funções em VHDL são bastante úteis para reaproveitar código. Elas funcionam como uma função em qualquer linguagem estruturada. Neste artigo, vamos ver o básico de como escrever funções em VHDL.&lt;/p&gt;
 &lt;p&gt;A sintaxe de uma função em VHDL é:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
@@ -166,9 +166,9 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; a solução para o problema neste exemplo de uso está no &lt;code&gt;alarm.vhd&lt;/code&gt; e o &lt;em&gt;testbench&lt;/em&gt; está no &lt;code&gt;alarm_tb.vhd&lt;/code&gt;, cuja entidade (do &lt;em&gt;testbench&lt;/em&gt;) chama-se &lt;code&gt;alarm_tb&lt;/code&gt;.&lt;/p&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="ghdl"></category></entry><entry><title>Fundamentos</title><link href="https://balbertini.github.io/vhdl_fundamentals-pt_BR.html" rel="alternate"></link><published>2020-09-18T19:49:39-03:00</published><updated>2021-02-12T10:16:32-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-09-18:/vhdl_fundamentals-pt_BR.html</id><summary type="html">&lt;p&gt;Fundamentos de VHDL&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nest &lt;em&gt;post&lt;/em&gt; falaremos das características fundamentais da linguagem VHDL. Quando aplicável, usaremos &lt;i class="fas fa-cog"&gt;&lt;/i&gt; para indicar quais versões de VHDL suportam cada característica.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; a solução para o problema neste exemplo de uso está no &lt;code&gt;alarm.vhd&lt;/code&gt; e o &lt;em&gt;testbench&lt;/em&gt; está no &lt;code&gt;alarm_tb.vhd&lt;/code&gt;, cuja entidade (do &lt;em&gt;testbench&lt;/em&gt;) chama-se &lt;code&gt;alarm_tb&lt;/code&gt;.&lt;/p&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="ghdl"></category></entry><entry><title>Fundamentos</title><link href="https://balbertini.github.io/vhdl_fundamentals-pt_BR.html" rel="alternate"></link><published>2020-09-18T19:49:39-03:00</published><updated>2021-02-12T12:19:31-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-09-18:/vhdl_fundamentals-pt_BR.html</id><summary type="html">&lt;p&gt;Fundamentos de VHDL&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nest &lt;em&gt;post&lt;/em&gt; falaremos das características fundamentais da linguagem VHDL. Quando aplicável, usaremos &lt;i class="fas fa-cog"&gt;&lt;/i&gt; para indicar quais versões de VHDL suportam cada característica.&lt;/p&gt;
 &lt;h1&gt;Elementos Léxicos&lt;/h1&gt;
-&lt;p&gt;VHDL não diferencia maiúsculas de minúsculas. Como as descrições são arquivos de texto, aconselho usarem codificação UTF-8 em todas as suas descrições, mas todo o código em VHDL deve usar caracteres compatíveis com ASCII. A extensão do arquivo não importa muito, mas as mais comuns são &lt;code&gt;.vhd&lt;/code&gt; e &lt;code&gt;.vhdl&lt;/code&gt; (não use &lt;code&gt;.v&lt;/code&gt; pois esta extensão é interpretada como Verilog pelas ferramentas).&lt;/p&gt;
+&lt;p&gt;VHDL não diferencia maiúsculas de minúsculas. Os arquivos são todos arquivos de texto e a especificação da linguagem admite apenas caracteres ASCII. No entanto, sugiro usar codificação UTF-8, limitando-se aos caracteres que também existem no ASCII, pois isso maximiza a compatibilidade com editores e ferramentas de síntese. A extensão do arquivo não importa muito, mas as mais comuns são &lt;code&gt;.vhd&lt;/code&gt; e &lt;code&gt;.vhdl&lt;/code&gt; (não use &lt;code&gt;.v&lt;/code&gt; pois esta extensão é interpretada como Verilog pelas ferramentas).&lt;/p&gt;
 &lt;table style="width:100%"&gt;
  &lt;tr&gt;
    &lt;td&gt;&lt;i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"&gt;&lt;/i&gt;&lt;/td&gt;
@@ -186,7 +186,7 @@
  &lt;tr&gt;
    &lt;td&gt;&lt;i class="fas fa-cog fa-2x"  style="color: #009933;"&gt;&lt;/i&gt;&lt;/td&gt;
    &lt;td&gt;
-    Os comentários com delimitadores são suportados a partir do VHDL-2008.
+    Os comentários com delimitadores /* */ são suportados a partir do VHDL-2008.
    &lt;/td&gt;
  &lt;/tr&gt;
 &lt;/table&gt;
@@ -245,7 +245,7 @@
  &lt;tr&gt;
    &lt;td&gt;&lt;i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"&gt;&lt;/i&gt;&lt;/th&gt;
    &lt;td&gt;
-    Lembre-se que VHDL não diferencia maiúsculas de minúsculas, então `meu_sinal` é o mesmo que `MEU_SINAL` ou `MeUsInAl`.
+    Lembre-se que VHDL não diferencia maiúsculas de minúsculas, então `meu_sinal` é o mesmo que `MEU_SINAL` ou `MeU_sInAl`.
    &lt;/td&gt;
  &lt;/tr&gt;
 &lt;/table&gt;
@@ -275,7 +275,7 @@
 &lt;span class="n"&gt;balbertini&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;usp&lt;/span&gt; &lt;span class="c1"&gt;-- possui um caractere inválido (@)&lt;/span&gt;
 &lt;span class="n"&gt;xo&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;xo&lt;/span&gt; &lt;span class="c1"&gt;-- possui um caractere inválido (:)&lt;/span&gt;
 &lt;span class="err"&gt;😊&lt;/span&gt;&lt;span class="c1"&gt;-- possui um caractere inválido (U+1F60A em UTF-8)&lt;/span&gt;
-&lt;span class="c1"&gt;-- alguns sintetizadores modernos aceitam o acento abaixo&lt;/span&gt;
+&lt;span class="c1"&gt;-- alguns sintetizadores aceitam o acento abaixo&lt;/span&gt;
 &lt;span class="c1"&gt;-- mas melhor evitar&lt;/span&gt;
 &lt;span class="n"&gt;saída&lt;/span&gt; &lt;span class="c1"&gt;-- possui um caractere inválido (í)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -289,18 +289,19 @@
 &lt;span class="nc"&gt;\5bola\&lt;/span&gt;
 &lt;span class="nc"&gt;&amp;#92;&amp;#95;meusinal\&lt;/span&gt;
 &lt;span class="nc"&gt;\meusinal_\&lt;/span&gt;
+&lt;span class="nc"&gt;\MeuSinal_\&lt;/span&gt;
 &lt;span class="nc"&gt;\meu__sinal\&lt;/span&gt;
 &lt;span class="nc"&gt;\balbertini@usp\&lt;/span&gt;
 &lt;span class="nc"&gt;\xo:xo\&lt;/span&gt;
 &lt;span class="nc"&gt;\😊\&lt;/span&gt;
 &lt;span class="nc"&gt;\saída\&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;Quando usamos identificadores estendidos, a linguagem interpreta o identificador exatamente como ele é, então neste caso a linguagem irá diferenciar maiúsculas de minúsculas.&lt;/p&gt;
+&lt;p&gt;Quando usamos identificadores estendidos, a linguagem interpreta o identificador exatamente como ele é, então neste caso a linguagem diferencia maiúsculas de minúsculas.&lt;/p&gt;
 &lt;table style="width:100%"&gt;
  &lt;tr&gt;
    &lt;td&gt;&lt;i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"&gt;&lt;/i&gt;&lt;/td&gt;
    &lt;td&gt;
-    Os identificadores estendidos foram criados para serem usados pelas ferramentas de síntese, facilitando a troca de informações. Não recomendamos que utilize em suas descrições pois nem todas as ferramentas suportam.
+    Os identificadores estendidos foram criados para serem usados pelas ferramentas de síntese, facilitando a troca de informações. Não recomendamos que utilize em suas descrições pois nem todas as ferramentas o suportam.
    &lt;/td&gt;
  &lt;/tr&gt;
  &lt;tr&gt;
@@ -627,7 +628,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;h3&gt;&lt;em&gt;Strings&lt;/em&gt;&lt;/h3&gt;
+&lt;h3&gt;Strings&lt;/h3&gt;
 &lt;p&gt;As &lt;em&gt;strings&lt;/em&gt; são vetores de caracteres e são representadas em VHDL entre aspas duplas &lt;code&gt;"&lt;/code&gt;:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
@@ -643,8 +644,8 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;h3&gt;&lt;em&gt;Bit Strings&lt;/em&gt;&lt;/h3&gt;
-&lt;p&gt;Como todo hardware no final das contas trabalha com zeros e uns, VHDL possui uma forma específica para representar cadeias de bits. As cadeias são tratadas de forma diferenciada pois sempre podem ser transformadas em bits sem ambiguidade. É possível especificar a base da cadeia usando os prefixos &lt;code&gt;B&lt;/code&gt; para binário, &lt;code&gt;O&lt;/code&gt; para octal, &lt;code&gt;X&lt;/code&gt; para hexadecimal e &lt;code&gt;D&lt;/code&gt; para decimal (este último a partir de VHDL-2008).&lt;/p&gt;
+&lt;h3&gt;Bit Strings&lt;/h3&gt;
+&lt;p&gt;Como todo hardware no final das contas trabalha com zeros e uns, VHDL possui uma forma específica para representar cadeias de bits. As cadeias são tratadas de forma diferenciada pois sempre podem ser transformadas em bits sem ambiguidade. É possível especificar a base da cadeia usando os prefixos &lt;code&gt;B&lt;/code&gt; para binário, &lt;code&gt;O&lt;/code&gt; para octal, &lt;code&gt;X&lt;/code&gt; para hexadecimal e &lt;code&gt;D&lt;/code&gt; para decimal (este último só existe a partir de VHDL-2008).&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
@@ -733,8 +734,17 @@
  &lt;/tr&gt;
 &lt;/table&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="basic"></category></entry><entry><title>Histórico</title><link href="https://balbertini.github.io/vhdl_history-pt_BR.html" rel="alternate"></link><published>2020-09-18T19:49:39-03:00</published><updated>2021-02-12T10:07:49-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-09-18:/vhdl_history-pt_BR.html</id><summary type="html">&lt;p&gt;Histórico das HDLs&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nest &lt;em&gt;post&lt;/em&gt; contaremos o histórico das HDLs com foco em VHDL e discutiremos as vantagens e desvantagens da utilização deste tipo de linguagem.&lt;/p&gt;
 &lt;p&gt;VHDL, ou VHSIC-HDL significa &lt;em&gt;Very High Speed Integrated Circuit Hardware Description Language&lt;/em&gt;. É uma das duas HDLs mais utilizadas (a outra é Verilog). É muito utilizada em EDA (&lt;em&gt;Electronic Design Automation&lt;/em&gt;), a técnica atual de projeto de circuitos digitais, cuja principal característica é a descrição programática dos circuitos.&lt;/p&gt;
-&lt;p&gt;{% from 'infobox.html' import infobox %}
-{{ infobox([('info','HDL significa linguagem de descrição de hardware, do inglês &lt;em&gt;Hardware Description Language&lt;/em&gt;.')]) }}&lt;/p&gt;
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;i class="fas fa-info fa-2x"  style="color: #0066ff;"&gt;&lt;/i&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      HDL significa linguagem de descrição de hardware, do inglês &lt;em&gt;Hardware Description Language&lt;/em&gt;.
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
 &lt;p&gt;De uma maneira resumida, HDL é uma forma de expressar precisamente um circuito digital em um formato textual estruturado. Expressar significa descrever a estrutura e o comportamento do circuito. O diagrama esquemático tem um poder de expressão similar, porém de modo gráfico. Tudo o que você faz em um diagrama esquemático você pode fazer em uma HDL e, de fato, um bom projetista de hardware consegue usar ambas as formas de expressão. Há outras formas de expressar um circuito (e.g. cálculo proposicional, modelos matemáticos, equações algébricas, &lt;em&gt;floorplan&lt;/em&gt;, &lt;em&gt;netlist&lt;/em&gt;, etc.), mas estão fora do escopo deste &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
 &lt;h1&gt;Histórico do VHDL&lt;/h1&gt;
 &lt;p&gt;A linguagem VHDL foi criada pelo Departamento de Defesa (DoD) norte-americano em 1983, com o intuito de servir para verificação. A ideia principal era documentar programaticamente o comportamento desejado do circuito, assim o DoD poderia licitar uma empresa para desenvolvê-lo ou fabricá-lo e facilmente verificar se o que foi entregue atendia as especificações.&lt;/p&gt;
@@ -748,11 +758,33 @@
 &lt;/ul&gt;
 &lt;p&gt;Há uma versão em discussão, chamada de VHDL-202X e que será padronizada como IEEE 1076 também. Para acompanhar as discussões acesse &lt;a href="http://www.eda-twiki.org/cgi-bin/view.cgi/P1076/WebHome"&gt;o site&lt;/a&gt; do grupo de trabalho.&lt;/p&gt;
 &lt;p&gt;Uma das influências notáveis no VHDL é a linguagem &lt;a href="https://www.adaic.org/"&gt;Ada&lt;/a&gt;, uma linguagem desenvolvida para programação paralela e utilizada como linguagem padrão para desenvolvimento de software pelo DoD. Como VHDL foi criada para descrever circuitos digitais, a linguagem reflete a natureza concorrente intrínseca deste tipo de circuito. Ada é uma linguagem com foco em programação paralela, então suporta descrições concorrentes, tornando-a a candidata ideal para a criação do VHDL. Por este motivo, a linguagem VHDL acabou herdando muitas características da linguagem Ada, principalmente relativas à sintaxe. De fato, VHDL pode até mesmo ser utilizada para desenvolver programas de tão parecida com Ada, mas há linguagens melhores para isso. No entanto, há uma situação onde escrever um software usando VHDL é muito comum: a geração de &lt;em&gt;testbenchs&lt;/em&gt;, que nada mais são que descrições não-sintetizáveis usadas para testar uma descrição de hardware.&lt;/p&gt;
-&lt;p&gt;{{ infobox([
-  ('info','Em VHDL todos os comandos acontecem ao mesmo tempo exceto pelo &lt;code&gt;process&lt;/code&gt;, usado para descrições de circuitos sequenciais.'),
-  ('info','O termo &lt;u&gt;não-sintetizável&lt;/u&gt; significa que a descrição não pode ser transformada em hardware de verdade pois contém elementos de software.'),
-  ('exclamation','Usamos majoritariamente o padrão IEEE 1076-1993 (conhecido como VHDL-93c), que é uma versão do VHDL-93 que também aceita primitivas do VHDL-87. Se o seu projeto não demanda outra versão explicitamente, sempre opte por esta versão pois é a que possui o melhor suporte pelas ferramentas.'),
-]) }}&lt;/p&gt;
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;i class="fas fa-info fa-2x"  style="color: #0066ff;"&gt;&lt;/i&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      Em VHDL todos os comandos acontecem ao mesmo tempo exceto pelo &lt;code&gt;process&lt;/code&gt;, usado para descrições de circuitos sequenciais.
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;i class="fas fa-info fa-2x"  style="color: #0066ff;"&gt;&lt;/i&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      O termo &lt;u&gt;não-sintetizável&lt;/u&gt; significa que a descrição não pode ser transformada em hardware de verdade pois contém elementos de software.
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"&gt;&lt;/i&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      Usamos majoritariamente o padrão IEEE 1076-1993 (conhecido como VHDL-93c), que é uma versão do VHDL-93 que também aceita primitivas do VHDL-87. Se o seu projeto não demanda outra versão explicitamente, sempre opte por esta versão pois é a que possui o melhor suporte pelas ferramentas.
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
 &lt;h1&gt;Vantagens de HDLs&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;Menor taxa de erros e tempo de desenvolvimento.&lt;/li&gt;
@@ -3990,8 +4022,17 @@ Se preferir usar a versão gráfica, veja um tutorial &lt;a href="https://www.se
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Há diversos parâmetros que podem ser passados para a simulação. Um muito útil que pode ser visto acima é o &lt;code&gt;--vcd=arquivo.vcd&lt;/code&gt;. Este parâmetro salvará a forma de onda resultante da simulação no arquivo (neste caso o &lt;code&gt;shiftleft2_tb.vcd&lt;/code&gt;). Para visualizar o arquivo VCD você precisará de um programa que visualize formas de onda. Recomendo o &lt;a href="http://gtkwave.sourceforge.net/"&gt;GTKWave&lt;/a&gt;, disponível para várias as plataformas. Na sua máquina real (&lt;em&gt;host&lt;/em&gt;), navegue até a pasta compartilhada e veja que os arquivos gerados pelo GHDL estão lá, incluindo o resultado da simulação. Você pode abrir o arquivo VCD com o seu visualizador preferido.&lt;/p&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="ghdl"></category><category term="vm"></category></entry><entry><title>Circuitos Sequenciais em VHDL</title><link href="https://balbertini.github.io/vhdl_sequential-pt_BR.html" rel="alternate"></link><published>2018-09-05T08:24:31-03:00</published><updated>2021-02-12T10:07:19-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-09-05:/vhdl_sequential-pt_BR.html</id><summary type="html">&lt;p&gt;Como descrever circuitos sequenciais em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;A principal característica de um &lt;strong&gt;circuito sequencial&lt;/strong&gt; é que as saídas dependem não somente das entradas, como em um circuito combinatório, mas também das entradas passadas. Diz-se que um circuito sequencial possui um &lt;strong&gt;elemento de memória&lt;/strong&gt; ou é dependente do tempo.&lt;/p&gt;
-&lt;p&gt;{% from 'infobox.html' import infobox %}
-{{ infobox([('info','Depender do tempo não implica que o circuito possui um sinal de &lt;em&gt;clock&lt;/em&gt;, apesar disso ser verdadeiro na maioria das vezes.'),]) }}&lt;/p&gt;
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;i class="fas fa-info fa-2x"  style="color: #0066ff;"&gt;&lt;/i&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      Depender do tempo não implica que o circuito possui um sinal de &lt;em&gt;clock&lt;/em&gt;, apesar disso ser verdadeiro na maioria das vezes.
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
 &lt;h2&gt;Process&lt;/h2&gt;
 &lt;p&gt;A estrutura utilizada para descrever circuitos sequenciais em VHDL é o &lt;code&gt;process&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Sintaxe de um &lt;code&gt;process&lt;/code&gt;:&lt;/p&gt;

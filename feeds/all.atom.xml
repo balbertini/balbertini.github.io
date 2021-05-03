@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2021-02-12T10:17:07-03:00</updated><subtitle>Professor</subtitle><entry><title>Como se cadastrar na plataforma de extensão da USP</title><link href="https://balbertini.github.io/cursosextensao-pt_BR.html" rel="alternate"></link><published>2021-01-31T18:30:36-03:00</published><updated>2021-01-31T18:30:36-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2021-01-31:/cursosextensao-pt_BR.html</id><summary type="html">&lt;p&gt;Tutorial de como se cadastrar na plataforma de cursos de extensão da USP&lt;/p&gt;</summary><content type="html">&lt;p&gt;A USP oferece vários cursos de extensão através da plataforma &lt;a href="https://cursosextensao.usp.br"&gt;cursosextensao.usp.br&lt;/a&gt;. Esta plataforma é uma instalação de um AVA (Ambiente Virtual de Aprendizagem) baseada no Moodle. O que diferencia esta plataforma das outras usadas nos cursos de graduação e pós-graduação da USP é que qualquer pessoa pode se inscrever, tornando-a ideal para cursos de extensão oferecidos para o público em geral.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2021-02-12T12:19:31-03:00</updated><subtitle>Professor</subtitle><entry><title>Como se cadastrar na plataforma de extensão da USP</title><link href="https://balbertini.github.io/cursosextensao-pt_BR.html" rel="alternate"></link><published>2021-01-31T18:30:36-03:00</published><updated>2021-01-31T18:30:36-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2021-01-31:/cursosextensao-pt_BR.html</id><summary type="html">&lt;p&gt;Tutorial de como se cadastrar na plataforma de cursos de extensão da USP&lt;/p&gt;</summary><content type="html">&lt;p&gt;A USP oferece vários cursos de extensão através da plataforma &lt;a href="https://cursosextensao.usp.br"&gt;cursosextensao.usp.br&lt;/a&gt;. Esta plataforma é uma instalação de um AVA (Ambiente Virtual de Aprendizagem) baseada no Moodle. O que diferencia esta plataforma das outras usadas nos cursos de graduação e pós-graduação da USP é que qualquer pessoa pode se inscrever, tornando-a ideal para cursos de extensão oferecidos para o público em geral.&lt;/p&gt;
 &lt;h1&gt;Acesso para a comunidade USP&lt;/h1&gt;
 &lt;p&gt;Se você faz parte da comunidade USP (tem um número USP e uma senha única para os sistemas da universidade), você deve acessar a plataforma através do seu número USP, clicando no botão &lt;code&gt;acessar&lt;/code&gt; (o botão amarelo no canto direito da página principal) e em seguida no botão &lt;code&gt;acesso via senha USP&lt;/code&gt; (o botão azul na caixa que abrirá quando clicar no botão amarelo). Não é necessário se cadastrar na plataforma. O restante deste tutorial está focado no cadastro de usuários externos que desejam se cadastrar na plataforma.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Acesso comunidade USP" src="https://balbertini.github.io/images/educacao/ext01.png"&gt;&lt;/p&gt;
@@ -182,9 +182,9 @@ Bruno Albertini&lt;/p&gt;</content><category term="educacao"></category><categor
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; a solução para o problema neste exemplo de uso está no &lt;code&gt;alarm.vhd&lt;/code&gt; e o &lt;em&gt;testbench&lt;/em&gt; está no &lt;code&gt;alarm_tb.vhd&lt;/code&gt;, cuja entidade (do &lt;em&gt;testbench&lt;/em&gt;) chama-se &lt;code&gt;alarm_tb&lt;/code&gt;.&lt;/p&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="ghdl"></category></entry><entry><title>Fundamentos</title><link href="https://balbertini.github.io/vhdl_fundamentals-pt_BR.html" rel="alternate"></link><published>2020-09-18T19:49:39-03:00</published><updated>2021-02-12T10:16:32-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-09-18:/vhdl_fundamentals-pt_BR.html</id><summary type="html">&lt;p&gt;Fundamentos de VHDL&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nest &lt;em&gt;post&lt;/em&gt; falaremos das características fundamentais da linguagem VHDL. Quando aplicável, usaremos &lt;i class="fas fa-cog"&gt;&lt;/i&gt; para indicar quais versões de VHDL suportam cada característica.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; a solução para o problema neste exemplo de uso está no &lt;code&gt;alarm.vhd&lt;/code&gt; e o &lt;em&gt;testbench&lt;/em&gt; está no &lt;code&gt;alarm_tb.vhd&lt;/code&gt;, cuja entidade (do &lt;em&gt;testbench&lt;/em&gt;) chama-se &lt;code&gt;alarm_tb&lt;/code&gt;.&lt;/p&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="ghdl"></category></entry><entry><title>Fundamentos</title><link href="https://balbertini.github.io/vhdl_fundamentals-pt_BR.html" rel="alternate"></link><published>2020-09-18T19:49:39-03:00</published><updated>2021-02-12T12:19:31-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-09-18:/vhdl_fundamentals-pt_BR.html</id><summary type="html">&lt;p&gt;Fundamentos de VHDL&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nest &lt;em&gt;post&lt;/em&gt; falaremos das características fundamentais da linguagem VHDL. Quando aplicável, usaremos &lt;i class="fas fa-cog"&gt;&lt;/i&gt; para indicar quais versões de VHDL suportam cada característica.&lt;/p&gt;
 &lt;h1&gt;Elementos Léxicos&lt;/h1&gt;
-&lt;p&gt;VHDL não diferencia maiúsculas de minúsculas. Como as descrições são arquivos de texto, aconselho usarem codificação UTF-8 em todas as suas descrições, mas todo o código em VHDL deve usar caracteres compatíveis com ASCII. A extensão do arquivo não importa muito, mas as mais comuns são &lt;code&gt;.vhd&lt;/code&gt; e &lt;code&gt;.vhdl&lt;/code&gt; (não use &lt;code&gt;.v&lt;/code&gt; pois esta extensão é interpretada como Verilog pelas ferramentas).&lt;/p&gt;
+&lt;p&gt;VHDL não diferencia maiúsculas de minúsculas. Os arquivos são todos arquivos de texto e a especificação da linguagem admite apenas caracteres ASCII. No entanto, sugiro usar codificação UTF-8, limitando-se aos caracteres que também existem no ASCII, pois isso maximiza a compatibilidade com editores e ferramentas de síntese. A extensão do arquivo não importa muito, mas as mais comuns são &lt;code&gt;.vhd&lt;/code&gt; e &lt;code&gt;.vhdl&lt;/code&gt; (não use &lt;code&gt;.v&lt;/code&gt; pois esta extensão é interpretada como Verilog pelas ferramentas).&lt;/p&gt;
 &lt;table style="width:100%"&gt;
  &lt;tr&gt;
    &lt;td&gt;&lt;i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"&gt;&lt;/i&gt;&lt;/td&gt;
@@ -202,7 +202,7 @@ Bruno Albertini&lt;/p&gt;</content><category term="educacao"></category><categor
  &lt;tr&gt;
    &lt;td&gt;&lt;i class="fas fa-cog fa-2x"  style="color: #009933;"&gt;&lt;/i&gt;&lt;/td&gt;
    &lt;td&gt;
-    Os comentários com delimitadores são suportados a partir do VHDL-2008.
+    Os comentários com delimitadores /* */ são suportados a partir do VHDL-2008.
    &lt;/td&gt;
  &lt;/tr&gt;
 &lt;/table&gt;
@@ -261,7 +261,7 @@ Bruno Albertini&lt;/p&gt;</content><category term="educacao"></category><categor
  &lt;tr&gt;
    &lt;td&gt;&lt;i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"&gt;&lt;/i&gt;&lt;/th&gt;
    &lt;td&gt;
-    Lembre-se que VHDL não diferencia maiúsculas de minúsculas, então `meu_sinal` é o mesmo que `MEU_SINAL` ou `MeUsInAl`.
+    Lembre-se que VHDL não diferencia maiúsculas de minúsculas, então `meu_sinal` é o mesmo que `MEU_SINAL` ou `MeU_sInAl`.
    &lt;/td&gt;
  &lt;/tr&gt;
 &lt;/table&gt;
@@ -291,7 +291,7 @@ Bruno Albertini&lt;/p&gt;</content><category term="educacao"></category><categor
 &lt;span class="n"&gt;balbertini&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;usp&lt;/span&gt; &lt;span class="c1"&gt;-- possui um caractere inválido (@)&lt;/span&gt;
 &lt;span class="n"&gt;xo&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;xo&lt;/span&gt; &lt;span class="c1"&gt;-- possui um caractere inválido (:)&lt;/span&gt;
 &lt;span class="err"&gt;😊&lt;/span&gt;&lt;span class="c1"&gt;-- possui um caractere inválido (U+1F60A em UTF-8)&lt;/span&gt;
-&lt;span class="c1"&gt;-- alguns sintetizadores modernos aceitam o acento abaixo&lt;/span&gt;
+&lt;span class="c1"&gt;-- alguns sintetizadores aceitam o acento abaixo&lt;/span&gt;
 &lt;span class="c1"&gt;-- mas melhor evitar&lt;/span&gt;
 &lt;span class="n"&gt;saída&lt;/span&gt; &lt;span class="c1"&gt;-- possui um caractere inválido (í)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -305,18 +305,19 @@ Bruno Albertini&lt;/p&gt;</content><category term="educacao"></category><categor
 &lt;span class="nc"&gt;\5bola\&lt;/span&gt;
 &lt;span class="nc"&gt;&amp;#92;&amp;#95;meusinal\&lt;/span&gt;
 &lt;span class="nc"&gt;\meusinal_\&lt;/span&gt;
+&lt;span class="nc"&gt;\MeuSinal_\&lt;/span&gt;
 &lt;span class="nc"&gt;\meu__sinal\&lt;/span&gt;
 &lt;span class="nc"&gt;\balbertini@usp\&lt;/span&gt;
 &lt;span class="nc"&gt;\xo:xo\&lt;/span&gt;
 &lt;span class="nc"&gt;\😊\&lt;/span&gt;
 &lt;span class="nc"&gt;\saída\&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;Quando usamos identificadores estendidos, a linguagem interpreta o identificador exatamente como ele é, então neste caso a linguagem irá diferenciar maiúsculas de minúsculas.&lt;/p&gt;
+&lt;p&gt;Quando usamos identificadores estendidos, a linguagem interpreta o identificador exatamente como ele é, então neste caso a linguagem diferencia maiúsculas de minúsculas.&lt;/p&gt;
 &lt;table style="width:100%"&gt;
  &lt;tr&gt;
    &lt;td&gt;&lt;i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"&gt;&lt;/i&gt;&lt;/td&gt;
    &lt;td&gt;
-    Os identificadores estendidos foram criados para serem usados pelas ferramentas de síntese, facilitando a troca de informações. Não recomendamos que utilize em suas descrições pois nem todas as ferramentas suportam.
+    Os identificadores estendidos foram criados para serem usados pelas ferramentas de síntese, facilitando a troca de informações. Não recomendamos que utilize em suas descrições pois nem todas as ferramentas o suportam.
    &lt;/td&gt;
  &lt;/tr&gt;
  &lt;tr&gt;
@@ -643,7 +644,7 @@ Bruno Albertini&lt;/p&gt;</content><category term="educacao"></category><categor
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;h3&gt;&lt;em&gt;Strings&lt;/em&gt;&lt;/h3&gt;
+&lt;h3&gt;Strings&lt;/h3&gt;
 &lt;p&gt;As &lt;em&gt;strings&lt;/em&gt; são vetores de caracteres e são representadas em VHDL entre aspas duplas &lt;code&gt;"&lt;/code&gt;:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
@@ -659,8 +660,8 @@ Bruno Albertini&lt;/p&gt;</content><category term="educacao"></category><categor
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;h3&gt;&lt;em&gt;Bit Strings&lt;/em&gt;&lt;/h3&gt;
-&lt;p&gt;Como todo hardware no final das contas trabalha com zeros e uns, VHDL possui uma forma específica para representar cadeias de bits. As cadeias são tratadas de forma diferenciada pois sempre podem ser transformadas em bits sem ambiguidade. É possível especificar a base da cadeia usando os prefixos &lt;code&gt;B&lt;/code&gt; para binário, &lt;code&gt;O&lt;/code&gt; para octal, &lt;code&gt;X&lt;/code&gt; para hexadecimal e &lt;code&gt;D&lt;/code&gt; para decimal (este último a partir de VHDL-2008).&lt;/p&gt;
+&lt;h3&gt;Bit Strings&lt;/h3&gt;
+&lt;p&gt;Como todo hardware no final das contas trabalha com zeros e uns, VHDL possui uma forma específica para representar cadeias de bits. As cadeias são tratadas de forma diferenciada pois sempre podem ser transformadas em bits sem ambiguidade. É possível especificar a base da cadeia usando os prefixos &lt;code&gt;B&lt;/code&gt; para binário, &lt;code&gt;O&lt;/code&gt; para octal, &lt;code&gt;X&lt;/code&gt; para hexadecimal e &lt;code&gt;D&lt;/code&gt; para decimal (este último só existe a partir de VHDL-2008).&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
@@ -749,8 +750,17 @@ Bruno Albertini&lt;/p&gt;</content><category term="educacao"></category><categor
  &lt;/tr&gt;
 &lt;/table&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="basic"></category></entry><entry><title>Histórico</title><link href="https://balbertini.github.io/vhdl_history-pt_BR.html" rel="alternate"></link><published>2020-09-18T19:49:39-03:00</published><updated>2021-02-12T10:07:49-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-09-18:/vhdl_history-pt_BR.html</id><summary type="html">&lt;p&gt;Histórico das HDLs&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nest &lt;em&gt;post&lt;/em&gt; contaremos o histórico das HDLs com foco em VHDL e discutiremos as vantagens e desvantagens da utilização deste tipo de linguagem.&lt;/p&gt;
 &lt;p&gt;VHDL, ou VHSIC-HDL significa &lt;em&gt;Very High Speed Integrated Circuit Hardware Description Language&lt;/em&gt;. É uma das duas HDLs mais utilizadas (a outra é Verilog). É muito utilizada em EDA (&lt;em&gt;Electronic Design Automation&lt;/em&gt;), a técnica atual de projeto de circuitos digitais, cuja principal característica é a descrição programática dos circuitos.&lt;/p&gt;
-&lt;p&gt;{% from 'infobox.html' import infobox %}
-{{ infobox([('info','HDL significa linguagem de descrição de hardware, do inglês &lt;em&gt;Hardware Description Language&lt;/em&gt;.')]) }}&lt;/p&gt;
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;i class="fas fa-info fa-2x"  style="color: #0066ff;"&gt;&lt;/i&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      HDL significa linguagem de descrição de hardware, do inglês &lt;em&gt;Hardware Description Language&lt;/em&gt;.
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
 &lt;p&gt;De uma maneira resumida, HDL é uma forma de expressar precisamente um circuito digital em um formato textual estruturado. Expressar significa descrever a estrutura e o comportamento do circuito. O diagrama esquemático tem um poder de expressão similar, porém de modo gráfico. Tudo o que você faz em um diagrama esquemático você pode fazer em uma HDL e, de fato, um bom projetista de hardware consegue usar ambas as formas de expressão. Há outras formas de expressar um circuito (e.g. cálculo proposicional, modelos matemáticos, equações algébricas, &lt;em&gt;floorplan&lt;/em&gt;, &lt;em&gt;netlist&lt;/em&gt;, etc.), mas estão fora do escopo deste &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
 &lt;h1&gt;Histórico do VHDL&lt;/h1&gt;
 &lt;p&gt;A linguagem VHDL foi criada pelo Departamento de Defesa (DoD) norte-americano em 1983, com o intuito de servir para verificação. A ideia principal era documentar programaticamente o comportamento desejado do circuito, assim o DoD poderia licitar uma empresa para desenvolvê-lo ou fabricá-lo e facilmente verificar se o que foi entregue atendia as especificações.&lt;/p&gt;
@@ -764,11 +774,33 @@ Bruno Albertini&lt;/p&gt;</content><category term="educacao"></category><categor
 &lt;/ul&gt;
 &lt;p&gt;Há uma versão em discussão, chamada de VHDL-202X e que será padronizada como IEEE 1076 também. Para acompanhar as discussões acesse &lt;a href="http://www.eda-twiki.org/cgi-bin/view.cgi/P1076/WebHome"&gt;o site&lt;/a&gt; do grupo de trabalho.&lt;/p&gt;
 &lt;p&gt;Uma das influências notáveis no VHDL é a linguagem &lt;a href="https://www.adaic.org/"&gt;Ada&lt;/a&gt;, uma linguagem desenvolvida para programação paralela e utilizada como linguagem padrão para desenvolvimento de software pelo DoD. Como VHDL foi criada para descrever circuitos digitais, a linguagem reflete a natureza concorrente intrínseca deste tipo de circuito. Ada é uma linguagem com foco em programação paralela, então suporta descrições concorrentes, tornando-a a candidata ideal para a criação do VHDL. Por este motivo, a linguagem VHDL acabou herdando muitas características da linguagem Ada, principalmente relativas à sintaxe. De fato, VHDL pode até mesmo ser utilizada para desenvolver programas de tão parecida com Ada, mas há linguagens melhores para isso. No entanto, há uma situação onde escrever um software usando VHDL é muito comum: a geração de &lt;em&gt;testbenchs&lt;/em&gt;, que nada mais são que descrições não-sintetizáveis usadas para testar uma descrição de hardware.&lt;/p&gt;
-&lt;p&gt;{{ infobox([
-  ('info','Em VHDL todos os comandos acontecem ao mesmo tempo exceto pelo &lt;code&gt;process&lt;/code&gt;, usado para descrições de circuitos sequenciais.'),
-  ('info','O termo &lt;u&gt;não-sintetizável&lt;/u&gt; significa que a descrição não pode ser transformada em hardware de verdade pois contém elementos de software.'),
-  ('exclamation','Usamos majoritariamente o padrão IEEE 1076-1993 (conhecido como VHDL-93c), que é uma versão do VHDL-93 que também aceita primitivas do VHDL-87. Se o seu projeto não demanda outra versão explicitamente, sempre opte por esta versão pois é a que possui o melhor suporte pelas ferramentas.'),
-]) }}&lt;/p&gt;
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;i class="fas fa-info fa-2x"  style="color: #0066ff;"&gt;&lt;/i&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      Em VHDL todos os comandos acontecem ao mesmo tempo exceto pelo &lt;code&gt;process&lt;/code&gt;, usado para descrições de circuitos sequenciais.
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;i class="fas fa-info fa-2x"  style="color: #0066ff;"&gt;&lt;/i&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      O termo &lt;u&gt;não-sintetizável&lt;/u&gt; significa que a descrição não pode ser transformada em hardware de verdade pois contém elementos de software.
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"&gt;&lt;/i&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      Usamos majoritariamente o padrão IEEE 1076-1993 (conhecido como VHDL-93c), que é uma versão do VHDL-93 que também aceita primitivas do VHDL-87. Se o seu projeto não demanda outra versão explicitamente, sempre opte por esta versão pois é a que possui o melhor suporte pelas ferramentas.
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
 &lt;h1&gt;Vantagens de HDLs&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;Menor taxa de erros e tempo de desenvolvimento.&lt;/li&gt;
@@ -859,39 +891,44 @@ Bruno Albertini&lt;/p&gt;</content><category term="educacao"></category><categor
 &lt;h1&gt;Representação binária&lt;/h1&gt;
 &lt;p&gt;Um número em binário é composto por qualquer quantidade de dígitos 0 e 1. Um único dígito é chamado de &lt;em&gt;bit&lt;/em&gt;, o conjunto de 8 bits é chamado de &lt;em&gt;byte&lt;/em&gt; e o conjunto de 4 bits é chamado de &lt;em&gt;nible&lt;/em&gt;. Os processadores modernos usam números de 64 bits, mas ainda temos muitos processadores usando 32 bits. A quantidade de bits usada para representar um número em um processador está ligada ao tamanho das estruturas de armazenamento usadas internamente para guardar os números (conhecidas como registradores) e a capacidade das unidades de cálculo (i.e. um processador de 64 bits possui registradores e unidades lógicas e aritméticas capazes de armazenar e operar números  de 64 bits).&lt;/p&gt;
 &lt;p&gt;A representação binária segue a fórmula geral de representação de bases, cuja conversão para decimal é:&lt;/p&gt;
-&lt;p&gt;$$
+&lt;div class="math"&gt;$$
 \sum_{m}^{n}{a_i.b^{i}}
-$$&lt;/p&gt;
-&lt;p&gt;Onde o índice $i$ começa em $n$, passa pelo $0$ e termina em $m$ ($m$ é um número negativo). Um número em binário pode ser representado por:
-$$
+$$&lt;/div&gt;
+&lt;p&gt;Onde o índice &lt;span class="math"&gt;\(i\)&lt;/span&gt; começa em &lt;span class="math"&gt;\(n\)&lt;/span&gt;, passa pelo &lt;span class="math"&gt;\(0\)&lt;/span&gt; e termina em &lt;span class="math"&gt;\(m\)&lt;/span&gt; (&lt;span class="math"&gt;\(m\)&lt;/span&gt; é um número negativo). Um número em binário pode ser representado por:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 a_{n}a_{n-1}a_{n-2}\ldots a_{0}.a_{-1}a_{-2}\ldots a_{-m+2}a_{-m+1}a_{-m}
-$$&lt;/p&gt;
-&lt;p&gt;O dígito $a$ com o maior índice é chamado de &lt;strong&gt;mais significativo&lt;/strong&gt; pois é o multiplicador de maior peso (está ligado a base elevada a maior potência) e o dígito com o menor índice é chamado de &lt;strong&gt;menos significativo&lt;/strong&gt; pelo motivo oposto. Como costumamos escrever os números da esquerda para a direita, o mais significativo fica mais a esquerda e o menos significativo fica mais a direita. É comum usarmos os acrônimos MSB para o mais significativo (do inglês &lt;em&gt;Most Significant Bit&lt;/em&gt;) e LSB para o menos significativo (do inglês &lt;em&gt;Least Significant Bit&lt;/em&gt;).&lt;/p&gt;
-&lt;p&gt;Para converter entre bases, basta usar a fórmula geral aplicando-se a base que deseja. O $a$ corresponde a um dígito na base de origem e para converter substituímos pelo valor deste dígito no sistema alvo. Como os valores binários são 0 e 1 e os valores na base 10 são os mesmos (0 e 1, respectivamente), não há substituição a fazer, bastando usar o próprio dígito na posição $i$. O $b$ da fórmula é o valor da base de origem na base de destino. No caso de binário para decimal, a base é 2 e o valor em decimal também é 2, então basta fazer $b=2$.&lt;/p&gt;
+$$&lt;/div&gt;
+&lt;p&gt;O dígito &lt;span class="math"&gt;\(a\)&lt;/span&gt; com o maior índice é chamado de &lt;strong&gt;mais significativo&lt;/strong&gt; pois é o multiplicador de maior peso (está ligado a base elevada a maior potência) e o dígito com o menor índice é chamado de &lt;strong&gt;menos significativo&lt;/strong&gt; pelo motivo oposto. Como costumamos escrever os números da esquerda para a direita, o mais significativo fica mais a esquerda e o menos significativo fica mais a direita. É comum usarmos os acrônimos MSB para o mais significativo (do inglês &lt;em&gt;Most Significant Bit&lt;/em&gt;) e LSB para o menos significativo (do inglês &lt;em&gt;Least Significant Bit&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;Para converter entre bases, basta usar a fórmula geral aplicando-se a base que deseja. O &lt;span class="math"&gt;\(a\)&lt;/span&gt; corresponde a um dígito na base de origem e para converter substituímos pelo valor deste dígito no sistema alvo. Como os valores binários são 0 e 1 e os valores na base 10 são os mesmos (0 e 1, respectivamente), não há substituição a fazer, bastando usar o próprio dígito na posição &lt;span class="math"&gt;\(i\)&lt;/span&gt;. O &lt;span class="math"&gt;\(b\)&lt;/span&gt; da fórmula é o valor da base de origem na base de destino. No caso de binário para decimal, a base é 2 e o valor em decimal também é 2, então basta fazer &lt;span class="math"&gt;\(b=2\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h3&gt;Exemplo&lt;/h3&gt;
-&lt;p&gt;O número $101010.10101_{2}$ representa qual número em decimal?&lt;/p&gt;
+&lt;p&gt;O número &lt;span class="math"&gt;\(101010.10101_{2}\)&lt;/span&gt; representa qual número em decimal?&lt;/p&gt;
 &lt;p&gt;Vamos expandir o número usando a fórmula geral:
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \sum_{m}^{n}{a_i.b^{i}}
-$$&lt;/p&gt;
-&lt;p&gt;Como temos seis dígitos antes do . e cinco depois, $n=5$ e $m=-5$ (note que há o índice 0 antes do ponto, então o $n=5$). Vamos expandir o número usando a fórmula geral:
-$$
+$$&lt;/div&gt;
+&lt;p&gt;Como temos seis dígitos antes do . e cinco depois, &lt;span class="math"&gt;\(n=5\)&lt;/span&gt; e &lt;span class="math"&gt;\(m=-5\)&lt;/span&gt; (note que há o índice 0 antes do ponto, então o &lt;span class="math"&gt;\(n=5\)&lt;/span&gt;). Vamos expandir o número usando a fórmula geral:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \sum_{5}^{-5}{a_i.b^{i}}
-$$&lt;/p&gt;
+$$&lt;/div&gt;
 &lt;p&gt;Ou na versão expandida:
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 a_{5}.b^{5}+a_{4}.b^{4}+a_{3}.b^{3}+a_{2}.b^{2}+a_{1}.b^{1}+a_{0}.b^{0}+a_{-1}.b^{-1}+a_{-2}.b^{-2}+a_{-3}.b^{-3}+a_{-4}.b^{-4}+a_{-5}.b^{-5}
-$$&lt;/p&gt;
-&lt;p&gt;Substituindo os números, temos a base 2 ($b=2$) e os dígitos $101010.10101_{2}$, então ficamos com:
-$$
+$$&lt;/div&gt;
+&lt;p&gt;Substituindo os números, temos a base 2 (&lt;span class="math"&gt;\(b=2\)&lt;/span&gt;) e os dígitos &lt;span class="math"&gt;\(101010.10101_{2}\)&lt;/span&gt;, então ficamos com:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 1.2^{5}+0.2^{4}+1.2^{3}+0.2^{2}+1.2^{1}+0.2^{0}+1.2^{-1}+0.2^{-2}+1.2^{-3}+0.2^{-4}+1.2^{-5}
-$$
-$$
+$$&lt;/div&gt;
+&lt;div class="math"&gt;$$
 = 1.32+0.16+1.8+0.4+1.2+0.1+1.\frac{1}{2}+0.\frac{1}{4}+1.\frac{1}{8}+0.\frac{1}{16}+1.\frac{1}{32}
-$$
-$$
+$$&lt;/div&gt;
+&lt;div class="math"&gt;$$
 = 32+8+2+\frac{1}{2}+\frac{1}{8}+\frac{1}{32} = 42 + 0.5 + 0.125 + 0.03125 = 42.65625
-$$&lt;/p&gt;
+$$&lt;/div&gt;
 &lt;h2&gt;Conversão direta (tabela)&lt;/h2&gt;
 &lt;p&gt;A fórmula geral pode ser usada para conversões entre bases facilmente, mas para conversão entre binário (base 2), octal (base 8) e hexadecimal (base 16), pelas bases serem múltiplas umas das outras, há uma maneira mais simples, usando uma tabela de conversão, que pode ser vista abaixo.&lt;/p&gt;
 &lt;table&gt;
@@ -1002,7 +1039,7 @@ $$&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;Usar a tabela é bem simples: cada grupo de 3 bits (lembre-se que um bit é um dígito binário) corresponde a um dígito octal e cada grupo de 4 bits é um dígito hexadecimal, e vice-versa. Note também a representação: é comum usarmos o prefixo 0x (ou o sufixo 'h') para hexadecimal e o prefixo 0 (ou 'o') para octal, mas para evitar ambiguidades, aconselho usar a versão formal (com subscrito, e.g. $F_{16}=17_{8}=1111_{2}$).&lt;/p&gt;
+&lt;p&gt;Usar a tabela é bem simples: cada grupo de 3 bits (lembre-se que um bit é um dígito binário) corresponde a um dígito octal e cada grupo de 4 bits é um dígito hexadecimal, e vice-versa. Note também a representação: é comum usarmos o prefixo 0x (ou o sufixo 'h') para hexadecimal e o prefixo 0 (ou 'o') para octal, mas para evitar ambiguidades, aconselho usar a versão formal (com subscrito, e.g. &lt;span class="math"&gt;\(F_{16}=17_{8}=1111_{2}\)&lt;/span&gt;).&lt;/p&gt;
 &lt;h3&gt;Exemplos&lt;/h3&gt;
 &lt;p&gt;Converter &lt;code&gt;0xBEBAD0&lt;/code&gt; para binário e octal. Cada dígito hexadecimal corresponde a 4 dígitos binário, então usando a tabela temos que &lt;code&gt;0xBEBAD0 = 1011 1110 1011 1010 1101 0000&lt;/code&gt;. Com o binário, basta agruparmos de 3 em 3 e teremos o octal: &lt;code&gt;0xBEBAD0 = 101 111 101 011 101 011 010 000 = 057535320&lt;/code&gt; (o &lt;code&gt;0&lt;/code&gt; no início é só para indicar que é octal).&lt;/p&gt;
 &lt;p&gt;Converter &lt;code&gt;1100101011111110&lt;/code&gt; para octal e hexadecimal. Para octal, agrupamos de 3 em 3: &lt;code&gt;1 100 101 011 111 110 = 0145376&lt;/code&gt;, e para hexadecimal de 4 em 4: &lt;code&gt;1100 1010 1111 1110 = 0xCAFE&lt;/code&gt;.&lt;/p&gt;
@@ -1010,7 +1047,7 @@ $$&lt;/p&gt;
 &lt;p&gt;Muito bem, até aqui vimos números (inclusive fracionários), mas como representamos números negativos? As três maneiras mais utilizadas são: sinal-magnitude, complemento de base diminuída e complemento de base.&lt;/p&gt;
 &lt;h2&gt;Sinal-Magnitude&lt;/h2&gt;
 &lt;p&gt;Esta é a representação que usamos no dia a dia com o sistema decimal. Nela, o dígito mais significativo é especial e contém &lt;code&gt;+&lt;/code&gt; ou &lt;code&gt;-&lt;/code&gt; para indicar se o número é negativo ou não (a ausência implica em um número positivo). Esta representação é muito simples, e é usada em computação para representar números de ponto flutuante, chamados normalmente de &lt;em&gt;float&lt;/em&gt; ou &lt;em&gt;double&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Em binário, usamos um bit extra para isso, onde 1 significa que o número é negativo e 0 que é positivo. Um número binário de $n$ bits pode representar $2^{n}$ números. Porém, na representação sinal-magnitude, há dois fatores importantes. O primeiro é que um dos bits é usado para representar o sinal, então com $n$ bits podemos representar efetivamente $2^{n-1}$ números positivos e a mesma quantidade de números negativos. O segundo é que há duas representações para o zero! Isso significa que dos $2^{n-1}$ números representáveis para os positivos, um é o zero e o mesmo ocorre para os negativos. No final, podemos representar $2^{n}-1$ números, pois o zero é representado duas vezes (o zero positivo e o zero negativo). Os números representáveis estão na faixa $-(2^{n-1}-1)\leq x \leq +(2^{n-1}-1)$. Exemplo: com 4 bits podemos representar $2^{4}=16$ números, mas usando sinal-magnitude podemos representar de &lt;code&gt;-7 (1111)&lt;/code&gt; até &lt;code&gt;+7 (0111)&lt;/code&gt;, o que nos dá efetivamente 15 números (7 negativos, 7 positivos e o zero).&lt;/p&gt;
+&lt;p&gt;Em binário, usamos um bit extra para isso, onde 1 significa que o número é negativo e 0 que é positivo. Um número binário de &lt;span class="math"&gt;\(n\)&lt;/span&gt; bits pode representar &lt;span class="math"&gt;\(2^{n}\)&lt;/span&gt; números. Porém, na representação sinal-magnitude, há dois fatores importantes. O primeiro é que um dos bits é usado para representar o sinal, então com &lt;span class="math"&gt;\(n\)&lt;/span&gt; bits podemos representar efetivamente &lt;span class="math"&gt;\(2^{n-1}\)&lt;/span&gt; números positivos e a mesma quantidade de números negativos. O segundo é que há duas representações para o zero! Isso significa que dos &lt;span class="math"&gt;\(2^{n-1}\)&lt;/span&gt; números representáveis para os positivos, um é o zero e o mesmo ocorre para os negativos. No final, podemos representar &lt;span class="math"&gt;\(2^{n}-1\)&lt;/span&gt; números, pois o zero é representado duas vezes (o zero positivo e o zero negativo). Os números representáveis estão na faixa &lt;span class="math"&gt;\(-(2^{n-1}-1)\leq x \leq +(2^{n-1}-1)\)&lt;/span&gt;. Exemplo: com 4 bits podemos representar &lt;span class="math"&gt;\(2^{4}=16\)&lt;/span&gt; números, mas usando sinal-magnitude podemos representar de &lt;code&gt;-7 (1111)&lt;/code&gt; até &lt;code&gt;+7 (0111)&lt;/code&gt;, o que nos dá efetivamente 15 números (7 negativos, 7 positivos e o zero).&lt;/p&gt;
 &lt;p&gt;A grande vantagem desta representação é que é muito fácil converter um número de positivo para negativo e vice-versa: basta mudar o bit do sinal. As desvantagens são três: (1) há dois zeros, o que complica os circuitos aritméticos pois é uma excessão a tratar; (2) ainda por existirem dois zeros, desperdiçamos um número da capacidade de representação; e (3) os circuitos aritméticos são diferentes para cada operação e portanto o circuito aritmético é um pouco mais complexo que outras representações (ocupam maior área e consomem mais energia). A complexidade desta última desvantagem está ligada ao fato de sermos obrigado a verificar o sinal de ambos os operandos antes de realizar a operação.&lt;/p&gt;
 &lt;h3&gt;Operações com sinal-magnitude em binário&lt;/h3&gt;
 &lt;p&gt;As operações são diferentes para soma e subtração e seguem as mesmas regras que usamos na aritmética em base decimal. O cálculo do sinal deve ser realizado a parte.&lt;/p&gt;
@@ -1018,7 +1055,7 @@ $$&lt;/p&gt;
 &lt;p&gt;Calcular &lt;code&gt;(+2)+(+3)&lt;/code&gt;, &lt;code&gt;(+2)-(-3)&lt;/code&gt; e &lt;code&gt;(+3)-(+4)&lt;/code&gt; em binário de 4 bits usando sinal-magnitude.&lt;/p&gt;
 &lt;p&gt;Começamos obtendo a representação binária dos números:
 &lt;code&gt;(+2)=0010&lt;/code&gt;, &lt;code&gt;(+3)=0011&lt;/code&gt;, &lt;code&gt;(-3)=1011&lt;/code&gt; e &lt;code&gt;(+4)=0100&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Depois observamos o sinais e montamos as operações. Como as duas primeiras operações são idênticas, montamos uma soma. Para a última operação devemos montar uma subtração. Na operação de fato, não usamos o sinal, então operaremos com $n-1$ bits, ou três bits neste exemplo.
+&lt;p&gt;Depois observamos o sinais e montamos as operações. Como as duas primeiras operações são idênticas, montamos uma soma. Para a última operação devemos montar uma subtração. Na operação de fato, não usamos o sinal, então operaremos com &lt;span class="math"&gt;\(n-1\)&lt;/span&gt; bits, ou três bits neste exemplo.
 &lt;pre&gt;
 010 (vai um)  011 (empresta um)
  010 +         100 -
@@ -1048,7 +1085,7 @@ $$&lt;/p&gt;
 &lt;h2&gt;Complemento de base&lt;/h2&gt;
 &lt;p&gt;O complemento de base é a representação mais utilizada em binário (base 2), onde é conhecido como &lt;strong&gt;complemento de dois&lt;/strong&gt;. Praticamente todos os processadores modernos o utilizam nas unidades lógicas e aritméticas internas para contas com inteiros e com ponto fixo, o que corresponde a maior parte dos cálculos realizados por um computador.&lt;/p&gt;
 &lt;p&gt;Para converter um número binário de positivo para negativo, invertemos os bits e somamos 1. Exemplo 1: &lt;code&gt;-7=inv(7)+1&lt;/code&gt;, ou em binário de 4 bits &lt;code&gt;inv(0111)+1=1000+1=1001&lt;/code&gt;. Exemplo 2: &lt;code&gt;-1=inv(1)+1&lt;/code&gt;, em binário de 4 bits &lt;code&gt;inv(0001)+1= 1110+1=1111&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;A capacidade de representação agora muda um pouco pois não temos mais dois zeros! A função de somar 1 é justamente deslocar a parte negativa para que o -0 (&lt;code&gt;1000&lt;/code&gt; em sinal magnitude e &lt;code&gt;1111&lt;/code&gt; em complemento de um) represente um número negativo (&lt;code&gt;-1=1111&lt;/code&gt; em complemento de 2). Isso faz que que um número binário $x$ de $n$ bits possa estar na faixa de $-(2^{n-1})\leq x \leq +(2^{n-1}-1)$, ou seja, há um número negativo a mais! Exemplo: com 4 bits podemos representar $2^{4}=16$ números, e usando complemento de dois podemos representar de &lt;code&gt;-8 (1000)&lt;/code&gt; até &lt;code&gt;+7 (0111)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;A capacidade de representação agora muda um pouco pois não temos mais dois zeros! A função de somar 1 é justamente deslocar a parte negativa para que o -0 (&lt;code&gt;1000&lt;/code&gt; em sinal magnitude e &lt;code&gt;1111&lt;/code&gt; em complemento de um) represente um número negativo (&lt;code&gt;-1=1111&lt;/code&gt; em complemento de 2). Isso faz que que um número binário &lt;span class="math"&gt;\(x\)&lt;/span&gt; de &lt;span class="math"&gt;\(n\)&lt;/span&gt; bits possa estar na faixa de &lt;span class="math"&gt;\(-(2^{n-1})\leq x \leq +(2^{n-1}-1)\)&lt;/span&gt;, ou seja, há um número negativo a mais! Exemplo: com 4 bits podemos representar &lt;span class="math"&gt;\(2^{4}=16\)&lt;/span&gt; números, e usando complemento de dois podemos representar de &lt;code&gt;-8 (1000)&lt;/code&gt; até &lt;code&gt;+7 (0111)&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Apesar de ligeiramente mais complexos que os circuitos para operações em complemento de um devido à conversão exigir uma soma de 1, a representação em complemento de dois é a mais usada pois normalmente os circuitos somadores já possuem uma entrada de vai um para o bit menos significativo. Em condições normais, uma subtração em complemento de dois seria tão complexa quanto no sinal-magnitude (usando circuitos diferentes para soma e subtração) ou seriam três somas se convertermos para negativo e fizermos a soma, pois a conversão exige uma soma de +1. Se considerarmos que na maioria das operações somamos dois números somente, a entrada de vai um para o bit menos significativo não é usada (está sempre em zero), portanto podemos usá-la para implementar o complemento de dois com a mesma complexidade dos circuitos de complemento de um, mantendo a vantagem de usarmos toda a capacidade de representação (não há dois zeros). Sendo assim, o mais comum é usarmos um somador para realizar a subtração, usando a entrada do vai um (e invertendo os bits de um dos números corretamente) para realizar a soma, tornando o complemento de 2 a representação mais eficiente, desde que não usemos o vai=um de entrada.&lt;/p&gt;
 &lt;h3&gt;Operações com complemento de base diminuída em binário&lt;/h3&gt;
 &lt;p&gt;Realizar &lt;code&gt;3-4&lt;/code&gt; em binário usando complemento de dois.&lt;/p&gt;
@@ -1092,19 +1129,83 @@ $$&lt;/p&gt;
 &lt;/pre&gt;
 
 &lt;p&gt;Repare que agora estamos fazendo uma subtração pois, apesar de realizarmos uma soma, estamos usando o vai-um de entrada no LSB em ambos os casos. Na esquerda fizemos &lt;code&gt;-3-5=-3+(-6)+1&lt;/code&gt;. O resultado é &lt;code&gt;1000=-8&lt;/code&gt;, sem &lt;em&gt;overflow&lt;/em&gt;. Na direita temos &lt;code&gt;-3-6=-3+(-7)+1&lt;/code&gt;, mas dessa vez note que o resultado é positivo (&lt;code&gt;0110=+6&lt;/code&gt;) portanto houve &lt;em&gt;overflow&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Agora observe os vai-uns das operações. Sempre que realizamos a soma em complemento de dois com números binários, se o vai-um final for diferente do vai-um do estágio anterior, houve um &lt;em&gt;overflow&lt;/em&gt; e o resultado não está correto. Em circuitos digitais, pode-se fazer simplesmente $c_{n}\oplus c_{n-1}$ e teremos um &lt;em&gt;flag&lt;/em&gt; que indica a presença de um &lt;em&gt;overflow&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Agora observe os vai-uns das operações. Sempre que realizamos a soma em complemento de dois com números binários, se o vai-um final for diferente do vai-um do estágio anterior, houve um &lt;em&gt;overflow&lt;/em&gt; e o resultado não está correto. Em circuitos digitais, pode-se fazer simplesmente &lt;span class="math"&gt;\(c_{n}\oplus c_{n-1}\)&lt;/span&gt; e teremos um &lt;em&gt;flag&lt;/em&gt; que indica a presença de um &lt;em&gt;overflow&lt;/em&gt;.&lt;/p&gt;
 &lt;h3&gt;Explicação do da detecção do &lt;em&gt;overflow&lt;/em&gt;&lt;/h3&gt;
-&lt;p&gt;Vamos entender o motivo pelo qual $ov=c_{n}\oplus c_{n-1}$ funciona para binários em complemento de 2.&lt;/p&gt;
+&lt;p&gt;Vamos entender o motivo pelo qual &lt;span class="math"&gt;\(ov=c_{n}\oplus c_{n-1}\)&lt;/span&gt; funciona para binários em complemento de 2.&lt;/p&gt;
 &lt;p&gt;Como realizamos somente somas (a subtração é uma soma com a representação do negativo), há somente dois casos possíveis que geram &lt;em&gt;overflow&lt;/em&gt;: (a) dois operandos positivos e resultado negativo ou (b) dois operandos negativos e resultado positivo. A soma de números de sinais opostos nunca gera &lt;em&gt;overflow&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Poderíamos facilmente fazer um comparador de 3 bits e detectar o &lt;em&gt;overflow&lt;/em&gt; usando as regras que acabamos de descrever, mas vamos entender o XOR. Sabemos que o bit de sinal na representação de complemento de dois é o MSB, então chamaremos de $a_n$ e $b_n$ o MSB, que é o bit de sinal dos operandos $a$ e $b$, respectivamente.&lt;/p&gt;
-&lt;p&gt;A última operação que realizamos é somar esta coluna, ou seja $a_n+b_n+c_{n-1}$. O resultado é o vai-um de saída $c_n$ e o sinal do resultado, que chamaremos de $r_n$. A última operação que realizamos é então:
-$$
+&lt;p&gt;Poderíamos facilmente fazer um comparador de 3 bits e detectar o &lt;em&gt;overflow&lt;/em&gt; usando as regras que acabamos de descrever, mas vamos entender o XOR. Sabemos que o bit de sinal na representação de complemento de dois é o MSB, então chamaremos de &lt;span class="math"&gt;\(a_n\)&lt;/span&gt; e &lt;span class="math"&gt;\(b_n\)&lt;/span&gt; o MSB, que é o bit de sinal dos operandos &lt;span class="math"&gt;\(a\)&lt;/span&gt; e &lt;span class="math"&gt;\(b\)&lt;/span&gt;, respectivamente.&lt;/p&gt;
+&lt;p&gt;A última operação que realizamos é somar esta coluna, ou seja &lt;span class="math"&gt;\(a_n+b_n+c_{n-1}\)&lt;/span&gt;. O resultado é o vai-um de saída &lt;span class="math"&gt;\(c_n\)&lt;/span&gt; e o sinal do resultado, que chamaremos de &lt;span class="math"&gt;\(r_n\)&lt;/span&gt;. A última operação que realizamos é então:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 c_nr_n=a_n+b_n+c_{n-1}
-$$
-Onde $c_nr_n$ representam os dois bits resultantes da soma (e.g. 10=1+1+0).&lt;/p&gt;
-&lt;p&gt;No caso (a), sabemos que $a_n=b_n=0$ e $r_n=1$. A única possibilidade de fecharmos a equação com &lt;em&gt;overflow&lt;/em&gt; é se $c_{n-1}=1$, quando $c_n=0$.&lt;/p&gt;
-&lt;p&gt;No caso (b), sabemos que $a_n=b_n=1$ e $r_n=0$. A única possibilidade de fecharmos a equação é se $c_{n-1}=0$, quando $c_n=1$.&lt;/p&gt;
-&lt;p&gt;Note que ambos os casos, $c_n\neq c_{n-1}$ ou não há nenhuma maneira de cairmos em uma condição de &lt;em&gt;overflow&lt;/em&gt;. A operação $c_{n}\oplus c_{n-1}$ é verdadeira exatamente se $c_n\neq c_{n-1}$.&lt;/p&gt;</content><category term="sistemas digitais"></category><category term="sistemas digitais"></category><category term="sistemas de numeração"></category></entry><entry><title>Como usar o EDA Playground</title><link href="https://balbertini.github.io/vhdl_edaplayground-pt_BR.html" rel="alternate"></link><published>2020-06-15T14:22:04-03:00</published><updated>2020-06-15T14:22:04-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-06-15:/vhdl_edaplayground-pt_BR.html</id><summary type="html">&lt;p&gt;Como usar o EDA Playground.&lt;/p&gt;</summary><content type="html">&lt;p&gt;O &lt;strong&gt;EDA Playground&lt;/strong&gt; é uma ferramenta muito útil para estudantes pois não precisa de nenhuma instalação, sendo totalmente online. O ambiente possui suporte ao GHDL, portanto você conseguirá testar os seus projetos facilmente, como o juiz usado nas matérias de hardware do PCS testa.&lt;/p&gt;
+$$&lt;/div&gt;
+&lt;p&gt;
+Onde &lt;span class="math"&gt;\(c_nr_n\)&lt;/span&gt; representam os dois bits resultantes da soma (e.g. 10=1+1+0).&lt;/p&gt;
+&lt;p&gt;No caso (a), sabemos que &lt;span class="math"&gt;\(a_n=b_n=0\)&lt;/span&gt; e &lt;span class="math"&gt;\(r_n=1\)&lt;/span&gt;. A única possibilidade de fecharmos a equação com &lt;em&gt;overflow&lt;/em&gt; é se &lt;span class="math"&gt;\(c_{n-1}=1\)&lt;/span&gt;, quando &lt;span class="math"&gt;\(c_n=0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;No caso (b), sabemos que &lt;span class="math"&gt;\(a_n=b_n=1\)&lt;/span&gt; e &lt;span class="math"&gt;\(r_n=0\)&lt;/span&gt;. A única possibilidade de fecharmos a equação é se &lt;span class="math"&gt;\(c_{n-1}=0\)&lt;/span&gt;, quando &lt;span class="math"&gt;\(c_n=1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Note que ambos os casos, &lt;span class="math"&gt;\(c_n\neq c_{n-1}\)&lt;/span&gt; ou não há nenhuma maneira de cairmos em uma condição de &lt;em&gt;overflow&lt;/em&gt;. A operação &lt;span class="math"&gt;\(c_{n}\oplus c_{n-1}\)&lt;/span&gt; é verdadeira exatamente se &lt;span class="math"&gt;\(c_n\neq c_{n-1}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="sistemas digitais"></category><category term="sistemas digitais"></category><category term="sistemas de numeração"></category></entry><entry><title>Como usar o EDA Playground</title><link href="https://balbertini.github.io/vhdl_edaplayground-pt_BR.html" rel="alternate"></link><published>2020-06-15T14:22:04-03:00</published><updated>2020-06-15T14:22:04-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-06-15:/vhdl_edaplayground-pt_BR.html</id><summary type="html">&lt;p&gt;Como usar o EDA Playground.&lt;/p&gt;</summary><content type="html">&lt;p&gt;O &lt;strong&gt;EDA Playground&lt;/strong&gt; é uma ferramenta muito útil para estudantes pois não precisa de nenhuma instalação, sendo totalmente online. O ambiente possui suporte ao GHDL, portanto você conseguirá testar os seus projetos facilmente, como o juiz usado nas matérias de hardware do PCS testa.&lt;/p&gt;
 &lt;h1&gt;EDA Playground&lt;/h1&gt;
 &lt;p&gt;&lt;a href="https://www.edaplayground.com/"&gt;&lt;i style="font-size: 1em;" class="fas fa-file-alt"&gt;&lt;/i&gt; Página&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;HDLs:&lt;/strong&gt; VHDL, Verilog, SystemVerilog, C++/SystemC, Outras | &lt;strong&gt;SOs:&lt;/strong&gt; &lt;i style="font-size: 1em;" class="fas fa-globe"&gt;&lt;/i&gt;&lt;/p&gt;
@@ -5424,8 +5525,17 @@ Se preferir usar a versão gráfica, veja um tutorial &lt;a href="https://www.se
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Há diversos parâmetros que podem ser passados para a simulação. Um muito útil que pode ser visto acima é o &lt;code&gt;--vcd=arquivo.vcd&lt;/code&gt;. Este parâmetro salvará a forma de onda resultante da simulação no arquivo (neste caso o &lt;code&gt;shiftleft2_tb.vcd&lt;/code&gt;). Para visualizar o arquivo VCD você precisará de um programa que visualize formas de onda. Recomendo o &lt;a href="http://gtkwave.sourceforge.net/"&gt;GTKWave&lt;/a&gt;, disponível para várias as plataformas. Na sua máquina real (&lt;em&gt;host&lt;/em&gt;), navegue até a pasta compartilhada e veja que os arquivos gerados pelo GHDL estão lá, incluindo o resultado da simulação. Você pode abrir o arquivo VCD com o seu visualizador preferido.&lt;/p&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="ghdl"></category><category term="vm"></category></entry><entry><title>Circuitos Sequenciais em VHDL</title><link href="https://balbertini.github.io/vhdl_sequential-pt_BR.html" rel="alternate"></link><published>2018-09-05T08:24:31-03:00</published><updated>2021-02-12T10:07:19-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2018-09-05:/vhdl_sequential-pt_BR.html</id><summary type="html">&lt;p&gt;Como descrever circuitos sequenciais em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;A principal característica de um &lt;strong&gt;circuito sequencial&lt;/strong&gt; é que as saídas dependem não somente das entradas, como em um circuito combinatório, mas também das entradas passadas. Diz-se que um circuito sequencial possui um &lt;strong&gt;elemento de memória&lt;/strong&gt; ou é dependente do tempo.&lt;/p&gt;
-&lt;p&gt;{% from 'infobox.html' import infobox %}
-{{ infobox([('info','Depender do tempo não implica que o circuito possui um sinal de &lt;em&gt;clock&lt;/em&gt;, apesar disso ser verdadeiro na maioria das vezes.'),]) }}&lt;/p&gt;
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;i class="fas fa-info fa-2x"  style="color: #0066ff;"&gt;&lt;/i&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      Depender do tempo não implica que o circuito possui um sinal de &lt;em&gt;clock&lt;/em&gt;, apesar disso ser verdadeiro na maioria das vezes.
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
 &lt;h2&gt;Process&lt;/h2&gt;
 &lt;p&gt;A estrutura utilizada para descrever circuitos sequenciais em VHDL é o &lt;code&gt;process&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Sintaxe de um &lt;code&gt;process&lt;/code&gt;:&lt;/p&gt;
