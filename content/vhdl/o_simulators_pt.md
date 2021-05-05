@@ -70,6 +70,12 @@ O ISE é uma versão antiga do IDE da Xilinx disponível somente para Windows. F
 
 # Programas úteis
 
+### GHDL-LS
+[<i style="font-size: 1em;" class="fab fa-github"></i> Página](https://github.com/ghdl/ghdl-language-server)
+
+O GHDL-LS é um _Language Server_ para VHDL, baseado no GHDL. Sua principal função é prover ao seu editor favorito uma maneira fácil de fazer a verificação sintática em tempo real, além de outras funcionalidades que facilitam a vida do desenvolvedor. O Guilherme Salustiano fez [um _post_]({filename}o_ghdllinter_pt.md) sobre como instalar e integrar o GHDL-LS a um editor.
+
+
 ### GTKWave
 [<i style="font-size: 1em;" class="fas fa-download"></i> Download](https://sourceforge.net/projects/gtkwave/files/) |
 [<i style="font-size: 1em;" class="fas fa-file-alt"></i> Página](http://gtkwave.sourceforge.net/)
