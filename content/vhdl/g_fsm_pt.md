@@ -53,7 +53,7 @@ Na descrição da arquitetura, o que teremos de novidade é a utilização de um
 #### Exemplo 1 (Moore) - Estilo tradicional
 Neste primeiro estilo de descrição, a arquitetura é descrita usando exatamente o modelo tradicional de máquina de estados, ou seja, o elemento de memória é sequencial (dentro do `process`) e as funções combinatórias (fora do `process`).
 
-<img src='{static}/images/sd/fsmvhdl01.png' width="50%" align="right" style="padding-left:0%" />
+<img src='{static}/images/sd/fsmvhdl01.png' width="50%" align="right" style="padding-left:0%" /><div width="50%" align="left">
 ```vhdl
 architecture proccomb of fsm is
   type estado_t is (A,B);
@@ -79,6 +79,7 @@ begin
     '0';
 end architecture proccomb;
 ```
+</div>
 
 Note que há somente um processo. O processo faz o _reset_ assíncrono da máquina de estados, colocando-a no estado A (veja a seta de início chegando no estado A do diagrama de transição de estados). Caso o _reset_ não esteja ativo, o processo faz uma única tarefa que é copiar o sinal PE (de Próximo Estado) para o sinal EA (de Estado Atual) na borda de subida do _clock_. Neste contexto, apenas o sinal EA representa um elemento combinatório pois fora destas duas condições, o sinal EA é mantido inalterado. O comportamento é exatamente o de um _flip-flop_ tipo D e, de fato, podemos ver que o circuito gerado contém exatamente um _flip-flop_, pois temos somente dois estados possíveis. Caso o tipo composto `estado_t` possuísse mais de dois estados, o número de _flip-flops_ seria maior para acomodar o maior número de estados.
 

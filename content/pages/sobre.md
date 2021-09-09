@@ -12,7 +12,7 @@ Summary: Sobre o autor.
 
 ## Bruno de Carvalho Albertini
 
-Graduado em Engenharia de Computação pela [Universidade Federal do Rio Grande](https://www.furg.br/) (2005), defendeu o mestrado (2007) e o doutorado (2012) em [Ciência da Computação](http://www.ic.unicamp.br/) na [Universidade Estadual de Campinas](http://www.unicamp.br/unicamp/) na área de Arquitetura de Computadores. Atualmente exerce o cargo de Professor Doutor no [Departamento de Engenharia de Computação e Sistemas Digitais](https://pcs.usp.br) (PCS) da [Escola Politécnica](http://www.poli.usp.br/) da [Universidade de São Paulo](http://www.usp.br/) (EPUSP). Tem experiência na área de Engenharia da Computação, com ênfase em hardware, atuando principalmente com arquitetura de computadores, sistemas embarcados e redes de sensores sem fio. Filiou-se ao [Laboratório de Automação Agrícola (LAA)](http://www.laa.pcs.usp.br/) e ao [BioComp](http://www.biocomp.org.br/) em 2014, e desde então tem aplicado a sua pesquisa ao meio ambiente, biodiversidade e agricultura.
+Graduado em Engenharia de Computação pela [Universidade Federal do Rio Grande](https://www.furg.br/) (2005), defendeu o mestrado (2007) e o doutorado (2012) em [Ciência da Computação](http://www.ic.unicamp.br/) na [Universidade Estadual de Campinas](http://www.unicamp.br/unicamp/) na área de Arquitetura de Computadores. Atualmente exerce o cargo de Professor Doutor no [Departamento de Engenharia de Computação e Sistemas Digitais](https://pcs.usp.br) (PCS) da [Escola Politécnica](http://www.poli.usp.br/) da [Universidade de São Paulo](http://www.usp.br/) (EPUSP). Tem experiência na área de Engenharia da Computação, com ênfase em hardware, atuando principalmente com arquitetura de computadores, sistemas embarcados, criptohardware e redes de sensores sem fio. Filiou-se ao [Laboratório de Automação Agrícola (LAA)](http://www.laa.pcs.usp.br/) e ao [BioComp](http://www.biocomp.org.br/) em 2014, e desde então tem aplicado a sua pesquisa ao meio ambiente, biodiversidade e agricultura.
 
 Representante do [TDWG](https://www.tdwg.org/) na América Latina (2014-2019).
 Tesoureiro da [Seção Sul Brasil da IEEE](http://www.ieee.org.br/) (2017-2018).
@@ -20,7 +20,6 @@ Tesoureiro da [Seção Sul Brasil da IEEE](http://www.ieee.org.br/) (2017-2018).
 [<i style="font-size: 1em;" class="fas fa-desktop"></i> Departamento](https://pcs.usp.br/en/pessoa/?numerousp=5307474 "Site do Departamento")
  | [<i class="ai ai-lattes ai-1x"></i> Lattes](http://lattes.cnpq.br/2729012989571213 "Curriculum Lattes")
  | [<i class="ai ai-publons ai-1x"></i> Publons](https://publons.com/a/1399880 "Reviews no Publons")
- | [<i class="ai ai-researcherid ai-1x"></i> ResearcherID](http://www.researcherid.com/rid/J-5779-2013 "Profile ResearcherID")
  | [<i style="font-size: 1em;" class="fab fa-stripe-s"></i> Scopus](https://www.scopus.com/authid/detail.uri?authorId=23007485000 "Profile Scopus")
  | [<i class="ai ai-orcid ai-1x"></i> ORCID](http://orcid.org/0000-0003-3738-6448 "Profile ORCID")
 
@@ -38,54 +37,54 @@ Em algumas ocasiões, uso o PGP também. Minha chave pública usada tanto para a
 ```
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
-mQINBF/8w9cBEAC8ctLqFXDiRrJsmKcLBqXGbl5 YZ3I3pDEvLHB3C3NAHLZfd5B
-iDiXOfzKU2TShTiKSOpHCLn79aPEbnZH 44DjBsyIVdnvYRndCFtv9d70MXgNtNg
-3k5E52WS9BSUI1uVZISzK7SDB4qr11HCttWwBUPaOt0OcLzmdAU0AspGvolHq0UP
-/U BG6uKrMDovswwP3VmlVU POA79c7HFLyVQJ7Xf5Jo1WarD6MM8vk/Hp41rpfd
-BcEtPBwYUVo vsvyfagYRPurdsKsT08aBymrxKnPLBvoayJI5c2JrxgohRuKgjSa
-nqtnqhKRawTyhZmlUA9oxqxHLRLfJOfJNN5rHA2SgnqFoIroDXRrxMw7AQHGC8zP
-pz2wtU 7P1uQgYC0Q82m9JcVpuFcHZ/AsJN7GU9hSp6FWwn77kCTvOibmvL0b5pC
-pASTBbXUqJVkfG zGOHjJUZnY/o0U3EJ9ZIGPOAEHi7GZYt/xvoMvU9znzFlO8Nd
-8FZ5L4JecTynCeSOV /auiulFY6ChrRwD9f9L5c1KA6T ZsAVQellm2u DnEzw/E
-kYiayVNaoMtWP5zIZzjHZ1lYRJl4PUcoLJH4aI7Y7 sUGCTjbWf UGxSTNaik2vu
-vWx2OlAAxUqC13ELiWJT95epmY5weCaacGv 83kOEIe3tnaFgj/l9WqZtwARAQAB
-tCNCcnVubyBBbGJlcnRpbmkgPGJhbGJlcnRpbmlAdXNwLmJyPokCVAQTAQgAPhYh
-BIXdAYm9Pu6vWkyrq2gQAC8jGtmQBQJf/MPXAhsDBQkHhh7TBQsJCAcCBhUKCQgL
-AgQWAgMBAh4BAheAAAoJEGgQAC8jGtmQZV0QAK5ZPy/xSAIBiEMOnY YBxb3h0my
-qLNjiyAzTm491Op8IHtP1NMy8Cbs s5XXE4h3rIe85ss/Yr5gn7WqKBEAO ictF1
-Ahtv0PUQqfeLK8N5/isFnLdCEFd16yW7giymJ OjrGEcyXqSnhwD/aqHcnPudZyZ
-XQ/S6W2d24o83SwIeVwI3BYJ4Gy1MUHaior 0u4gk2W0xSP3pnX8Obxt1NgXPcGO
-1lIziy2oFhPtUEe5iebBld090F/hPJz/CfG9csIP3zuek4HkKIkwm/GjMfgxBx5D
-bRq0ReQWy4zcIR55CxtBfab6H6uveIM hv7qRSpCREXIyoPwfiTr61ZI4/i/oRM7
-551KofQJXK7sYTeSbBEQ4IKCD7bVIJdcQSZIJkN0BT0wgizdrfbl2Shd8l0vwSJM
-aR2pngCB2uinvi48d7GqgK3IavR2vbRKAhiH5Ce3W6zoHf8vy xst0GHSzuGJoTS
-C7TfoqIAUVQvyJsy1Dapz0jJyO3JPgJ1EFQtQ726dz6y U9 ojIk3fhRz3pNkr/m
-8rOEvgV61D 9LPoedZCl2M4eW Wns6yEGv2Fv 5U6SK0O/chKsba/Fur6ofmSCKA
-ysIPM3obpoNJ4MkSBuLX2VCRhaWrCHvQIDoveqcaGy3eV2rRSS9yL4AFQMc tPdN
-t9TdsMaVzYIy7O6suQINBF/8w9cBEACy3ZwWMVxR OgQKkpzVW3meC94A9VJNyPu
-7 MY971cQ7X736rIITVxCRUycF8QMpmmz jNkz3t4xmC4nRpyCTGTxUj/kfQJgwW
-iAtBmhJ1SKu10Kx8I7SRUjunWUWJXmgCnMlIU0uAW0Qr9oIM1yRgpcDMfwznI/Lc
-uS8bzH464sQA1 gW7J UCcfkdq6hGiEVoOvJR4OhLrQGKxqdWkHMDSVNdsr8O8dc
-8L bKTXI5wVM0KBq zIPprKNPFLE4jKuiFffdkS8Ee9/kRDuQETIJJi98FhweUha
-mBYr AljB9vbEqPLrbmjsQ1J6L3qqwZvSJgl9d6RyP0Eh89hddEgS3p1QV3WKgKY
-6xqHN8ItrzL6rwd8BC5aefVIzEXsHCmzgtg0Rhj2AZB9FOU9sRylIj6ZnA3yxmpV
-KAGY6 NCj9ubUy9yx8ASBZAWq0NRhhx1iTm20frpismYSrbUjTvomVCNQnI5Fpn1
-LhEikdl28Nbtm lyirqJ2L8KB6 Ppq4X84vMP0tQZblXsdvQhsGpsAxWzxR9uHvG
-Rj9ZrE7hXZkDSPUBEPz5GOcaYT IY7ta1mh6OkXgHNwwbe8XN4FXRYOHp7EfGj4u
-CGuDAlXymJJw GxoFkNPPb4MUR1vKAyMAE/QyCpnR 1Y0bTsny3jRaZKZ/4cOOFA
-kgLNK3WYjQARAQABiQI8BBgBCAAmFiEEhd0Bib0 7q9aTKuraBAALyMa2ZAFAl/8
-w9cCGwwFCQeGHtMACgkQaBAALyMa2ZDxxA//c9Tpj8SKI8YvIdjP721hwp6NTxCe
-MiGJFYPmA9QMe5RPUJCd3GTdV8RQlWGNeoBytEoyggV 9IINrS9sLXlmNkhwmoYT
-/Jyd2nqQ615AM8kOxs5Mh6 Bv7y2BRm6DhdFIbF7E1ZGCPSt4SDdzr5faq lcYZ/
-6ldr9lg/Ky7oHZ0sI6caTeAxFjtMpnn1wzrv4LerRNtogSv6EdkI/5Bq4nLLLJat
-nSVMf3xdiU9PPVbJILca9XMgsCOYAL IxOBFv 6wp6ArKYXj/3MMAF9zyKgBQHAW
-s0HFzY0K2ZzsFAQBH0HFutwmRxIC2UrHhLTr9AjUwm0t0YZx8uwNMH4XtIoC5FqR
-o VmrdXtRBJY/1n4hKGSDh2vEBLULUYzYNPS15HDFN6PzOIQknWlDKJpb4JWl xu
-D1D0fyJKxtywgmihRgcxWlZOoD40omJTGLjn9eJv2yFbrc9LrJM6JbkEu0h7dSn
-4 /Y60 akQ2UdS3Y9 qPzQJSJ nARO7HSb9q5x4ukfU7sbLhuPaSblTc43Eg1eS1
-VrSLb7BQFg2qWj2UOnYdAOlBtQ3Er6WIz7tWjv5WDBPOcaBNyHgC4weuZyQ/lxBs
-5kvnjbMG68CATqBSn1JbJvsQnpet8rkKtZDqnACy4A3fJ Aourr2jEG9KUoFXQn9
-N4U2nQm8Vji03Ys=
-=n2jg
+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
+BnFMIHFy4EcgQFfqc4OZmya1NEDAFmQ=
+=mMoA
 -----END PGP PUBLIC KEY BLOCK-----
 ```
