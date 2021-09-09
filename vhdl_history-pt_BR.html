@@ -57,24 +57,26 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333">
 
+ 
+
 <meta name="author" content="Bruno Albertini" />
 <meta name="description" content="Histórico das HDLs" />
 <meta name="keywords" content="vhdl, basic">
 
 
-<meta property="og:site_name" content="B.Albertini's site"/>
-<meta property="og:title" content="Histórico"/>
-<meta property="og:description" content="Histórico das HDLs"/>
-<meta property="og:locale" content="pr_BR"/>
-<meta property="og:url" content="https://balbertini.github.io/vhdl_history-pt_BR.html"/>
-<meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-09-18 19:49:39-03:00"/>
-<meta property="article:modified_time" content="2021-05-03 08:55:51-03:00"/>
-<meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
-<meta property="article:section" content="vhdl"/>
-<meta property="article:tag" content="vhdl"/>
-<meta property="article:tag" content="basic"/>
-<meta property="og:image" content="/images/profile.png">
+  <meta property="og:site_name" content="B.Albertini's site"/>
+  <meta property="og:title" content="Histórico"/>
+  <meta property="og:description" content="Histórico das HDLs"/>
+  <meta property="og:locale" content="pr_BR"/>
+  <meta property="og:url" content="https://balbertini.github.io/vhdl_history-pt_BR.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2020-09-18 19:49:39-03:00"/>
+  <meta property="article:modified_time" content="2021-05-03 08:55:51-03:00"/>
+  <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
+  <meta property="article:section" content="vhdl"/>
+  <meta property="article:tag" content="vhdl"/>
+  <meta property="article:tag" content="basic"/>
+  <meta property="og:image" content="/images/profile.png">
 
   <title>B.Albertini's site &ndash; Histórico</title>
 
@@ -82,12 +84,12 @@
 <body >
   <aside>
     <div>
-      <a href="https://balbertini.github.io">
+      <a href="https://balbertini.github.io/">
         <img src="/images/profile.png" alt="B.Albertini" title="B.Albertini">
       </a>
 
       <h1>
-        <a href="https://balbertini.github.io">B.Albertini</a>
+        <a href="https://balbertini.github.io/">B.Albertini</a>
       </h1>
 
 <p>Professor</p>
@@ -260,22 +262,22 @@
 </ul>
 <p>Quando usa-se uma HDL para descrever um circuito, estamos usando um paradigma onde descrevemos o que acontece no <strong>fluxo de dados</strong>. As linguagens de programação imperativas, em contrapartida, descrevem o que acontece com o <strong>fluxo de controle</strong>. Algumas linguagens de programação possuem suporte ao controle do fluxo de dados, na maioria das vezes através de paradigmas matemáticos (e.g. linguagens funcionais, como Scala), mas elas não são muito populares pela dificuldade no uso. Já para descrições de hardware, a característica inerentemente concorrente torna a descrição do fluxo de dados obrigatória.</p>
 <h2>Exemplo</h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">alarme</span> <span class="k">is</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">alarme</span> <span class="k">is</span>
   <span class="k">port</span> <span class="p">(</span>
     <span class="n">j0</span><span class="p">,</span> <span class="n">j1</span><span class="p">,</span> <span class="n">j2</span><span class="p">,</span> <span class="n">j3</span><span class="p">,</span> <span class="n">en0</span><span class="p">,</span> <span class="n">p</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
     <span class="n">s0</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
@@ -293,7 +295,6 @@
 <span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>No exemplo acima em VHDL, o comportamento do circuito é descrito nas linhas de 12 a 15. Estas linhas podem ser colocadas em qualquer ordem e o comportamento do circuito continuará idêntico! VHDL é concorrente por natureza e estamos descrevendo a ligação entre as portas lógicas de um circuito (i.e. controlando o fluxo de dados). Tanto faz se você descreve a ligação do inversor da linha 13 antes ou depois da ligação da porta OU da linha 15, o circuito final será o mesmo.</p>
 <p>Esta característica é principal dificuldade dos projetistas de hardware iniciantes e é agravada naqueles que já possuem experiência prévia com linguagens de programação pois tendem a descrever o hardware como se fosse um programa, o que não é possível. Uma vez que você comece a pensar concorrentemente, a dificuldade para aprender uma HDL cai consideravelmente e a maioria dos problemas que os iniciantes enfrentam se tornam triviais.</p>
 <p>Uma outra desvantagem de HDLs é que é necessário saber projetar um circuito digital. A HDL é uma forma de expressão de um projeto de um hardware, então não adianta você aprender uma HDL se não sabe projetar um hardware. Uma analogia que uso muito entre os alunos de graduação é a com idiomas: se você ensinar um idioma para um papagaio, ele certamente repetirá o que você ensinou, até mesmo com sotaque. Mas este papagaio não será capaz de criar frases novas com o que aprendeu e com certeza não sabe o significado semântico das construções léxicas. Com HDL acontece o mesmo: é necessário saber projetar um circuito digital antes de aprender se expressar. De fato, os bons projetistas pensam na solução (normalmente imaginando um diagrama esquemático ou outra forma gráfica) e só depois expressam-no usando HDL.</p>
@@ -370,7 +371,6 @@ Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a 
   "description": ""
 }
 </script>
-
 
 </body>
 </html>

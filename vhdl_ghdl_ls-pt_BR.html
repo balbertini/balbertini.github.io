@@ -57,25 +57,27 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333">
 
+ 
+
 <meta name="author" content="Guilherme Salustiano" />
 <meta name="description" content="Como instalar e integrar o GHDL-LS ao seu editor de texto." />
 <meta name="keywords" content="vhdl, ghdl, linter">
 
 
-<meta property="og:site_name" content="B.Albertini's site"/>
-<meta property="og:title" content="Configurando editores para o GHDL-LS"/>
-<meta property="og:description" content="Como instalar e integrar o GHDL-LS ao seu editor de texto."/>
-<meta property="og:locale" content="pr_BR"/>
-<meta property="og:url" content="https://balbertini.github.io/vhdl_ghdl_ls-pt_BR.html"/>
-<meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2021-05-03 15:25:45-03:00"/>
-<meta property="article:modified_time" content="2021-05-04 21:04:33.966488-03:00"/>
-<meta property="article:author" content="https://balbertini.github.io/author/guilherme-salustiano.html">
-<meta property="article:section" content="vhdl"/>
-<meta property="article:tag" content="vhdl"/>
-<meta property="article:tag" content="ghdl"/>
-<meta property="article:tag" content="linter"/>
-<meta property="og:image" content="/images/profile.png">
+  <meta property="og:site_name" content="B.Albertini's site"/>
+  <meta property="og:title" content="Configurando editores para o GHDL-LS"/>
+  <meta property="og:description" content="Como instalar e integrar o GHDL-LS ao seu editor de texto."/>
+  <meta property="og:locale" content="pr_BR"/>
+  <meta property="og:url" content="https://balbertini.github.io/vhdl_ghdl_ls-pt_BR.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2021-05-03 15:25:45-03:00"/>
+  <meta property="article:modified_time" content="2021-05-04 21:06:08-03:00"/>
+  <meta property="article:author" content="https://balbertini.github.io/author/guilherme-salustiano.html">
+  <meta property="article:section" content="vhdl"/>
+  <meta property="article:tag" content="vhdl"/>
+  <meta property="article:tag" content="ghdl"/>
+  <meta property="article:tag" content="linter"/>
+  <meta property="og:image" content="/images/profile.png">
 
   <title>B.Albertini's site &ndash; Configurando editores para o GHDL-LS</title>
 
@@ -83,12 +85,12 @@
 <body >
   <aside>
     <div>
-      <a href="https://balbertini.github.io">
+      <a href="https://balbertini.github.io/">
         <img src="/images/profile.png" alt="B.Albertini" title="B.Albertini">
       </a>
 
       <h1>
-        <a href="https://balbertini.github.io">B.Albertini</a>
+        <a href="https://balbertini.github.io/">B.Albertini</a>
       </h1>
 
 <p>Professor</p>
@@ -181,25 +183,25 @@ O VSCode vem com uma nova abordagem, a biblioteca rodando seu próprio processo 
 <h3><a href="https://neovim.io/">Neovim</a></h3>
 <p>O Neovim 0.5v já vem com um <a href="https://neovim.io/doc/user/lsp.html">cliente LSP integrado</a> que será usado nesse tutorial. Há outras opções como o <a href="https://github.com/neoclide/coc.nvim">coc.nvim</a> e <a href="https://github.com/neomake/neomake">neomake</a>.</p>
 <p>Tendo seu LSP já configurado basta cadastrar o <code>ghdl-ls</code> no seu <code>init.nvim</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="n">lua</span> <span class="o">&lt;&lt;</span> <span class="n">EOF</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="n">lua</span> <span class="o">&lt;&lt;</span> <span class="n">EOF</span>
     <span class="kd">local</span> <span class="n">lspconfig</span> <span class="o">=</span> <span class="nb">require</span><span class="s1">&#39;lspconfig&#39;</span>
     <span class="kd">local</span> <span class="n">configs</span> <span class="o">=</span> <span class="nb">require</span><span class="s1">&#39;lspconfig/configs&#39;</span>
     <span class="kd">local</span> <span class="n">attach</span> <span class="o">=</span> <span class="nb">require</span><span class="s1">&#39;completion&#39;</span><span class="p">.</span><span class="n">on_attach</span>
@@ -220,7 +222,6 @@ O VSCode vem com uma nova abordagem, a biblioteca rodando seu próprio processo 
     <span class="n">EOF</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Um exemplo de <code>nvim</code> configurado pode ser encontrado <a href="https://github.com/guissalustiano/dots/tree/97dde692399437ce2077eb4b7199483801efb202/nvim">aqui</a></p>
 <p><img alt="Editor com um código VHDL errado mostrando os erros" src="https://balbertini.github.io/images/vhdl/ghdl-ls_example.png"></p>
 <h2>Notas do professor</h2>
@@ -301,7 +302,6 @@ Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a 
   "description": ""
 }
 </script>
-
 
 </body>
 </html>

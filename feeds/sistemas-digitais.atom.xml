@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site - sistemas digitais</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/sistemas-digitais.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2021-05-03T08:55:51-03:00</updated><subtitle>Professor</subtitle><entry><title>Operações Aritméticas em Binário</title><link href="https://balbertini.github.io/binaryarithmetic-pt_BR.html" rel="alternate"></link><published>2020-07-31T08:57:26-03:00</published><updated>2021-05-03T08:55:51-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-07-31:/binaryarithmetic-pt_BR.html</id><summary type="html">&lt;p&gt;Operações Aritméticas em Binário&lt;/p&gt;</summary><content type="html">&lt;p&gt;Um computador moderno não é muito diferente de uma calculadora gigante. Pode parecer estranho, mas mesmo os &lt;em&gt;pixels&lt;/em&gt; na sua tela ou este arquivo de texto que está lendo são representados por números em binário (chamamos isto de código, mas deixemos para outro post). O "coração" de um processador é composto por várias unidades de cálculo, a grande maioria operando sobre inteiros em binário. As operações mais comuns são a adição e a subtração, mas neste post veremos todas elas.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site - sistemas digitais</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/sistemas-digitais.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2021-05-03T08:55:51-03:00</updated><subtitle>Professor</subtitle><subtitle>Professor</subtitle><entry><title>Operações Aritméticas em Binário</title><link href="https://balbertini.github.io/binaryarithmetic-pt_BR.html" rel="alternate"></link><published>2020-07-31T08:57:26-03:00</published><updated>2021-05-03T08:55:51-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-07-31:/binaryarithmetic-pt_BR.html</id><summary type="html">&lt;p&gt;Operações Aritméticas em Binário&lt;/p&gt;</summary><content type="html">&lt;p&gt;Um computador moderno não é muito diferente de uma calculadora gigante. Pode parecer estranho, mas mesmo os &lt;em&gt;pixels&lt;/em&gt; na sua tela ou este arquivo de texto que está lendo são representados por números em binário (chamamos isto de código, mas deixemos para outro post). O "coração" de um processador é composto por várias unidades de cálculo, a grande maioria operando sobre inteiros em binário. As operações mais comuns são a adição e a subtração, mas neste post veremos todas elas.&lt;/p&gt;
 &lt;h1&gt;Representação binária&lt;/h1&gt;
 &lt;p&gt;Um número em binário é composto por qualquer quantidade de dígitos 0 e 1. Um único dígito é chamado de &lt;em&gt;bit&lt;/em&gt;, o conjunto de 8 bits é chamado de &lt;em&gt;byte&lt;/em&gt; e o conjunto de 4 bits é chamado de &lt;em&gt;nible&lt;/em&gt;. Os processadores modernos usam números de 64 bits, mas ainda temos muitos processadores usando 32 bits. A quantidade de bits usada para representar um número em um processador está ligada ao tamanho das estruturas de armazenamento usadas internamente para guardar os números (conhecidas como registradores) e a capacidade das unidades de cálculo (i.e. um processador de 64 bits possui registradores e unidades lógicas e aritméticas capazes de armazenar e operar números  de 64 bits).&lt;/p&gt;
 &lt;p&gt;A representação binária segue a fórmula geral de representação de bases, cuja conversão para decimal é:&lt;/p&gt;
@@ -167,14 +167,15 @@ $$&lt;/div&gt;
 &lt;p&gt;Calcular &lt;code&gt;(+2)+(+3)&lt;/code&gt;, &lt;code&gt;(+2)-(-3)&lt;/code&gt; e &lt;code&gt;(+3)-(+4)&lt;/code&gt; em binário de 4 bits usando sinal-magnitude.&lt;/p&gt;
 &lt;p&gt;Começamos obtendo a representação binária dos números:
 &lt;code&gt;(+2)=0010&lt;/code&gt;, &lt;code&gt;(+3)=0011&lt;/code&gt;, &lt;code&gt;(-3)=1011&lt;/code&gt; e &lt;code&gt;(+4)=0100&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Depois observamos o sinais e montamos as operações. Como as duas primeiras operações são idênticas, montamos uma soma. Para a última operação devemos montar uma subtração. Na operação de fato, não usamos o sinal, então operaremos com &lt;span class="math"&gt;\(n-1\)&lt;/span&gt; bits, ou três bits neste exemplo.
+&lt;p&gt;Depois observamos o sinais e montamos as operações. Como as duas primeiras operações são idênticas, montamos uma soma. Para a última operação devemos montar uma subtração. Na operação de fato, não usamos o sinal, então operaremos com &lt;span class="math"&gt;\(n-1\)&lt;/span&gt; bits, ou três bits neste exemplo.&lt;/p&gt;
 &lt;pre&gt;
 010 (vai um)  011 (empresta um)
  010 +         100 -
  011           011
  ----          ----
  101           001
-&lt;/pre&gt;&lt;/p&gt;
+&lt;/pre&gt;
+
 &lt;p&gt;Descrição textual da operação de soma: começamos com o LSB e somamos &lt;code&gt;(0)+0+1=01&lt;/code&gt;, ou seja, o resultado é efetivamente &lt;code&gt;1&lt;/code&gt; e o vai-um para o próximo dígito é &lt;code&gt;0&lt;/code&gt; (observe que o &lt;code&gt;(0)&lt;/code&gt; inicial é o vem-um do primeiro dígito, que assumimos como &lt;code&gt;0&lt;/code&gt; pois não há cálculos anteriores para gerar um vai-um). Depois somamos &lt;code&gt;0+1+1=10&lt;/code&gt;. Note que desta vez devemos gerar um vai-um para o próximo, então efetivamente colocamos &lt;code&gt;0&lt;/code&gt; no resultado e &lt;code&gt;1&lt;/code&gt; no vai-um. A próxima operação é &lt;code&gt;1+0+0=01&lt;/code&gt; e assim terminamos o cálculo. Como é uma soma de dois números positivos, o resultado é positivo então o resultado final com quatro bits é &lt;code&gt;0101=+5&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Descrição textual da operação de subtração: começamos ordenando os números para conseguirmos efetuar a operação (neste método, sempre subtraímos o menor do maior). Partindo do LSB fazemos &lt;code&gt;0-1&lt;/code&gt;, porém não é possível realizar esta operação, então devemos emprestar um do próximo bit. Ao emprestarmos, estamos efetivamente fazendo &lt;code&gt;10-1=1&lt;/code&gt;, então colocamos o resultado &lt;code&gt;1&lt;/code&gt; e indicamos que emprestamos &lt;code&gt;1&lt;/code&gt; do bit com significância imediatamente superior. Para o próximo bit, já começamos emprestando &lt;code&gt;1&lt;/code&gt; pois o bit é &lt;code&gt;0&lt;/code&gt;, então não conseguimos realizar o cálculo. Ao emprestar, a operação se torna &lt;code&gt;1-1=0&lt;/code&gt;, e indicamos o empréstimo. A última operação seria &lt;code&gt;1-0&lt;/code&gt;, mas como houve o empréstimo ela se torna &lt;code&gt;0-0=0&lt;/code&gt; e não necessita empréstimo. Para finalizar o cálculo, estamos fazendo uma subtração de um número menor, portanto o resultado é negativo e com quatro bits é &lt;code&gt;1001=-1&lt;/code&gt;.&lt;/p&gt;
 &lt;h2&gt;Complemento de base diminuída&lt;/h2&gt;
@@ -323,25 +324,29 @@ Onde &lt;span class="math"&gt;\(c_nr_n\)&lt;/span&gt; representam os dois bits r
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/asm_estado.png' width="20%" align="right" style="padding-left:5%" /&gt;
 Um estado é representado por uma caixa quadrada com arestas orientadas entrando e saindo do estado. As arestas sempre são duas como na figura. A aresta superior pode vir de um outro elemento ASM anterior a este estado na sequencia imposta pela máquina, ou não possuir nenhuma origem, o que implica que este estado é o inicial da máquina (estado após o &lt;em&gt;reset&lt;/em&gt;). Lembre-se que, circuitos digitais, uma máquina de estado possui um e somente um estado inicial. Já a aresta inferior liga este estado ao próximo elemento na sequencia imposta pela máquina e não é opcional: deve existir e ser conectada a algum outro elemento.  &lt;/p&gt;
 &lt;p&gt;O nome do estado e o seu código (em binário) são considerados obrigatórios por alguns autores. No entanto, dependendo do método de síntese adotado, a codificação não se faz necessária. Também alguns autores circulam o nome do estado, em alguns casos deixando-o  na lateral esquerda da caixa. Em sistemas digitais usamos a notação sobre a caixa (à esquerda), sem circular o nome do estado, e consideramos a codificação opcional exceto quando solicitado explicitamente.  &lt;/p&gt;
-&lt;p&gt;O nome &lt;code&gt;[saídas]&lt;/code&gt; representa exatamente os sinais de saída deste estado. Por convenção, só é necessário listar os sinais ativos neste estado, pois considera-se que todas as saídas da máquina não listadas em um estado assumem o valor desativado. Lembre-se que o valor ativo de um sinal depende da lógica que está utilizando (normalmente o valor ativo é alto, ou 1). Para evitar confusão, liste sempre todos os sinais que assumem o valor 1 pois quando não dizemos nada assume-se implicitamente (convenção) que a lógica é positiva. Sinais não listados que possuam mais de um bit assumem desativado (i.e. zero) para todos os bits.
-&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;O nome &lt;code&gt;[saídas]&lt;/code&gt; representa exatamente os sinais de saída deste estado. Por convenção, só é necessário listar os sinais ativos neste estado, pois considera-se que todas as saídas da máquina não listadas em um estado assumem o valor desativado. Lembre-se que o valor ativo de um sinal depende da lógica que está utilizando (normalmente o valor ativo é alto, ou 1). Para evitar confusão, liste sempre todos os sinais que assumem o valor 1 pois quando não dizemos nada assume-se implicitamente (convenção) que a lógica é positiva. Sinais não listados que possuam mais de um bit assumem desativado (i.e. zero) para todos os bits.&lt;/p&gt;
+&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
+
 &lt;h3&gt;Decisor&lt;/h3&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/asm_decisor.png' width="30%" align="right" style="padding-left:3%" /&gt;
 O decisor é o componente que faz a transição condicional entre os estados. Sem ele, toda transição seria incondicional e não dependeria de entrada alguma. É representado graficamente por um losango, com uma aresta orientada de entrada e duas de saída. A aresta de entrada é proveniente de um elemento sequencialmente anterior da máquina de estados e deve obrigatoriamente ter uma origem. As arestas de saída são condicionais, ou seja, caso a condição do decisor seja verdadeira, a máquina segue pelo caminho 1, caso contrário pelo caminho 0. É importante notar que há duas e somente duas arestas de saída, uma para o caso da condição ser falsa e outra verdadeira. Não há condição com múltiplos bits ou múltiplas saídas e as duas saídas devem ser conectadas em outro elemento ASM.&lt;br&gt;
 A condição sempre deve ser uma condição resolvível em lógica booleana, retornando sempre verdadeiro ou falso (1 ou 0). É tolerável inverter as saídas de lado para facilitar o diagrama, assim como desenhar uma seta saindo na ponta inferior do losango, mas prefira sempre usar o desenho padrão como no exemplo ao lado (incluindo os lados de saída para verdadeiro e falso) para garantir que está seguindo as boas práticas.   &lt;/p&gt;
 &lt;p&gt;Este componente é atemporal, ou seja, não representa tampouco depende do tempo. Isso implica que é um componente puramente combinatório e deve estar inserido em um caminho válido entre dois elementos sequenciais, que em ASM são os estados. É permitido cascatear múltiplos decisores, mas não deve-se retornar para caminhos atemporais (e.g. um decisor voltar para ele mesmo ou para um caminho atemporal; veja no final do artigo os erros mais comuns).  &lt;/p&gt;
-&lt;p&gt;Há também um símbolo alternativo representado por um hexágono achatado como na parte inferior da figura ao lado. Este símbolo tem o mesmo significado do losango e, apesar de pouco utilizado, pode ser útil quando a condição tem um nome extenso.
-&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Há também um símbolo alternativo representado por um hexágono achatado como na parte inferior da figura ao lado. Este símbolo tem o mesmo significado do losango e, apesar de pouco utilizado, pode ser útil quando a condição tem um nome extenso.&lt;/p&gt;
+&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
+
 &lt;h3&gt;Saída condicional&lt;/h3&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/asm_saidaCondicional.png' width="15%" align="right" style="padding-left:5%" /&gt;
 As saídas listadas dentro de um estado são as que serão ativadas durante o tempo em que a máquina permanecer naquele estado. Contudo, há casos em que a saída não depende somente do estado mais também da(s) entrada(s) (i.e. máquina de Mealy). Para este tipo de saída, existe a representação de saída condicional, sujo símbolo é um retângulo oblongo com as laterais arrendondadas ao máximo possível (i.e. um semi-círculo). Há uma aresta direcional de entrada e uma de saída. A aresta de saída deve ser conectada a qualquer outro elemento ASM, porém este é um componente atemporal (combinatório, sem dependência temporal, como o decisor) e portanto deve estar em um caminho válido entre dois estados. A entrada de uma saída condicional deve necessariamente originar-se da saída de um ou mais decisores, quando a condição, por consequência, indicará a condição para que esta saída seja ativada. Note que não faz sentido usar uma saída condicional sem nenhum decisor no caminho que a antecede pois nesse caso a saída só depende do estado atual (i.e. máquina de Moore) e portanto deve estar dentro do estado.&lt;/p&gt;
-&lt;p&gt;Assim como a lista de saídas em um estado, a lista de saídas de uma saída condicional apresenta a lista de sinais que devem ser ativados quando a máquina estiver com este caminho ativo, ou seja, a condição do grupo de decisores que a antecede for satisfeita. Note que, enquanto a máquina estiver no estado em que os decisores estão ativos, mudar a condição pode levar os decisores a ativar outro caminho, alterando o estado de ativação de uma saída condicional dependente destes decisores.
-&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Assim como a lista de saídas em um estado, a lista de saídas de uma saída condicional apresenta a lista de sinais que devem ser ativados quando a máquina estiver com este caminho ativo, ou seja, a condição do grupo de decisores que a antecede for satisfeita. Note que, enquanto a máquina estiver no estado em que os decisores estão ativos, mudar a condição pode levar os decisores a ativar outro caminho, alterando o estado de ativação de uma saída condicional dependente destes decisores.&lt;/p&gt;
+&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
+
 &lt;h3&gt;Junção&lt;/h3&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/asm_juncao.png' width="15%" align="right" style="padding-left:5%" /&gt;
 A junção é o componente que permite juntar dois caminhos diferentes em direção a outro estado. É composta por um ponto onde chegam duas arestas direcionais e sai somente uma. Este componente deve ser desenhado na forma como está, tolerando-se que as arestas sejam desenhadas em diferentes posições ao redor do ponto, mantidas duas de entrada e uma de saída. Todas as arestas devem ter como origem ou destino um elemento ASM, incluindo outra junção, mas devem estar em um caminho sequencial (entre dois estados) pois, assim como o decisor e a saída condiciona, a junção não possui dependência temporal.  &lt;/p&gt;
-&lt;p&gt;Observe que o ponto foi exagerado no exemplo ao lado. Quando desenhar sua máquina, use somente um ponto onde fique clara a convergência de duas arestas de entrada e uma de saída. De fato, em desenhos feito usando auxílio de ferramentas computacionais, é comum omitir a junção, desde que fique clara a convergência. Também é possível uma junção com mais de duas arestas de entrada, mas sempre há somente uma aresta de saída.
-&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Observe que o ponto foi exagerado no exemplo ao lado. Quando desenhar sua máquina, use somente um ponto onde fique clara a convergência de duas arestas de entrada e uma de saída. De fato, em desenhos feito usando auxílio de ferramentas computacionais, é comum omitir a junção, desde que fique clara a convergência. Também é possível uma junção com mais de duas arestas de entrada, mas sempre há somente uma aresta de saída.&lt;/p&gt;
+&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
+
 &lt;h3&gt;Outros elementos gráficos&lt;/h3&gt;
 &lt;p&gt;Alguns autores permitem uma condição em uma aresta, logo após a saída do estado e antes de qualquer outro bloco. Para isto, basta escrever o nome de uma condição booleana ao lado da aresta. Isto implica que o estado irá transicionar para aquela transição caso a condição seja verdadeira, ou não irá transicionar caso seja falsa, permanecendo no mesmo estado. Este tipo de mecanimso está relacionado ao &lt;em&gt;clock enable&lt;/em&gt; presente em &lt;em&gt;flip-flops&lt;/em&gt;. A condição é exatamente o &lt;em&gt;enable&lt;/em&gt;, prevenindo que o &lt;em&gt;flip-flop&lt;/em&gt; transicione caso seja falsa. Contudo, deve-se evitar este tipo de transição, especialmente se você é iniciante, pois: (i) nem todo &lt;em&gt;flip-flop&lt;/em&gt; conta com um &lt;em&gt;clock enable&lt;/em&gt;, e (ii) esta transição não deve permitir que o próximo estado seja acionado, complicando desnecessariamente a síntese. Nem pense em inserir uma porta no caminho do &lt;em&gt;clock&lt;/em&gt; para implementar um &lt;em&gt;clock enable&lt;/em&gt; pois as implicações podem ser bem desastrosas. Em suma: não use este tipo de construção exceto se souber o que está fazendo.&lt;/p&gt;
 &lt;h2&gt;Fluxo de um diagrama ASM&lt;/h2&gt;
@@ -373,7 +378,6 @@ erros na montagem do fluxo
 pseudo-código na asm, Confusão com fluxograma
 
  --&gt;
-
 &lt;hr&gt;
 &lt;h2&gt;Quando devo usar ASM?&lt;/h2&gt;
 &lt;p&gt;O diagrama ASM foi criado na década de 70 e esquecido desde então pois na maioria das vezes a síntese de uma ASM é feita usando &lt;em&gt;one-hot-encoding&lt;/em&gt;. Naquela época, este tipo de síntese era inaceitável pois um &lt;em&gt;flip-flop&lt;/em&gt; era caro para se desperdiçar em um único estado, então os projetistas digitais preferiam sintetizar a máquina com a melhor otimização possível em relação ao número de &lt;em&gt;flip-flops&lt;/em&gt;, não raramente feita manualmente. No entanto, com o advento dos sintetizadores modernos, você pode expressar-se usando uma ASM e o sintetizador irá gerar um hardware tão otimizado ou até mais otimizado que o feito manualmente. Além disso, se você estiver usando FPGA para prototipar seu hardware, o sintetizador provavelmente irá usar &lt;em&gt;one-hot-encoding&lt;/em&gt; de qualquer forma devido a organização interna destes dispositivos.&lt;/p&gt;
@@ -553,7 +557,6 @@ S=\{A,B\}\quad S_0=A\quad \Sigma=\{1,0\}\\
 T=\{(A,0)\rightarrow A,(A,1)\rightarrow B,(B,0)\rightarrow B,(B,1)\rightarrow A\}\\
 G=\{(A,0)\rightarrow 0,(A,1)\rightarrow 1,(B,0)\rightarrow 1,(B,1)\rightarrow 0\}$$&lt;/div&gt;
 &lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
-
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmexemplo1.png' width="15%" align="right" style="padding-left:5%" /&gt;
 Uma máquina de Moore pode é representada da mesma forma, porém o círculo representando o estado é cortado ao meio e a saída é especificada na parte inferior, como na figura ao lado. As transições, representadas pelas arestas, possuem somente a entrada &lt;em&gt;e&lt;/em&gt; especificada, pois nesta máquina a saída não depende da entrada e sim somente do estado.&lt;/p&gt;
 &lt;p&gt;A especificação formal é similar, porém a função de de saída (&lt;span class="math"&gt;\(G\)&lt;/span&gt;) não possui a entrada:&lt;/p&gt;
@@ -603,8 +606,9 @@ Já as funções de transição de estados (também chamada de função de próx
 &lt;p&gt;Este é um exemplo clássico de uma máquina de estados simples, mas que todos reconhecem: o semáforo. Projete o circuito para uma máquina de estados que opere um semáforo de três fases: verde, amarela e vermelha. A entrada é &lt;span class="math"&gt;\(m\)&lt;/span&gt;, proveniente de um temporizador, que caso alta na fase verde causa uma mudança para a fase a amarela e caso alta na fase vermelha causa uma mudança para a fase verde. A mudança da fase amarela para a vermelha é independente da entrada. A saída da máquina de estados é dada por dois bits, &lt;span class="math"&gt;\(c_1c_0\)&lt;/span&gt;, que indicam qual cor está acesa: 10 verde, 11 amarelo e 01 vermelho.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Passo 1:&lt;/strong&gt; Variáveis de entrada: somente &lt;span class="math"&gt;\(m\)&lt;/span&gt; de 1 bit. Variáveis de saída: &lt;span class="math"&gt;\(c_1c_0\)&lt;/span&gt; de 2 bits, 10 verde, 11 amarelo e 01 vermelho (não foi especificado o que acontece em 00). O semáforo trabalha de forma circular acendendo as cores vermelho, amarelo e verde, em sequência repetitiva. O tempo que a máquina permanece na cor amarela é dado pelo período do &lt;em&gt;clock&lt;/em&gt;, pois não há condição para a transição. Já o tempo que a máquina permanece no vermelho e no verde é indicado pelo sinal do temporizador, representado pela entrada &lt;span class="math"&gt;\(m\)&lt;/span&gt;. Quando a entrada for alta (&lt;span class="math"&gt;\(m=1\)&lt;/span&gt;), deve-se trocar de estado na próxima borda do &lt;em&gt;clock&lt;/em&gt;. Convencionaremos o &lt;em&gt;reset&lt;/em&gt; assíncrono ativo baixo e o elemento de memória sensível a borda de subida do &lt;em&gt;clock&lt;/em&gt;. Escolheremos um modelo de Moore, sem nenhuma vantagem ou desvantagem explícita.&lt;/p&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/semaforo.png' width="35%" align="right" style="padding-left:5%" /&gt;
-&lt;strong&gt;Passo 2:&lt;/strong&gt; A descrição funcional foi feita durante a análise do problema no passo 1. O diagrama de transição de estados pode ser visto na figura ao lado. Note que já demos os nomes para os estados de acordo com a cor: VM vermelha, VD verde e AM amarela. A entrada de 1 bit foi especificada nas transições e a saída de 2 bits na parte inferior do estado, de acordo com o identificado no passo 1.
-&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;strong&gt;Passo 2:&lt;/strong&gt; A descrição funcional foi feita durante a análise do problema no passo 1. O diagrama de transição de estados pode ser visto na figura ao lado. Note que já demos os nomes para os estados de acordo com a cor: VM vermelha, VD verde e AM amarela. A entrada de 1 bit foi especificada nas transições e a saída de 2 bits na parte inferior do estado, de acordo com o identificado no passo 1.&lt;/p&gt;
+&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
+
 &lt;p&gt;&lt;strong&gt;Passo 3:&lt;/strong&gt; Já temos o diagrama de transição de estados, então podemos montar as tabelas.&lt;/p&gt;
 &lt;style type="text/css"&gt;
 .tg  {border-collapse:collapse;border-spacing:0;}
@@ -614,7 +618,6 @@ Já as funções de transição de estados (também chamada de função de próx
 .tg .tg-kiyi{font-weight:bold;border-color:inherit;text-align:left}
 .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
 &lt;/style&gt;
-
 &lt;table class="tg"&gt;
   &lt;tr&gt;
     &lt;th class="tg-88nc" rowspan="2"&gt;Estado Atual&lt;/th&gt;
@@ -791,9 +794,7 @@ Ainda no circuito vemos a entrada de &lt;em&gt;clock&lt;/em&gt; e de &lt;em&gt;r
 .tg .tg-bolj{background-color:#ffccc9;border-color:inherit;text-align:center;vertical-align:top}
 .tg .tg-mfhl{background-color:#ffffc7;border-color:inherit;text-align:center;vertical-align:top}
 &lt;/style&gt;
-
 &lt;!-- ------------------------------------------------------- --&gt;
-
 &lt;table class="tg" align="left"&gt;
   &lt;tr&gt;
     &lt;th class="tg-baqh" colspan="3"&gt;Tabela 1&lt;/th&gt;
@@ -884,7 +885,6 @@ Ainda no circuito vemos a entrada de &lt;em&gt;clock&lt;/em&gt; e de &lt;em&gt;r
 &lt;/table&gt;
 
 &lt;!-- ------------------------------------------------------- --&gt;
-
 &lt;table class="tg" align="left"&gt;
   &lt;tr&gt;
     &lt;th class="tg-c3ow" colspan="3"&gt;Tabela 2&lt;/th&gt;
@@ -948,9 +948,7 @@ Ainda no circuito vemos a entrada de &lt;em&gt;clock&lt;/em&gt; e de &lt;em&gt;r
     &lt;td class="tg-c3ow"&gt;S0/0&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;
-
 &lt;!-- ------------------------------------------------------- --&gt;
-
 &lt;table class="tg" align="left"&gt;
   &lt;tr&gt;
     &lt;th class="tg-c3ow" colspan="3"&gt;Tabela 3&lt;/th&gt;
@@ -1077,19 +1075,15 @@ Na figura podemos ver o exemplo do preenchimento para duas células, ambas na li
     &lt;td class="tg-baqh"&gt;B&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;
-
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/sdfsmoptex1diag.png' width="13%" align="left" style="padding-left:5%; padding-right:5%"/&gt;
 Tente minimizar esta máquina usando o método de análise da tabela de transição. É possível encontrar algum estado equivalente? Perceba que os estados A e C são equivalentes, mas não é possível perceber isto apenas com a tabela de transição de estados.&lt;/p&gt;
 &lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
-
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/sdfsmoptex1a.png' width="55%" align="right" style="padding-left:5%"/&gt;
 Vamos construir a tabela de implicação para verificar. Na figura ao lado, podemos ver: (esquerda) a tabela de implicação construída e com os estados (note que é uma máquina de Moore, então as saídas são representadas nos estados); (meio) a tabela de implicação com as linhas de acordo com a tabela de transição de estados; e (direita) a versão com a linha B-B já riscada, pois para esta entrada, a máquina transiciona para o mesmo estado independententemente de qual estado esteja. Isto equivale à construção da tabela de implicação e à execução do primeiro passo do algoritmo.&lt;/p&gt;
 &lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
-
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/sdfsmoptex1b.png' width="45%" align="left" style="padding-right:5%"/&gt;
 No segundo passo eliminamos os estados que produzem saída diferentes, pois nunca poderão ser equivalentes. Isto pode ser visto à esquerda na figura ao lado (os estados eliminados foram destacados em cinza). Sobra a única célula a ser verificada, correspondente aos estados C/0-A/0. Esta célula tem uma linha riscada (que não precisa ser analisada) e uma linha que referencia A-C. A referência A-C aponta para a mesma célula que estamos analisando, a célula C/0-A/0. Como esta célula ainda não foi eliminada, nada resta a fazer e devemos continuar o algoritmo. Porém, não há mais células a serem analisadas, portanto o algoritmo terminou. Isso significa que a única célula que não foi eliminada será a nossa classe de equivalência, destacada em vermelho na tabela de implicação da figura.&lt;/p&gt;
 &lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
-
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/sdfsmoptex1diagmin.png' width="13%" align="left" style="padding-right:5%"/&gt;
 A célula indica que a classe de equivalência contém somente dois estados, o C/0 e o A/0. Para finalizar, montamos um novo diagrama de transição de estados com um estado chamado AC/0, em vermelho, representando a classe de equivalência encontrada. As transições são transportadas dos estados da classe de equivalência e, obviamente, são esperadas que sejam as mesmas pois os estados são equivalentes. Esta máquina tem a mesma funcionalidade que a anterior, porém tem um estado a menos. Este tipo de minimização não é possível usando a análise da tabela de transição de estados.&lt;/p&gt;
 &lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
@@ -1153,7 +1147,6 @@ A célula indica que a classe de equivalência contém somente dois estados, o C
     &lt;td class="tg-baqh"&gt;S5&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;
-
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/sdfsmoptex2diag.png' width="45%" align="right" style="padding-left:5%" /&gt;&lt;/p&gt;
 &lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
 
@@ -1211,7 +1204,6 @@ A célula indica que a classe de equivalência contém somente dois estados, o C
     &lt;td class="tg-mfhl"&gt;Sb&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;
-
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/sdfsmoptex2diagmin.png' width="45%" align="right" style="padding-left:5%" /&gt;&lt;/p&gt;
 &lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
 
@@ -1237,8 +1229,8 @@ Por último, devemos reconstruir o diagrama de transição de estados. Para cada
 &lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
 
 &lt;h1&gt;Referências&lt;/h1&gt;
-&lt;p&gt;&lt;p/&gt;
-[1] DE VRIES, A. Finite automata: Behavior and synthesis. Elsevier, 2014.&lt;br&gt;
+&lt;p/&gt;
+&lt;p&gt;[1] DE VRIES, A. Finite automata: Behavior and synthesis. Elsevier, 2014.&lt;br&gt;
 [2] KAM, Timothy et al. Synthesis of finite state machines: functional optimization. Springer Science &amp;amp;
 Business Media, 2013.&lt;/p&gt;
 &lt;p&gt;Algumas partes dos exemplos foram adaptados de apresentações do &lt;a href="http://www-inst.eecs.berkeley.edu/~cs150/sp00/classnotes/katz-ch9-mod.pdf"&gt;Prof. Randy H. Katz&lt;/a&gt; e da disciplina &lt;a href="https://courses.cs.washington.edu/courses/cse370/09wi/LectureSlides/22-Minimization.pdf"&gt;CSE370, Lecture 22&lt;/a&gt;.&lt;/p&gt;

@@ -57,26 +57,28 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333">
 
+ 
+
 <meta name="author" content="Bruno Albertini" />
 <meta name="description" content="Como fazer simplificação de estados em máquinas de estados finitas." />
 <meta name="keywords" content="sistemas digitais, fsm, simplificação, otimização">
 
 
-<meta property="og:site_name" content="B.Albertini's site"/>
-<meta property="og:title" content="Simplificação de FSM"/>
-<meta property="og:description" content="Como fazer simplificação de estados em máquinas de estados finitas."/>
-<meta property="og:locale" content="pr_BR"/>
-<meta property="og:url" content="https://balbertini.github.io/fsmstatereduction-pt_BR.html"/>
-<meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2018-09-25 17:13:05-03:00"/>
-<meta property="article:modified_time" content="2019-02-26 17:24:30-03:00"/>
-<meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
-<meta property="article:section" content="sistemas digitais"/>
-<meta property="article:tag" content="sistemas digitais"/>
-<meta property="article:tag" content="fsm"/>
-<meta property="article:tag" content="simplificação"/>
-<meta property="article:tag" content="otimização"/>
-<meta property="og:image" content="/images/profile.png">
+  <meta property="og:site_name" content="B.Albertini's site"/>
+  <meta property="og:title" content="Simplificação de FSM"/>
+  <meta property="og:description" content="Como fazer simplificação de estados em máquinas de estados finitas."/>
+  <meta property="og:locale" content="pr_BR"/>
+  <meta property="og:url" content="https://balbertini.github.io/fsmstatereduction-pt_BR.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2018-09-25 17:13:05-03:00"/>
+  <meta property="article:modified_time" content="2019-02-26 17:24:30-03:00"/>
+  <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
+  <meta property="article:section" content="sistemas digitais"/>
+  <meta property="article:tag" content="sistemas digitais"/>
+  <meta property="article:tag" content="fsm"/>
+  <meta property="article:tag" content="simplificação"/>
+  <meta property="article:tag" content="otimização"/>
+  <meta property="og:image" content="/images/profile.png">
 
   <title>B.Albertini's site &ndash; Simplificação de FSM</title>
 
@@ -84,12 +86,12 @@
 <body >
   <aside>
     <div>
-      <a href="https://balbertini.github.io">
+      <a href="https://balbertini.github.io/">
         <img src="/images/profile.png" alt="B.Albertini" title="B.Albertini">
       </a>
 
       <h1>
-        <a href="https://balbertini.github.io">B.Albertini</a>
+        <a href="https://balbertini.github.io/">B.Albertini</a>
       </h1>
 
 <p>Professor</p>
@@ -193,9 +195,7 @@
 .tg .tg-bolj{background-color:#ffccc9;border-color:inherit;text-align:center;vertical-align:top}
 .tg .tg-mfhl{background-color:#ffffc7;border-color:inherit;text-align:center;vertical-align:top}
 </style>
-
 <!-- ------------------------------------------------------- -->
-
 <table class="tg" align="left">
   <tr>
     <th class="tg-baqh" colspan="3">Tabela 1</th>
@@ -286,7 +286,6 @@
 </table>
 
 <!-- ------------------------------------------------------- -->
-
 <table class="tg" align="left">
   <tr>
     <th class="tg-c3ow" colspan="3">Tabela 2</th>
@@ -350,9 +349,7 @@
     <td class="tg-c3ow">S0/0</td>
   </tr>
 </table>
-
 <!-- ------------------------------------------------------- -->
-
 <table class="tg" align="left">
   <tr>
     <th class="tg-c3ow" colspan="3">Tabela 3</th>
@@ -479,19 +476,15 @@ Na figura podemos ver o exemplo do preenchimento para duas células, ambas na li
     <td class="tg-baqh">B</td>
   </tr>
 </table>
-
 <p><img src='https://balbertini.github.io/images/sd/sdfsmoptex1diag.png' width="13%" align="left" style="padding-left:5%; padding-right:5%"/>
 Tente minimizar esta máquina usando o método de análise da tabela de transição. É possível encontrar algum estado equivalente? Perceba que os estados A e C são equivalentes, mas não é possível perceber isto apenas com a tabela de transição de estados.</p>
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
-
 <p><img src='https://balbertini.github.io/images/sd/sdfsmoptex1a.png' width="55%" align="right" style="padding-left:5%"/>
 Vamos construir a tabela de implicação para verificar. Na figura ao lado, podemos ver: (esquerda) a tabela de implicação construída e com os estados (note que é uma máquina de Moore, então as saídas são representadas nos estados); (meio) a tabela de implicação com as linhas de acordo com a tabela de transição de estados; e (direita) a versão com a linha B-B já riscada, pois para esta entrada, a máquina transiciona para o mesmo estado independententemente de qual estado esteja. Isto equivale à construção da tabela de implicação e à execução do primeiro passo do algoritmo.</p>
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
-
 <p><img src='https://balbertini.github.io/images/sd/sdfsmoptex1b.png' width="45%" align="left" style="padding-right:5%"/>
 No segundo passo eliminamos os estados que produzem saída diferentes, pois nunca poderão ser equivalentes. Isto pode ser visto à esquerda na figura ao lado (os estados eliminados foram destacados em cinza). Sobra a única célula a ser verificada, correspondente aos estados C/0-A/0. Esta célula tem uma linha riscada (que não precisa ser analisada) e uma linha que referencia A-C. A referência A-C aponta para a mesma célula que estamos analisando, a célula C/0-A/0. Como esta célula ainda não foi eliminada, nada resta a fazer e devemos continuar o algoritmo. Porém, não há mais células a serem analisadas, portanto o algoritmo terminou. Isso significa que a única célula que não foi eliminada será a nossa classe de equivalência, destacada em vermelho na tabela de implicação da figura.</p>
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
-
 <p><img src='https://balbertini.github.io/images/sd/sdfsmoptex1diagmin.png' width="13%" align="left" style="padding-right:5%"/>
 A célula indica que a classe de equivalência contém somente dois estados, o C/0 e o A/0. Para finalizar, montamos um novo diagrama de transição de estados com um estado chamado AC/0, em vermelho, representando a classe de equivalência encontrada. As transições são transportadas dos estados da classe de equivalência e, obviamente, são esperadas que sejam as mesmas pois os estados são equivalentes. Esta máquina tem a mesma funcionalidade que a anterior, porém tem um estado a menos. Este tipo de minimização não é possível usando a análise da tabela de transição de estados.</p>
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
@@ -555,7 +548,6 @@ A célula indica que a classe de equivalência contém somente dois estados, o C
     <td class="tg-baqh">S5</td>
   </tr>
 </table>
-
 <p><img src='https://balbertini.github.io/images/sd/sdfsmoptex2diag.png' width="45%" align="right" style="padding-left:5%" /></p>
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
@@ -613,7 +605,6 @@ A célula indica que a classe de equivalência contém somente dois estados, o C
     <td class="tg-mfhl">Sb</td>
   </tr>
 </table>
-
 <p><img src='https://balbertini.github.io/images/sd/sdfsmoptex2diagmin.png' width="45%" align="right" style="padding-left:5%" /></p>
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
@@ -639,8 +630,8 @@ Por último, devemos reconstruir o diagrama de transição de estados. Para cada
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 <h1>Referências</h1>
-<p><p/>
-[1] DE VRIES, A. Finite automata: Behavior and synthesis. Elsevier, 2014.<br>
+<p/>
+<p>[1] DE VRIES, A. Finite automata: Behavior and synthesis. Elsevier, 2014.<br>
 [2] KAM, Timothy et al. Synthesis of finite state machines: functional optimization. Springer Science &amp;
 Business Media, 2013.</p>
 <p>Algumas partes dos exemplos foram adaptados de apresentações do <a href="http://www-inst.eecs.berkeley.edu/~cs150/sp00/classnotes/katz-ch9-mod.pdf">Prof. Randy H. Katz</a> e da disciplina <a href="https://courses.cs.washington.edu/courses/cse370/09wi/LectureSlides/22-Minimization.pdf">CSE370, Lecture 22</a>.</p>
@@ -777,7 +768,6 @@ Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a 
   "description": ""
 }
 </script>
-
 
 </body>
 </html>

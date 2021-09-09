@@ -57,25 +57,27 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333">
 
+ 
+
 <meta name="author" content="Bruno Albertini" />
 <meta name="description" content="Introdução a máquinas de estados finitas em sistemas digitais." />
 <meta name="keywords" content="sistemas digitais, fsm, simplificação">
 
 
-<meta property="og:site_name" content="B.Albertini's site"/>
-<meta property="og:title" content="Máquinas de Estados Finitas"/>
-<meta property="og:description" content="Introdução a máquinas de estados finitas em sistemas digitais."/>
-<meta property="og:locale" content="pr_BR"/>
-<meta property="og:url" content="https://balbertini.github.io/fsmbasics-pt_BR.html"/>
-<meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2018-09-25 17:13:05-03:00"/>
-<meta property="article:modified_time" content="2019-08-30 16:26:09-03:00"/>
-<meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
-<meta property="article:section" content="sistemas digitais"/>
-<meta property="article:tag" content="sistemas digitais"/>
-<meta property="article:tag" content="fsm"/>
-<meta property="article:tag" content="simplificação"/>
-<meta property="og:image" content="/images/profile.png">
+  <meta property="og:site_name" content="B.Albertini's site"/>
+  <meta property="og:title" content="Máquinas de Estados Finitas"/>
+  <meta property="og:description" content="Introdução a máquinas de estados finitas em sistemas digitais."/>
+  <meta property="og:locale" content="pr_BR"/>
+  <meta property="og:url" content="https://balbertini.github.io/fsmbasics-pt_BR.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2018-09-25 17:13:05-03:00"/>
+  <meta property="article:modified_time" content="2019-08-30 16:26:09-03:00"/>
+  <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
+  <meta property="article:section" content="sistemas digitais"/>
+  <meta property="article:tag" content="sistemas digitais"/>
+  <meta property="article:tag" content="fsm"/>
+  <meta property="article:tag" content="simplificação"/>
+  <meta property="og:image" content="/images/profile.png">
 
   <title>B.Albertini's site &ndash; Máquinas de Estados Finitas</title>
 
@@ -83,12 +85,12 @@
 <body >
   <aside>
     <div>
-      <a href="https://balbertini.github.io">
+      <a href="https://balbertini.github.io/">
         <img src="/images/profile.png" alt="B.Albertini" title="B.Albertini">
       </a>
 
       <h1>
-        <a href="https://balbertini.github.io">B.Albertini</a>
+        <a href="https://balbertini.github.io/">B.Albertini</a>
       </h1>
 
 <p>Professor</p>
@@ -194,7 +196,6 @@ S=\{A,B\}\quad S_0=A\quad \Sigma=\{1,0\}\\
 T=\{(A,0)\rightarrow A,(A,1)\rightarrow B,(B,0)\rightarrow B,(B,1)\rightarrow A\}\\
 G=\{(A,0)\rightarrow 0,(A,1)\rightarrow 1,(B,0)\rightarrow 1,(B,1)\rightarrow 0\}$$</div>
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
-
 <p><img src='https://balbertini.github.io/images/sd/fsmexemplo1.png' width="15%" align="right" style="padding-left:5%" />
 Uma máquina de Moore pode é representada da mesma forma, porém o círculo representando o estado é cortado ao meio e a saída é especificada na parte inferior, como na figura ao lado. As transições, representadas pelas arestas, possuem somente a entrada <em>e</em> especificada, pois nesta máquina a saída não depende da entrada e sim somente do estado.</p>
 <p>A especificação formal é similar, porém a função de de saída (<span class="math">\(G\)</span>) não possui a entrada:</p>
@@ -244,8 +245,9 @@ Já as funções de transição de estados (também chamada de função de próx
 <p>Este é um exemplo clássico de uma máquina de estados simples, mas que todos reconhecem: o semáforo. Projete o circuito para uma máquina de estados que opere um semáforo de três fases: verde, amarela e vermelha. A entrada é <span class="math">\(m\)</span>, proveniente de um temporizador, que caso alta na fase verde causa uma mudança para a fase a amarela e caso alta na fase vermelha causa uma mudança para a fase verde. A mudança da fase amarela para a vermelha é independente da entrada. A saída da máquina de estados é dada por dois bits, <span class="math">\(c_1c_0\)</span>, que indicam qual cor está acesa: 10 verde, 11 amarelo e 01 vermelho.</p>
 <p><strong>Passo 1:</strong> Variáveis de entrada: somente <span class="math">\(m\)</span> de 1 bit. Variáveis de saída: <span class="math">\(c_1c_0\)</span> de 2 bits, 10 verde, 11 amarelo e 01 vermelho (não foi especificado o que acontece em 00). O semáforo trabalha de forma circular acendendo as cores vermelho, amarelo e verde, em sequência repetitiva. O tempo que a máquina permanece na cor amarela é dado pelo período do <em>clock</em>, pois não há condição para a transição. Já o tempo que a máquina permanece no vermelho e no verde é indicado pelo sinal do temporizador, representado pela entrada <span class="math">\(m\)</span>. Quando a entrada for alta (<span class="math">\(m=1\)</span>), deve-se trocar de estado na próxima borda do <em>clock</em>. Convencionaremos o <em>reset</em> assíncrono ativo baixo e o elemento de memória sensível a borda de subida do <em>clock</em>. Escolheremos um modelo de Moore, sem nenhuma vantagem ou desvantagem explícita.</p>
 <p><img src='https://balbertini.github.io/images/sd/semaforo.png' width="35%" align="right" style="padding-left:5%" />
-<strong>Passo 2:</strong> A descrição funcional foi feita durante a análise do problema no passo 1. O diagrama de transição de estados pode ser visto na figura ao lado. Note que já demos os nomes para os estados de acordo com a cor: VM vermelha, VD verde e AM amarela. A entrada de 1 bit foi especificada nas transições e a saída de 2 bits na parte inferior do estado, de acordo com o identificado no passo 1.
-<div style="border: 0px; overflow: auto;width: 100%;"></div></p>
+<strong>Passo 2:</strong> A descrição funcional foi feita durante a análise do problema no passo 1. O diagrama de transição de estados pode ser visto na figura ao lado. Note que já demos os nomes para os estados de acordo com a cor: VM vermelha, VD verde e AM amarela. A entrada de 1 bit foi especificada nas transições e a saída de 2 bits na parte inferior do estado, de acordo com o identificado no passo 1.</p>
+<div style="border: 0px; overflow: auto;width: 100%;"></div>
+
 <p><strong>Passo 3:</strong> Já temos o diagrama de transição de estados, então podemos montar as tabelas.</p>
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
@@ -255,7 +257,6 @@ Já as funções de transição de estados (também chamada de função de próx
 .tg .tg-kiyi{font-weight:bold;border-color:inherit;text-align:left}
 .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
 </style>
-
 <table class="tg">
   <tr>
     <th class="tg-88nc" rowspan="2">Estado Atual</th>
@@ -473,7 +474,6 @@ Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a 
   "description": ""
 }
 </script>
-
 
 </body>
 </html>

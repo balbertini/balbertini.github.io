@@ -57,24 +57,26 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333">
 
+ 
+
 <meta name="author" content="Bruno Albertini" />
 <meta name="description" content="Como usar tipos agregados em VHDL" />
 <meta name="keywords" content="vhdl, basic">
 
 
-<meta property="og:site_name" content="B.Albertini's site"/>
-<meta property="og:title" content="Tipos agregados em VHDL"/>
-<meta property="og:description" content="Como usar tipos agregados em VHDL"/>
-<meta property="og:locale" content="pr_BR"/>
-<meta property="og:url" content="https://balbertini.github.io/vhdl_aggregate-pt_BR.html"/>
-<meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2019-09-05 16:22:44-03:00"/>
-<meta property="article:modified_time" content="2019-09-09 10:16:11-03:00"/>
-<meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
-<meta property="article:section" content="vhdl"/>
-<meta property="article:tag" content="vhdl"/>
-<meta property="article:tag" content="basic"/>
-<meta property="og:image" content="/images/profile.png">
+  <meta property="og:site_name" content="B.Albertini's site"/>
+  <meta property="og:title" content="Tipos agregados em VHDL"/>
+  <meta property="og:description" content="Como usar tipos agregados em VHDL"/>
+  <meta property="og:locale" content="pr_BR"/>
+  <meta property="og:url" content="https://balbertini.github.io/vhdl_aggregate-pt_BR.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2019-09-05 16:22:44-03:00"/>
+  <meta property="article:modified_time" content="2019-09-09 10:16:11-03:00"/>
+  <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
+  <meta property="article:section" content="vhdl"/>
+  <meta property="article:tag" content="vhdl"/>
+  <meta property="article:tag" content="basic"/>
+  <meta property="og:image" content="/images/profile.png">
 
   <title>B.Albertini's site &ndash; Tipos agregados em VHDL</title>
 
@@ -82,12 +84,12 @@
 <body >
   <aside>
     <div>
-      <a href="https://balbertini.github.io">
+      <a href="https://balbertini.github.io/">
         <img src="/images/profile.png" alt="B.Albertini" title="B.Albertini">
       </a>
 
       <h1>
-        <a href="https://balbertini.github.io">B.Albertini</a>
+        <a href="https://balbertini.github.io/">B.Albertini</a>
       </h1>
 
 <p>Professor</p>
@@ -165,60 +167,55 @@
 <h2>Vetores</h2>
 <p>Os dois tipos de dados mais utilizados em VHDL, <code>bit</code> e <code>std_logic</code> possuem versões em vetores pré-definidas, o <code>bit_vector</code> e o <code>std_logic_vector</code>. A versão em <code>bit</code> é nativa, portanto você pode utilizá-la imediadamente na sua descrição. No caso do <code>std_logic</code>, como o tipo é considerado uma extensão do VHDL, deve-se incluir a biblioteca <code>ieee.std_logic_1164</code> antes da sua utilização.</p>
 <p>No entanto, pode-se definir um vetor de <a href="https://balbertini.github.io/vhdl_datatypes-pt_BR.html">qualquer tipo suportado</a>. A palavra chave para definir-se um vetor é <code>array</code>. Declara-se um tipo de dados personalizado com a palavra reservada <code>type</code> e usa-se o <code>array</code> para especificar um vetor. Após a declaração, pode-se usar o tipo agregado como um tipo qualquer.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">type</span> <span class="n">meu_vetor</span> <span class="k">is</span> <span class="k">array</span> <span class="p">(</span><span class="mi">2</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">)</span> <span class="k">of</span> <span class="kt">bit</span><span class="p">;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">type</span> <span class="n">meu_vetor</span> <span class="k">is</span> <span class="k">array</span> <span class="p">(</span><span class="mi">2</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">)</span> <span class="k">of</span> <span class="kt">bit</span><span class="p">;</span>
 <span class="k">signal</span> <span class="n">meu_conjunto_de_fios</span><span class="o">:</span> <span class="n">meu_vetor</span><span class="p">;</span>
 <span class="k">signal</span> <span class="n">mv</span><span class="o">:</span> <span class="n">meu_vetor</span><span class="p">;</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>O trecho acima irá gerar um conjunto de três fios (chamado <code>meu_conjunto_de_fios</code>) do tipo que podem ser acessados como um único. Sabemos que para um vetor de <code>bit</code> poderíamos usar simplesmente <code>signal meu_conjunto_de_fios: bit_vector(2 downto 0);</code>, porém a declaração pode ser usada para qualquer outro tipo e é especialmente útil quando estamos modelando <a href="https://balbertini.github.io/vhdl_mem-pt_BR.html">memórias</a>.</p>
 <p>É possível declarar vetores de vetores, criando estruturas multidimensionais.</p>
 <h3>Utilizando Vetores</h3>
 <p>Para acessar um elemento de um vetor, basta usar a indexação. E.g. <code>a&lt;=mv(0)</code> irá atribuir o bit menos significativo do vetor <code>mv</code> ao sinal <code>a</code>. É importante notar que <code>a</code> deve ser do mesmo tipo declarado no tipo do vetor, nesse caso <code>bit</code>. A ordem em que os índices são acessados também depende da declaração do vetor. Como declaramos o <code>meu_vetor</code> como <code>(2 downto 0)</code>, o bit menos significativo será o <code>0</code>. Se declarássemos <code>(0 to 2)</code>, o bit menos significativo deveria ser acessado com <code>mv(2)</code>. Lembre-se que a significância de um conjunto de bits é uma convenção, que assumimos sempre como o menos significativo sendo o bit mais a direita.</p>
 <p>Para escrever em um vetor também usamos os parênteses (como na indexação), mas temos duas alternativas: associação posicional ou nomeada.</p>
 <p>Na <strong>associação posicional</strong>, os elementos são associados sempre em ordem, da esquerda para a direita. E.g. <code>mv &lt;= (c,b,a);</code> equivale a <code>mv(0)&lt;=a;</code>, <code>mv(1)&lt;=b;</code> e <code>mv(2)&lt;=c;</code>. É recomendado que todas as posições do vetor estejam preenchidas e o tipo de cada uma deve ser do mesmo tipo declarado no tipo do vetor. Também é possível associarmos posicionalmente usando um operador de concatenação:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">mv</span> <span class="o">&lt;=</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">c</span><span class="p">;</span> <span class="c1">-- todos devem ser bits</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">mv</span> <span class="o">&lt;=</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">c</span><span class="p">;</span> <span class="c1">-- todos devem ser bits</span>
 <span class="n">mv</span> <span class="o">&lt;=</span> <span class="n">a2</span> <span class="o">&amp;</span> <span class="n">c</span><span class="p">;</span> <span class="c1">-- a2 é um vetor de duas posições</span>
 <span class="n">mv</span> <span class="o">&lt;=</span> <span class="n">mv</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">mv</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">-- rotacao para esquerda</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>A parte importante da atribuição posicional é conter todos os elementos do vetor (o que implica que o tipo e o tamanho devem ser idênticos). Constantes literais também são aceitas, bastando retirar os parênteses, como em <code>mv&lt;="101";</code>, obviamente respeitando o tipo e tamanho.</p>
 <p>A segunda maneira é chamada de <strong>associação nomeada</strong>. Neste tipo de associação podemos atribuir os valores sem respeitar a ordem, nomeando-os. E.g. <code>mv&lt;=(0=&gt;a,2=&gt;c,1=&gt;b);</code> equivale a <code>mv &lt;= (c,b,a);</code>. A utilidade principal deste tipo de atribuição é atribuir valores somente para as posições de interesse. mas não é necessário atribuir para todos os elementos do vetor? Sim, mas temos uma palavra chave que diz exatamente o que fazer com todos as posições não especificadas:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">mv</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="mi">1</span><span class="o">=&gt;</span><span class="n">c</span><span class="p">,</span> <span class="k">others</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">);</span> <span class="c1">-- atribuição 0c0</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">mv</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="mi">1</span><span class="o">=&gt;</span><span class="n">c</span><span class="p">,</span> <span class="k">others</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">);</span> <span class="c1">-- atribuição 0c0</span>
 <span class="n">mv</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="mi">1</span><span class="o">=&gt;</span><span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="o">=&gt;</span> <span class="sc">&#39;1&#39;</span><span class="p">,</span> <span class="k">others</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">);</span> <span class="c1">-- 0c1</span>
 <span class="n">mv</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="k">others</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">);</span> <span class="c1">-- 000</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Note que <strong>não</strong> precisamos saber o tamanho do vetor para usar <code>others</code>, então este tipo de atribuição é muito útil quando associada com <a href="https://balbertini.github.io/vhdl_generic-pt_BR.html">generics</a>. De fato, a construção <code>vetor&lt;=(others=&gt;'0');</code> zera qualquer vetor cujo tipo seja compatível com o literal <code>'0'</code>, independentemente do tamanho.</p>
 <h2>Registros</h2>
 <p>Quando todos os elementos do vetor são do mesmo tipo, usamos o <code>array</code> para declará-lo, mas e se os tipos não forem os mesmos? A palava chave <code>record</code> serve exatamente para isso. Suponha que eu quero um conjunto de seis fios, sendo um <em>clock</em>, um inteiro sem sinal de quatro bits e um <em>flag</em> que pode ser <em>tri-state</em>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">type</span> <span class="n">meu_registro</span> <span class="k">is</span> <span class="k">record</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">type</span> <span class="n">meu_registro</span> <span class="k">is</span> <span class="k">record</span>
   <span class="n">clock</span><span class="o">:</span> <span class="kt">bit</span><span class="p">;</span>
   <span class="n">mi</span><span class="o">:</span> <span class="kt">integer</span> <span class="k">range</span> <span class="mi">0</span> <span class="k">to</span> <span class="mi">15</span><span class="p">;</span>
   <span class="n">mf</span><span class="o">:</span> <span class="kt">std_logic</span><span class="p">;</span>
 <span class="k">end</span> <span class="k">record</span><span class="p">;</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Se declararmos um <code>signal mr: meu_registro;</code>, teremos um conjunto de fios que representam exatamente o que está no registro. As atribuições seguem as mesmas regras que para o vetor, inclusive para associação nomeada.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">mr</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="sc">&#39;0&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="sc">&#39;1&#39;</span><span class="p">);</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">mr</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="sc">&#39;0&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="sc">&#39;1&#39;</span><span class="p">);</span>
 <span class="n">mr</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">clock</span><span class="o">=&gt;</span><span class="n">ck</span><span class="p">,</span> <span class="n">mi</span><span class="o">=&gt;</span><span class="mi">5</span><span class="p">,</span> <span class="n">mf</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">);</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>As ferramentas de síntese na sua maioria não suportam a síntese completa de registros, portanto evite-os em descrições sintetizáveis.</p>
 <h2>Conversão</h2>
 <p>Muitas pessoas se confundem quando convertem entre agregados. Veja este post sobre <a href="https://balbertini.github.io/vhdl_conversion-pt_BR.html">conversão de dados</a> para um guia de como fazer a conversão corretamente.</p>
@@ -298,7 +295,6 @@ Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a 
   "description": ""
 }
 </script>
-
 
 </body>
 </html>
