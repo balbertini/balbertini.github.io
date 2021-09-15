@@ -26,7 +26,8 @@ Tesoureiro da [Seção Sul Brasil da IEEE](http://www.ieee.org.br/) (2017-2018).
 ###Contato  
 [<i style="font-size: 1em;" class="fas fa-at"></i> balbertini@usp.br](mailto:balbertini@usp.br) | <i style="font-size: 1em;color:#d9411e;" class="fas fa-phone"></i><i style="font-size: 1em;color:#d9411e;"> +55 11 3091-5394</i>
 
-__Atenção__: devido às condições sanitárias atuais, temporariamente não estou atendendo fisicamente na minha sala e não tenho acesso ao telefone acima. Para recados por favor contacte a secretaria do departamento [<i style="font-size: 1em;" class="fas fa-at"></i> pcs.secretaria.poli@usp.br](mailto:balbertini@usp.br) | <i style="font-size: 1em;color:#d9411e;" class="fas fa-phone"></i><i style="font-size: 1em;color:#d9411e;"> +55 11 3091-5583</i>.
+__Atenção__: devido às condições sanitárias atuais, temporariamente não estou atendendo fisicamente na minha sala e não tenho acesso ao telefone acima. Para recados por favor contacte a secretaria do departamento:  
+[<i style="font-size: 1em;" class="fas fa-at"></i> pcs.secretaria.poli@usp.br](mailto:balbertini@usp.br) | <i style="font-size: 1em;color:#d9411e;" class="fas fa-phone"></i><i style="font-size: 1em;color:#d9411e;"> +55 11 3091-5583</i>.
 
 ###Chaves
 
