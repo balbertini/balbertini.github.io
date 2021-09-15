@@ -71,7 +71,7 @@
   <meta property="og:url" content="https://balbertini.github.io/vhdl_vmghdl-pt_BR.html"/>
   <meta property="og:type" content="article"/>
   <meta property="article:published_time" content="2018-09-13 22:22:27-03:00"/>
-  <meta property="article:modified_time" content="2020-02-14 13:33:01-03:00"/>
+  <meta property="article:modified_time" content="2021-09-15 19:30:51.150548-03:00"/>
   <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
   <meta property="article:section" content="vhdl"/>
   <meta property="article:tag" content="vhdl"/>
@@ -157,7 +157,7 @@
     <h1 id="vhdl_vmghdl">Máquina virtual com GHDL</h1>
     <p>
       Posted on Qui 13 Setembro 2018 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-      &#8226; Last Modified Sex 14 Fevereiro 2020
+      &#8226; Last Modified Qua 15 Setembro 2021
         &#8226; 8 min read
     </p>
   </header>
@@ -274,7 +274,7 @@ Se preferir usar a versão gráfica, veja um tutorial <a href="https://www.secne
 </code></pre></div>
 </td></tr></table>
 <p>Depois montamos a pasta da sua máquina real (host) na máquina virtual.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="gp">poli@ghdl:~$ </span>sudo mount -t vboxsf -ouid<span class="o">=</span>poli,rw VMShared shared
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="gp">poli@ghdl:~$ </span>sudo mount -t vboxsf -ouid<span class="o">=</span>poli,rw VMShared shared/
 </code></pre></div>
 </td></tr></table>
 <p>Com isso, a pasta <code>shared</code> na máquina virtual será a mesma que a pasta que escolheu quando configurou a pasta compartilhada. Note que se você deu outro nome para o compartilhamento, deve substituir <code>VMShared</code> pelo nome que escolheu.</p>
@@ -319,6 +319,10 @@ Se preferir usar a versão gráfica, veja um tutorial <a href="https://www.secne
 </code></pre></div>
 </td></tr></table>
 <p>Há diversos parâmetros que podem ser passados para a simulação. Um muito útil que pode ser visto acima é o <code>--vcd=arquivo.vcd</code>. Este parâmetro salvará a forma de onda resultante da simulação no arquivo (neste caso o <code>shiftleft2_tb.vcd</code>). Para visualizar o arquivo VCD você precisará de um programa que visualize formas de onda. Recomendo o <a href="http://gtkwave.sourceforge.net/">GTKWave</a>, disponível para várias as plataformas. Na sua máquina real (<em>host</em>), navegue até a pasta compartilhada e veja que os arquivos gerados pelo GHDL estão lá, incluindo o resultado da simulação. Você pode abrir o arquivo VCD com o seu visualizador preferido.</p>
+<h3>Contribuições</h3>
+<ul>
+<li>15/set/2021: O monitor Joaquin Lorenzo Pereira Condori reportou um erro na montagem da pasta compartilhada (faltava uma barra no final).</li>
+</ul>
   </div>
   <div class="tag-cloud">
     <p>
