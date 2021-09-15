@@ -139,7 +139,7 @@ poli@ghdl:~$ mkdir shared
 Depois montamos a pasta da sua máquina real (host) na máquina virtual.
 
 ```console
-poli@ghdl:~$ sudo mount -t vboxsf -ouid=poli,rw VMShared shared
+poli@ghdl:~$ sudo mount -t vboxsf -ouid=poli,rw VMShared shared/
 ```
 
 Com isso, a pasta `shared` na máquina virtual será a mesma que a pasta que escolheu quando configurou a pasta compartilhada. Note que se você deu outro nome para o compartilhamento, deve substituir `VMShared` pelo nome que escolheu.
@@ -189,3 +189,6 @@ poli@ghdl:~/shared$
 ```
 
 Há diversos parâmetros que podem ser passados para a simulação. Um muito útil que pode ser visto acima é o `--vcd=arquivo.vcd`. Este parâmetro salvará a forma de onda resultante da simulação no arquivo (neste caso o `shiftleft2_tb.vcd`). Para visualizar o arquivo VCD você precisará de um programa que visualize formas de onda. Recomendo o [GTKWave](http://gtkwave.sourceforge.net/), disponível para várias as plataformas. Na sua máquina real (_host_), navegue até a pasta compartilhada e veja que os arquivos gerados pelo GHDL estão lá, incluindo o resultado da simulação. Você pode abrir o arquivo VCD com o seu visualizador preferido.
+
+### Contribuições
+  * 15/set/2021: O monitor Joaquin Lorenzo Pereira Condori reportou um erro na montagem da pasta compartilhada (faltava uma barra no final).
