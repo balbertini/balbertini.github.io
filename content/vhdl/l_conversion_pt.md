@@ -61,3 +61,4 @@ O diagrama acima foi inspirado no diagrama do site [BitWeenie](http://www.bitwee
 
 ### Contribuições
   * 25/set/2020: Arthur Lopes corrigiu o tipo do `std_logic` na tabela e o `bit_vector(U)`  no diagrama.
+  * 27/set/2021: O monitor Joaquin Lorenzo Pereira Condori reportou um erro no diagrama de conversão (de unsigned para integer).
