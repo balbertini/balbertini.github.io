@@ -59,27 +59,19 @@
 
  
 
-<meta name="author" content="Bruno Albertini" />
-<meta name="description" content="Exercício resolvido de sistemas digitais: associação de contadores." />
-<meta name="keywords" content="sistemas digitais, exercícios resolvidos, associação de contadores">
-
-
+    <meta name="author" content="Bruno Albertini" />
+    <meta name="description" content="" />
   <meta property="og:site_name" content="B.Albertini's site"/>
-  <meta property="og:title" content="Exercício: Associação de Contadores"/>
-  <meta property="og:description" content="Exercício resolvido de sistemas digitais: associação de contadores."/>
+  <meta property="og:type" content="blog"/>
+  <meta property="og:title" content="B.Albertini's site"/>
+  <meta property="og:description" content=""/>
   <meta property="og:locale" content="pr_BR"/>
-  <meta property="og:url" content="https://balbertini.github.io/er0002-pt_BR.html"/>
-  <meta property="og:type" content="article"/>
-  <meta property="article:published_time" content="2018-10-12 12:29:36-03:00"/>
-  <meta property="article:modified_time" content="2019-02-26 17:24:30-03:00"/>
-  <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
-  <meta property="article:section" content="sistemas digitais"/>
-  <meta property="article:tag" content="sistemas digitais"/>
-  <meta property="article:tag" content="exercícios resolvidos"/>
-  <meta property="article:tag" content="associação de contadores"/>
+  <meta property="og:url" content="https://balbertini.github.io"/>
   <meta property="og:image" content="/images/profile.png">
 
-  <title>B.Albertini's site &ndash; Exercício: Associação de Contadores</title>
+
+
+  <title>B.Albertini's site &ndash; Vagas</title>
 
 </head>
 <body >
@@ -159,64 +151,52 @@
 
 <article class="single">
   <header>
-      
-    <h1 id="er0002">Exercício: Associação de Contadores</h1>
-    <p>
-      Posted on sex 12 outubro 2018 in <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
-
-        &#8226; 2 min read
-    </p>
+    
+    <h1 id="vagas">Vagas</h1>
   </header>
-
-
   <div>
-    <p>Assunto: Associação de contadores</p>
-<h2>Enunciado</h2>
-<p><img src='https://balbertini.github.io/images/sd/er/20181012_associacaoContadores.png' align="left" width="50%" style="padding-right:5%" /></p>
-<p>Mostra-se no circuito ao lado uma associação de contadores. Sabe-se que o <em>load</em> é síncrono e o <em>reset</em> assíncrono.<br>
-Pede-se: (i) o módulo da contagem e (ii) as formas de onda nos pontos A e B.</p>
-<div style="border: 0px; overflow: auto;width: 100%;"></div>
+<p>Esta página foi criada com o intuito de divulgar vagas na área de <em>hardware</em>, tanto no Brasil quanto no exterior, com foco nos alunos dos cursos de Eng. de Eletricidade e de Engenharia de Computação. Sempre que possível atualizarei a página. Verifique a data da postagem para ver se a vaga ainda está disponível. Caso queira postar uma vaga, por favor me envie um <a href="https://balbertini.github.io/pages/sobre-pt_BR.html">email</a> ou <a href="https://github.com/balbertini/balbertini.github.io/edit/source/content/pages/vagas.md">edite</a> e faça um <em>pull request</em>.</p>
+<p>O Prof. Marcos Simplício mantém <a href="https://sites.usp.br/cybersec/">uma página</a> dedicada para vagas em segurança digital que também pode conter vagas relacionadas à <em>hardware</em>.</p>
+<!-- Quando for adicionar alguma vaga, por favor siga o modelo copiando-o de uma vaga existente e atualize a data (inclusive a de modificação no cabeçalho do arquivo). -->
 
-<h2>Solução</h2>
-<p>Os contadores são de módulo 16, ou seja, tem capacidade de contar de 0000 (0) a 1111 (15). O contador A está em um arranjo onde ele se auto-carrega de 0101 (5) quando seu valor atingir 1001 (9), formando um contador de 5 a 9, ou seja, módulo 5. O contador B está em um arranjo onde ele se auto-reseta quando sua contagem for 0011 (3). Contudo, como o <em>reset</em> é assíncrono, assim que este valor é atingido o contador reseta-se de imediato, portanto os valores de contagem são de 0000 (0) a 0010 (2), ou seja, módulo 3.</p>
-<p>Os contadores ainda estão em cascata, onde o valor de carga do contador A (1001) é usado como <em>enable</em> para o contador B. Nesse arranjo em cascata, mesmo que o <em>clock</em> seja comum a ambos, podemos dizer que o contador B conta uma vez para cada ciclo completo de contagem do contador A.</p>
-<p>O módulo da contagem total é 15. O ciclo de contagem em regime será: 0101 0000, 0110 0000, 0111 0000, 1000 0000, 1001 0000, 0101 0001, 0110 0001, 0111 0001, 1000 0001, 1001 0001, 0101 0010, 0110 0010, 0111 0010, 1000 0010, 1001 0010. As formas de onda em A e em B podem ser descritas como:</p>
+<h3>(22/mar/2022) Eng. Verificação de Sistemas Embarcados</h3>
+<p>Este cargo tem como missão principal realizar o desenvolvimento, manutenção, execução e análise de sistemas de verificação automatizados para sistemas embarcados.  </p>
 <ul>
-<li>A: é alto quando o contador A estiver na contagem máxima, ou seja, a cada 4 pulsos de <em>clock</em>, com duração de 1 pulso de <em>clock</em>. Período do sinal: 5 pulsos de <em>clock</em>, <em>Duty-cycle</em>: 20%.</li>
-<li>B: é alto quando o contador B estiver na contagem máxima, ou seja, a cada 10 pulsos de <em>clock</em>, com duração de 5 pulsos de <em>clock</em>. Período do sinal: 15 pulsos de <em>clock</em>. <em>Duty-cycle</em>: 33%</li>
+<li>Empresa: <a href="https://www.stoneridge.com/">Stoneridge</a>  </li>
+<li>Local: não divulgado  </li>
+<li>Nível: não divulgado  </li>
+<li>Salário: não divulgado  </li>
+<li>Aplicação: <a href="https://www.linkedin.com/jobs/view/2984399830">LinkedIn</a></li>
 </ul>
-<p>A figura abaixo mostra os dois sinais, e também as saídas dos contadores. Repare que o primeiro ciclo é diferente pois o contador A começa em zero e não com o valor de carga.</p>
-<p><img alt="Forma de onda do Exercício" src="/images/sd/er/er0002_onda.png"></p>
-<p><a href="https://balbertini.github.io/extra/sd/er/er0002.zip">Download da descrição em VHDL</a><br>
-<a href="https://balbertini.github.io/extra/sd/er/20181012_associacaoContadores.circ">Download do circuito no LogiSim</a></p>
-<div style="border: 0px; overflow: auto;width: 100%;"></div>
-  </div>
-  <div class="tag-cloud">
-    <p>
-      <a href="https://balbertini.github.io/tag/sistemas-digitais.html">sistemas digitais</a>
-      <a href="https://balbertini.github.io/tag/exercicios-resolvidos.html">exercícios resolvidos</a>
-      <a href="https://balbertini.github.io/tag/associacao-de-contadores.html">associação de contadores</a>
-    </p>
-  </div>
-
-
-
-
-
-<!-- Disqus -->
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'balbertini';
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>
-    Please enable JavaScript to view comments.
-</noscript>
-<!-- End Disqus -->
+<h3>(21/mar/2022) Analog IC Designers e Analog Layout Engineers</h3>
+<p>We are working with some of the leading chip developers who are actively seeking Analog Designers on various experience levels.
+Full-Time, unlimited Contract. Areas: 1. Senior and mid-level Analog MS IC Designer - Zurich - Image
+Sensor/ Image Signal Processing / Machine Vision Imagers 2. Analog/MS IC Layout Engineer - Zurich - Sensor application 2. Senior and mid-level Analog MS Design Engineer - Zurich - Microphones/Speakers for smartphones/IoT/Tablets 3. Analog IC Design Engineer - Zurich - Neural Network Processing / AI 4. Junior / Graduate Analog IC Designer - Bern - High Voltage Power Conversion Systems 5. Analog ASIC Design Engineer - Bern - Industrial / Automotive Sensors and Power 6. Staff RF/Analog IC Designer - Neuchatel - Automotive and Ultra-low-power IoT and RFID systems 7. Mid / Senior / Principal / Architect / Management Lead Analog Design - Lausanne - SerDes 8. Mid and Senior Analog IC Designer - Geneva - Renewables / Battery for Automotive Power and Sensors</p>
+<ul>
+<li>Empresa: <a href="https://www.microtech-global.com/en/index.asp">MicroTECH Global</a></li>
+<li>Local: Suíça</li>
+<li>Nível: Vários</li>
+<li>Salário: não divulgado</li>
+<li>Aplicação: <a href="mailto:gilbert@microtech-global.com">E-Mail</a></li>
+</ul>
+<h3>(9/mar/2022) Sistemas Embarcados</h3>
+<p>Chamada como divulgada: Se você mora na região do ABC Paulista ou próximo à cidade de Santo André (SP), gosta de desafios e busca trabalhar com desenvolvimento e tecnologia em um ambiente Intenso, Conectado e em constante crescimento, temos diversas vagas e oportunidades abertas para você! A HION TECNOLOGIA é uma Startup com DNA USP integrante do ecossistema ABC Valley! Somos uma empresa com soluções para armazenamento de Energia, Sistemas Embarcados, Energias Renováveis, IoT e Veículos Híbridos/Elétricos. Buscamos Talentos para juntos alavancarmos o conceito de Tecnologia Embarcada e Ciência no Brasil. A pesquisa e o desenvolvimento corre em nossas veias. E se você é um profissional que busca se desenvolver na carreira encontrando um ambiente de muita autonomia, tecnologia, responsabilidade e sustentabilidade, estamos procurando por você!  </p>
+<ul>
+<li>Empresa: <a href="https://www.hiontecnologia.com.br/">HION Tecnologia</a>  </li>
+<li>Local: Brasil, SP, Santo André  </li>
+<li>Nível: não divulgado  </li>
+<li>Salário: não divulgado  </li>
+<li>Aplicação: <a href="https://www.hiontecnologia.com.br/">Site da empresa</a>  </li>
+</ul>
+<h3>(7/mar/2022) Biometrics Systems Engineer</h3>
+<p>Research and develop security solutions based on biometrics. Participate in design, documentation, and reviews of software solutions, focusing on security aspects. File patents for proposed solutions. Write project documentation. Work effectively in a multi-disciplinary environment. Deliver solid work on tight schedules. Maintain both formal and informal communications and relationships with the team providing information for reports and presentations.</p>
+<ul>
+<li>Empresa: <a href="https://linktr.ee/samsungbrasil">Samsung</a></li>
+<li>Local: Brasil, SP, Campinas</li>
+<li>Nível: Doutorado com experiência na área</li>
+<li>Salário: não divulgado</li>
+<li>Aplicação: <a href="https://www.linkedin.com/jobs/view/2968090812/">LinkedIn</a></li>
+</ul>  </div>
 </article>
 
     <footer>
