@@ -8,7 +8,10 @@ Lang: pt_BR
 Authors: Bruno Albertini
 Summary: Vagas na área de HW.
 
-Esta página foi criada com o intuito de divulgar vagas na área de *hardware*, tanto no Brasil quanto no exterior, com foco nos alunos dos cursos de Eng. de Eletricidade e de Engenharia de Computação. Sempre que possível atualizarei a página. Verifique a data da postagem para ver se a vaga ainda está disponível. Caso queira postar uma vaga, por favor me envie um [email]({filename}./sobre.md).
+Esta página foi criada com o intuito de divulgar vagas na área de *hardware*, tanto no Brasil quanto no exterior, com foco nos alunos dos cursos de Eng. de Eletricidade e de Engenharia de Computação. Sempre que possível atualizarei a página. Verifique a data da postagem para ver se a vaga ainda está disponível. Caso queira postar uma vaga, por favor me envie um [email]({filename}./sobre.md) ou [edite](https://github.com/balbertini/balbertini.github.io/edit/source/content/pages/vagas.md) e faça um *pull request*.
+
+
+<!-- Quando for adicionar alguma vaga, por favor siga o modelo copiando-o de uma vaga existente e atualize a data (inclusive a de modificação no cabeçalho do arquivo). -->
 
 ### (22/mar/2022) Eng. Verificação de Sistemas Embarcados
 Este cargo tem como missão principal realizar o desenvolvimento, manutenção, execução e análise de sistemas de verificação automatizados para sistemas embarcados.  
