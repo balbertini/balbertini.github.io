@@ -155,8 +155,8 @@
       
     <h1 id="vhdl_function">Funções</h1>
     <p>
-      Posted on Sáb 17 Outubro 2020 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-      &#8226; Last Modified Seg 03 Maio 2021
+      Posted on sáb 17 outubro 2020 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+
         &#8226; 3 min read
     </p>
   </header>
@@ -173,15 +173,15 @@
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="k">pure</span><span class="o">|</span><span class="k">impure</span><span class="p">]</span> <span class="k">function</span> <span class="o">&lt;</span><span class="n">nome_da_funcao</span><span class="o">&gt;</span> <span class="p">(</span>
-  <span class="o">&lt;</span><span class="n">nome_do_parametro1</span><span class="o">&gt;</span> <span class="o">:</span> <span class="o">&lt;</span><span class="n">tipo_parametro1</span><span class="o">&gt;</span> <span class="o">:=</span> <span class="o">&lt;</span><span class="n">valor_padrao</span><span class="o">&gt;</span><span class="p">;</span>
-  <span class="o">&lt;</span><span class="n">nome_do_parametro2</span><span class="o">&gt;</span> <span class="o">:</span> <span class="o">&lt;</span><span class="n">tipo_parametro1</span><span class="o">&gt;</span> <span class="o">:=</span> <span class="o">&lt;</span><span class="n">valor_padrao</span><span class="o">&gt;</span><span class="p">;</span>
-                                        <span class="p">...</span> <span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="n">tipo_de_retorno</span><span class="o">&gt;</span> <span class="k">is</span>
-    <span class="o">&lt;</span><span class="n">declaracoes_internas</span><span class="o">&gt;</span>
-<span class="k">begin</span>
-    <span class="o">&lt;</span><span class="n">codigo</span><span class="o">&gt;</span><span class="p">;</span>
-    <span class="k">return</span> <span class="o">&lt;</span><span class="n">valor</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="k">end</span> <span class="k">function</span><span class="p">;</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="k">pure</span><span class="o">|</span><span class="k">impure</span><span class="p">]</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="o">&lt;</span><span class="n">nome_da_funcao</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="o">&lt;</span><span class="n">nome_do_parametro1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">tipo_parametro1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&lt;</span><span class="n">valor_padrao</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">&lt;</span><span class="n">nome_do_parametro2</span><span class="o">&gt;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">tipo_parametro1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&lt;</span><span class="n">valor_padrao</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<span class="w">                                        </span><span class="p">...</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="n">tipo_de_retorno</span><span class="o">&gt;</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">declaracoes_internas</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">codigo</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="n">valor</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="k">function</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <p>A classificação da função como pura ou impura é opcional e indica se a função pode alterar valores de entrada (<code>impure</code>) ou não (<code>pure</code>). Por padrão, as funções são puras, ou seja qualquer alteração nos parâmetros de entrada é considerada inválida. Os valores retornados por uma função impura podem depender de valores externos (e.g. variáveis compartilhadas).</p>
@@ -209,26 +209,26 @@
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">meuprojeto</span> <span class="k">is</span>
-  <span class="k">function</span> <span class="n">equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">)</span> <span class="k">return</span> <span class="kt">boolean</span> <span class="k">is</span>
-    <span class="k">begin</span>
-      <span class="k">if</span> <span class="n">a</span><span class="na">&#39;length</span> <span class="o">=</span> <span class="n">b</span><span class="na">&#39;length</span> <span class="k">then</span>
-        <span class="k">for</span> <span class="n">idx</span> <span class="k">in</span> <span class="mi">0</span> <span class="k">to</span> <span class="n">a</span><span class="na">&#39;length</span><span class="o">-</span><span class="mi">1</span> <span class="k">loop</span>
-          <span class="k">if</span> <span class="n">a</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="o">/=</span> <span class="n">b</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="k">then</span>
-            <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
-          <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-        <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
-        <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
-      <span class="k">else</span>
-        <span class="n">report</span> <span class="s">&quot;Size are different.&quot;</span> <span class="k">severity</span> <span class="n">note</span><span class="p">;</span>
-        <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
-      <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">function</span><span class="p">;</span>
-    <span class="k">signal</span> <span class="n">bva</span><span class="p">,</span> <span class="n">bvb</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">10</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="k">signal</span> <span class="n">c</span><span class="o">:</span> <span class="kt">bit</span><span class="p">;</span>
-<span class="k">begin</span>
-  <span class="n">c</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span> <span class="k">when</span> <span class="n">equal</span><span class="p">(</span><span class="n">bva</span><span class="p">,</span><span class="n">bvb</span><span class="p">)</span> <span class="k">else</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-<span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span><span class="w"> </span><span class="nc">arch</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">meuprojeto</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">  </span><span class="k">function</span><span class="w"> </span><span class="n">equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">:</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">    </span><span class="k">begin</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="na">&#39;length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="na">&#39;length</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">a</span><span class="na">&#39;length</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">loop</span><span class="w"></span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">loop</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="n">report</span><span class="w"> </span><span class="s">&quot;Size are different.&quot;</span><span class="w"> </span><span class="k">severity</span><span class="w"> </span><span class="n">note</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">function</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">signal</span><span class="w"> </span><span class="n">bva</span><span class="p">,</span><span class="w"> </span><span class="n">bvb</span><span class="o">:</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">signal</span><span class="w"> </span><span class="n">c</span><span class="o">:</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
+<span class="w">  </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">equal</span><span class="p">(</span><span class="n">bva</span><span class="p">,</span><span class="n">bvb</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <p>No exemplo acima a função <code>equal</code> compara dois <code>bit_vector</code> bit a bit e retorna verdadeiro somente se ambos os vetores possuírem o mesmo conteúdo. A chave para a comparação é o aninhamento dos dois loops <code>for</code>, que itera sobre os vetores comparando-os bit a bit.</p>
@@ -255,26 +255,26 @@
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">package</span> <span class="n">minhas_funcoes</span> <span class="k">is</span>
-  <span class="k">function</span> <span class="n">equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">)</span> <span class="k">return</span> <span class="kt">boolean</span><span class="p">;</span>
-<span class="k">end</span> <span class="nc">minhas_funcoes</span><span class="p">;</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="n">minhas_funcoes</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">  </span><span class="k">function</span><span class="w"> </span><span class="n">equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">:</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="nc">minhas_funcoes</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">package</span> <span class="k">body</span> <span class="n">minhas_funcoes</span> <span class="k">is</span>
-  <span class="k">function</span> <span class="n">equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">)</span> <span class="k">return</span> <span class="kt">boolean</span> <span class="k">is</span>
-    <span class="k">begin</span>
-      <span class="k">if</span> <span class="n">a</span><span class="na">&#39;length</span> <span class="o">=</span> <span class="n">b</span><span class="na">&#39;length</span> <span class="k">then</span>
-        <span class="k">for</span> <span class="n">idx</span> <span class="k">in</span> <span class="mi">0</span> <span class="k">to</span> <span class="n">a</span><span class="na">&#39;length</span><span class="o">-</span><span class="mi">1</span> <span class="k">loop</span>
-          <span class="k">if</span> <span class="n">a</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="o">/=</span> <span class="n">b</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="k">then</span>
-            <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
-          <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-        <span class="k">end</span> <span class="k">loop</span><span class="p">;</span>
-        <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
-      <span class="k">else</span>
-        <span class="n">report</span> <span class="s">&quot;Size are different.&quot;</span> <span class="k">severity</span> <span class="n">note</span><span class="p">;</span>
-        <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
-      <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">function</span><span class="p">;</span>
-<span class="k">end</span> <span class="nc">minhas_funcoes</span><span class="p">;</span>
+<span class="k">package</span><span class="w"> </span><span class="k">body</span><span class="w"> </span><span class="n">minhas_funcoes</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">  </span><span class="k">function</span><span class="w"> </span><span class="n">equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">:</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">    </span><span class="k">begin</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="na">&#39;length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="na">&#39;length</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">a</span><span class="na">&#39;length</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">loop</span><span class="w"></span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">loop</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="n">report</span><span class="w"> </span><span class="s">&quot;Size are different.&quot;</span><span class="w"> </span><span class="k">severity</span><span class="w"> </span><span class="n">note</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">function</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="nc">minhas_funcoes</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <p>Temos agora uma biblioteca que pode ser usada em qualquer projeto, bastando para isso incluí-la no projeto como uma biblioteca normal. As bibliotecas do usuário, quando não especificado, ficam em um pacote chamado <code>work</code>, que corresponde ao pacote de trabalho e sempre é importado por padrão. A cláusula <code>use</code> no entanto não é opcional pois o sintetizador precisa saber qual(is) partes do pacote deseja usar.</p>
@@ -288,17 +288,17 @@
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">library</span> <span class="nn">work</span><span class="p">;</span> <span class="c1">-- opcional, importada por padrão</span>
-<span class="k">use</span> <span class="nn">work.minhas_funcoes.equal</span><span class="p">;</span> <span class="c1">-- poderia ser .all</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">library</span><span class="w"> </span><span class="nn">work</span><span class="p">;</span><span class="w"> </span><span class="c1">-- opcional, importada por padrão</span><span class="w"></span>
+<span class="k">use</span><span class="w"> </span><span class="nn">work.minhas_funcoes.equal</span><span class="p">;</span><span class="w"> </span><span class="c1">-- poderia ser .all</span><span class="w"></span>
 
-<span class="k">entity</span> <span class="p">...</span>
+<span class="k">entity</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
 
-<span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">meuprojeto</span> <span class="k">is</span>
-    <span class="k">signal</span> <span class="n">bva</span><span class="p">,</span> <span class="n">bvb</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">10</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="k">signal</span> <span class="n">c</span><span class="o">:</span> <span class="kt">bit</span><span class="p">;</span>
-<span class="k">begin</span>
-  <span class="n">c</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span> <span class="k">when</span> <span class="n">equal</span><span class="p">(</span><span class="n">bva</span><span class="p">,</span><span class="n">bvb</span><span class="p">)</span> <span class="k">else</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-<span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
+<span class="k">architecture</span><span class="w"> </span><span class="nc">arch</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">meuprojeto</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">    </span><span class="k">signal</span><span class="w"> </span><span class="n">bva</span><span class="p">,</span><span class="w"> </span><span class="n">bvb</span><span class="o">:</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">signal</span><span class="w"> </span><span class="n">c</span><span class="o">:</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
+<span class="w">  </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">equal</span><span class="p">(</span><span class="n">bva</span><span class="p">,</span><span class="n">bvb</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
   </div>

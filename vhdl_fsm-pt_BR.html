@@ -155,8 +155,8 @@
       
     <h1 id="vhdl_fsm">Máquinas de estado em VHDL</h1>
     <p>
-      Posted on Ter 19 Março 2019 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-      &#8226; Last Modified Qui 09 Setembro 2021
+      Posted on ter 19 março 2019 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+
         &#8226; 10 min read
     </p>
   </header>
@@ -189,16 +189,16 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
-<span class="k">use</span> <span class="nn">ieee.numeric_bit.rising_edge</span><span class="p">;</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">library</span><span class="w"> </span><span class="nn">ieee</span><span class="p">;</span><span class="w"></span>
+<span class="k">use</span><span class="w"> </span><span class="nn">ieee.numeric_bit.rising_edge</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">entity</span> <span class="nc">fsm</span> <span class="k">is</span>
-  <span class="k">port</span><span class="p">(</span>
-    <span class="n">entrada</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
-    <span class="n">saida</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span><span class="p">;</span>
-    <span class="n">clock</span><span class="p">,</span> <span class="n">reset_n</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span>
-  <span class="p">);</span>
-<span class="k">end</span> <span class="nc">fsm</span><span class="p">;</span>
+<span class="k">entity</span><span class="w"> </span><span class="nc">fsm</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">  </span><span class="k">port</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">entrada</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">saida</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">reset_n</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="nc">fsm</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
@@ -229,29 +229,29 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">proccomb</span> <span class="k">of</span> <span class="nc">fsm</span> <span class="k">is</span>
-  <span class="k">type</span> <span class="n">estado_t</span> <span class="k">is</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span>
-  <span class="k">signal</span> <span class="n">PE</span><span class="p">,</span><span class="n">EA</span> <span class="o">:</span> <span class="n">estado_t</span><span class="p">;</span>
-<span class="k">begin</span>
-  <span class="nc">sincrono</span><span class="o">:</span> <span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">reset_n</span><span class="p">)</span>
-  <span class="k">begin</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="p">)</span> <span class="k">then</span>
-      <span class="n">EA</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">;</span>
-    <span class="k">elsif</span> <span class="p">(</span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">))</span> <span class="k">then</span>
-      <span class="n">EA</span> <span class="o">&lt;=</span> <span class="n">PE</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">process</span> <span class="nc">sincrono</span><span class="p">;</span>
-  <span class="n">PE</span> <span class="o">&lt;=</span>
-    <span class="n">A</span> <span class="k">when</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;0&#39;</span> <span class="k">and</span> <span class="n">EA</span><span class="o">=</span><span class="n">A</span> <span class="k">else</span>
-    <span class="n">B</span> <span class="k">when</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">and</span> <span class="n">EA</span><span class="o">=</span><span class="n">A</span> <span class="k">else</span>
-    <span class="n">B</span> <span class="k">when</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;0&#39;</span> <span class="k">and</span> <span class="n">EA</span><span class="o">=</span><span class="n">B</span> <span class="k">else</span>
-    <span class="n">A</span> <span class="k">when</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">and</span> <span class="n">EA</span><span class="o">=</span><span class="n">B</span> <span class="k">else</span>
-    <span class="n">A</span><span class="p">;</span>
-  <span class="n">saida</span> <span class="o">&lt;=</span>
-    <span class="sc">&#39;0&#39;</span> <span class="k">when</span> <span class="n">EA</span><span class="o">=</span><span class="n">A</span> <span class="k">else</span>
-    <span class="sc">&#39;1&#39;</span> <span class="k">when</span> <span class="n">EA</span><span class="o">=</span><span class="n">B</span> <span class="k">else</span>
-    <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-<span class="k">end</span> <span class="k">architecture</span> <span class="nc">proccomb</span><span class="p">;</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span><span class="w"> </span><span class="nc">proccomb</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">fsm</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">  </span><span class="k">type</span><span class="w"> </span><span class="n">estado_t</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">signal</span><span class="w"> </span><span class="n">PE</span><span class="p">,</span><span class="n">EA</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">estado_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
+<span class="w">  </span><span class="nc">sincrono</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">reset_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">begin</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">      </span><span class="n">EA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">elsif</span><span class="w"> </span><span class="p">(</span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">))</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">      </span><span class="n">EA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">PE</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="nc">sincrono</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">PE</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"></span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">EA</span><span class="o">=</span><span class="n">A</span><span class="w"> </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">EA</span><span class="o">=</span><span class="n">A</span><span class="w"> </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">EA</span><span class="o">=</span><span class="n">B</span><span class="w"> </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">EA</span><span class="o">=</span><span class="n">B</span><span class="w"> </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"></span>
+<span class="w">    </span><span class="sc">&#39;0&#39;</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">EA</span><span class="o">=</span><span class="n">A</span><span class="w"> </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">EA</span><span class="o">=</span><span class="n">B</span><span class="w"> </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="w"> </span><span class="nc">proccomb</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -300,45 +300,45 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
 <span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
-<span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">doisproc</span> <span class="k">of</span> <span class="nc">fsm</span> <span class="k">is</span>
-  <span class="k">type</span> <span class="n">estado_t</span> <span class="k">is</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span>
-  <span class="k">signal</span> <span class="n">PE</span><span class="p">,</span><span class="n">EA</span> <span class="o">:</span> <span class="n">estado_t</span><span class="p">;</span>
-<span class="k">begin</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span><span class="w"> </span><span class="nc">doisproc</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">fsm</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">  </span><span class="k">type</span><span class="w"> </span><span class="n">estado_t</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">signal</span><span class="w"> </span><span class="n">PE</span><span class="p">,</span><span class="n">EA</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">estado_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
 
-  <span class="nc">sincrono</span><span class="o">:</span> <span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">reset_n</span><span class="p">,</span> <span class="n">PE</span><span class="p">)</span>
-  <span class="k">begin</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="p">)</span> <span class="k">then</span>
-      <span class="n">EA</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">;</span>
-    <span class="k">elsif</span> <span class="p">(</span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">))</span> <span class="k">then</span>
-      <span class="n">EA</span> <span class="o">&lt;=</span> <span class="n">PE</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">process</span> <span class="nc">sincrono</span><span class="p">;</span>
+<span class="w">  </span><span class="nc">sincrono</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">reset_n</span><span class="p">,</span><span class="w"> </span><span class="n">PE</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">begin</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">      </span><span class="n">EA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">elsif</span><span class="w"> </span><span class="p">(</span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">))</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">      </span><span class="n">EA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">PE</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="nc">sincrono</span><span class="p">;</span><span class="w"></span>
 
-  <span class="nc">combinatorio</span><span class="o">:</span> <span class="k">process</span><span class="p">(</span><span class="n">EA</span><span class="p">,</span> <span class="n">entrada</span><span class="p">)</span>
-  <span class="k">begin</span>
-    <span class="n">saida</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-    <span class="k">case</span><span class="p">(</span><span class="n">EA</span><span class="p">)</span> <span class="k">is</span>
-      <span class="k">when</span> <span class="n">A</span> <span class="o">=&gt;</span>
-        <span class="n">saida</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-        <span class="k">if</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
-          <span class="n">PE</span> <span class="o">&lt;=</span> <span class="n">B</span><span class="p">;</span>
-        <span class="k">else</span>
-          <span class="n">PE</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">;</span>
-        <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-      <span class="k">when</span> <span class="n">B</span> <span class="o">=&gt;</span>
-        <span class="n">saida</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>
-        <span class="k">if</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
-          <span class="n">PE</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">;</span>
-        <span class="k">else</span>
-          <span class="n">PE</span> <span class="o">&lt;=</span> <span class="n">B</span><span class="p">;</span>
-        <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-      <span class="k">when</span> <span class="k">others</span> <span class="o">=&gt;</span>
-        <span class="n">saida</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-        <span class="n">PE</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">case</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">process</span> <span class="nc">combinatorio</span><span class="p">;</span>
+<span class="w">  </span><span class="nc">combinatorio</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="p">(</span><span class="n">EA</span><span class="p">,</span><span class="w"> </span><span class="n">entrada</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">begin</span><span class="w"></span>
+<span class="w">    </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="n">EA</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">      </span><span class="k">when</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">          </span><span class="n">PE</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span><span class="w"></span>
+<span class="w">          </span><span class="n">PE</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">when</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">          </span><span class="n">PE</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span><span class="w"></span>
+<span class="w">          </span><span class="n">PE</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">when</span><span class="w"> </span><span class="k">others</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">PE</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">case</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="nc">combinatorio</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">end</span> <span class="k">architecture</span> <span class="nc">doisproc</span><span class="p">;</span>
+<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="w"> </span><span class="nc">doisproc</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <p>A vantagem desta abordagem é que temos acesso a estruturas sequenciais, como o <code>case</code> usado como decisor no processo combinatório, que facilitam a descrição comportamental de máquinas de estado. A desvantagem é que um pequeno deslize pode levar o sintetizador a registrar ou inferir <em>latches</em> para os sinais combinatórios, comprometendo a sequencialidade da máquina.</p>
@@ -381,38 +381,38 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
-<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">umproc</span> <span class="k">of</span> <span class="nc">fsm</span> <span class="k">is</span>
-  <span class="k">type</span> <span class="n">estado_t</span> <span class="k">is</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span>
-  <span class="k">signal</span> <span class="n">EA</span> <span class="o">:</span> <span class="n">estado_t</span><span class="p">;</span>
-<span class="k">begin</span>
-  <span class="nc">sincrono</span><span class="o">:</span> <span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">reset_n</span><span class="p">,</span> <span class="n">entrada</span><span class="p">)</span>
-  <span class="k">begin</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="p">)</span> <span class="k">then</span>
-      <span class="n">saida</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-      <span class="n">EA</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">;</span>
-    <span class="k">elsif</span> <span class="p">(</span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">))</span> <span class="k">then</span>
-      <span class="k">case</span><span class="p">(</span><span class="n">EA</span><span class="p">)</span> <span class="k">is</span>
-        <span class="k">when</span> <span class="n">A</span> <span class="o">=&gt;</span>
-          <span class="n">saida</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-          <span class="k">if</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
-            <span class="n">EA</span> <span class="o">&lt;=</span> <span class="n">B</span><span class="p">;</span>
-          <span class="k">else</span>
-            <span class="n">EA</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">;</span>
-          <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-        <span class="k">when</span> <span class="n">B</span> <span class="o">=&gt;</span>
-          <span class="n">saida</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>
-          <span class="k">if</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
-            <span class="n">EA</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">;</span>
-          <span class="k">else</span>
-            <span class="n">EA</span> <span class="o">&lt;=</span> <span class="n">B</span><span class="p">;</span>
-          <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-        <span class="k">when</span> <span class="k">others</span> <span class="o">=&gt;</span>
-          <span class="n">saida</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-          <span class="n">EA</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">;</span>
-      <span class="k">end</span> <span class="k">case</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">process</span> <span class="nc">sincrono</span><span class="p">;</span>
-<span class="k">end</span> <span class="k">architecture</span> <span class="nc">umproc</span><span class="p">;</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span><span class="w"> </span><span class="nc">umproc</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">fsm</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">  </span><span class="k">type</span><span class="w"> </span><span class="n">estado_t</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">signal</span><span class="w"> </span><span class="n">EA</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">estado_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
+<span class="w">  </span><span class="nc">sincrono</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">reset_n</span><span class="p">,</span><span class="w"> </span><span class="n">entrada</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">begin</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">      </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">EA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">elsif</span><span class="w"> </span><span class="p">(</span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">))</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="p">(</span><span class="n">EA</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">        </span><span class="k">when</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"></span>
+<span class="w">          </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">            </span><span class="n">EA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="k">else</span><span class="w"></span>
+<span class="w">            </span><span class="n">EA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">when</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"></span>
+<span class="w">          </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">            </span><span class="n">EA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="k">else</span><span class="w"></span>
+<span class="w">            </span><span class="n">EA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">when</span><span class="w"> </span><span class="k">others</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"></span>
+<span class="w">          </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="n">EA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">end</span><span class="w"> </span><span class="k">case</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="nc">sincrono</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="w"> </span><span class="nc">umproc</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <p>De fato isso é possível, mas o processo será considerado sequencial pelo sintetizador pois contém uma sensibilidade à uma borda (no <code>rising_edge</code>). Como processo sequencial, seus sinais serão registrados, o que é desejável para o sinal EA pois ele representa a própria variável de estado da máquina. Porém, pode não ser desejável tampouco aceitável para os demais sinais. Neste caso, a saída foi o único sinal que sobrou pois o PE pôde ser eliminado, dado que não precisamos mais calcular a função de próximo estado separadamente.</p>
@@ -429,16 +429,16 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
-<span class="k">use</span> <span class="nn">ieee.numeric_bit.rising_edge</span><span class="p">;</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">library</span><span class="w"> </span><span class="nn">ieee</span><span class="p">;</span><span class="w"></span>
+<span class="k">use</span><span class="w"> </span><span class="nn">ieee.numeric_bit.rising_edge</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">entity</span> <span class="nc">fsm</span> <span class="k">is</span>
-  <span class="k">port</span><span class="p">(</span>
-    <span class="n">entrada</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
-    <span class="n">saida</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span><span class="p">;</span>
-    <span class="n">clock</span><span class="p">,</span> <span class="n">reset_n</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span>
-  <span class="p">);</span>
-<span class="k">end</span> <span class="nc">fsm</span><span class="p">;</span>
+<span class="k">entity</span><span class="w"> </span><span class="nc">fsm</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">  </span><span class="k">port</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">entrada</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">saida</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">reset_n</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="nc">fsm</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
@@ -471,33 +471,33 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
-<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">proccombmealy</span> <span class="k">of</span> <span class="nc">fsm</span> <span class="k">is</span>
-  <span class="k">type</span> <span class="n">estado_t</span> <span class="k">is</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span>
-  <span class="k">signal</span> <span class="n">PE</span><span class="p">,</span><span class="n">EA</span> <span class="o">:</span> <span class="n">estado_t</span><span class="p">;</span>
-<span class="k">begin</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span><span class="w"> </span><span class="nc">proccombmealy</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">fsm</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">  </span><span class="k">type</span><span class="w"> </span><span class="n">estado_t</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">signal</span><span class="w"> </span><span class="n">PE</span><span class="p">,</span><span class="n">EA</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">estado_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
 
-  <span class="nc">sincrono</span><span class="o">:</span> <span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">reset_n</span><span class="p">)</span>
-  <span class="k">begin</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="p">)</span> <span class="k">then</span>
-      <span class="n">EA</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">;</span>
-    <span class="k">elsif</span> <span class="p">(</span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">))</span> <span class="k">then</span>
-      <span class="n">EA</span> <span class="o">&lt;=</span> <span class="n">PE</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">process</span> <span class="nc">sincrono</span><span class="p">;</span>
+<span class="w">  </span><span class="nc">sincrono</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">reset_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">begin</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">      </span><span class="n">EA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">elsif</span><span class="w"> </span><span class="p">(</span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">))</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">      </span><span class="n">EA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">PE</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="nc">sincrono</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">PE</span> <span class="o">&lt;=</span>
-    <span class="n">A</span> <span class="k">when</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;0&#39;</span> <span class="k">and</span> <span class="n">EA</span><span class="o">=</span><span class="n">A</span> <span class="k">else</span>
-    <span class="n">B</span> <span class="k">when</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">and</span> <span class="n">EA</span><span class="o">=</span><span class="n">A</span> <span class="k">else</span>
-    <span class="n">B</span> <span class="k">when</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;0&#39;</span> <span class="k">and</span> <span class="n">EA</span><span class="o">=</span><span class="n">B</span> <span class="k">else</span>
-    <span class="n">A</span> <span class="k">when</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">and</span> <span class="n">EA</span><span class="o">=</span><span class="n">B</span> <span class="k">else</span>
-    <span class="n">A</span><span class="p">;</span>
-  <span class="n">saida</span> <span class="o">&lt;=</span>
-    <span class="sc">&#39;0&#39;</span> <span class="k">when</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;0&#39;</span> <span class="k">and</span> <span class="n">EA</span><span class="o">=</span><span class="n">A</span> <span class="k">else</span>
-    <span class="sc">&#39;0&#39;</span> <span class="k">when</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">and</span> <span class="n">EA</span><span class="o">=</span><span class="n">A</span> <span class="k">else</span>
-    <span class="sc">&#39;1&#39;</span> <span class="k">when</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;0&#39;</span> <span class="k">and</span> <span class="n">EA</span><span class="o">=</span><span class="n">B</span> <span class="k">else</span>
-    <span class="sc">&#39;1&#39;</span> <span class="k">when</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">and</span> <span class="n">EA</span><span class="o">=</span><span class="n">B</span> <span class="k">else</span>
-    <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-<span class="k">end</span> <span class="k">architecture</span> <span class="nc">proccombmealy</span><span class="p">;</span>
+<span class="w">  </span><span class="n">PE</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"></span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">EA</span><span class="o">=</span><span class="n">A</span><span class="w"> </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">EA</span><span class="o">=</span><span class="n">A</span><span class="w"> </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">EA</span><span class="o">=</span><span class="n">B</span><span class="w"> </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">EA</span><span class="o">=</span><span class="n">B</span><span class="w"> </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"></span>
+<span class="w">    </span><span class="sc">&#39;0&#39;</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">EA</span><span class="o">=</span><span class="n">A</span><span class="w"> </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="sc">&#39;0&#39;</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">EA</span><span class="o">=</span><span class="n">A</span><span class="w"> </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">EA</span><span class="o">=</span><span class="n">B</span><span class="w"> </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">EA</span><span class="o">=</span><span class="n">B</span><span class="w"> </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="w"> </span><span class="nc">proccombmealy</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <p>Note que o circuito gerado é um pouco maior devido a arquitetura para o qual foi sintetizado (FPGA).<div style="border: 0px; overflow: auto;width: 100%;"></div></p>
@@ -543,47 +543,47 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
-<span class="normal">41</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">doisprocmealy</span> <span class="k">of</span> <span class="nc">fsm</span> <span class="k">is</span>
-  <span class="k">type</span> <span class="n">estado_t</span> <span class="k">is</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span>
-  <span class="k">signal</span> <span class="n">PE</span><span class="p">,</span><span class="n">EA</span> <span class="o">:</span> <span class="n">estado_t</span><span class="p">;</span>
-<span class="k">begin</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span><span class="w"> </span><span class="nc">doisprocmealy</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">fsm</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">  </span><span class="k">type</span><span class="w"> </span><span class="n">estado_t</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">signal</span><span class="w"> </span><span class="n">PE</span><span class="p">,</span><span class="n">EA</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">estado_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
 
-  <span class="nc">sincrono</span><span class="o">:</span> <span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">reset_n</span><span class="p">,</span> <span class="n">PE</span><span class="p">)</span>
-  <span class="k">begin</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="p">)</span> <span class="k">then</span>
-      <span class="n">EA</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">;</span>
-    <span class="k">elsif</span> <span class="p">(</span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">))</span> <span class="k">then</span>
-      <span class="n">EA</span> <span class="o">&lt;=</span> <span class="n">PE</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">process</span> <span class="nc">sincrono</span><span class="p">;</span>
+<span class="w">  </span><span class="nc">sincrono</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">reset_n</span><span class="p">,</span><span class="w"> </span><span class="n">PE</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">begin</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">      </span><span class="n">EA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">elsif</span><span class="w"> </span><span class="p">(</span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">))</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">      </span><span class="n">EA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">PE</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="nc">sincrono</span><span class="p">;</span><span class="w"></span>
 
-  <span class="nc">combinatorio</span><span class="o">:</span> <span class="k">process</span><span class="p">(</span><span class="n">EA</span><span class="p">,</span> <span class="n">entrada</span><span class="p">)</span>
-  <span class="k">begin</span>
-    <span class="n">saida</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-    <span class="k">case</span><span class="p">(</span><span class="n">EA</span><span class="p">)</span> <span class="k">is</span>
-      <span class="k">when</span> <span class="n">A</span> <span class="o">=&gt;</span>
-        <span class="k">if</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
-          <span class="n">saida</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-          <span class="n">PE</span> <span class="o">&lt;=</span> <span class="n">B</span><span class="p">;</span>
-        <span class="k">else</span>
-          <span class="n">saida</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-          <span class="n">PE</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">;</span>
-        <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-      <span class="k">when</span> <span class="n">B</span> <span class="o">=&gt;</span>
-        <span class="k">if</span> <span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
-          <span class="n">saida</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>
-          <span class="n">PE</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">;</span>
-        <span class="k">else</span>
-          <span class="n">saida</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>
-          <span class="n">PE</span> <span class="o">&lt;=</span> <span class="n">B</span><span class="p">;</span>
-        <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-      <span class="k">when</span> <span class="k">others</span> <span class="o">=&gt;</span>
-        <span class="n">saida</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-        <span class="n">PE</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">case</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">process</span> <span class="nc">combinatorio</span><span class="p">;</span>
+<span class="w">  </span><span class="nc">combinatorio</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="p">(</span><span class="n">EA</span><span class="p">,</span><span class="w"> </span><span class="n">entrada</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">begin</span><span class="w"></span>
+<span class="w">    </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="n">EA</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">      </span><span class="k">when</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">          </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="n">PE</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span><span class="w"></span>
+<span class="w">          </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="n">PE</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">when</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">entrada</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">          </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="n">PE</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span><span class="w"></span>
+<span class="w">          </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="n">PE</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">when</span><span class="w"> </span><span class="k">others</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">PE</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">case</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="nc">combinatorio</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">end</span> <span class="k">architecture</span> <span class="nc">doisprocmealy</span><span class="p">;</span>
+<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="w"> </span><span class="nc">doisprocmealy</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <p>Observe que não há diferença entre o circuito gerado para esta máquina e para a máquina Moore com dois processos.</p>

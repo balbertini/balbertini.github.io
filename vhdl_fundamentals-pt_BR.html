@@ -155,8 +155,8 @@
       
     <h1 id="vhdl_fundamentals">Fundamentos</h1>
     <p>
-      Posted on Sex 18 Setembro 2020 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-      &#8226; Last Modified Seg 03 Maio 2021
+      Posted on sex 18 setembro 2020 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+
         &#8226; 8 min read
     </p>
   </header>
@@ -197,15 +197,15 @@
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">-- Este é um comentário explicando o que a entidade abaixo faz. Não há</span>
-<span class="c1">-- comentários multi-linhas em VHDL&lt;=2002, então usamos vários comentários</span>
-<span class="c1">-- de uma linha.</span>
-<span class="k">entity</span> <span class="nc">meu_circuito</span> <span class="k">is</span>
-  <span class="k">port</span> <span class="p">(</span> <span class="n">clk</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span> <span class="c1">-- e o pulso ainda pulsa</span>
-         <span class="n">reset</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span> <span class="c1">-- zera todo mundo!</span>
-         <span class="c1">-- TODO: adicionar as outras portas</span>
-       <span class="p">);</span>
-<span class="k">end</span> <span class="k">entity</span> <span class="nc">meu_circuito</span><span class="p">;</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">-- Este é um comentário explicando o que a entidade abaixo faz. Não há</span><span class="w"></span>
+<span class="c1">-- comentários multi-linhas em VHDL&lt;=2002, então usamos vários comentários</span><span class="w"></span>
+<span class="c1">-- de uma linha.</span><span class="w"></span>
+<span class="k">entity</span><span class="w"> </span><span class="nc">meu_circuito</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">  </span><span class="k">port</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">clk</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"> </span><span class="c1">-- e o pulso ainda pulsa</span><span class="w"></span>
+<span class="w">         </span><span class="n">reset</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="w"> </span><span class="c1">-- zera todo mundo!</span><span class="w"></span>
+<span class="w">         </span><span class="c1">-- TODO: adicionar as outras portas</span><span class="w"></span>
+<span class="w">       </span><span class="p">);</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="k">entity</span><span class="w"> </span><span class="nc">meu_circuito</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <h3>Exemplo (VHDL&gt;=2008)</h3>
@@ -219,13 +219,13 @@
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c">/* Este é um comentário explicando o que a entidade abaixo faz. Em</span>
 <span class="c">   VHDL&gt;=2008 podemos usar comentários multi-linhas.</span>
-<span class="c"> */</span>
-<span class="nt">entity</span> <span class="nt">meu_circuito</span> <span class="nt">is</span>
-  <span class="nt">port</span> <span class="o">(</span> <span class="nt">clk</span><span class="o">:</span> <span class="nt">in</span> <span class="nt">bit</span><span class="o">;</span> <span class="nt">--</span> <span class="nt">e</span> <span class="nt">o</span> <span class="nt">pulso</span> <span class="nt">ainda</span> <span class="nt">pulsa</span>
-         <span class="nt">reset</span><span class="o">:</span> <span class="nt">in</span> <span class="nt">bit</span> <span class="nt">--</span> <span class="nt">zera</span> <span class="nt">todo</span> <span class="nt">mundo</span><span class="o">!</span>
-         <span class="c">/* TODO: adicionar as outras portas */</span>
-       <span class="o">);</span>
-<span class="nt">end</span> <span class="nt">entity</span> <span class="nt">meu_circuito</span><span class="o">;</span>
+<span class="c"> */</span><span class="w"></span>
+<span class="nt">entity</span><span class="w"> </span><span class="nt">meu_circuito</span><span class="w"> </span><span class="nt">is</span><span class="w"></span>
+<span class="w">  </span><span class="nt">port</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="nt">clk</span><span class="o">:</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nt">bit</span><span class="o">;</span><span class="w"> </span><span class="nt">--</span><span class="w"> </span><span class="nt">e</span><span class="w"> </span><span class="nt">o</span><span class="w"> </span><span class="nt">pulso</span><span class="w"> </span><span class="nt">ainda</span><span class="w"> </span><span class="nt">pulsa</span><span class="w"></span>
+<span class="w">         </span><span class="nt">reset</span><span class="o">:</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nt">bit</span><span class="w"> </span><span class="nt">--</span><span class="w"> </span><span class="nt">zera</span><span class="w"> </span><span class="nt">todo</span><span class="w"> </span><span class="nt">mundo</span><span class="o">!</span><span class="w"></span>
+<span class="w">         </span><span class="c">/* TODO: adicionar as outras portas */</span><span class="w"></span>
+<span class="w">       </span><span class="o">);</span><span class="w"></span>
+<span class="nt">end</span><span class="w"> </span><span class="nt">entity</span><span class="w"> </span><span class="nt">meu_circuito</span><span class="o">;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <h2>Identificadores</h2>
@@ -259,20 +259,20 @@
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">-- Identificadores válidos</span>
-<span class="n">meu_sinal</span>
-<span class="n">entidadeSomadora</span>
-<span class="c1">-- Identificadores inválidos</span>
-<span class="mi">5</span><span class="n">bola</span> <span class="c1">-- não começa com uma letra</span>
-<span class="n">_meusinal</span> <span class="c1">-- não começa com uma letra</span>
-<span class="n">meusinal_</span> <span class="c1">-- termina com _</span>
-<span class="n">meu__sinal</span> <span class="c1">-- possui dois _ seguidos</span>
-<span class="n">balbertini</span><span class="err">@</span><span class="n">usp</span> <span class="c1">-- possui um caractere inválido (@)</span>
-<span class="n">xo</span><span class="o">:</span><span class="n">xo</span> <span class="c1">-- possui um caractere inválido (:)</span>
-<span class="err">😊</span><span class="c1">-- possui um caractere inválido (U+1F60A em UTF-8)</span>
-<span class="c1">-- alguns sintetizadores aceitam o acento abaixo</span>
-<span class="c1">-- mas melhor evitar</span>
-<span class="n">saída</span> <span class="c1">-- possui um caractere inválido (í)</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">-- Identificadores válidos</span><span class="w"></span>
+<span class="n">meu_sinal</span><span class="w"></span>
+<span class="n">entidadeSomadora</span><span class="w"></span>
+<span class="c1">-- Identificadores inválidos</span><span class="w"></span>
+<span class="mi">5</span><span class="n">bola</span><span class="w"> </span><span class="c1">-- não começa com uma letra</span><span class="w"></span>
+<span class="n">_meusinal</span><span class="w"> </span><span class="c1">-- não começa com uma letra</span><span class="w"></span>
+<span class="n">meusinal_</span><span class="w"> </span><span class="c1">-- termina com _</span><span class="w"></span>
+<span class="n">meu__sinal</span><span class="w"> </span><span class="c1">-- possui dois _ seguidos</span><span class="w"></span>
+<span class="n">balbertini</span><span class="err">@</span><span class="n">usp</span><span class="w"> </span><span class="c1">-- possui um caractere inválido (@)</span><span class="w"></span>
+<span class="n">xo</span><span class="o">:</span><span class="n">xo</span><span class="w"> </span><span class="c1">-- possui um caractere inválido (:)</span><span class="w"></span>
+<span class="err">😊</span><span class="c1">-- possui um caractere inválido (U+1F60A em UTF-8)</span><span class="w"></span>
+<span class="c1">-- alguns sintetizadores aceitam o acento abaixo</span><span class="w"></span>
+<span class="c1">-- mas melhor evitar</span><span class="w"></span>
+<span class="n">saída</span><span class="w"> </span><span class="c1">-- possui um caractere inválido (í)</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <h2>Identificadores estendidos</h2>
@@ -531,7 +531,7 @@
 <pre>" # & ' ( ) * + - , . / : ; < = > ? @ [ ] \` |</pre>
 
 <p>Além desses, há símbolos com um único significado em VHDL, mas composto de dois caracteres:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">=&gt;</span> <span class="o">**</span> <span class="o">:=</span> <span class="o">/=</span> <span class="o">&gt;=</span> <span class="o">&lt;=</span> <span class="o">&lt;&gt;</span> <span class="o">??</span> <span class="o">?=</span> <span class="o">?/=</span> <span class="o">?&gt;</span> <span class="o">?&lt;</span> <span class="o">?&gt;=</span> <span class="o">?&lt;=</span> <span class="o">&lt;&lt;</span> <span class="o">&gt;&gt;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">=&gt;</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="o">?=</span><span class="w"> </span><span class="o">?/=</span><span class="w"> </span><span class="o">?&gt;</span><span class="w"> </span><span class="o">?&lt;</span><span class="w"> </span><span class="o">?&gt;=</span><span class="w"> </span><span class="o">?&lt;=</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <p>Para funcionarem, você precisa escrevê-los sem nenhum espaço entre eles (e.g. <code>&lt;=</code> é um operador de atribuição, mas <code>&lt; =</code> são duas comparações, de menor e igual respectivamente). Nos próximos <em>posts</em> falarei sobre o significado de cada um destes operadores.</p>
@@ -546,15 +546,15 @@
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="mi">1</span> <span class="c1">-- exemplo de número inteiro</span>
-<span class="mi">0</span> <span class="c1">-- exemplo de número inteiro</span>
-<span class="mi">123</span> <span class="c1">-- exemplo de número inteiro</span>
-<span class="mi">12</span><span class="n">E12</span> <span class="c1">-- exemplo de número inteiro em notação científica</span>
-<span class="mi">123</span><span class="n">e45</span> <span class="c1">-- exemplo de número inteiro em notação científica</span>
-<span class="mi">123</span><span class="n">E</span><span class="o">+</span><span class="mi">7</span> <span class="c1">-- exemplo de número inteiro em notação científica</span>
-<span class="mi">3</span><span class="p">.</span><span class="mi">1415</span> <span class="c1">-- exemplo de número real</span>
-<span class="mi">6</span><span class="p">.</span><span class="mi">67430</span><span class="n">E</span><span class="o">-</span><span class="mi">11</span> <span class="c1">-- exemplo de número real em notação científica</span>
-<span class="mi">6</span><span class="p">.</span><span class="mi">02214076</span><span class="n">E</span><span class="o">+</span><span class="mi">23</span>  <span class="c1">-- exemplo de número real em notação científica</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="mi">1</span><span class="w"> </span><span class="c1">-- exemplo de número inteiro</span><span class="w"></span>
+<span class="mi">0</span><span class="w"> </span><span class="c1">-- exemplo de número inteiro</span><span class="w"></span>
+<span class="mi">123</span><span class="w"> </span><span class="c1">-- exemplo de número inteiro</span><span class="w"></span>
+<span class="mi">12</span><span class="n">E12</span><span class="w"> </span><span class="c1">-- exemplo de número inteiro em notação científica</span><span class="w"></span>
+<span class="mi">123</span><span class="n">e45</span><span class="w"> </span><span class="c1">-- exemplo de número inteiro em notação científica</span><span class="w"></span>
+<span class="mi">123</span><span class="n">E</span><span class="o">+</span><span class="mi">7</span><span class="w"> </span><span class="c1">-- exemplo de número inteiro em notação científica</span><span class="w"></span>
+<span class="mi">3</span><span class="p">.</span><span class="mi">1415</span><span class="w"> </span><span class="c1">-- exemplo de número real</span><span class="w"></span>
+<span class="mi">6</span><span class="p">.</span><span class="mi">67430</span><span class="n">E</span><span class="o">-</span><span class="mi">11</span><span class="w"> </span><span class="c1">-- exemplo de número real em notação científica</span><span class="w"></span>
+<span class="mi">6</span><span class="p">.</span><span class="mi">02214076</span><span class="n">E</span><span class="o">+</span><span class="mi">23</span><span class="w">  </span><span class="c1">-- exemplo de número real em notação científica</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <p>Note que <code>-123</code> não é um número inteiro mas sim uma negação de um inteiro. Os número reais precisam de ao menos um dígito antes e outro depois do <code>.</code> para serem considerados válidos.</p>
@@ -598,9 +598,9 @@
 <p>Não há ponto (ou vírgula) de separação de milhares, mas é possível usar o caractere <code>_</code> para melhorar e legibilidade dos literais numéricos, respeitando-se as regras de composição de identificadores (não se pode aparecer no início ou final de um número, e também não pode aparecer duas vezes seguidas):</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="mf">123</span><span class="n">_456</span>
-<span class="mf">3.141</span><span class="n">_592_6</span>
-<span class="mf">2</span><span class="err">#</span><span class="mf">1111</span><span class="n">_1100_0000_0000</span><span class="err">#</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="mf">123</span><span class="n">_456</span><span class="w"></span>
+<span class="mf">3.141</span><span class="n">_592_6</span><span class="w"></span>
+<span class="mf">2</span><span class="err">#</span><span class="mf">1111</span><span class="n">_1100_0000_0000</span><span class="err">#</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <p>O caractere <code>_</code> em um literal é inerte e não tem significado algum, servindo apenas para melhorar a visualização.</p>
@@ -610,11 +610,11 @@
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="na">&#39;A</span><span class="p">&#39;</span>
-<span class="na">&#39;a</span><span class="p">&#39;</span>
-<span class="p">&#39;.&#39;</span>
-<span class="sc">&#39;1&#39;</span>
-<span class="p">&#39;</span> <span class="p">&#39;</span> <span class="c1">-- espaço</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="na">&#39;A</span><span class="p">&#39;</span><span class="w"></span>
+<span class="na">&#39;a</span><span class="p">&#39;</span><span class="w"></span>
+<span class="p">&#39;.&#39;</span><span class="w"></span>
+<span class="sc">&#39;1&#39;</span><span class="w"></span>
+<span class="p">&#39;</span><span class="w"> </span><span class="p">&#39;</span><span class="w"> </span><span class="c1">-- espaço</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <h3>Strings</h3>
@@ -624,12 +624,12 @@
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s">&quot;Bruno Albertini&quot;</span>
-<span class="s">&quot;caracteres ASCII quaisquer como @%*&quot;</span>
-<span class="s">&quot;10010011&quot;</span>
-<span class="c1">-- abaixo uma string contendo o caractere &quot;, que é representado por dois &quot;</span>
-<span class="c1">-- seguidos mas conta como um caractere só na string</span>
-<span class="s">&quot;&quot;&quot;&quot;</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s">&quot;Bruno Albertini&quot;</span><span class="w"></span>
+<span class="s">&quot;caracteres ASCII quaisquer como @%*&quot;</span><span class="w"></span>
+<span class="s">&quot;10010011&quot;</span><span class="w"></span>
+<span class="c1">-- abaixo uma string contendo o caractere &quot;, que é representado por dois &quot;</span><span class="w"></span>
+<span class="c1">-- seguidos mas conta como um caractere só na string</span><span class="w"></span>
+<span class="s">&quot;&quot;&quot;&quot;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <h3>Bit Strings</h3>
