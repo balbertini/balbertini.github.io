@@ -1,6 +1,6 @@
 Title: Sobre
 Date: 2018-08-30 18:25
-Modified: 2019-03-14 09:17
+Modified: 2022-03-22 11:17
 Category: information
 Tags: main
 Slug: sobre
@@ -28,8 +28,9 @@ Presidente da SBIAgro (2022-atual).
 ###Contato  
 [<i style="font-size: 1em;" class="fas fa-at"></i> balbertini@usp.br](mailto:balbertini@usp.br) | <i style="font-size: 1em;color:#d9411e;" class="fas fa-phone"></i><i style="font-size: 1em;color:#d9411e;"> +55 11 3091-5394</i>
 
-__Atenção__: devido às condições sanitárias atuais, temporariamente não estou atendendo fisicamente na minha sala e não tenho acesso ao telefone acima. Para recados por favor contacte a secretaria do departamento:  
-[<i style="font-size: 1em;" class="fas fa-at"></i> pcs.secretaria.poli@usp.br](mailto:balbertini@usp.br) | <i style="font-size: 1em;color:#d9411e;" class="fas fa-phone"></i><i style="font-size: 1em;color:#d9411e;"> +55 11 3091-5583</i>.
+__Atenção__: devido às condições sanitárias atuais, por favor agende o atendimento presencial com antecedência.
+  
+<!-- [<i style="font-size: 1em;" class="fas fa-at"></i> pcs.secretaria.poli@usp.br](mailto:pcs.secretaria.poli@usp.br) | <i style="font-size: 1em;color:#d9411e;" class="fas fa-phone"></i><i style="font-size: 1em;color:#d9411e;"> +55 11 3091-5583</i>. -->
 
 ###Chaves
 
