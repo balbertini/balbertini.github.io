@@ -25,8 +25,8 @@ Alternativamente, se você prefere _containers_ tipo [Docker](https://www.docker
 
 Contribuição do aluno Fillipe Lima (SD1 2020S2): o aluno encontrou [um vídeo no YouTube](https://www.youtube.com/watch?v=H2GyAIYwZbw) que mostra como instalar e usar o GHDL e o GTKWave no Windows.
 
-Contribuição do Prof. Edson Midorikawa: [um artigo]({filename}o_ghdlwindows_pt.md) com um _quickstart_ do GHDL no Windows 10.
- 
+Contribuição do Prof. Edson Midorikawa: [um artigo]({filename}o_ghdlwindows_pt.md) com um _quickstart_ do GHDL no Windows 10.  
+
 
 ### EDA Playground
 [<i style="font-size: 1em;" class="fas fa-file-alt"></i> Página](https://www.edaplayground.com/)
@@ -69,6 +69,12 @@ O Vivado é um IDE fornecido pela [Xilinx](https://www.xilinx.com/). Permite sim
 O ISE é uma versão antiga do IDE da Xilinx disponível somente para Windows. Faça [download](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/design-tools.html) dessa versão somente se for trabalhar com placas antigas (i.e. Spartan-6), caso contrário opte pelo Vivado.
 
 # Programas úteis
+
+### HDLMake
+O HDLMake é um conjunto de scripts que facilitam a gerência e o compartilhamento de projetos de HW, resolvendo dependências, gerando Makefiles para simulação e síntese e até mesmo buscando IPs de repositórios.
+
+Contribuição do aluno Tomaz Maia Suller: o aluno escreveu um post sobre [hdlmake]({filename}../digitais/hdlmake.md) explicando como usá-lo para facilitar o fluxo de projeto com HDL.
+
 
 ### GHDL-LS
 [<i style="font-size: 1em;" class="fab fa-github"></i> Página](https://github.com/ghdl/ghdl-language-server)

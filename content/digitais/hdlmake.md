@@ -1,6 +1,6 @@
 Title: Introdução à ferramenta de gerenciamento `hdlmake`
-Date: 2022-02-13 XX:XX
-Modified: 2022-02-13 XX:XX
+Date: 2022-02-13 00:00
+Modified: 2022-02-13 00:00
 Category: sistemas digitais
 Tags: sistemas digitais
 Slug: hdlmake
@@ -171,7 +171,13 @@ Em seguida, o comando `hdlmake makefile` deve ser executado, gerando um arquivo 
 Tendo o `Makefile` correto, basta executar `make` para que todas as ações necessárias sejam tomadas e os comandos especificados sejam executados. Um exemplo dessa execução para o projeto do jogo de memória está ilustrado nas figuras abaixo.
 
 Aqui um exemplo de como é simular usando o `hdlmake`, nesse caso com o simulador _Questa Intel FPGA_:
-![Simulação no projeto de exemplo usando hdlmake]({static}images/sd/hdlmake/sim.png)
+<!-- <img src='{static}/images/sd/hdlmake/sim.png'/> -->
+![Simulação no projeto de exemplo usando hdlmake]({static}/images/sd/hdlmake/sim.png)
 
 E aqui um exemplo de síntese com o _Quartus Prime Lite_:
-![Síntese do projeto de exemplo usando hdlmake]({static}images/sd/hdlmake/syn.png)
+<!-- <img src='{static}/images/sd/hdlmake/syn.png' width="30%" align="left" style="padding-right:5%" /> -->
+![Síntese do projeto de exemplo usando hdlmake]({static}/images/sd/hdlmake/syn.png)
+
+
+  ### Contribuições
+    * 13/fev/2022: Tomaz Maia Suller escreveu este post.
