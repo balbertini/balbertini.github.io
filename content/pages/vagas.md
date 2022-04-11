@@ -1,6 +1,6 @@
 Title: Vagas
 Date: 2022-03-22 12:25
-Modified: 2022-03-22 12:25
+Modified: 2022-04-11 12:25
 Category: information
 Tags: main
 Slug: vagas
@@ -10,8 +10,31 @@ Summary: Vagas na área de HW.
 
 Esta página foi criada com o intuito de divulgar vagas na área de *hardware*, tanto no Brasil quanto no exterior, com foco nos alunos dos cursos de Eng. de Eletricidade e de Engenharia de Computação. Sempre que possível atualizarei a página. Verifique a data da postagem para ver se a vaga ainda está disponível. Caso queira postar uma vaga, por favor me envie um [email]({filename}./sobre.md) ou [edite](https://github.com/balbertini/balbertini.github.io/edit/source/content/pages/vagas.md) e faça um *pull request*.
 
+O Prof. Marcos Simplício mantém [uma página](https://sites.usp.br/cybersec/) dedicada para vagas em segurança digital que também pode conter vagas relacionadas à *hardware*.
 
 <!-- Quando for adicionar alguma vaga, por favor siga o modelo copiando-o de uma vaga existente e atualize a data (inclusive a de modificação no cabeçalho do arquivo). -->
+
+### (11/abr/2022) Curso de formação de projetistas
+A Chipus Microelectronics, em parceria com o Instituto de Pesquisas Eldorado, está lançando a segunda edição do programa específico para formação de especialistas em desenho ou "layout" de circuitos integrados (chips). O programa será 100% online com acesso remoto das ferramentas de projeto de circuitos integrados ("EDA — Electronic Design Automation tools") via ambiente virtual disponibilizado pelo parceiro do programa (Instituto de Pesquisas Eldorado). Além das aulas, os candidatos selecionados terão direito a uma bolsa implementada em parceria com o Instituto de Pesquisas Eldorado, no valor de R$2.500,00 (dois mil e quinhentos reais) por mês. Para mais detalhes, acesse: [LinkedIn](https://lnkd.in/dSNF5NR7)
+
+### (11/abr/2022) Desenvolvimento de SW embarcado
+Buscamos um Desenvolvedor de Software Embarcado para atuar em regime Home Office. ATIVIDADES: Responsável por analisar, projetar, implementar, integrar, testar e documentar o desenvolvimento de software, visando implementar novas funcionalidades e corrigir bugs de produtos; Elaborar a lista de atividades requeridas para o desenvolvimento do software; Propor soluções técnicas através de exemplos de código, provas de conceito, diagramas, documentos e algoritmos;Fornecer manutenção, suporte e aprimoramentos contínuos em sistemas e plataformas existentes; Exercer o papel de líder técnico em projetos de desenvolvimento, provendo recomendações para melhoria contínua do portfólio de produtos e para os processos da área. REQUISITOS: Graduação completa em Engenharia Elétrica, Computação, Telecomunicações ou áreas correlatas; Experiência com linguagens C e/ou C++; Experiência em ambiente Linux Embarcado; Experiência com ferramentas de versionamento de código (Git); Conhecimento em metodologias ágeis (Scrum/Agile).
+
+* Empresa: [Padtec](https://www.padtec.com.br/)  
+* Local: Campinas/SP  
+* Nível: Graduação completa em Engenharia Elétrica, Computação, Telecomunicações ou áreas correlatas  
+* Salário: não divulgado  
+* Aplicação: [Site](https://www.padtec.com.br/trabalhe-conosco/)  
+
+### (1/abr/2022) Analista de SW Embarcado
+Da chamada original: assegurar o desenvolvimento (linguagem C) do aplicativo SW embarcado nos módulos eletrônicos automotivos para atingir as metas definidas para cada lançamento de software; garantir que o padrão de qualidade de SW seja aplicado de acordo com as diretivas existentes (MISRA, Checklist, revi~sao de código e teste de SW); Eventualmente das suporte a outros centros de P&D e clientes. 
+
+* Empresa: [MSX International](https://www.msxi.com/en/)  
+* Local: Hortolândia/SP  
+* Nível: Graduação  
+* Salário: não divulgado  
+* Aplicação: [EMail](mailto:acssilva@msxi.com)
+
 
 ### (22/mar/2022) Eng. Verificação de Sistemas Embarcados
 Este cargo tem como missão principal realizar o desenvolvimento, manutenção, execução e análise de sistemas de verificação automatizados para sistemas embarcados.  
