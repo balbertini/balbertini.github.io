@@ -14,6 +14,16 @@ O Prof. Marcos Simplício mantém [uma página](https://sites.usp.br/cybersec/) 
 
 <!-- Quando for adicionar alguma vaga, por favor siga o modelo copiando-o de uma vaga existente e atualize a data (inclusive a de modificação no cabeçalho do arquivo). -->
 
+### (25/abr/2022) Várias
+A empresa está contratando várias vagas, inclusive engenharia. Exemplos na computação: Engenheiro de NPI, Engenheiro de Smartphones, Engenheiro de Redes.
+Veja [essa página](https://multilaserindustrial.pandape.com.br/) e entre em contato com a Hellen Durães (email abaixo).  
+
+* Empresa: [MultiLaser](https://www.multilaser.com.br/)  
+* Local: Extrema/MG  
+* Nível: Várias vagas  
+* Salário: não divulgado  
+* Aplicação: [EMail](mailto:hellen.duraes@multilaser.com.br)  
+
 ### (11/abr/2022) Curso de formação de projetistas
 A Chipus Microelectronics, em parceria com o Instituto de Pesquisas Eldorado, está lançando a segunda edição do programa específico para formação de especialistas em desenho ou "layout" de circuitos integrados (chips). O programa será 100% online com acesso remoto das ferramentas de projeto de circuitos integrados ("EDA — Electronic Design Automation tools") via ambiente virtual disponibilizado pelo parceiro do programa (Instituto de Pesquisas Eldorado). Além das aulas, os candidatos selecionados terão direito a uma bolsa implementada em parceria com o Instituto de Pesquisas Eldorado, no valor de R$2.500,00 (dois mil e quinhentos reais) por mês. Para mais detalhes, acesse: [LinkedIn](https://lnkd.in/dSNF5NR7)
 
