@@ -195,7 +195,7 @@
 </table>
 
 <h3>Exemplo (VHDL&lt;=2002)</h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -203,7 +203,7 @@
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">-- Este é um comentário explicando o que a entidade abaixo faz. Não há</span><span class="w"></span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Este é um comentário explicando o que a entidade abaixo faz. Não há</span><span class="w"></span>
 <span class="c1">-- comentários multi-linhas em VHDL&lt;=2002, então usamos vários comentários</span><span class="w"></span>
 <span class="c1">-- de uma linha.</span><span class="w"></span>
 <span class="k">entity</span><span class="w"> </span><span class="nc">meu_circuito</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
@@ -212,10 +212,10 @@
 <span class="w">         </span><span class="c1">-- TODO: adicionar as outras portas</span><span class="w"></span>
 <span class="w">       </span><span class="p">);</span><span class="w"></span>
 <span class="k">end</span><span class="w"> </span><span class="k">entity</span><span class="w"> </span><span class="nc">meu_circuito</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <h3>Exemplo (VHDL&gt;=2008)</h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -223,7 +223,7 @@
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c">/* Este é um comentário explicando o que a entidade abaixo faz. Em</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c">/* Este é um comentário explicando o que a entidade abaixo faz. Em</span>
 <span class="c">   VHDL&gt;=2008 podemos usar comentários multi-linhas.</span>
 <span class="c"> */</span><span class="w"></span>
 <span class="nt">entity</span><span class="w"> </span><span class="nt">meu_circuito</span><span class="w"> </span><span class="nt">is</span><span class="w"></span>
@@ -232,8 +232,8 @@
 <span class="w">         </span><span class="c">/* TODO: adicionar as outras portas */</span><span class="w"></span>
 <span class="w">       </span><span class="o">);</span><span class="w"></span>
 <span class="nt">end</span><span class="w"> </span><span class="nt">entity</span><span class="w"> </span><span class="nt">meu_circuito</span><span class="o">;</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <h2>Identificadores</h2>
 <p>Os identificadores são cadeias de caracteres usadas para dar nomes a variáveis, sinais e qualquer outro elemento da descrição. Em VHDL, o identificador pode ser uma cadeia de qualquer tamanho, desde que siga as seguintes restrições:</p>
 <ul>
@@ -252,7 +252,7 @@
 </table>
 
 <h3>Exemplo</h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -265,7 +265,7 @@
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">-- Identificadores válidos</span><span class="w"></span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Identificadores válidos</span><span class="w"></span>
 <span class="n">meu_sinal</span><span class="w"></span>
 <span class="n">entidadeSomadora</span><span class="w"></span>
 <span class="c1">-- Identificadores inválidos</span><span class="w"></span>
@@ -279,8 +279,8 @@
 <span class="c1">-- alguns sintetizadores aceitam o acento abaixo</span><span class="w"></span>
 <span class="c1">-- mas melhor evitar</span><span class="w"></span>
 <span class="n">saída</span><span class="w"> </span><span class="c1">-- possui um caractere inválido (í)</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <h2>Identificadores estendidos</h2>
 <p>VHDL também suporta o que chamamos de identificador estendido. Os identificadores estendidos não tem as limitações dos identificadores e pode-se usar qualquer coisa dentro deles. Para usar, basta colocar seu identificador entre dois <code>\</code>.</p>
 <h3>Exemplo</h3>
@@ -537,14 +537,14 @@
 <pre>" # & ' ( ) * + - , . / : ; < = > ? @ [ ] \` |</pre>
 
 <p>Além desses, há símbolos com um único significado em VHDL, mas composto de dois caracteres:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">=&gt;</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="o">?=</span><span class="w"> </span><span class="o">?/=</span><span class="w"> </span><span class="o">?&gt;</span><span class="w"> </span><span class="o">?&lt;</span><span class="w"> </span><span class="o">?&gt;=</span><span class="w"> </span><span class="o">?&lt;=</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">=&gt;</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="o">?=</span><span class="w"> </span><span class="o">?/=</span><span class="w"> </span><span class="o">?&gt;</span><span class="w"> </span><span class="o">?&lt;</span><span class="w"> </span><span class="o">?&gt;=</span><span class="w"> </span><span class="o">?&lt;=</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+
 <p>Para funcionarem, você precisa escrevê-los sem nenhum espaço entre eles (e.g. <code>&lt;=</code> é um operador de atribuição, mas <code>&lt; =</code> são duas comparações, de menor e igual respectivamente). Nos próximos <em>posts</em> falarei sobre o significado de cada um destes operadores.</p>
 <h2>Literais</h2>
 <h3>Números</h3>
 <p>Há dois tipos de literais numéricos em VHDL: os inteiros e os reais. Ambos podem ser expressos usando notação científica.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -552,7 +552,7 @@
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="mi">1</span><span class="w"> </span><span class="c1">-- exemplo de número inteiro</span><span class="w"></span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="mi">1</span><span class="w"> </span><span class="c1">-- exemplo de número inteiro</span><span class="w"></span>
 <span class="mi">0</span><span class="w"> </span><span class="c1">-- exemplo de número inteiro</span><span class="w"></span>
 <span class="mi">123</span><span class="w"> </span><span class="c1">-- exemplo de número inteiro</span><span class="w"></span>
 <span class="mi">12</span><span class="n">E12</span><span class="w"> </span><span class="c1">-- exemplo de número inteiro em notação científica</span><span class="w"></span>
@@ -561,11 +561,11 @@
 <span class="mi">3</span><span class="p">.</span><span class="mi">1415</span><span class="w"> </span><span class="c1">-- exemplo de número real</span><span class="w"></span>
 <span class="mi">6</span><span class="p">.</span><span class="mi">67430</span><span class="n">E</span><span class="o">-</span><span class="mi">11</span><span class="w"> </span><span class="c1">-- exemplo de número real em notação científica</span><span class="w"></span>
 <span class="mi">6</span><span class="p">.</span><span class="mi">02214076</span><span class="n">E</span><span class="o">+</span><span class="mi">23</span><span class="w">  </span><span class="c1">-- exemplo de número real em notação científica</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <p>Note que <code>-123</code> não é um número inteiro mas sim uma negação de um inteiro. Os número reais precisam de ao menos um dígito antes e outro depois do <code>.</code> para serem considerados válidos.</p>
 <p>Os literais numéricos também podem ser especificados em outras bases usando o operador <code>#</code> com a base expressa em decimal:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -577,7 +577,7 @@
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>-- Todos os números abaixo representam 253 em decimal
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>-- Todos os números abaixo representam 253 em decimal
 2#11111101# -- em binário (base 2)
 16#FD# -- em hexadecimal (base 16)
 16#0fd# -- em hexadecimal (base 16)
@@ -590,8 +590,8 @@
 2#1#E10 -- em binário (base 2)
 16#4#E2 -- em hexadecimal (base 16)
 10#1024#E+00 -- em decimal (base 10)
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <table style="width:100%">
  <tr>
    <td><i class="fas fa-exclamation fa-2x"  style="color: #ffcc00;"></i></td>
@@ -602,45 +602,45 @@
 </table>
 
 <p>Não há ponto (ou vírgula) de separação de milhares, mas é possível usar o caractere <code>_</code> para melhorar e legibilidade dos literais numéricos, respeitando-se as regras de composição de identificadores (não se pode aparecer no início ou final de um número, e também não pode aparecer duas vezes seguidas):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="mf">123</span><span class="n">_456</span><span class="w"></span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="mf">123</span><span class="n">_456</span><span class="w"></span>
 <span class="mf">3.141</span><span class="n">_592_6</span><span class="w"></span>
 <span class="mf">2</span><span class="err">#</span><span class="mf">1111</span><span class="n">_1100_0000_0000</span><span class="err">#</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <p>O caractere <code>_</code> em um literal é inerte e não tem significado algum, servindo apenas para melhorar a visualização.</p>
 <h3>Caracteres</h3>
 <p>Os caracteres em VHDL são expressos entre aspas simples <code>'</code> e podem ser qualquer caractere ASCII imprimível.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="na">&#39;A</span><span class="p">&#39;</span><span class="w"></span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="na">&#39;A</span><span class="p">&#39;</span><span class="w"></span>
 <span class="na">&#39;a</span><span class="p">&#39;</span><span class="w"></span>
 <span class="p">&#39;.&#39;</span><span class="w"></span>
 <span class="sc">&#39;1&#39;</span><span class="w"></span>
 <span class="p">&#39;</span><span class="w"> </span><span class="p">&#39;</span><span class="w"> </span><span class="c1">-- espaço</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <h3>Strings</h3>
 <p>As <em>strings</em> são vetores de caracteres e são representadas em VHDL entre aspas duplas <code>"</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s">&quot;Bruno Albertini&quot;</span><span class="w"></span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="s">&quot;Bruno Albertini&quot;</span><span class="w"></span>
 <span class="s">&quot;caracteres ASCII quaisquer como @%*&quot;</span><span class="w"></span>
 <span class="s">&quot;10010011&quot;</span><span class="w"></span>
 <span class="c1">-- abaixo uma string contendo o caractere &quot;, que é representado por dois &quot;</span><span class="w"></span>
 <span class="c1">-- seguidos mas conta como um caractere só na string</span><span class="w"></span>
 <span class="s">&quot;&quot;&quot;&quot;</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <h3>Bit Strings</h3>
 <p>Como todo hardware no final das contas trabalha com zeros e uns, VHDL possui uma forma específica para representar cadeias de bits. As cadeias são tratadas de forma diferenciada pois sempre podem ser transformadas em bits sem ambiguidade. É possível especificar a base da cadeia usando os prefixos <code>B</code> para binário, <code>O</code> para octal, <code>X</code> para hexadecimal e <code>D</code> para decimal (este último só existe a partir de VHDL-2008).</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -652,7 +652,7 @@
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>B&quot;0100011&quot; -- uma bitstring em binário
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>B&quot;0100011&quot; -- uma bitstring em binário
 B&quot;10&quot; -- outra  bitstring em binário
 b&quot;111100100001&quot; -- é possível usar minúsculas na especificação
 B&quot;1111_0010_0001&quot; -- e também _ para melhorar a legibilidade
@@ -665,8 +665,8 @@ x&quot;0_d&quot; -- equivalente a B&quot;0000_1101&quot;
 D&quot;23&quot; -- equivalente a B&quot;10111&quot;
 D&quot;64&quot; -- equivalente a B&quot;1000000&quot;
 D&quot;0003&quot; -- equivalente a B&quot;11&quot;
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <p>O número de bits da cadeia equivalente é sempre o número de bits mínimo necessário para representar o literal. Quando usamos octal, a cadeia resultante será um múltiplo de 3 bits pois cada dígito octal corresponde a 3 bits binários. Similarmente, as cadeias em hexadecimal correspondem a múltiplos de 4 bits binários. Os dígitos especificados devem ser válidos na base desejada (e.g. em octal só existem os dígitos de 0-7, em hexadecimal, de 0-9 e A-F (ou a-f)). Algumas letras tem significado especial dependendo do tipo binário por trás da conversão, como o <code>Z</code> que significa alta impedância quando se usa lógica multi-variada.</p>
 <table style="width:100%">
  <tr>
@@ -678,18 +678,18 @@ D&quot;0003&quot; -- equivalente a B&quot;11&quot;
 </table>
 
 <p>Há ainda uma forma de controlar quantos bits queremos que a cadeia possua, que funciona com VHDL&gt;=2008, colocando o número de bits antes do prefixo:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>-- Só em VHDL&gt;=2008
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>-- Só em VHDL&gt;=2008
 7X&quot;3C&quot; -- equivalente a B&quot;0111100&quot;
 8O&quot;5&quot; -- equivalente a B&quot;00000101&quot;
 10B&quot;X&quot; -- equivalente a B&quot;000000000X&quot;
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <p>A cadeia será preenchida com <code>0</code> suficientes para completar o número de bits. Caso o número desejado seja menor, os zeros à esquerda serão cortados da cadeia, mas é um erro especificar um número de bits menor que o necessário para representar o número.</p>
 <p>Também podemos especificar se o número representa um inteiro com sinal ou sem sinal, adicionando os prefixos <code>S</code> e <code>U</code> respectivamente. Esta especificação só é possível em VHDL&gt;=2008 e não pode ser usada para números decimais (especificador <code>D</code>), que são sempre considerados inteiros sem sinal.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -701,7 +701,7 @@ D&quot;0003&quot; -- equivalente a B&quot;11&quot;
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>-- Só em VHDL&gt;=2008
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>-- Só em VHDL&gt;=2008
 7UX&quot;3C&quot; -- equivalente a B&quot;0111100&quot;
 8UO&quot;5&quot; -- equivalente a B&quot;00000101&quot;
 10UB&quot;1&quot; -- equivalente a B&quot;0000000001&quot;
@@ -714,8 +714,8 @@ D&quot;0003&quot; -- equivalente a B&quot;11&quot;
 6SX&quot;E8&quot; -- equivalente a B&quot;101000&quot;
 6SX&quot;13&quot; -- equivalente a B&quot;110011&quot;
 6SX&quot;H3&quot; -- equivalente a B&quot;HH0011&quot;
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <table style="width:100%">
  <tr>
    <td><i class="fas fa-cog fa-2x"  style="color: #009933;"></i></td>

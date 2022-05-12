@@ -184,17 +184,17 @@
 <h2>Process</h2>
 <p>A estrutura utilizada para descrever circuitos sequenciais em VHDL é o <code>process</code>.</p>
 <p>Sintaxe de um <code>process</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nc">nome_opcional</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="p">(</span><span class="n">lista_de_sensibilidade</span><span class="p">)</span><span class="w"></span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nc">nome_opcional</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="p">(</span><span class="n">lista_de_sensibilidade</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="n">declaracoes</span><span class="w"></span>
 <span class="k">begin</span><span class="w"></span>
 <span class="w">    </span><span class="n">primitivas</span><span class="w"> </span><span class="n">sequenciais</span><span class="w"></span>
 <span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="nc">nome_opcional</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <p>O nome do <code>process</code> é opcional e serve para identificá-lo durante a simulação. Recomenda-se a sua utilização para melhorar a legibilidade e facilitar a depuração, obviamente usando um nome que representa o circuito sendo descrito. Se optar por retirar o nome, retira-se o <code>nome_opcional</code>, incluindo o <code>:</code>.</p>
 <h2>Primitivas sequenciais e concorrentes</h2>
 <p>As primitivas sequenciais dentro de um <code>process</code> podem ser quaisquer primitivas utilizadas para descrever  circuitos combinatórios (e.g. atribuições condicionais) e também algumas que só podem ser utilizadas de maneira sequencial: <code>if-else</code> e <code>case</code>. No entanto, todas as primitivas que estiverem dentro de um <code>process</code> se <strong>comportam de maneira sequencial</strong>. Em contraste, as primitivas que estão dentro da descrição uma arquitetura - que só podem ser combinatórias - são consideradas concorrentes.</p>
@@ -211,14 +211,14 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
 <h3>Exemplos</h3>
 <h4>FF-D com enable</h4>
 <p><img src='https://balbertini.github.io/images/vhdl/ffd.png' align="left" style="padding-right:5%" /></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nc">ffd</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="w"></span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nc">ffd</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="w"></span>
 <span class="k">begin</span><span class="w"></span>
 <span class="w">    </span><span class="k">wait</span><span class="w"> </span><span class="k">until</span><span class="w"> </span><span class="n">clock</span><span class="na">&#39;event</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">clock</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">en</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
@@ -226,11 +226,11 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
 <span class="w">        </span><span class="n">q_n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
 <span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="nc">ffd</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <p>Este exemplo é o mais simples possível: um <em>flip-flop</em> tipo D. Se o <em>en</em> for alto, o componente amostra a entrada <code>d</code> nas saídas <code>q</code> e <code>q_n</code> na borda de subida do <em>clock</em>. Note que o <em>process</em> não tem lista de sensibilidade, mas a primeira coisa que ele faz é aguardar que aconteça uma mudança no sinal de <em>clock</em> (espera por <code>clock'event</code>) e que esta mudança seja a borda de subida (verifica se <code>clock=1</code>). Quando isto acontecer, ele faz uma verificação para saber se o <code>en=1</code> e, caso seja, amostra a entrada para as saídas. Note que não está especificado o que acontece com as saídas caso <code>en=0</code>, o que faz com que a saída não mude, exatamente o comportamento desejado para o <em>flip-flop</em>.</p>
 <p>O equivalente usando lista de sensibilidade é:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -238,7 +238,7 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nc">ffd</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">)</span><span class="w"></span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nc">ffd</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">)</span><span class="w"></span>
 <span class="k">begin</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">clock</span><span class="na">&#39;event</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">clock</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">en</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
@@ -247,12 +247,12 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
 <span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
 <span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="nc">ffd</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <p>Note que neste caso, os sinais <code>en</code> e <code>d</code> podem ficar de fora da lista de sensibilidade pois, apesar de serem lidos dentro do <code>process</code>, não alteram o comportamento do circuito exceto na borda do <em>clock</em>, portanto não faz diferença se o colocarmos na lista de sensibilidade: <code>process(clock, en, d)</code>.</p>
 <h4>FF-D com enable e reset assíncrono</h4>
 <p><img src='https://balbertini.github.io/images/vhdl/ffdr.png' align="left" style="padding-right:5%" /></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -264,7 +264,7 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nc">ffdr</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="w"></span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nc">ffdr</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="w"></span>
 <span class="k">begin</span><span class="w"></span>
 <span class="w">    </span><span class="k">wait</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">reset</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">reset</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
@@ -277,11 +277,11 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
 <span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
 <span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <p>O <code>process</code> irá aguardar que aconteça alguma mudança nos sinais <em>clock</em> ou <em>reset</em> para continuar. Neste exemplo, o <em>flip-flop</em> possui um sinal de <em>reset</em> assíncrono ativo alto, portanto ele é verificado fora da condição de borda de subida. Neste caso, se o <code>reset=1</code>, as saídas vão para <code>q=0</code> e <code>q_n=1</code> incondicionalmente, ignorando-se a borda, portanto o <em>reset</em> tem prioridade sobre o a amostragem da entrada. Note que neste caso utiliza-se o <code>wait on</code> e não o <code>wait until</code>. Qualquer mudança nos sinais <em>clock</em> ou <em>reset</em> faz com que o <code>process</code> passe da linha do <code>wait on clock, reset</code> e reavalie todas as condições.</p>
 <p>O equivalente usando lista de sensibilidade é:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -292,7 +292,7 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nc">ffdr</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">reset</span><span class="p">)</span><span class="w"></span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nc">ffdr</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">reset</span><span class="p">)</span><span class="w"></span>
 <span class="k">begin</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">reset</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
 <span class="w">        </span><span class="n">q</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
@@ -304,8 +304,8 @@ Já as primitivas sequencias (dentro de um <code>process</code>), representam um
 <span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
 <span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <p>Observe que o <code>wait on</code> substitui a lista de sensibilidade. Normalmente o <code>wait on</code> é usado como a primeira primitiva do <code>process</code>, em substituição à lista de sensibilidade. Para circuitos sequenciais síncronos, aconselha-se a utilização da versão com lista de sensibilidade para evitar que a linha do <code>wait on</code> seja colocada em locais inadequados, o que pode gerar um circuito sequencial assíncrono. A maioria das ferramentas de síntese suporta somente um <code>wait on</code> no início ou final do <code>process</code>.</p>
 <h2>Outras primitivas sequenciais</h2>
 <p>Há outras primitivas exclusivas para utilização sequencial (<code>for</code>, <code>while</code> e <code>loop</code>), que possuem propósitos específicos que não foram cobertos neste artigo pois possuem restrições para a síntese. Isto significa que, para que elas representem um hardware, o projetista deve utilizá-las de uma maneira específica, caso contrário elas não podem ser sintetizadas (i.e. não representam uma descrição de hardware). É muito comum entre os iniciantes considerar que estas primitivas são equivalentes às encontradas em linguagens de programação estruturada, o que na maioria das vezes é uma falácia pois não existe laço interativo em hardware equivalente ao conceito homônimo das linguagens de programação (e.g. o equivalente em hardware a um laço iterativo de um algoritmo é na verdade uma máquina de estados completa). Estas primitivas devem ser evitadas na descrição de circuitos sequenciais, especialmente por iniciantes, e são na maioria das vezes usadas somente na construção de <em>testbenchs</em>, quando as restrições para síntese não se aplicam.</p>

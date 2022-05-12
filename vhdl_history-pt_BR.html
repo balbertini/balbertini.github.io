@@ -268,7 +268,7 @@
 </ul>
 <p>Quando usa-se uma HDL para descrever um circuito, estamos usando um paradigma onde descrevemos o que acontece no <strong>fluxo de dados</strong>. As linguagens de programação imperativas, em contrapartida, descrevem o que acontece com o <strong>fluxo de controle</strong>. Algumas linguagens de programação possuem suporte ao controle do fluxo de dados, na maioria das vezes através de paradigmas matemáticos (e.g. linguagens funcionais, como Scala), mas elas não são muito populares pela dificuldade no uso. Já para descrições de hardware, a característica inerentemente concorrente torna a descrição do fluxo de dados obrigatória.</p>
 <h2>Exemplo</h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -284,7 +284,7 @@
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#!vhdl</span><span class="w"></span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">#!vhdl</span><span class="w"></span>
 <span class="n">entity</span><span class="w"> </span><span class="n">alarme</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
 <span class="w">  </span><span class="n">port</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">j0</span><span class="p">,</span><span class="w"> </span><span class="n">j1</span><span class="p">,</span><span class="w"> </span><span class="n">j2</span><span class="p">,</span><span class="w"> </span><span class="n">j3</span><span class="p">,</span><span class="w"> </span><span class="n">en0</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">:</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">bit</span><span class="p">;</span><span class="w"></span>
@@ -301,8 +301,8 @@
 <span class="w">  </span><span class="n">s0</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="p">(</span><span class="n">janelas</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">en0</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">janelas</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">j0</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">j1</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">j2n</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">j3n</span><span class="p">;</span><span class="w"></span>
 <span class="n">end</span><span class="w"> </span><span class="n">architecture</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <p>No exemplo acima em VHDL, o comportamento do circuito é descrito nas linhas de 12 a 15. Estas linhas podem ser colocadas em qualquer ordem e o comportamento do circuito continuará idêntico! VHDL é concorrente por natureza e estamos descrevendo a ligação entre as portas lógicas de um circuito (i.e. controlando o fluxo de dados). Tanto faz se você descreve a ligação do inversor da linha 13 antes ou depois da ligação da porta OU da linha 15, o circuito final será o mesmo.</p>
 <p>Esta característica é principal dificuldade dos projetistas de hardware iniciantes e é agravada naqueles que já possuem experiência prévia com linguagens de programação pois tendem a descrever o hardware como se fosse um programa, o que não é possível. Uma vez que você comece a pensar concorrentemente, a dificuldade para aprender uma HDL cai consideravelmente e a maioria dos problemas que os iniciantes enfrentam se tornam triviais.</p>
 <p>Uma outra desvantagem de HDLs é que é necessário saber projetar um circuito digital. A HDL é uma forma de expressão de um projeto de um hardware, então não adianta você aprender uma HDL se não sabe projetar um hardware. Uma analogia que uso muito entre os alunos de graduação é a com idiomas: se você ensinar um idioma para um papagaio, ele certamente repetirá o que você ensinou, até mesmo com sotaque. Mas este papagaio não será capaz de criar frases novas com o que aprendeu e com certeza não sabe o significado semântico das construções léxicas. Com HDL acontece o mesmo: é necessário saber projetar um circuito digital antes de aprender se expressar. De fato, os bons projetistas pensam na solução (normalmente imaginando um diagrama esquemático ou outra forma gráfica) e só depois expressam-no usando HDL.</p>
