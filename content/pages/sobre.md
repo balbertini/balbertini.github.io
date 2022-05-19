@@ -16,7 +16,7 @@ Graduado em Engenharia de Computação pela [Universidade Federal do Rio Grande]
 
 Representante do [TDWG](https://www.tdwg.org/) na América Latina (2014-2019).   
 Tesoureiro da [Seção Sul Brasil da IEEE](http://www.ieee.org.br/) (2017-2018).  
-Membro da CTE - Comissão de Transparência nas Eleições (2021-2022).  
+Membro da CTE - Comissão de Transparência nas Eleições (2021-atual).  
 Presidente da SBIAgro (2022-atual).  
 
 [<i style="font-size: 1em;" class="fas fa-desktop"></i> Departamento](https://pcs.usp.br/en/pessoa/?numerousp=5307474 "Site do Departamento")

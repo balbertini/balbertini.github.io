@@ -14,6 +14,25 @@ O Prof. Marcos Simplício mantém [uma página](https://sites.usp.br/cybersec/) 
 
 <!-- Quando for adicionar alguma vaga, por favor siga o modelo copiando-o de uma vaga existente e atualize a data (inclusive a de modificação no cabeçalho do arquivo). -->
 
+### (19/mai/2022) *Analista de Software Embarcado* 
+Atuar por todo o ciclo de vida do software embarcado para o quadro de bordo automotivo: desenvolvimento, validação, integração, release e manutenção. Formação Superior ou em andamento nas áreas de Engenharia Eletrônica/ Elétrica ou Tecnologia. Inglês nível avançado. Experiência em Desenvolvimento de Software Embarcado e Linguagem C. Vivência na indústria automotiva.  
+
+* Empresa: [Segula](https://brasil.segulatechnologies.com/en/)  
+* Local: Hortolândia/SP  
+* Nível: Graduação em Eng. Elétrica, Computação ou correlatas  
+* Salário: não divulgado  
+* Aplicação: [EMail](marisa.pereira@segula.com.br)  
+
+### (12/mai/2022) *Application Engineer* 
+A empresa está contratando várias vagas, inclusive engenharia. Exemplos na computação: Engenheiro de NPI, Engenheiro de Smartphones, Engenheiro de Redes.
+Veja [essa página](https://multilaserindustrial.pandape.com.br/) e entre em contato com a Hellen Durães (email abaixo).  
+
+* Empresa: [Chipus Microeletrônica](https://www.chipus.com.br/)  
+* Local: Florianópolis/SC  
+* Nível: Graduação em Eng. Elétrica, Computação ou correlatas, info [aqui](https://www.chipus.com.br/opportunities/engineer-for-power-products).
+* Salário: não divulgado  
+* Aplicação: [EMail](mailto:jobs@chipus.com.br), [LinkedIn](https://www.linkedin.com/posts/chipus_engineering-design-work-activity-6927991457177899008-qR8W)     
+
 ### (25/abr/2022) Várias
 A empresa está contratando várias vagas, inclusive engenharia. Exemplos na computação: Engenheiro de NPI, Engenheiro de Smartphones, Engenheiro de Redes.
 Veja [essa página](https://multilaserindustrial.pandape.com.br/) e entre em contato com a Hellen Durães (email abaixo).  
@@ -22,7 +41,7 @@ Veja [essa página](https://multilaserindustrial.pandape.com.br/) e entre em con
 * Local: Extrema/MG  
 * Nível: Várias vagas  
 * Salário: não divulgado  
-* Aplicação: [EMail](mailto:hellen.duraes@multilaser.com.br)  
+* Aplicação: [EMail](mailto:hellen.duraes@multilaser.com.br), [LinkedIn](https://www.linkedin.com/jobs/view/2984399830)  
 
 ### (11/abr/2022) Curso de formação de projetistas
 A Chipus Microelectronics, em parceria com o Instituto de Pesquisas Eldorado, está lançando a segunda edição do programa específico para formação de especialistas em desenho ou "layout" de circuitos integrados (chips). O programa será 100% online com acesso remoto das ferramentas de projeto de circuitos integrados ("EDA — Electronic Design Automation tools") via ambiente virtual disponibilizado pelo parceiro do programa (Instituto de Pesquisas Eldorado). Além das aulas, os candidatos selecionados terão direito a uma bolsa implementada em parceria com o Instituto de Pesquisas Eldorado, no valor de R$2.500,00 (dois mil e quinhentos reais) por mês. Para mais detalhes, acesse: [LinkedIn](https://lnkd.in/dSNF5NR7)
