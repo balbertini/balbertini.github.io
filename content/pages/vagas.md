@@ -17,7 +17,7 @@ O Prof. Marcos Simplício mantém [uma página](https://sites.usp.br/cybersec/) 
 Desenvolvimento de tecnologias em equipamentos aeronáuticos visando potencial aplicação em futuros produtos da aviação comercial, executiva e/ou defesa.    
 
 * Empresa: [Embraer](https://embraer.com/)  
-* Local: Híbrido - São José dos Campos/SP  
+* Local: Híbrido - Florianópolis/SC    
 * Nível: Graduação em Eng. Elétrica, Computação ou correlatas  
 * Salário: não divulgado  
 * Aplicação: [site](https://embraer.gupy.io/job/eyJqb2JJZCI6MjA5NDY4NSwic291cmNlIjoiZ3VweV9wdWJsaWNfcGFnZSJ9?jobBoardSource=gupy_public_page)  
