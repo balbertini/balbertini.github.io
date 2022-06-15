@@ -160,8 +160,8 @@
       
     <h1 id="hdlmake">Introdução à ferramenta de gerenciamento `hdlmake`</h1>
     <p>
-      Posted on dom 13 fevereiro 2022 in <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
-
+      Posted on Dom 13 Fevereiro 2022 in <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
+      &#8226; Last Modified Ter 22 Março 2022
         &#8226; 6 min read
     </p>
   </header>
@@ -256,7 +256,7 @@ Como exemplo, uma implementação parcial de um jogo da memória desenvolvido pa
 </tbody>
 </table>
 <p>A organização do <code>hdlmake</code> empregada no jogo de memória, representada abaixo, será utilizada como exemplo neste relatório; ela emula aquela presente na <a href="https://hdlmake.readthedocs.io">documentação</a> e nos casos de teste presentes no repositório da ferramenta.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -289,48 +289,48 @@ Como exemplo, uma implementação parcial de um jogo da memória desenvolvido pa
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">.</span><span class="w"></span>
-<span class="err">├──</span><span class="w"> </span><span class="n">README</span><span class="p">.</span><span class="n">md</span><span class="w"></span>
-<span class="err">├──</span><span class="w"> </span><span class="n">modules</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">Manifest</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">comparador_85</span><span class="p">.</span><span class="n">vhd</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">contador_163</span><span class="p">.</span><span class="n">v</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">edge_detector</span><span class="p">.</span><span class="n">vhd</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">fluxo_dados</span><span class="p">.</span><span class="n">vhd</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">hexa7seg</span><span class="p">.</span><span class="n">vhd</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">ram_16x4</span><span class="p">.</span><span class="n">vhd</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">ram_conteudo_jogadas</span><span class="p">.</span><span class="n">mif</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">registrador_173</span><span class="p">.</span><span class="n">vhd</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">unidade_controle</span><span class="p">.</span><span class="n">vhd</span><span class="w"></span>
-<span class="err">├──</span><span class="w"> </span><span class="n">simulation</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">Manifest</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">write_vsim_do</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
-<span class="err">├──</span><span class="w"> </span><span class="n">software</span><span class="w"></span>
-<span class="err">├──</span><span class="w"> </span><span class="n">synthesis</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">Manifest</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
-<span class="err">├──</span><span class="w"> </span><span class="n">testbenches</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">Manifest</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">circuito_exp3_tb</span><span class="p">.</span><span class="n">vhd</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">comparador_85_tb</span><span class="p">.</span><span class="n">vhd</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">contador_163_tb</span><span class="p">.</span><span class="n">v</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">fluxo_dados_tb</span><span class="p">.</span><span class="n">vhd</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">ram_16x4_tb</span><span class="p">.</span><span class="n">vhd</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">registrador_173_tb</span><span class="p">.</span><span class="n">vhd</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">unidade_controle_tb</span><span class="p">.</span><span class="n">vhd</span><span class="w"></span>
-<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">utils</span><span class="p">.</span><span class="n">vhd</span><span class="w"></span>
-<span class="err">└──</span><span class="w"> </span><span class="n">toplevel</span><span class="w"></span>
-<span class="w">    </span><span class="err">├──</span><span class="w"> </span><span class="n">Manifest</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
-<span class="w">    </span><span class="err">├──</span><span class="w"> </span><span class="n">circuito_exp3</span><span class="p">.</span><span class="n">csv</span><span class="w"></span>
-<span class="w">    </span><span class="err">├──</span><span class="w"> </span><span class="n">circuito_exp3</span><span class="p">.</span><span class="n">vhd</span><span class="w"></span>
-<span class="w">    </span><span class="err">└──</span><span class="w"> </span><span class="n">plan_pins</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="normal">34</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">.</span>
+<span class="err">├──</span> <span class="n">README</span><span class="p">.</span><span class="n">md</span>
+<span class="err">├──</span> <span class="n">modules</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">Manifest</span><span class="p">.</span><span class="n">py</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">comparador_85</span><span class="p">.</span><span class="n">vhd</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">contador_163</span><span class="p">.</span><span class="n">v</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">edge_detector</span><span class="p">.</span><span class="n">vhd</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">fluxo_dados</span><span class="p">.</span><span class="n">vhd</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">hexa7seg</span><span class="p">.</span><span class="n">vhd</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">ram_16x4</span><span class="p">.</span><span class="n">vhd</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">ram_conteudo_jogadas</span><span class="p">.</span><span class="n">mif</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">registrador_173</span><span class="p">.</span><span class="n">vhd</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">unidade_controle</span><span class="p">.</span><span class="n">vhd</span>
+<span class="err">├──</span> <span class="n">simulation</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">Manifest</span><span class="p">.</span><span class="n">py</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">write_vsim_do</span><span class="p">.</span><span class="n">py</span>
+<span class="err">├──</span> <span class="n">software</span>
+<span class="err">├──</span> <span class="n">synthesis</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">Manifest</span><span class="p">.</span><span class="n">py</span>
+<span class="err">├──</span> <span class="n">testbenches</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">Manifest</span><span class="p">.</span><span class="n">py</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">circuito_exp3_tb</span><span class="p">.</span><span class="n">vhd</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">comparador_85_tb</span><span class="p">.</span><span class="n">vhd</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">contador_163_tb</span><span class="p">.</span><span class="n">v</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">fluxo_dados_tb</span><span class="p">.</span><span class="n">vhd</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">ram_16x4_tb</span><span class="p">.</span><span class="n">vhd</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">registrador_173_tb</span><span class="p">.</span><span class="n">vhd</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">unidade_controle_tb</span><span class="p">.</span><span class="n">vhd</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">utils</span><span class="p">.</span><span class="n">vhd</span>
+<span class="err">└──</span> <span class="n">toplevel</span>
+    <span class="err">├──</span> <span class="n">Manifest</span><span class="p">.</span><span class="n">py</span>
+    <span class="err">├──</span> <span class="n">circuito_exp3</span><span class="p">.</span><span class="n">csv</span>
+    <span class="err">├──</span> <span class="n">circuito_exp3</span><span class="p">.</span><span class="n">vhd</span>
+    <span class="err">└──</span> <span class="n">plan_pins</span><span class="p">.</span><span class="n">py</span>
+</code></pre></div>
+</td></tr></table>
 <h1>Instalação</h1>
 <p>O <code>hdlmake</code> é publicado no <em>Python Package Index</em> e pode ser instalado como outras bibliotecas pelo gerenciador de pacotes pip por meio do comando <code>python -m pip install hdlmake</code> em uma instalação de <em>Python</em> com versões superiores à 2.7. É necessário adicionar o caminho de instalação da ferramenta (em sistemas Unix, geralmente <code>$HOME/.local</code>) à variável de ambiente <code>PATH</code> para ser possível chamar o <code>hdlmake</code> diretamente da linha de comando como exemplificado neste documento.</p>
 <h1>Configuração</h1>
 <p>Toda a configuração do <code>hdlmake</code> é realizada a partir de arquivos <code>Manifest.py</code>, que permitem não só adicionar configurações, mas também lógica condicional sobre essas configurações.
 Os arquivos presentes nos diretórios <code>modules</code>, <code>testbenches</code> e <code>toplevel</code> são simples e somente listam os arquivos presentes no diretório e os diretórios em que suas dependências residem. O arquivo do diretório <code>toplevel</code> é reproduzido abaixo como exemplo.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -338,7 +338,7 @@ Os arquivos presentes nos diretórios <code>modules</code>, <code>testbenches</c
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">files</span> <span class="o">=</span> <span class="p">[</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">files</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;circuito_exp3.vhd&quot;</span>
 <span class="p">]</span>
 
@@ -347,12 +347,12 @@ Os arquivos presentes nos diretórios <code>modules</code>, <code>testbenches</c
         <span class="s2">&quot;../modules&quot;</span>
     <span class="p">],</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div>
-
+</code></pre></div>
+</td></tr></table>
 <p>Ele mostra que o diretório possui o arquivo <code>circuito_exp3.vhd</code> como descrição de <em>hardware</em> a ser analisada, cujas dependências se encontram em diretório local (isto é, no sistema de arquivos local e não em um repositório <em>Git</em> ou <em>SVN</em> remoto) denominado <code>modules</code>, visível na estrutura de pastas representada anteriormente.</p>
 <p>O controle dos processos de simulação e síntese é realizado por meio dos <code>Manifest.py</code>s de seus respectivos diretórios, e exigem um detalhamento maior para entender seu funcionamento.</p>
 <p>Em primeiro lugar, as configurações de simulação são analisadas; elas estão reproduzidas a seguir.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -369,7 +369,7 @@ Os arquivos presentes nos diretórios <code>modules</code>, <code>testbenches</c
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">TOPLEVEL</span> <span class="o">=</span> <span class="s1">&#39;fluxo_dados&#39;</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">TOPLEVEL</span> <span class="o">=</span> <span class="s1">&#39;fluxo_dados&#39;</span>
 <span class="n">VCD_NAME</span> <span class="o">=</span> <span class="n">TOPLEVEL</span>
 <span class="n">VIEW_WAVE</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># TODO fix; does nothing</span>
 
@@ -387,14 +387,14 @@ Os arquivos presentes nos diretórios <code>modules</code>, <code>testbenches</c
         <span class="s2">&quot;../testbenches/&quot;</span><span class="p">,</span>
     <span class="p">],</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div>
-
+</code></pre></div>
+</td></tr></table>
 <p>As variáveis requisitadas pelo <code>hdlmake</code> estão abaixo da linha com <code>#</code>, e indicam que o <code>Manifest.py</code> desse diretório foi configurado para realizar simulação (<code>action = "simulation"</code>) usando o <em>ModelSim</em> (<code>sim_tool = "modelsim"</code>).
 Como o arquivo de configuração é escrito na linguagem <em>Python</em>, podemos realizar operações geralmente não possíveis em arquivos de configuração usuais. Como exemplo, o nome da entidade <em>toplevel</em> de simulação é designado como a concatenação da variável <code>TOPLEVEL</code> e a <em>string</em> <code>_tb</code>.
 As diretivas <code>sim_pre_cmd</code> e <code>sim_post_cmd</code> designam comandos arbitrários de linha de comando que podem ser executados antes e depois da realização da simulação, respectivamente.
 Nesse caso, antes da simulação, é executado o <em>script Python</em> <code>write_vsim_do.py</code> que gera o arquivo <code>vsim.do</code>, escrito pelo grupo para gerar arquivos VCD automaticamente da simulação; os comandos nesse arquivo são então executado após a simulação.</p>
 <p>Em segundo lugar, as configurações de síntese são analisadas; elas estão reproduzidas a seguir.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -422,7 +422,7 @@ Nesse caso, antes da simulação, é executado o <em>script Python</em> <code>wr
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
-<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">PROCESS_PINS</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">PROCESS_PINS</span> <span class="o">=</span> <span class="kc">True</span>
 
 <span class="n">TOPLEVEL</span> <span class="o">=</span> <span class="s2">&quot;circuito_exp3&quot;</span>
 <span class="n">PINS_CSV</span> <span class="o">=</span> <span class="s2">&quot;../toplevel/circuito_exp3.csv&quot;</span>
@@ -451,8 +451,8 @@ Nesse caso, antes da simulação, é executado o <em>script Python</em> <code>wr
         <span class="s2">&quot;../toplevel&quot;</span>
     <span class="p">],</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div>
-
+</code></pre></div>
+</td></tr></table>
 <p>As variáveis requisitadas pelo <code>hdlmake</code> estão abaixo da linha com <code>#</code>, e indicam que o <code>Manifest.py</code> desse diretório foi configurado para realizar síntese (<code>action = "synthesis"</code>) para uma placa da Altera (<code>target = "altera"</code>) com FPGA Cyclone V de modelo <code>5CEBA4F23C7</code> (linhas 12 a 15) utilizando o <em>Quartus Prime Lite</em> (<code>syn_tool = "quartus"</code>).
 Na síntese, existem mais diretivas do que na simulação. Podem ser executados comandos imediatamente antes ou depois da criação do projeto do <em>Quartus Prime Lite</em> ou do final da síntese.
 No arquivo de configuração empregado, antes da criação do projeto, é executado um <em>script Python</em> que gera um arquivo <code>pins.tcl</code>, o qual é executado após a criação do projeto para designar os pinos configurados segundo o arquivo CSV fornecido no diretório <code>toplevel</code>; ainda é executado, ao final da síntese, um comando para gerar automaticamente o arquivo QAR de arquivamento do projeto.</p>

@@ -161,8 +161,8 @@
       
     <h1 id="vhdl_generate">Instanciando componentes parametricamente</h1>
     <p>
-      Posted on seg 02 setembro 2019 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-
+      Posted on Seg 02 Setembro 2019 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+      &#8226; Last Modified Seg 09 Setembro 2019
         &#8226; 5 min read
     </p>
   </header>
@@ -171,18 +171,18 @@
   <div>
     <p>Em muitas situações, não sabemos de antemão quantas instâncias de determinado componente precisaremos pois este número é parametrizável. Em VHDL, há a construção <code>generate</code> que permite instanciar componentes e fazer ligações para as instâncias de modo programático, dependendo de um parâmetro. A única restrição para que esta construção seja sintetizável é que todos os parâmetros sejam resolvíveis no momento da síntese.</p>
 <h2>Sintaxe</h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nc">nome</span><span class="o">:</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">parametro</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="k">generate</span><span class="w"></span>
-<span class="w">    </span><span class="n">primitivas</span><span class="w"> </span><span class="n">concorrentes</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">generate</span><span class="w"> </span><span class="nc">nome</span><span class="p">;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nc">nome</span><span class="o">:</span> <span class="k">for</span> <span class="n">parametro</span> <span class="k">in</span> <span class="n">lista</span> <span class="k">generate</span>
+    <span class="n">primitivas</span> <span class="n">concorrentes</span>
+<span class="k">end</span> <span class="k">generate</span> <span class="nc">nome</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
 <p>Onde <code>nome</code> é opcional e pode ser um nome qualquer para este <em>for-generate</em>. O <code>parametro</code> é o nome do parâmetro que irá variar dentro do laço, assumindo os valores da <code>lista</code>, e as primitivas concorrentes são as que serão instanciadas parametricamente (usando o parâmetro definido no laço).</p>
 <p>O parâmetro deve ser algo resolvível pois o sintetizador irá substituir as primitivas concorrentes por várias cópias das mesmas primitivas, variando o parâmetro. A idéia é que o projetista possa instanciar várias instâncias do mesmo componente de uma só vez. Com o exemplo, a utilização ficará mais clara, então vamos lá!</p>
 <h3>Exemplo</h3>
 <p>Suponha que tenhamos a seguinte descrição de um <em>flip-flop</em> tipo D:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -199,30 +199,30 @@
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">entity</span><span class="w"> </span><span class="nc">ffd</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">  </span><span class="k">port</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">reset</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">q</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">entity</span><span class="p">;</span><span class="w"></span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">ffd</span> <span class="k">is</span>
+  <span class="k">port</span> <span class="p">(</span>
+    <span class="n">clock</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">reset</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
+    <span class="n">q</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
+  <span class="p">);</span>
+<span class="k">end</span> <span class="k">entity</span><span class="p">;</span>
 
-<span class="k">architecture</span><span class="w"> </span><span class="nc">processor</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">ffd</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="k">begin</span><span class="w"></span>
-<span class="w">  </span><span class="nc">sequencial</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">reset</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="k">begin</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">reset</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
-<span class="w">      </span><span class="n">q</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">elsif</span><span class="w"> </span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
-<span class="w">      </span><span class="n">q</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="p">;</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="p">;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="k">architecture</span> <span class="nc">processor</span> <span class="k">of</span> <span class="nc">ffd</span> <span class="k">is</span>
+<span class="k">begin</span>
+  <span class="nc">sequencial</span><span class="o">:</span> <span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">reset</span><span class="p">)</span>
+  <span class="k">begin</span>
+    <span class="k">if</span> <span class="n">reset</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
+      <span class="n">q</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
+    <span class="k">elsif</span> <span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">)</span> <span class="k">then</span>
+      <span class="n">q</span> <span class="o">&lt;=</span> <span class="n">d</span><span class="p">;</span>
+    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+<span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
 <p>Para fazer um registrador simples com <span class="math">\(n\)</span> bits baseado neste <em>flip-flop</em>, devemos montar a seguinte estrutura:</p>
 <p><img alt="Registrador Simples com FFD" src="https://balbertini.github.io/images/vhdl/regffd.png"></p>
 <p>Em VHDL, a estrutura base deste registrador (parametrizável), fica como abaixo:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -244,34 +244,34 @@
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">entity</span><span class="w"> </span><span class="nc">registrador</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">  </span><span class="k">generic</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">n</span><span class="o">:</span><span class="w"> </span><span class="kt">natural</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">port</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">reset</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">d</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">q</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">entity</span><span class="p">;</span><span class="w"></span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">registrador</span> <span class="k">is</span>
+  <span class="k">generic</span><span class="p">(</span>
+    <span class="n">n</span><span class="o">:</span> <span class="kt">natural</span> <span class="o">:=</span> <span class="mi">8</span>
+  <span class="p">);</span>
+  <span class="k">port</span><span class="p">(</span>
+    <span class="n">clock</span><span class="p">,</span> <span class="n">reset</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
+    <span class="n">d</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">q</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">);</span>
+<span class="k">end</span> <span class="k">entity</span><span class="p">;</span>
 
-<span class="k">architecture</span><span class="w"> </span><span class="nc">arch</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">registrador</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">  </span><span class="k">component</span><span class="w"> </span><span class="nc">ffd</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">    </span><span class="k">port</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">reset</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="n">q</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
-<span class="w">    </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">component</span><span class="p">;</span><span class="w"></span>
-<span class="k">begin</span><span class="w"></span>
-<span class="w">  </span><span class="nc">regs</span><span class="o">:</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">generate</span><span class="w"></span>
-<span class="w">    </span><span class="n">ffs</span><span class="o">:</span><span class="w"> </span><span class="n">ffd</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="w"> </span><span class="n">reset</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">(</span><span class="n">i</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">generate</span><span class="p">;</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="p">;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">registrador</span> <span class="k">is</span>
+  <span class="k">component</span> <span class="nc">ffd</span> <span class="k">is</span>
+    <span class="k">port</span> <span class="p">(</span>
+      <span class="n">clock</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">reset</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
+      <span class="n">q</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
+    <span class="p">);</span>
+  <span class="k">end</span> <span class="k">component</span><span class="p">;</span>
+<span class="k">begin</span>
+  <span class="nc">regs</span><span class="o">:</span> <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span> <span class="k">generate</span>
+    <span class="n">ffs</span><span class="o">:</span> <span class="n">ffd</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">reset</span><span class="p">,</span> <span class="n">q</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+  <span class="k">end</span> <span class="k">generate</span><span class="p">;</span>
+<span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
 <p>Observe o <code>generate</code> na arquitetura. A linha <code>ffs: ffd port map(clock, d(i), reset, q(i));</code> instanciará <span class="math">\(n\)</span> <em>flip-flops</em>, cada um ligado em um fio dos vetores (conjunto de fios) <code>d</code> e <code>q</code>, mas compartilhando o mesmo <em>clock</em> e <em>reset</em>. O fio do vetor que cada instância usará depende do parâmetro <code>i</code>, que irá variar de <code>n-1</code> até <code>0</code>.</p>
 <p>Note que o nome da instância não leva índice e fica só como <code>ffs</code>. Cada sintetizador tem uma maneira de diferenciar as instâncias, mas a maioria deles colocará algum tipo de índice na instância. Quando formos usar este registrador, se setarmos o parâmetro <code>n</code> como 4 durante a instanciação, o sintetizador instanciará quatro <em>flip-flops</em>, chamados por exemplo de <code>ffs_3</code>, <code>ffs_2</code>, <code>ffs_1</code> e <code>ffs_0</code>. De fato, o código acima será transformado em algo similar a:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -283,35 +283,35 @@
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">architecture</span><span class="w"> </span><span class="nc">arch</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">registrador</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">  </span><span class="k">component</span><span class="w"> </span><span class="nc">ffd</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">    </span><span class="k">port</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">reset</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="n">q</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
-<span class="w">    </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">component</span><span class="p">;</span><span class="w"></span>
-<span class="k">begin</span><span class="w"></span>
-<span class="w">  </span><span class="n">ffs_3</span><span class="o">:</span><span class="w"> </span><span class="n">ffd</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">reset</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="n">ffs_2</span><span class="o">:</span><span class="w"> </span><span class="n">ffd</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">reset</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="n">ffs_1</span><span class="o">:</span><span class="w"> </span><span class="n">ffd</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">reset</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="n">ffs_0</span><span class="o">:</span><span class="w"> </span><span class="n">ffd</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">reset</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="p">;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">registrador</span> <span class="k">is</span>
+  <span class="k">component</span> <span class="nc">ffd</span> <span class="k">is</span>
+    <span class="k">port</span> <span class="p">(</span>
+      <span class="n">clock</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">reset</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
+      <span class="n">q</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
+    <span class="p">);</span>
+  <span class="k">end</span> <span class="k">component</span><span class="p">;</span>
+<span class="k">begin</span>
+  <span class="n">ffs_3</span><span class="o">:</span> <span class="n">ffd</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">d</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">reset</span><span class="p">,</span> <span class="n">q</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+  <span class="n">ffs_2</span><span class="o">:</span> <span class="n">ffd</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">d</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">reset</span><span class="p">,</span> <span class="n">q</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+  <span class="n">ffs_1</span><span class="o">:</span> <span class="n">ffd</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">d</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reset</span><span class="p">,</span> <span class="n">q</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+  <span class="n">ffs_0</span><span class="o">:</span> <span class="n">ffd</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">d</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">reset</span><span class="p">,</span> <span class="n">q</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
 <p>A única diferença é que o sintetizador é quem fará o "desenrolamento" do laço <em>for-generate</em>, permitindo que o projetista descreva um hardware genérico cujo tamanho não é conhecido.</p>
 <h2>Condicionando o <em>for-generate</em></h2>
 <p>Quando a estrutura é regular como no caso do registrador, o <em>for-generate</em> é muito útil e simples de usar. Mas e se houver pequenas diferenças? Para isso, há o <em>if-generate</em>, cuja sintaxe é:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">nome</span><span class="o">:</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">condicao</span><span class="w"> </span><span class="k">generate</span><span class="w"></span>
-<span class="w">  </span><span class="n">primitivas</span><span class="w"> </span><span class="n">concorrentes</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">generate</span><span class="w"> </span><span class="nc">nome</span><span class="p">;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">nome</span><span class="o">:</span> <span class="k">if</span> <span class="n">condicao</span> <span class="k">generate</span>
+  <span class="n">primitivas</span> <span class="n">concorrentes</span>
+<span class="k">end</span> <span class="k">generate</span> <span class="nc">nome</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
 <p>Este tipo de <em>if</em> só pode ser usado dentro de um <em>for-generate</em> e serve justamente para fazer pequenas mudanças na estrutura do hardware sendo descrito, sem abrir mão da parametrização. Vejamos novamente um exemplo.</p>
 <h3>Exemplo</h3>
 <p>Considere o <em>half-adder</em> (<code>ha</code>) e o <em>full-adder</em> (<code>fa</code>) abaixo:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -322,21 +322,21 @@
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">entity</span><span class="w"> </span><span class="nc">ha</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">  </span><span class="k">port</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w">  </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">co</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">entity</span><span class="p">;</span><span class="w"></span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">ha</span> <span class="k">is</span>
+  <span class="k">port</span> <span class="p">(</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
+    <span class="n">r</span><span class="p">,</span> <span class="n">co</span> <span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
+  <span class="p">);</span>
+<span class="k">end</span> <span class="k">entity</span><span class="p">;</span>
 
-<span class="k">architecture</span><span class="w"> </span><span class="nc">structural</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">ha</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="k">begin</span><span class="w"></span>
-<span class="w">  </span><span class="n">r</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">xor</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">co</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="p">;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="k">architecture</span> <span class="nc">structural</span> <span class="k">of</span> <span class="nc">ha</span> <span class="k">is</span>
+<span class="k">begin</span>
+  <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">a</span> <span class="k">xor</span> <span class="n">b</span><span class="p">;</span>
+  <span class="n">co</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">a</span> <span class="k">and</span> <span class="n">b</span><span class="p">);</span>
+<span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -347,24 +347,24 @@
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">entity</span><span class="w"> </span><span class="nc">fa</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">  </span><span class="k">port</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">ci</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w">  </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">co</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">entity</span><span class="p">;</span><span class="w"></span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">fa</span> <span class="k">is</span>
+  <span class="k">port</span> <span class="p">(</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">ci</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
+    <span class="n">r</span><span class="p">,</span> <span class="n">co</span> <span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
+  <span class="p">);</span>
+<span class="k">end</span> <span class="k">entity</span><span class="p">;</span>
 
-<span class="k">architecture</span><span class="w"> </span><span class="nc">structural</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">fa</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="k">begin</span><span class="w"></span>
-<span class="w">  </span><span class="n">r</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">xor</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">xor</span><span class="w"> </span><span class="n">ci</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">co</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">ci</span><span class="p">)</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">ci</span><span class="p">);</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="p">;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="k">architecture</span> <span class="nc">structural</span> <span class="k">of</span> <span class="nc">fa</span> <span class="k">is</span>
+<span class="k">begin</span>
+  <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">a</span> <span class="k">xor</span> <span class="n">b</span> <span class="k">xor</span> <span class="n">ci</span><span class="p">;</span>
+  <span class="n">co</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">a</span> <span class="k">and</span> <span class="n">b</span><span class="p">)</span> <span class="k">or</span> <span class="p">(</span><span class="n">a</span> <span class="k">and</span> <span class="n">ci</span><span class="p">)</span> <span class="k">or</span> <span class="p">(</span><span class="n">b</span> <span class="k">and</span> <span class="n">ci</span><span class="p">);</span>
+<span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
 <p>Um somador simples de <span class="math">\(n\)</span> bits tem a seguinte estrutura:</p>
 <p><img alt="Somador Simples com FFD" src="https://balbertini.github.io/images/vhdl/somador.png"></p>
 <p>Note que o primeiro componente é um <em>half-adder</em> e não possui entrada de <em>carry</em>, enquanto todos os demais possuem. Usando somente um <em>for-generate</em> este tipo de construção se torna complicada, inviabilizando sua utilização. Porém, com o uso do <em>if-generate</em>, podemos quebrar a regularidade do <em>for-generate</em> somente para alguns elementos selecionados, como na descrição do somador abaixo:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -399,47 +399,47 @@
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">entity</span><span class="w"> </span><span class="nc">somador</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">  </span><span class="k">generic</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">bits</span><span class="o">:</span><span class="w"> </span><span class="kt">natural</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">port</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w">  </span><span class="kt">bit_vector</span><span class="p">(</span><span class="n">bits</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">s</span><span class="o">:</span><span class="w">   </span><span class="k">out</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="n">bits</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">co</span><span class="o">:</span><span class="w">  </span><span class="k">out</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">entity</span><span class="p">;</span><span class="w"></span>
+<span class="normal">36</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">somador</span> <span class="k">is</span>
+  <span class="k">generic</span><span class="p">(</span>
+    <span class="n">bits</span><span class="o">:</span> <span class="kt">natural</span> <span class="o">:=</span> <span class="mi">8</span>
+  <span class="p">);</span>
+  <span class="k">port</span><span class="p">(</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">:</span> <span class="k">in</span>  <span class="kt">bit_vector</span><span class="p">(</span><span class="n">bits</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">s</span><span class="o">:</span>   <span class="k">out</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="n">bits</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">co</span><span class="o">:</span>  <span class="k">out</span> <span class="kt">bit</span>
+  <span class="p">);</span>
+<span class="k">end</span> <span class="k">entity</span><span class="p">;</span>
 
-<span class="k">architecture</span><span class="w"> </span><span class="nc">estrutural</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">somador</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">  </span><span class="k">component</span><span class="w"> </span><span class="nc">ha</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">    </span><span class="k">port</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w">  </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">co</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
-<span class="w">    </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">component</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">component</span><span class="w"> </span><span class="nc">fa</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">    </span><span class="k">port</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">ci</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w">  </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">co</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
-<span class="w">    </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">component</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">signal</span><span class="w"> </span><span class="n">cots</span><span class="o">:</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="n">bits</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="k">begin</span><span class="w"></span>
-<span class="w">  </span><span class="nc">fas</span><span class="o">:</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">bits</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">generate</span><span class="w"></span>
-<span class="w">    </span><span class="n">lsb</span><span class="o">:</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="k">generate</span><span class="w"></span>
-<span class="w">      </span><span class="n">hai</span><span class="o">:</span><span class="w"> </span><span class="n">ha</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">s</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="n">i</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">generate</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">msb</span><span class="o">:</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="w"> </span><span class="k">generate</span><span class="w"></span>
-<span class="w">      </span><span class="n">fai</span><span class="o">:</span><span class="w"> </span><span class="n">fa</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">s</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="n">i</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">generate</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">generate</span><span class="w"> </span><span class="nc">fas</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">co</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">cots</span><span class="p">(</span><span class="n">bits</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="p">;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="k">architecture</span> <span class="nc">estrutural</span> <span class="k">of</span> <span class="nc">somador</span> <span class="k">is</span>
+  <span class="k">component</span> <span class="nc">ha</span> <span class="k">is</span>
+    <span class="k">port</span> <span class="p">(</span>
+      <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
+      <span class="n">r</span><span class="p">,</span> <span class="n">co</span> <span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
+    <span class="p">);</span>
+  <span class="k">end</span> <span class="k">component</span><span class="p">;</span>
+  <span class="k">component</span> <span class="nc">fa</span> <span class="k">is</span>
+    <span class="k">port</span> <span class="p">(</span>
+      <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">ci</span> <span class="o">:</span> <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
+      <span class="n">r</span><span class="p">,</span> <span class="n">co</span> <span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
+    <span class="p">);</span>
+  <span class="k">end</span> <span class="k">component</span><span class="p">;</span>
+  <span class="k">signal</span> <span class="n">cots</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="n">bits</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+<span class="k">begin</span>
+  <span class="nc">fas</span><span class="o">:</span> <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">bits</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span> <span class="k">generate</span>
+    <span class="n">lsb</span><span class="o">:</span> <span class="k">if</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="k">generate</span>
+      <span class="n">hai</span><span class="o">:</span> <span class="n">ha</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">s</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+    <span class="k">end</span> <span class="k">generate</span><span class="p">;</span>
+    <span class="n">msb</span><span class="o">:</span> <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">generate</span>
+      <span class="n">fai</span><span class="o">:</span> <span class="n">fa</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">s</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+    <span class="k">end</span> <span class="k">generate</span><span class="p">;</span>
+  <span class="k">end</span> <span class="k">generate</span> <span class="nc">fas</span><span class="p">;</span>
+  <span class="n">co</span> <span class="o">&lt;=</span> <span class="n">cots</span><span class="p">(</span><span class="n">bits</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
 <p>Dentro do <em>for-generate</em> temos dois <em>if-generates</em>: um para o bit menos significativo do somador, que onde deve ser usado um <code>ha</code> (sem entrada de <em>carry</em>) e outro para os demais bits, onde deve ser usado um <code>fa</code> com os <em>carries</em> sendo ligados sequencialmente. Este tipo de construção chama-se <em>carry propagation</em> ou <em>ripple carry</em>.</p>
 <p>Da mesma forma que o anterior, para um somador de quatro bits, o sintetizador "desenrolará" o <em>for-generate</em> em (declaração dos componentes suprimida):</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -447,17 +447,17 @@
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">architecture</span><span class="w"> </span><span class="nc">estrutural</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">somador</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="w">  </span><span class="k">signal</span><span class="w"> </span><span class="n">cots</span><span class="o">:</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="n">bits</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="k">begin</span><span class="w"></span>
-<span class="w">  </span><span class="n">fai_3</span><span class="o">:</span><span class="w"> </span><span class="n">fa</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">b</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">s</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="n">fai_2</span><span class="o">:</span><span class="w"> </span><span class="n">fa</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">b</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">s</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="n">fai_1</span><span class="o">:</span><span class="w"> </span><span class="n">fa</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">s</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="n">hai_0</span><span class="o">:</span><span class="w"> </span><span class="n">ha</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">b</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w">        </span><span class="n">s</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="p">;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">estrutural</span> <span class="k">of</span> <span class="nc">somador</span> <span class="k">is</span>
+  <span class="p">...</span>
+  <span class="k">signal</span> <span class="n">cots</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="n">bits</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+<span class="k">begin</span>
+  <span class="n">fai_3</span><span class="o">:</span> <span class="n">fa</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">b</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">s</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+  <span class="n">fai_2</span><span class="o">:</span> <span class="n">fa</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">b</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">s</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+  <span class="n">fai_1</span><span class="o">:</span> <span class="n">fa</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">s</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+  <span class="n">hai_0</span><span class="o">:</span> <span class="n">ha</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">b</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>        <span class="n">s</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">cots</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
 <h1>Resumo</h1>
 <p>O <em>for-generate</em>, aliado ao <em>if-generate</em> é uma poderosa ferramenta para descrever hardware parametrizável em VHDL, pois não sabemos no momento da descrição qual o valor do parâmetro. É muito usado para estruturas regulares ou com pouca variação. É possível usar outros tipos de primitivas concorrentes dentro do <em>for-generate</em> que não sejam a instanciação de componentes, e é possível até mesmo aninhar <em>for-generates</em> para instanciar matrizes de componentes, por exemplo.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {

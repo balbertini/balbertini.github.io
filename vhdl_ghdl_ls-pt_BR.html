@@ -162,8 +162,8 @@
       
     <h1 id="vhdl_ghdl_ls">Configurando editores para o GHDL-LS</h1>
     <p>
-      Posted on seg 03 maio 2021 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-
+      Posted on Seg 03 Maio 2021 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+      &#8226; Last Modified Ter 04 Maio 2021
         &#8226; 2 min read
     </p>
   </header>
@@ -189,7 +189,7 @@ O VSCode vem com uma nova abordagem, a biblioteca rodando seu próprio processo 
 <h3><a href="https://neovim.io/">Neovim</a></h3>
 <p>O Neovim 0.5v já vem com um <a href="https://neovim.io/doc/user/lsp.html">cliente LSP integrado</a> que será usado nesse tutorial. Há outras opções como o <a href="https://github.com/neoclide/coc.nvim">coc.nvim</a> e <a href="https://github.com/neomake/neomake">neomake</a>.</p>
 <p>Tendo seu LSP já configurado basta cadastrar o <code>ghdl-ls</code> no seu <code>init.nvim</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -207,7 +207,7 @@ O VSCode vem com uma nova abordagem, a biblioteca rodando seu próprio processo 
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="n">lua</span> <span class="o">&lt;&lt;</span> <span class="n">EOF</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="n">lua</span> <span class="o">&lt;&lt;</span> <span class="n">EOF</span>
     <span class="kd">local</span> <span class="n">lspconfig</span> <span class="o">=</span> <span class="nb">require</span><span class="s1">&#39;lspconfig&#39;</span>
     <span class="kd">local</span> <span class="n">configs</span> <span class="o">=</span> <span class="nb">require</span><span class="s1">&#39;lspconfig/configs&#39;</span>
     <span class="kd">local</span> <span class="n">attach</span> <span class="o">=</span> <span class="nb">require</span><span class="s1">&#39;completion&#39;</span><span class="p">.</span><span class="n">on_attach</span>
@@ -226,8 +226,8 @@ O VSCode vem com uma nova abordagem, a biblioteca rodando seu próprio processo 
     <span class="n">lspconfig</span><span class="p">.</span><span class="n">ghdl</span><span class="p">.</span><span class="n">setup</span><span class="p">{}</span>
 
     <span class="n">EOF</span>
-</code></pre></div></td></tr></table></div>
-
+</code></pre></div>
+</td></tr></table>
 <p>Um exemplo de <code>nvim</code> configurado pode ser encontrado <a href="https://github.com/guissalustiano/dots/tree/97dde692399437ce2077eb4b7199483801efb202/nvim">aqui</a></p>
 <p><img alt="Editor com um código VHDL errado mostrando os erros" src="https://balbertini.github.io/images/vhdl/ghdl-ls_example.png"></p>
 <h2>Notas do professor</h2>

@@ -161,8 +161,8 @@
       
     <h1 id="vhdl_component">Componentes em VHDL</h1>
     <p>
-      Posted on qui 14 março 2019 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-
+      Posted on Qui 14 Março 2019 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+      &#8226; Last Modified Sex 18 Setembro 2020
         &#8226; 6 min read
     </p>
   </header>
@@ -174,103 +174,103 @@
 Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</code>) define um componente. No entanto, precisamos declarar e instanciar o componente, o que veremos neste post.</p>
 <p>Considere a figura ao lado, que representa uma ULA (Unidade Lógica e Aritmética) modelo 74181 (fonte: <em>datasheet</em> da Texas). Os números nos pinos representam o número do pino físico (e.g. a entrada <code>M</code> está no pino 8). Como convencionado, entradas de dados estão acima, saídas abaixo, entradas de controle a esquerda e saída de controle a direita. As entradas de dados são <code>A</code> e <code>B</code> de 4 bits e a saída de dados <code>F</code> também é de 4 bits. O <em>carry_in</em> (<span class="math">\(\overline{C_n}\)</span>) e o <em>carry_out</em> (<span class="math">\(\overline{C_{n+4}}\)</span>) são ambos ambos ativos baixo. A entrada <code>M</code> define se a operação é lógica ou aritmética e a entrada <code>S</code> (4 bits) define qual operação a ULA realizará. Há ainda a saída <span class="math">\(A=B\)</span> e as saídas para cascateamento <em>generate</em> (<span class="math">\(\overline{G}\)</span>) e <em>propagate</em> (<span class="math">\(\overline{P}\)</span>), ambas ativas baixo.</p>
 <p>A entidade para este componente é algo assim:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">entity</span><span class="w"> </span><span class="nc">alu181</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">  </span><span class="k">port</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">cn</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">f</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">cn4</span><span class="p">,</span><span class="w"> </span><span class="n">aeqb</span><span class="p">,</span><span class="w"> </span><span class="n">gn</span><span class="p">,</span><span class="w"> </span><span class="n">pn</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">entity</span><span class="p">;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">alu181</span> <span class="k">is</span>
+  <span class="k">port</span> <span class="p">(</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">cn</span><span class="p">,</span> <span class="n">m</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
+    <span class="n">f</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">cn4</span><span class="p">,</span> <span class="n">aeqb</span><span class="p">,</span> <span class="n">gn</span><span class="p">,</span> <span class="n">pn</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
+  <span class="p">);</span>
+<span class="k">end</span> <span class="k">entity</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
 <p>Para usar essa ULA como componente, há duas fases distintas: a declaração e a instância.</p>
 <h2>Declarando um componente</h2>
 <p>A declaração tem o seguinte formato:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">component</span><span class="w"> </span><span class="nc">nome_da_entidade</span><span class="w"> </span><span class="p">[</span><span class="k">is</span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="p">[</span><span class="k">generic</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">elementos_genericos</span><span class="w"> </span><span class="p">)]</span><span class="w"></span>
-<span class="w">  </span><span class="p">[</span><span class="k">port</span><span class="w"> </span><span class="p">(</span><span class="n">portas</span><span class="p">)]</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">component</span><span class="w"> </span><span class="err">[</span><span class="nc">nome_da_entidade</span><span class="err">]</span><span class="p">;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">component</span> <span class="nc">nome_da_entidade</span> <span class="p">[</span><span class="k">is</span><span class="p">]</span>
+  <span class="p">[</span><span class="k">generic</span> <span class="p">(</span> <span class="n">elementos_genericos</span> <span class="p">)]</span>
+  <span class="p">[</span><span class="k">port</span> <span class="p">(</span><span class="n">portas</span><span class="p">)]</span>
+<span class="k">end</span> <span class="k">component</span> <span class="err">[</span><span class="nc">nome_da_entidade</span><span class="err">]</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
 <p>A cláusula <code>is</code> é opcional, assim como o <code>nome_da_entidade</code> no final da declaração. O <code>generic</code> serve para declarar componentes parametrizáveis, que <a href="https://balbertini.github.io/vhdl_generic-pt_BR.html">está coberto em outro post</a>. Já o <code>port</code>, apesar de opcional, é o que declara as portas do componente disponíveis para a entidade que o utilizará como módulo. De modo geral, é esperado que as cláusulas <code>generic</code> e <code>port</code> <strong>sejam idênticas</strong> à declaração da entidade, então a ULA 181 do nosso exemplo deve ser declarada como componente assim:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">component</span><span class="w"> </span><span class="nc">alu181</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">  </span><span class="k">port</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">cn</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">f</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">cn4</span><span class="p">,</span><span class="w"> </span><span class="n">aeqb</span><span class="p">,</span><span class="w"> </span><span class="n">gn</span><span class="p">,</span><span class="w"> </span><span class="n">pn</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">component</span><span class="p">;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">component</span> <span class="nc">alu181</span> <span class="k">is</span>
+  <span class="k">port</span> <span class="p">(</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">cn</span><span class="p">,</span> <span class="n">m</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
+    <span class="n">f</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">cn4</span><span class="p">,</span> <span class="n">aeqb</span><span class="p">,</span> <span class="n">gn</span><span class="p">,</span> <span class="n">pn</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
+  <span class="p">);</span>
+<span class="k">end</span> <span class="k">component</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
 <h2>Instanciando um componente</h2>
 <p>Depois de declarado, ainda precisamos instanciar o componente.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">nome_da_instancia</span><span class="o">:</span><span class="w"></span>
-<span class="p">[</span><span class="k">component</span><span class="p">]</span><span class="w"> </span><span class="n">nome_do_componente</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
-<span class="p">[</span><span class="k">entity</span><span class="w"> </span><span class="nc">nome_da_entidade</span><span class="w"> </span><span class="p">[(</span><span class="n">nome_da_arquitetura</span><span class="p">)]]</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
-<span class="k">configuration</span><span class="w"> </span><span class="n">nome_da_configuração</span><span class="w"></span>
-<span class="w">    </span><span class="k">generic</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="p">(</span><span class="n">lista_de_associacao_de_elementos_genericos</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="p">(</span><span class="n">lista_de_associacao_de_portas</span><span class="p">);</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">nome_da_instancia</span><span class="o">:</span>
+<span class="p">[</span><span class="k">component</span><span class="p">]</span> <span class="n">nome_do_componente</span> <span class="o">|</span>
+<span class="p">[</span><span class="k">entity</span> <span class="nc">nome_da_entidade</span> <span class="p">[(</span><span class="n">nome_da_arquitetura</span><span class="p">)]]</span> <span class="o">|</span>
+<span class="k">configuration</span> <span class="n">nome_da_configuração</span>
+    <span class="k">generic</span> <span class="k">map</span> <span class="p">(</span><span class="n">lista_de_associacao_de_elementos_genericos</span><span class="p">)</span>
+    <span class="k">port</span> <span class="k">map</span> <span class="p">(</span><span class="n">lista_de_associacao_de_portas</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
 <p>Note que há três modos distintos de instanciar um componente, que são mutuamente exclusivos. O primeiro usamos o nome do componente (opcionalmente antecedido por <code>component</code>), no segundo usamos o nome da entidade e no terceiro usamos o nome da configuração (a configuração é um elemento primário do VHDL).</p>
 <p>Quando usamos a instanciação pelo <code>component</code>, instanciaremos exatamente o componente que declaramos. A escolha de qual arquitetura depende do sintetizador (normalmente é a última arquitetura descrita no arquivo).</p>
 <p>Na instanciação pela entidade, podemos escolher qual arquitetura usamos. A sintaxe comum é <code>work.nome_da_entidade(nome_da_arquitetura)</code>, mas pode-se omitir o <code>nome_da_arquitetura</code> (deixando a cargo do sintetizador escolher). A palavra reservada <code>work</code> refere-se à biblioteca padrão, o local onde ficam todos os componentes do seu projeto que não pertencem a uma biblioteca (não estão em um <code>package</code>). Neste caso de instanciação podemos omitir a declaração do componente se o nome da entidade for único. Caso seja necessário, você pode incluir a biblioteca <code>work</code> no preâmbulo o arquivo VHDL usando <code>use work.all;</code> ou selecionando explicitamente o componente que quer usar: <code>use work.nome_da_entidade;</code></p>
 <p>A terceira maneira é declarar explicitamente uma configuração (<code>configuration</code>), mas não cobrirei neste post.</p>
 <p>Na prática, acabamos quase sempre por usar o primeiro método por ser mais simples e compatível com todas as versões de VHDL:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">nome_da_instancia</span><span class="o">:</span><span class="w"> </span><span class="n">nome_do_componente</span><span class="w"></span>
-<span class="w">    </span><span class="k">generic</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="p">(</span><span class="n">lista_de_associacao_de_elementos_genericos</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="p">(</span><span class="n">lista_de_associacao_de_portas</span><span class="p">);</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">nome_da_instancia</span><span class="o">:</span> <span class="n">nome_do_componente</span>
+    <span class="k">generic</span> <span class="k">map</span> <span class="p">(</span><span class="n">lista_de_associacao_de_elementos_genericos</span><span class="p">)</span>
+    <span class="k">port</span> <span class="k">map</span> <span class="p">(</span><span class="n">lista_de_associacao_de_portas</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
 <p>Agora observe as cláusulas <code>map</code>. Elas mapeiam os sinais do seu componente para a instância e ambos seguem o mesmo padrão usado para declaração de portas. O <code>generic map</code> <a href="https://balbertini.github.io/vhdl_generic-pt_BR.html">está coberto em outro post</a>, então vamos focar na instância simples da nossa ULA.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">minha_alu</span><span class="o">:</span><span class="w"> </span><span class="n">alu181</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">Op</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">,</span><span class="w"> </span><span class="n">co4</span><span class="p">,</span><span class="w"> </span><span class="n">aeqb0</span><span class="p">,</span><span class="w"> </span><span class="k">open</span><span class="p">,</span><span class="w"> </span><span class="k">open</span><span class="p">);</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">minha_alu</span><span class="o">:</span> <span class="n">alu181</span> <span class="k">port</span> <span class="k">map</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">Op</span><span class="p">,</span> <span class="sc">&#39;0&#39;</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">co4</span><span class="p">,</span> <span class="n">aeqb0</span><span class="p">,</span> <span class="k">open</span><span class="p">,</span> <span class="k">open</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
 <p>No trecho acima, declaramos uma instância do componente <code>alu181</code> chamada <code>minha_alu</code>. Note que a ordem dos sinais é a mesma usada na declaração do componente. Isto significa que o sinal <code>A</code>, que deve existir na arquitetura que está usando este componente, será ligado ao sinal <code>a</code> desta instância de ULA. Chamamos este tipo de associação de <strong>associação posicional</strong> pois a ordem do sinal importa. Repare também que não vamos usar o _carry_in__ (<code>cn</code>), portanto fixamos esta entrada em <code>0</code>. Também não usaremos as saídas <code>gn</code> e <code>pn</code>, então não conectaremos a lugar algum, o que pode ser feito em VHDL usando a palavra reservada <code>open</code>.</p>
 <p>Uma outra forma de fazer a associação é usando <strong>associação nomeada</strong>. Neste tipo de associação, dizemos explicitamente qual sinal é ligado em qual porta da instância do componente, então a ordem em que fazemos o <code>port map</code> não importa:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">minha_alu</span><span class="o">:</span><span class="w"> </span><span class="n">alu181</span><span class="w"></span>
-<span class="w">  </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">a</span><span class="o">=&gt;</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="o">=&gt;</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="o">=&gt;</span><span class="n">F</span><span class="p">,</span><span class="w"></span>
-<span class="w">             </span><span class="n">m</span><span class="o">=&gt;</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="o">=&gt;</span><span class="n">Op</span><span class="p">,</span><span class="w"></span>
-<span class="w">             </span><span class="n">gn</span><span class="o">=&gt;</span><span class="k">open</span><span class="p">,</span><span class="w"> </span><span class="n">pn</span><span class="o">=&gt;</span><span class="k">open</span><span class="p">,</span><span class="w"> </span><span class="n">cn</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">cn4</span><span class="o">=&gt;</span><span class="n">co4</span><span class="p">,</span><span class="w"></span>
-<span class="w">             </span><span class="n">aeqb</span><span class="o">=&gt;</span><span class="n">aeqb0</span><span class="w"></span>
-<span class="w">           </span><span class="p">);</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">minha_alu</span><span class="o">:</span> <span class="n">alu181</span>
+  <span class="k">port</span> <span class="k">map</span> <span class="p">(</span> <span class="n">a</span><span class="o">=&gt;</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="o">=&gt;</span><span class="n">B</span><span class="p">,</span> <span class="n">f</span><span class="o">=&gt;</span><span class="n">F</span><span class="p">,</span>
+             <span class="n">m</span><span class="o">=&gt;</span><span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="o">=&gt;</span><span class="n">Op</span><span class="p">,</span>
+             <span class="n">gn</span><span class="o">=&gt;</span><span class="k">open</span><span class="p">,</span> <span class="n">pn</span><span class="o">=&gt;</span><span class="k">open</span><span class="p">,</span> <span class="n">cn</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">,</span> <span class="n">cn4</span><span class="o">=&gt;</span><span class="n">co4</span><span class="p">,</span>
+             <span class="n">aeqb</span><span class="o">=&gt;</span><span class="n">aeqb0</span>
+           <span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
 <p>A sintaxe é sempre <code>sinal_do_componente =&gt; sinal_da_arquitetura_pai</code>.</p>
 <h3>Exemplo</h3>
 <p>Neste exemplo, usamos duas ULAs 181 para formar uma ULA de 8 bits, sem <em>carry_in</em>, <em>carry_out</em> e sem saídas de cascateamento, mas mantendo a saída de igualdade. Usamos os dois tipos de associação para exemplificar. Lembre-se que as portas de uma entidade são sinais válidos dentro da sua arquitetura.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -306,45 +306,45 @@ Usar componentes é muito simples em VHDL pois toda a entidade (<code>entity</co
 <span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">entity</span><span class="w"> </span><span class="nc">ula2x</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">  </span><span class="k">port</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">7</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">Op</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">m</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">f</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">7</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">aeqb</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="k">entity</span><span class="p">;</span><span class="w"></span>
+<span class="normal">37</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">ula2x</span> <span class="k">is</span>
+  <span class="k">port</span> <span class="p">(</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">7</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">Op</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">m</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
+    <span class="n">f</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">7</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">aeqb</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
+  <span class="p">);</span>
+<span class="k">end</span> <span class="k">entity</span><span class="p">;</span>
 
-<span class="k">architecture</span><span class="w"> </span><span class="nc">arch</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">ula2x</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">  </span><span class="k">component</span><span class="w"> </span><span class="nc">alu181</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
-<span class="w">    </span><span class="k">port</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="n">cn</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="n">f</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="n">cn4</span><span class="p">,</span><span class="w"> </span><span class="n">aeqb</span><span class="p">,</span><span class="w"> </span><span class="n">gn</span><span class="p">,</span><span class="w"> </span><span class="n">pn</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
-<span class="w">    </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">component</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">signal</span><span class="w"> </span><span class="n">co4</span><span class="o">:</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">signal</span><span class="w"> </span><span class="n">aeqb_it</span><span class="o">:</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="k">begin</span><span class="w"></span>
+<span class="k">architecture</span> <span class="nc">arch</span> <span class="k">of</span> <span class="nc">ula2x</span> <span class="k">is</span>
+  <span class="k">component</span> <span class="nc">alu181</span> <span class="k">is</span>
+    <span class="k">port</span> <span class="p">(</span>
+      <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="n">cn</span><span class="p">,</span> <span class="n">m</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
+      <span class="n">f</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="n">cn4</span><span class="p">,</span> <span class="n">aeqb</span><span class="p">,</span> <span class="n">gn</span><span class="p">,</span> <span class="n">pn</span><span class="o">:</span> <span class="k">out</span> <span class="kt">bit</span>
+    <span class="p">);</span>
+  <span class="k">end</span> <span class="k">component</span><span class="p">;</span>
+  <span class="k">signal</span> <span class="n">co4</span><span class="o">:</span> <span class="kt">bit</span><span class="p">;</span>
+  <span class="k">signal</span> <span class="n">aeqb_it</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
+<span class="k">begin</span>
 
-<span class="w">  </span><span class="n">alu1</span><span class="o">:</span><span class="w"> </span><span class="n">alu181</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">a</span><span class="p">(</span><span class="mi">7</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">7</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="n">Op</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="sc">&#39;0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="mi">7</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="n">co4</span><span class="p">,</span><span class="w"> </span><span class="n">aeqb_it</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="k">open</span><span class="p">,</span><span class="w"> </span><span class="k">open</span><span class="p">);</span><span class="w"></span>
+  <span class="n">alu1</span><span class="o">:</span> <span class="n">alu181</span> <span class="k">port</span> <span class="k">map</span> <span class="p">(</span>
+    <span class="n">a</span><span class="p">(</span><span class="mi">7</span> <span class="k">downto</span> <span class="mi">4</span><span class="p">),</span> <span class="n">b</span><span class="p">(</span><span class="mi">7</span> <span class="k">downto</span> <span class="mi">4</span><span class="p">),</span> <span class="n">Op</span><span class="p">,</span>
+    <span class="sc">&#39;0&#39;</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mi">7</span> <span class="k">downto</span> <span class="mi">4</span><span class="p">),</span> <span class="n">co4</span><span class="p">,</span> <span class="n">aeqb_it</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="k">open</span><span class="p">,</span> <span class="k">open</span><span class="p">);</span>
 
-<span class="w">  </span><span class="n">alu0</span><span class="o">:</span><span class="w"> </span><span class="n">alu181</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="n">minha_alu</span><span class="o">:</span><span class="w"> </span><span class="n">alu181</span><span class="w"></span>
-<span class="w">    </span><span class="n">a</span><span class="o">=&gt;</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">b</span><span class="o">=&gt;</span><span class="n">b</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">f</span><span class="o">=&gt;</span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">m</span><span class="o">=&gt;</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="o">=&gt;</span><span class="n">Op</span><span class="p">,</span><span class="w"> </span><span class="n">gn</span><span class="o">=&gt;</span><span class="k">open</span><span class="p">,</span><span class="w"> </span><span class="n">pn</span><span class="o">=&gt;</span><span class="k">open</span><span class="p">,</span><span class="w"> </span><span class="n">cn</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">cn4</span><span class="o">=&gt;</span><span class="n">co4</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">aeqb</span><span class="o">=&gt;</span><span class="n">aeqb_it</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="p">);</span><span class="w"></span>
+  <span class="n">alu0</span><span class="o">:</span> <span class="n">alu181</span> <span class="k">port</span> <span class="k">map</span> <span class="p">(</span>
+  <span class="n">minha_alu</span><span class="o">:</span> <span class="n">alu181</span>
+    <span class="n">a</span><span class="o">=&gt;</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">),</span> <span class="n">b</span><span class="o">=&gt;</span><span class="n">b</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">),</span> <span class="n">f</span><span class="o">=&gt;</span><span class="n">f</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">m</span><span class="o">=&gt;</span><span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="o">=&gt;</span><span class="n">Op</span><span class="p">,</span> <span class="n">gn</span><span class="o">=&gt;</span><span class="k">open</span><span class="p">,</span> <span class="n">pn</span><span class="o">=&gt;</span><span class="k">open</span><span class="p">,</span> <span class="n">cn</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">,</span> <span class="n">cn4</span><span class="o">=&gt;</span><span class="n">co4</span><span class="p">,</span>
+    <span class="n">aeqb</span><span class="o">=&gt;</span><span class="n">aeqb_it</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="p">);</span>
 
-<span class="w">  </span><span class="n">aeqb</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">aeqb_it</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">aeqb_it</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+  <span class="n">aeqb</span> <span class="o">&lt;=</span> <span class="n">aeqb_it</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">and</span> <span class="n">aeqb_it</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 
-<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="p">;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-
+<span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
 <h2>Qual associação utilizar?</h2>
 <p>A associação nomeada torna o código mais robusto pois se algo mudar de lugar na entidade, os sinais continuam a mapear a instância corretamente. Também facilita a compreensão da ligação pois, se usar nomes significativos para seus sinais, o projetista não precisará consultar a declaração do componente a todo momento para entender a ligação na instância.  </p>
 <p>Já a associação posicional é mais enxuta e aumenta a legibilidade do código. No entanto para entender a ligação do seu componente você precisa consultar a declaração.</p>
