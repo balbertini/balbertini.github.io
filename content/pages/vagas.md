@@ -13,8 +13,17 @@ Esta página foi criada com o intuito de divulgar vagas na área de *hardware*, 
 O Prof. Marcos Simplício mantém [uma página](https://sites.usp.br/cybersec/) dedicada para vagas em segurança digital que também pode conter vagas relacionadas à *hardware*.
 
 <!-- Quando for adicionar alguma vaga, por favor siga o modelo copiando-o de uma vaga existente e atualize a data (inclusive a de modificação no cabeçalho do arquivo). -->
+### (14/jun/2022) *Engenheiro de Desenvolvimento de FPGA*  
+Desenvolvimento de tecnologias em equipamentos aeronáuticos visando potencial aplicação em futuros produtos da aviação comercial, executiva e/ou defesa.    
 
-### (19/mai/2022) *Analista de Software Embarcado* 
+* Empresa: [Embraer](https://embraer.com/)  
+* Local: Híbrido - São José dos Campos/SP  
+* Nível: Graduação em Eng. Elétrica, Computação ou correlatas  
+* Salário: não divulgado  
+* Aplicação: [site](https://embraer.gupy.io/job/eyJqb2JJZCI6MjA5NDY4NSwic291cmNlIjoiZ3VweV9wdWJsaWNfcGFnZSJ9?jobBoardSource=gupy_public_page)  
+
+
+### (19/mai/2022) *Analista de Software Embarcado*
 Atuar por todo o ciclo de vida do software embarcado para o quadro de bordo automotivo: desenvolvimento, validação, integração, release e manutenção. Formação Superior ou em andamento nas áreas de Engenharia Eletrônica/ Elétrica ou Tecnologia. Inglês nível avançado. Experiência em Desenvolvimento de Software Embarcado e Linguagem C. Vivência na indústria automotiva.  
 
 * Empresa: [Segula](https://brasil.segulatechnologies.com/en/)  
@@ -23,7 +32,7 @@ Atuar por todo o ciclo de vida do software embarcado para o quadro de bordo auto
 * Salário: não divulgado  
 * Aplicação: [EMail](marisa.pereira@segula.com.br)  
 
-### (12/mai/2022) *Application Engineer* 
+### (12/mai/2022) *Application Engineer*
 A empresa está contratando várias vagas, inclusive engenharia. Exemplos na computação: Engenheiro de NPI, Engenheiro de Smartphones, Engenheiro de Redes.
 Veja [essa página](https://multilaserindustrial.pandape.com.br/) e entre em contato com a Hellen Durães (email abaixo).  
 
@@ -56,7 +65,7 @@ Buscamos um Desenvolvedor de Software Embarcado para atuar em regime Home Office
 * Aplicação: [Site](https://www.padtec.com.br/trabalhe-conosco/)  
 
 ### (1/abr/2022) Analista de SW Embarcado
-Da chamada original: assegurar o desenvolvimento (linguagem C) do aplicativo SW embarcado nos módulos eletrônicos automotivos para atingir as metas definidas para cada lançamento de software; garantir que o padrão de qualidade de SW seja aplicado de acordo com as diretivas existentes (MISRA, Checklist, revi~sao de código e teste de SW); Eventualmente das suporte a outros centros de P&D e clientes. 
+Da chamada original: assegurar o desenvolvimento (linguagem C) do aplicativo SW embarcado nos módulos eletrônicos automotivos para atingir as metas definidas para cada lançamento de software; garantir que o padrão de qualidade de SW seja aplicado de acordo com as diretivas existentes (MISRA, Checklist, revi~sao de código e teste de SW); Eventualmente das suporte a outros centros de P&D e clientes.
 
 * Empresa: [MSX International](https://www.msxi.com/en/)  
 * Local: Hortolândia/SP  
