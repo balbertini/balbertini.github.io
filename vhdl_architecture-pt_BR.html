@@ -161,8 +161,8 @@
       
     <h1 id="vhdl_architecture">Arquitetura</h1>
     <p>
-      Posted on Qui 04 Outubro 2018 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-      &#8226; Last Modified Qua 23 Setembro 2020
+      Posted on qui 04 outubro 2018 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+
         &#8226; 5 min read
     </p>
   </header>
@@ -173,45 +173,45 @@
 <p>Assim como a entidade é a <em>cara</em> do módulo que está descrevendo, a arquitetura, declarada pela palavra reservada <code>architecture</code>, é o <em>corpo</em> da sua descrição. Na arquitetura é onde descrevemos a funcionalidade do componente, ou seja, onde as coisas realmente acontecem. No diagrama esquemático, seria o equivalente de mostrar o que tem dentro do símbolo do seu componente.</p>
 <p>Faz sentido descrever um componente com entradas e saídas mas sem nada dentro? Claro que não, por isso toda entidade deve ter ao menos uma arquitetura pois, sem ela, o componente não tem função. É possível que uma entidade tenha varias arquiteturas, cada uma realizando a tarefa que seu componente se propõe a fazer de uma maneira diferente. Contudo, uma arquitetura só pode pertencer a uma entidade. De fato, todas as arquiteturas pertencentes a uma entidade devem estar no mesmo arquivo que ela, depois da declaração da entidade.</p>
 <p>A sintaxe de uma arquitetura em VHDL é:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">nome_da_arquitetura</span> <span class="k">of</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
-    <span class="n">declaracoes</span>
-<span class="k">begin</span>
-    <span class="n">declaracoes_combinatorias</span>
-<span class="k">end</span> <span class="nc">nome_da_arquitetura</span><span class="p">;</span>
-</code></pre></div>
-</td></tr></table>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">architecture</span><span class="w"> </span><span class="nc">nome_da_arquitetura</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">nome_da_entidade</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">    </span><span class="n">declaracoes</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
+<span class="w">    </span><span class="n">declaracoes_combinatorias</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="nc">nome_da_arquitetura</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+
 <p>Onde <code>declaracoes</code> é a lista de elementos que serão utilizados na sua arquitetura, como sinais e componentes. As <code>declaracoes_combinatorias</code> são todas as declarações concorrentes desta descrição, como uma atribuição (condicional ou não), uma instância de componente ou um <code>process</code>. O <code>nome_da_arquitetura</code> pode ser qualquer nome válido em VHDL, e o <code>nome_da_entidade</code> deve ser o nome da entidade que esta arquitetura descreve.</p>
 <p>Como uma entidade pode ter mais de uma arquitetura, é comum termos um arquivo VHDL com várias arquiteturas pertencentes a mesma entidade. Isso é útil pois podemos ter o mesmo componente descrito de maneiras diferentes (e.g. otimizado para velocidade, consumo de energia ou área, descrito especificamente para uma tecnologia (ASIC, FPGA, etc.), ou até mesmo com estilos de descrição diferentes). Não há uma convenção, mas se não for utilizado nenhum mecanismo explícito para escolher uma das arquiteturas disponíveis, a maioria dos softwares de síntese utiliza a última arquitetura encontrada no arquivo.</p>
 <h2>Escolha explícita da arquitetura</h2>
 <p>A entidade, exceto se for uma entidade <em>toplevel</em> (entidade máxima, que representa o circuito como um todo), sempre será usada como componente por uma arquitetura pertencente a outra entidade. Na prática, isso significa que há uma entidade raiz, que representa o circuito todo e possui ao menos uma arquitetura. Nesta  arquitetura, outras entidades filhas podem usadas como componentes para formar o circuito. Cada entidade filha usada pode usar outras como componente e assim por diante, criando uma árvore.</p>
 <p>Considerando que o componente já foi declarado corretamente, há duas possibilidades de instância. Sem escolher qual arquitetura, a instância segue a seguinte sintaxe:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">nome_da_instancia</span><span class="o">:</span>
-  <span class="n">nome_da_entidade</span><span class="p">(</span><span class="n">nome_da_arquitetura</span><span class="p">)</span>
-  <span class="k">generic</span> <span class="k">map</span> <span class="p">(</span><span class="n">atribuicao_de_parametros</span><span class="p">)</span>
-  <span class="k">port</span> <span class="k">map</span> <span class="p">(</span><span class="n">atribuicao_de_portas</span><span class="p">);</span>
-</code></pre></div>
-</td></tr></table>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">nome_da_instancia</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">nome_da_entidade</span><span class="p">(</span><span class="n">nome_da_arquitetura</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">generic</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="p">(</span><span class="n">atribuicao_de_parametros</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="p">(</span><span class="n">atribuicao_de_portas</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+
 <p>Isto fará com que o sintetizador escolha a última arquitetura descrita (ou a que for configurada no sintetizador). Contudo, esta sintaxe existe pois, na maioria das vezes, as entidades só possuem uma arquitetura. Você pode fazer uma escolha explícita da arquitetura, prática recomendada caso a entidade possua mais de uma. Para isso, basta modificar a declaração da instância para a sintaxe completa, como abaixo:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">nome_da_intancia</span><span class="o">:</span>
-  <span class="k">entity</span> <span class="nc">work</span><span class="p">.</span><span class="n">nome_da_entidade</span><span class="p">(</span><span class="n">nome_da_arquitetura</span><span class="p">)</span>
-  <span class="k">generic</span> <span class="k">map</span> <span class="p">(</span><span class="n">atribuicao_de_parametros</span><span class="p">)</span>
-  <span class="k">port</span> <span class="k">map</span> <span class="p">(</span><span class="n">atribuicao_de_portas</span><span class="p">);</span>
-</code></pre></div>
-</td></tr></table>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">nome_da_intancia</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="k">entity</span><span class="w"> </span><span class="nc">work</span><span class="p">.</span><span class="n">nome_da_entidade</span><span class="p">(</span><span class="n">nome_da_arquitetura</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">generic</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="p">(</span><span class="n">atribuicao_de_parametros</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="p">(</span><span class="n">atribuicao_de_portas</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+
 <p>A palavra reservada <code>work</code> faz referência ao pacote de trabalho local, onde se encontram todas as entidades que foram desenvolvidas por você e não foram colocadas em um pacote. Caso você tenha colocado sua entidade em um pacote ou esteja usando uma entidade que você não fez e que está em um pacote, deve substituir <code>work</code> pelo pacote onde a entidade se encontra. Algumas ferramentas de síntese exigem que você declare a utilização da bilbioteca <code>work</code> explicitamente colocando <code>use work.nome_da_entidade</code> ou <code>use work.all</code> no preâmbulo do seu arquivo.</p>
 <h3>Exemplo</h3>
 <p><img src='https://balbertini.github.io/images/vhdl/mux2to1_arquitetura.png' width="39%" align="right" style="padding-left:5%" /></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -228,30 +228,30 @@
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">mux2to1</span> <span class="k">is</span>
-    <span class="k">port</span><span class="p">(</span>
-        <span class="n">s</span><span class="o">:</span>    <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
-        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">:</span> <span class="k">in</span>    <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-        <span class="n">o</span><span class="o">:</span>    <span class="k">out</span>   <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="p">);</span>
-<span class="k">end</span> <span class="nc">mux2to1</span><span class="p">;</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">entity</span><span class="w"> </span><span class="nc">mux2to1</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">    </span><span class="k">port</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">s</span><span class="o">:</span><span class="w">    </span><span class="k">in</span><span class="w">  </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w">    </span><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">o</span><span class="o">:</span><span class="w">    </span><span class="k">out</span><span class="w">   </span><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="nc">mux2to1</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">architecture</span> <span class="nc">whenelse</span> <span class="k">of</span> <span class="nc">mux2to1</span> <span class="k">is</span>
-<span class="k">begin</span>
-    <span class="n">o</span> <span class="o">&lt;=</span> <span class="n">b</span> <span class="k">when</span> <span class="n">s</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">else</span> <span class="n">a</span><span class="p">;</span>
-<span class="k">end</span> <span class="nc">whenelse</span><span class="p">;</span>
+<span class="k">architecture</span><span class="w"> </span><span class="nc">whenelse</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">mux2to1</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
+<span class="w">    </span><span class="n">o</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">s</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="nc">whenelse</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">architecture</span> <span class="nc">struct</span> <span class="k">of</span> <span class="nc">mux2to1</span> <span class="k">is</span>
-<span class="k">begin</span>
-    <span class="n">o</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">and</span> <span class="k">not</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="k">or</span> <span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">and</span> <span class="n">s</span><span class="p">);</span>
-    <span class="n">o</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">and</span> <span class="k">not</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="k">or</span> <span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">and</span> <span class="n">s</span><span class="p">);</span>
-<span class="k">end</span> <span class="nc">struct</span><span class="p">;</span>
-</code></pre></div>
-</td></tr></table>
+<span class="k">architecture</span><span class="w"> </span><span class="nc">struct</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">mux2to1</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
+<span class="w">    </span><span class="n">o</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">not</span><span class="p">(</span><span class="n">s</span><span class="p">))</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">o</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">not</span><span class="p">(</span><span class="n">s</span><span class="p">))</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="nc">struct</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+
 <p>Acima, vemos um componente com duas arquiteturas, representadas tanto na descrição VHDL quanto na representação gráfica. Note que o componente possui uma entidade externa camada <code>mux2to1</code>, que define as interfaces de entrada e saída. Por dentro, tem duas arquiteturas, que definem o comportamento do componente de duas maneiras distintas. Por padrão, se não especificarmos explicitamente, o software de síntese irá considerar a última arquitetura descrita como sendo a que ele deve utilizar, por isso ligamos as interfaces do desenho na arquitetura padrão.</p>
 <p>A arquitetura padrão nesse caso é a última descrita, chamada <code>struct</code>, e descreve estruturalmente o multiplexador usando portas lógicas. Note que o nome <code>struct</code> não é uma palavra reservada e sim um identificador válido em VHDL, portanto poderia ser qualquer outro. É recomendado que o nome da arquitetura reflita o que foi feito, nesse caso uma descrição estrutural. Podemos escolher a outra arquitetura se desejarmos, que é chamada de <code>whenelse</code>. Note que ambas fazem a mesma coisa, mas de maneiras diferentes.</p>
 <p>No exemplo abaixo, temos a descrição de uma arquitetura pertencente a uma <code>entidade_mae</code> que utiliza o multiplexador como componente três vezes. Na instância <code>mux1</code> (linha 12), a arquitetura é deixada a escolha do sintetizador, portanto será a arquitetura <code>struct</code>. Na instância <code>mux2</code> (linha 13), a arquitetura utilizada ainda é a struct, mas dessa vez instruímos explicitamente o sintetizador a utilizá-la. Por último, na instância <code>mux3</code> (linha 14) o projetista escolheu explicitamente a arquitetura <code>whenelse</code>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -265,23 +265,25 @@
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">architecture</span> <span class="nc">muxes</span> <span class="k">of</span> <span class="nc">entidade_mae</span> <span class="k">is</span>
-  <span class="k">component</span> <span class="nc">mux2to1</span> <span class="k">is</span>
-    <span class="k">port</span><span class="p">(</span>
-        <span class="n">s</span><span class="o">:</span>    <span class="k">in</span>  <span class="kt">bit</span><span class="p">;</span>
-        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">:</span> <span class="k">in</span>    <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-        <span class="n">o</span><span class="o">:</span>    <span class="k">out</span>   <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="p">);</span>
-  <span class="k">end</span> <span class="k">component</span><span class="p">;</span>
-  <span class="k">signal</span> <span class="n">s</span><span class="p">,</span><span class="n">o1</span><span class="p">,</span><span class="n">o2</span><span class="p">,</span><span class="n">o3</span><span class="o">:</span> <span class="kt">bit</span><span class="p">;</span>
-  <span class="k">signal</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-<span class="k">begin</span>
-  <span class="n">mux1</span><span class="o">:</span> <span class="n">mux2to1</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">o1</span><span class="p">);</span>
-  <span class="n">mux2</span><span class="o">:</span> <span class="k">entity</span> <span class="nc">work</span><span class="p">.</span><span class="n">mux2to1</span><span class="p">(</span><span class="n">struct</span><span class="p">)</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">o2</span><span class="p">);</span>
-  <span class="n">mux3</span><span class="o">:</span> <span class="k">entity</span> <span class="nc">work</span><span class="p">.</span><span class="n">mux2to1</span><span class="p">(</span><span class="n">whenelse</span><span class="p">)</span> <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">o3</span><span class="p">);</span>
-<span class="k">end</span> <span class="nc">muxes</span><span class="p">;</span>
-</code></pre></div>
-</td></tr></table>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">#!vhdl</span><span class="w"></span>
+<span class="n">architecture</span><span class="w"> </span><span class="n">muxes</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">entidade_mae</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">  </span><span class="n">component</span><span class="w"> </span><span class="n">mux2to1</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">    </span><span class="n">port</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">s</span><span class="p">:</span><span class="w">    </span><span class="ow">in</span><span class="w">  </span><span class="n">bit</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">:</span><span class="w"> </span><span class="ow">in</span><span class="w">    </span><span class="n">bit_vector</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="n">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">o</span><span class="p">:</span><span class="w">    </span><span class="n">out</span><span class="w">   </span><span class="n">bit_vector</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="n">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">end</span><span class="w"> </span><span class="n">component</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">signal</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="n">o1</span><span class="p">,</span><span class="n">o2</span><span class="p">,</span><span class="n">o3</span><span class="p">:</span><span class="w"> </span><span class="n">bit</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">signal</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">:</span><span class="w"> </span><span class="n">bit_vector</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="n">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="n">begin</span><span class="w"></span>
+<span class="w">  </span><span class="n">mux1</span><span class="p">:</span><span class="w"> </span><span class="n">mux2to1</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">o1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">mux2</span><span class="p">:</span><span class="w"> </span><span class="n">entity</span><span class="w"> </span><span class="n">work</span><span class="o">.</span><span class="n">mux2to1</span><span class="p">(</span><span class="n">struct</span><span class="p">)</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">o2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">mux3</span><span class="p">:</span><span class="w"> </span><span class="n">entity</span><span class="w"> </span><span class="n">work</span><span class="o">.</span><span class="n">mux2to1</span><span class="p">(</span><span class="n">whenelse</span><span class="p">)</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">o3</span><span class="p">);</span><span class="w"></span>
+<span class="n">end</span><span class="w"> </span><span class="n">muxes</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+
 <p>Lembre-se que esta é a descrição de um hardware, portanto as três instâncias são três circuitos <strong>diferentes</strong>, cada um com seu próprio arranjo de portas lógicas. A diferença é que o <code>mux1</code> e o <code>mux2</code> são idênticos, ou seja, se você observar o circuito gerado, são duas cópias do mesmo circuito. O <code>mux3</code>, apesar de ter mesma funcionalidade, é diferente. Se você sintetizar o circuito acima para um circuito real em silício, poderá ver em um microscópio duas áreas idênticas e uma diferente, todas recebendo as mesmas entradas e cada uma com sua própria saída. <strong>Nota:</strong> este parágrafo é uma simplificação didática, se tiver conhecimento de síntese de ASICs e quiser saber mais detalhes do que acontece durante a síntese, me escreva.</p>
 <p>Quando a entidade possui diversas arquiteturas, se uma determinada arquitetura não for escolhida por nenhuma instância, o sintetizador não a considerará. Isso significa que não será gerado nenhum circuito para aquela arquitetura, portanto ter várias arquiteturas não significa que o circuito gerado irá gastar mais energia ou ocupar mais área, pois só as arquiteturas utilizadas serão de fato sintetizadas.</p>
   </div>

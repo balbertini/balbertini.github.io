@@ -161,8 +161,8 @@
       
     <h1 id="vhdl_datatypes">Tipos de Dados Básicos em VHDL</h1>
     <p>
-      Posted on Sáb 15 Setembro 2018 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-      &#8226; Last Modified Seg 03 Maio 2021
+      Posted on sáb 15 setembro 2018 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+
         &#8226; 9 min read
     </p>
   </header>
@@ -243,9 +243,9 @@
 </tbody>
 </table>
 <p>A especificação da linguagem demanda que no mínimo os números da tabela sejam aceitos, mas não limita o número de bits do inteiro. Grande parte das ferramentas implementam o inteiro como um mapeamento direto para o inteiro de 32 bits, presente na maioria das plataformas. A forma de interpretação também não é definida, mas a maioria das ferramentas interpreta como uma representação em complemento de dois. Os tipos <code>natural</code> e <code>positive</code> são apenas limitações nos valores que um objeto deste tipo poderá assumir. É possível declarar inteiros com uma limitação personalizada:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">signal</span> <span class="n">meusinal</span> <span class="o">:</span> <span class="kt">integer</span> <span class="k">range</span> <span class="o">-</span><span class="mi">8</span> <span class="k">to</span> <span class="mi">7</span><span class="p">;</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">signal</span><span class="w"> </span><span class="n">meusinal</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="o">-</span><span class="mi">8</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+
 <p>O trecho acima declara o <code>meusinal</code> como um inteiro de 4 bits. Contudo, valores maiores que a implementação da ferramenta de síntese não são possíveis, portanto se você precisar de um inteiro maior que 32 bits, verifique se sua ferramenta suporta inteiros grandes ou utilize vetores. A utilização da limitação do inteiro (com <code>range</code> ou usando os subtipos <code>natural</code> e <code>positive</code>) ajuda na detecção de erros pois, se em algum momento da simulação for feita a tentativa de atribuir um valor fora da faixa permitida, o simulador irá emitir uma mensagem de erro. Além disso, usar a limitação explícita diminui o número de bits utilizados para a representação, o que economizará portas lógicas no seu circuito. Pense assim: por que você precisa de um somador de 32 bits se seus inteiros só vão assumir valores de -16 a 15?</p>
 <p>Os tipos <code>bit</code> e <code>character</code> também possuem suas versões em vetores:</p>
 <table>
@@ -300,18 +300,18 @@
 </table>
 <p>O tipo <code>severity_level</code> é usado em <em>testbenchs</em> para informar a gravidade do problema encontrado. O tipo <code>time</code> é usado para descrever a temporização do circuito, tanto em descrições temporizadas quanto em <em>testbenchs</em>. Os valores de tempo são acompanhados dos multiplicadores que indicam a escala de tempo: <code>fs</code> (fentosegundos), <code>ps</code> (picosegungos), <code>ns</code> (nanosegundos), <code>us</code> (microsegundos), <code>ms</code> (milisegundos), <code>sec</code> (segundos), <code>min</code> (minutos) e <code>hr</code> (horas).</p>
 <p>No exemplo abaixo, a mensagem "Teste" será impressa na tela sem parar a simulação e o <code>sinal</code> assumirá o valor <code>entrada</code>, mas somente após 10ns.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">report</span> <span class="s">&quot;Teste&quot;</span> <span class="k">severity</span> <span class="n">note</span><span class="p">;</span>
-<span class="n">sinal</span> <span class="o">&lt;=</span> <span class="n">entrada</span> <span class="k">after</span> <span class="mi">10</span> <span class="n">ns</span><span class="p">;</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">report</span><span class="w"> </span><span class="s">&quot;Teste&quot;</span><span class="w"> </span><span class="k">severity</span><span class="w"> </span><span class="n">note</span><span class="p">;</span><span class="w"></span>
+<span class="n">sinal</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">entrada</span><span class="w"> </span><span class="k">after</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">ns</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+
 <h1>Pacote IEEE 1164</h1>
 <p>Um dos pacotes mais utilizados em VHDL é o <code>std_logic_1164</code> da biblioteca <code>ieee</code>, que define um MVL (lógica multivariada, ou o nome completo <em>Multivalue Logic System for VHDL Model Interoperability</em>). Pra usar este pacote, é necessário incluir a declaração de uso no preambulo do seu projeto:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
-<span class="k">use</span> <span class="nn">ieee.std_logic_1164.</span><span class="k">all</span><span class="p">;</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">library</span><span class="w"> </span><span class="nn">ieee</span><span class="p">;</span><span class="w"></span>
+<span class="k">use</span><span class="w"> </span><span class="nn">ieee.std_logic_1164.</span><span class="k">all</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+
 <p>O tipo de dado primário definido nesta biblioteca é o <code>std_ulogic</code> (<em>standard unresolved logic</em>), que pode assumir outros valores usados em projeto digital além dos valores ideais <code>0</code> e <code>1</code>. Esta modelagem de valores é mais próxima do mundo real, mas deve ser utilizada com cuidado.</p>
 <table>
 <thead>

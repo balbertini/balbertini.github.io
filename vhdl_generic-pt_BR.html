@@ -161,8 +161,8 @@
       
     <h1 id="vhdl_generic">Módulos genéricos parametrizáveis em VHDL</h1>
     <p>
-      Posted on Ter 12 Março 2019 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
-      &#8226; Last Modified Seg 09 Setembro 2019
+      Posted on ter 12 março 2019 in <a href="https://balbertini.github.io/category/vhdl.html">vhdl</a>
+
         &#8226; 6 min read
     </p>
   </header>
@@ -173,33 +173,33 @@
 <h2>Declarando um parâmetro genericamente</h2>
 <p>Em muitos casos, a descrição de um módulo em VHDL pode não ser reaproveitável porque precisamos de um módulo ligeiramente diferente. Um exemplo: se descrevermos um registrador de 8 bits, poderemos usar este registrador somente em projetos que utilizam registradores de exatamente 8 bits. Contudo, quando o hardware é regular, ou seja, seu funcionamento é idêntico independentemente da característica variável, é possível descrevê-lo de forma a definir a característica variável no momento da instância e não da descrição. Dessa forma, descreve-se o módulo genericamente e somente no momento de utilizá-lo parametrizamos as características variáveis. No exemplo do registrador, podemos descrevê-lo genericamente de forma que o seu tamanho seja um parâmetro.</p>
 <p>A palavra reservada que possibilita isso é a <code>generic</code>. Na descrição da entidade do módulo, podemos incluir esta palavra, como a seguir:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">entity</span> <span class="nc">nome_da_entidade</span> <span class="k">is</span>
-   <span class="k">generic</span> <span class="p">(</span><span class="n">lista_de_elementos_genericos</span><span class="p">);</span>
-   <span class="k">port</span> <span class="p">(</span><span class="n">lista_de_portas</span><span class="p">);</span>
-<span class="k">end</span> <span class="nc">nome_da_entidade</span><span class="p">;</span>
-</code></pre></div>
-</td></tr></table>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">entity</span><span class="w"> </span><span class="nc">nome_da_entidade</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">   </span><span class="k">generic</span><span class="w"> </span><span class="p">(</span><span class="n">lista_de_elementos_genericos</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="k">port</span><span class="w"> </span><span class="p">(</span><span class="n">lista_de_portas</span><span class="p">);</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="nc">nome_da_entidade</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+
 <p>A <code>lista_de_elementos_genericos</code> é uma lista de todas as características parametrizáveis, no formato: <code>nome: tipo := valor_padrao</code>, separadas por <code>;</code>. O <code>nome</code> pode ser o que você desejar, desde que seja um nome válido em VHDL. O tipo define qual tipo de dados será utilizado para aquele parâmetro e pode ser <a href="https://balbertini.github.io/vhdl_datatypes-pt_BR.html">qualquer tipo suportado</a>. O <code>valor_padrao</code> é opcional e pode ser omitido. Quando omitido, termina-se a declaração após a declaração do tipo (exclui-se também o <code>:=</code>). No caso da omissão do valor padrão, a declaração do valor no momento da instanciação é obrigatória. Caso o valor padrão esteja presente, ele será usado somente se a instância não especificar nenhum valor, caso contrário o valor da instância sobrepõe o valor padrão. Como boa prática, sempre defina o valor padrão. O <code>valor_padrao</code> deve ser obrigatoriamente uma constante do mesmo <code>tipo</code> que o parâmetro correspondente.</p>
 <p>Depois de especificados, os parâmetros da <code>lista_de_elementos_genericos</code> tornam-se constantes disponíveis em todo o restante do projeto, incluindo a declaração de portas da entidade e toda a arquitetura. Como estão disponíveis e podem ser usados no lugar de qualquer constante, é possível declarar portas, sinais e qualquer outra estrutura de VHDL usando o parâmetro no lugar de um valor fixo.</p>
 <h3>Instância</h3>
 <p>No momento da instância do componente, podemos definir os parâmetros que desejarmos. Lembre-se que, caso a descrição não estabeleça um valor padrão para um determinado parâmetro, a definição na instanciação é obrigatória. A sintaxe da instância é:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">nome_instancia</span><span class="o">:</span> <span class="n">nome_componente</span>
-    <span class="k">generic</span> <span class="k">map</span> <span class="p">(</span><span class="n">lista_de_associacao_de_elementos_genericos</span><span class="p">)</span>
-    <span class="k">port</span> <span class="k">map</span>    <span class="p">(</span><span class="n">lista_de_associacao_de_portas</span><span class="p">);</span>
-</code></pre></div>
-</td></tr></table>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">nome_instancia</span><span class="o">:</span><span class="w"> </span><span class="n">nome_componente</span><span class="w"></span>
+<span class="w">    </span><span class="k">generic</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="p">(</span><span class="n">lista_de_associacao_de_elementos_genericos</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="w">    </span><span class="p">(</span><span class="n">lista_de_associacao_de_portas</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+
 <p>Se o componente não possui nenhum parâmetro (ausência de <code>generic</code>) ou não deseja-se especificar nenhum (todos os valores padrões serão utilizados), toda a linha do <code>generic map</code> pode ser omitida. A <code>lista_de_associacao_de_elementos_genericos</code> segue o mesmo padrão de associação usado para as portas.</p>
 <h3>Síntese</h3>
 <p>O <code>generic</code> não é uma estrutura sintetizável. No momento da síntese, todos os valores genéricos parametrizáveis devem ser resolvíveis, ou seja, o valor do parâmetro é fixo na instância. Não é possível mudar este valor dinamicamente durante ou após a síntese, e muito menos mudá-lo no hardware pronto. É possível herdar parâmetros, desde que a árvore de herança seja resolvível para um valor constante no momento da síntese.</p>
 <p>É possível usar o <code>generic</code> para parametrizar algo não sintetizável. Exemplos deste uso incluem variáveis condicionais de depuração e temporização.</p>
 <h2>Exemplo</h2>
 <p>Neste exemplo, mostrarei um registrador de deslocamento genérico com entrada paralela e saída serial, carga paralela síncrona, <em>reset</em> assíncrono e deslocamento para a direita ou para a esquerda. A modelagem contempla temporização (atraso e <em>setup time</em>) e depuração.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -269,81 +269,81 @@
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
-<span class="normal">71</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
-<span class="k">use</span> <span class="nn">ieee.numeric_bit.rising_edge</span><span class="p">;</span>
-<span class="k">entity</span> <span class="nc">reg_deslocamento</span> <span class="k">is</span>
-  <span class="k">generic</span><span class="p">(</span>
-    <span class="n">tamanho</span><span class="o">:</span> <span class="kt">natural</span> <span class="o">:=</span> <span class="mi">8</span><span class="p">;</span>
-    <span class="n">tp</span><span class="o">:</span> <span class="kt">time</span> <span class="o">:=</span> <span class="mi">80</span> <span class="n">ns</span><span class="p">;</span>
-    <span class="n">st</span><span class="o">:</span> <span class="kt">time</span> <span class="o">:=</span> <span class="mi">15</span> <span class="n">ns</span><span class="p">;</span>
-    <span class="n">debug</span><span class="o">:</span> <span class="kt">boolean</span> <span class="o">:=</span> <span class="n">false</span>
-  <span class="p">);</span>
-  <span class="k">port</span><span class="p">(</span>
-    <span class="n">entrada</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="n">tamanho</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="n">saida</span><span class="o">:</span> <span class="k">out</span>  <span class="kt">bit_vector</span><span class="p">(</span><span class="n">tamanho</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="n">entrada_serial</span><span class="o">:</span> <span class="kt">bit</span><span class="p">;</span>
-    <span class="n">direcao</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span> <span class="c1">-- 1=direita, 0=esquerda</span>
-    <span class="n">carrega</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
-    <span class="n">reset_n</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
-    <span class="n">clock</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span>
-  <span class="p">);</span>
-<span class="k">begin</span>
-  <span class="k">assert</span> <span class="n">tamanho</span><span class="o">&gt;</span><span class="mi">1</span>
-  <span class="n">report</span> <span class="s">&quot;Este registrador precisa ter tamanho &gt; 1 e foi instanciado com &quot;</span>
-         <span class="o">&amp;</span> <span class="kt">integer</span><span class="na">&#39;image</span><span class="p">(</span><span class="n">tamanho</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&quot;.&quot;</span> <span class="k">severity</span> <span class="n">failure</span><span class="p">;</span>
-<span class="k">end</span> <span class="k">entity</span> <span class="nc">reg_deslocamento</span><span class="p">;</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">library</span><span class="w"> </span><span class="nn">ieee</span><span class="p">;</span><span class="w"></span>
+<span class="k">use</span><span class="w"> </span><span class="nn">ieee.numeric_bit.rising_edge</span><span class="p">;</span><span class="w"></span>
+<span class="k">entity</span><span class="w"> </span><span class="nc">reg_deslocamento</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">  </span><span class="k">generic</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">tamanho</span><span class="o">:</span><span class="w"> </span><span class="kt">natural</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">tp</span><span class="o">:</span><span class="w"> </span><span class="kt">time</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="n">ns</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">st</span><span class="o">:</span><span class="w"> </span><span class="kt">time</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="n">ns</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">debug</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">false</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">port</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">entrada</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="n">tamanho</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">saida</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w">  </span><span class="kt">bit_vector</span><span class="p">(</span><span class="n">tamanho</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">entrada_serial</span><span class="o">:</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">direcao</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 1=direita, 0=esquerda</span><span class="w"></span>
+<span class="w">    </span><span class="n">carrega</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">reset_n</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">clock</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
+<span class="w">  </span><span class="k">assert</span><span class="w"> </span><span class="n">tamanho</span><span class="o">&gt;</span><span class="mi">1</span><span class="w"></span>
+<span class="w">  </span><span class="n">report</span><span class="w"> </span><span class="s">&quot;Este registrador precisa ter tamanho &gt; 1 e foi instanciado com &quot;</span><span class="w"></span>
+<span class="w">         </span><span class="o">&amp;</span><span class="w"> </span><span class="kt">integer</span><span class="na">&#39;image</span><span class="p">(</span><span class="n">tamanho</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="k">severity</span><span class="w"> </span><span class="n">failure</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="k">entity</span><span class="w"> </span><span class="nc">reg_deslocamento</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">architecture</span> <span class="nc">funcional</span> <span class="k">of</span> <span class="nc">reg_deslocamento</span> <span class="k">is</span>
-  <span class="k">signal</span> <span class="n">interno</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="n">tamanho</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-<span class="k">begin</span>
+<span class="k">architecture</span><span class="w"> </span><span class="nc">funcional</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">reg_deslocamento</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">  </span><span class="k">signal</span><span class="w"> </span><span class="n">interno</span><span class="o">:</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="n">tamanho</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
 
-  <span class="n">saida</span> <span class="o">&lt;=</span> <span class="n">interno</span><span class="p">;</span>
+<span class="w">  </span><span class="n">saida</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">interno</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">process</span><span class="p">(</span><span class="n">reset_n</span><span class="p">,</span> <span class="n">clock</span><span class="p">)</span>
-  <span class="k">begin</span>
-    <span class="k">if</span> <span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;0&#39;</span> <span class="k">then</span>
-      <span class="n">interno</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="k">others</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">);</span>
-    <span class="k">elsif</span> <span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">)</span> <span class="k">then</span>
-      <span class="k">if</span> <span class="n">carrega</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
-        <span class="k">if</span> <span class="n">entrada</span><span class="na">&#39;stable</span><span class="p">(</span><span class="n">st</span><span class="p">)</span> <span class="k">then</span>
-          <span class="n">interno</span> <span class="o">&lt;=</span> <span class="n">entrada</span> <span class="k">after</span> <span class="n">tp</span><span class="p">;</span>
-        <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-      <span class="k">else</span>
-        <span class="k">if</span> <span class="n">direcao</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
-          <span class="k">if</span> <span class="n">entrada_serial</span><span class="na">&#39;stable</span><span class="p">(</span><span class="n">st</span><span class="p">)</span> <span class="k">then</span>
-            <span class="n">interno</span> <span class="o">&lt;=</span> <span class="n">entrada_serial</span> <span class="o">&amp;</span> <span class="n">interno</span><span class="p">(</span><span class="n">tamanho</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">1</span><span class="p">)</span> <span class="k">after</span> <span class="n">tp</span><span class="p">;</span>
-          <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-        <span class="k">else</span>
-          <span class="k">if</span> <span class="n">entrada_serial</span><span class="na">&#39;stable</span><span class="p">(</span><span class="n">st</span><span class="p">)</span> <span class="k">then</span>
-            <span class="n">interno</span> <span class="o">&lt;=</span> <span class="n">interno</span><span class="p">(</span><span class="n">tamanho</span><span class="o">-</span><span class="mi">2</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">entrada_serial</span> <span class="k">after</span> <span class="n">tp</span><span class="p">;</span>
-          <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-        <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-      <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+<span class="w">  </span><span class="k">process</span><span class="p">(</span><span class="n">reset_n</span><span class="p">,</span><span class="w"> </span><span class="n">clock</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">begin</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">      </span><span class="n">interno</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="k">others</span><span class="o">=&gt;</span><span class="sc">&#39;0&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">elsif</span><span class="w"> </span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="n">carrega</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">entrada</span><span class="na">&#39;stable</span><span class="p">(</span><span class="n">st</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">          </span><span class="n">interno</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">entrada</span><span class="w"> </span><span class="k">after</span><span class="w"> </span><span class="n">tp</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">direcao</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="n">entrada_serial</span><span class="na">&#39;stable</span><span class="p">(</span><span class="n">st</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">            </span><span class="n">interno</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">entrada_serial</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">interno</span><span class="p">(</span><span class="n">tamanho</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">after</span><span class="w"> </span><span class="n">tp</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span><span class="w"></span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="n">entrada_serial</span><span class="na">&#39;stable</span><span class="p">(</span><span class="n">st</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">            </span><span class="n">interno</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">interno</span><span class="p">(</span><span class="n">tamanho</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">entrada_serial</span><span class="w"> </span><span class="k">after</span><span class="w"> </span><span class="n">tp</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">)</span>
-  <span class="k">begin</span>
-    <span class="k">if</span> <span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">)</span> <span class="k">then</span>
-      <span class="k">if</span> <span class="n">debug</span> <span class="k">then</span>
-        <span class="k">if</span> <span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">and</span> <span class="n">carrega</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">then</span>
-          <span class="k">assert</span> <span class="n">entrada</span><span class="na">&#39;stable</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
-          <span class="n">report</span> <span class="s">&quot;Setup time violado na entrada paralela.&quot;</span>
-          <span class="k">severity</span> <span class="n">warning</span><span class="p">;</span>
-        <span class="k">elsif</span> <span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;1&#39;</span> <span class="k">and</span> <span class="n">carrega</span><span class="o">=</span><span class="sc">&#39;0&#39;</span> <span class="k">then</span>
-          <span class="k">assert</span> <span class="n">entrada_serial</span><span class="na">&#39;stable</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
-          <span class="n">report</span> <span class="s">&quot;Setup time violado na entrada serial.&quot;</span>
-          <span class="k">severity</span> <span class="n">warning</span><span class="p">;</span>
-        <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-      <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-    <span class="k">end</span> <span class="k">if</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+<span class="w">  </span><span class="k">process</span><span class="p">(</span><span class="n">clock</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">begin</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="n">debug</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">carrega</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">          </span><span class="k">assert</span><span class="w"> </span><span class="n">entrada</span><span class="na">&#39;stable</span><span class="p">(</span><span class="n">st</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="n">report</span><span class="w"> </span><span class="s">&quot;Setup time violado na entrada paralela.&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="k">severity</span><span class="w"> </span><span class="n">warning</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">elsif</span><span class="w"> </span><span class="n">reset_n</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">carrega</span><span class="o">=</span><span class="sc">&#39;0&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">          </span><span class="k">assert</span><span class="w"> </span><span class="n">entrada_serial</span><span class="na">&#39;stable</span><span class="p">(</span><span class="n">st</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="n">report</span><span class="w"> </span><span class="s">&quot;Setup time violado na entrada serial.&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="k">severity</span><span class="w"> </span><span class="n">warning</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
-</code></pre></div>
-</td></tr></table>
+<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+
 <p>Um possível <em>testbench</em> para este registrador pode ser visto abaixo:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -407,87 +407,87 @@
 <span class="normal">62</span>
 <span class="normal">63</span>
 <span class="normal">64</span>
-<span class="normal">65</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">library</span> <span class="nn">ieee</span><span class="p">;</span>
-<span class="k">use</span> <span class="nn">ieee.numeric_bit.rising_edge</span><span class="p">;</span>
-<span class="k">entity</span> <span class="nc">reg_deslocamento_tb</span> <span class="k">is</span>
-<span class="k">end</span> <span class="k">entity</span> <span class="nc">reg_deslocamento_tb</span><span class="p">;</span>
+<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">library</span><span class="w"> </span><span class="nn">ieee</span><span class="p">;</span><span class="w"></span>
+<span class="k">use</span><span class="w"> </span><span class="nn">ieee.numeric_bit.rising_edge</span><span class="p">;</span><span class="w"></span>
+<span class="k">entity</span><span class="w"> </span><span class="nc">reg_deslocamento_tb</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="k">entity</span><span class="w"> </span><span class="nc">reg_deslocamento_tb</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">architecture</span> <span class="nc">stim</span> <span class="k">of</span> <span class="nc">reg_deslocamento_tb</span> <span class="k">is</span>
-  <span class="k">component</span> <span class="nc">reg_deslocamento</span> <span class="k">is</span>
-    <span class="k">generic</span><span class="p">(</span>
-      <span class="n">tamanho</span><span class="o">:</span> <span class="kt">natural</span> <span class="o">:=</span> <span class="mi">8</span><span class="p">;</span>
-      <span class="n">tp</span><span class="o">:</span> <span class="kt">time</span> <span class="o">:=</span> <span class="mi">80</span> <span class="n">ns</span><span class="p">;</span>
-      <span class="n">st</span><span class="o">:</span> <span class="kt">time</span> <span class="o">:=</span> <span class="mi">15</span> <span class="n">ns</span><span class="p">;</span>
-      <span class="n">debug</span><span class="o">:</span> <span class="kt">boolean</span> <span class="o">:=</span> <span class="n">false</span>
-    <span class="p">);</span>
-    <span class="k">port</span><span class="p">(</span>
-      <span class="n">entrada</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="n">tamanho</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-      <span class="n">saida</span><span class="o">:</span> <span class="k">out</span>  <span class="kt">bit_vector</span><span class="p">(</span><span class="n">tamanho</span><span class="o">-</span><span class="mi">1</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-      <span class="n">entrada_serial</span><span class="o">:</span> <span class="kt">bit</span><span class="p">;</span>
-      <span class="n">direcao</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span> <span class="c1">-- 1=direita, 0=esquerda</span>
-      <span class="n">carrega</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
-      <span class="n">reset_n</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span><span class="p">;</span>
-      <span class="n">clock</span><span class="o">:</span> <span class="k">in</span> <span class="kt">bit</span>
-    <span class="p">);</span>
-  <span class="k">end</span> <span class="k">component</span><span class="p">;</span>
+<span class="k">architecture</span><span class="w"> </span><span class="nc">stim</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">reg_deslocamento_tb</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">  </span><span class="k">component</span><span class="w"> </span><span class="nc">reg_deslocamento</span><span class="w"> </span><span class="k">is</span><span class="w"></span>
+<span class="w">    </span><span class="k">generic</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">tamanho</span><span class="o">:</span><span class="w"> </span><span class="kt">natural</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">tp</span><span class="o">:</span><span class="w"> </span><span class="kt">time</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="n">ns</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">st</span><span class="o">:</span><span class="w"> </span><span class="kt">time</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="n">ns</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">debug</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">false</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">port</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">entrada</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="n">tamanho</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">saida</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w">  </span><span class="kt">bit_vector</span><span class="p">(</span><span class="n">tamanho</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">entrada_serial</span><span class="o">:</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">direcao</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 1=direita, 0=esquerda</span><span class="w"></span>
+<span class="w">      </span><span class="n">carrega</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">reset_n</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">clock</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">bit</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">component</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">signal</span> <span class="n">entrada</span><span class="p">,</span> <span class="n">saida</span><span class="o">:</span> <span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span> <span class="k">downto</span> <span class="mi">0</span><span class="p">);</span>
-  <span class="k">signal</span> <span class="n">entrada_serial</span><span class="p">,</span> <span class="n">direcao</span><span class="p">,</span> <span class="n">carrega</span><span class="p">,</span> <span class="n">reset_n</span><span class="p">,</span> <span class="n">clock</span><span class="o">:</span> <span class="kt">bit</span> <span class="o">:=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-  <span class="k">signal</span> <span class="n">simula</span><span class="o">:</span> <span class="kt">bit</span> <span class="o">:=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-<span class="k">begin</span>
+<span class="w">  </span><span class="k">signal</span><span class="w"> </span><span class="n">entrada</span><span class="p">,</span><span class="w"> </span><span class="n">saida</span><span class="o">:</span><span class="w"> </span><span class="kt">bit_vector</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">signal</span><span class="w"> </span><span class="n">entrada_serial</span><span class="p">,</span><span class="w"> </span><span class="n">direcao</span><span class="p">,</span><span class="w"> </span><span class="n">carrega</span><span class="p">,</span><span class="w"> </span><span class="n">reset_n</span><span class="p">,</span><span class="w"> </span><span class="n">clock</span><span class="o">:</span><span class="w"> </span><span class="kt">bit</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">signal</span><span class="w"> </span><span class="n">simula</span><span class="o">:</span><span class="w"> </span><span class="kt">bit</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
 
-  <span class="n">reg</span><span class="o">:</span> <span class="n">reg_deslocamento</span>
-    <span class="k">generic</span> <span class="k">map</span><span class="p">(</span><span class="n">tamanho</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">,</span> <span class="n">tp</span><span class="o">=&gt;</span><span class="mi">40</span> <span class="n">ns</span><span class="p">,</span> <span class="n">debug</span><span class="o">=&gt;</span><span class="n">true</span><span class="p">)</span>
-    <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">entrada</span><span class="p">,</span> <span class="n">saida</span><span class="p">,</span> <span class="n">entrada_serial</span><span class="p">,</span> <span class="n">direcao</span><span class="p">,</span> <span class="n">carrega</span><span class="p">,</span> <span class="n">reset_n</span><span class="p">,</span> <span class="n">clock</span><span class="p">);</span>
+<span class="w">  </span><span class="n">reg</span><span class="o">:</span><span class="w"> </span><span class="n">reg_deslocamento</span><span class="w"></span>
+<span class="w">    </span><span class="k">generic</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">tamanho</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">tp</span><span class="o">=&gt;</span><span class="mi">40</span><span class="w"> </span><span class="n">ns</span><span class="p">,</span><span class="w"> </span><span class="n">debug</span><span class="o">=&gt;</span><span class="n">true</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">entrada</span><span class="p">,</span><span class="w"> </span><span class="n">saida</span><span class="p">,</span><span class="w"> </span><span class="n">entrada_serial</span><span class="p">,</span><span class="w"> </span><span class="n">direcao</span><span class="p">,</span><span class="w"> </span><span class="n">carrega</span><span class="p">,</span><span class="w"> </span><span class="n">reset_n</span><span class="p">,</span><span class="w"> </span><span class="n">clock</span><span class="p">);</span><span class="w"></span>
 
-  <span class="n">clock</span> <span class="o">&lt;=</span> <span class="n">simula</span> <span class="k">and</span> <span class="k">not</span> <span class="n">clock</span> <span class="k">after</span> <span class="mi">50</span> <span class="n">ns</span><span class="p">;</span>
+<span class="w">  </span><span class="n">clock</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">simula</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">clock</span><span class="w"> </span><span class="k">after</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="n">ns</span><span class="p">;</span><span class="w"></span>
 
-  <span class="nc">stim</span><span class="o">:</span> <span class="k">process</span>
-  <span class="k">begin</span>
-    <span class="n">simula</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>
-    <span class="n">reset_n</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-    <span class="k">wait</span> <span class="k">for</span> <span class="mi">200</span> <span class="n">ns</span><span class="p">;</span>
-    <span class="n">reset_n</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>
-    <span class="n">entrada</span> <span class="o">&lt;=</span> <span class="s">&quot;1010&quot;</span><span class="p">;</span>
-    <span class="n">carrega</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>
-    <span class="k">wait</span> <span class="k">until</span> <span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">);</span>
+<span class="w">  </span><span class="nc">stim</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="w"></span>
+<span class="w">  </span><span class="k">begin</span><span class="w"></span>
+<span class="w">    </span><span class="n">simula</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">reset_n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="n">ns</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">reset_n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">entrada</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s">&quot;1010&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">carrega</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">wait</span><span class="w"> </span><span class="k">until</span><span class="w"> </span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">);</span><span class="w"></span>
 
-    <span class="k">wait</span> <span class="k">for</span> <span class="mi">95</span> <span class="n">ns</span><span class="p">;</span>
-    <span class="n">entrada</span> <span class="o">&lt;=</span> <span class="s">&quot;1011&quot;</span><span class="p">;</span>
-    <span class="k">wait</span> <span class="k">until</span> <span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">);</span>
-    <span class="n">carrega</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-    <span class="k">wait</span> <span class="k">for</span> <span class="mi">95</span> <span class="n">ns</span><span class="p">;</span>
-    <span class="n">entrada_serial</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>
-    <span class="k">wait</span> <span class="k">until</span> <span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">);</span>
+<span class="w">    </span><span class="k">wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">95</span><span class="w"> </span><span class="n">ns</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">entrada</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s">&quot;1011&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">wait</span><span class="w"> </span><span class="k">until</span><span class="w"> </span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">carrega</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">95</span><span class="w"> </span><span class="n">ns</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">entrada_serial</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">wait</span><span class="w"> </span><span class="k">until</span><span class="w"> </span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">carrega</span> <span class="o">&lt;=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span>
-    <span class="n">entrada</span> <span class="o">&lt;=</span> <span class="s">&quot;1010&quot;</span><span class="p">;</span>
-    <span class="k">wait</span> <span class="k">until</span> <span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">);</span>
-    <span class="n">carrega</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-    <span class="n">entrada_serial</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-    <span class="k">wait</span> <span class="k">until</span> <span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">);</span>
+<span class="w">    </span><span class="n">carrega</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">entrada</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s">&quot;1010&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">wait</span><span class="w"> </span><span class="k">until</span><span class="w"> </span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">carrega</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">entrada_serial</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">wait</span><span class="w"> </span><span class="k">until</span><span class="w"> </span><span class="n">rising_edge</span><span class="p">(</span><span class="n">clock</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">simula</span> <span class="o">&lt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-    <span class="k">wait</span><span class="p">;</span>
-  <span class="k">end</span> <span class="k">process</span><span class="p">;</span>
+<span class="w">    </span><span class="n">simula</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">wait</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">end</span> <span class="k">architecture</span><span class="p">;</span>
-</code></pre></div>
-</td></tr></table>
+<span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+
 <p>A execução deste <em>testbench</em> irá imprimir:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>reg_deslocamento.vhd:59:11:@350ns:<span class="o">(</span>assertion warning<span class="o">)</span>: Setup <span class="nb">time</span> violado na entrada paralela.
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>reg_deslocamento.vhd:59:11:@350ns:<span class="o">(</span>assertion warning<span class="o">)</span>: Setup <span class="nb">time</span> violado na entrada paralela.
 reg_deslocamento.vhd:63:11:@450ns:<span class="o">(</span>assertion warning<span class="o">)</span>: Setup <span class="nb">time</span> violado na entrada serial.
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <p>No código do <em>testbench</em> há três usos distintos do <code>generic</code>. Note a instância do registrador usado no <em>testbench</em>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">reg</span><span class="o">:</span> <span class="n">reg_deslocamento</span>
-  <span class="k">generic</span> <span class="k">map</span><span class="p">(</span><span class="n">tamanho</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">,</span> <span class="n">tp</span><span class="o">=&gt;</span><span class="mi">40</span> <span class="n">ns</span><span class="p">,</span> <span class="n">debug</span><span class="o">=&gt;</span><span class="n">true</span><span class="p">)</span>
-  <span class="k">port</span> <span class="k">map</span><span class="p">(</span><span class="n">entrada</span><span class="p">,</span> <span class="n">saida</span><span class="p">,</span> <span class="n">entrada_serial</span><span class="p">,</span> <span class="n">direcao</span><span class="p">,</span> <span class="n">carrega</span><span class="p">,</span> <span class="n">reset_n</span><span class="p">,</span> <span class="n">clock</span><span class="p">);</span>
-</code></pre></div>
-</td></tr></table>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">reg</span><span class="o">:</span><span class="w"> </span><span class="n">reg_deslocamento</span><span class="w"></span>
+<span class="w">  </span><span class="k">generic</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">tamanho</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">tp</span><span class="o">=&gt;</span><span class="mi">40</span><span class="w"> </span><span class="n">ns</span><span class="p">,</span><span class="w"> </span><span class="n">debug</span><span class="o">=&gt;</span><span class="n">true</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">entrada</span><span class="p">,</span><span class="w"> </span><span class="n">saida</span><span class="p">,</span><span class="w"> </span><span class="n">entrada_serial</span><span class="p">,</span><span class="w"> </span><span class="n">direcao</span><span class="p">,</span><span class="w"> </span><span class="n">carrega</span><span class="p">,</span><span class="w"> </span><span class="n">reset_n</span><span class="p">,</span><span class="w"> </span><span class="n">clock</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+
 <p>A primeira coisa que podemos notar é que a atribuição dos parâmetros no <code>generic map</code> foi feita por nome e não posicionalmente (como feita no <code>port map</code>). Contudo, podemos usar atribuição posicional se desejado. O tamanho foi parametrizado como 4 bits, o tempo de propagação (<code>tp</code>) como 40ns e foi habilitada a depuração. A primeira utilização do <code>generic</code> foram estas atribuições. Já a segunda, foi uma atribuição implícita. O <em>setup time</em> (<code>st</code>) não foi definido no <code>genric map</code>, portanto a instância utilizará o valor padrão, que nesse caso é 15ns. Já a terceira diz respeito ao parâmetro <code>debug</code>. Note que este parâmetro, se habilitado, permite a ativação de um <code>process</code> (o último da descrição do registrador) que não é sintetizável e serve exclusivamente para emitir mensagens de violação do <em>setup time</em> durante uma simulação.</p>
   </div>
   <div class="tag-cloud">
