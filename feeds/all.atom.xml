@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2022-03-22T12:09:28-03:00</updated><subtitle>Professor</subtitle><entry><title>Introdução à ferramenta de gerenciamento `hdlmake`</title><link href="https://balbertini.github.io/hdlmake-pt_BR.html" rel="alternate"></link><published>2022-02-13T18:51:12-03:00</published><updated>2022-03-22T12:09:28-03:00</updated><author><name>Tomaz Maia Suller</name></author><id>tag:balbertini.github.io,2022-02-13:/hdlmake-pt_BR.html</id><summary type="html">&lt;p&gt;Como empregar a ferramenta &lt;code&gt;hdlmake&lt;/code&gt; para gerenciar projetos de sistemas digitais&lt;/p&gt;</summary><content type="html">&lt;p&gt;O desenvolvimento de projetos de &lt;em&gt;hardware&lt;/em&gt; cresce em complexidade rapidamente, dada tanto a necessidade de se descrever sistemas empregando uma semântica de mais baixo nível do que linguagens de programação de &lt;em&gt;software&lt;/em&gt; quanto a ausência de abstrações organizacionais de alto nível, como classes.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site</title><link href="https://balbertini.github.io/" rel="alternate"></link><link href="https://balbertini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://balbertini.github.io/</id><updated>2022-11-04T10:13:08-03:00</updated><subtitle>Professor</subtitle><entry><title>Introdução à ferramenta de gerenciamento `hdlmake`</title><link href="https://balbertini.github.io/hdlmake-pt_BR.html" rel="alternate"></link><published>2022-02-13T18:51:12-03:00</published><updated>2022-03-22T12:09:28-03:00</updated><author><name>Tomaz Maia Suller</name></author><id>tag:balbertini.github.io,2022-02-13:/hdlmake-pt_BR.html</id><summary type="html">&lt;p&gt;Como empregar a ferramenta &lt;code&gt;hdlmake&lt;/code&gt; para gerenciar projetos de sistemas digitais&lt;/p&gt;</summary><content type="html">&lt;p&gt;O desenvolvimento de projetos de &lt;em&gt;hardware&lt;/em&gt; cresce em complexidade rapidamente, dada tanto a necessidade de se descrever sistemas empregando uma semântica de mais baixo nível do que linguagens de programação de &lt;em&gt;software&lt;/em&gt; quanto a ausência de abstrações organizacionais de alto nível, como classes.
 De fato, é usual a complexidade ser tão maior quão maior o uso de boas práticas pelo projetista (por exemplo, criando componentes modularizados e &lt;em&gt;testbenches&lt;/em&gt; para cada componente).
 Além disso, a presença de diversas ferramentas de análise, simulação e síntese, bem como de seus respectivos arquivos de configuração, podem dificultar a análise e iteração rápida sobre descrições mesmo de complexidade baixa.
 Como exemplo, uma implementação parcial de um jogo da memória desenvolvido para a disciplina de Laboratório Digital 1 já possuía 20 arquivos de descrição de &lt;em&gt;hardware&lt;/em&gt; - entre descrições de componentes e &lt;em&gt;testbenches&lt;/em&gt; - e empregava três ferramentas distintas: &lt;em&gt;ModelSim&lt;/em&gt; e &lt;em&gt;Questa Intel FPGA&lt;/em&gt; para simulação e &lt;em&gt;Quartus Prime Lite&lt;/em&gt; para síntese.&lt;/p&gt;
@@ -2333,7 +2333,7 @@ Na área superior do EDA Playground há três botões, sendo que o primeiro é o
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="memory"></category></entry><entry><title>Máquinas de estado em VHDL</title><link href="https://balbertini.github.io/vhdl_fsm-pt_BR.html" rel="alternate"></link><published>2019-03-19T10:58:59-03:00</published><updated>2021-09-09T14:22:41-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-19:/vhdl_fsm-pt_BR.html</id><summary type="html">&lt;p&gt;Máquinas de estado em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Máquinas de estado são muito comuns pois, em sistemas digitais, todos os circuitos sequenciais podem ser vistos como uma máquina de estados finita. No entanto, especificá-las em VHDL é um desafio para os projetistas novatos devido aos problemas que surgem quando o tempo está envolvido. Circuitos combinatórios não dependem de tempo e não possuem memória, porém máquinas de estado possuem e precisam ser projetadas com o devido cuidado. Neste artigo mostrarei algumas formas seguras de especificar corretamente máquinas de estado finitas síncronas e determinísticas em VHDL.&lt;/p&gt;
+&lt;/script&gt;</content><category term="vhdl"></category><category term="vhdl"></category><category term="memory"></category></entry><entry><title>Máquinas de estado em VHDL</title><link href="https://balbertini.github.io/vhdl_fsm-pt_BR.html" rel="alternate"></link><published>2019-03-19T10:58:59-03:00</published><updated>2022-11-04T10:13:08-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2019-03-19:/vhdl_fsm-pt_BR.html</id><summary type="html">&lt;p&gt;Máquinas de estado em VHDL.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Máquinas de estado são muito comuns pois, em sistemas digitais, todos os circuitos sequenciais podem ser vistos como uma máquina de estados finita. No entanto, especificá-las em VHDL é um desafio para os projetistas novatos devido aos problemas que surgem quando o tempo está envolvido. Circuitos combinatórios não dependem de tempo e não possuem memória, porém máquinas de estado possuem e precisam ser projetadas com o devido cuidado. Neste artigo mostrarei algumas formas seguras de especificar corretamente máquinas de estado finitas síncronas e determinísticas em VHDL.&lt;/p&gt;
 &lt;h3&gt;Revisitando o conceito de máquinas de estado&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="Modelo de FSM" src="https://balbertini.github.io/images/sd/fsmmodel.png"&gt;&lt;/p&gt;
 &lt;p&gt;O modelo base de qualquer máquina de estados em sistemas digitais pode ser visto na figura. É composto por um elemento de memória (S) e duas funções combinatórias, uma de transição de estados (T) e outra de saída (G). Quando a função de saída depende somente do estado (ausência da seta tracejada na figura), dizemos que a máquina segue o modelo de Moore. Ao contrário, quando a saída da máquina depende do estado e da entrada (presença da seta tracejada na figura), dizemos que a máquina segue o modelo de Mealy. Em ambos os casos, somente o elemento de memória é sequencial. As funções são puramente combinatórias e dependem somente da entrada (da função) para produzir a saída. Note que, apesar de dependerem apenas na sua entrada, ambas as funções recebem a saída do elemento combinatório como entrada.&lt;/p&gt;
@@ -2350,6 +2350,8 @@ Na área superior do EDA Playground há três botões, sendo que o primeiro é o
 &lt;h3&gt;Exemplo 1 (Moore)&lt;/h3&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmexemplo1.png' width="15%" align="right" style="padding-left:5%" /&gt;
 A máquina que iremos implementar como exemplo é a máquina de Moore da figura ao lado. Contém apenas dois estados e todas as quatro transições possíveis totalmente especificadas. Comecemos pela declaração de uso das bibliotecas e pela entidade:&lt;/p&gt;
+&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
+
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
 &lt;span class="normal"&gt; 2&lt;/span&gt;
 &lt;span class="normal"&gt; 3&lt;/span&gt;
@@ -2371,12 +2373,10 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
 &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;fsm&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
 
-&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
-
 &lt;p&gt;Na descrição da arquitetura, o que teremos de novidade é a utilização de um tipo composto definido pelo usuário. O tipo composto é uma enumeração e representa o conjunto S (todos os estados possíveis). Após declarado o tipo composto, é possível declarar sinais e variáveis deste tipo, então usaremos o tipo declarado para declarar a variável de estado, ou seja, o elemento de memória que armazenará o estado.&lt;/p&gt;
 &lt;h4&gt;Exemplo 1 (Moore) - Estilo tradicional&lt;/h4&gt;
 &lt;p&gt;Neste primeiro estilo de descrição, a arquitetura é descrita usando exatamente o modelo tradicional de máquina de estados, ou seja, o elemento de memória é sequencial (dentro do &lt;code&gt;process&lt;/code&gt;) e as funções combinatórias (fora do &lt;code&gt;process&lt;/code&gt;).&lt;/p&gt;
-&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl01.png' width="50%" align="right" style="padding-left:0%" /&gt;&lt;div width="50%" align="left"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl01.png' width="100%" align="right" style="padding-left:0%"&gt;&lt;/img&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
 &lt;span class="normal"&gt; 2&lt;/span&gt;
 &lt;span class="normal"&gt; 3&lt;/span&gt;
@@ -2424,14 +2424,13 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
 &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;architecture&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;proccomb&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
 
-&lt;/div&gt;
 &lt;p&gt;Note que há somente um processo. O processo faz o &lt;em&gt;reset&lt;/em&gt; assíncrono da máquina de estados, colocando-a no estado A (veja a seta de início chegando no estado A do diagrama de transição de estados). Caso o &lt;em&gt;reset&lt;/em&gt; não esteja ativo, o processo faz uma única tarefa que é copiar o sinal PE (de Próximo Estado) para o sinal EA (de Estado Atual) na borda de subida do &lt;em&gt;clock&lt;/em&gt;. Neste contexto, apenas o sinal EA representa um elemento combinatório pois fora destas duas condições, o sinal EA é mantido inalterado. O comportamento é exatamente o de um &lt;em&gt;flip-flop&lt;/em&gt; tipo D e, de fato, podemos ver que o circuito gerado contém exatamente um &lt;em&gt;flip-flop&lt;/em&gt;, pois temos somente dois estados possíveis. Caso o tipo composto &lt;code&gt;estado_t&lt;/code&gt; possuísse mais de dois estados, o número de &lt;em&gt;flip-flops&lt;/em&gt; seria maior para acomodar o maior número de estados.&lt;/p&gt;
 &lt;p&gt;Fora do processo, temos duas declarações concorrentes ao &lt;code&gt;process&lt;/code&gt;, que representam as duas funções combinatórias. A primeira calcula o próximo estado (&lt;code&gt;PE&amp;lt;=...&lt;/code&gt;) e a segunda calcula a saída (&lt;code&gt;saida&amp;lt;=...&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;Este estilo tem a vantagem de ser muito próximo do modelo tradicional de máquinas de estado. O processo síncrono é muito simples (será similar independentemente da máquina) e com pouco espaço para erros. A desvantagem é que este estilo se torna críptico rapidamente, pois a descrição combinatória das funções de transição e de próximo estado crescerão exponencialmente em complexidade e tamanho junto com a complexidade da máquina, tornando-se ilegíveis rapidamente.&lt;/p&gt;
 &lt;p&gt;Use esse estilo nas suas primeiras máquinas de estado, para garantir que você não terá problemas de sincronismo, ou se a máquina for muito simples ou com poucos estados.&lt;/p&gt;
 &lt;h4&gt;Exemplo 1 (Moore) - Estilo com dois &lt;code&gt;process&lt;/code&gt;&lt;/h4&gt;
 &lt;p&gt;No segundo estilo, levamos a descrição combinatória para dentro de um &lt;code&gt;process&lt;/code&gt; novo, mantendo o &lt;code&gt;process&lt;/code&gt; sequencial que faz o papel de elemento de memória inalterado. Este estilo exige um cuidado muito grande pois estamos descrevendo um elemento combinatório dentro de uma primitiva de VHDL que indica para o sintetizador que estamos descrevendo algo sequencial. Temos que ser claros com a descrição para que o sintetizador entenda que a variável de estados é o sinal EA somente, e os outros sinais (neste caso o PE e a &lt;code&gt;saida&lt;/code&gt;), são combinatórios.&lt;/p&gt;
-&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl02.png' width="50%" align="right" style="padding-left:0%" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl02.png' width="100%" align="right" style="padding-left:0%" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
 &lt;span class="normal"&gt; 2&lt;/span&gt;
 &lt;span class="normal"&gt; 3&lt;/span&gt;
@@ -2518,8 +2517,8 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
 &lt;p&gt;Aconselha-se a utilização deste tipo de descrição quando você estiver habituado a descrever máquinas de estados em VHDL e confortável em encontrar problemas de sincronismo.&lt;/p&gt;
 &lt;p&gt;Se você tem uma bagagem como programador de software, é natural optar por este estilo pois é muito parecido com os processos em software, mas evite-o até estar confortável pois você não está programando e sim descrevendo um hardware. A maioria dos problemas dos alunos iniciantes em práticas de sistemas digitais advém da descrição incorreta deste estilo de máquinas de estado, principalmente ligadas a inferência de &lt;em&gt;latches&lt;/em&gt; devido a atribuição incompleta.&lt;/p&gt;
 &lt;h3&gt;Outros estilos&lt;/h3&gt;
-&lt;p&gt;Mas então por que não usamos um processo só para tudo? Vamos ver:
-&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl03.png' width="50%" align="right" style="padding-left:0%" /&gt;&lt;/p&gt;
+&lt;p&gt;Mas então por que não usamos um processo só para tudo? Vamos ver:&lt;/p&gt;
+&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl03.png' width="100%" align="right" style="padding-left:0%" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
 &lt;span class="normal"&gt; 2&lt;/span&gt;
 &lt;span class="normal"&gt; 3&lt;/span&gt;
@@ -2590,6 +2589,8 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
 &lt;h3&gt;Exemplo 2 (Mealy)&lt;/h3&gt;
 &lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmexemplo2.png' width="15%" align="right" style="padding-left:5%" /&gt;
 Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a saída depende também da entrada.&lt;/p&gt;
+&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
+
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
 &lt;span class="normal"&gt; 2&lt;/span&gt;
 &lt;span class="normal"&gt; 3&lt;/span&gt;
@@ -2614,7 +2615,7 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
 &lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;
 
 &lt;h4&gt;Exemplo 2 (Mealy) - Estilo tradicional&lt;/h4&gt;
-&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl04.png' width="50%" align="right" style="padding-left:0%" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl04.png' width="100%" align="right" style="padding-left:0%"&gt;&lt;/img&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
 &lt;span class="normal"&gt; 2&lt;/span&gt;
 &lt;span class="normal"&gt; 3&lt;/span&gt;
@@ -2672,7 +2673,7 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
 
 &lt;p&gt;Note que o circuito gerado é um pouco maior devido a arquitetura para o qual foi sintetizado (FPGA).&lt;div style="border: 0px; overflow: auto;width: 100%;"&gt;&lt;/div&gt;&lt;/p&gt;
 &lt;h4&gt;Exemplo 2 (Mealy) - Estilo com dois &lt;code&gt;process&lt;/code&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl05.png' width="50%" align="right" style="padding-left:0%" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src='https://balbertini.github.io/images/sd/fsmvhdl05.png' width="100%" align="right" style="padding-left:0%" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
 &lt;span class="normal"&gt; 2&lt;/span&gt;
 &lt;span class="normal"&gt; 3&lt;/span&gt;

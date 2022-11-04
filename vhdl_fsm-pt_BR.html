@@ -71,7 +71,7 @@
   <meta property="og:url" content="https://balbertini.github.io/vhdl_fsm-pt_BR.html"/>
   <meta property="og:type" content="article"/>
   <meta property="article:published_time" content="2019-03-19 10:58:59-03:00"/>
-  <meta property="article:modified_time" content="2021-09-09 14:22:41-03:00"/>
+  <meta property="article:modified_time" content="2022-11-04 10:13:08.523012-03:00"/>
   <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
   <meta property="article:section" content="vhdl"/>
   <meta property="article:tag" content="vhdl"/>
@@ -186,6 +186,8 @@
 <h3>Exemplo 1 (Moore)</h3>
 <p><img src='https://balbertini.github.io/images/sd/fsmexemplo1.png' width="15%" align="right" style="padding-left:5%" />
 A máquina que iremos implementar como exemplo é a máquina de Moore da figura ao lado. Contém apenas dois estados e todas as quatro transições possíveis totalmente especificadas. Comecemos pela declaração de uso das bibliotecas e pela entidade:</p>
+<div style="border: 0px; overflow: auto;width: 100%;"></div>
+
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -207,12 +209,10 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
 <span class="k">end</span><span class="w"> </span><span class="nc">fsm</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 
-<div style="border: 0px; overflow: auto;width: 100%;"></div>
-
 <p>Na descrição da arquitetura, o que teremos de novidade é a utilização de um tipo composto definido pelo usuário. O tipo composto é uma enumeração e representa o conjunto S (todos os estados possíveis). Após declarado o tipo composto, é possível declarar sinais e variáveis deste tipo, então usaremos o tipo declarado para declarar a variável de estado, ou seja, o elemento de memória que armazenará o estado.</p>
 <h4>Exemplo 1 (Moore) - Estilo tradicional</h4>
 <p>Neste primeiro estilo de descrição, a arquitetura é descrita usando exatamente o modelo tradicional de máquina de estados, ou seja, o elemento de memória é sequencial (dentro do <code>process</code>) e as funções combinatórias (fora do <code>process</code>).</p>
-<p><img src='https://balbertini.github.io/images/sd/fsmvhdl01.png' width="50%" align="right" style="padding-left:0%" /><div width="50%" align="left"></p>
+<p><img src='https://balbertini.github.io/images/sd/fsmvhdl01.png' width="100%" align="right" style="padding-left:0%"></img></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -260,14 +260,13 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
 <span class="k">end</span><span class="w"> </span><span class="k">architecture</span><span class="w"> </span><span class="nc">proccomb</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 
-</div>
 <p>Note que há somente um processo. O processo faz o <em>reset</em> assíncrono da máquina de estados, colocando-a no estado A (veja a seta de início chegando no estado A do diagrama de transição de estados). Caso o <em>reset</em> não esteja ativo, o processo faz uma única tarefa que é copiar o sinal PE (de Próximo Estado) para o sinal EA (de Estado Atual) na borda de subida do <em>clock</em>. Neste contexto, apenas o sinal EA representa um elemento combinatório pois fora destas duas condições, o sinal EA é mantido inalterado. O comportamento é exatamente o de um <em>flip-flop</em> tipo D e, de fato, podemos ver que o circuito gerado contém exatamente um <em>flip-flop</em>, pois temos somente dois estados possíveis. Caso o tipo composto <code>estado_t</code> possuísse mais de dois estados, o número de <em>flip-flops</em> seria maior para acomodar o maior número de estados.</p>
 <p>Fora do processo, temos duas declarações concorrentes ao <code>process</code>, que representam as duas funções combinatórias. A primeira calcula o próximo estado (<code>PE&lt;=...</code>) e a segunda calcula a saída (<code>saida&lt;=...</code>).</p>
 <p>Este estilo tem a vantagem de ser muito próximo do modelo tradicional de máquinas de estado. O processo síncrono é muito simples (será similar independentemente da máquina) e com pouco espaço para erros. A desvantagem é que este estilo se torna críptico rapidamente, pois a descrição combinatória das funções de transição e de próximo estado crescerão exponencialmente em complexidade e tamanho junto com a complexidade da máquina, tornando-se ilegíveis rapidamente.</p>
 <p>Use esse estilo nas suas primeiras máquinas de estado, para garantir que você não terá problemas de sincronismo, ou se a máquina for muito simples ou com poucos estados.</p>
 <h4>Exemplo 1 (Moore) - Estilo com dois <code>process</code></h4>
 <p>No segundo estilo, levamos a descrição combinatória para dentro de um <code>process</code> novo, mantendo o <code>process</code> sequencial que faz o papel de elemento de memória inalterado. Este estilo exige um cuidado muito grande pois estamos descrevendo um elemento combinatório dentro de uma primitiva de VHDL que indica para o sintetizador que estamos descrevendo algo sequencial. Temos que ser claros com a descrição para que o sintetizador entenda que a variável de estados é o sinal EA somente, e os outros sinais (neste caso o PE e a <code>saida</code>), são combinatórios.</p>
-<p><img src='https://balbertini.github.io/images/sd/fsmvhdl02.png' width="50%" align="right" style="padding-left:0%" /></p>
+<p><img src='https://balbertini.github.io/images/sd/fsmvhdl02.png' width="100%" align="right" style="padding-left:0%" /></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -354,8 +353,8 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
 <p>Aconselha-se a utilização deste tipo de descrição quando você estiver habituado a descrever máquinas de estados em VHDL e confortável em encontrar problemas de sincronismo.</p>
 <p>Se você tem uma bagagem como programador de software, é natural optar por este estilo pois é muito parecido com os processos em software, mas evite-o até estar confortável pois você não está programando e sim descrevendo um hardware. A maioria dos problemas dos alunos iniciantes em práticas de sistemas digitais advém da descrição incorreta deste estilo de máquinas de estado, principalmente ligadas a inferência de <em>latches</em> devido a atribuição incompleta.</p>
 <h3>Outros estilos</h3>
-<p>Mas então por que não usamos um processo só para tudo? Vamos ver:
-<img src='https://balbertini.github.io/images/sd/fsmvhdl03.png' width="50%" align="right" style="padding-left:0%" /></p>
+<p>Mas então por que não usamos um processo só para tudo? Vamos ver:</p>
+<p><img src='https://balbertini.github.io/images/sd/fsmvhdl03.png' width="100%" align="right" style="padding-left:0%" /></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -426,6 +425,8 @@ A máquina que iremos implementar como exemplo é a máquina de Moore da figura 
 <h3>Exemplo 2 (Mealy)</h3>
 <p><img src='https://balbertini.github.io/images/sd/fsmexemplo2.png' width="15%" align="right" style="padding-left:5%" />
 Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a saída depende também da entrada.</p>
+<div style="border: 0px; overflow: auto;width: 100%;"></div>
+
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -450,7 +451,7 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 <h4>Exemplo 2 (Mealy) - Estilo tradicional</h4>
-<p><img src='https://balbertini.github.io/images/sd/fsmvhdl04.png' width="50%" align="right" style="padding-left:0%" /></p>
+<p><img src='https://balbertini.github.io/images/sd/fsmvhdl04.png' width="100%" align="right" style="padding-left:0%"></img></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -508,7 +509,7 @@ Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a s
 
 <p>Note que o circuito gerado é um pouco maior devido a arquitetura para o qual foi sintetizado (FPGA).<div style="border: 0px; overflow: auto;width: 100%;"></div></p>
 <h4>Exemplo 2 (Mealy) - Estilo com dois <code>process</code></h4>
-<p><img src='https://balbertini.github.io/images/sd/fsmvhdl05.png' width="50%" align="right" style="padding-left:0%" /></p>
+<p><img src='https://balbertini.github.io/images/sd/fsmvhdl05.png' width="100%" align="right" style="padding-left:0%" /></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
