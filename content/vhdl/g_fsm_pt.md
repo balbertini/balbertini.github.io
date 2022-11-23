@@ -33,7 +33,7 @@ Na arquitetura, sempre teremos duas partes: a parte sequencial e a parte combina
 ### Exemplo 1 (Moore)
 <img src='{static}/images/sd/fsmexemplo1.png' width="15%" align="right" style="padding-left:5%" />
 A máquina que iremos implementar como exemplo é a máquina de Moore da figura ao lado. Contém apenas dois estados e todas as quatro transições possíveis totalmente especificadas. Comecemos pela declaração de uso das bibliotecas e pela entidade:
-
+<div style="border: 0px; overflow: auto;width: 100%;"></div>
 ```vhdl
 library ieee;
 use ieee.numeric_bit.rising_edge;
@@ -46,14 +46,14 @@ entity fsm is
   );
 end fsm;
 ```
-<div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 Na descrição da arquitetura, o que teremos de novidade é a utilização de um tipo composto definido pelo usuário. O tipo composto é uma enumeração e representa o conjunto S (todos os estados possíveis). Após declarado o tipo composto, é possível declarar sinais e variáveis deste tipo, então usaremos o tipo declarado para declarar a variável de estado, ou seja, o elemento de memória que armazenará o estado.
 
 #### Exemplo 1 (Moore) - Estilo tradicional
 Neste primeiro estilo de descrição, a arquitetura é descrita usando exatamente o modelo tradicional de máquina de estados, ou seja, o elemento de memória é sequencial (dentro do `process`) e as funções combinatórias (fora do `process`).
 
-<img src='{static}/images/sd/fsmvhdl01.png' width="50%" align="right" style="padding-left:0%" /><div width="50%" align="left">
+<img src='{static}/images/sd/fsmvhdl01.png' width="100%" align="right" style="padding-left:0%"></img>
+
 ```vhdl
 architecture proccomb of fsm is
   type estado_t is (A,B);
@@ -79,7 +79,7 @@ begin
     '0';
 end architecture proccomb;
 ```
-</div>
+
 
 Note que há somente um processo. O processo faz o _reset_ assíncrono da máquina de estados, colocando-a no estado A (veja a seta de início chegando no estado A do diagrama de transição de estados). Caso o _reset_ não esteja ativo, o processo faz uma única tarefa que é copiar o sinal PE (de Próximo Estado) para o sinal EA (de Estado Atual) na borda de subida do _clock_. Neste contexto, apenas o sinal EA representa um elemento combinatório pois fora destas duas condições, o sinal EA é mantido inalterado. O comportamento é exatamente o de um _flip-flop_ tipo D e, de fato, podemos ver que o circuito gerado contém exatamente um _flip-flop_, pois temos somente dois estados possíveis. Caso o tipo composto `estado_t` possuísse mais de dois estados, o número de _flip-flops_ seria maior para acomodar o maior número de estados.
 
@@ -93,7 +93,8 @@ Use esse estilo nas suas primeiras máquinas de estado, para garantir que você 
 #### Exemplo 1 (Moore) - Estilo com dois `process`
 No segundo estilo, levamos a descrição combinatória para dentro de um `process` novo, mantendo o `process` sequencial que faz o papel de elemento de memória inalterado. Este estilo exige um cuidado muito grande pois estamos descrevendo um elemento combinatório dentro de uma primitiva de VHDL que indica para o sintetizador que estamos descrevendo algo sequencial. Temos que ser claros com a descrição para que o sintetizador entenda que a variável de estados é o sinal EA somente, e os outros sinais (neste caso o PE e a `saida`), são combinatórios.
 
-<img src='{static}/images/sd/fsmvhdl02.png' width="50%" align="right" style="padding-left:0%" />
+<img src='{static}/images/sd/fsmvhdl02.png' width="100%" align="right" style="padding-left:0%" />
+
 ```vhdl
 architecture doisproc of fsm is
   type estado_t is (A,B);
@@ -150,7 +151,9 @@ Se você tem uma bagagem como programador de software, é natural optar por este
 
 ### Outros estilos
 Mas então por que não usamos um processo só para tudo? Vamos ver:
-<img src='{static}/images/sd/fsmvhdl03.png' width="50%" align="right" style="padding-left:0%" />
+
+<img src='{static}/images/sd/fsmvhdl03.png' width="100%" align="right" style="padding-left:0%" />
+
 ```vhdl
 architecture umproc of fsm is
   type estado_t is (A,B);
@@ -191,8 +194,11 @@ Observe que o circuito gerado possui a saída registrada (inferida pelo sintetiz
 
 
 ### Exemplo 2 (Mealy)
+
 <img src='{static}/images/sd/fsmexemplo2.png' width="15%" align="right" style="padding-left:5%" />
 Esta é a mesma máquina que a do Exemplo 1, porém no modelo de Mealy, onde a saída depende também da entrada.
+<div style="border: 0px; overflow: auto;width: 100%;"></div>
+
 ```vhdl
 library ieee;
 use ieee.numeric_bit.rising_edge;
@@ -208,7 +214,8 @@ end fsm;
 <div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 #### Exemplo 2 (Mealy) - Estilo tradicional
-<img src='{static}/images/sd/fsmvhdl04.png' width="50%" align="right" style="padding-left:0%" />
+<img src='{static}/images/sd/fsmvhdl04.png' width="100%" align="right" style="padding-left:0%"></img>
+
 ```vhdl
 architecture proccombmealy of fsm is
   type estado_t is (A,B);
@@ -241,7 +248,8 @@ end architecture proccombmealy;
 Note que o circuito gerado é um pouco maior devido a arquitetura para o qual foi sintetizado (FPGA).<div style="border: 0px; overflow: auto;width: 100%;"></div>
 
 #### Exemplo 2 (Mealy) - Estilo com dois `process`
-<img src='{static}/images/sd/fsmvhdl05.png' width="50%" align="right" style="padding-left:0%" />
+<img src='{static}/images/sd/fsmvhdl05.png' width="100%" align="right" style="padding-left:0%" />
+
 ```vhdl
 architecture doisprocmealy of fsm is
   type estado_t is (A,B);

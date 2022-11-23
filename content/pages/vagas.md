@@ -1,6 +1,6 @@
 Title: Vagas
 Date: 2022-03-22 12:25
-Modified: 2022-04-11 12:25
+Modified: 2022-08-09 15:21
 Category: information
 Tags: main
 Slug: vagas
@@ -11,6 +11,8 @@ Summary: Vagas na área de HW.
 Esta página foi criada com o intuito de divulgar vagas na área de *hardware*, tanto no Brasil quanto no exterior, com foco nos alunos dos cursos de Eng. de Eletricidade e de Engenharia de Computação. Sempre que possível atualizarei a página. Verifique a data da postagem para ver se a vaga ainda está disponível. Caso queira postar uma vaga, por favor me envie um [email]({filename}./sobre.md) ou [edite](https://github.com/balbertini/balbertini.github.io/edit/source/content/pages/vagas.md) e faça um *pull request*.
 
 O Prof. Marcos Simplício mantém [uma página](https://sites.usp.br/cybersec/) dedicada para vagas em segurança digital que também pode conter vagas relacionadas à *hardware*.
+
+O site embarcados mantém [uma página](https://embarcados.com.br/vagas-disponiveis/) com várias vagas para projetistas de embarcados e programação de baixo nível.
 
 <!-- Quando for adicionar alguma vaga, por favor siga o modelo copiando-o de uma vaga existente e atualize a data (inclusive a de modificação no cabeçalho do arquivo). -->
 ### (14/jun/2022) *Engenheiro de Desenvolvimento de FPGA*  
