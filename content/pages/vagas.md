@@ -15,6 +15,16 @@ O Prof. Marcos Simplício mantém [uma página](https://sites.usp.br/cybersec/) 
 O site embarcados mantém [uma página](https://embarcados.com.br/vagas-disponiveis/) com várias vagas para projetistas de embarcados e programação de baixo nível.
 
 <!-- Quando for adicionar alguma vaga, por favor siga o modelo copiando-o de uma vaga existente e atualize a data (inclusive a de modificação no cabeçalho do arquivo). -->
+### (22/mar/2023) *Estágio em Computação na Globo*  
+Veja detalhes no [hotsite](https://vagas.ciadetalentos.com.br/hotsite/estagiarglobo2023).  
+
+### (22/mar/2023) *Vagas Itaú (estágio e plenas) para cota PP*  
+Veja detalhes no [hotsite](https://carreiras.itau.com.br/mais-black-mais-oportunidades).
+
+### (22/mar/2023) *Estágio na Bayer*
+Várias vagas, não exclusivo computação, tem sistemas embarcados para Agro). Detalhes no [hotsite](https://ciadetalentos.com.br/estagionovostalentos).  
+
+
 ### (14/jun/2022) *Engenheiro de Desenvolvimento de FPGA*  
 Desenvolvimento de tecnologias em equipamentos aeronáuticos visando potencial aplicação em futuros produtos da aviação comercial, executiva e/ou defesa.    
 

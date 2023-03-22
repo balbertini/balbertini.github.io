@@ -36,8 +36,8 @@ MARKDOWN = {
 
 TIMEZONE = 'America/Sao_Paulo'
 
-
-PLUGIN_PATHS = ["../pelican-plugins"]
+PLUGIN_PATHS = ["/home/balbertini/GIT/sitePessoal/pelican-plugins"]
+#PLUGIN_PATHS = ["../pelican-plugins"]
 PLUGINS =  ['post_stats','render_math','jinja_filters']
 PLUGINS += ['jinja2content']
 # Processors extensions
