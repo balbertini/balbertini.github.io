@@ -4,8 +4,6 @@
 
 AUTHOR = 'Bruno Albertini'
 SITENAME = "B.Albertini's site"
-# SITETITLE = 'B.Albertini'
-# SITESUBTITLE = 'Professor'
 SITEURL = ''
 SITELOGO = SITEURL + '/images/profile.png'
 FAVICON = SITEURL + '/images/favicon.ico'
