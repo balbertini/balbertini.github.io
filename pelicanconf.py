@@ -44,6 +44,10 @@ PLUGINS += ['jinja2content']
 # }
 JINJA2CONTENT_TEMPLATES=['../templates']
 
+# MATH_JAX = {'color':'blue','align':left}
+# MATH_JAX = {'tex_extensions': ['color.js','mhchem.js']}
+
+
 # Localization
 DEFAULT_LANG = 'pt_br'
 I18N_TEMPLATES_LANG = "pt_BR" # For theme
