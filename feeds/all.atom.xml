@@ -1,39 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site</title><link href="https://balbertini.github.io/" rel="alternate"/><link href="https://balbertini.github.io/feeds/all.atom.xml" rel="self"/><id>https://balbertini.github.io/</id><updated>2026-08-17T14:58:53.318470-03:00</updated><subtitle>Professor</subtitle><entry><title>Conversão entre bases</title><link href="https://balbertini.github.io/baseconversion-pt_BR.html" rel="alternate"/><published>2026-08-17T14:58:53.318470-03:00</published><updated>0206-08-17T13:41:00-03:06:28</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2026-08-17:/baseconversion-pt_BR.html</id><summary type="html">&lt;p&gt;Conversão entre bases.&lt;/p&gt;</summary><content type="html">&lt;p&gt;A conversão entre números representados em bases diferentes, desde que ambos adotem um sistema de numeração posicional, segue a fórmula geral de conversão de bases. A maioria dos autores apresenta-a como:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>B.Albertini's site</title><link href="https://balbertini.github.io/" rel="alternate"/><link href="https://balbertini.github.io/feeds/all.atom.xml" rel="self"/><id>https://balbertini.github.io/</id><updated>2026-08-17T18:08:05.706046-03:00</updated><subtitle>Professor</subtitle><entry><title>Conversão entre bases</title><link href="https://balbertini.github.io/baseconversion-pt_BR.html" rel="alternate"/><published>2026-08-17T18:03:00.744836-03:00</published><updated>2026-08-17T13:41:00-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2026-08-17:/baseconversion-pt_BR.html</id><summary type="html">&lt;p&gt;Conversão entre bases.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Fórmula geral de conversão de bases&lt;/h2&gt;
+&lt;p&gt;A conversão entre números representados em bases diferentes, desde que ambos adotem um sistema de numeração posicional, segue a fórmula geral de conversão de bases. A maioria dos autores apresenta-a como:&lt;/p&gt;
 &lt;div class="math"&gt;$$
-v=\sum_{m}^{n}{\alpha_i.\beta^{i}}
+v=\sum_{m}^{n}{\alpha_i\times\beta^{i}}
 $$&lt;/div&gt;
-&lt;p&gt;A fórmula expressa &lt;span class="math"&gt;\(i\)&lt;/span&gt; dígitos na base &lt;span class="math"&gt;\(\beta\)&lt;/span&gt;, representando a quantidade &lt;span class="math"&gt;\(v\)&lt;/span&gt;. O índice &lt;span class="math"&gt;\(i\)&lt;/span&gt; vai de &lt;span class="math"&gt;\(m\)&lt;/span&gt; a &lt;span class="math"&gt;\(n\)&lt;/span&gt;, passando pelo &lt;span class="math"&gt;\(0\)&lt;/span&gt;. Quando &lt;span class="math"&gt;\(m=0\)&lt;/span&gt;, o número é inteiro, e quando &lt;span class="math"&gt;\(m&amp;lt;0\)&lt;/span&gt;, o número é fracionário. Não é correto &lt;span class="math"&gt;\(m&amp;gt;0\)&lt;/span&gt; pois isto implica que todos os dígitos &lt;span class="math"&gt;\(i&amp;lt;m\)&lt;/span&gt; representam a quantidade zero, o que viola o sistema de representação posicional (este dígito deve existir e conter 0). A expansão desta fórmula gera:&lt;/p&gt;
+&lt;p&gt;A fórmula expressa &lt;span class="math"&gt;\(i\)&lt;/span&gt; dígitos &lt;span class="math"&gt;\(\alpha_i\)&lt;/span&gt; em uma base &lt;span class="math"&gt;\(\beta\)&lt;/span&gt;, representando a quantidade &lt;span class="math"&gt;\(v\)&lt;/span&gt;. O índice &lt;span class="math"&gt;\(i\)&lt;/span&gt; vai de &lt;span class="math"&gt;\(m\)&lt;/span&gt; a &lt;span class="math"&gt;\(n\)&lt;/span&gt;, passando pelo &lt;span class="math"&gt;\(0\)&lt;/span&gt;. Quando &lt;span class="math"&gt;\(m=0\)&lt;/span&gt;, o número é inteiro, e quando &lt;span class="math"&gt;\(m&amp;lt;0\)&lt;/span&gt;, o número é fracionário e em português usamos o ponto &lt;span class="math"&gt;\(.\)&lt;/span&gt; para dividir entre a parte inteira e a fracionária. Não é correto &lt;span class="math"&gt;\(m&amp;gt;0\)&lt;/span&gt; pois isto implica que todos os dígitos &lt;span class="math"&gt;\(i&amp;lt;m\)&lt;/span&gt; representam a quantidade zero, o que viola o sistema de representação posicional (este dígito deve existir e representar a quantidade zero, i.e. 0). A expansão desta fórmula gera:&lt;/p&gt;
 &lt;div class="math"&gt;$$
-v=\alpha_{n}.\beta^{n}+\alpha_{n-1}.\beta^{n-1}+\alpha_{n-2}.\beta^{n-2}\ldots \alpha_{0}.\beta^{0}.\alpha_{-1}.\beta^{-1}+\alpha_{-2}.\beta^{-2}\ldots \alpha_{-m+2}.\beta^{-m+2}+\alpha_{-m+1}.\beta^{-m+1}+a+\alpha_{-m}.\beta^{-m}
+v=\alpha_{n}\times\beta^{n}+\alpha_{n-1}\times\beta^{n-1}+\alpha_{n-2}\times\beta^{n-2}\ldots \alpha_{0}\times\beta^{0}.\alpha_{-1}\times\beta^{-1}+\alpha_{-2}\times\beta^{-2}\ldots \alpha_{-m+2}\times\beta^{-m+2}+\alpha_{-m+1}\times\beta^{-m+1}+a+\alpha_{-m}\times\beta^{-m}
 $$&lt;/div&gt;
 &lt;p&gt;Para o sistema decimal inteiro sem sinal, a fórmula é bem simples de usar. Exemplo: considere o valor &lt;span class="math"&gt;\(A22_{11}\)&lt;/span&gt;. Qual valor ele representa em decimal?&lt;/p&gt;
 &lt;div class="math"&gt;$$
-v_{10}=\alpha_{2}.\beta^{2}+\alpha_{1}.\beta^{1}+\alpha_{0}.\beta^{0}\\
-v_{10}=A.11^2+2.11^1.11^0\\
-v_{10}=10.121+2.11+2.1\\
+v_{10}=\alpha_{2}\times\beta^{2}+\alpha_{1}\times\beta^{1}+\alpha_{0}\times\beta^{0}\\
+v_{10}=A\times11^2+2\times11^1\times11^0\\
+v_{10}=10\times121+2\times11+2\times1\\
 v_{10}=1210+22+2\\
 v_{10}=1234\\
 $$&lt;/div&gt;
-&lt;p&gt;Note que os valores foram convertidos da base original (11) para a base decimal (10). Os valores expressos na fórmula devem ser os valores na base alvo (10). Para conversões para outras bases, devemos usar o valor na base que queremos, não para a decimal, e realizar todos os cálculos na base alco. Exemplo: considere o valor &lt;span class="math"&gt;\(A22_{11}\)&lt;/span&gt;. Qual valor ele representa em hexadecimal?&lt;/p&gt;
+&lt;p&gt;Note que os valores foram convertidos da base original (11) para a base decimal (10). Os valores expressos na fórmula devem ser os valores na base alvo (10). Para conversões para outras bases, devemos usar o valor na base que queremos, não a decimal, e realizar todos os cálculos na base alvo. Exemplo: considere o valor &lt;span class="math"&gt;\(A22_{11}\)&lt;/span&gt;. Qual valor ele representa em hexadecimal?&lt;/p&gt;
 &lt;div class="math"&gt;$$
-v_{16}=\alpha_{2}.\beta^{2}+\alpha_{1}.\beta^{1}+\alpha_{0}.\beta^{0}\\
-v_{16}=A.B^2+2.B^1+2.B^0\\
-v_{16}=A.79+2.B+2.1\\
+v_{16}=\alpha_{2}\times\beta^{2}+\alpha_{1}\times\beta^{1}+\alpha_{0}\times\beta^{0}\\
+v_{16}=A\times B^2+2\times B^1+2\times B^0\\
+v_{16}=A\times79+2\times B+2\times1\\
 v_{16}=4BA+16+2\\
 v_{16}=4D2\\
 $$&lt;/div&gt;
-&lt;p&gt;Veja que o valor da base (11) foi expresso em hexadecimal (B).&lt;/p&gt;
-&lt;p&gt;Vamos ver a conversão contrária, da base 16 para a base 11, para certificar-mos:
+&lt;p&gt;Veja que todos os valores e cálculos foram realizados na base alvo (16), incluindo o valor da base original (11) que foi expresso em hexadecimal (B).&lt;/p&gt;
+&lt;p&gt;Vamos ver a conversão contrária, da base 16 para a base 11, para certificar-nos:
 &lt;/p&gt;
 &lt;div class="math"&gt;$$
-v_{11}=\alpha_{2}.\beta^{2}+\alpha_{1}.\beta^{1}+\alpha_{0}.\beta^{0}\\
-v_{11}=4.15^2+12.15^2+2.15^0\\
-v_{11}=4.213+12.15+2.1\\
+v_{11}=\alpha_{2}\times\beta^{2}+\alpha_{1}\times\beta^{1}+\alpha_{0}\times\beta^{0}\\
+v_{11}=4\times15^2+12\times15^2+2\times15^0\\
+v_{11}=4\times213+12\times15+2\times1\\
 v_{11}=850+17A+2\\
 v_{11}=A22\\
 $$&lt;/div&gt;
 &lt;p&gt;Veja que toda a fórmula foi expressa na base 11. O valor de 16 (a base hexadecimal) na base 11 é &lt;span class="math"&gt;\(15_{11}\)&lt;/span&gt;. A operação &lt;span class="math"&gt;\(15_{11}^2=213_{11}\)&lt;/span&gt; foi realizada na base 11, assim como as multiplicações e as somas.&lt;/p&gt;
+&lt;h2&gt;Conversão por divisão sucessiva&lt;/h2&gt;
+&lt;p&gt;Um método muito comum que ensinamos para converter de decimal para outras bases usa a fórmula geral de expansão de bases ao contrário, fazendo divisões sucessivas para chegarmos ao número desejado. Lembre-se que todos os cálculos devem ser realizados na base alvo!&lt;/p&gt;
+&lt;p&gt;Por exemplo, considere o número &lt;span class="math"&gt;\(1234_{10}\)&lt;/span&gt;. Vamos converter para hexadecimal. Como a base alvo é decimal (estamos usando a fórmula ao contrário), todos os cálculos são feitos em decimal.&lt;/p&gt;
+&lt;div class="math"&gt;$$
+v_{10}=\alpha_{2}\times\beta^{2}+\alpha_{1}\times\beta^{1}+\alpha_{0}\times\beta^{0}
+$$&lt;/div&gt;
+&lt;p&gt;Genericamente, a divisão inteira dos dois lados da fórmula pela base &lt;span class="math"&gt;\(\beta\)&lt;/span&gt; sempre produz &lt;span class="math"&gt;\(\alpha_0\)&lt;/span&gt; como resto e o valor da divisão inteira corresponde ao restante da fórmula.&lt;/p&gt;
+&lt;p&gt;No exemplo, a primeira divisão pela base (&lt;span class="math"&gt;\(16_{10}\)&lt;/span&gt;), divide toda a fórmula por &lt;span class="math"&gt;\(16_{10}\)&lt;/span&gt;, ou seja, o resultado da divisão inteira de &lt;span class="math"&gt;\(1234_{10}\)&lt;/span&gt; por &lt;span class="math"&gt;\(16_{10}\)&lt;/span&gt; é &lt;span class="math"&gt;\(\alpha_{2}\times16^{2}+\alpha_{1}\)&lt;/span&gt; e o resto é o &lt;span class="math"&gt;\(\alpha_{0}\)&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="math"&gt;$$
+v_{10}=\alpha_{2}\times\beta^{2}+\alpha_{1}\times\beta^{1}+\alpha_{0}\times\beta^{0}\\
+1234=\alpha_{2}\times16^{2}+\alpha_{1}\times16^{1}+\alpha_{0}\times16^{0}\\
+1234=\alpha_{2}\times16^{2}+\alpha_{1}\times16+\alpha_{0}\\
+1234-\alpha_{0}=\alpha_{2}\times16^{2}+\alpha_{1}\times16\\
+\frac{1234-\alpha_{0}}{16}=\frac{\alpha_{2}\times16^{2}+\alpha_{1}\times16}{16}\\
+\frac{1234-\alpha_{0}}{16}=\alpha_{2}\times16+\alpha_{1}\\
+$$&lt;/div&gt;
+&lt;p&gt;Como sabemos que &lt;span class="math"&gt;\(1234/16=77\)&lt;/span&gt; e o resto é &lt;span class="math"&gt;\(2\)&lt;/span&gt;, podemos continuar assumindo que &lt;span class="math"&gt;\(\alpha_{0}=2\)&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="math"&gt;$$
+\frac{1234-\alpha_{0}}{16}=\alpha_{2}\times16+\alpha_{1}\\
+\frac{1234-2}{16}=\alpha_{2}\times16+\alpha_{1}\\
+\frac{1232}{16}=\alpha_{2}\times16+\alpha_{1}\\
+77=\alpha_{2}\times16+\alpha_{1}\\
+$$&lt;/div&gt;
+&lt;p&gt;E repetimos o mesmo processo para obter &lt;span class="math"&gt;\(\alpha_{1}\)&lt;/span&gt; e &lt;span class="math"&gt;\(\alpha_{2}\)&lt;/span&gt;:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
+77=\alpha_{2}\times16+\alpha_{1}\\
+77-\alpha_{1}=\alpha_{2}\times16\\
+\frac{77-\alpha_{1}}{16}=\frac{\alpha_{2}\times16}{16}\\
+\frac{77-\alpha_{1}}{16}=\alpha_{2}\\
+$$&lt;/div&gt;
+&lt;p&gt;Dado que &lt;span class="math"&gt;\(77/16\)&lt;/span&gt; resulta em &lt;span class="math"&gt;\(4\)&lt;/span&gt; e o resto é &lt;span class="math"&gt;\(13\)&lt;/span&gt;, podemos assumir que &lt;span class="math"&gt;\(\alpha_{1}=13\)&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="math"&gt;$$
+\frac{77-\alpha_{1}}{16}=\alpha_{2}\\
+\frac{77-13}{16}=\alpha_{2}\\
+\frac{64}{16}=\alpha_{2}\\
+4=\alpha_{2}\\
+$$&lt;/div&gt;
+&lt;p&gt;Dessa forma, &lt;span class="math"&gt;\(1234_{10}=4D2_{16}\)&lt;/span&gt; (lembre-se que &lt;span class="math"&gt;\(13_{10}=D_{16}\)&lt;/span&gt;). Na figura abaixo podemos ver a mesma operação, mas realizada usando a forma gráfica.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Divisões Sucessivas" src="https://balbertini.github.io/images/sd/divisaoSucessiva1.png"&gt;&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -1336,7 +1377,7 @@ D&amp;quot;0003&amp;quot; -- equivalente a B&amp;quot;11&amp;quot;
 &lt;p&gt;Apesar do suporte à HDL ser relativamente bom (existem vários &lt;a href="https://balbertini.github.io/vhdl_simulators-pt_BR.html"&gt;simuladores e sintetizadores de HDL&lt;/a&gt;), não é possível usar as ferramentas comuns de software. Não é possível compilar um hardware, por exemplo, tampouco usar depuradores (&lt;em&gt;debuggers&lt;/em&gt;) similares aos de software pelo simples motivo que não é possível passar linha por linha em uma descrição vendo o que acontece. As ferramentas são divididas em duas categorias distintas: os simuladores e os sintetizadores.&lt;/p&gt;
 &lt;p&gt;Os simuladores conseguem gerar algo que você pode executar na sua máquina e obter o comportamento do hardware, o que possibilita testar, verificar e simular a sua descrição. Os simuladores atuais são bons o suficiente para que a simulação seja muito próxima do hardware real. É possível até mesmo estimar o consumo de energia ou o atraso do hardware descrito usando apenas simulação. Nesta fase, poucas ferramentas de depuração são disponíveis e o método mais comum de testar é escrever um &lt;a href="https://balbertini.github.io/vhdl_testbench-pt_BR.html"&gt;&lt;em&gt;testbench&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Já os sintetizadores são ferramentas que transformam a sua descrição em um hardware real. A síntese é dependente de tecnologia, então quando você chega na fase de síntese deve escolher o que irá fazer com o seu circuito (e.g. configurar um FPGA, enviar para uma fábrica de &lt;em&gt;chips&lt;/em&gt; ou simplesmente simular em uma tecnologia específica). O hardware sintetizado pode ser simulado também e as métricas obtidas são mais precisas, chegando a mais de 99% de confiabilidade (e.g. se medir um determinado atrase, ele será quase que o mesmo do circuito real depois de fabricado). É possível ainda depurar seu circuito usando uma variadade de técnicas (e.g. &lt;em&gt;scan-chain&lt;/em&gt;), pois o modelo de simulação já está atrelado à tecnologia alvo. No entanto, a síntese normalmente só é realizada no final da prototipação pois é muito demorada. Para efeito de comparação, compilar e executar um software leva segundos, gerar um simulador e executá-lo para uma descrição de hardware leva minutos, e sintetizar e simular um hardware leva horas (em projetos complexos como um processador moderno, a simulação sobe para horas e a síntese para dias).&lt;/p&gt;
-&lt;p&gt;Por último, é comum os projetistas esquecerem que estão descrevendo um hardware. Não existe &lt;code&gt;printf&lt;/code&gt;, não existem &lt;em&gt;breakpoints&lt;/em&gt; e não existe nem mesmo sistema operacional ou chamada de funções. Se você está projetando um processador, você esta projetanto a peça que irá suportar tudo isso! Se você quiser uma comunicação textual estilo &lt;em&gt;prompt&lt;/em&gt; de comando com o seu hardware, você é o responsável por adicionar uma interface serial e fazer a comunicação com ele. Se você quer uma interface gráfica, terá que descrevê-la como um hardware (ou adicionar um módulo pronto que faça isso). Orientação a objetos? Coleta de lixo? Esqueça! Isso é um conceito abstrato útil para forçar uma certa organização dos programadores de software. Apesar de termos paradigmas similares em hardware (e.g. modularização), isso é responsabilidade sua e não da linguagem.&lt;/p&gt;</content><category term="vhdl"/><category term="vhdl"/><category term="basic"/></entry><entry><title>Operações Aritméticas em Binário</title><link href="https://balbertini.github.io/binaryarithmetic-pt_BR.html" rel="alternate"/><published>2020-07-31T08:57:26-03:00</published><updated>2021-05-03T08:55:51-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-07-31:/binaryarithmetic-pt_BR.html</id><summary type="html">&lt;p&gt;Operações Aritméticas em Binário&lt;/p&gt;</summary><content type="html">&lt;p&gt;Um computador moderno não é muito diferente de uma calculadora gigante. Pode parecer estranho, mas mesmo os &lt;em&gt;pixels&lt;/em&gt; na sua tela ou este arquivo de texto que está lendo são representados por números em binário (chamamos isto de código, mas deixemos para outro post). O "coração" de um processador é composto por várias unidades de cálculo, a grande maioria operando sobre inteiros em binário. As operações mais comuns são a adição e a subtração, mas neste post veremos todas elas.&lt;/p&gt;
+&lt;p&gt;Por último, é comum os projetistas esquecerem que estão descrevendo um hardware. Não existe &lt;code&gt;printf&lt;/code&gt;, não existem &lt;em&gt;breakpoints&lt;/em&gt; e não existe nem mesmo sistema operacional ou chamada de funções. Se você está projetando um processador, você esta projetanto a peça que irá suportar tudo isso! Se você quiser uma comunicação textual estilo &lt;em&gt;prompt&lt;/em&gt; de comando com o seu hardware, você é o responsável por adicionar uma interface serial e fazer a comunicação com ele. Se você quer uma interface gráfica, terá que descrevê-la como um hardware (ou adicionar um módulo pronto que faça isso). Orientação a objetos? Coleta de lixo? Esqueça! Isso é um conceito abstrato útil para forçar uma certa organização dos programadores de software. Apesar de termos paradigmas similares em hardware (e.g. modularização), isso é responsabilidade sua e não da linguagem.&lt;/p&gt;</content><category term="vhdl"/><category term="vhdl"/><category term="basic"/></entry><entry><title>Operações Aritméticas em Binário</title><link href="https://balbertini.github.io/binaryarithmetic-pt_BR.html" rel="alternate"/><published>2020-07-31T08:57:26-03:00</published><updated>2026-08-17T18:08:05.706046-03:00</updated><author><name>Bruno Albertini</name></author><id>tag:balbertini.github.io,2020-07-31:/binaryarithmetic-pt_BR.html</id><summary type="html">&lt;p&gt;Operações Aritméticas em Binário&lt;/p&gt;</summary><content type="html">&lt;p&gt;Um computador moderno não é muito diferente de uma calculadora gigante. Pode parecer estranho, mas mesmo os &lt;em&gt;pixels&lt;/em&gt; na sua tela ou este arquivo de texto que está lendo são representados por números em binário (chamamos isto de código, mas deixemos para outro post). O "coração" de um processador é composto por várias unidades de cálculo, a grande maioria operando sobre inteiros em binário. As operações mais comuns são a adição e a subtração, mas neste post veremos todas elas.&lt;/p&gt;
 &lt;h1&gt;Representação binária&lt;/h1&gt;
 &lt;p&gt;Um número em binário é composto por qualquer quantidade de dígitos 0 e 1. Um único dígito é chamado de &lt;em&gt;bit&lt;/em&gt;, o conjunto de 8 bits é chamado de &lt;em&gt;byte&lt;/em&gt; e o conjunto de 4 bits é chamado de &lt;em&gt;nible&lt;/em&gt;. Os processadores modernos usam números de 64 bits, mas ainda temos muitos processadores usando 32 bits. A quantidade de bits usada para representar um número em um processador está ligada ao tamanho das estruturas de armazenamento usadas internamente para guardar os números (conhecidas como registradores) e a capacidade das unidades de cálculo (i.e. um processador de 64 bits possui registradores e unidades lógicas e aritméticas capazes de armazenar e operar números  de 64 bits).&lt;/p&gt;
 &lt;p&gt;A representação binária segue a fórmula geral de representação de bases, cuja conversão para decimal é:&lt;/p&gt;
@@ -1520,7 +1561,7 @@ $$&lt;/div&gt;
 &lt;p&gt;Em binário, como a base é 2, chamamos esta representação de &lt;strong&gt;complemento de um&lt;/strong&gt;. Para converter um número binário de positivo para negativo e vice-versa, basta inverter todos os bits. Exemplo: &lt;code&gt;-7 = inv(7)&lt;/code&gt; que em binário de 4 bits fica &lt;code&gt;inv(0111) = 1000&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;A capacidade de representação é a mesma do sinal-magnitude e temos o mesmo problema dos dois zeros.&lt;/p&gt;
 &lt;p&gt;O primeiro bit continua indicando o sinal (se 1 é negativo), mas a grande vantagem é que os circuitos que realizam as operações são mais simples pois a subtração pode ser realizada usando uma soma. A desvantagem é que ainda temos dois zeros, desperdiçando um número.&lt;/p&gt;
-&lt;h3&gt;Operações com complemento de base em binário&lt;/h3&gt;
+&lt;h3&gt;Operações com complemento de base diminuída em binário&lt;/h3&gt;
 &lt;p&gt;Calcular &lt;code&gt;3-4&lt;/code&gt; em binário de 4 bits usando complemento de um.&lt;/p&gt;
 &lt;p&gt;Isso equivale a fazer &lt;code&gt;3+(-4)&lt;/code&gt;, o que significa converter o 4 para negativo. Em binário de 4 bits usando complemento de um, ficaria &lt;code&gt;0011+inv(0100) = 0011+1011&lt;/code&gt;.&lt;/p&gt;
 &lt;pre&gt;

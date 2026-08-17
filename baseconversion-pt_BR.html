@@ -74,8 +74,8 @@
   <meta property="og:locale" content="pr_BR"/>
   <meta property="og:url" content="https://balbertini.github.io/baseconversion-pt_BR.html"/>
   <meta property="og:type" content="article"/>
-  <meta property="article:published_time" content="2026-08-17 14:58:53.318470-03:00"/>
-  <meta property="article:modified_time" content="0206-08-17 13:41:00-03:06:28"/>
+  <meta property="article:published_time" content="2026-08-17 18:03:00.744836-03:00"/>
+  <meta property="article:modified_time" content="2026-08-17 13:41:00-03:00"/>
   <meta property="article:author" content="https://balbertini.github.io/author/bruno-albertini.html">
   <meta property="article:section" content="sistemas digitais"/>
   <meta property="article:tag" content="sistemas digitais"/>
@@ -169,47 +169,88 @@
     <p>
       Posted on seg 17 agosto 2026 in <a href="https://balbertini.github.io/category/sistemas-digitais.html">sistemas digitais</a>
 
-        &#8226; 2 min read
+        &#8226; 3 min read
     </p>
   </header>
 
 
   <div>
-    <p>A conversão entre números representados em bases diferentes, desde que ambos adotem um sistema de numeração posicional, segue a fórmula geral de conversão de bases. A maioria dos autores apresenta-a como:</p>
+    <h2>Fórmula geral de conversão de bases</h2>
+<p>A conversão entre números representados em bases diferentes, desde que ambos adotem um sistema de numeração posicional, segue a fórmula geral de conversão de bases. A maioria dos autores apresenta-a como:</p>
 <div class="math">$$
-v=\sum_{m}^{n}{\alpha_i.\beta^{i}}
+v=\sum_{m}^{n}{\alpha_i\times\beta^{i}}
 $$</div>
-<p>A fórmula expressa <span class="math">\(i\)</span> dígitos na base <span class="math">\(\beta\)</span>, representando a quantidade <span class="math">\(v\)</span>. O índice <span class="math">\(i\)</span> vai de <span class="math">\(m\)</span> a <span class="math">\(n\)</span>, passando pelo <span class="math">\(0\)</span>. Quando <span class="math">\(m=0\)</span>, o número é inteiro, e quando <span class="math">\(m&lt;0\)</span>, o número é fracionário. Não é correto <span class="math">\(m&gt;0\)</span> pois isto implica que todos os dígitos <span class="math">\(i&lt;m\)</span> representam a quantidade zero, o que viola o sistema de representação posicional (este dígito deve existir e conter 0). A expansão desta fórmula gera:</p>
+<p>A fórmula expressa <span class="math">\(i\)</span> dígitos <span class="math">\(\alpha_i\)</span> em uma base <span class="math">\(\beta\)</span>, representando a quantidade <span class="math">\(v\)</span>. O índice <span class="math">\(i\)</span> vai de <span class="math">\(m\)</span> a <span class="math">\(n\)</span>, passando pelo <span class="math">\(0\)</span>. Quando <span class="math">\(m=0\)</span>, o número é inteiro, e quando <span class="math">\(m&lt;0\)</span>, o número é fracionário e em português usamos o ponto <span class="math">\(.\)</span> para dividir entre a parte inteira e a fracionária. Não é correto <span class="math">\(m&gt;0\)</span> pois isto implica que todos os dígitos <span class="math">\(i&lt;m\)</span> representam a quantidade zero, o que viola o sistema de representação posicional (este dígito deve existir e representar a quantidade zero, i.e. 0). A expansão desta fórmula gera:</p>
 <div class="math">$$
-v=\alpha_{n}.\beta^{n}+\alpha_{n-1}.\beta^{n-1}+\alpha_{n-2}.\beta^{n-2}\ldots \alpha_{0}.\beta^{0}.\alpha_{-1}.\beta^{-1}+\alpha_{-2}.\beta^{-2}\ldots \alpha_{-m+2}.\beta^{-m+2}+\alpha_{-m+1}.\beta^{-m+1}+a+\alpha_{-m}.\beta^{-m}
+v=\alpha_{n}\times\beta^{n}+\alpha_{n-1}\times\beta^{n-1}+\alpha_{n-2}\times\beta^{n-2}\ldots \alpha_{0}\times\beta^{0}.\alpha_{-1}\times\beta^{-1}+\alpha_{-2}\times\beta^{-2}\ldots \alpha_{-m+2}\times\beta^{-m+2}+\alpha_{-m+1}\times\beta^{-m+1}+a+\alpha_{-m}\times\beta^{-m}
 $$</div>
 <p>Para o sistema decimal inteiro sem sinal, a fórmula é bem simples de usar. Exemplo: considere o valor <span class="math">\(A22_{11}\)</span>. Qual valor ele representa em decimal?</p>
 <div class="math">$$
-v_{10}=\alpha_{2}.\beta^{2}+\alpha_{1}.\beta^{1}+\alpha_{0}.\beta^{0}\\
-v_{10}=A.11^2+2.11^1.11^0\\
-v_{10}=10.121+2.11+2.1\\
+v_{10}=\alpha_{2}\times\beta^{2}+\alpha_{1}\times\beta^{1}+\alpha_{0}\times\beta^{0}\\
+v_{10}=A\times11^2+2\times11^1\times11^0\\
+v_{10}=10\times121+2\times11+2\times1\\
 v_{10}=1210+22+2\\
 v_{10}=1234\\
 $$</div>
-<p>Note que os valores foram convertidos da base original (11) para a base decimal (10). Os valores expressos na fórmula devem ser os valores na base alvo (10). Para conversões para outras bases, devemos usar o valor na base que queremos, não para a decimal, e realizar todos os cálculos na base alco. Exemplo: considere o valor <span class="math">\(A22_{11}\)</span>. Qual valor ele representa em hexadecimal?</p>
+<p>Note que os valores foram convertidos da base original (11) para a base decimal (10). Os valores expressos na fórmula devem ser os valores na base alvo (10). Para conversões para outras bases, devemos usar o valor na base que queremos, não a decimal, e realizar todos os cálculos na base alvo. Exemplo: considere o valor <span class="math">\(A22_{11}\)</span>. Qual valor ele representa em hexadecimal?</p>
 <div class="math">$$
-v_{16}=\alpha_{2}.\beta^{2}+\alpha_{1}.\beta^{1}+\alpha_{0}.\beta^{0}\\
-v_{16}=A.B^2+2.B^1+2.B^0\\
-v_{16}=A.79+2.B+2.1\\
+v_{16}=\alpha_{2}\times\beta^{2}+\alpha_{1}\times\beta^{1}+\alpha_{0}\times\beta^{0}\\
+v_{16}=A\times B^2+2\times B^1+2\times B^0\\
+v_{16}=A\times79+2\times B+2\times1\\
 v_{16}=4BA+16+2\\
 v_{16}=4D2\\
 $$</div>
-<p>Veja que o valor da base (11) foi expresso em hexadecimal (B).</p>
-<p>Vamos ver a conversão contrária, da base 16 para a base 11, para certificar-mos:
+<p>Veja que todos os valores e cálculos foram realizados na base alvo (16), incluindo o valor da base original (11) que foi expresso em hexadecimal (B).</p>
+<p>Vamos ver a conversão contrária, da base 16 para a base 11, para certificar-nos:
 </p>
 <div class="math">$$
-v_{11}=\alpha_{2}.\beta^{2}+\alpha_{1}.\beta^{1}+\alpha_{0}.\beta^{0}\\
-v_{11}=4.15^2+12.15^2+2.15^0\\
-v_{11}=4.213+12.15+2.1\\
+v_{11}=\alpha_{2}\times\beta^{2}+\alpha_{1}\times\beta^{1}+\alpha_{0}\times\beta^{0}\\
+v_{11}=4\times15^2+12\times15^2+2\times15^0\\
+v_{11}=4\times213+12\times15+2\times1\\
 v_{11}=850+17A+2\\
 v_{11}=A22\\
 $$</div>
 <p>Veja que toda a fórmula foi expressa na base 11. O valor de 16 (a base hexadecimal) na base 11 é <span class="math">\(15_{11}\)</span>. A operação <span class="math">\(15_{11}^2=213_{11}\)</span> foi realizada na base 11, assim como as multiplicações e as somas.</p>
+<h2>Conversão por divisão sucessiva</h2>
+<p>Um método muito comum que ensinamos para converter de decimal para outras bases usa a fórmula geral de expansão de bases ao contrário, fazendo divisões sucessivas para chegarmos ao número desejado. Lembre-se que todos os cálculos devem ser realizados na base alvo!</p>
+<p>Por exemplo, considere o número <span class="math">\(1234_{10}\)</span>. Vamos converter para hexadecimal. Como a base alvo é decimal (estamos usando a fórmula ao contrário), todos os cálculos são feitos em decimal.</p>
+<div class="math">$$
+v_{10}=\alpha_{2}\times\beta^{2}+\alpha_{1}\times\beta^{1}+\alpha_{0}\times\beta^{0}
+$$</div>
+<p>Genericamente, a divisão inteira dos dois lados da fórmula pela base <span class="math">\(\beta\)</span> sempre produz <span class="math">\(\alpha_0\)</span> como resto e o valor da divisão inteira corresponde ao restante da fórmula.</p>
+<p>No exemplo, a primeira divisão pela base (<span class="math">\(16_{10}\)</span>), divide toda a fórmula por <span class="math">\(16_{10}\)</span>, ou seja, o resultado da divisão inteira de <span class="math">\(1234_{10}\)</span> por <span class="math">\(16_{10}\)</span> é <span class="math">\(\alpha_{2}\times16^{2}+\alpha_{1}\)</span> e o resto é o <span class="math">\(\alpha_{0}\)</span>:</p>
+<div class="math">$$
+v_{10}=\alpha_{2}\times\beta^{2}+\alpha_{1}\times\beta^{1}+\alpha_{0}\times\beta^{0}\\
+1234=\alpha_{2}\times16^{2}+\alpha_{1}\times16^{1}+\alpha_{0}\times16^{0}\\
+1234=\alpha_{2}\times16^{2}+\alpha_{1}\times16+\alpha_{0}\\
+1234-\alpha_{0}=\alpha_{2}\times16^{2}+\alpha_{1}\times16\\
+\frac{1234-\alpha_{0}}{16}=\frac{\alpha_{2}\times16^{2}+\alpha_{1}\times16}{16}\\
+\frac{1234-\alpha_{0}}{16}=\alpha_{2}\times16+\alpha_{1}\\
+$$</div>
+<p>Como sabemos que <span class="math">\(1234/16=77\)</span> e o resto é <span class="math">\(2\)</span>, podemos continuar assumindo que <span class="math">\(\alpha_{0}=2\)</span>:</p>
+<div class="math">$$
+\frac{1234-\alpha_{0}}{16}=\alpha_{2}\times16+\alpha_{1}\\
+\frac{1234-2}{16}=\alpha_{2}\times16+\alpha_{1}\\
+\frac{1232}{16}=\alpha_{2}\times16+\alpha_{1}\\
+77=\alpha_{2}\times16+\alpha_{1}\\
+$$</div>
+<p>E repetimos o mesmo processo para obter <span class="math">\(\alpha_{1}\)</span> e <span class="math">\(\alpha_{2}\)</span>:
+</p>
+<div class="math">$$
+77=\alpha_{2}\times16+\alpha_{1}\\
+77-\alpha_{1}=\alpha_{2}\times16\\
+\frac{77-\alpha_{1}}{16}=\frac{\alpha_{2}\times16}{16}\\
+\frac{77-\alpha_{1}}{16}=\alpha_{2}\\
+$$</div>
+<p>Dado que <span class="math">\(77/16\)</span> resulta em <span class="math">\(4\)</span> e o resto é <span class="math">\(13\)</span>, podemos assumir que <span class="math">\(\alpha_{1}=13\)</span>:</p>
+<div class="math">$$
+\frac{77-\alpha_{1}}{16}=\alpha_{2}\\
+\frac{77-13}{16}=\alpha_{2}\\
+\frac{64}{16}=\alpha_{2}\\
+4=\alpha_{2}\\
+$$</div>
+<p>Dessa forma, <span class="math">\(1234_{10}=4D2_{16}\)</span> (lembre-se que <span class="math">\(13_{10}=D_{16}\)</span>). Na figura abaixo podemos ver a mesma operação, mas realizada usando a forma gráfica.</p>
+<p><img alt="Divisões Sucessivas" src="https://balbertini.github.io/images/sd/divisaoSucessiva1.png"></p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
