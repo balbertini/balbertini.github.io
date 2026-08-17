@@ -129,7 +129,7 @@ A capacidade de representação é a mesma do sinal-magnitude e temos o mesmo pr
 
 O primeiro bit continua indicando o sinal (se 1 é negativo), mas a grande vantagem é que os circuitos que realizam as operações são mais simples pois a subtração pode ser realizada usando uma soma. A desvantagem é que ainda temos dois zeros, desperdiçando um número.
 
-### Operações com complemento de base em binário
+### Operações com complemento de base diminuída em binário
 Calcular `3-4` em binário de 4 bits usando complemento de um.
 
 Isso equivale a fazer `3+(-4)`, o que significa converter o 4 para negativo. Em binário de 4 bits usando complemento de um, ficaria `0011+inv(0100) = 0011+1011`.
